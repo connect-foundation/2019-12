@@ -1,0 +1,17 @@
+{
+	"useTabs": true,
+	"tabWidth": 2,
+	"singleQuote": false,
+	"trailingComma": "all",
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"printWidth": 70,
+				"useTabs": false,
+				"trailingComma": "none",
+				"proseWrap": "never"
+			}
+		}
+	]
+}

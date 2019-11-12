@@ -1,0 +1,48 @@
+{
+	"name": "bookus",
+	"private": true,
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"workspaces": [
+		"client",
+		"server"
+	],
+	"scripts": {
+		"lint:server": "yarn workspace server lint",
+		"lint:client": "yarn workspace client lint",
+		"lint": "run-p lint:server lint:client",
+		"format": "prettier --write \"**/*.{ts,tsx,css,md}\""
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^8.2.0",
+		"@commitlint/config-conventional": "^8.2.0",
+		"@typescript-eslint/eslint-plugin": "^2.7.0",
+		"@typescript-eslint/parser": "^2.7.0",
+		"eslint": "^6.6.0",
+		"eslint-config-airbnb-base": "^14.0.0",
+		"eslint-config-prettier": "^6.5.0",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-prettier": "^3.1.1",
+		"husky": "^3.0.9",
+		"lint-staged": "^9.4.2",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.19.1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"lint-staged": {
+		"*.{ts,tsx,css,md}": [
+			"prettier --write",
+			"git add"
+		],
+		"*.{ts,tsx,js,jsx}": [
+			"eslint --fix",
+			"git add"
+		]
+	}
+}
