@@ -20,6 +20,7 @@
 	},
 	"include": ["src/**/*", "bin"],
     "exclude": [
-		"node_modules"
+		"node_modules",
+		"src/**/*.spec.ts"
     ]
 }
