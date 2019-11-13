@@ -1,5 +1,5 @@
 import * as express from 'express';
-import cookieParser = require('cookie-parser');
+import * as cookieParser from 'cookie-parser';
 
 // Router Imports
 import userRouter from './routes/api/users';
