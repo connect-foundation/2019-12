@@ -2,7 +2,7 @@ import * as express from 'express';
 import cookieParser = require('cookie-parser');
 
 // Router Imports
-import userRouter from './routes/v1/api/user';
+import userRouter from './routes/api/users';
 
 const app = express();
 
