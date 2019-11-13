@@ -1,0 +1,7 @@
+node_modules/
+dist/
+DB/
+
+*.md
+.eslintignore
+.eslintrc.json

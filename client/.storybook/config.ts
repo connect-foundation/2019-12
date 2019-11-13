@@ -20,17 +20,17 @@ addParameters({
     sidebarAnimations: true,
     showPanel: true,
     hierarchySeparator: /\/|\./,
-    hierarchyRootSeparator: /\|/
+    hierarchyRootSeparator: /\|/,
   },
   info: {
     inline: true,
     header: false,
-    text: `<hr/>`
+    text: `<hr/>`,
   },
   viewport: {
     viewports: INITIAL_VIEWPORTS, // newViewports would be an ViewportMap. (see below for examples)
-    defaultViewport: 'someDefault'
-  }
+    defaultViewport: 'someDefault',
+  },
 });
 
 configure(require.context('../stories', true, /\.stories\.tsx?$/), module);

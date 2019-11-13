@@ -9,12 +9,10 @@ interface Props {
   content: string;
 }
 
-const Logo = ({ content }: Props) => {
-  return (
-    <>
-      <H1>{content}</H1>
-    </>
-  );
-};
+const Logo = ({ content }: Props) => (
+  <>
+    <H1>{content}</H1>
+  </>
+);
 
 export default Logo;

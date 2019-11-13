@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  node:
+    image: jdd04026/node-nodemon:latest
+    container_name: bu-node
+    ports:
+      - "13000:3000"
+    volumes: 
+      - ./:/server
+      - ../node_modules:/server/node_modules
+    networks:
+      - fon
+
+  db:
+    image: jdd04026/mariadb-locale:latest
+    container_name: bu-db
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PW}
+      - MYSQL_DATABASE=bookus
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+    ports:
+      - "13306:3306"
+    networks:
+      - fon
+
+volumes:
+  dbdata:
+    driver: local
+
+networks:
+  fon:
+    name: fon_bridge

@@ -3,7 +3,7 @@ import { text } from '@storybook/addon-knobs';
 import Logo from '../../src/commons/components/atoms/Logo';
 
 export default {
-  title: 'Components|Atom/Text'
+  title: 'Components|Atom/Text',
 };
 
 export const logo = () => <Logo content={text('logoText', 'Bookus')} />;

@@ -1,7 +1,7 @@
 {
-	"useTabs": true,
 	"tabWidth": 2,
-	"singleQuote": false,
+	"useTabs": false,
+	"singleQuote": true,
 	"trailingComma": "all",
 	"overrides": [
 		{
