@@ -11,13 +11,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --verbose",
-    "test:src": "react-scripts test --verbose 'src'",
+    "test": "react-scripts test --coverage --verbose",
     "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,md}\"",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "cypress run",
@@ -31,6 +29,8 @@
     "@types/react-dom": "16.9.4",
     "@types/styled-components": "^4.4.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
@@ -61,12 +61,18 @@
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
-    "prettier": "^1.19.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "start-server-and-test": "^1.10.6",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts(x)?$": "ts-jest"
+    },
+    "collectCoverageFrom": ["src/**/*.ts?(x)", "src/**/*.ts?(x)"],
+    "coverageReporters": ["json", "lcov", "text"]
   },
   "browserslist": {
     "production": [
@@ -81,10 +87,6 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,css,md}": [
-      "prettier --write",
-      "git add"
-    ],
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix",
       "git add"

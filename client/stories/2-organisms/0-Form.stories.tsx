@@ -6,4 +6,6 @@ export default {
   title: 'Components|Organisms/Form',
 };
 
-export const TicketForm = () => <Logo content={text('logoText', 'Bookus')} />;
+export const TicketForm: React.FC = () => (
+  <Logo content={text('logoText', 'Bookus')} />
+);
