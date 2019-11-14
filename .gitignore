@@ -3,8 +3,6 @@ node_modules/
 dist/
 
 # Oauth config
-oauth_google.ts
-
 # Default
 .DS_Store
 Thumbs.db
