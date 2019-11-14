@@ -17,6 +17,7 @@
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,md}\"",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "cypress run",
@@ -60,6 +61,7 @@
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
+    "prettier": "^1.19.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "start-server-and-test": "^1.10.6",
@@ -79,6 +81,10 @@
     ]
   },
   "lint-staged": {
+    "*.{ts,tsx,js,jsx,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix",
       "git add"
