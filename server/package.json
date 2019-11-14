@@ -42,12 +42,16 @@
 		"start:dev": "nodemon",
 		"build": "tsc",
 		"test": "jest",
-		"format": "prettier --write \"**/*.{js,css,md}\"",
+  		"format": "prettier --write \"**/*.{ts,js,css,md}\"",
 		"lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
 		"lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
 		"precommit": "lint-staged"
 	},
 	"lint-staged": {
+		"*.{ts,js,css,md}": [
+			"prettier --write",
+			"git add"
+		],
 		"*.{ts,tsx,js,jsx}": [
 			"eslint --fix",
 			"git add"
