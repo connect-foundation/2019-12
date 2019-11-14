@@ -1,18 +1,14 @@
 import * as React from 'react';
-import styled from 'styled-components';
-
-import Logo from '../../commons/components/atoms/Logo'
-
-const LoginPage = styled.div`
-  color: #2c2c2c;
-`;
+import Logo from '../../commons/components/atoms/Logo';
+import OAuthBtn from './OAuthBtn';
 
 const Login: React.FC = () => {
-    return (
-        <LoginPage className="Login">
-            <Logo content={'Bookus!'}/>
-        </LoginPage>
-    )
-}
+  return (
+    <div className="Login">
+      <Logo content={'Bookus!'} />
+      <OAuthBtn />
+    </div>
+  );
+};
 
 export default Login;

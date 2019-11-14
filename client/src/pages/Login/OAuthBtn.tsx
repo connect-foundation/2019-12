@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const AuthURL = `http://localhost:13000/api/auth`;
 
-const OAuthButton: React.FC = () => {
+const OAuthBtn: React.FC = () => {
   return (
     <div>
       <button
@@ -16,4 +16,4 @@ const OAuthButton: React.FC = () => {
   );
 };
 
-export default OAuthButton;
+export default OAuthBtn;
