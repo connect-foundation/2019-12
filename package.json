@@ -35,11 +35,5 @@
       "precommit": "yarn precommit",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
