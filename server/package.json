@@ -2,11 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "husky"
-    ]
-  },
   "main": "index.js",
   "license": "MIT",
   "dependencies": {

@@ -4,10 +4,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "workspaces": [
-    "client",
-    "server"
-  ],
+  "workspaces": {
+    "nohoist": [
+      "huksy"
+    ],
+    "packages": [
+      "client",
+      "server"
+    ]
+  },
   "scripts": {
     "lint": "run-p lint:server lint:client",
     "lint:server": "yarn workspace server lint:fix",
