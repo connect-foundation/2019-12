@@ -18,6 +18,7 @@
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
     "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.0",
     "typescript": "^3.7.2"
@@ -26,14 +27,19 @@
     "start:prod": "node bin/www.js",
     "start:dev": "nodemon",
     "build": "tsc",
-    "format": "prettier --write \"**/*.{ts,js,css,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\"",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
+    "lint:type": "tsc --noEmit",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,js,css,md}": [
+    "*.{ts,tsx,js,jsx,json,scss,css,md}": [
       "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tsc --noEmit --strict --skipLibCheck",
       "git add"
     ],
     "*.{ts,tsx,js,jsx}": [
