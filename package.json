@@ -9,6 +9,7 @@
 		"server"
 	],
 	"scripts": {
+		"start:server": "yarn workspace server start:dev",
 		"test:server": "yarn workspace server test",
 		"lint": "run-p lint:server lint:client",
 		"lint:server": "yarn workspace server lint:fix",
