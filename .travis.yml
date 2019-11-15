@@ -27,14 +27,13 @@ jobs:
     - stage: "Server Deploy"
       if: branch = server-develop OR branch = server-master
       before_script:
-        - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+        - yarn
       script:
-        - echo "$DOCKER_USER"
-        - docker images
-        - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
+        - yarn test:server
       deploy:
         provider: script
         script: 
+          - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
           - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
           - docker tag "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" "${DOCKER_USER}/${IMAGE_NAME}:latest"
           - docker push "${DOCKER_USER}/${IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -44,11 +43,9 @@ jobs:
     - stage: "Server Feature"
       if: head_branch = server-develop
       before_script:
-        - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+        - yarn
       script:
-        - echo "$DOCKER_USER"
-        - docker images
-        - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
+        - yarn test:server
 
     - stage: "Client Deploy"
       if: branch = client-develop OR branch = client-master
@@ -64,5 +61,7 @@ jobs:
 
     - stage: "Client Feature"
       if: head_branch = client-develop
-      before_script:
+      install:
+        - npm install
       script:
+        - npm run test:src && npm run test:cypress
