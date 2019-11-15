@@ -9,7 +9,7 @@ export default {
   title: 'Components | Atom / Button',
 };
 
-export const logo: React.FC = () => <LogoBtn />;
+export const logoBtn: React.FC = () => <LogoBtn />;
 
 export const accountBtn: React.FC = () => (
   <AccountBtn content={text('content', '가입 혹은 로그인')} />
