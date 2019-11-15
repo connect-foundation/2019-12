@@ -3,7 +3,6 @@ import * as cookieParser from 'cookie-parser';
 import * as passport from 'passport';
 
 import setUpPassport from '../src/services/passport';
-// Router Imports
 import authRouter from './routes/api/auth';
 import userRouter from './routes/api/users';
 
