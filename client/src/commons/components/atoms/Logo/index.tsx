@@ -9,10 +9,12 @@ interface Props {
   content: string;
 }
 
-const Logo = ({ content }: Props) => (
-  <>
-    <H1>{content}</H1>
-  </>
-);
+const Logo: React.FC<Props> = ({ content }) => {
+  return (
+    <>
+      <H1>{content}</H1>
+    </>
+  );
+};
 
 export default Logo;

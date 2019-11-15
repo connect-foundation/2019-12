@@ -1,6 +1,7 @@
 # Custom
 node_modules/
 dist/
+coverage/
 
 # Default
 .DS_Store

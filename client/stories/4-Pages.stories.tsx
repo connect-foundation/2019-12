@@ -6,4 +6,6 @@ export default {
   title: 'Components|Pages',
 };
 
-export const LoginPage = () => <Logo content={text('logoText', 'Bookus')} />;
+export const LoginPage: React.FC = () => (
+  <Logo content={text('logoText', 'Bookus')} />
+);
