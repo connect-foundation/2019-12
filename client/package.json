@@ -46,6 +46,7 @@
     "@storybook/addon-viewport": "^5.2.5",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "cypress": "^3.6.1",
@@ -62,17 +63,26 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
     "react": "^16.11.0",
+    "react-docgen-typescript-loader": "^3.4.0",
     "react-dom": "^16.11.0",
     "start-server-and-test": "^1.10.6",
     "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.2"
   },
   "jest": {
     "transform": {
       "^.+\\.ts(x)?$": "ts-jest"
     },
-    "collectCoverageFrom": ["src/**/*.ts?(x)", "src/**/*.ts?(x)"],
-    "coverageReporters": ["json", "lcov", "text"]
+    "collectCoverageFrom": [
+      "src/**/*.ts?(x)",
+      "src/**/*.ts?(x)"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ]
   },
   "browserslist": {
     "production": [
