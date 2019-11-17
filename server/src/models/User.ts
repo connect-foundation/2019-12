@@ -15,26 +15,26 @@ export class User extends Model<User> {
   public id!: number;
 
   @Column(DataType.STRING)
-  public first_name!: string;
+  public firstName!: string;
 
   @Column(DataType.STRING)
-  public last_name!: string;
+  public lastName!: string;
 
   @Column(DataType.STRING)
-  public phone_number!: string;
+  public phoneNumber!: string;
 
   @Column(DataType.STRING)
   public email!: string;
 
   @Column(DataType.STRING)
-  public google_oauth_token!: string;
+  public googleOAuthToken!: string;
 
   @Column(DataType.STRING)
-  public device_token!: string;
+  public deviceToken!: string;
 
   @CreatedAt
-  public readonly created_at!: Date;
+  public readonly createdAt!: Date;
 
   @UpdatedAt
-  public readonly updated_at!: Date;
+  public readonly updatedAt!: Date;
 }

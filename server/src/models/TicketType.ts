@@ -29,26 +29,26 @@ export class TicketType extends Model<TicketType> {
   public quantity!: number;
 
   @Column(DataType.INTEGER.UNSIGNED)
-  public left_cnt!: number;
+  public leftCnt!: number;
 
   @Column(DataType.BOOLEAN)
-  public is_public_left_cnt!: boolean;
+  public isPublicLeftCnt!: boolean;
 
   @Column(DataType.INTEGER.UNSIGNED)
-  public max_cnt_per_person!: number;
+  public maxCntPerPerson!: number;
 
   @Column(DataType.DATE)
-  public sales_start_date!: Date;
+  public salesStartAt!: Date;
 
   @Column(DataType.DATE)
-  public sales_end_date!: Date;
+  public salesEndAt!: Date;
 
   @Column(DataType.DATE)
-  public refund_end_date!: Date;
+  public refundEndAt!: Date;
 
   @CreatedAt
-  public readonly created_at!: Date;
+  public readonly createdAt!: Date;
 
   @UpdatedAt
-  public readonly updated_at!: Date;
+  public readonly updatedAt!: Date;
 }

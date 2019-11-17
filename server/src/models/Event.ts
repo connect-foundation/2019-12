@@ -26,10 +26,10 @@ export class Event extends Model<Event> {
   public title!: string;
 
   @Column(DataType.DATE)
-  public startDate!: Date;
+  public startAt!: Date;
 
   @Column(DataType.DATE)
-  public endDate!: Date;
+  public endAt!: Date;
 
   @Column(DataType.STRING)
   public place!: string;
