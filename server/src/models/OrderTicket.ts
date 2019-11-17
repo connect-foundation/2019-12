@@ -5,6 +5,7 @@ import {
   CreatedAt,
   UpdatedAt,
   Column,
+  DataType,
   BelongsTo,
 } from 'sequelize-typescript';
 import { TicketType } from './TicketType';
@@ -22,7 +23,7 @@ export class OrderTicket extends Model<OrderTicket> {
   @BelongsTo(() => Order, 'order_id')
   public order!: Order;
 
-  @Column
+  @Column(DataType.BOOLEAN)
   public isAttendance!: boolean;
 
   @CreatedAt

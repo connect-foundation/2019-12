@@ -6,6 +6,7 @@ import {
   CreatedAt,
   UpdatedAt,
   BelongsTo,
+  DataType,
 } from 'sequelize-typescript';
 import { Event } from './Event';
 
@@ -18,31 +19,31 @@ export class TicketType extends Model<TicketType> {
   @BelongsTo(() => Event, 'event_id')
   public event!: Event;
 
-  @Column
+  @Column(DataType.STRING)
   public name!: string;
 
-  @Column
+  @Column(DataType.STRING)
   public desc!: string;
 
-  @Column
+  @Column(DataType.INTEGER.UNSIGNED)
   public quantity!: number;
 
-  @Column
+  @Column(DataType.INTEGER.UNSIGNED)
   public left_cnt!: number;
 
-  @Column
+  @Column(DataType.BOOLEAN)
   public is_public_left_cnt!: boolean;
 
-  @Column
+  @Column(DataType.INTEGER.UNSIGNED)
   public max_cnt_per_person!: number;
 
-  @Column
+  @Column(DataType.DATE)
   public sales_start_date!: Date;
 
-  @Column
+  @Column(DataType.DATE)
   public sales_end_date!: Date;
 
-  @Column
+  @Column(DataType.DATE)
   public refund_end_date!: Date;
 
   @CreatedAt
