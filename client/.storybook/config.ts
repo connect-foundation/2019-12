@@ -10,9 +10,12 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 // https://github.com/storybookjs/storybook/tree/master/addons/a11y
 import { withA11y } from '@storybook/addon-a11y';
 
+import themeDecorator from './theme-decorator';
+
 addDecorator(withKnobs);
 addDecorator(withInfo);
 addDecorator(withA11y);
+addDecorator(themeDecorator);
 addParameters({
   options: {
     theme: themes.light,
@@ -20,7 +23,7 @@ addParameters({
     sidebarAnimations: true,
     showPanel: true,
     hierarchySeparator: /\/|\./,
-    hierarchyRootSeparator: /\|/,
+    hierarchyRootSeparator: '|',
   },
   info: {
     inline: true,
