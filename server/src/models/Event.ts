@@ -22,8 +22,8 @@ export class Event extends Model<Event> {
   @Column(DataType.BOOLEAN)
   public isPublic!: boolean;
 
-  @Column(DataType.BOOLEAN)
-  public title!: boolean;
+  @Column(DataType.STRING)
+  public title!: string;
 
   @Column(DataType.DATE)
   public startDate!: Date;
