@@ -1,3 +1,4 @@
+import '../src/env';
 import app from '../src/app';
 import { sequelize } from '../src/services/sequelize';
 
