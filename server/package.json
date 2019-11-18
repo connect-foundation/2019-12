@@ -65,19 +65,19 @@
       "git add"
     ]
   },
-	"jest": {
-		"transform": {
-			"^.+\\.ts$": "ts-jest"
-		},
-		"testRegex": "\\.spec\\.ts$",
-		"moduleFileExtensions": [
-			"ts",
-			"js"
-		],
-		"globals": {
-			"ts-jest": {
-				"enableTsDiagnostics": true
-			}
-		}
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    }
   }
 }
