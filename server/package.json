@@ -39,7 +39,7 @@
       "git add"
     ],
     "*.{ts,tsx}": [
-      "tsc --noEmit --strict --skipLibCheck",
+      "tsc @tsc.args",
       "git add"
     ],
     "*.{ts,tsx,js,jsx}": [
