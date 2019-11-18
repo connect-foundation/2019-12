@@ -29,8 +29,6 @@
     "@types/react-dom": "16.9.4",
     "@types/styled-components": "^4.4.0",
     "babel-loader": "^8.0.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
@@ -46,10 +44,15 @@
     "@storybook/addon-viewport": "^5.2.5",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "cypress": "^3.6.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
@@ -76,13 +79,15 @@
     },
     "collectCoverageFrom": [
       "src/**/*.ts?(x)",
-      "src/**/*.ts?(x)"
+      "src/**/*.ts?(x)",
+      "!src/**/*.stories.tsx"
     ],
     "coverageReporters": [
       "json",
       "lcov",
       "text"
-    ]
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "browserslist": {
     "production": [
