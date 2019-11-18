@@ -6,6 +6,6 @@ describe('Basic Types', () => {
 
   test('GET /api/users/:userId', async () => {
     const res = await req.get('/api/users/1').expect(200);
-    expect(res.text).toBe('GET /users')
-  })
-})
+    expect(res.text).toBe('GET /users');
+  });
+});

@@ -6,4 +6,6 @@ export default {
   title: 'Components|Molecules/Card',
 };
 
-export const TicketCard = () => <Logo content={text('logoText', 'Bookus')} />;
+export const TicketCard: React.FC = () => (
+  <Logo content={text('logoText', 'Bookus')} />
+);

@@ -2,17 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "husky",
-      "eslint"
-    ]
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --verbose",
-    "test:src": "react-scripts test --verbose 'src'",
+    "test": "react-scripts test --coverage --verbose",
     "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
@@ -21,7 +14,8 @@
     "build-storybook": "build-storybook -s public",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\""
   },
   "dependencies": {
     "@types/jest": "^24.0.22",
@@ -30,6 +24,8 @@
     "@types/react-dom": "16.9.4",
     "@types/styled-components": "^4.4.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
@@ -66,6 +62,20 @@
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.ts(x)?$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.ts?(x)",
+      "src/**/*.ts?(x)"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -79,6 +89,14 @@
     ]
   },
   "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,scss,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tsc --noEmit --strict --skipLibCheck --esModuleInterop --jsx react",
+      "git add"
+    ],
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix",
       "git add"
