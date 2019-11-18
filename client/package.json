@@ -32,7 +32,8 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-tools": "^1.7.1"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^5.2.5",
@@ -87,7 +88,9 @@
       "lcov",
       "text"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "browserslist": {
     "production": [

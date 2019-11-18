@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ifProp } from 'styled-tools';
 
 // TODO: black, gray, white를 theme color로 수정
 export const Input = styled.input`
@@ -9,7 +10,7 @@ export const Input = styled.input`
 
   font-size: 1em;
   color: black;
-  background-color: white;
+  background-color: ${ifProp('disabled', 'gray', 'white')};
 
   border: 1px solid gray;
   border-radius: 2px;
