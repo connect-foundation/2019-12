@@ -1,75 +1,80 @@
 {
-	"name": "server",
-	"version": "1.0.0",
-	"private": true,
-	"workspaces": {
-		"nohoist": [
-			"husky"
-		]
-	},
-	"main": "index.js",
-	"license": "MIT",
-	"dependencies": {
-		"cookie-parser": "^1.4.4",
-		"eslint-plugin-jest": "^23.0.3",
-		"express": "^4.17.1",
-		"jest": "^24.9.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "eslint-plugin-jest": "^23.0.3",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "mariadb": "^2.1.2",
+    "reflect-metadata": "^0.1.13",
 		"passport": "^0.4.0",
 		"passport-google-oauth": "^2.0.0",
-		"supertest": "^4.0.2",
-		"ts-jest": "^24.1.0"
-	},
-	"devDependencies": {
-		"@types/cookie-parser": "^1.4.2",
-		"@types/express": "^4.17.2",
-		"@types/jest": "^24.0.23",
+    "sequelize": "^5.21.2",
+    "sequelize-typescript": "^1.0.0",
+    "ts-jest": "^24.1.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.2",
+    "@types/supertest": "^2.0.8",
+    "@types/validator": "^10.11.3",
 		"@types/passport": "^1.0.1",
 		"@types/passport-google-oauth": "^1.0.41",
-		"@types/supertest": "^2.0.8",
-		"@typescript-eslint/eslint-plugin": "^2.7.0",
-		"@typescript-eslint/parser": "^2.7.0",
-		"eslint": "^6.6.0",
-		"eslint-config-prettier": "^6.5.0",
-		"eslint-plugin-import": "^2.18.2",
-		"husky": "^3.0.9",
-		"jest": "^24.9.0",
-		"prettier": "^1.19.1",
-		"ts-node": "^8.5.0",
-		"typescript": "^3.7.2"
-	},
-	"scripts": {
-		"start:prod": "node bin/www.js",
-		"start:dev": "nodemon",
-		"build": "tsc",
-		"test": "jest",
-		"format": "prettier --write \"**/*.{ts,js,css,md}\"",
-		"lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
-		"lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
-		"precommit": "lint-staged"
-	},
-	"lint-staged": {
-		"*.{ts,js,css,md}": [
-			"prettier --write",
-			"git add"
-		],
-		"*.{ts,tsx,js,jsx}": [
-			"eslint --fix",
-			"git add"
-		]
-	},
-	"jest": {
-		"transform": {
-			"^.+\\.ts$": "ts-jest"
-		},
-		"testRegex": "\\.spec\\.ts$",
-		"moduleFileExtensions": [
-			"ts",
-			"js"
-		],
-		"globals": {
-			"ts-jest": {
-				"enableTsDiagnostics": true
-			}
-		}
-	}
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.3",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.5.0",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "start:prod": "node bin/www.js",
+    "start:dev": "nodemon",
+    "start:docker": "docker-compose -f server.dev.compose.yml up -d",
+    "build": "tsc",
+    "test": "jest",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\"",
+    "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
+    "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
+    "lint:type": "tsc --noEmit",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,scss,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tsc --noEmit --strict --skipLibCheck",
+      "git add"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    }
+  }
 }
