@@ -33,6 +33,7 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "styled-components": "^4.4.1"
   },
@@ -46,6 +47,7 @@
     "@storybook/addon-viewport": "^5.2.5",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@types/react-router-dom": "^5.1.2",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "cypress": "^3.6.1",
@@ -71,8 +73,15 @@
     "transform": {
       "^.+\\.ts(x)?$": "ts-jest"
     },
-    "collectCoverageFrom": ["src/**/*.ts?(x)", "src/**/*.ts?(x)"],
-    "coverageReporters": ["json", "lcov", "text"]
+    "collectCoverageFrom": [
+      "src/**/*.ts?(x)",
+      "src/**/*.ts?(x)"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ]
   },
   "browserslist": {
     "production": [
