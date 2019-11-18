@@ -11,7 +11,9 @@ import {
 import { TicketType } from './TicketType';
 import { Order } from './Order';
 
-@Table
+@Table({
+  underscored: true,
+})
 export class OrderTicket extends Model<OrderTicket> {
   @PrimaryKey
   @Column

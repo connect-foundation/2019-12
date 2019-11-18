@@ -8,7 +8,9 @@ import {
   DataType,
 } from 'sequelize-typescript';
 
-@Table
+@Table({
+  underscored: true,
+})
 export class User extends Model<User> {
   @PrimaryKey
   @Column

@@ -8,7 +8,9 @@ import {
 import { User } from './User';
 import { TicketType } from './TicketType';
 
-@Table
+@Table({
+  underscored: true,
+})
 export class TicketSubscription extends Model<TicketSubscription> {
   @BelongsTo(() => User, 'user_id')
   public user!: User;

@@ -10,7 +10,9 @@ import {
 import { User } from './User';
 import { Event } from './Event';
 
-@Table
+@Table({
+  underscored: true,
+})
 export class Order extends Model<Order> {
   @PrimaryKey
   @Column

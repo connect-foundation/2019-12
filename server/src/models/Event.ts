@@ -10,7 +10,9 @@ import {
 } from 'sequelize-typescript';
 import { User } from './User';
 
-@Table
+@Table({
+  underscored: true,
+})
 export class Event extends Model<Event> {
   @PrimaryKey
   @Column(DataType.INTEGER)

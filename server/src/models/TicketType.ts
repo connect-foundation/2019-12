@@ -10,7 +10,9 @@ import {
 } from 'sequelize-typescript';
 import { Event } from './Event';
 
-@Table
+@Table({
+  underscored: true,
+})
 export class TicketType extends Model<TicketType> {
   @PrimaryKey
   @Column
