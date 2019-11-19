@@ -11,6 +11,8 @@ const BtnStyle = css<BtnStyleProps>`
   background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
     palette(props.styleType),
   )};
+  flex-shrink: 0;
+  flex-grow: 1;
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
   width: 18rem;
