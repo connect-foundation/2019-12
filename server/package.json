@@ -42,6 +42,7 @@
     "start:prod": "node bin/www.js",
     "start:dev": "nodemon",
     "start:docker": "docker-compose -f server.dev.compose.yml up -d",
+    "db:migrate": "ts-node bin/migrate",
     "build": "tsc",
     "test": "jest",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\"",
