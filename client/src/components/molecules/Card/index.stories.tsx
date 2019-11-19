@@ -8,7 +8,7 @@ export default {
 };
 
 export const index: React.FC = () => (
-  <div style={{ width: '1060px', margin: '2rem' }}>
+  <div style={{ width: '1060px' }}>
     <Card
       href={text('href', '#')}
       imgSrc={text(

@@ -8,7 +8,5 @@ export default {
 };
 
 export const index: React.FC = () => (
-  <div style={{ margin: '2rem' }}>
-    <Divider borderWidth={'1px'} type={'solid'} grayScaleLevel={6} />
-  </div>
+  <Divider borderWidth={'1px'} type={'solid'} grayScaleLevel={6} />
 );
