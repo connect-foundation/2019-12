@@ -27,7 +27,7 @@ jobs:
   - stage: Server Deploy
     if: branch = server-develop OR branch = server-master
     install:
-    - docker run --name mysql 
+    - docker run --name mysql -d
       -e MYSQL_ROOT_PASSWORD=$DB_PW 
       -e MYSQL_DATABASE=$DB_NAME 
       -e MYSQL_USER=$DB_USER 
