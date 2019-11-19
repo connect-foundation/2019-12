@@ -16,9 +16,7 @@ services:
   - docker
 
 addons:
-  mariadb: '10.4.8'
-
-dist: xenial
+  mariadb: '10.3'
 
 env:
   global:
