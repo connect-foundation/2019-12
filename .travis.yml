@@ -25,21 +25,11 @@ env:
 
 jobs:
   include:
-  - stage: Server Feature
-    if: head_branch = server-develop
-    before_install:
-    - mysql 
-    - mysql -e 'CREATE DATABASE bookus;'
-    - mysql -e "use mysql; update user set authentication_string=PASSWORD('${DB_PW}') where User='travis';"
-    before_script:
-    - yarn
-    - yarn workspace server db:migrate
-    script:
-    - yarn test:server
   - stage: Server Deploy
     if: branch = server-develop OR branch = server-master
     before_install:
     - mysql -e 'CREATE DATABASE bookus;'
+    - mysql -e "use mysql; update user set authentication_string=PASSWORD('${DB_PW}') where User='travis';"
     before_script:
     - yarn
     - yarn workspace server db:migrate
