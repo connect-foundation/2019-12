@@ -10,8 +10,7 @@ branches:
   - client-develop
 services:
 - docker
-addons:
-  mariadb: '10.4'
+
 env:
   global:
   - IMAGE_NAME=test
@@ -27,10 +26,14 @@ jobs:
   include:
   - stage: Server Deploy
     if: branch = server-develop OR branch = server-master
-    before_install:
-    - sudo mysql -e 'CREATE DATABASE $DB_NAME; show databases;'
-    - sudo mysql -e 'create user '"$DB_USER"'@'localhost' identified by '"$DB_PW"';'
-    - sudo mysql -e 'grant all privileges on "$DB_NAME".* to '"$DB_USER"'@'localhost'; select user, host from "$DB_USER";'
+    install:
+    - docker run --name mysql \
+      -e MYSQL_ROOT_PASSWORD=$DB_PW \
+      -e MYSQL_DATABASE=$DB_NAME \
+      -e MYSQL_USER=$DB_USER \
+      -e MYSQL_PASSWORD=$DB_PW \
+      -p 3306:3306 \
+      jdd04026/mariadb-locale:latest
     before_script:
     - yarn
     script:
