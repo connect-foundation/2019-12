@@ -30,6 +30,16 @@ env:
 
 jobs:
   include:
+    - stage: "Server Feature"
+      if: head_branch = server-develop
+      before_install:
+        - mysql -e 'CREATE DATABASE bookus;'
+      before_script:
+        - yarn
+        - yarn workspace server db:migrate
+      script:
+        - yarn test:server
+
     - stage: "Server Deploy"
       if: branch = server-develop OR branch = server-master
       before_install:
@@ -49,16 +59,13 @@ jobs:
         on:
           branch: server-master
 
-    - stage: "Server Feature"
-      if: head_branch = server-develop
-      before_install:
-        - mysql -e 'CREATE DATABASE bookus;'
-      before_script:
-        - yarn
-        - yarn workspace server db:migrate
+    - stage: "Client Feature"
+      if: head_branch = client-develop
+      install:
+        - npm install
       script:
-        - yarn test:server
-
+        - npm run test:src && npm run test:cypress
+        
     - stage: "Client Deploy"
       if: branch = client-develop OR branch = client-master
       install:
@@ -71,9 +78,3 @@ jobs:
         on:
           branch: client-master
 
-    - stage: "Client Feature"
-      if: head_branch = client-develop
-      install:
-        - npm install
-      script:
-        - npm run test:src && npm run test:cypress

@@ -1,5 +1,5 @@
 import '../src/env';
-import { sequelize } from '../src/services/sequelize';
+import { sequelize } from '../../src/services/sequelize';
 import {
   Event,
   Order,
@@ -7,15 +7,17 @@ import {
   TicketSubscription,
   TicketType,
   User,
-} from '../src/models';
+} from '../../src/models';
 
 describe('DB connection Test', () => {
   afterAll(async done => {
     sequelize.close();
     done();
   });
+
   const modelManager = sequelize.modelManager;
   test('DB는 모든 모델을 소유한다.', async () => {
+    console.log(await sequelize.databaseVersion());
     const isAllModelsChecked =
       modelManager.getModel('Event') === Event &&
       modelManager.getModel('Order') === Order &&
