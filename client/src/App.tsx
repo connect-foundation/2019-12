@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import './App.css';
 import defaultTheme from './commons/style/themes/default';
@@ -10,21 +11,15 @@ const App: React.FC = () => (
   <ThemeProvider theme={defaultTheme}>
     <Normalize />
     <GlobalStyles />
-    <div className="App">
-      <div className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        Learn React
-        </a>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="*">
+            <div>404 page</div>
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   </ThemeProvider>
 );
 
