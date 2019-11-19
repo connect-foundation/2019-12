@@ -17,7 +17,6 @@ describe('DB connection Test', () => {
 
   const modelManager = sequelize.modelManager;
   test('DB는 모든 모델을 소유한다.', async () => {
-    console.log(await sequelize.databaseVersion());
     const isAllModelsChecked =
       modelManager.getModel('Event') === Event &&
       modelManager.getModel('Order') === Order &&
