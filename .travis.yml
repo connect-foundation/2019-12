@@ -28,7 +28,7 @@ jobs:
   - stage: Server Deploy
     if: branch = server-develop OR branch = server-master
     before_install:
-    - sudo mysql -e 'CREATE DATABASE "$DB_NAME"; show databases;'
+    - sudo mysql -e 'CREATE DATABASE $DB_NAME; show databases;'
     - sudo mysql -e 'create user '"$DB_USER"'@'localhost' identified by '"$DB_PW"';'
     - sudo mysql -e 'grant all privileges on "$DB_NAME".* to '"$DB_USER"'@'localhost'; select user, host from "$DB_USER";'
     before_script:
