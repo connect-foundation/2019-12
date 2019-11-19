@@ -15,7 +15,37 @@ const styleTypeS = {
   defaultValue: 'primary',
 };
 
-export const index: React.FC = () => (
+export const general: React.FC = () => (
+  <Btn
+    styleType={select(
+      styleTypeS.label,
+      styleTypeS.options,
+      styleTypeS.defaultValue,
+    )}
+    disabled={boolean('disabled', false)}
+    content={text('content', 'Button')}
+    href={''}
+    to={''}
+    onClick={action('onClick')}
+  />
+);
+
+export const anchor: React.FC = () => (
+  <Btn
+    styleType={select(
+      styleTypeS.label,
+      styleTypeS.options,
+      styleTypeS.defaultValue,
+    )}
+    disabled={boolean('disabled', false)}
+    content={text('content', 'Button')}
+    href={text('href', 'https://naver.com')}
+    to={''}
+    onClick={action('onClick')}
+  />
+);
+
+export const link: React.FC = () => (
   <>
     <Router>
       <Switch>
@@ -27,13 +57,63 @@ export const index: React.FC = () => (
               styleTypeS.defaultValue,
             )}
             disabled={boolean('disabled', false)}
-            content={text('content', '이벤트 주최하기')}
-            href={text('href', '')}
-            to={text('to', '')}
+            content={text('content', 'Button')}
+            href={''}
+            to={text('to', '/home')}
             onClick={action('onClick')}
           />
         </Route>
       </Switch>
     </Router>
   </>
+);
+
+export const allstyle: React.FC = () => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+    }}
+  >
+    <Btn
+      styleType={'primary'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
+      onClick={action('onClick')}
+    />
+    <Btn
+      styleType={'secondary'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
+      onClick={action('onClick')}
+    />
+    <Btn
+      styleType={'danger'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
+      onClick={action('onClick')}
+    />
+    <Btn
+      styleType={'alert'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
+      onClick={action('onClick')}
+    />
+    <Btn
+      styleType={'success'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
+      onClick={action('onClick')}
+    />
+  </div>
 );
