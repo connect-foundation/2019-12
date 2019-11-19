@@ -1,23 +1,17 @@
 sudo: required
-
 language: node_js
-
 node_js:
-  - 12.13
-  
+- 12.13
 branches:
   only:
-    - server-master
-    - client-master
-    - server-develop
-    - client-develop
-
+  - server-master
+  - client-master
+  - server-develop
+  - client-develop
 services:
-  - docker
-
+- docker
 addons:
   mariadb: '10.3'
-
 env:
   global:
   - IMAGE_NAME=test
@@ -27,54 +21,52 @@ env:
   - DB_HOST=127.0.0.1
   - DB_USER=travis
   - DB_NAME=bookus
+  - secure: vSb9SoM8ZLRJGSml91sSQ+Tl8SLSmuMJw8r5Gs4F7FyNbTGybNW3sLqlOe1dT2AZRf8UYCI3CjP/eVok3OhjEXwvek0FJpH00oMo/mTYR4sSgQO9lKueZgkJyiI5h0dIrOlaGsGYRQmuQmyykuTMbbNt1qN1HwHV5XrpVcZA0eAbS+qnTZAZ5lfxCPpC6W8SmHNiaf2ep7oC3PJIRxBWq/mamlLI7xdsZyRd/GJ3ziG7Gi/CFXLfJxon8CcrsWwuiN5+3ywgSoEkHPigjRFHegWE2wMe01mN5aRvV7Qc6NOwgEKS5/00YpNDEqQ1sqT4j6nSmDwu/tbgr+Ys8yEKlRys4yYt7yiUv6LhO+B+lg1x5q1BJsuPa36odXL48tR/PYU/XZOYAWSkLU+ZBF1nUShxA+GtL0rFHu5lzVIX00cLCW4cpcIcj0ZSQKvyKxEH92UnIL2vzsYHWxkibz8jTZ/8H59vhu5WzrHzwLtAoZSka5+6jJNbxoulxC1U/IWHB1n47PAxurHGvvFaNpEW9fy4AxKmadL2K9Q1xIFhAdQ8XSkIqf3GpqL9lBDTzicsswGyyd3pnTPVCl3OjyOYPQ0iGu8jQezXrh052Xv5ttVr4KbCrmdZ8ZWmwPmrk5ApQFKChlwdnz10lcOytqGtvN//y9OaedLhH1cxQ4s0T64=
 
 jobs:
   include:
-    - stage: "Server Feature"
-      if: head_branch = server-develop
-      before_install:
-        - mysql -e 'CREATE DATABASE bookus;'
-      before_script:
-        - yarn
-        - yarn workspace server db:migrate
+  - stage: Server Feature
+    if: head_branch = server-develop
+    before_install:
+    - mysql 
+    - mysql -e 'CREATE DATABASE bookus;'
+    before_script:
+    - yarn
+    - yarn workspace server db:migrate
+    script:
+    - yarn test:server
+  - stage: Server Deploy
+    if: branch = server-develop OR branch = server-master
+    before_install:
+    - mysql -e 'CREATE DATABASE bookus;'
+    before_script:
+    - yarn
+    - yarn workspace server db:migrate
+    script:
+    - yarn test:server
+    deploy:
+      provider: script
       script:
-        - yarn test:server
-
-    - stage: "Server Deploy"
-      if: branch = server-develop OR branch = server-master
-      before_install:
-        - mysql -e 'CREATE DATABASE bookus;'
-      before_script:
-        - yarn
-        - yarn workspace server db:migrate
-      script:
-        - yarn test:server
-      deploy:
-        provider: script
-        script: 
-          - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
-          - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
-          - docker tag "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" "${DOCKER_USER}/${IMAGE_NAME}:latest"
-          - docker push "${DOCKER_USER}/${IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
-        on:
-          branch: server-master
-
-    - stage: "Client Feature"
-      if: head_branch = client-develop
-      install:
-        - npm install
-      script:
-        - npm run test:src && npm run test:cypress
-        
-    - stage: "Client Deploy"
-      if: branch = client-develop OR branch = client-master
-      install:
-        - npm install
-      script:
-        - npm run test:src && npm run test:cypress
-      deploy:
-        provider: script
-        script: 
-        on:
-          branch: client-master
-
+      - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+      - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
+      - docker tag "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" "${DOCKER_USER}/${IMAGE_NAME}:latest"
+      - docker push "${DOCKER_USER}/${IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+      on:
+        branch: server-master
+  - stage: Client Feature
+    if: head_branch = client-develop
+    install:
+    - npm install
+    script:
+    - npm run test:src && npm run test:cypress
+  - stage: Client Deploy
+    if: branch = client-develop OR branch = client-master
+    install:
+    - npm install
+    script:
+    - npm run test:src && npm run test:cypress
+    deploy:
+      provider: script
+      script: 
+      on:
+        branch: client-master
