@@ -15,26 +15,34 @@ branches:
 services:
   - docker
 
+addons:
+  mariadb: '10.3'
+
 env:
   global:
   - IMAGE_NAME=test
   - IMAGE_TAG=0.0.1
   - DOCKER_USER=jdd04026
   - secure: B2A5EkMfMm88KX+y/nXKaVz9+TfrLCY7Fw6jbkrmPzQ3N7IIMBDOE5g0YNCA+kpJTTJmMCVIKji28c5C8x0dlCPb9htDzZ4nLoQi5QtxtAigyTORrXjy/wkVuNa0GuLUMV5VAZOn2vjqMFfX94lwSAnGAs9+S0u5ZRvYPH2X0NddajgJGVYW0g9mN6V+IepOT/nO9ecxCwSLS9Cak8b/tCRlpOAoUlbeb8t8uvPFiIwqPWmAs3PjRJHDIGzTzek/6S5X+jGXqxGUhRJemzGxM4egy+Zw/UZIoReiU3M89cvjDZS5CPh4H3U/asQu3+Or2fDbk9xdppmS4C/MmHHF/jj7zqzH51byxLbQdqJgSUJCLX8+I6dhjkXLlG2BhpM6g6DQgrYVTDK6TziLGetHW/dXG8+ZunR+HmtIcp9Qt0Bu+zAwkvYXXPAYqeRv/+5XPkUdQXYdkSC/zliASdotIagznhn9xs7f3qdnPCfN4iR5oUMm8WdJ/0wnIfvxgKnSU6Nm0FdtQHFe0QvzN9CuWl+yHT2oOQlRc5IHYDFO2yOpV9/6uoOaB9kPXgeDaElWL2rNwvvYSXBR/T4/ejaSy6JWkuiwEHWSNeoL8IvrPfGOCGoRf2xIA/heFCzNuT6/o+wAYTRDmHYhmM3P624hevf7YJD6Ta/trhpe6JfugNQ=
+  - DB_HOST=127.0.0.1
+  - DB_USER=travis
+  - DB_NAME=bookus
 
 jobs:
   include:
     - stage: "Server Deploy"
       if: branch = server-develop OR branch = server-master
+      before_install:
+        - mysql -e 'CREATE DATABASE bookus;'
       before_script:
-        - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+        - yarn
+        - yarn workspace server db:migrate
       script:
-        - echo "$DOCKER_USER"
-        - docker images
-        - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
+        - yarn test:server
       deploy:
         provider: script
         script: 
+          - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
           - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
           - docker tag "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" "${DOCKER_USER}/${IMAGE_NAME}:latest"
           - docker push "${DOCKER_USER}/${IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -43,12 +51,13 @@ jobs:
 
     - stage: "Server Feature"
       if: head_branch = server-develop
+      before_install:
+        - mysql -e 'CREATE DATABASE bookus;'
       before_script:
-        - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+        - yarn
+        - yarn workspace server db:migrate
       script:
-        - echo "$DOCKER_USER"
-        - docker images
-        - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
+        - yarn test:server
 
     - stage: "Client Deploy"
       if: branch = client-develop OR branch = client-master
@@ -64,5 +73,7 @@ jobs:
 
     - stage: "Client Feature"
       if: head_branch = client-develop
-      before_script:
+      install:
+        - npm install
       script:
+        - npm run test:src && npm run test:cypress
