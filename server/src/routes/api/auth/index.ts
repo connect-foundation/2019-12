@@ -7,15 +7,33 @@ const router = express.Router();
 
 router.get(
   '/callback',
-  passport.authenticate('google'),
+  passport.authenticate('google', { failureRedirect: '/login' }),
   (req: express.Request, res: express.Response) => {
-    // 이곳에서 어디로 갈지 분기를 해줘야함. 아래의 것은 성공시 리다이렉트 코드
-    // 서버용 토큰을 발급해주어야 함.
-    res.status(200).redirect(CLIENT_URL);
-    // 실패, 회원가입 요구시 어떤식으로 할지 생각해야함.
+    try {
+      const { state } = req.query;
+      const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
+      if (typeof returnTo === 'string' && returnTo.startsWith('/')) {
+        return res.redirect(returnTo);
+      }
+    } catch {
+      // just redirect normally below
+    }
   },
 );
 
-router.get('/', passport.authenticate('google', { scope: ['profile'] }));
+router.get(
+  '/',
+  (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    const { returnTo } = req.query;
+    const state = returnTo
+      ? Buffer.from(JSON.stringify({ returnTo })).toString('base64')
+      : undefined;
+    const authenticator = passport.authenticate('google', {
+      scope: ['profile'],
+      state,
+    });
+    authenticator(req, res, next);
+  },
+);
 
 export default router;
