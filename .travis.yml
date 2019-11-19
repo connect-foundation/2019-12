@@ -29,7 +29,7 @@ jobs:
     if: branch = server-develop OR branch = server-master
     before_install:
     - mysql -e 'CREATE DATABASE bookus;'
-    - mysql -e "use mysql; update user set authentication_string=PASSWORD('${DB_PW}') where User='travis';"
+    - mysql -e "use mysql; update user set authentication_string=PASSWORD('${DB_PW}') where User='travis'; flush privileges;"
     before_script:
     - yarn
     - yarn workspace server db:migrate
