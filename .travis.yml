@@ -11,7 +11,7 @@ branches:
 services:
 - docker
 addons:
-  mariadb: '10.3'
+  mariadb: '10.4'
 env:
   global:
   - IMAGE_NAME=test
@@ -21,13 +21,14 @@ env:
   - DB_HOST=127.0.0.1
   - DB_USER=root
   - DB_NAME=bookus
+  - secure: C9PIv3PAVNasIpkZ7xXqiMjQGozvE0t+2qNo63Xwwr52fgJehtyNpOLw3uYbdDQ0OtwLGEx42TYkyuZKklWsc9KDpDfafzghueoHmdYkcIOsjxajxKn4F89VLbNQJw6jZxXqRRoYyqGMl6BBAK72dGrdq8h3zuV9Kx0nJD4pO3w/J3zsuVqrSVw2vPz7jcwCp+M6cL1HeNJfvPKmy0ss8choX6dZi5aESm2gTB3Al4O8tCNJfBws3N4xxVYN0C81lzKnnOgGqIDPr/Mg9X5Bt3BQr95YL8CGNX20jKsRCWa003fWU0TzK57NSVmYQUlXDoy9JU8YyT4Zqkfh34I45HamTl4rCuzerQFwSjxLbP5QVmOY+ulH/8lzn+8q2B+ANVB8DEHdyUyAsBKlLVuEqdYNWEA5rQ7sMNKDdGlCr8RLHxUbjZV+tK1li3vA8NA983gAJmuMYR8q4InjBODsaJYJy3AoeAP+HuWWz6yHlTReQWnFLHXUGVHDsISnPe+eK1p/8hhIBJGKufBqF4J5Dgh10xchPFREZRdVZNiIpceRskGV5rjjhs6ZfaIb4pVwvF1e3oJGersuaeo2bqCyDGj/ICsjY9Gh42/qgHe/fY+i3Suc7nsz4BWFEStZKiho5gBeSkdI+qhzmdSL8v410xBmHMNY3Om0jkYHJdb+B1A=
 
 jobs:
   include:
   - stage: Server Deploy
     if: branch = server-develop OR branch = server-master
     before_install:
-    - mysql -u root -e 'CREATE DATABASE bookus;'
+    - sudo mysql -e 'CREATE DATABASE bookus; show databases;'
     before_script:
     - yarn
     script:
