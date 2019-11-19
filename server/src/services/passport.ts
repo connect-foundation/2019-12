@@ -1,16 +1,13 @@
 import * as passport from 'passport';
 import * as GoogleStrategy from 'passport-google-oauth';
-import {
-  clientId as GOOGLE_CLIENT_ID,
-  clientSecret as GOOGLE_CLIENT_SECRET,
-} from '../config/oauth_google';
-import { API_URL } from '../config/server_url';
+
+const { API_URL, CLIENT_ID, CLIENT_SECRET } = process.env;
 
 const passportGoogle = GoogleStrategy.OAuth2Strategy;
 
 const config: GoogleStrategy.IOAuth2StrategyOption = {
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
+  clientID: `${CLIENT_ID}`,
+  clientSecret: `${CLIENT_SECRET}`,
   callbackURL: `${API_URL}/api/auth/callback`,
 };
 

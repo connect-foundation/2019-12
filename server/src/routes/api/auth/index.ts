@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as passport from 'passport';
 
-import { CLIENT_URL } from '../../../config/server_url';
+const { CLIENT_URL } = process.env;
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get(
       const { state } = req.query;
       const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
       if (typeof returnTo === 'string' && returnTo.startsWith('/')) {
-        return res.redirect(returnTo);
+        return res.redirect(CLIENT_URL + returnTo);
       }
     } catch {
       // just redirect normally below
