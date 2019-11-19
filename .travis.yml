@@ -14,7 +14,9 @@ branches:
 
 services:
   - docker
-  - mariaDB
+
+addons:
+  mariadb: '10.4.8'
 
 env:
   global:
