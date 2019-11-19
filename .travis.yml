@@ -30,6 +30,7 @@ jobs:
     before_install:
     - mysql -e 'CREATE DATABASE bookus;'
     - mysql -e "use mysql; update user set authentication_string=PASSWORD('${DB_PW}') where User='travis'; flush privileges;"
+    - mysql -u root -e "GRANT ALL PRIVILEGES ON bookus.* TO 'travis'@'localhost';";
     before_script:
     - yarn
     - yarn workspace server db:migrate
