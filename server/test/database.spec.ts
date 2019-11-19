@@ -1,3 +1,4 @@
+import '../src/env';
 import { sequelize } from '../src/services/sequelize';
 import {
   Event,
@@ -13,14 +14,16 @@ describe('DB connection Test', () => {
     sequelize.close();
     done();
   });
-  const models = sequelize.models;
+  const modelManager = sequelize.modelManager;
   test('DB는 모든 모델을 소유한다.', async () => {
-    const isAllChecked =
-      models.Event === Event &&
-      models.Order === Order &&
-      models.OrderTicket === OrderTicket &&
-      models.TicketSubscription === TicketSubscription &&
-      models.TicketType === TicketType &&
-      models.User;
+    const isAllModelsChecked =
+      modelManager.getModel('Event') === Event &&
+      modelManager.getModel('Order') === Order &&
+      modelManager.getModel('OrderTicket') === OrderTicket &&
+      modelManager.getModel('TicketSubscription') === TicketSubscription &&
+      modelManager.getModel('TicketType') === TicketType &&
+      modelManager.getModel('User') === User;
+
+    expect(isAllModelsChecked).toBeTruthy();
   });
 });
