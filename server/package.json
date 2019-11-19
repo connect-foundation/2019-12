@@ -45,7 +45,7 @@
     "db:migrate": "ts-node bin/migrate",
     "build": "tsc",
     "test": "jest",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\"",
+    "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
     "lint:type": "tsc --noEmit",
