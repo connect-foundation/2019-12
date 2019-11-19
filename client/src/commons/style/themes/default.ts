@@ -1,11 +1,12 @@
 const theme = {
   palette: {
-    primary: ['#1976d2', '#2196f3', '#71bcf7', '#c2e2fb'],
-    secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0'],
-    danger: ['#d32f2f', '#f44336', '#f8877f', '#ffcdd2'],
-    alert: ['#ffa000', '#ffc107', '#ffd761', '#ffecb3'],
-    success: ['#388e3c', '#4caf50', '#7cc47f', '#c8e6c9'],
-    white: ['#fff', '#eee', '#ddd'],
+    primary: '#FF2D54',
+    secondary: '#55A6FC',
+    danger: '#d32f2f',
+    alert: '#ffa000',
+    success: '#388e3c',
+    white: '#fff',
+    black: '#212121',
     grayscale: [
       '#212121',
       '#414141',
@@ -16,6 +17,73 @@ const theme = {
       '#eeeeee',
       '#ffffff',
     ],
+    opacityscale: [0.9, 0.8, 0.7, 0.6, 0.5],
+  },
+
+  fontStyle: {
+    h1: `
+        font-size: 9.6rem;
+        letter-spacing: -0.15rem;
+        font-weight: 300;
+    `,
+    h2: `
+        font-size: 6rem;
+        letter-spacing: -0.05rem;
+        font-weight: 300;
+    `,
+    h3: `
+        font-size: 4.8rem;
+        font-weight: 400;
+    `,
+    h4: `
+        font-size: 3.4rem;
+        letter-spacing: -0.25rem;
+        font-weight: 400;
+    `,
+    h5: `
+        font-size: 2.4rem;
+        font-weight: 400;
+    `,
+    h6: `
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.15rem;
+    `,
+    subtitle1: `
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15rem;
+    `,
+    subtitle2: `
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.1rem;
+    `,
+    body1: `
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.5rem;
+    `,
+    body2: `
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.25rem;
+    `,
+    button: `
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.125rem;
+    `,
+    caption: `
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.4rem;
+    `,
+    overline: `
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.15rem;
+    `,
   },
 };
 
