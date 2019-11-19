@@ -10,7 +10,7 @@ export const Label = styled.label<Props>`
   color: ${palette('grayscale', 3)};
 
   &::after {
-    content: '${props => (props.required ? '*' : '')}';
+    content: '${(props): string => (props.required ? '*' : '')}';
     color: #ff2d54;
   }
 `;
