@@ -1,4 +1,4 @@
-import '../src/env';
+import '../../src/env';
 import { sequelize } from '../../src/services/sequelize';
 import {
   Event,
