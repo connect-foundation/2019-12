@@ -21,7 +21,6 @@ env:
   - DB_HOST=127.0.0.1
   - DB_USER=travis
   - DB_NAME=bookus
-  - secure: vSb9SoM8ZLRJGSml91sSQ+Tl8SLSmuMJw8r5Gs4F7FyNbTGybNW3sLqlOe1dT2AZRf8UYCI3CjP/eVok3OhjEXwvek0FJpH00oMo/mTYR4sSgQO9lKueZgkJyiI5h0dIrOlaGsGYRQmuQmyykuTMbbNt1qN1HwHV5XrpVcZA0eAbS+qnTZAZ5lfxCPpC6W8SmHNiaf2ep7oC3PJIRxBWq/mamlLI7xdsZyRd/GJ3ziG7Gi/CFXLfJxon8CcrsWwuiN5+3ywgSoEkHPigjRFHegWE2wMe01mN5aRvV7Qc6NOwgEKS5/00YpNDEqQ1sqT4j6nSmDwu/tbgr+Ys8yEKlRys4yYt7yiUv6LhO+B+lg1x5q1BJsuPa36odXL48tR/PYU/XZOYAWSkLU+ZBF1nUShxA+GtL0rFHu5lzVIX00cLCW4cpcIcj0ZSQKvyKxEH92UnIL2vzsYHWxkibz8jTZ/8H59vhu5WzrHzwLtAoZSka5+6jJNbxoulxC1U/IWHB1n47PAxurHGvvFaNpEW9fy4AxKmadL2K9Q1xIFhAdQ8XSkIqf3GpqL9lBDTzicsswGyyd3pnTPVCl3OjyOYPQ0iGu8jQezXrh052Xv5ttVr4KbCrmdZ8ZWmwPmrk5ApQFKChlwdnz10lcOytqGtvN//y9OaedLhH1cxQ4s0T64=
 
 jobs:
   include:
@@ -29,9 +28,6 @@ jobs:
     if: branch = server-develop OR branch = server-master
     before_install:
     - mysql -e 'CREATE DATABASE bookus;'
-    install:
-    - mysql -e "use mysql; update user set authentication_string=PASSWORD('${DB_PW}') where User='travis'; flush privileges;"
-    - mysql -e "GRANT ALL PRIVILEGES ON bookus.* TO 'travis'@'localhost';"
     before_script:
     - yarn
     - yarn workspace server db:migrate
