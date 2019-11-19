@@ -47,42 +47,42 @@ const theme = {
     h6: `
       font-size: 2rem;
       font-weight: 500;
-      letter-spacing: 0.15rem;
+      letter-spacing: 0.015rem;
     `,
     subtitle1: `
       font-size: 1.6rem;
       font-weight: 400;
-      letter-spacing: 0.15rem;
+      letter-spacing: 0.015rem;
     `,
     subtitle2: `
       font-size: 1.4rem;
       font-weight: 500;
-      letter-spacing: 0.1rem;
+      letter-spacing: 0.01rem;
     `,
     body1: `
       font-size: 1.6rem;
       font-weight: 400;
-      letter-spacing: 0.5rem;
+      letter-spacing: 0.05rem;
     `,
     body2: `
       font-size: 1.4rem;
       font-weight: 400;
-      letter-spacing: 0.25rem;
+      letter-spacing: 0.025rem;
     `,
     button: `
       font-size: 1.4rem;
       font-weight: 500;
-      letter-spacing: 0.125rem;
+      letter-spacing: 0.0125rem;
     `,
     caption: `
       font-size: 1.2rem;
       font-weight: 400;
-      letter-spacing: 0.4rem;
+      letter-spacing: 0.04rem;
     `,
     overline: `
       font-size: 1rem;
       font-weight: 400;
-      letter-spacing: 0.15rem;
+      letter-spacing: 0.015rem;
     `,
   },
 };

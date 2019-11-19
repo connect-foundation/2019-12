@@ -1,18 +1,16 @@
 import styled from 'styled-components';
-import { palette } from 'styled-tools';
+import { palette, theme } from 'styled-tools';
 
-export const Container = styled.label`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-`;
+interface Props {
+  required?: boolean;
+}
 
-export const NameSpan = styled.span`
-  font-size: 1em;
-  font-weight: bold;
+export const Label = styled.label<Props>`
+  ${theme('fontStyle.caption')}
   color: ${palette('grayscale', 3)};
-`;
 
-export const AsteriskSpan = styled.span`
-  color: #ff2d54;
+  &::after {
+    content: '${props => (props.required ? '*' : '')}';
+    color: #ff2d54;
+  }
 `;

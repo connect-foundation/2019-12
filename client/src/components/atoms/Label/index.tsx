@@ -3,14 +3,11 @@ import * as S from './style';
 
 interface Props {
   name: string;
-  required: boolean;
+  required?: boolean;
 }
 
-const Label: React.FC<Props> = ({ name, required }) => (
-  <S.Container>
-    <S.NameSpan>{name}</S.NameSpan>
-    {required && <S.AsteriskSpan>*</S.AsteriskSpan>}
-  </S.Container>
-);
+function Label({ name, required = false }: Props): React.ReactElement {
+  return <S.Label required={required}>{name}</S.Label>;
+}
 
 export default Label;
