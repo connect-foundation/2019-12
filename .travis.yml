@@ -32,8 +32,11 @@ jobs:
   include:
     - stage: "Server Deploy"
       if: branch = server-develop OR branch = server-master
+      before_install:
+        - mysql -e 'CREATE DATABASE bookus;'
       before_script:
         - yarn
+        - yarn workspace server db:migrate
       script:
         - yarn test:server
       deploy:
