@@ -1,26 +1,44 @@
-import styled from 'styled-components';
-import { ifProp, palette } from 'styled-tools';
+import styled, { css } from 'styled-components';
+import { ifProp, palette, theme } from 'styled-tools';
+import { Link } from 'react-router-dom';
 
-// TODO: black, gray, white를 theme color로 수정
-export const Btn = styled.button`
-  padding: 0 1em;
-  height: 2.5em;
-  width: 100%;
-  align-items: center;
-  font-size: 1em;
-  color: black;
-  background-color: white;
-  border-radius: 2px;
+interface BtnStyleProps {
+  styleType: string;
+}
+
+const BtnStyle = css<BtnStyleProps>`
+  ${theme('fontStyle.button')}
+  background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
+    palette(props.styleType),
+  )};
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
+  width: 18rem;
+  color: ${palette('white')};
+  -webkit-user-drag: none;
+  display: inline-block;
+  padding: 1.2rem 2rem;
+  border-radius: 0.3rem;
+  border-color: transparent;
+  outline: none;
+  text-align: center;
+  height: 4rem;
+  user-select: none;
 
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: ${palette('primary', 1)};
+  &:hover {
+    opacity: ${palette('opacityscale', 0)};
   }
+`;
 
-  &:focus {
-    outline: none;
-  }
+export const Anchor = styled.a`
+  ${BtnStyle}
+`;
+
+export const StyledBtn = styled.button`
+  ${BtnStyle}
+  line-height: 0;
+`;
+
+export const StyledLink = styled(Link)`
+  ${BtnStyle}
 `;

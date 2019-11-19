@@ -2,15 +2,44 @@ import React from 'react';
 import * as S from './style';
 
 interface Props {
-  type: 'button' | 'submit' | 'reset' | undefined;
-  disabled: boolean;
+  /** 버튼 내용 */
   content: string;
+  /** react-router/Link 사용 (내부적인 routing)*/
+  to: string;
+  /** 외부 링크 */
+  href: string;
+  /** button styling type (ex. priamry, secondary) */
+  styleType?: string;
+  /** disabled 여부 */
+  disabled?: boolean;
+  /** click handler */
+  onClick: () => void;
 }
 
-const Btn: React.FC<Props> = ({ type, disabled, content }) => (
-  <S.Btn type={type} disabled={disabled}>
-    {content}
-  </S.Btn>
-);
-
+function Btn({
+  content,
+  styleType = 'primary',
+  ...props
+}: Props): React.ReactElement {
+  const { to, href } = props;
+  if (to) {
+    return (
+      <S.StyledLink styleType={styleType} {...props}>
+        {content}
+      </S.StyledLink>
+    );
+  }
+  if (href) {
+    return (
+      <S.Anchor styleType={styleType} {...props}>
+        {content}
+      </S.Anchor>
+    );
+  }
+  return (
+    <S.StyledBtn styleType={styleType} {...props}>
+      {content}
+    </S.StyledBtn>
+  );
+}
 export default Btn;

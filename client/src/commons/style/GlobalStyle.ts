@@ -16,8 +16,9 @@ const GlobalStyles = createGlobalStyle`
   body {
     height: 100%;
   }
-  a {
+  a, button {
     text-decoration: none;
+    cursor: pointer;
   }
 `;
 
