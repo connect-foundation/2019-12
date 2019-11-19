@@ -10,16 +10,16 @@ interface Props {
   grayScaleLevel?: number;
 }
 
-const Divider: React.FC<Props> = ({
+function Divider({
   borderWidth = '1px',
   type = 'solid',
-  grayScaleLevel = 6,
-}) => (
-  <S.Divider
+  grayScaleLevel = 6
+}: Props): React.ReactElement {
+  return <S.Divider
     borderWidth={borderWidth}
     type={type}
     grayScaleLevel={grayScaleLevel}
   />
-);
+};
 
 export default Divider;
