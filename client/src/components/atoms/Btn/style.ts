@@ -8,30 +8,47 @@ interface BtnStyleProps {
 
 export const BtnStyle = css<BtnStyleProps>`
   ${theme('fontStyle.button')}
-  background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
-    palette(props.styleType),
+  background-color: ${ifProp(
+    'disabled',
+    palette('grayscale', 3),
+    props => `${palette(props.styleType)}`,
   )};
   flex-shrink: 0;
-  flex-grow: '${ifProp('grow', '1', '0')}';
+  flex-grow: ${ifProp('grow', '1', '0')};
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
-  width: ${ifProp('fitWidth', 'fit-content', '18rem')};
+  width: ${ifProp('fit', 'fit-content', '18rem')};
   color: ${props =>
-    props.styleType === 'transparent'
-      ? palette('grayscale', 1)
+    props.styleType === 'transparent' ||
+    props.styleType === 'transparent-border'
+      ? palette('grayscale', 2)
       : palette('white')};
   -webkit-user-drag: none;
   display: inline-block;
-  padding: ${ifProp('fitWidth', '0', '1.2rem 2rem')};
+  padding: 1.2rem 2rem;
   border-radius: 0.3rem;
-  border-color: transparent;
+  border-color: ${props =>
+    props.styleType === 'transparent-border'
+      ? palette('grayscale', 2)
+      : 'transparent'};
   outline: none;
   text-align: center;
-  height: 4rem;
+  height: ${ifProp('fit', 'auto', '4rem')};
   user-select: none;
+  transition: opacity ease 0.2s, background-color ease 0.2s, color ease 0.2s;
+  border-style: solid;
+  border-width: thin;
 
   &:hover {
     opacity: ${palette('opacityscale', 0)};
+    ${props => {
+      if (props.styleType === 'transparent-border') {
+        return css`
+          background-color: ${palette('grayscale', 2)};
+          color: ${palette('grayscale', 6)};
+        `;
+      }
+    }}
   }
 `;
 

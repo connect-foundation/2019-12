@@ -16,8 +16,8 @@ interface Props {
   onClick?: () => void;
   /** flex grow enable */
   grow?: boolean;
-  /** width fit enable */
-  fitWidth?: boolean;
+  /** fit to size enable */
+  fit?: boolean;
 }
 
 function Btn({
