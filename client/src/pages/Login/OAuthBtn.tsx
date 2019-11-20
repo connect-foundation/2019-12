@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const AuthURL = `http://localhost:13000/api/auth`;
+const AuthURL = `http://localhost:13000/api/auth?returnTo=/login`;
 
 const OAuthBtn: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const OAuthBtn: React.FC = () => {
           window.location.href = AuthURL;
         }}
       >
-        안녕
+        Sign in with Google
       </button>
     </div>
   );
