@@ -35,6 +35,9 @@ export class TicketType extends Model<TicketType> {
   public desc!: string;
 
   @Column(DataType.INTEGER.UNSIGNED)
+  public price!: number;
+
+  @Column(DataType.INTEGER.UNSIGNED)
   public quantity!: number;
 
   @Column(DataType.INTEGER.UNSIGNED)
