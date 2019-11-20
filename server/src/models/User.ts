@@ -43,9 +43,9 @@ export class User extends Model<User> {
   @UpdatedAt
   public readonly updatedAt!: Date;
 
-  @HasMany(() => Order, 'user_id')
+  @HasMany(() => Order, 'userId')
   public orders!: Order[];
 
-  @HasMany(() => Event, 'user_id')
+  @HasMany(() => Event, 'userId')
   public events!: Event[];
 }

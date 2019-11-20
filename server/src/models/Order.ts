@@ -2,11 +2,13 @@ import {
   Table,
   Model,
   PrimaryKey,
+  ForeignKey,
   CreatedAt,
   UpdatedAt,
   Column,
   BelongsTo,
   HasMany,
+  DataType,
 } from 'sequelize-typescript';
 import { User } from './User';
 import { Event } from './Event';
@@ -20,10 +22,18 @@ export class Order extends Model<Order> {
   @Column
   public id!: number;
 
-  @BelongsTo(() => User, 'user_id')
+  @ForeignKey(() => User)
+  @Column(DataType.INTEGER)
+  public userId!: number;
+
+  @BelongsTo(() => User, 'userId')
   public user!: User;
 
-  @BelongsTo(() => Event, 'event_id')
+  @ForeignKey(() => Event)
+  @Column(DataType.INTEGER)
+  public eventId!: number;
+
+  @BelongsTo(() => Event, 'eventId')
   public event!: number;
 
   @CreatedAt
@@ -32,6 +42,6 @@ export class Order extends Model<Order> {
   @UpdatedAt
   public readonly updatedAt!: Date;
 
-  @HasMany(() => OrderTicket, 'order_id')
+  @HasMany(() => OrderTicket, 'orderId')
   public orderTickets!: OrderTicket[];
 }
