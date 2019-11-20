@@ -13,12 +13,18 @@ interface Props {
   /** disabled 여부 */
   disabled?: boolean;
   /** click handler */
-  onClick: () => void;
+  onClick?: () => void;
+  /** flex grow enable */
+  grow?: boolean;
+  /** width fit enable */
+  fitWidth?: boolean;
 }
 
 function Btn({
   content,
   styleType = 'primary',
+  grow = false,
+  fitWidth = false,
   ...props
 }: Props): React.ReactElement {
   const { to, href } = props;

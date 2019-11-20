@@ -12,14 +12,17 @@ export const BtnStyle = css<BtnStyleProps>`
     palette(props.styleType),
   )};
   flex-shrink: 0;
-  flex-grow: 1;
+  flex-grow: '${ifProp('grow', '1', '0')}';
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
-  width: 18rem;
-  color: ${palette('white')};
+  width: ${ifProp('fitWidth', 'fit-content', '18rem')};
+  color: ${props =>
+    props.styleType === 'transparent'
+      ? palette('grayscale', 1)
+      : palette('white')};
   -webkit-user-drag: none;
   display: inline-block;
-  padding: 1.2rem 2rem;
+  padding: ${ifProp('fitWidth', '0', '1.2rem 2rem')};
   border-radius: 0.3rem;
   border-color: transparent;
   outline: none;
