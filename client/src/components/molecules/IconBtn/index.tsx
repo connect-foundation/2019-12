@@ -21,10 +21,11 @@ interface Props {
 function IconBtn({
   content,
   styleType = 'primary',
+  onClick,
   ...props
 }: Props): React.ReactElement {
   return (
-    <S.Container styleType={styleType}>
+    <S.Container onClick={onClick} styleType={styleType}>
       <S.Wrapper>
         <Icon style={{ marginRight: '1rem' }} {...props} />
         <S.Content>{content}</S.Content>
