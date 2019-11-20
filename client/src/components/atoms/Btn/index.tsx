@@ -22,20 +22,22 @@ interface Props {
 
 function Btn({
   content,
+  href,
+  to,
   styleType = 'primary',
+  grow = false,
   ...props
 }: Props): React.ReactElement {
-  const { to, href } = props;
   if (to) {
     return (
-      <S.StyledLink styleType={styleType} {...props}>
+      <S.StyledLink to={to} styleType={styleType} {...props}>
         {content}
       </S.StyledLink>
     );
   }
   if (href) {
     return (
-      <S.Anchor styleType={styleType} {...props}>
+      <S.Anchor href={href} styleType={styleType} {...props}>
         {content}
       </S.Anchor>
     );
