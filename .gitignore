@@ -2,6 +2,7 @@
 node_modules/
 dist/
 coverage/
+.env
 
 # Default
 .DS_Store
