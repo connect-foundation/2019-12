@@ -6,7 +6,7 @@ interface BtnStyleProps {
   styleType: string;
 }
 
-const BtnStyle = css<BtnStyleProps>`
+export const BtnStyle = css<BtnStyleProps>`
   ${theme('fontStyle.button')}
   background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
     palette(props.styleType),
