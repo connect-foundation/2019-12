@@ -23,8 +23,6 @@ interface Props {
 function Btn({
   content,
   styleType = 'primary',
-  grow = false,
-  fitWidth = false,
   ...props
 }: Props): React.ReactElement {
   const { to, href } = props;
