@@ -1,7 +1,6 @@
 import React from 'react';
-import { text, boolean, number, select } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import IconBtn from '.';
 import ExternalLinkSymbol from '../../../assets/img/external-link-symbol.svg';
