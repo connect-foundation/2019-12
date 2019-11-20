@@ -1,16 +1,17 @@
 import styled from 'styled-components';
-import { palette, theme } from 'styled-tools';
+import { ifProp, palette, theme } from 'styled-tools';
 
 interface Props {
   required?: boolean;
 }
 
 export const Label = styled.label<Props>`
-  ${theme('fontStyle.caption')}
-  color: ${palette('grayscale', 3)};
+  ${theme('fontStyle.subtitle2')}
+  color: ${palette('grayscale', 1)};
 
   &::after {
-    content: '${(props): string => (props.required ? '*' : '')}';
-    color: #ff2d54;
+    content: '*';
+    visibility: ${ifProp('required', 'unset', 'hidden')};
+    color: ${palette('primary')};
   }
 `;
