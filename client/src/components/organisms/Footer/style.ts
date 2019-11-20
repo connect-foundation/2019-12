@@ -16,4 +16,5 @@ export const Info = styled.div`
   white-space: pre;
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: 2;
 `;
