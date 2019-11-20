@@ -37,7 +37,4 @@ addParameters({
   },
 });
 
-configure(
-  require.context('../src/components', true, /\.stories\.tsx?$/),
-  module,
-);
+configure(require.context('../src', true, /\.stories\.tsx?$/), module);
