@@ -18,3 +18,14 @@ export const sequelize = new Sequelize({
   dialect: 'mariadb',
   models: [Event, Order, OrderTicket, TicketSubscription, TicketType, User],
 });
+
+export async function migrate() {
+  try {
+    console.info('DB migration start...');
+    await sequelize.sync();
+    console.info('DB migration end...');
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+}
