@@ -7,6 +7,7 @@ const theme = {
     success: '#388e3c',
     white: '#fff',
     black: '#212121',
+    transparent: 'transparent',
     grayscale: [
       '#212121',
       '#414141',
