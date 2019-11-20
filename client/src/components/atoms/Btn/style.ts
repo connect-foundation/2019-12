@@ -8,10 +8,9 @@ interface BtnStyleProps {
 
 export const BtnStyle = css<BtnStyleProps>`
   ${theme('fontStyle.button')}
-  background-color: ${ifProp(
-    'disabled',
-    palette('grayscale', 3),
-    props => `${palette(props.styleType)}`,
+  line-height: 1.4rem;
+  background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
+    palette(props.styleType),
   )};
   flex-shrink: 0;
   flex-grow: ${ifProp('grow', '1', '0')};
