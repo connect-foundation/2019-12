@@ -7,9 +7,11 @@ import {
   TicketType,
   User,
 } from '../models';
-import { readFileSync } from 'fs';
+import { readJSONData } from '../utils/readJSON';
+import { resolve } from 'path';
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PW, DB_NAME } = process.env;
+const SEED_DIR = resolve(__dirname, '../../db_seeds');
 
 export const sequelize = new Sequelize({
   host: DB_HOST,
@@ -22,33 +24,44 @@ export const sequelize = new Sequelize({
 });
 
 export async function migrate() {
-  try {
-    console.info('DB migration start...');
-    await sequelize.sync();
-    console.info('DB migration end...');
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
+  console.info('DB migration start...');
+  await sequelize.sync();
+  console.info('DB migration end...');
 }
 
 export async function seed() {
-  try {
-    console.info('DB seed start...');
+  console.info('DB seed start...');
+  // UserData 추가
+  const usersPath = resolve(SEED_DIR, 'users.json');
+  const usersData = await readJSONData<User>(usersPath);
+  await User.bulkCreate(usersData);
 
-    console.info('creating event data..');
-    const eventData = readFileSync('../db/events.json').toString();
-    const eventsBulk = JSON.parse(eventData);
-    await Event.bulkCreate(eventsBulk);
+  // EventData 추가
+  const eventPath = resolve(SEED_DIR, 'events.json');
+  const eventData = await readJSONData<Event>(eventPath);
+  await Event.bulkCreate(eventData);
 
-    console.info('creating tickettype data..');
-    const ticketTypeData = readFileSync('../db/ticketTypes.json').toString();
-    const ticketTypeBulk = JSON.parse(ticketTypeData);
-    await TicketType.bulkCreate(ticketTypeBulk);
+  // TicketData 추가
+  const ticketPath = resolve(SEED_DIR, 'ticketTypes.json');
+  const ticketData = await readJSONData<TicketType>(ticketPath);
+  await TicketType.bulkCreate(ticketData);
 
-    console.info('DB seed end...');
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
+  // OrderData 추가
+  const orderPath = resolve(SEED_DIR, 'orders.json');
+  const orderData = await readJSONData<Order>(orderPath);
+  await Order.bulkCreate(orderData);
+
+  // OrderTikcetData 추가
+  const orderTicketPath = resolve(SEED_DIR, 'orderTickets.json');
+  const orderTicketData = await readJSONData<OrderTicket>(orderTicketPath);
+  await OrderTicket.bulkCreate(orderTicketData);
+
+  // TicketSubscriptionData 추가
+  const ticketSubscriptionPath = resolve(SEED_DIR, 'ticketSubscription.json');
+  const ticketSubscriptionData = await readJSONData<TicketSubscription>(
+    ticketSubscriptionPath,
+  );
+  await TicketSubscription.bulkCreate(ticketSubscriptionData);
+
+  console.info('DB seed end...');
 }
