@@ -17,7 +17,7 @@ function Login(): React.ReactElement {
       oauthContent={
         <IconBtn
           fullid={true}
-          styleType={'transparent-border'}
+          styletype={'transparent-border'}
           src={googleSvg}
           content={OAUTH_GOOGLE}
           alt={OAUTH_GOOGLE}

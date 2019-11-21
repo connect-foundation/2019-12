@@ -25,7 +25,6 @@ function Btn({
   href,
   to,
   styletype = 'primary',
-  grow = false,
   ...props
 }: Props): React.ReactElement {
   if (to) {

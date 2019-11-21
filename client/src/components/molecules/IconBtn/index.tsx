@@ -27,7 +27,7 @@ function IconBtn({
   ...props
 }: Props): React.ReactElement {
   return (
-    <S.Container fullid={fullid} onClick={onClick} styletype={styleType}>
+    <S.Container fullid={fullid} onClick={onClick} styletype={styletype}>
       <S.Wrapper>
         <S.IconInBtn {...props} />
         <S.Content>{content}</S.Content>
