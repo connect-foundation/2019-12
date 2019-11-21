@@ -1,33 +1,35 @@
 import React from 'react';
 
 import * as S from './style';
-import Icon from '../../atoms/Icon';
 
 interface Props {
   /** 접근성 대응 */
   alt: string;
-  /** 크기 */
-  height: string;
   /** 아이콘 소스 */
   src: any;
   /** 버튼 내용 */
   content: string;
+  /** 크기 */
+  height?: string;
   /** button styling type */
   styleType?: string;
   /** click handler */
-  onClick: () => void;
+  onClick?: () => void;
+  /** fullid width */
+  fullid?: boolean;
 }
 
 function IconBtn({
   content,
-  styleType = 'primary',
   onClick,
+  styleType = 'primary',
+  fullid = false,
   ...props
 }: Props): React.ReactElement {
   return (
-    <S.Container onClick={onClick} styleType={styleType}>
+    <S.Container fullid={fullid} onClick={onClick} styleType={styleType}>
       <S.Wrapper>
-        <Icon style={{ marginRight: '1rem' }} {...props} />
+        <S.IconInBtn {...props} />
         <S.Content>{content}</S.Content>
       </S.Wrapper>
     </S.Container>
