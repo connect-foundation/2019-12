@@ -12,7 +12,7 @@ interface Props {
   /** 크기 */
   height?: string;
   /** button styling type */
-  styleType?: string;
+  styletype?: string;
   /** click handler */
   onClick?: () => void;
   /** fullid width */
@@ -22,12 +22,12 @@ interface Props {
 function IconBtn({
   content,
   onClick,
-  styleType = 'primary',
+  styletype = 'primary',
   fullid = false,
   ...props
 }: Props): React.ReactElement {
   return (
-    <S.Container fullid={fullid} onClick={onClick} styleType={styleType}>
+    <S.Container fullid={fullid} onClick={onClick} styletype={styleType}>
       <S.Wrapper>
         <S.IconInBtn {...props} />
         <S.Content>{content}</S.Content>

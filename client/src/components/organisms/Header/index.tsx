@@ -23,7 +23,7 @@ function Header({
       <Btn
         grow={false}
         fit={true}
-        styleType={'transparent'}
+        styletype={'transparent'}
         content={CREATE_EVENT}
         href={''}
         to={ROUTES.EVENT_CREATE}
@@ -36,7 +36,7 @@ function Header({
       <Btn
         grow={false}
         fit={true}
-        styleType={'transparent-border'}
+        styletype={'transparent-border'}
         content={userNameText}
         href={''}
         to={ROUTES.USER}

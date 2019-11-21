@@ -6,12 +6,14 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withA11y } from '@storybook/addon-a11y';
 
 import themeDecorator from './theme-decorator';
+import routerDecorator from './router-decorator';
 import * as beautifyStory from './BeautifyStory';
 
 addDecorator(withKnobs);
 addDecorator(withInfo);
 addDecorator(withA11y);
 addDecorator(themeDecorator);
+addDecorator(routerDecorator);
 addDecorator(beautifyStory.prettyWrapperDecorator);
 addParameters({
   options: {
