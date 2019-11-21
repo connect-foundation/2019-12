@@ -25,7 +25,7 @@ env:
 jobs:
   include:
   - stage: Server Deploy
-    if: branch = server-develop OR branch = server-master
+    if: head_branch = server-develop OR branch = server-develop OR branch = server-master
     install:
     - docker run --name mysql -d
       -e MYSQL_ROOT_PASSWORD=$DB_PW 
