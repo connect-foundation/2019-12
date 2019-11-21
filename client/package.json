@@ -82,7 +82,9 @@
     },
     "collectCoverageFrom": [
       "src/**/*.ts?(x)",
-      "src/**/*.ts?(x)",
+      "!src/**/style.ts",
+      "!src/commons/constants/**/*.ts?(x)",
+      "!src/commons/style/**/*.ts?(x)",
       "!src/**/*.stories.tsx"
     ],
     "coverageReporters": [

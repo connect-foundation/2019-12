@@ -12,16 +12,14 @@ const App: React.FC = () => (
     <Normalize />
     <GlobalStyles />
     <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="*">
-            <div>404 page</div>
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="*">
+          <div>404 page</div>
+        </Route>
+      </Switch>
     </Router>
   </ThemeProvider>
 );
