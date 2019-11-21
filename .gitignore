@@ -3,6 +3,8 @@ node_modules/
 dist/
 coverage/
 build/
+.env
+
 # Default
 .DS_Store
 Thumbs.db
