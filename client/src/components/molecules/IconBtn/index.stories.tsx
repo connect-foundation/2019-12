@@ -15,7 +15,7 @@ export const index: React.FC = () => (
     height={text('height', '2rem')}
     src={ExternalLinkSymbol}
     content={text('content', 'IconButton')}
-    styleType={'primary'}
+    styletype={'primary'}
     onClick={action('onClick')}
   />
 );

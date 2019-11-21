@@ -10,29 +10,27 @@ export default {
 };
 
 const styleTypeS = {
-  label: 'styleType',
+  label: 'styletype',
   options: ['primary', 'secondary', 'danger', 'alert', 'success'],
   defaultValue: 'primary',
 };
 
 export const general: React.FC = () => (
   <Btn
-    styleType={select(
+    styletype={select(
       styleTypeS.label,
       styleTypeS.options,
       styleTypeS.defaultValue,
     )}
     disabled={boolean('disabled', false)}
     content={text('content', 'Button')}
-    href={''}
-    to={''}
     onClick={action('onClick')}
   />
 );
 
 export const anchor: React.FC = () => (
   <Btn
-    styleType={select(
+    styletype={select(
       styleTypeS.label,
       styleTypeS.options,
       styleTypeS.defaultValue,
@@ -40,31 +38,23 @@ export const anchor: React.FC = () => (
     disabled={boolean('disabled', false)}
     content={text('content', 'Button')}
     href={text('href', 'https://naver.com')}
-    to={''}
     onClick={action('onClick')}
   />
 );
 
 export const link: React.FC = () => (
   <>
-    <Router>
-      <Switch>
-        <Route path="*">
-          <Btn
-            styleType={select(
-              styleTypeS.label,
-              styleTypeS.options,
-              styleTypeS.defaultValue,
-            )}
-            disabled={boolean('disabled', false)}
-            content={text('content', 'Button')}
-            href={''}
-            to={text('to', '/home')}
-            onClick={action('onClick')}
-          />
-        </Route>
-      </Switch>
-    </Router>
+    <Btn
+      styletype={select(
+        styleTypeS.label,
+        styleTypeS.options,
+        styleTypeS.defaultValue,
+      )}
+      disabled={boolean('disabled', false)}
+      content={text('content', 'Button')}
+      to={text('to', '/signup')}
+      onClick={action('onClick')}
+    />
   </>
 );
 
@@ -76,51 +66,39 @@ export const allstyle: React.FC = () => (
     }}
   >
     <Btn
-      styleType={'primary'}
+      styletype={'primary'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
-      styleType={'secondary'}
+      styletype={'secondary'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
-      styleType={'danger'}
+      styletype={'danger'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
-      styleType={'alert'}
+      styletype={'alert'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
-      styleType={'success'}
+      styletype={'success'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
-      styleType={'transparent'}
+      styletype={'transparent'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
   </div>

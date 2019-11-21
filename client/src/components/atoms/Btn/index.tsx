@@ -5,11 +5,11 @@ interface Props {
   /** 버튼 내용 */
   content: string;
   /** react-router/Link 사용 (내부적인 routing)*/
-  to: string;
+  to?: string;
   /** 외부 링크 */
-  href: string;
+  href?: string;
   /** button styling type (ex. priamry, secondary) */
-  styleType?: string;
+  styletype?: string;
   /** disabled 여부 */
   disabled?: boolean;
   /** click handler */
@@ -22,26 +22,27 @@ interface Props {
 
 function Btn({
   content,
-  styleType = 'primary',
+  styletype = 'primary',
+  to,
+  href,
   ...props
 }: Props): React.ReactElement {
-  const { to, href } = props;
   if (to) {
     return (
-      <S.StyledLink styleType={styleType} {...props}>
+      <S.StyledLink styletype={styletype} to={to} {...props}>
         {content}
       </S.StyledLink>
     );
   }
   if (href) {
     return (
-      <S.Anchor styleType={styleType} {...props}>
+      <S.Anchor styletype={styletype} href={href} {...props}>
         {content}
       </S.Anchor>
     );
   }
   return (
-    <S.StyledBtn styleType={styleType} {...props}>
+    <S.StyledBtn styletype={styletype} {...props}>
       {content}
     </S.StyledBtn>
   );

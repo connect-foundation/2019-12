@@ -13,19 +13,19 @@ interface Props {
   /** 버튼 내용 */
   content: string;
   /** button styling type */
-  styleType?: string;
+  styletype?: string;
   /** click handler */
   onClick: () => void;
 }
 
 function IconBtn({
   content,
-  styleType = 'primary',
+  styletype = 'primary',
   onClick,
   ...props
 }: Props): React.ReactElement {
   return (
-    <S.Container onClick={onClick} styleType={styleType}>
+    <S.Container onClick={onClick} styletype={styletype}>
       <S.Wrapper>
         <Icon style={{ marginRight: '1rem' }} {...props} />
         <S.Content>{content}</S.Content>
