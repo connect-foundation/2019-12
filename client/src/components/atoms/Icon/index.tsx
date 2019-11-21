@@ -6,11 +6,9 @@ interface Props {
   /** 접근성 대응 */
   alt: string;
   /** 크기 */
-  height: string;
+  height?: string;
   /** 아이콘 소스 */
   src: any;
-  /** style */
-  style?: object;
 }
 
 function Icon({ height = '2rem', ...props }: Props): React.ReactElement {
