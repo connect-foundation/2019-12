@@ -32,7 +32,7 @@ export class User extends Model<User> {
   public email!: string;
 
   @Column(DataType.STRING)
-  public googleOAuthToken!: string;
+  public googleId!: string;
 
   @Column(DataType.STRING)
   public deviceToken!: string;
