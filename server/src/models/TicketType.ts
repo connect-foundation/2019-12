@@ -2,6 +2,7 @@ import {
   Table,
   Model,
   PrimaryKey,
+  ForeignKey,
   Column,
   CreatedAt,
   UpdatedAt,
@@ -20,7 +21,11 @@ export class TicketType extends Model<TicketType> {
   @Column
   public id!: number;
 
-  @BelongsTo(() => Event, 'event_id')
+  @ForeignKey(() => Event)
+  @Column(DataType.INTEGER)
+  public eventId!: number;
+
+  @BelongsTo(() => Event, 'eventId')
   public event!: Event;
 
   @Column(DataType.STRING)
@@ -28,6 +33,9 @@ export class TicketType extends Model<TicketType> {
 
   @Column(DataType.STRING)
   public desc!: string;
+
+  @Column(DataType.INTEGER.UNSIGNED)
+  public price!: number;
 
   @Column(DataType.INTEGER.UNSIGNED)
   public quantity!: number;
@@ -56,6 +64,6 @@ export class TicketType extends Model<TicketType> {
   @UpdatedAt
   public readonly updatedAt!: Date;
 
-  @HasMany(() => TicketSubscription, 'ticket_type_id')
+  @HasMany(() => TicketSubscription, 'ticketTypeId')
   public ticketSubscriptions!: TicketSubscription[];
 }
