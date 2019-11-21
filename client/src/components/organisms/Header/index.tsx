@@ -26,7 +26,6 @@ function Header({
         fitWidth={true}
         styleType={'transparent'}
         content={createEventText}
-        href={''}
         to={''}
         onClick={onCreateEventBtnClickHandlerick}
       />
@@ -39,7 +38,6 @@ function Header({
         fitWidth={true}
         styleType={'transparent'}
         content={userNameText}
-        href={''}
         to={''}
         onClick={onUserPageBtnClickHandlerick}
       />

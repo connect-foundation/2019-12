@@ -24,8 +24,6 @@ export const general: React.FC = () => (
     )}
     disabled={boolean('disabled', false)}
     content={text('content', 'Button')}
-    href={''}
-    to={''}
     onClick={action('onClick')}
   />
 );
@@ -40,7 +38,6 @@ export const anchor: React.FC = () => (
     disabled={boolean('disabled', false)}
     content={text('content', 'Button')}
     href={text('href', 'https://naver.com')}
-    to={''}
     onClick={action('onClick')}
   />
 );
@@ -58,8 +55,7 @@ export const link: React.FC = () => (
             )}
             disabled={boolean('disabled', false)}
             content={text('content', 'Button')}
-            href={''}
-            to={text('to', '/home')}
+            to={text('to', '/signup')}
             onClick={action('onClick')}
           />
         </Route>
@@ -79,48 +75,36 @@ export const allstyle: React.FC = () => (
       styleType={'primary'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
       styleType={'secondary'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
       styleType={'danger'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
       styleType={'alert'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
       styleType={'success'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
     <Btn
       styleType={'transparent'}
       disabled={boolean('disabled', false)}
       content={'Button'}
-      href={''}
-      to={''}
       onClick={action('onClick')}
     />
   </div>
