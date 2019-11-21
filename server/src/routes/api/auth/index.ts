@@ -7,7 +7,9 @@ const router = express.Router();
 
 router.get(
   '/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', {
+    failureRedirect: '/login',
+  }),
   (req: express.Request, res: express.Response) => {
     try {
       const { state } = req.query;
@@ -29,7 +31,7 @@ router.get(
       ? Buffer.from(JSON.stringify({ returnTo })).toString('base64')
       : undefined;
     const authenticator = passport.authenticate('google', {
-      scope: ['profile'],
+      scope: ['email', 'profile'],
       state,
     });
     authenticator(req, res, next);
