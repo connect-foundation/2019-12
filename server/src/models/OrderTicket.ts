@@ -2,6 +2,7 @@ import {
   Table,
   Model,
   PrimaryKey,
+  ForeignKey,
   CreatedAt,
   UpdatedAt,
   Column,
@@ -19,10 +20,18 @@ export class OrderTicket extends Model<OrderTicket> {
   @Column
   public id!: number;
 
-  @BelongsTo(() => TicketType, 'ticket_type_id')
+  @ForeignKey(() => TicketType)
+  @Column(DataType.INTEGER)
+  public ticketTypeId!: number;
+
+  @BelongsTo(() => TicketType, 'ticketTypeId')
   public ticketType!: TicketType;
 
-  @BelongsTo(() => Order, 'order_id')
+  @ForeignKey(() => Order)
+  @Column(DataType.INTEGER)
+  public orderId!: number;
+
+  @BelongsTo(() => Order, 'orderId')
   public order!: Order;
 
   @Column(DataType.BOOLEAN)
