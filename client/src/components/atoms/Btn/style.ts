@@ -3,13 +3,13 @@ import { ifProp, palette, theme } from 'styled-tools';
 import { Link } from 'react-router-dom';
 
 interface BtnStyleProps {
-  styleType: string;
+  styletype: string;
 }
 
 export const BtnStyle = css<BtnStyleProps>`
   ${theme('fontStyle.button')}
   background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
-    palette(props.styleType),
+    palette(props.styletype),
   )};
   flex-shrink: 0;
   flex-grow: '${ifProp('grow', '1', '0')}';
@@ -17,7 +17,7 @@ export const BtnStyle = css<BtnStyleProps>`
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
   width: ${ifProp('fitWidth', 'fit-content', '18rem')};
   color: ${props =>
-    props.styleType === 'transparent'
+    props.styletype === 'transparent'
       ? palette('grayscale', 1)
       : palette('white')};
   -webkit-user-drag: none;
