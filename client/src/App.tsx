@@ -1,16 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+import defaultTheme from './commons/style/themes/default';
+import Normalize from './commons/style/Normalize';
+import GlobalStyles from './commons/style/GlobalStyle';
 
 const App: React.FC = () => (
-  <Router>
-    <div className="App">
-      <Switch >
+  <ThemeProvider theme={defaultTheme}>
+    <Normalize />
+    <GlobalStyles />
+    <Router>
+      <Switch>
         <Route path="*">
           <div>404 page</div>
         </Route>
       </Switch>
-    </div>
-  </Router>
+    </Router>
+  </ThemeProvider>
 );
 
 export default App;

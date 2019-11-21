@@ -5,9 +5,14 @@ import { withInfo } from '@storybook/addon-info';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withA11y } from '@storybook/addon-a11y';
 
+import themeDecorator from './theme-decorator';
+import * as beautifyStory from './BeautifyStory';
+
 addDecorator(withKnobs);
 addDecorator(withInfo);
 addDecorator(withA11y);
+addDecorator(themeDecorator);
+addDecorator(beautifyStory.prettyWrapperDecorator);
 addParameters({
   options: {
     theme: themes.light,
@@ -18,15 +23,18 @@ addParameters({
     hierarchyRootSeparator: '|',
   },
   info: {
+    styles: {
+      infoBody: beautifyStory.infoBody,
+      infoStory: beautifyStory.infoStory,
+    },
     inline: true,
     header: true,
   },
+
   viewport: {
     viewports: INITIAL_VIEWPORTS,
     defaultViewport: 'someDefault',
   },
 });
-configure(
-  require.context('../src/components', true, /\.stories\.tsx?$/),
-  module,
-);
+
+configure(require.context('../src', true, /\.stories\.tsx?$/), module);
