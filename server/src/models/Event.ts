@@ -2,6 +2,7 @@ import {
   Table,
   Model,
   PrimaryKey,
+  ForeignKey,
   Column,
   CreatedAt,
   UpdatedAt,
@@ -20,7 +21,11 @@ export class Event extends Model<Event> {
   @Column(DataType.INTEGER)
   public id!: number;
 
-  @BelongsTo(() => User, 'user_id')
+  @ForeignKey(() => User)
+  @Column(DataType.INTEGER)
+  public userId!: number;
+
+  @BelongsTo(() => User, 'userId')
   public user!: User;
 
   @Column(DataType.BOOLEAN)
@@ -56,6 +61,6 @@ export class Event extends Model<Event> {
   @UpdatedAt
   public readonly updatedAt!: Date;
 
-  @HasMany(() => TicketType, 'event_id')
+  @HasMany(() => TicketType, 'eventId')
   public ticketTypes!: TicketType[];
 }

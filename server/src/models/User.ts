@@ -32,7 +32,7 @@ export class User extends Model<User> {
   public email!: string;
 
   @Column(DataType.STRING)
-  public googleOAuthToken!: string;
+  public googleId!: string;
 
   @Column(DataType.STRING)
   public deviceToken!: string;
@@ -43,9 +43,9 @@ export class User extends Model<User> {
   @UpdatedAt
   public readonly updatedAt!: Date;
 
-  @HasMany(() => Order, 'user_id')
+  @HasMany(() => Order, 'userId')
   public orders!: Order[];
 
-  @HasMany(() => Event, 'user_id')
+  @HasMany(() => Event, 'userId')
   public events!: Event[];
 }

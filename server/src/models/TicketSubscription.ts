@@ -4,6 +4,9 @@ import {
   CreatedAt,
   UpdatedAt,
   BelongsTo,
+  ForeignKey,
+  Column,
+  DataType,
 } from 'sequelize-typescript';
 import { User } from './User';
 import { TicketType } from './TicketType';
@@ -12,10 +15,18 @@ import { TicketType } from './TicketType';
   underscored: true,
 })
 export class TicketSubscription extends Model<TicketSubscription> {
-  @BelongsTo(() => User, 'user_id')
+  @ForeignKey(() => User)
+  @Column(DataType.INTEGER)
+  public userId!: number;
+
+  @BelongsTo(() => User, 'userId')
   public user!: User;
 
-  @BelongsTo(() => TicketType, 'ticket_type_id')
+  @ForeignKey(() => TicketType)
+  @Column(DataType.INTEGER)
+  public ticketTypeId!: number;
+
+  @BelongsTo(() => TicketType, 'ticketTypeId')
   public ticketType!: TicketType;
 
   @CreatedAt
