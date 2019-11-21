@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "firstName": "진혁",
+    "lastName": "육",
+    "phoneNumber": "01012341234",
+    "email": "jdd04026@gmail.com",
+    "googleId": "101905144461459897964",
+    "deviceToken": null,
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": 2,
+    "firstName": "성동",
+    "lastName": "조",
+    "phoneNumber": "01012341234",
+    "email": "sdong001@gmail.com",
+    "googleId": "111181607597487835911",
+    "deviceToken": null,
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": 3,
+    "firstName": "용호",
+    "lastName": "이",
+    "phoneNumber": "01012341234",
+    "email": "inwalter99@gmail.com",
+    "googleId": "101905144461459897964",
+    "deviceToken": null,
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": 4,
+    "firstName": "종현",
+    "lastName": "문",
+    "phoneNumber": "01012341234",
+    "email": "dobest27@gmail.com",
+    "googleId": "101406083331110041098",
+    "deviceToken": null,
+    "created_at": "",
+    "updated_at": ""
+  }
+]
