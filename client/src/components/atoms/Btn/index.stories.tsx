@@ -10,8 +10,16 @@ export default {
 };
 
 const styleTypeS = {
-  label: 'styletype',
-  options: ['primary', 'secondary', 'danger', 'alert', 'success'],
+  label: 'styleType',
+  options: [
+    'primary',
+    'secondary',
+    'danger',
+    'alert',
+    'success',
+    'transparent',
+    'transparent-border',
+  ],
   defaultValue: 'primary',
 };
 
@@ -99,6 +107,14 @@ export const allstyle: React.FC = () => (
       styletype={'transparent'}
       disabled={boolean('disabled', false)}
       content={'Button'}
+      onClick={action('onClick')}
+    />
+    <Btn
+      styletype={'transparent-border'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
       onClick={action('onClick')}
     />
   </div>

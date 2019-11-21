@@ -16,15 +16,16 @@ interface Props {
   onClick?: () => void;
   /** flex grow enable */
   grow?: boolean;
-  /** width fit enable */
-  fitWidth?: boolean;
+  /** fit to size enable */
+  fit?: boolean;
 }
 
 function Btn({
   content,
-  styletype = 'primary',
-  to,
   href,
+  to,
+  styletype = 'primary',
+  grow = false,
   ...props
 }: Props): React.ReactElement {
   if (to) {

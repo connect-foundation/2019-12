@@ -12,6 +12,6 @@ export const Container = styled.div`
 
 export const Img = styled.img`
   height: 4.5rem;
-`
+`;
 
 export const StyledLink = styled(Link)``;

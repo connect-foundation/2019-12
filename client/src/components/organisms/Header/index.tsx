@@ -3,43 +3,44 @@ import React from 'react';
 import * as S from './style';
 import Btn from '../../atoms/Btn';
 import logo from '../../../assets/img/logo.svg';
+import ROUTES from '../../../commons/constants/routes';
+
+import { CREATE_EVENT } from '../../../commons/constants/string';
 
 interface Props {
-  createEventText: string;
   userNameText: string;
-  logoLinkTo: string;
   onCreateEventBtnClickHandlerick?: () => void;
-  onUserPageBtnClickHandlerick?: () => void;
+  onAccountClickHandlerick?: () => void;
 }
 
 function Header({
-  createEventText,
   userNameText,
-  logoLinkTo,
   onCreateEventBtnClickHandlerick = () => {},
-  onUserPageBtnClickHandlerick = () => {},
+  onAccountClickHandlerick = () => {},
 }: Props): React.ReactElement {
   return (
     <S.Container>
       <Btn
         grow={false}
-        fitWidth={true}
+        fit={true}
         styletype={'transparent'}
-        content={createEventText}
-        to={''}
+        content={CREATE_EVENT}
+        href={''}
+        to={ROUTES.EVENT_CREATE}
         onClick={onCreateEventBtnClickHandlerick}
       />
 
-      <S.StyledLink to={logoLinkTo}>
+      <S.StyledLink to={ROUTES.HOME}>
         <S.Img alt={'Logo'} src={logo} />
       </S.StyledLink>
       <Btn
         grow={false}
-        fitWidth={true}
-        styletype={'transparent'}
+        fit={true}
+        styletype={'transparent-border'}
         content={userNameText}
-        to={''}
-        onClick={onUserPageBtnClickHandlerick}
+        href={''}
+        to={ROUTES.USER}
+        onClick={onAccountClickHandlerick}
       />
     </S.Container>
   );
