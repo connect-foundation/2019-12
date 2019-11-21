@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const FormInputContainer = styled.div`
+  height: 9rem;
   display: flex;
   flex-direction: column;
 `;
