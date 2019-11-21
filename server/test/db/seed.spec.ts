@@ -18,7 +18,7 @@ describe('DB seed 데이터가 유효', () => {
   it('User 데이터가 유효', async () => {
     //given, when
     const users = await User.findAll({
-      attributes: { exclude: exclude },
+      attributes: { exclude },
     });
     //then
     expect(users).toMatchSnapshot();
@@ -26,7 +26,7 @@ describe('DB seed 데이터가 유효', () => {
   it('Event 데이터가 유효', async () => {
     //given, when
     const events = await Event.findAll({
-      attributes: { exclude: exclude },
+      attributes: { exclude },
     });
     //then
     expect(events).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe('DB seed 데이터가 유효', () => {
   it('TicketType 데이터가 유효', async () => {
     //given, when
     const tickettypes = await TicketType.findAll({
-      attributes: { exclude: exclude },
+      attributes: { exclude },
     });
     //then
     expect(tickettypes).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('DB seed 데이터가 유효', () => {
   it('Order 데이터가 유효', async () => {
     //given, when
     const orders = await Order.findAll({
-      attributes: { exclude: exclude },
+      attributes: { exclude },
     });
     //then
     expect(orders).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('DB seed 데이터가 유효', () => {
   it('OrderTicket 데이터가 유효', async () => {
     //given, when
     const ordertickets = await OrderTicket.findAll({
-      attributes: { exclude: exclude },
+      attributes: { exclude },
     });
     //then
     expect(ordertickets).toMatchSnapshot();
@@ -58,7 +58,7 @@ describe('DB seed 데이터가 유효', () => {
   it('TicketSubscription 데이터가 유효', async () => {
     //given, when
     const ticketsubscription = await TicketSubscription.findAll({
-      attributes: { exclude: exclude },
+      attributes: { exclude },
     });
     //then
     expect(ticketsubscription).toMatchSnapshot();
