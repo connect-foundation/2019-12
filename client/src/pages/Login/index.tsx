@@ -1,14 +1,33 @@
-import * as React from 'react';
-import Logo from '../../commons/components/atoms/Logo';
-import OAuthBtn from './OAuthBtn';
+import React from 'react';
 
-const Login: React.FC = () => {
+import * as S from './style';
+import IconBtn from '../../components/molecules/IconBtn';
+import { OAUTH_GOOGLE, LOGIN_SOCIAL } from '../../commons/constants/string';
+import googleSvg from '../../assets/img/google.svg';
+import LogoSvg from '../../assets/img/logo.svg';
+import LoginTemplate from './templates';
+
+const AuthURL = `http://localhost:13000/api/auth?returnTo=/login`;
+
+function Login(): React.ReactElement {
   return (
-    <div className="Login">
-      <Logo content={'Bookus!'} />
-      <OAuthBtn />
-    </div>
+    <LoginTemplate
+      logoImg={<S.LogoImg alt={'Logo'} src={LogoSvg} />}
+      socialLoginLabel={<S.SocialLoginLabel>{LOGIN_SOCIAL}</S.SocialLoginLabel>}
+      oauthContent={
+        <IconBtn
+          fullid={true}
+          styleType={'transparent-border'}
+          src={googleSvg}
+          content={OAUTH_GOOGLE}
+          alt={OAUTH_GOOGLE}
+          onClick={() => {
+            window.location.href = AuthURL;
+          }}
+        />
+      }
+    />
   );
-};
+}
 
 export default Login;
