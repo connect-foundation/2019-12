@@ -10,7 +10,7 @@ export default {
 };
 
 const styleTypeS = {
-  label: 'styleType',
+  label: 'styletype',
   options: [
     'primary',
     'secondary',
