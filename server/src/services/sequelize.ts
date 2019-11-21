@@ -9,10 +9,11 @@ import {
 } from '../models';
 import { readFileSync } from 'fs';
 
-const { DB_HOST, DB_USER, DB_PW, DB_NAME } = process.env;
+const { DB_HOST, DB_PORT, DB_USER, DB_PW, DB_NAME } = process.env;
 
 export const sequelize = new Sequelize({
   host: DB_HOST,
+  port: DB_PORT ? +DB_PORT : 3306,
   username: DB_USER,
   password: DB_PW,
   database: DB_NAME,
