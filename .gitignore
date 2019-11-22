@@ -2,10 +2,9 @@
 node_modules/
 dist/
 coverage/
+build/
 .env
-.env*
 
-# Oauth config
 # Default
 .DS_Store
 Thumbs.db

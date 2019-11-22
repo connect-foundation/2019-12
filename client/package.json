@@ -24,12 +24,12 @@
     "@types/react-dom": "16.9.4",
     "@types/styled-components": "^4.4.0",
     "babel-loader": "^8.0.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-tools": "^1.7.1"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^5.2.5",
@@ -41,9 +41,16 @@
     "@storybook/addon-viewport": "^5.2.5",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@types/react-router-dom": "^5.1.2",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "cypress": "^3.6.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
@@ -56,9 +63,11 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
     "react": "^16.11.0",
+    "react-docgen-typescript-loader": "^3.4.0",
     "react-dom": "^16.11.0",
     "start-server-and-test": "^1.10.6",
     "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.2"
   },
   "jest": {
@@ -67,12 +76,18 @@
     },
     "collectCoverageFrom": [
       "src/**/*.ts?(x)",
-      "src/**/*.ts?(x)"
+      "!src/**/style.ts",
+      "!src/commons/constants/**/*.ts?(x)",
+      "!src/commons/style/**/*.ts?(x)",
+      "!src/**/*.stories.tsx"
     ],
     "coverageReporters": [
       "json",
       "lcov",
       "text"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "browserslist": {

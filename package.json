@@ -15,6 +15,7 @@
   },
   "scripts": {
     "test:server": "yarn workspace server test",
+	"test:client": "yarn workspace client test && yarn workspace client test:cypress",
     "lint": "run-p lint:server lint:client",
     "lint:server": "yarn workspace server lint:fix",
     "lint:client": "yarn workspace client lint:fix",
@@ -28,6 +29,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "husky": "^3.1.0",
+	"lint-staged": "^9.4.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1"
   },
@@ -36,5 +38,11 @@
       "precommit": "yarn precommit",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  }
+  },
+	"lint-staged": {
+		"*.{ts,tsx,css,md}": [
+			"prettier --write",
+			"git add"
+		]
+	}
 }
