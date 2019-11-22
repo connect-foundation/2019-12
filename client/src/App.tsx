@@ -1,22 +1,27 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../src/commons/style/themes/default';
+import Normalize from '../src/commons/style/Normalize';
+import GlobalStyles from '../src/commons/style/GlobalStyle';
+
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 const App: React.FC = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
+  <ThemeProvider theme={defaultTheme}>
+    <Normalize />
+    <GlobalStyles />
+    <Router>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="*">
+          <div>404 page</div>
+        </Route>
+      </Switch>
+    </Router>
+  </ThemeProvider>
 );
 
 export default App;
