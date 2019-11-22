@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
+.c0::after {
+  content: '*';
+  visibility: hidden;
+}
+
+<Label
+  alt="string"
+  src="external-link-symbol.svg"
+>
+  <styled.label
+    required={false}
+  >
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  ",
+              [Function],
+              "
+  color: ",
+              [Function],
+              ";
+
+  &::after {
+    content: '*';
+    visibility: ",
+              [Function],
+              ";
+    color: ",
+              [Function],
+              ";
+  }
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      required={false}
+    >
+      <label
+        className="c0"
+        required={false}
+      />
+    </StyledComponent>
+  </styled.label>
+</Label>
+`;
