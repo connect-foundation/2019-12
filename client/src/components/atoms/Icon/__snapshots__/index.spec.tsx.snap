@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
+.c0 {
+  height: 2rem;
+}
+
+<Icon>
+  <styled.img
+    height="2rem"
+  >
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  height: ",
+              [Function],
+              ";
+",
+            ],
+          },
+          "displayName": "styled.img",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "img",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      height="2rem"
+    >
+      <img
+        className="c0"
+        height="2rem"
+      />
+    </StyledComponent>
+  </styled.img>
+</Icon>
+`;
