@@ -1,25 +1,23 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"strict": true,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"noUnusedLocals": true,
-		"pretty": true,
-		"rootDir": "./",
-		"outDir": "dist",
-		"baseUrl": ".",
-		"lib": ["esnext"],
-		"paths": {
-			"*": ["node_modules/*", "src/types/*"]
-		},
-		"skipLibCheck": true
-	},
-	"include": ["src/**/*", "bin"],
-    "exclude": [
-		"node_modules"
-    ]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "rootDir": "./",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "lib": ["esnext"],
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    },
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*", "bin"],
+  "exclude": ["node_modules"]
 }

@@ -6,5 +6,10 @@ export default {
   title: 'Components|Templates',
 };
 
-export const MainHeader = () => <Logo content={text('logoText', 'Bookus')} />;
-export const Footer = () => <Logo content={text('logoText', 'Bookus')} />;
+export const MainHeader: React.FC = () => (
+  <Logo content={text('logoText', 'Bookus')} />
+);
+
+export const Footer: React.FC = () => (
+  <Logo content={text('logoText', 'Bookus')} />
+);

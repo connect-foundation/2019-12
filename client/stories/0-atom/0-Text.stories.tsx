@@ -6,7 +6,10 @@ export default {
   title: 'Components|Atom/Text',
 };
 
-export const logo = () => <Logo content={text('logoText', 'Bookus')} />;
-export const primarybutton = () => (
+export const logo: React.FC = () => (
+  <Logo content={text('logoText', 'Bookus')} />
+);
+
+export const primarybutton: React.FC = () => (
   <Logo content={text('logoText', 'Bookus')} />
 );
