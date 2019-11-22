@@ -1,41 +1,20 @@
 import * as express from 'express';
 import * as passport from 'passport';
 
-const { CLIENT_URL } = process.env;
+import { authCallback, authRequest } from './controllers';
+
+export const { CLIENT_URL } = process.env;
 
 const router = express.Router();
 
 router.get(
   '/callback',
   passport.authenticate('google', {
-    failureRedirect: '/login',
+    failureRedirect: `${CLIENT_URL}/login`,
   }),
-  (req: express.Request, res: express.Response) => {
-    try {
-      const { state } = req.query;
-      const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
-      if (typeof returnTo === 'string' && returnTo.startsWith('/')) {
-        return res.redirect(CLIENT_URL + returnTo);
-      }
-    } catch {
-      // just redirect normally below
-    }
-  },
+  authCallback,
 );
 
-router.get(
-  '/',
-  (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    const { returnTo } = req.query;
-    const state = returnTo
-      ? Buffer.from(JSON.stringify({ returnTo })).toString('base64')
-      : undefined;
-    const authenticator = passport.authenticate('google', {
-      scope: ['email', 'profile'],
-      state,
-    });
-    authenticator(req, res, next);
-  },
-);
+router.get('/', authRequest);
 
 export default router;
