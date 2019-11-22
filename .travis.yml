@@ -46,12 +46,12 @@ jobs:
     - stage: 'Client Deploy'
       if: branch = client-develop OR branch = client-master
       before_script:
+        - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
         - yarn
       script:
         - yarn test:client
       before_deploy:
         - yarn workspace client build
-        - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
         - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
       deploy:
         skip_cleanup: true
