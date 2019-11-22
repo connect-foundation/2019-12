@@ -43,26 +43,19 @@ jobs:
         on:
           branch: server-master
 
-    - stage: 'Server Feature'
-      if: head_branch = server-develop
-      before_script:
-        - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
-      script:
-        - echo "$DOCKER_USER"
-        - docker images
-        - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
-
     - stage: 'Client Deploy'
       if: branch = client-develop OR branch = client-master
       before_script:
         - yarn
       script:
         - yarn test:client
+      before_deploy:
+        - yarn workspace client build
+        - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
       deploy:
+        skip_cleanup: true
         provider: script
         script:
-          - yarn workspace client build
-          - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
           - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
           - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
           - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
