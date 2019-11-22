@@ -47,7 +47,6 @@ jobs:
     - yarn workspace client build
     - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
     deploy:
-      skip_cleanup: true
       provider: script
       script:
       - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
