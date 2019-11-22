@@ -31,10 +31,6 @@ exports[`Atom / Btn [SNAPSHOT] Anchor 렌더링 1`] = `
   border-width: thin;
 }
 
-.c0:hover {
-  line-height: 1.3;
-}
-
 <Btn
   content="Button"
   href="https://naver.com"
@@ -98,7 +94,6 @@ exports[`Atom / Btn [SNAPSHOT] Anchor 렌더링 1`] = `
   border-width: thin;
 
   &:hover {
-    line-height: 1.3;
     opacity: ",
               [Function],
               ";
@@ -168,10 +163,6 @@ exports[`Atom / Btn [SNAPSHOT] StyledBtn 렌더링 1`] = `
   line-height: 0;
 }
 
-.c0:hover {
-  line-height: 1.3;
-}
-
 <Btn
   content="Button"
   styletype="primary"
@@ -233,7 +224,6 @@ exports[`Atom / Btn [SNAPSHOT] StyledBtn 렌더링 1`] = `
   border-width: thin;
 
   &:hover {
-    line-height: 1.3;
     opacity: ",
               [Function],
               ";

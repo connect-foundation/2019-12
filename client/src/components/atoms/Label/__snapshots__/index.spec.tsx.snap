@@ -7,8 +7,8 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
 }
 
 <Label
-  alt="string"
-  src="external-link-symbol.svg"
+  name="이메일"
+  required={false}
 >
   <styled.label
     required={false}
@@ -59,7 +59,9 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
       <label
         className="c0"
         required={false}
-      />
+      >
+        이메일
+      </label>
     </StyledComponent>
   </styled.label>
 </Label>

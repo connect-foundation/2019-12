@@ -6,10 +6,7 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
   border-style: solid;
 }
 
-<Divider
-  content="Button"
-  styletype="primary"
->
+<Divider>
   <styled.hr
     borderWidth="1px"
     grayScaleLevel={6}
