@@ -1,10 +1,4 @@
 import '../src/env';
-import { sequelize } from '../src/services/sequelize';
+import { migrate } from '../src/services/sequelize';
 
-(async () => {
-  try {
-    await sequelize.sync();
-  } catch (error) {
-    console.info('DB Migration...');
-  }
-})();
+migrate();

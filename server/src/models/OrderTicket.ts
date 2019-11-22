@@ -38,7 +38,7 @@ export class OrderTicket extends Model<OrderTicket> {
   public isAttendance!: boolean;
 
   @CreatedAt
-  public creratedAt!: Date;
+  public createdAt!: Date;
 
   @UpdatedAt
   public updatedAt!: Date;

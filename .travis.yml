@@ -29,6 +29,23 @@ env:
 
 jobs:
   include:
+  - stage: Server Feature
+    if: head_branch = server-develop
+    install:
+    - docker run --name mysql -d
+      -e MYSQL_ROOT_PASSWORD=$DB_PW 
+      -e MYSQL_DATABASE=$DB_NAME 
+      -e MYSQL_USER=$DB_USER 
+      -e MYSQL_PASSWORD=$DB_PW 
+      -p 3306:3306 
+      jdd04026/mariadb-locale:latest
+    before_script:
+    - yarn
+    script:
+    - yarn workspace server db:migrate
+    - yarn workspace server db:seed
+    - yarn test:server
+
   - stage: Server Deploy
     if: branch = server-develop OR branch = server-master
     install:
@@ -43,6 +60,7 @@ jobs:
     - yarn
     script:
     - yarn workspace server db:migrate
+    - yarn workspace server db:seed
     - yarn test:server
     deploy:
       provider: script
@@ -53,6 +71,7 @@ jobs:
       - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}"
       on:
         branch: server-master
+        
   - stage: Client Deploy
     if: branch = client-develop OR branch = client-master
     install:
@@ -64,6 +83,7 @@ jobs:
       script: 
       on:
         branch: client-master
+
   - stage: Client Feature
     if: head_branch = client-develop
     install:
