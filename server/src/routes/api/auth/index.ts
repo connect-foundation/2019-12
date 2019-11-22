@@ -3,7 +3,7 @@ import * as passport from 'passport';
 
 import { authCallback, authRequest } from './controllers';
 
-export const { CLIENT_URL } = process.env;
+const { CLIENT_URL } = process.env;
 
 const router = express.Router();
 

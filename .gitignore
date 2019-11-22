@@ -3,6 +3,7 @@ node_modules/
 dist/
 coverage/
 .env
+.env*
 
 # Oauth config
 # Default
