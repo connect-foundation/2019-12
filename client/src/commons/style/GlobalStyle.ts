@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   * {
-    @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
     margin: 0;
     font-family: 'Noto Sans KR', 'Roboto', sans-serif;
     box-sizing: border-box;
