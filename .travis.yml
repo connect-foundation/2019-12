@@ -1,63 +1,56 @@
 sudo: required
-
 language: node_js
-
 node_js:
-  - 12.13
-
+- 12.13
 branches:
   only:
-    - server-master
-    - client-master
-    - server-develop
-    - client-develop
-
+  - server-master
+  - client-master
+  - server-develop
+  - client-develop
 services:
-  - docker
-
+- docker
 env:
   global:
-    - IMAGE_NAME=test
-    - IMAGE_TAG=0.0.1
-    - FE_IMAGE_NAME=bu-front
-    - FE_IMAGE_TAG=0.0.1
-    - DOCKER_USER=jdd04026
-    - secure: B2A5EkMfMm88KX+y/nXKaVz9+TfrLCY7Fw6jbkrmPzQ3N7IIMBDOE5g0YNCA+kpJTTJmMCVIKji28c5C8x0dlCPb9htDzZ4nLoQi5QtxtAigyTORrXjy/wkVuNa0GuLUMV5VAZOn2vjqMFfX94lwSAnGAs9+S0u5ZRvYPH2X0NddajgJGVYW0g9mN6V+IepOT/nO9ecxCwSLS9Cak8b/tCRlpOAoUlbeb8t8uvPFiIwqPWmAs3PjRJHDIGzTzek/6S5X+jGXqxGUhRJemzGxM4egy+Zw/UZIoReiU3M89cvjDZS5CPh4H3U/asQu3+Or2fDbk9xdppmS4C/MmHHF/jj7zqzH51byxLbQdqJgSUJCLX8+I6dhjkXLlG2BhpM6g6DQgrYVTDK6TziLGetHW/dXG8+ZunR+HmtIcp9Qt0Bu+zAwkvYXXPAYqeRv/+5XPkUdQXYdkSC/zliASdotIagznhn9xs7f3qdnPCfN4iR5oUMm8WdJ/0wnIfvxgKnSU6Nm0FdtQHFe0QvzN9CuWl+yHT2oOQlRc5IHYDFO2yOpV9/6uoOaB9kPXgeDaElWL2rNwvvYSXBR/T4/ejaSy6JWkuiwEHWSNeoL8IvrPfGOCGoRf2xIA/heFCzNuT6/o+wAYTRDmHYhmM3P624hevf7YJD6Ta/trhpe6JfugNQ=
-
+  - IMAGE_NAME=test
+  - IMAGE_TAG=0.0.1
+  - FE_IMAGE_NAME=bu-front
+  - FE_IMAGE_TAG=0.0.1
+  - DOCKER_USER=jdd04026
+  - secure: RFBIrktGlfdQLMcwtlmlw+tDitg3uff0n18+yeICx0IvbLoi1dvT2hzJBTCnoPMt+ZSpKgj0flDv4x0v12++zWMyprRfYJXMxnt3xVc3BVj499WkhRw2a8Ak5/iCvhL7YLKE+D9slmuyJKMuPctL5xN4FWzPiiAUkJaDhyjI8+M3kgTGnLeF3PG1F8HWQcnuFtejYO73AuQ6dozppqHtz7y/zSBfyE4URT0GrbdmEykLDwWK/dx+anBom1u2yHeZB+ceAwbpf2GZhBf6FwccZxK9Ek39pi0R2E28v+vY3VuA5YAxEtMKZwq1eIqga+2x6SrN6CtiEEVQN+hpuMIzS3kHmeQ06FsKOT3v+zigzjfPjUAJalyiWdZTn0Jwm+UvzKjPJ6/Nnp6FBk9YmpQaLC4ELfdVblJFRRL+LxdmazBCooedodZKUpYzWgp+0OO4nviJiNV4rYCl6UqxBSVaUR01P1hA9VbK7KqDkKfNVze8WMing2wJOqML5Jv5SjnmjrWTClgLdxBetXWv2wxci1DXlhU/c9E7xeut3XZBx1vwhTcKWMUVWm5EkLSVneeX8B0XYYvmlZ9ZVSfuJm5eE229253DTp/HlRd7NROk7dSrJQwMpb2OUwq+f+yT1osJK4TCv1viTa6TC/ufWPctpMsSsuLD+xDtjz93yYAyO6M=
 jobs:
   include:
-    - stage: 'Server Deploy'
-      if: branch = server-develop OR branch = server-master
-      before_script:
-        - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+  - stage: Server Deploy
+    if: branch = server-develop OR branch = server-master
+    before_script:
+    - docker build -t "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" ./server
+    script:
+    - echo "$DOCKER_USER"
+    - docker images
+    - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
+    deploy:
+      provider: script
       script:
-        - echo "$DOCKER_USER"
-        - docker images
-        - docker run -it "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" npm run test
-      deploy:
-        provider: script
-        script:
-          - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
-          - docker tag "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" "${DOCKER_USER}/${IMAGE_NAME}:latest"
-          - docker push "${DOCKER_USER}/${IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
-        on:
-          branch: server-master
-
-    - stage: 'Client Deploy'
-      if: branch = client-develop OR branch = client-master
-      before_script:
-        - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
-        - yarn
+      - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
+      - docker tag "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}" "${DOCKER_USER}/${IMAGE_NAME}:latest"
+      - docker push "${DOCKER_USER}/${IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+      on:
+        branch: server-master
+  - stage: Client Deploy
+    if: branch = client-develop OR branch = client-master
+    before_script:
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS";
+    - yarn
+    script:
+    - yarn test:client
+    before_deploy:
+    - yarn workspace client build
+    - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
+    deploy:
+      skip_cleanup: true
+      provider: script
       script:
-        - yarn test:client
-      before_deploy:
-        - yarn workspace client build
-        - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
-      deploy:
-        skip_cleanup: true
-        provider: script
-        script:
-          - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
-          - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
-        on:
-          branch: client-master
+      - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
+      - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
+      on:
+        branch: client-master
