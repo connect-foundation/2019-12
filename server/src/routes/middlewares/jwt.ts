@@ -3,7 +3,7 @@ import * as express from 'express';
 
 //import { JWT_SECRET, JWT_EXPIRE, JWT_SUBJECT } from '../../config/jwt';
 
-/*
+
 function setJWT(payload) {
   return new Promise((resolve, reject) => {
     jwt.sign(
@@ -20,7 +20,6 @@ function setJWT(payload) {
     );
   });
 }
-*/
 export async function makeToken(
   req: express.Request,
   res: express.Response,
