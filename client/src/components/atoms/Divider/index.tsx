@@ -13,13 +13,15 @@ interface Props {
 function Divider({
   borderWidth = '1px',
   type = 'solid',
-  grayScaleLevel = 6
+  grayScaleLevel = 6,
 }: Props): React.ReactElement {
-  return <S.Divider
-    borderWidth={borderWidth}
-    type={type}
-    grayScaleLevel={grayScaleLevel}
-  />
-};
+  return (
+    <S.Divider
+      borderWidth={borderWidth}
+      type={type}
+      grayScaleLevel={grayScaleLevel}
+    />
+  );
+}
 
 export default Divider;
