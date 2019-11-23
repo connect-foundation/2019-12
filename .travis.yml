@@ -13,7 +13,6 @@ branches:
 services:
   - docker
 
-cache: yarn
 
 env:
   global:
