@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { palette, theme } from 'styled-tools';
+import { Link } from 'react-router-dom';
 
-export const LinkWrapper = styled.a`
-  width: 25%;
+export const LinkWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   background-color: ${palette('white', 0)};
-  box-shadow: ${palette('grayscale', 2)} 0px 2px 4px 0px;
+  box-shadow: ${palette('grayscale', 5)} 0px 2px 4px 0px;
   cursor: pointer;
-  padding: 1rem;
 `;
 
 export const HeaderWrapper = styled.div``;
@@ -18,6 +17,7 @@ export const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 1rem;
 `;
 
 export const ContentContainer = styled.div`

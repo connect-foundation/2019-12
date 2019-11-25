@@ -5,8 +5,8 @@ import * as S from './style';
 import Divider from '../../atoms/Divider';
 
 interface Props {
-  /** 이벤트 URL */
-  href: string;
+  /** 라우팅 URL */
+  to: string;
   /** 이벤트 이름 */
   imgSrc: string;
   /** 이벤트 날짜 */
@@ -20,7 +20,7 @@ interface Props {
 }
 
 function Card({
-  href,
+  to,
   imgSrc,
   date,
   name,
@@ -28,7 +28,7 @@ function Card({
   price,
 }: Props): React.ReactElement {
   return (
-    <S.LinkWrapper href={href}>
+    <S.LinkWrapper to={to}>
       <S.HeaderWrapper></S.HeaderWrapper>
       <S.ImgDiv imgSrc={imgSrc} />
       <S.InnerContainer>

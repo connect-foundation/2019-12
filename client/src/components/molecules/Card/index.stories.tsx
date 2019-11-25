@@ -10,7 +10,7 @@ export default {
 export const index: React.FC = () => (
   <div style={{ width: '1060px' }}>
     <Card
-      href={text('href', '#')}
+      to={text('to', '/')}
       imgSrc={text(
         'imgSrc',
         'https://cf.festa.io/img/2019-11-19/40e8a4ca-afc3-43aa-a0a1-436b25dadbef.png',
