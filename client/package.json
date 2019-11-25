@@ -14,7 +14,7 @@
     "build-storybook": "build-storybook -s public",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
-    "precommit": "lint-staged",
+    "precommit": "tsc --noEmit && lint-staged",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\""
   },
   "dependencies": {
@@ -105,10 +105,6 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,scss,css,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "*.{ts,tsx}": [
-      "tsc --noEmit --strict --skipLibCheck --esModuleInterop --jsx react",
       "git add"
     ],
     "*.{ts,tsx,js,jsx}": [
