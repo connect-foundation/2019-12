@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './style';
 
-interface Props {
+export interface Props {
   /** 접근성 대응 */
   alt: string;
   /** 크기 */
