@@ -42,7 +42,6 @@ function SignUpPage(): React.ReactElement {
     email: {
       inputName: 'email',
       captionContent: '이메일을 입력하세요',
-      value: email,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
       },
@@ -54,7 +53,6 @@ function SignUpPage(): React.ReactElement {
     firstName: {
       inputName: 'firstName',
       captionContent: '성을 입력하세요',
-      value: firstName,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         setFirstName(e.target.value);
       },
@@ -66,7 +64,6 @@ function SignUpPage(): React.ReactElement {
     lastName: {
       inputName: 'lastName',
       captionContent: '이름을 입력하세요',
-      value: lastName,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         setLastName(e.target.value);
       },
@@ -78,7 +75,6 @@ function SignUpPage(): React.ReactElement {
     phoneNumber: {
       inputName: 'phoneNumber',
       captionContent: '올바른 휴대폰 번호가 아닙니다.',
-      value: phoneNumber,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         setPhoneNumber(e.target.value);
       },
@@ -91,7 +87,6 @@ function SignUpPage(): React.ReactElement {
       inputName: 'password',
       captionContent:
         '비밀번호는 대소문자, 특수문자, 숫자를 포함한 8글자 이상이어야 합니다.',
-      value: password,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
       },
