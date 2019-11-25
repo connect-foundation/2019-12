@@ -75,7 +75,7 @@ export const defaultInput: React.FC = () => {
       <h1 style={{ marginBottom: '4rem' }}>
         *state를 주입해야 하는 컴포넌트이기 때문에 아래의 Knob로 인풋 변경 가능
       </h1>
-      {<SignUpForm FormInputs={FormInputs} Button={Button} />}
+      <SignUpForm FormInputs={FormInputs} Button={Button} />
     </>
   );
 };
