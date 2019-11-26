@@ -9,6 +9,7 @@ import {
   BelongsTo,
   HasMany,
   DataType,
+  AutoIncrement,
 } from 'sequelize-typescript';
 import { User } from './User';
 import { Event } from './Event';
@@ -18,8 +19,9 @@ import { OrderTicket } from './OrderTicket';
   underscored: true,
 })
 export class Order extends Model<Order> {
+  @AutoIncrement
   @PrimaryKey
-  @Column
+  @Column(DataType.NUMBER)
   public id!: number;
 
   @ForeignKey(() => User)
