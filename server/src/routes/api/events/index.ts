@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
 import getEvents from './controllers/getEvents';
+import getEventsValidator from './validators/getEvents';
 import { badRequestHandler } from '../../../utils/errorHandler';
-import { getEventsValidation } from '../../../middlewares/event';
 
 const router = Router();
 
-router.get('/', getEventsValidation, badRequestHandler, getEvents);
+router.get('/', getEventsValidator, badRequestHandler, getEvents);
 
 export default router;
