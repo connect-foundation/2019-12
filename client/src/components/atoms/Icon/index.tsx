@@ -9,6 +9,8 @@ interface Props {
   height?: string;
   /** 아이콘 소스 */
   src: any;
+  /** custom style */
+  style?: object;
 }
 
 function Icon({ height = '2rem', ...props }: Props): React.ReactElement {
