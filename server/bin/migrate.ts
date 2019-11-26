@@ -1,4 +1,4 @@
 import '../src/env';
-import { migrate } from '../src/services/sequelize';
+import { migrate } from '../src/utils/sequelize';
 
 migrate();
