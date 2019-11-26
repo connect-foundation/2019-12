@@ -14,7 +14,7 @@
     "build-storybook": "build-storybook -s public",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
-    "precommit": "lint-staged",
+    "precommit": "tsc --noEmit && lint-staged",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\""
   },
   "dependencies": {
@@ -41,9 +41,9 @@
     "@storybook/addon-viewport": "^5.2.5",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
-    "@types/react-router-dom": "^5.1.2",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/react-router-dom": "^5.1.2",
     "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
@@ -61,6 +61,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
+    "jest-styled-components": "^6.3.4",
     "lint-staged": "^9.4.2",
     "react": "^16.11.0",
     "react-docgen-typescript-loader": "^3.4.0",
@@ -105,10 +106,6 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,scss,css,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "*.{ts,tsx}": [
-      "tsc --noEmit --strict --skipLibCheck --esModuleInterop --jsx react",
       "git add"
     ],
     "*.{ts,tsx,js,jsx}": [
