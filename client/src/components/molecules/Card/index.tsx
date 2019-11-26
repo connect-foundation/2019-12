@@ -4,7 +4,7 @@ import { EVENT_NAME_MAX_LENGTH } from '../../../commons/constants/number';
 import * as S from './style';
 import Divider from '../../atoms/Divider';
 
-interface Props {
+export interface Props {
   /** 이벤트 URL */
   href: string;
   /** 이벤트 이름 */

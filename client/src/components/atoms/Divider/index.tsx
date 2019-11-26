@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 
-interface Props {
+export interface Props {
   /** 두께 */
   borderWidth?: string;
   /** Border 스타일 */
