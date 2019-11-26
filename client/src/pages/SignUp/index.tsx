@@ -3,6 +3,8 @@ import SignUpTemplate from './template';
 import SignUpForm from '../../components/organisms/SignUpForm';
 import Btn from '../../components/atoms/Btn';
 
+import axios from 'axios';
+
 import {
   SIGNUP_EMAIL,
   SIGNUP_FIRST_NAME,
@@ -30,9 +32,21 @@ function SignUpPage(): React.ReactElement {
     console.log(email, lastName, firstName, phoneNumber);
   }, [email, lastName, firstName, phoneNumber]);
 
+  const instanceWithCredential = axios.create({
+    baseURL: 'http://localhost:13000/',
+    timeout: 180000,
+    withCredentials: true,
+  });
+
   useEffect(() => {
-    console.log(submit);
-    setSubmit(false);
+    (async function getToken() {
+      const response = await axios('http://localhost:13000/api/auth', {
+        method: 'post',
+        withCredentials: true,
+      });
+      console.log(response);
+      setSubmit(false);
+    })();
   }, [submit]);
 
   const FormInputs = {
@@ -45,7 +59,7 @@ function SignUpPage(): React.ReactElement {
       },
       labelProps: {
         name: SIGNUP_EMAIL,
-        required: true,
+        required: false,
       },
     },
     firstName: {
