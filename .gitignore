@@ -4,6 +4,7 @@ dist/
 coverage/
 build/
 .env
+.env.*
 !.env.template
 
 # Default
