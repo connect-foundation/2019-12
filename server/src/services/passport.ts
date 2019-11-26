@@ -2,7 +2,7 @@ import * as passport from 'passport';
 import * as GoogleStrategy from 'passport-google-oauth';
 const passportGoogle = GoogleStrategy.OAuth2Strategy;
 
-import { generateJWT } from '../middlewares/jwt';
+import { generateJWT } from '../utils/jwt';
 import { getUserByGoogleId, setUser } from '.';
 
 const makeUserObj: any = async (
@@ -11,7 +11,7 @@ const makeUserObj: any = async (
   googleId: number,
   email: string,
 ) => {
-  const token = await generateJWT(id, +googleId, email);
+  const token = await generateJWT(exist, id, +googleId, email);
   return {
     exist,
     googleId: +googleId,
@@ -61,19 +61,19 @@ export default function setUpPassport(): void {
           const user = await getUserByGoogleId(+googleId);
           if (user) {
             const userObj = await makeUserObj(true, user.id, googleId, email);
-            return done(null, userObj, { message: 'Success' });
+            done(null, userObj, { message: 'Success' });
           } else {
-            const insertUser = await setUser(+googleId, email);
-            if (insertUser !== null) {
+            const insert = await setUser(+googleId, email);
+            if (insert !== null) {
               const userObj = await makeUserObj(
                 false,
-                insertUser.id,
+                insert.id,
                 googleId,
                 email,
               );
-              return done(null, userObj, { message: 'User Not Exist' });
+              done(null, userObj, { message: 'User Not Exist' });
             } else {
-              return done(null, false, { message: 'Duplicate User' });
+              done(null, false, { message: 'Duplicate User' });
             }
           }
         } catch (err) {
