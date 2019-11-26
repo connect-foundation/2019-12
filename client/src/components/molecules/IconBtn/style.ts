@@ -6,7 +6,7 @@ import Icon from '../../atoms/Icon';
 
 interface ContainerProps {
   fullid: boolean;
-  styleType: string;
+  styletype: string;
 }
 
 export const Container = styled.div<ContainerProps>`

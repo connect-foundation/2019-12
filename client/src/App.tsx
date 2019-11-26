@@ -6,6 +6,7 @@ import Normalize from '../src/commons/style/Normalize';
 import GlobalStyles from '../src/commons/style/GlobalStyle';
 
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 const App: React.FC = () => (
   <ThemeProvider theme={defaultTheme}>
@@ -13,9 +14,8 @@ const App: React.FC = () => (
     <GlobalStyles />
     <Router>
       <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
         <Route path="*">
           <div>404 page</div>
         </Route>

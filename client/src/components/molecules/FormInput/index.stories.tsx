@@ -10,6 +10,7 @@ export const defaultInput: React.FC = () => {
   return (
     <FormInput
       labelName={text('labelName', '이메일')}
+      inputName="email"
       required={boolean('required', false)}
       invalid={boolean('invalid', false)}
       disabled={boolean('disabled', false)}
@@ -22,6 +23,7 @@ export const requiredInput: React.FC = () => {
   return (
     <FormInput
       labelName={text('labelName', '이메일')}
+      inputName="email"
       required={boolean('required', true)}
       invalid={boolean('invalid', false)}
       disabled={boolean('disabled', false)}
@@ -34,6 +36,7 @@ export const invalidInput: React.FC = () => {
   return (
     <FormInput
       labelName={text('labelName', '이메일')}
+      inputName="email"
       required={boolean('required', true)}
       invalid={boolean('invalid', true)}
       disabled={boolean('disabled', false)}
@@ -46,6 +49,7 @@ export const disabledInput: React.FC = () => {
   return (
     <FormInput
       labelName={text('labelName', '이메일')}
+      inputName="email"
       required={boolean('required', false)}
       invalid={boolean('invalid', false)}
       disabled={boolean('disabled', true)}

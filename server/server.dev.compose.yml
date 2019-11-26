@@ -4,10 +4,10 @@ services:
     image: jdd04026/node-nodemon:latest
     container_name: bu-node
     ports:
-      - "13000:3000"
-    volumes: 
-      - ./:/server
+      - '13000:3000'
+    volumes:
       - ../node_modules:/server/node_modules
+      - ./:/server
     networks:
       - fon
 
@@ -22,7 +22,7 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=pass
     ports:
-      - "13306:3306"
+      - '13306:3306'
     networks:
       - fon
 
