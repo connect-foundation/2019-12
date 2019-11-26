@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as passport from 'passport';
 
-import { authCallback, authRequest } from './controllers';
+import * as controllers from './controllers';
 
 const { CLIENT_URL } = process.env;
 
@@ -12,8 +12,8 @@ router.get(
   passport.authenticate('google', {
     failureRedirect: `${CLIENT_URL}/login`,
   }),
-  authCallback,
+  controllers.authCallback,
 );
-router.get('/', authRequest);
+router.get('/', controllers.authRequest);
 
 export default router;
