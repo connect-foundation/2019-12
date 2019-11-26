@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
+.c0 {
+  height: 4rem;
+  width: 100%;
+  padding: 0 1rem;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+<Input
+  defaultValue="bookusgmail.com"
+  disabled={false}
+  invalid={true}
+  placeholder="이메일을 입력해주세요."
+>
+  <styled.input
+    defaultValue="bookusgmail.com"
+    disabled={false}
+    invalid={true}
+    placeholder="이메일을 입력해주세요."
+  >
+    <StyledComponent
+      defaultValue="bookusgmail.com"
+      disabled={false}
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  ",
+              [Function],
+              "
+  height: 4rem;
+  width: 100%;
+  padding: 0 1rem;
+
+  color: ",
+              [Function],
+              ";
+  background-color: ",
+              [Function],
+              ";
+
+  border: 1px solid
+    ",
+              [Function],
+              ";
+  border-radius: 2px;
+
+  &:focus {
+    outline: none;
+  }
+",
+            ],
+          },
+          "displayName": "styled.input",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "input",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      invalid={true}
+      placeholder="이메일을 입력해주세요."
+    >
+      <input
+        className="c0"
+        defaultValue="bookusgmail.com"
+        disabled={false}
+        placeholder="이메일을 입력해주세요."
+      />
+    </StyledComponent>
+  </styled.input>
+</Input>
+`;
