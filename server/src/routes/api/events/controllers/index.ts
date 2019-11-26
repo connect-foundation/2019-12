@@ -1,3 +1,1 @@
-import getEvents from './getEvents';
-
-export { getEvents };
+export { default as getEvents } from './getEvents';
