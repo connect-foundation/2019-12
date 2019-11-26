@@ -1,5 +1,5 @@
 import '../src/env';
-import { sequelize, seed } from '../src/services/sequelize';
+import { sequelize, seed } from '../src/utils/sequelize';
 
 sequelize.options.logging = false;
 
