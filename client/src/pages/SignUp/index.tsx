@@ -8,7 +8,6 @@ import {
   SIGNUP_FIRST_NAME,
   SIGNUP_LAST_NAME,
   SIGNUP_PHONE_NUMBER,
-  SIGNUP_PASSSWORD,
   SIGNUP_BTN,
 } from '../../commons/constants/string';
 
@@ -17,7 +16,6 @@ const initSignUpValue = {
   lastName: '',
   firstName: '',
   phoneNumber: '',
-  password: '',
 };
 
 function SignUpPage(): React.ReactElement {
@@ -41,6 +39,7 @@ function SignUpPage(): React.ReactElement {
     email: {
       inputName: 'email',
       captionContent: '이메일을 입력하세요',
+      disabled: true,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
       },
