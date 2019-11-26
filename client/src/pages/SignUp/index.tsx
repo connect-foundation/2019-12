@@ -25,13 +25,12 @@ function SignUpPage(): React.ReactElement {
   const [lastName, setLastName] = useState(initSignUpValue.lastName);
   const [firstName, setFirstName] = useState(initSignUpValue.firstName);
   const [phoneNumber, setPhoneNumber] = useState(initSignUpValue.phoneNumber);
-  const [password, setPassword] = useState(initSignUpValue.password);
 
   const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
-    console.log(email, lastName, firstName, phoneNumber, password);
-  }, [email, lastName, firstName, phoneNumber, password]);
+    console.log(email, lastName, firstName, phoneNumber);
+  }, [email, lastName, firstName, phoneNumber]);
 
   useEffect(() => {
     console.log(submit);
@@ -80,18 +79,6 @@ function SignUpPage(): React.ReactElement {
       },
       labelProps: {
         name: SIGNUP_PHONE_NUMBER,
-        required: true,
-      },
-    },
-    password: {
-      inputName: 'password',
-      captionContent:
-        '비밀번호는 대소문자, 특수문자, 숫자를 포함한 8글자 이상이어야 합니다.',
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-      },
-      labelProps: {
-        name: SIGNUP_PASSSWORD,
         required: true,
       },
     },

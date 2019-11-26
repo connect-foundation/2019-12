@@ -7,6 +7,7 @@ describe('Atom / Divider', () => {
     // given
     const wrapper = mount(
       <Input
+        inputName={'email'}
         invalid={true}
         disabled={false}
         defaultValue={'bookusgmail.com'}
