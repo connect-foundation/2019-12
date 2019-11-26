@@ -4,6 +4,7 @@ dist/
 coverage/
 build/
 .env
+!.env.template
 
 # Default
 .DS_Store
