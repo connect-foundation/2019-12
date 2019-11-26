@@ -1,3 +1,4 @@
+import '../src/env';
 import * as express from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as passport from 'passport';

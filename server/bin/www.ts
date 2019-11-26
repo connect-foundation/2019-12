@@ -1,4 +1,3 @@
-import '../src/env';
 import app from '../src/app';
 import '../src/utils/sequelize';
 
