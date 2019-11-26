@@ -20,7 +20,7 @@ import { TicketType } from './TicketType';
 export class Event extends Model<Event> {
   @AutoIncrement
   @PrimaryKey
-  @Column(DataType.INTEGER)
+  @Column
   public id!: number;
 
   @ForeignKey(() => User)
