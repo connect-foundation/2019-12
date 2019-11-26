@@ -5,26 +5,24 @@ const { CLIENT_URL } = process.env;
 export const authCallback = (req: any, res: Response) => {
   try {
     const isUserExist: boolean = req.user ? req.user.exist : false;
+
+    res.cookie('UID', req.user.token, {
+      maxAge: 1000 * 60 * 60 * 60,
+    });
+
     if (isUserExist) {
       const { state } = req.query;
       const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
-      res.setHeader(
-        'Set-Cookie',
-        `token=${req.user.token};Max-Age=21474836;Path=/;HttpOnly`,
-      );
       if (typeof returnTo === 'string' && returnTo.startsWith('/')) {
-        res.redirect(CLIENT_URL + returnTo);
+        res.redirect(`${CLIENT_URL}${returnTo}`);
       } else {
         res.redirect(`${CLIENT_URL}/`);
       }
     } else {
-      res.setHeader(
-        'Set-Cookie',
-        `token=${req.user.token};Max-Age=21474836;Path=/;HttpOnly`,
-      );
       res.redirect(`${CLIENT_URL}/signup`);
     }
-  } catch {
-    res.redirect(`${CLIENT_URL}/`);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
   }
 };
