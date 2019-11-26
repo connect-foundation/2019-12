@@ -14,6 +14,9 @@ router.get(
   }),
   controllers.authCallback,
 );
-router.get('/', controllers.authRequest);
+router
+  .route('/')
+  .get(controllers.authRequest)
+  .post(controllers.authToken);
 
 export default router;
