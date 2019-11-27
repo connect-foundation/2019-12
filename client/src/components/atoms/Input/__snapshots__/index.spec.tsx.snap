@@ -14,19 +14,21 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
 }
 
 <Input
-  defaultValue="bookusgmail.com"
+  defaultValue="bookus@gmail.com"
   disabled={false}
+  inputName="email"
   invalid={true}
   placeholder="이메일을 입력해주세요."
 >
   <styled.input
-    defaultValue="bookusgmail.com"
+    defaultValue="bookus@gmail.com"
     disabled={false}
     invalid={true}
+    name="email"
     placeholder="이메일을 입력해주세요."
   >
     <StyledComponent
-      defaultValue="bookusgmail.com"
+      defaultValue="bookus@gmail.com"
       disabled={false}
       forwardedComponent={
         Object {
@@ -76,12 +78,14 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
       }
       forwardedRef={null}
       invalid={true}
+      name="email"
       placeholder="이메일을 입력해주세요."
     >
       <input
         className="c0"
-        defaultValue="bookusgmail.com"
+        defaultValue="bookus@gmail.com"
         disabled={false}
+        name="email"
         placeholder="이메일을 입력해주세요."
       />
     </StyledComponent>

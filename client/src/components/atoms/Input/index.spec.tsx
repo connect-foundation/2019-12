@@ -10,7 +10,7 @@ describe('Atom / Divider', () => {
         inputName={'email'}
         invalid={true}
         disabled={false}
-        defaultValue={'bookusgmail.com'}
+        defaultValue={'bookus@gmail.com'}
         placeholder={'이메일을 입력해주세요.'}
       />,
     );

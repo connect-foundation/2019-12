@@ -1,5 +1,5 @@
 import '../../src/env';
-import { sequelize } from '../../src/services/sequelize';
+import { sequelize } from '../../src/utils/sequelize';
 import {
   Event,
   Order,
