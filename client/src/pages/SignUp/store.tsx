@@ -1,29 +1,13 @@
-import React, { useState, useEffect, createContext, useReducer } from 'react';
+import React, { useEffect, createContext, useReducer, Dispatch } from 'react';
 import {
   validatePhoneNumber,
   validateName,
 } from '../../utils/ValidateSignUpForm';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { reducer, State, ActionParams } from './reducer';
 
-const initSignUpValue = {
-  email: '',
-  lastName: '',
-  firstName: '',
-  phoneNumber: '',
-};
-interface State {
-  email: string;
-  lastName: string;
-  firstName: string;
-  phoneNumber: string;
-  phoneValidate: boolean;
-  firstNameValidate: boolean;
-  lastNameValidate: boolean;
-  submit: boolean;
-}
-
-export const SignUpState = createContext<State>({
+const defaultState = {
   email: '',
   lastName: '',
   firstName: '',
@@ -32,56 +16,58 @@ export const SignUpState = createContext<State>({
   firstNameValidate: false,
   lastNameValidate: false,
   submit: false,
-});
-export const SignUpAction = createContext<any>(undefined);
+};
+
+export const SignUpState = createContext<State>(defaultState);
+export const SignUpAction = createContext<Dispatch<ActionParams>>(
+  ({ type, value }: ActionParams) => {},
+);
 
 function StoreProvider({ children }: { children: React.ReactElement }) {
   const history = useHistory();
-
-  const [email, setEmail] = useState<string>(initSignUpValue.email);
-  const [lastName, setLastName] = useState<string>(initSignUpValue.lastName);
-  const [firstName, setFirstName] = useState<string>(initSignUpValue.firstName);
-  const [phoneNumber, setPhoneNumber] = useState<string>(
-    initSignUpValue.phoneNumber,
-  );
-  const [phoneValidate, setPhoneValidate] = useState<boolean>(false);
-  const [firstNameValidate, setFirstNameValidate] = useState<boolean>(false);
-  const [lastNameValidate, setLastNameValidate] = useState<boolean>(false);
-
-  const [submit, setSubmit] = useState<boolean>(false);
+  const [States, Dispatcher] = useReducer(reducer, defaultState);
 
   useEffect(() => {
-    console.log(lastName, firstName, phoneNumber);
-  }, [lastName, firstName, phoneNumber]);
+    console.log('States changed', States);
+  }, [States]);
 
   // Validation Features
   useEffect(() => {
-    setPhoneValidate(!validatePhoneNumber(phoneNumber));
-  }, [phoneNumber]);
+    Dispatcher({
+      type: 'phoneValidate',
+      value: !validatePhoneNumber(States.phoneNumber),
+    });
+  }, [States.phoneNumber]);
   useEffect(() => {
-    setFirstNameValidate(!validateName(firstName));
-  }, [firstName]);
+    Dispatcher({
+      type: 'firstNameValidate',
+      value: !validateName(States.firstName),
+    });
+  }, [States.firstName]);
   useEffect(() => {
-    setLastNameValidate(!validateName(lastName));
-  }, [lastName]);
+    Dispatcher({
+      type: 'lastNameValidate',
+      value: !validateName(States.lastName),
+    });
+  }, [States.lastName]);
 
   // Axios
   useEffect(() => {
     (async function getToken() {
-      if (submit) {
+      if (States.submit) {
         // Submit 하기 이전 Token에서 Email을 뽑아옴.
         const getTokenRes = await axios('http://localhost:13000/api/auth', {
           method: 'post',
           withCredentials: true,
         });
-        setSubmit(false);
+        Dispatcher({ type: 'submit', value: false });
         // Userdata를 서버로 보냄.
         const userData = Object.assign(
           { ...getTokenRes.data },
           {
-            firstName,
-            lastName,
-            phoneNumber,
+            firstName: States.firstName,
+            lastName: States.lastName,
+            phoneNumber: States.phoneNumber,
           },
         );
         const updateUserRes = await axios('http://localhost:13000/api/users', {
@@ -94,33 +80,17 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         }
       }
     })();
-  }, [firstName, history, lastName, phoneNumber, submit]);
+  }, [
+    States.firstName,
+    history,
+    States.lastName,
+    States.phoneNumber,
+    States.submit,
+  ]);
 
   return (
-    <SignUpAction.Provider
-      value={{
-        setEmail,
-        setLastName,
-        setFirstName,
-        setPhoneNumber,
-        setPhoneValidate,
-        setSubmit,
-      }}
-    >
-      <SignUpState.Provider
-        value={{
-          email,
-          lastName,
-          firstName,
-          phoneNumber,
-          phoneValidate,
-          firstNameValidate,
-          lastNameValidate,
-          submit,
-        }}
-      >
-        {children}
-      </SignUpState.Provider>
+    <SignUpAction.Provider value={Dispatcher}>
+      <SignUpState.Provider value={States}>{children}</SignUpState.Provider>
     </SignUpAction.Provider>
   );
 }
