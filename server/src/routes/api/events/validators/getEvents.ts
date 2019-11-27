@@ -1,6 +1,6 @@
 import { checkSchema } from 'express-validator';
 
-export const getEventsValidation = checkSchema({
+export default checkSchema({
   cnt: {
     in: 'query',
     errorMessage: 'cnt is wrong.',

@@ -4,8 +4,8 @@ dist/
 coverage/
 build/
 .env
-client/.env.development
-client/.env.production
+.env.*
+!.env.template
 
 # Default
 .DS_Store
