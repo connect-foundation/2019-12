@@ -10,3 +10,21 @@ export function badRequestHandler(
     return res.status(400).json(validationResult(req));
   next();
 }
+
+export function notFoundHandler(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  res.sendStatus(404);
+}
+
+export function internelServerErrorHandler(
+  error: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  console.error(error.message);
+  res.sendStatus(500);
+}
