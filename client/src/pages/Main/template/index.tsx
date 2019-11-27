@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import Template from '../../BasicPage/templates';
+import BasedTemplate from '../../BasedTemplate/templates';
 
 interface Props {
   mainBanner: React.ReactNode;
@@ -9,10 +9,10 @@ interface Props {
 
 function MainTemplate({ mainBanner, cardGrid }: Props): React.ReactElement {
   return (
-    <Template>
+    <BasedTemplate>
       <S.MainBannerContainer>{mainBanner}</S.MainBannerContainer>
       <S.EventCardGridContainer>{cardGrid}</S.EventCardGridContainer>
-    </Template>
+    </BasedTemplate>
   );
 }
 
