@@ -19,7 +19,7 @@ import { Order } from './Order';
 export class OrderTicket extends Model<OrderTicket> {
   @AutoIncrement
   @PrimaryKey
-  @Column(DataType.NUMBER)
+  @Column
   public id!: number;
 
   @ForeignKey(() => TicketType)
