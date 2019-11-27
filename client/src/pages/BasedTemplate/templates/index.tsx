@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function Page({ children }: Props): React.ReactElement {
+function BasedTemplate({ children }: Props): React.ReactElement {
   return (
     <S.Container>
       <S.HeaderWrapper>
@@ -22,4 +22,4 @@ function Page({ children }: Props): React.ReactElement {
   );
 }
 
-export default Page;
+export default BasedTemplate;
