@@ -44,7 +44,9 @@
   "scripts": {
     "start:prod": "node bin/www.js",
     "start:dev": "nodemon",
-    "start:docker": "docker-compose up -d",
+    "db:start": "docker-compose up -d",
+    "db:stop": "docker-compose down",
+    "db:restart": "docker-compose restart",
     "db:migrate": "ts-node bin/migrate",
     "db:seed": "ts-node bin/seed",
     "build": "tsc",
