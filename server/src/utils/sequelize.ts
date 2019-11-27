@@ -7,7 +7,7 @@ import {
   TicketType,
   User,
 } from '../models';
-import { readJSONData } from '../utils/readJSON';
+import { readJSONData } from './readJSON';
 import { resolve } from 'path';
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PW, DB_NAME } = process.env;

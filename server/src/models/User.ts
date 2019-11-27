@@ -7,6 +7,7 @@ import {
   UpdatedAt,
   DataType,
   HasMany,
+  AutoIncrement,
 } from 'sequelize-typescript';
 import { Order } from './Order';
 import { Event } from './Event';
@@ -15,6 +16,7 @@ import { Event } from './Event';
   underscored: true,
 })
 export class User extends Model<User> {
+  @AutoIncrement
   @PrimaryKey
   @Column
   public id!: number;

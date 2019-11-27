@@ -3,20 +3,33 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start:prod": "node bin/www.js",
+    "start:dev": "nodemon",
+    "db:start": "docker-compose up -d",
+    "db:stop": "docker-compose down",
+    "db:restart": "docker-compose restart",
+    "db:migrate": "ts-node bin/migrate",
+    "db:seed": "ts-node bin/seed",
+    "build": "tsc",
+    "test": "jest",
+    "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
+    "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
+    "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
+    "lint:type": "tsc --noEmit",
+    "precommit": "lint-staged"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
-    "eslint-plugin-jest": "^23.0.3",
     "express": "^4.17.1",
     "express-validator": "^6.3.0",
-    "jest": "^24.9.0",
     "mariadb": "^2.1.2",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.2",
-    "sequelize-typescript": "^1.0.0",
-    "ts-jest": "^24.1.0"
+    "sequelize-typescript": "^1.0.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.29",
@@ -35,25 +48,13 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.0.3",
     "husky": "^3.0.9",
+    "jest": "^24.9.0",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
+    "ts-jest": "^24.2.0",
     "ts-node": "^8.5.0",
     "typescript": "^3.7.2"
-  },
-  "scripts": {
-    "start:prod": "node bin/www.js",
-    "start:dev": "nodemon",
-    "start:docker": "docker-compose -f server.dev.compose.yml up -d",
-    "db:migrate": "ts-node bin/migrate",
-    "db:seed": "ts-node bin/seed",
-    "build": "tsc",
-    "test": "jest",
-    "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
-    "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
-    "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
-    "lint:type": "tsc --noEmit",
-    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,scss,css,md}": [

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 
-interface Props {
+export interface Props {
   /** name of input */
   inputName: string;
   /** is invalid? */
@@ -15,7 +15,7 @@ interface Props {
   /** input value(state) */
   value?: string;
   /** onChange handler(setState) */
-  onChange?: (e: any) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Input({ inputName, ...props }: Props): React.ReactElement {

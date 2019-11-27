@@ -1,14 +1,10 @@
 import React from 'react';
 import * as S from './style';
-import Label from '../../atoms/Label';
+import Label, { Props as LabelProps } from '../../atoms/Label';
 
-interface Props {
+export interface Props {
   /** name of input */
   inputName: string;
-  /** 인풋의 라벨 이름 */
-  labelName: string;
-  /** is required? */
-  required?: boolean;
   /** is invalid? */
   invalid?: boolean;
   /** is disabled */
@@ -20,21 +16,23 @@ interface Props {
   /** input value */
   value?: string;
   /** onChange handler */
-  onChange?: (e: any) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** invalid할 경우 표시할 메시지 */
-  captionContent: string;
+  captionContent?: string;
+  /** Label에 들어갈 Props */
+  labelProps: LabelProps;
 }
 
 function FormInput({
-  labelName,
   captionContent,
   invalid = false,
-  required = false,
+  labelProps,
   ...props
 }: Props): React.ReactElement {
+  const { name } = labelProps;
   return (
     <S.FormInputContainer>
-      <Label name={labelName} required={required} />
+      <Label name={name} {...labelProps} />
       <S.FormInput invalid={invalid} {...props} />
       <S.FormCaption invalid={invalid}>{captionContent}</S.FormCaption>
     </S.FormInputContainer>

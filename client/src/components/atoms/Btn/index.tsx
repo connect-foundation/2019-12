@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 
-interface Props {
+export interface Props {
   /** 버튼 내용 */
   content: string;
   /** react-router/Link 사용 (내부적인 routing)*/

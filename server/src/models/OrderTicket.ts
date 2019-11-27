@@ -8,6 +8,7 @@ import {
   Column,
   DataType,
   BelongsTo,
+  AutoIncrement,
 } from 'sequelize-typescript';
 import { TicketType } from './TicketType';
 import { Order } from './Order';
@@ -16,6 +17,7 @@ import { Order } from './Order';
   underscored: true,
 })
 export class OrderTicket extends Model<OrderTicket> {
+  @AutoIncrement
   @PrimaryKey
   @Column
   public id!: number;
