@@ -18,7 +18,7 @@ import { Event } from './Event';
 export class User extends Model<User> {
   @AutoIncrement
   @PrimaryKey
-  @Column(DataType.NUMBER)
+  @Column
   public id!: number;
 
   @Column(DataType.STRING)
