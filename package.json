@@ -22,8 +22,7 @@
     "precommit:server": "yarn workspace server precommit",
     "precommit:client": "yarn workspace client precommit",
     "precommit": "run-p precommit:server precommit:client",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\"",
-    "posttest": "yarn format"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\""
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
