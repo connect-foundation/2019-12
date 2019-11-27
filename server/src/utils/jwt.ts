@@ -1,4 +1,5 @@
 import * as JWT from 'jsonwebtoken';
+import { tokentype } from '../types';
 const { JWT_SECURE } = process.env;
 
 export function generateJWT(
@@ -7,17 +8,17 @@ export function generateJWT(
   googleId: number,
   email: string,
 ): Promise<JWT.Secret> {
+  const payload: tokentype = {
+    exist,
+    id,
+    googleId,
+    email,
+  };
   return new Promise((resolve, reject) => {
     JWT.sign(
-      {
-        exist,
-        id,
-        googleId,
-        email,
-      },
+      payload,
       JWT_SECURE || '',
       {
-        // Expire Date를 외부로 빼야함.
         expiresIn: 1000 * 60 * 60 * 24,
       },
       (err, token) => {
