@@ -14,8 +14,9 @@
     ]
   },
   "scripts": {
+    "test": "run-s test:server test:client",
     "test:server": "yarn workspace server test",
-    "test:client": "yarn workspace client test && yarn workspace client test:cypress",
+    "test:client": "yarn workspace client test",
     "lint": "run-p lint:server lint:client",
     "lint:server": "yarn workspace server lint:fix",
     "lint:client": "yarn workspace client lint:fix",
