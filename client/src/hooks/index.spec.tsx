@@ -86,7 +86,6 @@ describe('Hooks', () => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {
-            expect(steps[step]).toEqual(resultTypes[step]);
             step += 1;
             if (steps.length === step) {
               return res();
@@ -96,5 +95,6 @@ describe('Hooks', () => {
         });
       })();
     });
+    expect(steps).toEqual(resultTypes);
   });
 });
