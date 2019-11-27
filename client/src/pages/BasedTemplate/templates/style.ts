@@ -25,6 +25,5 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const FooterWrapper = styled.div`
-  height: 6.8rem;
   ${commonStyle}
 `;

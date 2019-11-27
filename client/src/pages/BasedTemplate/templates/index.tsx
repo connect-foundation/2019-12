@@ -5,7 +5,7 @@ import Header from '../../../components/organisms/Header';
 import Footer from '../../../components/organisms/Footer';
 
 interface Props {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 function Page({ children }: Props): React.ReactElement {
