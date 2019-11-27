@@ -10,4 +10,4 @@ if (!PORT) {
 }
 
 app.listen(PORT);
-console.info('Server is running...!!');
+console.info(`Server is running on ${PORT}`);
