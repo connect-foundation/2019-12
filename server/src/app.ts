@@ -18,6 +18,15 @@ app.use(cookieParser());
 app.use(passport.initialize());
 setUpPassport();
 
+app.all(
+  '/*',
+  (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    next();
+  },
+);
+
 app.use('/api', indexRouter);
 
 app.use(notFoundHandler);
