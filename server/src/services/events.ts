@@ -40,7 +40,7 @@ export async function getEventById(id: number): Promise<Event> {
         exclude: ['createdAt', 'updatedAt'],
       },
     },
-    { model: User, attributes: ['id', 'last_name', 'first_name'] },
+    { model: User, attributes: ['id', 'lastName', 'firstName'] },
   ];
 
   const event = await Event.findOne({ where, attributes, include });
