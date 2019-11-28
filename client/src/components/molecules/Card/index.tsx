@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { EVENT_NAME_MAX_LENGTH } from '../../../commons/constants/number';
 import * as S from './style';
 import Divider from '../../atoms/Divider';
-import useIntersect from '../../../pages/Main/useIntersect';
+import { useIntersect } from '../../../hooks';
 
 export interface Props {
   /** 라우팅 URL */
