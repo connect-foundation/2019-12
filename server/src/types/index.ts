@@ -1,1 +1,0 @@
-export { tokentype } from './token';
