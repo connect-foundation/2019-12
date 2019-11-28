@@ -19,11 +19,12 @@ export const index: React.FC = () => (
 );
 
 export const circular: React.FC = () => (
-  <Icon
-    alt={text('alt', 'External Link Icon')}
-    height={text('height', '2rem')}
-    src={ExternalLinkSymbol}
-    circular={true}
-    circularColor={'orange'}
-  />
+  <div style={{ padding: '1rem', backgroundColor: 'gray' }}>
+    <Icon
+      alt={text('alt', 'External Link Icon')}
+      height={text('height', '2rem')}
+      src={ExternalLinkSymbol}
+      circular={true}
+    />
+  </div>
 );

@@ -14,27 +14,9 @@ export interface Props {
   style?: object;
   /** circular img */
   circular?: boolean;
-  /** circular background color */
-  circularColor?: string;
 }
 
 function Icon({ height = '2rem', ...props }: Props): React.ReactElement {
-  const { circular } = props;
-  const circleProps = {
-    height,
-    size: `${parseInt(height) + 2}rem`,
-    borderWidth: `${parseInt(height) / 2}rem`,
-    circularColor: props.circularColor,
-  };
-
-  if (circular) {
-    return (
-      <S.Wrapper {...circleProps}>
-        <S.Img height={height} {...props} />
-      </S.Wrapper>
-    );
-  }
-
   return <S.Img height={height} {...props} />;
 }
 
