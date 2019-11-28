@@ -13,7 +13,7 @@ export interface Props {
   /** 이벤트 날짜 */
   date: string;
   /** 이벤트 이름 */
-  name: string;
+  title: string;
   /** 호스트 이름 */
   host: string;
   /** 가격 */
@@ -24,7 +24,7 @@ function Card({
   to,
   imgSrc,
   date,
-  name,
+  title,
   host,
   price,
 }: Props): React.ReactElement {
@@ -45,7 +45,10 @@ function Card({
       threshold: 0.1,
     },
   );
-
+  const eventTitle =
+    title.length >= EVENT_NAME_MAX_LENGTH
+      ? `${title.slice(0, EVENT_NAME_MAX_LENGTH)}...`
+      : title;
   return (
     <S.LinkWrapper to={to}>
       <S.HeaderWrapper></S.HeaderWrapper>
@@ -53,11 +56,13 @@ function Card({
       <S.InnerContainer>
         <S.ContentContainer>
           <S.Date>{date}</S.Date>
-          <S.Name>{`${name.slice(0, EVENT_NAME_MAX_LENGTH)}...`}</S.Name>
+          <S.Title>{eventTitle}</S.Title>
           <S.Host>{host}</S.Host>
         </S.ContentContainer>
-        <Divider />
-        <S.Price>{price}</S.Price>
+        <S.FooterContainer>
+          <Divider />
+          <S.Price>{price}</S.Price>
+        </S.FooterContainer>
       </S.InnerContainer>
     </S.LinkWrapper>
   );

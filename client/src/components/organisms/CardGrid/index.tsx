@@ -17,7 +17,7 @@ function CardGrid({ cards, setRef }: Props): React.ReactElement {
             key={card.id}
             imgSrc={card.mainImg}
             date={card.startAt}
-            name={card.title}
+            title={card.title}
             host={card.user.lastName + card.user.firstName}
             price={card.ticketTypes[0].price} // TODO: db 수정 후 바꿔야함
             to={`/events/${card.id}`}

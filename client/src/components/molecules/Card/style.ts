@@ -16,7 +16,7 @@ export const InnerContainer = styled.div`
   height: 20rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1rem;
 `;
 
@@ -25,6 +25,12 @@ export const ContentContainer = styled.div`
   flex-direction: column;
 `;
 
+export const FooterContainer = styled.div`
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 interface ImgDivProps {
   imgSrc: string;
 }
@@ -41,8 +47,8 @@ export const Date = styled.span`
   line-height: 2;
 `;
 
-export const Name = styled.h3`
-  ${theme('fontStyle.h5')}
+export const Title = styled.h3`
+  ${theme('fontStyle.h6')}
   color: ${palette('grayscale', 1)};
   line-height: 1.3;
 `;
@@ -56,4 +62,5 @@ export const Host = styled.span`
 export const Price = styled.span`
   ${theme('fontStyle.body2')}
   color: ${palette('grayscale', 1)};
+  padding-bottom: 0.5rem;
 `;
