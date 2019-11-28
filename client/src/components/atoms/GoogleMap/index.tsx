@@ -1,13 +1,9 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import Axios from 'axios';
-import HttpStatus from 'http-status';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-import ROUTES from '../../../commons/constants/routes';
 import * as S from './style';
 import Icon from '../Icon';
 import Pin from '../../../assets/img/pin.svg';
-import { func } from 'prop-types';
 
 const { REACT_APP_GOOGLE_MAP_API_KEY } = process.env;
 const defaultZoom = 17;
@@ -20,6 +16,17 @@ interface Props {
   };
 }
 
+/*
+ const { status, candidates } = await Axios.get(ROUTES.GOOGLE_MAP_API, {
+      params: {
+        key: REACT_APP_GOOGLE_MAP_API_KEY,
+        input: address,
+        inputtype: 'textquery',
+        language: 'ko',
+        fields: 'geometry/location',
+      },
+    });
+    */
 function GoogleMap({ location }: Props): React.ReactElement {
   return (
     <S.Container>
