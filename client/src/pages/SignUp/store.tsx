@@ -1,13 +1,17 @@
 import React, { useEffect, createContext, useReducer, Dispatch } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+import { useStateReducer } from '../../hooks/base/useStateReduter';
+import { ActionParams } from '../../types/Actions';
+import { SignUpFormState } from '../../types/States';
+import { UseStateReducer } from '../../types/CustomHooks';
 import {
   validatePhoneNumber,
   validateName,
-} from '../../utils/ValidateSignUpForm';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { reducer, State, ActionParams } from './reducer';
+} from '../../utils/validateSignUpForms';
 
-const defaultState = {
+const defaultState: SignUpFormState = {
   email: '',
   lastName: '',
   firstName: '',
@@ -18,79 +22,85 @@ const defaultState = {
   submit: false,
 };
 
-export const SignUpState = createContext<State>(defaultState);
-export const SignUpAction = createContext<Dispatch<ActionParams>>(
-  ({ type, value }: ActionParams) => {},
-);
+export const SignUpState = createContext<SignUpFormState>(defaultState);
+export const SignUpAction = createContext<
+  Dispatch<ActionParams<SignUpFormState>>
+>(() => {});
 
 function StoreProvider({ children }: { children: React.ReactElement }) {
   const history = useHistory();
-  const [States, Dispatcher] = useReducer(reducer, defaultState);
-
-  useEffect(() => {
-    console.log('States changed', States);
-  }, [States]);
+  const [states, dispatcher] = useReducer<UseStateReducer<SignUpFormState>>(
+    useStateReducer,
+    defaultState,
+  );
+  const { phoneNumber, firstName, lastName, submit } = states;
 
   // Validation Features
   useEffect(() => {
-    Dispatcher({
+    dispatcher({
       type: 'phoneValidate',
-      value: !validatePhoneNumber(States.phoneNumber),
+      value: !validatePhoneNumber(phoneNumber),
     });
-  }, [States.phoneNumber]);
+  }, [phoneNumber]);
   useEffect(() => {
-    Dispatcher({
+    dispatcher({
       type: 'firstNameValidate',
-      value: !validateName(States.firstName),
+      value: !validateName(firstName),
     });
-  }, [States.firstName]);
+  }, [firstName]);
   useEffect(() => {
-    Dispatcher({
+    dispatcher({
       type: 'lastNameValidate',
-      value: !validateName(States.lastName),
+      value: !validateName(lastName),
     });
-  }, [States.lastName]);
+  }, [lastName]);
 
   // Axios
   useEffect(() => {
     (async function getToken() {
-      if (States.submit) {
+      if (submit) {
+        dispatcher({ type: 'submit', value: false });
         // Submit 하기 이전 Token에서 Email을 뽑아옴.
         const getTokenRes = await axios('http://localhost:13000/api/auth', {
           method: 'post',
           withCredentials: true,
         });
-        Dispatcher({ type: 'submit', value: false });
         // Userdata를 서버로 보냄.
         const userData = Object.assign(
           { ...getTokenRes.data },
           {
-            firstName: States.firstName,
-            lastName: States.lastName,
-            phoneNumber: States.phoneNumber,
+            firstName,
+            lastName,
+            phoneNumber,
           },
         );
-        const updateUserRes = await axios('http://localhost:13000/api/users', {
-          method: 'post',
-          data: userData,
-          withCredentials: true,
-        });
-        if (updateUserRes.status === 200) {
-          history.push('/');
+        try {
+          const updateUserRes = await axios(
+            'http://localhost:13000/api/users',
+            {
+              method: 'post',
+              data: userData,
+              withCredentials: true,
+            },
+          );
+          if (updateUserRes.status === 200) {
+            alert('회원가입이 완료되었습니다.');
+            history.push('/');
+          }
+        } catch (err) {
+          //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
+          if (err.response.status === 400) {
+            alert('이미 가입되어있는 회원입니다.');
+            history.push('/');
+          }
         }
       }
     })();
-  }, [
-    States.firstName,
-    history,
-    States.lastName,
-    States.phoneNumber,
-    States.submit,
-  ]);
+  }, [firstName, history, lastName, phoneNumber, submit]);
 
   return (
-    <SignUpAction.Provider value={Dispatcher}>
-      <SignUpState.Provider value={States}>{children}</SignUpState.Provider>
+    <SignUpAction.Provider value={dispatcher}>
+      <SignUpState.Provider value={states}>{children}</SignUpState.Provider>
     </SignUpAction.Provider>
   );
 }
