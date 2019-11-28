@@ -7,6 +7,7 @@ import GlobalStyles from '../src/commons/style/GlobalStyle';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import EventDetail from './pages/EventDetail';
 
 const App: React.FC = () => (
   <ThemeProvider theme={defaultTheme}>
@@ -16,6 +17,7 @@ const App: React.FC = () => (
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route exact path="/events/:eventId([0-9])" component={EventDetail} />
         <Route path="*">
           <div>404 page</div>
         </Route>
