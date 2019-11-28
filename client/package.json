@@ -49,6 +49,7 @@
     "@typescript-eslint/parser": "^2.6.1",
     "babel-loader": "^8.0.6",
     "cypress": "^3.6.1",
+    "dotenv-webpack": "^1.7.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",

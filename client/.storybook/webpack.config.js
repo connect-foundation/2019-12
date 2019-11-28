@@ -1,4 +1,8 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = ({ config, mode }) => {
+  config.plugins.push(new Dotenv());
+
   config.module.rules.push({
     test: /\.tsx?$/,
     use: [
