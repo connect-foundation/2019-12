@@ -1,19 +1,22 @@
-import Axios from 'axios';
+import Axios, { AxiosRequestConfig } from 'axios';
 import { useReducer } from 'react';
 
-interface StateProps {
-  type: string;
-  data?: object;
-  isLoading?: boolean;
+interface StateProps<T> {
+  type: 'request' | 'success' | 'failure';
+  data?: T;
+  isLoading: boolean;
   err?: Error;
 }
-interface ActionProps {
-  type: string;
-  data?: object;
+interface ActionProps<T> {
+  type: 'request' | 'success' | 'failure';
+  data?: T;
   err?: Error;
 }
 
-function reducer(result: StateProps, action: ActionProps): StateProps {
+function reducer<T = any>(
+  result: StateProps<T>,
+  action: ActionProps<T>,
+): StateProps<T> {
   const { type } = action;
 
   switch (type) {
@@ -21,13 +24,14 @@ function reducer(result: StateProps, action: ActionProps): StateProps {
       return { type, isLoading: true };
     case 'success':
       return { type, isLoading: false, data: action.data };
-    default:
+    case 'failure':
       return { type, isLoading: false, err: action.err };
   }
+  return result;
 }
 
-export function useFetch(axiosOptions: object) {
-  const initialState = {
+export function useFetch<T>(axiosOptions: AxiosRequestConfig) {
+  const initialState: StateProps<T> = {
     type: 'request',
     isLoading: true,
   };
