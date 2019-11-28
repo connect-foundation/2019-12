@@ -1,5 +1,4 @@
 import * as JWT from 'jsonwebtoken';
-import { tokentype } from '../types';
 const { JWT_SECURE } = process.env;
 
 export function generateJWT(
@@ -8,7 +7,7 @@ export function generateJWT(
   googleId: number,
   email: string,
 ): Promise<JWT.Secret> {
-  const payload: tokentype = {
+  const payload = {
     exist,
     id,
     googleId,
