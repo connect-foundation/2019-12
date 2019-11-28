@@ -33,7 +33,7 @@ function Card({
    * by inthewalter
    */
   const [img, setImage] = useState('');
-  const [_, setRef] = useIntersect(
+  const [, setRef] = useIntersect(
     async (
       entry: IntersectionObserverEntry,
       observer: IntersectionObserver,
