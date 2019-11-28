@@ -42,13 +42,13 @@ describe('Hooks', () => {
     const wrapper = mount(<MockComponent />);
 
     // then
-    await new Promise(res => {
+    await new Promise(resolve => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {
             step += 1;
             if (steps.length === step) {
-              return res();
+              return resolve();
             }
           }
           waitFetching();
@@ -82,13 +82,13 @@ describe('Hooks', () => {
     const wrapper = mount(<MockComponent />);
 
     // then
-    await new Promise(res => {
+    await new Promise(resolve => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {
             step += 1;
             if (steps.length === step) {
-              return res();
+              return resolve();
             }
           }
           waitFetching();

@@ -1,4 +1,4 @@
-import Axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { useReducer } from 'react';
 
 interface StateProps<T> {
@@ -38,7 +38,7 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig) {
 
   const [result, dispatch] = useReducer(reducer, initialState);
 
-  Axios(axiosOptions)
+  axios(axiosOptions)
     .then(({ status, data }) => {
       if (status === 200) {
         dispatch({ type: 'success', data });
