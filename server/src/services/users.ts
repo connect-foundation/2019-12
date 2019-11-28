@@ -17,14 +17,14 @@ export async function setUser(
 export async function setUserInfo(
   id: number,
   googleId: number,
-  firstname: string,
-  lastname: string,
-  phonenum: number,
+  firstName: string,
+  lastName: string,
+  phoneNumber: number,
 ): Promise<[number, User[]]> {
   const values = {
-    firstName: firstname,
-    lastName: lastname,
-    phoneNumber: phonenum,
+    firstName,
+    lastName,
+    phoneNumber,
   };
   const where = { id, googleId };
   return await User.update(values, { where });
