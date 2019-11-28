@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { prop, ifProp } from 'styled-tools';
+import { ifProp } from 'styled-tools';
 
 export const Img = styled.img`
   height: ${props => props.height};

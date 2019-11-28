@@ -1,7 +1,6 @@
 import React from 'react';
 
 import * as S from './style';
-import { circular } from './index.stories';
 
 export interface Props {
   /** 접근성 대응 */

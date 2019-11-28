@@ -1,5 +1,4 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
 import GoogleMap from '.';
 
 export default {

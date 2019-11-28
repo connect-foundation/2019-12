@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { prop, ifProp } from 'styled-tools';
+import { ifProp } from 'styled-tools';
 
 import { BtnStyle } from '../../atoms/Btn/style';
 import Icon from '../../atoms/Icon';
