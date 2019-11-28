@@ -21,7 +21,7 @@ const FormInputs = {
     value: text('이메일', ''),
     labelProps: {
       name: SIGNUP_EMAIL,
-      required: true,
+      required: false,
     },
   },
   firstName: {

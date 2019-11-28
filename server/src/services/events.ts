@@ -1,7 +1,29 @@
-import { Op } from 'sequelize';
-import { Event } from '../models';
+import {
+  Op,
+  Order,
+  WhereOptions,
+  Includeable,
+  FindAttributeOptions,
+} from 'sequelize';
+import { Event, TicketType, User } from '../models';
 
 export async function getEvents(limit = 20, lastId: number): Promise<Event[]> {
-  const where = lastId ? { id: { [Op.gt]: lastId } } : undefined;
-  return await Event.findAll({ where, limit });
+  const where: WhereOptions = lastId
+    ? { isPublic: true, id: { [Op.gt]: lastId } }
+    : { isPublic: true };
+  const attributes: FindAttributeOptions = {
+    exclude: ['isPublic', 'createdAt', 'updatedAt'],
+  };
+  const order: Order = [['startAt', 'DESC']];
+  const include: Includeable[] = [
+    {
+      model: TicketType,
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    },
+    { model: User, attributes: ['id', 'lastName', 'firstName'] },
+  ];
+
+  return await Event.findAll({ where, attributes, limit, order, include });
 }

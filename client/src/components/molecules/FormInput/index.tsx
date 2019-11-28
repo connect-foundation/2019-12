@@ -17,6 +17,8 @@ export interface Props {
   value?: string;
   /** onChange handler */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /** onFocusOut handler */
+  onFocusOut?: (e: React.FocusEvent<HTMLInputElement>) => void;
   /** invalid할 경우 표시할 메시지 */
   captionContent?: string;
   /** Label에 들어갈 Props */
