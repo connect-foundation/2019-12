@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { EVENT_NAME_MAX_LENGTH } from '../../../commons/constants/number';
 import * as S from './style';
 import Divider from '../../atoms/Divider';
+import useIntersect from '../../../pages/Main/useIntersect';
 
-interface Props {
+export interface Props {
   /** 라우팅 URL */
   to: string;
   /** 이벤트 이름 */
@@ -16,7 +17,7 @@ interface Props {
   /** 호스트 이름 */
   host: string;
   /** 가격 */
-  price: string;
+  price: number;
 }
 
 function Card({
@@ -27,10 +28,28 @@ function Card({
   host,
   price,
 }: Props): React.ReactElement {
+  /**
+   * 추후에 lazy loading을 포함한 Img Atom Component를 만들 예정
+   * by inthewalter
+   */
+  const [img, setImage] = useState('');
+  const [_, setRef] = useIntersect(
+    async (
+      entry: IntersectionObserverEntry,
+      observer: IntersectionObserver,
+    ) => {
+      setImage(imgSrc);
+      observer.unobserve(entry.target);
+    },
+    {
+      threshold: 0.1,
+    },
+  );
+
   return (
     <S.LinkWrapper to={to}>
       <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgDiv imgSrc={imgSrc} />
+      <S.ImgDiv imgSrc={img} ref={setRef} />
       <S.InnerContainer>
         <S.ContentContainer>
           <S.Date>{date}</S.Date>
