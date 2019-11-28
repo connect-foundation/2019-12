@@ -9,7 +9,6 @@ export interface Props {
     lastName: FormInputProps;
     firstName: FormInputProps;
     phoneNumber: FormInputProps;
-    password: FormInputProps;
   };
   Button: BtnProps;
 }
@@ -23,7 +22,6 @@ function SignUpForm({ FormInputs, Button }: Props): React.ReactElement {
         <FormInput {...FormInputs.firstName} />
       </S.NameContainer>
       <FormInput {...FormInputs.phoneNumber} />
-      <FormInput {...FormInputs.password} />
       <S.BtnWrapper>
         <Btn {...Button} />
       </S.BtnWrapper>

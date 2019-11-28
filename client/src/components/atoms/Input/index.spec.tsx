@@ -14,7 +14,6 @@ describe('Atom / Divider', () => {
         placeholder={'이메일을 입력해주세요.'}
       />,
     );
-
     // then
     expect(wrapper).toMatchSnapshot();
   });

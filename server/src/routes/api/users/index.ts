@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import createUser from './controllers/createUser';
+import * as controllers from './controllers';
 
 const router = express.Router();
 
@@ -24,14 +24,6 @@ router.param(
     next();
   },
 );
-
-router.get('/:userId/events');
-router
-  .route('/:userId')
-  .get((req: express.Request, res: express.Response) => {
-    res.send('GET /users');
-  })
-  .patch();
-router.post('/', createUser);
+router.post('/', controllers.createUser);
 
 export default router;
