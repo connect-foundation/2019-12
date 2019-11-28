@@ -14,8 +14,10 @@ import {
 } from '../../commons/constants/string';
 
 function SignUpView(): React.ReactElement {
-  const Dispatcher = useContext(SignUpAction);
-  const States = useContext(SignUpState);
+  const dispatcher = useContext(SignUpAction);
+  const { firstNameValidate, lastNameValidate, phoneValidate } = useContext(
+    SignUpState,
+  );
 
   const FormInputs = {
     email: {
@@ -24,7 +26,7 @@ function SignUpView(): React.ReactElement {
       disabled: true,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        Dispatcher({ type: 'email', value });
+        dispatcher({ type: 'email', value });
       },
       labelProps: {
         name: SIGNUP_EMAIL,
@@ -34,10 +36,10 @@ function SignUpView(): React.ReactElement {
     firstName: {
       inputName: 'firstName',
       captionContent: '성을 입력하세요',
-      invalid: States.firstNameValidate,
+      invalid: firstNameValidate,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        Dispatcher({ type: 'firstName', value });
+        dispatcher({ type: 'firstName', value });
       },
       labelProps: {
         name: SIGNUP_FIRST_NAME,
@@ -47,10 +49,10 @@ function SignUpView(): React.ReactElement {
     lastName: {
       inputName: 'lastName',
       captionContent: '이름을 입력하세요',
-      invalid: States.lastNameValidate,
+      invalid: lastNameValidate,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        Dispatcher({ type: 'lastName', value });
+        dispatcher({ type: 'lastName', value });
       },
       labelProps: {
         name: SIGNUP_LAST_NAME,
@@ -61,10 +63,10 @@ function SignUpView(): React.ReactElement {
       inputName: 'phoneNumber',
       captionContent: '올바른 휴대폰 번호가 아닙니다.',
       placeholder: '- 없이 숫자만 입력해주세요.',
-      invalid: States.phoneValidate,
+      invalid: phoneValidate,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        Dispatcher({ type: 'phoneNumber', value });
+        dispatcher({ type: 'phoneNumber', value });
       },
       labelProps: {
         name: SIGNUP_PHONE_NUMBER,
@@ -78,7 +80,7 @@ function SignUpView(): React.ReactElement {
     styletype: 'primary',
     grow: true,
     onClick: () => {
-      Dispatcher({ type: 'submit', value: true });
+      dispatcher({ type: 'submit', value: true });
     },
   };
 
