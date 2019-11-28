@@ -5,7 +5,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --verbose",
+    "test": "react-scripts test --coverage --verbose --watchAll=false && yarn test:cypress",
+    "test:watch": "react-scripts test --coverage --verbose",
     "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
