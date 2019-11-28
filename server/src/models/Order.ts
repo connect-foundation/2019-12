@@ -21,7 +21,7 @@ import { OrderTicket } from './OrderTicket';
 export class Order extends Model<Order> {
   @AutoIncrement
   @PrimaryKey
-  @Column(DataType.NUMBER)
+  @Column
   public id!: number;
 
   @ForeignKey(() => User)

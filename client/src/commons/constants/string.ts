@@ -11,5 +11,3 @@ export const SIGNUP_FIRST_NAME = '이름';
 export const SIGNUP_PHONE_NUMBER = '휴대폰 번호';
 export const SIGNUP_PASSSWORD = '비밀 번호';
 export const SIGNUP_BTN = '회원가입';
-
-export const GOOGLE_MAP_KEY = 'AIzaSyCcWsieGZ5mzii-eolthc712-dEFUdg74k';
