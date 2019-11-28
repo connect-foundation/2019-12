@@ -1,27 +1,30 @@
 import React from 'react';
 import * as S from './style';
 import Card from '../../molecules/Card';
+import { Event } from '../../../types/Event';
 
 interface Props {
-  cards: any[];
+  cards: Event[];
+  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
-function CardGrid({ cards }: Props): React.ReactElement {
+function CardGrid({ cards, setRef }: Props): React.ReactElement {
   return (
     <S.CardGridWrapper>
       <S.CardGridContainer>
-        {cards.map((val, idx) => (
+        {cards.map(card => (
           <Card
-            key={val.id}
-            imgSrc={val.mainImg}
-            date={val.startAt}
-            name={val.title}
-            host={'하하,,'}
-            price={'1000'}
-            to={`/events/${val.id}`}
+            key={card.id}
+            imgSrc={card.mainImg}
+            date={card.startAt}
+            name={card.title}
+            host={card.user.lastName + card.user.firstName}
+            price={card.ticketTypes[0].price} // TODO: db 수정 후 바꿔야함
+            to={`/events/${card.id}`}
           />
         ))}
       </S.CardGridContainer>
+      <div ref={setRef}></div>
     </S.CardGridWrapper>
   );
 }

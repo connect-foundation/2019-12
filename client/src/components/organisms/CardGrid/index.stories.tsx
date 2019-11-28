@@ -1,77 +1,150 @@
 import React from 'react';
 
 import CardGrid from '.';
+import { Event } from '../../../types/Event';
 
 export default {
   title: 'Organisms / CardGrid',
 };
-let cards = [
+let cards: Event[] = [
   {
-    id: 1,
-    userId: 1,
-    title: 'React Seoul 2017',
-    startAt: '2017-11-04T04:00:00.000Z',
-    endAt: '2019-11-04T08:00:00.000Z',
-    isPublic: true,
+    id: 733,
+    userId: 2,
+    title: '리눅스 커널 v5.3 분석: 네트워크 TCP/IP 주말특강(12월)',
+    startAt: '2019-12-21T03:00:00.000Z',
+    endAt: '2019-12-22T09:00:00.000Z',
+    place: '리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)',
+    address: '테헤란로4길 38-5',
+    placeDesc:
+      "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    mainImg: 'https://bookus.kr.object.ncloudstorage.com/733',
     desc:
-      '<h2><strong>React Seoul</strong></h2>\n<p>React Seoul은 React Korea에서 주관하는 비영리 컨퍼런스입니다. React에 대한 관심은 국내외에서 나날이 높아져 가서 이전의 여러 개발자 컨퍼런스에서도 React에 관한 기술 발표와 토론이 있었습니다.<br />하지만 컨퍼런스의 일부로서 겨우 한 두 개 정도 할당된 세션만으로 React의 넓고 다양한 세계를 담기에는 부족했습니다.<br /><br />이 때문에 React Korea에서는 React 생태계의 발전을 위해 한국에서는 처음으로 React 개발자 만을 위한 행사를 기획하게 되었습니다.</p>\n<p>예정된 세션은 다음과 같습니다.</p>\n<p>13:30-13:40 <strong>오프닝 - React Seoul</strong> - React Seoul Organizer<br />13:40-14:10 <strong>React로 다른 페이지에 임베드되는 웹앱 개발기</strong> - 안재하 @카카오<br />14:10-14:40 <strong>React/Redux for Smart TV UI</strong> - 이동영 @LG전자<br />15:10-15:40 <strong>리액트 네이티브 어디까지 해봤니?</strong> - 정주원 @인디개발자<br />15:40-16:10 <strong>Storybook Driven Development</strong>: Storybook을 통한 React UI Component 및 State 관리하기 - 진겸 @Foreseer llc.<br />16:30-17:00 <strong>Decorator + HOC + React = Fantastic!!</strong> - 천민호 @ZOYI Corp.</p>\n<p>5명의 발표자분들의 개발 경험담, 기술 이야기를 통해 참가자 분들이 마주친/마주치게 될 문제점과 팁을 얻어가셨으면 좋겠습니다.</p>\n<h2><strong>컨퍼런스 장소 안내</strong></h2>\n<p>주소 : 서울특별시 강남구 테헤란로 142 캐피탈타워 22층, 페이스북코리아<br />교통편 : 지하철 2호선 역삼역 3번출구 <br /><br />컨퍼런스는 11월 4일 페이스북 코리아(<a href="https://goo.gl/maps/wWzKRxSNiJN2" target="_blank">약도</a>)에서 13:00 ~ 17:30(4시간 30분)동안 진행됩니다. 컨퍼런스 종료 이후에는 <strong>디너파티 초대권 후원자에 한정</strong>해서 React Seoul 2017 오거나이저, 스피커와 함께 디너파티를 진행합니다. </p>\n<h2><strong>스페셜 디너파티</strong></h2>\n<p>디너파티는 외부 장소로 이동 후(도보 4분이내) 18:00~ 21:00(3시간)동안 진행됩니다. 디너파티에서는 준비된 음료/주류, 푸짐한 음식을 먹으며 세션 스피커, 관련업계 종사자, React Korea 운영진, React Seoul 오거나이저들과 아이스브레이킹을 진행 후 자유롭게 대화하고 고민을 나눌 수 있는 시간입니다.<br />React Seoul 오거나이저 들이 호스트를 맡아 모두에게 즐거운 시간과 좋은 추억을 만들어 드립니다.</p>\n<p><strong>** 디너파티는 초대권 후원자만 참석 가능합니다. **<br /></strong></p>\n<p> </p>\n<p><strong>컨퍼런스 참가 안내사항<br /></strong></p>\n<p>- 무료 주차는 지원되지 않습니다. 대중교통을 이용하시길 부탁드립니다.<br />- 무선 인터넷, 충전을 위한 콘센트가 준비되어 있습니다.<br />- 발표자료는 컨퍼런스 종료 후 공개됩니다.<br /><br />- 티켓, 초대권 및 스티커는 행사 당일 현장에서 전달해 드립니다.<br />- 디너파티는 사전 신청만 가능하며 현장 신청은 불가능합니다.<br />- 환불은 불가능합니다. 단, 개인간 양도는 가능합니다.<br />- 티켓은 펀딩 후원 후 마감일 다음날인 결제 예정일에 결제가 되셔야하며 펀딩 기한 종료 이후에는 티켓 구매 및 신청이 불가능합니다.<br />- 펀딩 모금 금액이 목표치에 도달하지 못한채 펀딩이 마감될 경우 결제는 이루어지지 않습니다. <br /><br /></p>\n<p> </p>\n<h3><strong>문의</strong></h3>\n<p>비 후원회원은 컨퍼런스 관련 질문은 <a href="https://festi.kr/zlack/team/T543UCP6D/46/" target="_blank">react-seoul 슬랙 채널</a>을 통해서 문의해주세요.<br />후원회원은 슬랙 처널 또는 텀블벅 로그인 후, 창작자에게 문의하기를 통해 진행자에게 문의를 전달할 수 있습니다.</p>\n<p> </p>\n<h3>React</h3>\n<p><a href="https://reactjs.org/" target="_blank">React</a>는 페이스북이 2013년 공개한 오픈소스 자바스크립트 라이브러리 입니다. React는 꾸준히 성장하여 전세계적으로는 물론 국내에도 많은 개발자와 기업이 React 기술을 도입하고 있습니다. React 기술을 모바일 플랫폼에 적용하여 크로스 플랫폼 개발이 가능한 React Native라는 프레임워크도 있습니다.</p>\n<p> </p>\n<h3>React Korea</h3>\n<p><a target="_blank">React Korea</a>는 페이스북 그룹과 슬랙 채널에서 활동하고 있는 커뮤니티입니다.<br />React에 관한 팁, 정보공유 뿐만 아니라 자유로운 질의응답을 통해 더 많은 사용자들이 어려움없이 시작할 수 있도록 도움을 주고 있습니다. </p>\n<p> </p>\n<p> </p>\n<p> </p>',
-    mainImg:
-      'https://cf.festa.io/img/2018-8-25/8ab76467-10ce-41e6-915f-9e8b218a44ca-리액트서울.jpg',
-    place: 'Facebook Korea',
-    placeDesc: '교통편 : 지하철 2호선 역삼역 3번출구',
-    address: '서울특별시 강남구 테헤란로 142 캐피탈타워 22층',
-    createdAt: '2017-11-04T04:00:00.000Z',
+      '<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3>12월 21일(토)~22(일) 주말특강: 리눅스 커널 v5.3 분석과추적: 네트워크 TCP/IP 주말특강</h3>\n<p><strong>오픈기념 50% 할인: 정가 33만원 =&gt; 16만원</strong></p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href="http://reallinux.co.kr" target="_blank">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault\'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&amp;C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href="https://www.youtube.com/watch?v=kDQJ_0-gzXY" target="_blank">https://www.youtube.com/watch?v=kDQJ_0-gzXY</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href="http://kko.to/0oCDqoWjB" target="_blank">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href="https://pf.kakao.com/_sxevPT" target="_blank">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src="https://cf.festa.io/img/2019-11-14/c41b433f-d7d2-42af-83d0-0c3e4f971cd8.png" /><img src="https://cf.festa.io/img/2019-11-14/6cffcb39-bb53-4b7f-9ada-411f74cf65b9.png" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 &quot;퍼시스&quot; 책상, 의자 비치)</p>\n<p><img src="https://cf.festa.io/img/2019-11-14/5ca368c1-af2e-406e-8e8f-88252923dd41.jpg" /><img src="https://cf.festa.io/img/2019-11-14/79ea0436-e92b-458d-9f7b-adade42a51f6.jpg" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src="https://cf.festa.io/img/2019-11-14/5e6232da-14fb-4cac-9729-41eb2f174833.jpg" /></p>\n<p>찾아오시는길 설명 PPT for 길치: <a href="https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing" target="_blank">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src="https://cf.festa.io/img/2019-11-14/4b4a23f2-be45-48bd-9ba7-d2ef0645d522.png" /></p>\n<p> </p>\n<p> </p>\n<p> </p>',
+    ticketTypes: [
+      {
+        id: 802,
+        eventId: 733,
+        name: '리눅스커널 v5.3 네트워크 단기특강 12월 수강권',
+        desc: '',
+        price: 160000,
+        quantity: 12,
+        leftCnt: 12,
+        isPublicLeftCnt: false,
+        maxCntPerPerson: 5,
+        salesStartAt: '2019-11-12T15:00:00.000Z',
+        salesEndAt: '2019-12-21T14:30:00.000Z',
+        refundEndAt: '2019-12-16T14:30:00.000Z',
+      },
+    ],
+    user: {
+      id: 2,
+      lastName: '조',
+      firstName: '성동',
+    },
   },
   {
-    id: 4,
-    userId: 1,
-    title: 'GDG Devfest 2017',
-    startAt: '2017-11-19T03:30:00.000Z',
-    endAt: '2017-11-19T08:00:00.000Z',
-    isPublic: true,
-    desc:
-      '<p class="p3">&nbsp;</p><img src="/devfest-image.png" /><p class="p3">&nbsp;</p><h1 class="p1">개발자들의 신나는 페스티벌</h1><p class="p2">Android, Firebase, Google Cloud Platform, TensorFlow, Web <span class="s2">등 최신<span class="s1"> Google </span>개발자 기술 콘텐츠를 만나보세요<span class="s1">!</span></p><p class="p1">서로 지식을 교환하고<span class="s1">, </span>아이디어를 공유하고<span class="s1">, </span>기술에 대한 열정을 표출하는</p><p class="p1">개발자들의 축제에 여러분을 초대합니다<span class="s1">.</span></p><p class="p3">&nbsp;</p><h2 class="p4"><strong>GDG Korea</strong></h2><p class="p5"><a href="http://slack.gdg.kr/">GDG Korea</a><span class="s3">&nbsp;</span><span class="s4">에는</span><span class="s3"> 3</span><span class="s4">개의</span> <span class="s4">지역기반</span> <span class="s4">그룹</span><span class="s3">(<a href="https://www.meetup.com/ko-KR/GDG-Seoul/"><span class="s5">GDG Seoul</span></a>,&nbsp;<a href="https://www.meetup.com/ko-KR/GDG-Incheon/"><span class="s5">GDG Incheon</span></a>,&nbsp;<a href="https://www.meetup.com/ko-KR/GDG-Busan/"><span class="s5">GDG Busan</span></a>), 2</span><span class="s4">개의</span> <span class="s4">기술기반</span> <span class="s4">그룹</span><span class="s3">(<a href="https://www.meetup.com/ko-KR/GDG-Korea-Android/"><span class="s5">GDG Korea Android</span></a>,&nbsp;<a href="https://www.meetup.com/ko-KR/GDG-WebTech/"><span class="s5">GDG Korea WebTech</span></a>), 1</span><span class="s4">개의</span> <span class="s4">스페셜한</span> <span class="s4">그룹</span><span class="s3">(<a href="https://www.meetup.com/ko-KR/GDG-Campus/"><span class="s5">GDG Korea Campus</span></a>)</span><span class="s4">이</span> <span class="s4">있습니다</span><span class="s3">.</span></p><p class="p3">&nbsp;</p><h2 class="p6"><strong>What is GDG?</strong></h2><p class="p7"><span class="s6"><a href="https://developers.google.com/groups/">Google Developers Group (GDG)</a></span>는 전 세계<span class="s1"> 100</span>여 국<span class="s1">, 550</span>여개의 챕터가 있으며<span class="s1">, </span>한국에는 현재<span class="s1"> 7</span>개의 챕터가 있습니다<span class="s1">. Google </span>기술에 관심이 있는 개발자라면 누구나<span class="s1"> GDG </span>맴버가 될 수 있습니다<span class="s1">. </span>구글기술에 관심이 있는 많은 개발자들의 네트워크와 구글기술에 대한 활동이 이어지는 모임으로 진행될 것입니다<span class="s1">. </span>아직<span class="s1"> GDG Korea</span>에 참여를 고민하시나요<span class="s1">? </span>고민하지 마시고 편한 마음으로 참여하십시요<span class="s1">.</span></p><p class="p3">&nbsp;</p>',
-    mainImg:
-      'https://s3.ap-northeast-2.amazonaws.com/festa-temp/devfest-cover.jpg',
-    place: '서울대 글로벌 컨벤션 플라자',
+    id: 732,
+    userId: 2,
+    title: '리눅스 커널 v5.3 분석: 파일시스템 &amp; 블록 I/O 주말특강(12월)',
+    startAt: '2019-12-14T03:00:00.000Z',
+    endAt: '2019-12-15T09:00:00.000Z',
+    place: '리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)',
+    address: '테헤란로4길 38-5',
     placeDesc:
-      '글로벌컨벤션플라자는 글로벌공학교육센터 내 전문 컨벤션 시설로 최대 9개 세션 약 1,000명을 동시에 수용할 수 있는 규모를 갖추고 있습니다. 또한, 전면 유리로 된 건물로 각 실에서 관악산의 수려한 경관을 감상하실 수 있습니다. 주차는 지원되지 않습니다. 가급적 대중교통을 이용해주세요.',
-    address: '서울대 글로벌 컨벤션 플라자',
-    createdAt: '2017-11-19T03:30:00.000Z',
+      "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    mainImg: 'https://bookus.kr.object.ncloudstorage.com/732',
+    desc:
+      '<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3>12월 14일(토)~15(일) 주말특강: 리눅스 커널 v5.3 분석과추적: 파일시스템 &amp; 블록 I/O 주말특강</h3>\n<p><strong>오픈기념 50% 할인</strong>: 정가 33만원 =&gt; 16만원</p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href="http://reallinux.co.kr" target="_blank">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault\'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&amp;C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href="https://www.youtube.com/watch?v=kDQJ_0-gzXY" target="_blank">https://www.youtube.com/watch?v=kDQJ_0-gzXY</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href="http://kko.to/0oCDqoWjB" target="_blank">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href="https://pf.kakao.com/_sxevPT" target="_blank">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src="https://cf.festa.io/img/2019-11-14/d5d76b65-6d9e-49c1-9c14-7885e2ee5490.png" /><img src="https://cf.festa.io/img/2019-11-14/dca4d0dd-7911-4d24-bf2d-f940fd2f7778.png" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 &quot;퍼시스&quot; 책상, 의자 비치)</p>\n<p><img src="https://cf.festa.io/img/2019-11-14/e8b5e6dd-3243-4fa6-a88c-6399864e0358.jpg" /><img src="https://cf.festa.io/img/2019-11-14/6601bb8d-fd7f-482e-abc1-9278a026df5f.jpg" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src="https://cf.festa.io/img/2019-11-14/6655a59b-6d36-4b86-b691-8dc7d440abab.jpg" /></p>\n<p>찾아오시는길 설명 PPT for 길치: <a href="https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing" target="_blank">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src="https://cf.festa.io/img/2019-11-14/a42c7a98-955a-4f0f-809c-d04bb1fb4c57.png" /></p>\n<p> </p>\n<p> </p>\n<p> </p>',
+    ticketTypes: [
+      {
+        id: 801,
+        eventId: 732,
+        name: '리눅스커널 v5.3 파일&amp;블록I/O 단기특강 12월 수강권',
+        desc: '',
+        price: 160000,
+        quantity: 12,
+        leftCnt: 12,
+        isPublicLeftCnt: false,
+        maxCntPerPerson: 5,
+        salesStartAt: '2019-11-12T15:00:00.000Z',
+        salesEndAt: '2019-12-14T14:30:00.000Z',
+        refundEndAt: '2019-12-09T14:30:00.000Z',
+      },
+    ],
+    user: {
+      id: 2,
+      lastName: '조',
+      firstName: '성동',
+    },
   },
   {
-    id: 6,
-    userId: 1,
-    title: 'KCD 2018',
-    startAt: '2018-02-24T01:30:00.000Z',
-    endAt: '2018-02-24T09:00:00.000Z',
-    isPublic: true,
+    id: 714,
+    userId: 2,
+    title: '제19회 공감세미나',
+    startAt: '2019-12-14T01:00:00.000Z',
+    endAt: '2019-12-14T08:00:00.000Z',
+    place: '한빛미디어 리더스 홀',
+    address: '서울 서대문구 연희로2길 62',
+    placeDesc: '주차 불가',
+    mainImg: 'https://bookus.kr.object.ncloudstorage.com/714',
     desc:
-      '<div><strong>* 티켓 구입은 2월 5일(월) 오전 10시부터 가능합니다.<br /></strong><br />대한민국 최대 규모의 커뮤니티 소통의 장. 제 7회 한국 커뮤니티 데이에 여러분을 초대합니다.<br /><br />자세한 행사 내용은 <a target="_blank" href="https://kcd2018.festa.io">https://kcd2018.festa.io</a>에서 확인 바랍니다.</div>',
-    mainImg:
-      'https://s3.ap-northeast-2.amazonaws.com/festa-temp/kcd2018-cover-festa.jpg',
-    place: '한국 Microsoft 11층',
-    placeDesc:
-      '주차권을 제공되지 않으니, 가능하면 대중교통수단 이용을 부탁드립니다. 주말의 경우 근처 연합뉴스 건물에 하루종일 5천원에 주차가 가능합니다.',
-    address: '한국 Microsoft 11층',
-    createdAt: '2018-02-24T01:30:00.000Z',
+      '<p><img src="https://cf.festa.io/img/2019-11-15/52939e7e-d692-416d-9013-ec9163a7f00e.png" /></p>',
+    ticketTypes: [
+      {
+        id: 785,
+        eventId: 714,
+        name: '일반 입장권',
+        desc: '음료와 샌드위치 및 간단한 다과제공',
+        price: 11000,
+        quantity: 100,
+        leftCnt: 62,
+        isPublicLeftCnt: true,
+        maxCntPerPerson: 1,
+        salesStartAt: '2019-11-15T00:00:00.000Z',
+        salesEndAt: '2019-12-14T01:00:00.000Z',
+        refundEndAt: '2019-12-06T01:00:00.000Z',
+      },
+    ],
+    user: {
+      id: 2,
+      lastName: '조',
+      firstName: '성동',
+    },
   },
   {
-    id: 6,
-    userId: 1,
-    title: 'KCD 2018',
-    startAt: '2018-02-24T01:30:00.000Z',
-    endAt: '2018-02-24T09:00:00.000Z',
-    isPublic: true,
+    id: 728,
+    userId: 2,
+    title: 'Klaytn Developer Meetup',
+    startAt: '2019-12-10T10:30:00.000Z',
+    endAt: '2019-12-10T12:30:00.000Z',
+    place: '스타트업 브랜치(코엑스 2층)',
+    address: '서울시 강남구 영동대로 513 코엑스 2층',
+    placeDesc: 'www.kita.net/mberJobSport/startupBranch/space.do',
+    mainImg: 'https://bookus.kr.object.ncloudstorage.com/728',
     desc:
-      '<div><strong>* 티켓 구입은 2월 5일(월) 오전 10시부터 가능합니다.<br /></strong><br />대한민국 최대 규모의 커뮤니티 소통의 장. 제 7회 한국 커뮤니티 데이에 여러분을 초대합니다.<br /><br />자세한 행사 내용은 <a target="_blank" href="https://kcd2018.festa.io">https://kcd2018.festa.io</a>에서 확인 바랍니다.</div>',
-    mainImg:
-      'https://s3.ap-northeast-2.amazonaws.com/festa-temp/kcd2018-cover-festa.jpg',
-    place: '한국 Microsoft 11층',
-    placeDesc:
-      '주차권을 제공되지 않으니, 가능하면 대중교통수단 이용을 부탁드립니다. 주말의 경우 근처 연합뉴스 건물에 하루종일 5천원에 주차가 가능합니다.',
-    address: '한국 Microsoft 11층',
-    createdAt: '2018-02-24T01:30:00.000Z',
+      '<p><strong>Klaytn</strong>에서 국내 블록체인 개발자를 대상으로 <strong>Klaytn 플랫폼과 Blockchain Application(BApp) 개발</strong>에 대해 소개하는 정기 밋업(격월)을 진행합니다.</p>\n<p>세 번째 <strong>Klaytn Developer Meetup</strong>이 12월 10일(화)에 진행될 예정이니, Klaytn 플랫폼을 활용한 BApp 개발에 관심있는 분들의 많은 관심과 참여 바랍니다.</p>\n<p> </p>\n<p><strong>1. 참가 대상</strong><br />Klaytn 블록체인 플랫폼에 관심있고, BApp 개발을 해보고 싶은 개발자 누구나</p>\n<p><strong>2. 밋업 주제</strong><br />- Klaytn 101 #3 <strong>Fee Delegation(대납)</strong> 구조와 대납 기능을 사용하는 <strong>Android BApp</strong> 구현해보기<br />- <strong>Klaytn 스터디 그룹 지원 프로그램</strong> 참여 프로젝트 소개 (TBD)</p>\n<p><strong>3. 세부 내용</strong><br />- <strong>대납 구조 이해</strong>: Klaytn이 지원하는 Fee Delegation이 어떻게 동작하는지 설명<br />- <strong>대납을 사용하는 Android BApp</strong>: 대납 기능을 사용하는 Android BApp의 구현을 설명(mobile native 구현방법 소개(caver-java), Count BApp의 Android 구현, Fee Delegation example에서 보여준 node.js 서버 구현 등)</p>\n<p><strong>4. 밋업 일정</strong><br />- 19:00 ~ 19:30 (30&quot;) 등록 확인<br />- 19:30 ~ 20:10 (40&quot;) Klaytn 세션<br />- 20:10 ~ 20:20 (10&quot;) Q&amp;A<br />- 20:20 ~ 21:00 (40&quot;) Klaytn 스터디 그룹 프로젝트 소개(TBD)<br />- 21:00 ~ 21:30 (30&quot;) 네트워킹<br />* 위 일정은 상황에 따라 변경될 수 있습니다.</p>\n<p><strong>5. 발표자 소개</strong><br />Eric Kim, Developer Evangelist at Ground X</p>\n<p><img src="https://cf.festa.io/img/2019-11-14/48bfd0f6-ee4e-4ce2-beda-42733f2ae478.png" /></p>\n<p><strong>5. 기타</strong><br />- 네트워킹 시간에 간단한 음식과 음료가 제공될 예정입니다.<br />- 주차지원이 되지 않으니 대중교통을 이용해주시기 바랍니다.<br />- 밋업 현장사진이 추후 홍보 자료로 활용될 예정이며,<br />  참석자분들의 모습이 노출될 수 있는 점 양해 부탁드립니다.<br />- 기타 궁금한 점은 아래로 문의해주시기 바랍니다. <br />* Klaytn Developer Meetup 관련 문의: <a href="mailto:community@klaytn.com" target="_blank">community@klaytn.com</a></p>\n<p> </p>\n<p><strong>▶️ Klaytn 소셜미디어에 가입해 최신 소식을 빠르게 받아보세요.</strong><br />- Klaytn Developers 페이스북 그룹 <a href="http://www.facebook.com/groups/klaytndevelopers" target="_blank">www.facebook.com/groups/klaytndevelopers</a></p>',
+    ticketTypes: [
+      {
+        id: 797,
+        eventId: 728,
+        name: '일반 입장권',
+        desc:
+          '참석자 선정 후 12월 3일(화)과 9일(월)에 안내메일 발송될 예정입니다.',
+        price: 0,
+        quantity: 500,
+        leftCnt: 487,
+        isPublicLeftCnt: true,
+        maxCntPerPerson: 1,
+        salesStartAt: '2019-11-17T15:00:00.000Z',
+        salesEndAt: '2019-12-10T12:30:00.000Z',
+        refundEndAt: '2019-12-10T12:30:00.000Z',
+      },
+    ],
+    user: {
+      id: 2,
+      lastName: '조',
+      firstName: '성동',
+    },
   },
 ];
 cards = [...cards, ...cards, ...cards, ...cards, ...cards, ...cards];
