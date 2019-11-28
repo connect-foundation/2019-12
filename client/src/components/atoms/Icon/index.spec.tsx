@@ -11,4 +11,6 @@ describe('Atom / Divider', () => {
     // then
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('[PROPS] circular가 true라면 둥근 이미지를 그려낸다.', () => {});
 });
