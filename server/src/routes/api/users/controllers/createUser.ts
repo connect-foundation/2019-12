@@ -25,5 +25,6 @@ export async function createUser(req: Request, res: Response) {
       res.status(400).send({ message: 'Cannot Signup' });
     }
   } else {
+    res.status(400).send({ message: 'Need more body data' });
   }
 }
