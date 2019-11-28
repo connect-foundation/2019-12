@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { mount } from 'enzyme';
-import Axios from 'axios';
+import axios from 'axios';
 
 import { useFetch } from './';
 
@@ -8,7 +8,7 @@ describe('Hooks', () => {
   it('useFetch (Mock API)', async () => {
     // given
     const mockURL = 'http://www.mocky.io/v2/5dde1af02f00004b697eacd6';
-    const result = await Axios({
+    const result = await axios({
       method: 'get',
       url: mockURL,
     });
