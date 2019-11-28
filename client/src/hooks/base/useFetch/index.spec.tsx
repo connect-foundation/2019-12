@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { mount } from 'enzyme';
 import Axios from 'axios';
 
-import { useFetch } from '.';
+import { useFetch } from './';
 
 describe('Hooks', () => {
   it('useFetch (Mock API)', async () => {
