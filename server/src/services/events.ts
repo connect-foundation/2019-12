@@ -22,7 +22,7 @@ export async function getEvents(limit = 20, lastId: number): Promise<Event[]> {
         exclude: ['createdAt', 'updatedAt'],
       },
     },
-    { model: User, attributes: ['name'] },
+    { model: User, attributes: ['id', 'last_name', 'first_name'] },
   ];
 
   return await Event.findAll({ where, attributes, limit, order, include });
