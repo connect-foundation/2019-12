@@ -19,7 +19,8 @@ export const BtnStyle = css<BtnStyleProps>`
   width: ${ifProp('fit', 'fit-content', '18rem')};
   color: ${props =>
     props.styletype === 'transparent' ||
-    props.styletype === 'transparent-border'
+    props.styletype === 'transparent-border' ||
+    props.styletype === 'transparent-hover'
       ? palette('grayscale', 2)
       : palette('white')};
   -webkit-user-drag: none;
@@ -45,6 +46,10 @@ export const BtnStyle = css<BtnStyleProps>`
         return css`
           background-color: ${palette('grayscale', 2)};
           color: ${palette('grayscale', 6)};
+        `;
+      } else if (props.styletype === 'transparent-hover') {
+        return css`
+          background-color: ${palette('grayscale', 5)};
         `;
       }
     }}
