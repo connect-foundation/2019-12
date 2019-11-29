@@ -1,6 +1,7 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
+import 'intersection-observer';
 
 const mockConsoleMethod = (realConsoleMethod: any) => {
   const ignoredMessages = ['test was not wrapped in act(...)'];
