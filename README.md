@@ -15,8 +15,16 @@ Bookus!는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로�
 
 ### 과중한 트래픽이 몰려도 안정적으로 예약이 가능한 시스템
 
-- Infra Architecture
-- Orchestration
+- Infra Architecture & Orchestration
+
+  Docker swarm을 통한 Orchestration 이 가능하도록 설계
+  - 인프라 구조
+  
+    <img width="80%" src="https://user-images.githubusercontent.com/10372359/69845512-40468c80-12b4-11ea-85c4-8296dfda7948.png"/>
+    
+    도커 Swarm을 통한 마스터 노드 2개에 Front와 Back의 서비스의 Replica를 각각 3개씩 만들어서 이를 서비스하는 방식.
+    Swarm의 Ingress LoadBalancer는 모든 노드의 포트를 열어주기에 이곳에 Ncloud Load Balancer 를 붙여서 로드벨런싱을 함.
+    
 - Test (Jest, Supertest, Artillery)
 
 ## Built With
