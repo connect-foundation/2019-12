@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import axios from 'utils/axios';
+import axios from 'axios';
 
 import MainTemplate from './template';
 import MainBanner from 'components/organisms/MainBanner';
@@ -20,7 +20,9 @@ function Main(): React.ReactElement {
   const fetchItems = useCallback(async () => {
     const lastId =
       events.length === 0 ? '' : `&lastId=${events[events.length - 1].id}`;
-    const { data } = await axios.get<Event[]>(`/events?cnt=12` + lastId);
+    const { data } = await axios.get<Event[]>(
+      `http://localhost:13000/api/events?cnt=12${lastId}`,
+    );
     await delay(0.5);
     setEvents([...events, ...data]);
   }, [events]);
