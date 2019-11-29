@@ -10,6 +10,7 @@ import { useIntersect } from '../../hooks';
 function Main(): React.ReactElement {
   const [events, setEvents] = useState<Event[]>([]);
   const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+
   const delay = (seconds: number): Promise<void> =>
     new Promise(resolve =>
       setTimeout(() => {
@@ -31,7 +32,7 @@ function Main(): React.ReactElement {
     setEvents([...events, ...data]);
   }, [SERVER_URL, events]);
 
-  const [_, setRef] = useIntersect(
+  const [, setRef] = useIntersect(
     async (
       entry: IntersectionObserverEntry,
       observer: IntersectionObserver,
