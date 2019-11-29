@@ -8,11 +8,10 @@ export default checkSchema({
     optional: true,
     toInt: true,
   },
-  lastId: {
+  startAt: {
     in: 'query',
-    errorMessage: 'lastId is wrong.',
-    isInt: true,
+    errorMessage: 'startAt is wrong.',
+    isISO8601: true,
     optional: true,
-    toInt: true,
   },
 });

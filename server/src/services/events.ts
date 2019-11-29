@@ -7,9 +7,9 @@ import {
 } from 'sequelize';
 import { Event, TicketType, User } from '../models';
 
-export async function getEvents(limit = 20, lastId: number): Promise<Event[]> {
-  const where: WhereOptions = lastId
-    ? { isPublic: true, id: { [Op.gt]: lastId } }
+export async function getEvents(limit = 20, startAt: Date): Promise<Event[]> {
+  const where: WhereOptions = startAt
+    ? { isPublic: true, id: { [Op.lt]: startAt } }
     : { isPublic: true };
   const attributes: FindAttributeOptions = {
     exclude: ['isPublic', 'createdAt', 'updatedAt'],
