@@ -7,7 +7,9 @@ import googleSvg from '../../assets/img/google.svg';
 import LogoSvg from '../../assets/img/logo.svg';
 import LoginTemplate from './templates';
 
-const AuthURL = `http://localhost:13000/api/auth?returnTo=/login`;
+const { REACT_APP_SERVER_URL } = process.env;
+
+const AuthURL = `${REACT_APP_SERVER_URL}/api/auth?returnTo=/login`;
 
 function Login(): React.ReactElement {
   return (
