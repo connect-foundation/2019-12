@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainBanner from '.';
-import { text, select } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Organisms / MainBanner',
