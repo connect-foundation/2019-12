@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
+.c0 {
+  border-width: 1px;
+  border-style: solid;
+}
+
+<Divider>
+  <styled.hr
+    borderWidth="1px"
+    grayScaleLevel={6}
+    type="solid"
+  >
+    <StyledComponent
+      borderWidth="1px"
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  border-width: ",
+              [Function],
+              ";
+  border-style: ",
+              [Function],
+              ";
+  border-color: ",
+              [Function],
+              ";
+",
+            ],
+          },
+          "displayName": "styled.hr",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "hr",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      grayScaleLevel={6}
+      type="solid"
+    >
+      <hr
+        className="c0"
+        type="solid"
+      />
+    </StyledComponent>
+  </styled.hr>
+</Divider>
+`;
