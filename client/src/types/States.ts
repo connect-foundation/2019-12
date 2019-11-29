@@ -1,5 +1,3 @@
-import { EventDetail } from '../types/Data';
-
 export interface SignUpFormState {
   email: string;
   lastName: string;
@@ -9,8 +7,4 @@ export interface SignUpFormState {
   firstNameValidate: boolean;
   lastNameValidate: boolean;
   submit: boolean;
-}
-
-export interface EventDetailState {
-  data: EventDetail | any;
 }
