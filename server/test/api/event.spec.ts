@@ -26,15 +26,15 @@ describe('Router / Events', () => {
       },
 
       () => {
-        const lastId = 4;
+        const startAt = new Date('2018-04-30T10:00:00.000Z');
         request(app)
           .get('/api/events')
-          .query({ lastId })
+          .query({ startAt })
           .expect(200)
           .expect('Content-type', /application\/json/)
           .expect(res =>
             res.body.forEach((e: Event) =>
-              expect(e.id).toBeGreaterThan(lastId),
+              expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
             ),
           );
       },
