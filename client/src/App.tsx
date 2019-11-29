@@ -19,7 +19,7 @@ const App: React.FC = () => (
         <Route exact path="/" component={Main} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route exact path="/events/:eventId([0-9])" component={EventDetail} />
+        <Route exact path="/events/:eventId([0-9]+)" component={EventDetail} />
         <Route path="*">
           <div>404 page</div>
         </Route>
