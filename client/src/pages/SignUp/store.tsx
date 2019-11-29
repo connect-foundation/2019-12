@@ -28,6 +28,7 @@ export const SignUpAction = createContext<
 >(() => {});
 
 function StoreProvider({ children }: { children: React.ReactElement }) {
+  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
   const history = useHistory();
   const [states, dispatcher] = useReducer<UseStateReducer<SignUpFormState>>(
     useStateReducer,
@@ -61,7 +62,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
       if (submit) {
         dispatcher({ type: 'submit', value: false });
         // Submit 하기 이전 Token에서 Email을 뽑아옴.
-        const getTokenRes = await axios('http://localhost:13000/api/auth', {
+        const getTokenRes = await axios(`${SERVER_URL}/api/auth`, {
           method: 'post',
           withCredentials: true,
         });
@@ -75,14 +76,11 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
           },
         );
         try {
-          const updateUserRes = await axios(
-            'http://localhost:13000/api/users',
-            {
-              method: 'post',
-              data: userData,
-              withCredentials: true,
-            },
-          );
+          const updateUserRes = await axios(`${SERVER_URL}/api/users`, {
+            method: 'post',
+            data: userData,
+            withCredentials: true,
+          });
           if (updateUserRes.status === 200) {
             alert('회원가입이 완료되었습니다.');
             history.push('/');
@@ -96,7 +94,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         }
       }
     })();
-  }, [firstName, history, lastName, phoneNumber, submit]);
+  }, [SERVER_URL, firstName, history, lastName, phoneNumber, submit]);
 
   return (
     <SignUpAction.Provider value={dispatcher}>
