@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import axios from 'axios';
 import EventDetailTemplate from './template';
 
 import { EventDataAction, EventDataState } from './store';
 import { useFetch } from '../../hooks/base/useFetch';
+
+const { REACT_APP_SERVER_URL } = process.env;
 
 interface Props {
   eventId: number;
@@ -15,22 +16,11 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
 
   const fetchResult = useFetch({
     method: 'get',
-    url: `http://localhost:4000/api/events/${eventId}`,
+    url: `${REACT_APP_SERVER_URL}/api/events/${eventId}`,
   });
-
-  (async function test() {
-    const mockURL = `http://localhost:4000/api/events/${eventId}`;
-    const result = await axios({
-      method: 'get',
-      url: mockURL,
-    });
-
-    console.log(result);
-  })();
 
   useEffect(() => {
     if (fetchResult.type === 'success') {
-      console.log('success');
       dispatcher({ type: 'data', value: fetchResult.data });
     }
   }, [dispatcher, fetchResult]);
