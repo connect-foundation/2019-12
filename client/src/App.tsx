@@ -7,6 +7,7 @@ import GlobalStyles from '../src/commons/style/GlobalStyle';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Main from './pages/Main';
 import EventDetail from './pages/EventDetail';
 
 const App: React.FC = () => (
@@ -15,6 +16,7 @@ const App: React.FC = () => (
     <GlobalStyles />
     <Router>
       <Switch>
+        <Route exact path="/" component={Main} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route exact path="/events/:eventId([0-9])" component={EventDetail} />

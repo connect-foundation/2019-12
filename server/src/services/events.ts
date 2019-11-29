@@ -9,7 +9,7 @@ import { Event, TicketType, User } from '../models';
 
 export async function getEvents(limit = 20, startAt: Date): Promise<Event[]> {
   const where: WhereOptions = startAt
-    ? { isPublic: true, id: { [Op.lt]: startAt } }
+    ? { isPublic: true, startAt: { [Op.lt]: startAt } }
     : { isPublic: true };
   const attributes: FindAttributeOptions = {
     exclude: ['isPublic', 'createdAt', 'updatedAt'],
