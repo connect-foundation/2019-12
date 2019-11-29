@@ -116,5 +116,13 @@ export const allstyle: React.FC = () => (
       to={''}
       onClick={action('onClick')}
     />
+    <Btn
+      styletype={'transparent-hover'}
+      disabled={boolean('disabled', false)}
+      content={'Button'}
+      href={''}
+      to={''}
+      onClick={action('onClick')}
+    />
   </div>
 );
