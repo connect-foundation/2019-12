@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 
-interface Props {
+export interface Props {
   name: string;
   required?: boolean;
 }

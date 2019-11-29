@@ -25,7 +25,6 @@ function Header({
         fit={true}
         styletype={'transparent'}
         content={CREATE_EVENT}
-        href={''}
         to={ROUTES.EVENT_CREATE}
         onClick={onCreateEventBtnClickHandlerick}
       />
@@ -38,8 +37,7 @@ function Header({
         fit={true}
         styletype={'transparent-border'}
         content={userNameText}
-        href={''}
-        to={ROUTES.USER}
+        to={ROUTES.LOGIN}
         onClick={onAccountClickHandlerick}
       />
     </S.Container>

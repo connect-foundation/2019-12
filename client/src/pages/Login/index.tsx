@@ -18,9 +18,8 @@ function Login(): React.ReactElement {
         <IconBtn
           fullid={true}
           styletype={'transparent-border'}
-          src={googleSvg}
+          iconSrc={googleSvg}
           content={OAUTH_GOOGLE}
-          alt={OAUTH_GOOGLE}
           onClick={() => {
             window.location.href = AuthURL;
           }}

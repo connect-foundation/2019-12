@@ -9,6 +9,7 @@ import {
   BelongsTo,
   DataType,
   HasMany,
+  AutoIncrement,
 } from 'sequelize-typescript';
 import { Event } from './Event';
 import { TicketSubscription } from './TicketSubscription';
@@ -17,6 +18,7 @@ import { TicketSubscription } from './TicketSubscription';
   underscored: true,
 })
 export class TicketType extends Model<TicketType> {
+  @AutoIncrement
   @PrimaryKey
   @Column
   public id!: number;

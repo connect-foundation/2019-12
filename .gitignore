@@ -4,6 +4,9 @@ dist/
 coverage/
 build/
 .env
+.env.*
+!.env.template
+!.env.production.enc
 
 # Default
 .DS_Store
@@ -15,3 +18,5 @@ Thumbs.db
 *.log
 package-lock.json
 .eslintcache
+
+
