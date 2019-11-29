@@ -13,11 +13,14 @@ interface ActionProps<T> {
   err?: Error;
 }
 
+let befResultType = '';
+
 function reducer<T = any>(
   result: StateProps<T>,
   action: ActionProps<T>,
 ): StateProps<T> {
   const { type } = action;
+  befResultType = type;
 
   switch (type) {
     case 'request':
@@ -38,15 +41,17 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig) {
 
   const [result, dispatch] = useReducer(reducer, initialState);
 
-  axios(axiosOptions)
-    .then(({ status, data }) => {
-      if (status === 200) {
-        dispatch({ type: 'success', data });
-      }
-    })
-    .catch(err => {
-      dispatch({ type: 'failure', err });
-    });
+  if (befResultType !== result.type) {
+    axios(axiosOptions)
+      .then(({ status, data }) => {
+        if (status === 200) {
+          dispatch({ type: 'success', data });
+        }
+      })
+      .catch(err => {
+        dispatch({ type: 'failure', err });
+      });
+  }
 
   return result;
 }

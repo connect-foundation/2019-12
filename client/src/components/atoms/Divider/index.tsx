@@ -5,7 +5,7 @@ export interface Props {
   /** 두께 */
   borderWidth?: string;
   /** Border 스타일 */
-  type?: 'solid' | 'dotted' | string;
+  type?: 'solid' | 'dotted';
   /** gray scale level (color) */
   grayScaleLevel?: number;
 }

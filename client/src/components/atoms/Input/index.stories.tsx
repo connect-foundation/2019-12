@@ -9,7 +9,7 @@ export default {
 export const defaultInput: React.FC = () => {
   return (
     <Input
-      inputName="email"
+      inputName={'email'}
       invalid={boolean('invalid', false)}
       disabled={boolean('disabled', false)}
       placeholder={text('placeholder', '이메일을 입력해주세요.')}
@@ -19,7 +19,7 @@ export const defaultInput: React.FC = () => {
 
 export const invalidInput: React.FC = () => (
   <Input
-    inputName="email"
+    inputName={'email'}
     invalid={boolean('invalid', true)}
     disabled={boolean('disabled', false)}
     defaultValue={text('defaultValue', 'bookusgmail.com')}
