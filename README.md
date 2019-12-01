@@ -1,7 +1,7 @@
 <h1>BookUs!</h1>
 <p>
     <img alt="travis" src="https://api.travis-ci.org/connect-foundation/2019-12.svg?branch=master" />
-    <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+    <img alt="Version" src="https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000" />
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
@@ -10,30 +10,37 @@
 ### 재사용성이 높고 테스트로 검증된 UI Component
 
 - Atomic Desgin Pattern
-- Test (Jest + Enzyme)
+
 - Storybook + Cypress
 
 ### 과중한 트래픽이 몰려도 안정적으로 예약이 가능한 시스템
 
 - Infra Architecture & Orchestration
-
+  
   Docker swarm을 통한 Orchestration 이 가능하도록 설계
   - 인프라 구조
+  <img width="894" alt="CD" src="https://user-images.githubusercontent.com/10372359/69914667-de3f8000-1489-11ea-9c32-6c58ff035eea.png">
+
+    도커 Swarm을 통한 서비스 제공 Front와 Back의 서비스의 Replica를 각각 3개씩 만들어서 이를 서비스하는 방식.
+    Ncloud 의 로드벨런서를 이용하여 서비스함.
+    
+### TEST
+
+- DevOps
+  <img width="886" alt="CI" src="https://user-images.githubusercontent.com/10372359/69914668-de3f8000-1489-11ea-8aa4-5c5f59dc06a9.png">
   
-    <img width="80%" src="https://user-images.githubusercontent.com/10372359/69845512-40468c80-12b4-11ea-85c4-8296dfda7948.png"/>
-    
-    도커 Swarm을 통한 마스터 노드 2개에 Front와 Back의 서비스의 Replica를 각각 3개씩 만들어서 이를 서비스하는 방식.
-    Swarm의 Ingress LoadBalancer는 모든 노드의 포트를 열어주기에 이곳에 Ncloud Load Balancer 를 붙여서 로드벨런싱을 함.
-    
-- Test (Jest, Supertest, Artillery)
+- Front-End : Jest + Enzyme
+- Back-End : Jest + Supertest
 
 ## Built With
 
-- `Language`: Typescript
-- `Front-end`: React, Styled Component, Storybook
-- `Back-end`: Node.js, Express
-- `Test`: Jest, Cypress, Enzyme, Supertest, nGrinder
-- `DevOps`: Docker, Travis
+<img width="825" alt="스크린샷 2019-12-01 오후 10 55 51" src="https://user-images.githubusercontent.com/10372359/69915022-cc5fdc00-148d-11ea-88a6-6143981a5d1e.png">
+
+- Language: Typescript
+- Front-end: React, Styled Component, Storybook
+- Back-end: Node.js, Express
+- Test: Jest, Cypress, Enzyme, Supertest, nGrinder
+- DevOps: Docker, Travis
 
 ## Team
 
