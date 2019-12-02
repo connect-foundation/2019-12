@@ -5,8 +5,12 @@ import View from './view';
 import StoreProvider from './store';
 
 function EventDetail(): React.ReactElement {
-  let { eventId } = useParams();
-  eventId = eventId || '-1';
+  const { eventId } = useParams();
+
+  if (typeof eventId === 'undefined') {
+    // already process in Routing (App.tsx)
+    return <>404</>;
+  }
 
   return (
     <StoreProvider>
