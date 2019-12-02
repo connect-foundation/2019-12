@@ -5,7 +5,7 @@ import currencyDecorator from 'utils/currencyDecorator';
 
 export interface PriceProps {
   mount: number;
-  currency?: '₩' | '$';
+  currency?: '₩';
   separated?: boolean;
 }
 
