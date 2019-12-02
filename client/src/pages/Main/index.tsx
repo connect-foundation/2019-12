@@ -28,7 +28,7 @@ function Main(): React.ReactElement {
       url: `${SERVER_URL}/api/events?cnt=12${startAt}`,
       withCredentials: true,
     });
-    await delay(0.5);
+    await delay(0.1);
     setEvents([...events, ...data]);
   }, [SERVER_URL, events]);
 
@@ -40,7 +40,9 @@ function Main(): React.ReactElement {
       await fetchItems();
     },
     {
+      root: null,
       threshold: 1.0,
+      rootMargin: '0% 0% 25% 0%',
     },
   );
 
