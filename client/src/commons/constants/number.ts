@@ -1,1 +1,1 @@
-export const EVENT_NAME_MAX_LENGTH = 45;
+export const EVENT_NAME_MAX_LENGTH = 40;
