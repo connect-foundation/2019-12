@@ -28,7 +28,7 @@ exports[`Atom / IconBtn [SNAPSHOT] 렌더링 1`] = `
       "src": "check-black.svg",
     }
   }
-  labelStr="1인당 2개 구입 가능"
+  labelContent="1인당 2개 구입 가능"
 >
   <styled.div>
     <StyledComponent

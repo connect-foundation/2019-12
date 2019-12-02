@@ -331,7 +331,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                     "src": "check-black.svg",
                   }
                 }
-                labelStr="1인당 5개 구입 가능"
+                labelContent="1인당 5개 구입 가능"
               >
                 <styled.div>
                   <StyledComponent
@@ -470,7 +470,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                     "src": "calendar-black.svg",
                   }
                 }
-                labelStr="2019-11-28 판매마감"
+                labelContent="2019-11-28 판매마감"
               >
                 <styled.div>
                   <StyledComponent
@@ -609,7 +609,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                     "src": "multiple-users-silhouette.svg",
                   }
                 }
-                labelStr="0개 판매"
+                labelContent="0개 판매"
               >
                 <styled.div>
                   <StyledComponent

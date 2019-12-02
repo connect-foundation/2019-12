@@ -15,6 +15,6 @@ export const index: React.FC = () => (
       alt: 'check',
       src: Check,
     })}
-    labelStr={text('labelStr', '1인당 2개 구입 가능')}
+    labelContent={text('labelContent', '1인당 2개 구입 가능')}
   />
 );

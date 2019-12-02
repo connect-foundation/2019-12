@@ -14,7 +14,7 @@ describe('Atom / IconBtn', () => {
           alt: 'check',
           src: Check,
         }}
-        labelStr={'1인당 2개 구입 가능'}
+        labelContent={'1인당 2개 구입 가능'}
       />,
     );
 

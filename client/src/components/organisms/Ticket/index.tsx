@@ -29,11 +29,11 @@ function Ticket({
           <S.TicketDesc>{desc}</S.TicketDesc>
           <IconLabel
             iconProps={{ height: '1.5rem', alt: 'check', src: Check }}
-            labelStr={`1인당 ${maxCntPerPerson}개 구입 가능`}
+            labelContent={`1인당 ${maxCntPerPerson}개 구입 가능`}
           />
           <IconLabel
             iconProps={{ height: '1.5rem', alt: 'calendar', src: Calendar }}
-            labelStr={`${salesEndAt.split('T')[0]} 판매마감`}
+            labelContent={`${salesEndAt.split('T')[0]} 판매마감`}
           />
           <IconLabel
             iconProps={{
@@ -41,7 +41,7 @@ function Ticket({
               alt: 'people',
               src: MultipleUsers,
             }}
-            labelStr={`${leftCnt}개 판매`}
+            labelContent={`${leftCnt}개 판매`}
           />
         </S.TicketContentWrapContainer>
       </S.TicketContentContainer>
