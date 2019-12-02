@@ -1,19 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import BasedTemplate from '../BasedTemplate/templates';
 import View from './view';
 import StoreProvider from './store';
 
 function EventDetail(): React.ReactElement {
   let { eventId } = useParams();
-  eventId = eventId || '';
+  eventId = eventId || '-1';
 
   return (
     <StoreProvider>
-      <BasedTemplate>
-        <View eventId={+eventId} />
-      </BasedTemplate>
+      <View eventId={+eventId} />
     </StoreProvider>
   );
 }
