@@ -28,23 +28,6 @@ function Card({
   host,
   price,
 }: Props): React.ReactElement {
-  /**
-   * 추후에 lazy loading을 포함한 Img Atom Component를 만들 예정
-   * by inthewalter
-   */
-  const [img, setImage] = useState('');
-  const [, setRef] = useIntersect(
-    async (
-      entry: IntersectionObserverEntry,
-      observer: IntersectionObserver,
-    ) => {
-      setImage(imgSrc);
-      observer.unobserve(entry.target);
-    },
-    {
-      threshold: 0.1,
-    },
-  );
   const eventTitle =
     title.length >= EVENT_NAME_MAX_LENGTH
       ? `${title.slice(0, EVENT_NAME_MAX_LENGTH)}...`
@@ -52,7 +35,7 @@ function Card({
   return (
     <S.LinkWrapper to={to}>
       <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgDiv imgSrc={img} ref={setRef} />
+      <S.ImgDiv imgSrc={imgSrc} />
       <S.InnerContainer>
         <S.ContentContainer>
           <S.Date>{date}</S.Date>
