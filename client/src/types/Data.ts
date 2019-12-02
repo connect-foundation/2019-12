@@ -2,11 +2,10 @@ export interface User {
   id: number;
   lastName: string;
   firstName: string;
+  profileImgUrl: string;
 }
 
 export interface TicketType {
-  id: number;
-  eventId: number;
   name: string;
   desc: string;
   price: number;
@@ -30,4 +29,10 @@ export interface EventDetail {
   desc: string;
   ticketTypes: TicketType[];
   user: User;
+  location: Location;
+}
+
+export interface Location {
+  lat: number;
+  lng: number;
 }
