@@ -1,6 +1,9 @@
 export function convertDate(targetDate: string): Date {
   // caclulate date string automatically
-  return new Date(targetDate);
+  const koreaTime = new Date(targetDate).toLocaleString('ko-KR', {
+    timeZone: 'Asia/Tokyo',
+  });
+  return new Date(koreaTime);
 }
 
 export function getMorningAndAfternoonString(hour: number): string {
