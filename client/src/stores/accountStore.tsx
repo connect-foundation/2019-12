@@ -22,7 +22,7 @@ const verifyToken = () =>
   });
 
 const getUserInfo = (id: number) =>
-  axios.post(`${REACT_APP_SERVER_URL}/api/users/${id}`, { exist: true });
+  axios.post(`${REACT_APP_SERVER_URL}/api/users/${id}`);
 
 export const UserAccountState = createContext<AccountState>(
   defaultAccountState,
