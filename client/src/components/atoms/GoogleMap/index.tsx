@@ -2,7 +2,6 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import * as S from './style';
-import Icon from '../Icon';
 import Pin from '../../../assets/img/pin.svg';
 
 const { REACT_APP_GOOGLE_MAP_API_KEY } = process.env;
@@ -35,12 +34,7 @@ function GoogleMap({ location }: Props): React.ReactElement {
         defaultCenter={location}
         defaultZoom={defaultZoom}
       >
-        <Icon
-          alt={'pin'}
-          height={'3rem'}
-          src={Pin}
-          style={{ transform: 'translate(-50%, -50%)' }}
-        />
+        <S.PinIcon alt={'pin'} height={'3rem'} src={Pin} />
       </GoogleMapReact>
     </S.Container>
   );
