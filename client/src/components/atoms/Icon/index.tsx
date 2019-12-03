@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './style';
 
-export interface Props {
+export interface IconProps {
   /** 접근성 대응 */
   alt: string;
   /** 크기 */
@@ -15,7 +15,7 @@ export interface Props {
   circular?: boolean;
 }
 
-function Icon({ height = '2rem', ...props }: Props): React.ReactElement {
+function Icon({ height = '2rem', ...props }: IconProps): React.ReactElement {
   return <S.Img height={height} {...props} />;
 }
 

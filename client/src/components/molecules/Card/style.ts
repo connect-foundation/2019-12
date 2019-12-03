@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { palette, theme } from 'styled-tools';
+import { Link } from 'react-router-dom';
 
-export const LinkWrapper = styled.a`
-  width: 25%;
+export const LinkWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   background-color: ${palette('white', 0)};
-  box-shadow: ${palette('grayscale', 2)} 0px 2px 4px 0px;
+  box-shadow: ${palette('grayscale', 5)} 0px 2px 4px 0px;
   cursor: pointer;
-  padding: 1rem;
 `;
 
 export const HeaderWrapper = styled.div``;
@@ -17,7 +16,8 @@ export const InnerContainer = styled.div`
   height: 20rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 1rem;
 `;
 
 export const ContentContainer = styled.div`
@@ -25,6 +25,12 @@ export const ContentContainer = styled.div`
   flex-direction: column;
 `;
 
+export const FooterContainer = styled.div`
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 interface ImgDivProps {
   imgSrc: string;
 }
@@ -41,8 +47,8 @@ export const Date = styled.span`
   line-height: 2;
 `;
 
-export const Name = styled.h3`
-  ${theme('fontStyle.h5')}
+export const Title = styled.h3`
+  ${theme('fontStyle.h6')}
   color: ${palette('grayscale', 1)};
   line-height: 1.3;
 `;
@@ -56,4 +62,5 @@ export const Host = styled.span`
 export const Price = styled.span`
   ${theme('fontStyle.body2')}
   color: ${palette('grayscale', 1)};
+  padding-bottom: 0.5rem;
 `;

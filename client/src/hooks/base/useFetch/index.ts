@@ -1,57 +1,51 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
-interface StateProps<T> {
-  type: 'request' | 'success' | 'failure';
-  data?: T;
-  isLoading: boolean;
-  err?: Error;
-}
-interface ActionProps<T> {
+export interface FetchProps<T> {
   type: 'request' | 'success' | 'failure';
   data?: T;
   err?: Error;
 }
-
-let befResultType = '';
 
 function reducer<T = any>(
-  result: StateProps<T>,
-  action: ActionProps<T>,
-): StateProps<T> {
+  result: FetchProps<T>,
+  action: FetchProps<T>,
+): FetchProps<T> {
   const { type } = action;
-  befResultType = type;
 
   switch (type) {
     case 'request':
-      return { type, isLoading: true };
+      return { type };
     case 'success':
-      return { type, isLoading: false, data: action.data };
+      return { type, data: action.data };
     case 'failure':
-      return { type, isLoading: false, err: action.err };
+      return { type, err: action.err };
   }
   return result;
 }
 
 export function useFetch<T>(axiosOptions: AxiosRequestConfig) {
-  const initialState: StateProps<T> = {
+  const initialState: FetchProps<T> = {
     type: 'request',
-    isLoading: true,
   };
-
   const [result, dispatch] = useReducer(reducer, initialState);
 
-  if (befResultType !== result.type) {
-    axios(axiosOptions)
-      .then(({ status, data }) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { status, data } = await axios(axiosOptions);
         if (status === 200) {
           dispatch({ type: 'success', data });
         }
-      })
-      .catch(err => {
+      } catch (err) {
         dispatch({ type: 'failure', err });
-      });
-  }
+      }
+    };
+
+    if (result.type === 'request') {
+      fetchData();
+    }
+  }, [result.type, axiosOptions]);
 
   return result;
 }
