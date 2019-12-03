@@ -5,7 +5,7 @@ const passportGoogle = GoogleStrategy.OAuth2Strategy;
 import { generateJWT } from '../utils/jwt';
 import { getUserByGoogleId, setUser } from '../services';
 
-const makeUserObj: any = async (
+export const makeUserObj: any = async (
   exist: boolean,
   id: number,
   googleId: number,
@@ -59,15 +59,25 @@ export default function setUpPassport(): void {
         // User 정보가 있는지에 대한 검사.
         try {
           const user = await getUserByGoogleId(+googleId);
-          if (user) {
+          if (
+            user &&
+            user.firstName !== null &&
+            user.lastName !== null &&
+            user.phoneNumber !== null
+          ) {
             const userObj = await makeUserObj(true, user.id, googleId, email);
             done(null, userObj, { message: 'Success' });
           } else {
-            const insert = await setUser(+googleId, email);
-            if (insert !== null) {
+            const [result, created] = await setUser(+googleId, email);
+            if (
+              created ||
+              (result.firstName === null &&
+                result.lastName === null &&
+                result.phoneNumber === null)
+            ) {
               const userObj = await makeUserObj(
                 false,
-                insert.id,
+                result.id,
                 googleId,
                 email,
               );
