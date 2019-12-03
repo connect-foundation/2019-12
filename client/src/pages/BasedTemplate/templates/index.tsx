@@ -12,7 +12,7 @@ function BasedTemplate({ children }: Props): React.ReactElement {
   return (
     <S.Container>
       <S.HeaderWrapper>
-        <Header userNameText={'Sungdong Jo'} />
+        <Header />
       </S.HeaderWrapper>
       <S.ChildrenWrapper>{children}</S.ChildrenWrapper>
       <S.FooterWrapper>
