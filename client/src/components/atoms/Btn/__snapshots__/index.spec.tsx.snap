@@ -36,7 +36,7 @@ exports[`Atom / Btn [SNAPSHOT] Anchor 렌더링 1`] = `
   styletype="primary"
 >
   <styled.a
-    customProps={
+    customprops={
       Object {
         "fit": false,
         "grow": false,
@@ -46,7 +46,7 @@ exports[`Atom / Btn [SNAPSHOT] Anchor 렌더링 1`] = `
     styletype="primary"
   >
     <StyledComponent
-      customProps={
+      customprops={
         Object {
           "fit": false,
           "grow": false,
@@ -178,7 +178,7 @@ exports[`Atom / Btn [SNAPSHOT] StyledBtn 렌더링 1`] = `
   styletype="primary"
 >
   <styled.button
-    customProps={
+    customprops={
       Object {
         "fit": false,
         "grow": false,
@@ -187,7 +187,7 @@ exports[`Atom / Btn [SNAPSHOT] StyledBtn 렌더링 1`] = `
     styletype="primary"
   >
     <StyledComponent
-      customProps={
+      customprops={
         Object {
           "fit": false,
           "grow": false,

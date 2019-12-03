@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 interface BtnStyleProps {
   styletype: string;
-  customProps?: {
+  customprops?: {
     fit: boolean;
     grow: boolean;
   };
@@ -12,9 +12,9 @@ interface BtnStyleProps {
 
 export const BtnStyle = css<BtnStyleProps>`
   ${theme('fontStyle.button')}
-  flex-grow: ${ifProp('customProps.grow', '1', '0')};
-  width: ${ifProp('customProps.fit', 'fit-content', '18rem')};
-  height: ${ifProp('customProps.fit', 'auto', '4rem')};
+  flex-grow: ${ifProp('customprops.grow', '1', '0')};
+  width: ${ifProp('customprops.fit', 'fit-content', '18rem')};
+  height: ${ifProp('customprops.fit', 'auto', '4rem')};
   line-height: 1.4rem;
   background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
     palette(props.styletype),

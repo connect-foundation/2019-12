@@ -29,7 +29,7 @@ function Btn({
   grow = false,
   ...props
 }: Props): React.ReactElement {
-  const customProps = {
+  const customprops = {
     fit,
     grow,
   };
@@ -39,7 +39,7 @@ function Btn({
       <S.StyledLink
         styletype={styletype}
         to={to}
-        customProps={customProps}
+        customprops={customprops}
         {...props}
       >
         {children}
@@ -50,7 +50,7 @@ function Btn({
       <S.Anchor
         styletype={styletype}
         href={href}
-        customProps={customProps}
+        customprops={customprops}
         {...props}
       >
         {children}
@@ -59,7 +59,7 @@ function Btn({
   }
 
   return (
-    <S.StyledBtn styletype={styletype} customProps={customProps} {...props}>
+    <S.StyledBtn styletype={styletype} customprops={customprops} {...props}>
       {children}
     </S.StyledBtn>
   );
