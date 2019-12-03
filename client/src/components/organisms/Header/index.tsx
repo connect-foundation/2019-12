@@ -6,10 +6,10 @@ import logo from '../../../assets/img/logo.svg';
 import ROUTES from '../../../commons/constants/routes';
 import { CREATE_EVENT } from '../../../commons/constants/string';
 
-import { AccountState } from '../../../stores/accountStore';
+import { UserAccountState } from '../../../stores/accountStore';
 
 function Header(): React.ReactElement {
-  const account = useContext(AccountState);
+  const account = useContext(UserAccountState);
 
   return (
     <S.Container>
@@ -32,9 +32,8 @@ function Header(): React.ReactElement {
         content={
           !account.isLogin
             ? '로그인'
-            : `${account.firstName}${account.lastName}`
+            : `${account.lastName}${account.firstName}`
         }
-        //원래 로그인이 성공했을 때에는 MyPage로 가야한다.
         to={account.isLogin ? '/' : ROUTES.LOGIN}
       />
     </S.Container>
