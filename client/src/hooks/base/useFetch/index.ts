@@ -6,7 +6,9 @@ export interface FetchProps<T> {
   data?: T;
   err?: Error;
 }
-
+interface Reducer<T> {
+  (result: FetchProps<T>, action: FetchProps<T>): FetchProps<T>;
+}
 function reducer<T = any>(
   result: FetchProps<T>,
   action: FetchProps<T>,
@@ -24,11 +26,11 @@ function reducer<T = any>(
   return result;
 }
 
-export function useFetch<T>(axiosOptions: AxiosRequestConfig) {
+export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
   const initialState: FetchProps<T> = {
     type: 'request',
   };
-  const [result, dispatch] = useReducer(reducer, initialState);
+  const [result, dispatch] = useReducer<Reducer<T>>(reducer, initialState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +43,6 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig) {
         dispatch({ type: 'failure', err });
       }
     };
-
     if (result.type === 'request') {
       fetchData();
     }
