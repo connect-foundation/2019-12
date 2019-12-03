@@ -1,4 +1,10 @@
-import React, { useEffect, createContext, useReducer, Dispatch } from 'react';
+import React, {
+  useEffect,
+  createContext,
+  useContext,
+  useReducer,
+  Dispatch,
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,8 +17,11 @@ import {
   validateName,
 } from '../../utils/validateSignUpForms';
 
+import { UserAccountState, UserAccountAction } from '../../stores/accountStore';
+
+const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+
 const defaultState: SignUpFormState = {
-  email: '',
   lastName: '',
   firstName: '',
   phoneNumber: '',
@@ -27,13 +36,37 @@ export const SignUpAction = createContext<
   Dispatch<ActionParams<SignUpFormState>>
 >(() => {});
 
+const createUser = (
+  id: number,
+  googleId: number,
+  email: string,
+  firstName: string,
+  lastName: string,
+  phoneNumber: number,
+) =>
+  axios(`${SERVER_URL}/api/users`, {
+    method: 'post',
+    data: Object.assign(
+      { id, googleId },
+      {
+        email,
+        firstName,
+        lastName,
+        phoneNumber,
+      },
+    ),
+    withCredentials: true,
+  });
+
 function StoreProvider({ children }: { children: React.ReactElement }) {
-  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
   const history = useHistory();
   const [states, dispatcher] = useReducer<UseStateReducer<SignUpFormState>>(
     useStateReducer,
     defaultState,
   );
+  const { userId, googleId, email } = useContext(UserAccountState);
+  const { setLoginState } = useContext(UserAccountAction);
+
   const { phoneNumber, firstName, lastName, submit } = states;
 
   // Validation Features
@@ -43,12 +76,14 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
       value: !validatePhoneNumber(phoneNumber),
     });
   }, [phoneNumber]);
+
   useEffect(() => {
     dispatcher({
       type: 'firstNameValidate',
       value: !validateName(firstName),
     });
   }, [firstName]);
+
   useEffect(() => {
     dispatcher({
       type: 'lastNameValidate',
@@ -60,41 +95,33 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   useEffect(() => {
     (async function getToken() {
       if (submit) {
-        dispatcher({ type: 'submit', value: false });
-        // Submit 하기 이전 Token에서 Email을 뽑아옴.
-        const getTokenRes = await axios(`${SERVER_URL}/api/auth`, {
-          method: 'post',
-          withCredentials: true,
-        });
         // Userdata를 서버로 보냄.
-        const userData = Object.assign(
-          { ...getTokenRes.data },
-          {
+        try {
+          const updateUserRes = await createUser(
+            userId,
+            googleId,
+            email,
             firstName,
             lastName,
-            phoneNumber,
-          },
-        );
-        try {
-          const updateUserRes = await axios(`${SERVER_URL}/api/users`, {
-            method: 'post',
-            data: userData,
-            withCredentials: true,
-          });
+            +phoneNumber,
+          );
           if (updateUserRes.status === 200) {
             alert('회원가입이 완료되었습니다.');
+            dispatcher({ type: 'submit', value: false });
+            setLoginState(true);
             history.push('/');
           }
         } catch (err) {
           //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
           if (err.response.status === 400) {
             alert('이미 가입되어있는 회원입니다.');
+            dispatcher({ type: 'submit', value: false });
             history.push('/');
           }
         }
       }
     })();
-  }, [SERVER_URL, firstName, history, lastName, phoneNumber, submit]);
+  }, [email, firstName, googleId, history, lastName, phoneNumber, setLoginState, submit, userId]);
 
   return (
     <SignUpAction.Provider value={dispatcher}>
