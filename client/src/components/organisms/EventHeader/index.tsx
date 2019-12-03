@@ -17,7 +17,7 @@ interface Props {
   startAt: string;
   endAt: string;
   user: User;
-  ticketTypes: TicketType[];
+  ticketType: TicketType;
 }
 
 function EventHeader({
@@ -27,9 +27,9 @@ function EventHeader({
   startAt,
   endAt,
   user,
-  ticketTypes,
+  ticketType,
 }: Props): React.ReactElement {
-  const ticketInfo = ticketTypes[0];
+  const ticketInfo = ticketType;
   const { firstName, lastName, profileImgUrl } = user;
 
   return (

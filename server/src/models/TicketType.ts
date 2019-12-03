@@ -8,11 +8,9 @@ import {
   UpdatedAt,
   BelongsTo,
   DataType,
-  HasMany,
   AutoIncrement,
 } from 'sequelize-typescript';
 import { Event } from './Event';
-import { TicketSubscription } from './TicketSubscription';
 
 @Table({
   underscored: true,
@@ -65,7 +63,4 @@ export class TicketType extends Model<TicketType> {
 
   @UpdatedAt
   public readonly updatedAt!: Date;
-
-  @HasMany(() => TicketSubscription, 'ticketTypeId')
-  public ticketSubscriptions!: TicketSubscription[];
 }
