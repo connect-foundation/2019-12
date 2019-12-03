@@ -36,3 +36,10 @@ export interface Location {
   lat: number;
   lng: number;
 }
+
+export interface Token {
+  exist: boolean;
+  id: number;
+  googleId: number;
+  email: string;
+}
