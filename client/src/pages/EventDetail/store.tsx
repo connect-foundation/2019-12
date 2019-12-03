@@ -6,7 +6,7 @@ import { ActionParams } from '../../types/Actions';
 import { EventDetailState } from '../../types/States';
 
 const defaultState: EventDetailState = {
-  data: {
+  eventData: {
     title: '',
     startAt: '',
     endAt: '',
@@ -15,23 +15,21 @@ const defaultState: EventDetailState = {
     placeDesc: '',
     mainImg: '',
     desc: '',
-    ticketTypes: [
-      {
-        id: 0,
-        eventId: 0,
-        name: '',
-        desc: '',
-        price: 0,
-        quantity: 0,
-        leftCnt: 0,
-        isPublicLeftCnt: false,
-        maxCntPerPerson: 0,
-        salesStartAt: '',
-        salesEndAt: '',
-        refundEndAt: '',
-      },
-    ],
-    user: { id: 0, lastName: '', firstName: '' },
+    ticketType: {
+      name: '',
+      desc: '',
+      price: 0,
+      quantity: 0,
+      leftCnt: 0,
+      isPublicLeftCnt: false,
+      maxCntPerPerson: 0,
+      salesStartAt: '',
+      salesEndAt: '',
+      refundEndAt: '',
+    },
+
+    user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
+    location: { lat: 0, lng: 0 },
   },
 };
 

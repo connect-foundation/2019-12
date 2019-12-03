@@ -1,13 +1,6 @@
 import '../../src/env';
 import { sequelize } from '../../src/utils/sequelize';
-import {
-  User,
-  Event,
-  TicketType,
-  Order,
-  OrderTicket,
-  TicketSubscription,
-} from '../../src/models';
+import { User, Event, TicketType, UserTicket } from '../../src/models';
 
 const exclude = ['createdAt', 'updatedAt'];
 
@@ -39,28 +32,12 @@ describe('DB seed 데이터가 유효', () => {
     //then
     expect(tickettypes).toMatchSnapshot();
   });
-  it('Order 데이터가 유효', async () => {
+  it('UserTicket 데이터가 유효', async () => {
     //given, when
-    const orders = await Order.findAll({
-      attributes: { exclude },
-    });
-    //then
-    expect(orders).toMatchSnapshot();
-  });
-  it('OrderTicket 데이터가 유효', async () => {
-    //given, when
-    const ordertickets = await OrderTicket.findAll({
+    const ordertickets = await UserTicket.findAll({
       attributes: { exclude },
     });
     //then
     expect(ordertickets).toMatchSnapshot();
-  });
-  it('TicketSubscription 데이터가 유효', async () => {
-    //given, when
-    const ticketsubscription = await TicketSubscription.findAll({
-      attributes: { exclude },
-    });
-    //then
-    expect(ticketsubscription).toMatchSnapshot();
   });
 });

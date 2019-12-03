@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "ticketTypeId": 4,
-    "orderId": 1,
+    "ticketTypeId": 1,
+    "userId": 1,
     "isAttendance": true,
     "createdAt": "",
     "updatedAt": ""

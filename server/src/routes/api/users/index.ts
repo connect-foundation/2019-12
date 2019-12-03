@@ -24,6 +24,7 @@ router.param(
     next();
   },
 );
+router.post('/:userId', controllers.getUser);
 router.post('/', controllers.createUser);
 
 export default router;

@@ -14,11 +14,7 @@ export const index: React.FC = () => (
     <Router>
       <Switch>
         <Route path="*">
-          <Header
-            userNameText={text('userNameText', 'Sungdong Jo')}
-            onCreateEventBtnClickHandlerick={action('onClick CreateEventBtn')}
-            onAccountClickHandlerick={action('onClick UserPageBtn')}
-          />
+          <Header />
         </Route>
       </Switch>
     </Router>
