@@ -27,7 +27,7 @@ export interface EventDetail {
   placeDesc: string;
   mainImg: string;
   desc: string;
-  ticketTypes: TicketType[];
+  ticketType: TicketType;
   user: User;
   location: Location;
 }

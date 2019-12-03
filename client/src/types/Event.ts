@@ -1,4 +1,4 @@
-interface TicketTypes {
+interface TicketType {
   id: number;
   eventId: number;
   name: string;
@@ -28,6 +28,6 @@ export interface Event {
   address: string;
   placeDesc: string;
   mainImg: string;
-  ticketTypes: TicketTypes[];
+  ticketType: TicketType;
   user: User;
 }
