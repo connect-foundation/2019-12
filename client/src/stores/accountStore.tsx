@@ -1,61 +1,76 @@
-import React, { createContext, useReducer, Dispatch } from 'react';
+import React, {
+  createContext,
+  useReducer,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
+import axios from 'axios';
 
-interface AccountState {
-  // Account 상태가 False일 경우, 모든 항목이 null임, 만약 true일 경우 모든 항목이 다 있어야함.
-  // 만약 회원가입을 하지 않아서 값이 넘어오질 않으면, 이 State를 업데이트하지 않음.
-  isLogin: boolean;
-  userId: number | null;
-  email: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  exp: number | null;
-}
-interface AccountAction {
-  type: string;
-  value: AccountState;
-}
-interface AccountReducer {
-  (state: AccountState, action: AccountAction): AccountState;
-}
-const defaultAccountState: AccountState = {
-  isLogin: false,
-  userId: null,
-  email: null,
-  firstName: null,
-  lastName: null,
-  exp: null,
-};
+import { AccountAction } from '../types/Actions';
+import { AccountState } from '../types/States';
+import { AccountReducer } from '../types/CustomHooks';
+import { accountReducer, defaultAccountState } from '../hooks';
 
-function accountReducer(state: AccountState, action: AccountAction) {
-  switch (action.type) {
-    case 'LOGOUT': {
-      return Object.assign({ ...defaultAccountState });
-    }
-    case 'LOGIN': {
-      // 여기서 action.value를 가져다 쓸 예정임.
-      return Object.assign({ ...state, isLogin: true });
-    }
-    default: {
-      throw new Error(`unexpected action.type: ${action.type}`);
-    }
-  }
-}
-export const AccountState = createContext<AccountState>(defaultAccountState);
-export const AccountAction = createContext<Dispatch<AccountAction>>(() => {});
+const { REACT_APP_SERVER_URL } = process.env;
+
+const verifyToken = () =>
+  axios(`${REACT_APP_SERVER_URL}/api/auth`, {
+    method: 'post',
+    withCredentials: true,
+  });
+
+const getUserInfo = (id: number) =>
+  axios.post(`${REACT_APP_SERVER_URL}/api/users/${id}`, { exist: true });
+
+export const UserAccountState = createContext<AccountState>(
+  defaultAccountState,
+);
+
+export const UserAccountAction = createContext<{
+  accountDispatcher: Dispatch<AccountAction>;
+  setLoginState: Dispatch<SetStateAction<boolean>>;
+}>({ accountDispatcher: () => {}, setLoginState: () => {} });
 
 function AccountStoreProvider({ children }: { children: React.ReactElement }) {
   const [accountState, accountDispatcher] = useReducer<AccountReducer>(
     accountReducer,
     defaultAccountState,
   );
+  const [loginState, setLoginState] = useState(true);
+
+  useEffect(() => {
+    if (loginState) {
+      (async function() {
+        try {
+          const verifyTokenResult = await verifyToken();
+          let account = null;
+          if (verifyTokenResult.data.exist) {
+            const accountData = await getUserInfo(verifyTokenResult.data.id);
+            account = { ...accountData.data, isLogin: true };
+          } else {
+            const { id: userId, googleId, email } = verifyTokenResult.data;
+            account = { userId, googleId, email, isLogin: false };
+          }
+          accountDispatcher({
+            type: 'LOGIN',
+            value: account,
+          });
+        } catch (err) {
+          // 만약 API 콜이 실패했을 경우 이곳에서 에러처리
+        }
+      })();
+      setLoginState(false);
+    }
+  }, [loginState]);
 
   return (
-    <AccountAction.Provider value={accountDispatcher}>
-      <AccountState.Provider value={accountState}>
+    <UserAccountAction.Provider value={{ accountDispatcher, setLoginState }}>
+      <UserAccountState.Provider value={accountState}>
         {children}
-      </AccountState.Provider>
-    </AccountAction.Provider>
+      </UserAccountState.Provider>
+    </UserAccountAction.Provider>
   );
 }
-
 export default AccountStoreProvider;
