@@ -6,8 +6,6 @@ export const defaultAccountState: AccountState = {
   userId: 0,
   googleId: 0,
   email: '',
-  firstName: null,
-  lastName: null,
 };
 
 export function accountReducer(state: AccountState, action: AccountAction) {

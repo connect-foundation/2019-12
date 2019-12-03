@@ -21,7 +21,7 @@ export interface AccountState {
   userId: number;
   googleId: number;
   email: string;
-  firstName?: string | null;
-  lastName?: string | null;
-  phoneNumber?: number | null;
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: number;
 }
