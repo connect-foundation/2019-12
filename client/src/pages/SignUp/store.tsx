@@ -19,7 +19,7 @@ import {
 
 import { UserAccountState, UserAccountAction } from '../../stores/accountStore';
 
-const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+const { REACT_APP_SERVER_URL } = process.env;
 
 const defaultState: SignUpFormState = {
   lastName: '',
@@ -44,7 +44,7 @@ const createUser = (
   lastName: string,
   phoneNumber: number,
 ) =>
-  axios(`${SERVER_URL}/api/users`, {
+  axios(`${REACT_APP_SERVER_URL}/api/users`, {
     method: 'post',
     data: Object.assign(
       { id, googleId },
@@ -121,7 +121,17 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         }
       }
     })();
-  }, [email, firstName, googleId, history, lastName, phoneNumber, setLoginState, submit, userId]);
+  }, [
+    email,
+    firstName,
+    googleId,
+    history,
+    lastName,
+    phoneNumber,
+    setLoginState,
+    submit,
+    userId,
+  ]);
 
   return (
     <SignUpAction.Provider value={dispatcher}>
