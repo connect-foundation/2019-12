@@ -64,5 +64,5 @@ export class Event extends Model<Event> {
   public readonly updatedAt!: Date;
 
   @HasOne(() => TicketType, 'eventId')
-  public ticketTypes!: TicketType;
+  public ticketType!: TicketType;
 }
