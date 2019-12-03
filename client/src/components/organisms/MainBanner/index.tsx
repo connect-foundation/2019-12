@@ -14,8 +14,9 @@ function MainBanner({
     <S.Wrapper imgSrc={imgSrc}>
       <S.Container>
         <S.Title>
-          <div>이벤트를 만나는</div>
-          <div>가장 쉬운 방법</div>
+          이벤트를 만나는
+          <br />
+          가장 쉬운 방법
         </S.Title>
         <Btn styletype="primary" to={'/'} content={CREATE_EVENT} />
       </S.Container>
