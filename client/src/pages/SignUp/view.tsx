@@ -4,6 +4,7 @@ import SignUpForm from '../../components/organisms/SignUpForm';
 import Btn from '../../components/atoms/Btn';
 
 import { SignUpAction, SignUpState } from './store';
+import { UserAccountState } from '../../stores/accountStore';
 
 import {
   SIGNUP_EMAIL,
@@ -14,6 +15,7 @@ import {
 } from '../../commons/constants/string';
 
 function SignUpView(): React.ReactElement {
+  const { email } = useContext(UserAccountState);
   const dispatcher = useContext(SignUpAction);
   const { firstNameValidate, lastNameValidate, phoneValidate } = useContext(
     SignUpState,
@@ -24,10 +26,7 @@ function SignUpView(): React.ReactElement {
       inputName: 'email',
       captionContent: '이메일을 입력하세요',
       disabled: true,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
-        dispatcher({ type: 'email', value });
-      },
+      value: email || '',
       labelProps: {
         name: SIGNUP_EMAIL,
         required: false,

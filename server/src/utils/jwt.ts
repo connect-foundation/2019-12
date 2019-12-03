@@ -27,3 +27,16 @@ export function generateJWT(
     );
   });
 }
+
+export function verifyJWT(token: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    JWT.verify(
+      token,
+      JWT_SECURE || '',
+      (err: JWT.VerifyErrors, decoded: any) => {
+        if (err) reject(err);
+        resolve(decoded);
+      },
+    );
+  });
+}

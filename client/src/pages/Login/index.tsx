@@ -9,7 +9,7 @@ import LoginTemplate from './templates';
 
 const { REACT_APP_SERVER_URL } = process.env;
 
-const AuthURL = `${REACT_APP_SERVER_URL}/api/auth?returnTo=/login`;
+const AuthURL = `${REACT_APP_SERVER_URL}/api/auth?returnTo=/`;
 
 function Login(): React.ReactElement {
   return (

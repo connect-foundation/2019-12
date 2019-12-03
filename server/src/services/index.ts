@@ -1,1 +1,1 @@
-export { getUserByGoogleId, setUser, setUserInfo } from './users';
+export { getUserById, getUserByGoogleId, setUser, setUserInfo } from './users';
