@@ -14,26 +14,20 @@ export async function createUser(req: Request, res: Response) {
     phoneNumber,
   } = req.body;
   // Exist가 False일 경우, Token이 회원가입이 안되어 있음을 말함.
-  if (!exist) {
-    const result = await setUserInfo(
-      id,
-      googleId,
-      firstName,
-      lastName,
-      phoneNumber,
-    );
-    if (result[0] === 1) {
-      const token = await generateJWT(true, id, googleId, email);
-      console.log(token, email);
-      res
-        .cookie('UID', token, {
-          maxAge: 1000 * 60 * 60 * 60,
-        })
-        .send({ message: 'Success Signup' });
-    } else {
-      res.status(400).send({ message: 'Cannot Signup' });
-    }
-  } else {
-    res.status(400).send({ message: 'Cannot Signup' });
-  }
+  if (!exist) return res.status(400).send({ message: 'Cannot Signup' });
+  const result = await setUserInfo(
+    id,
+    googleId,
+    firstName,
+    lastName,
+    phoneNumber,
+  );
+  if (result[0] !== 1)
+    return res.status(400).send({ message: 'Cannot Signup' });
+  const token = await generateJWT(true, id, googleId, email);
+  res
+    .cookie('UID', token, {
+      maxAge: 1000 * 60 * 60 * 60,
+    })
+    .send({ message: 'Success Signup' });
 }

@@ -9,17 +9,14 @@ export const authCallback = (req: any, res: Response, next: NextFunction) => {
     res.cookie('UID', req.user.token, {
       maxAge: 1000 * 60 * 60 * 60,
     });
-    if (isUserExist) {
-      const { state } = req.query;
-      const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
-      if (typeof returnTo === 'string' && returnTo.startsWith('/')) {
-        res.redirect(`${CLIENT_URL}${returnTo}`);
-      } else {
-        res.redirect(`${CLIENT_URL}/`);
-      }
-    } else {
-      res.redirect(`${CLIENT_URL}/signup`);
-    }
+
+    if (!isUserExist) return res.redirect(`${CLIENT_URL}/signup`);
+    const { state } = req.query;
+    const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
+
+    if (!(typeof returnTo === 'string' && returnTo.startsWith('/')))
+      return res.redirect(`${CLIENT_URL}/`);
+    res.redirect(`${CLIENT_URL}${returnTo}`);
   } catch (err) {
     next(err);
   }
