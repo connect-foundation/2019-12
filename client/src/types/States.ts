@@ -11,7 +11,7 @@ export interface SignUpFormState {
 }
 
 export interface EventDetailState {
-  data: EventDetail | any;
+  eventData: EventDetail;
 }
 
 export interface AccountState {

@@ -6,7 +6,7 @@ import { ActionParams } from '../../types/Actions';
 import { EventDetailState } from '../../types/States';
 
 const defaultState: EventDetailState = {
-  data: {
+  eventData: {
     title: '',
     startAt: '',
     endAt: '',
@@ -17,8 +17,6 @@ const defaultState: EventDetailState = {
     desc: '',
     ticketTypes: [
       {
-        id: 0,
-        eventId: 0,
         name: '',
         desc: '',
         price: 0,
@@ -31,7 +29,8 @@ const defaultState: EventDetailState = {
         refundEndAt: '',
       },
     ],
-    user: { id: 0, lastName: '', firstName: '' },
+    user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
+    location: { lat: 0, lng: 0 },
   },
 };
 

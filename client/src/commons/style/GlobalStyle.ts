@@ -2,9 +2,17 @@ import { createGlobalStyle } from 'styled-components';
 import { theme } from 'styled-tools';
 
 const GlobalStyles = createGlobalStyle`
+  @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+  @import url('https://fonts.googleapis.com/css?family=Gothic+A1|Noto+Sans+KR&display=swap');
+  @font-face {
+    font-family: 'S-CoreDream-8Heavy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
   * {
     margin: 0;
-    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+    font-family: 'Spoqa Han Sans', 'Noto Sans KR', 'Gothic A1', sans-serif;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
