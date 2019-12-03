@@ -28,6 +28,7 @@ app.use(passport.initialize());
 setUpPassport();
 
 app.use('/api', indexRouter);
+app.get('/', (req, res) => res.send('OK'));
 
 app.use(notFoundHandler);
 app.use(internelServerErrorHandler);
