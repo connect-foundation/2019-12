@@ -72,7 +72,7 @@ function EventDetailTemplate({ data }: Props): React.ReactElement {
           <Icon alt={'people'} src={MultipleUsers} />
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
-        <S.SubmitBtn styletype={'primary'} content={'등록'} />
+        <S.SubmitBtn styletype={'primary'} children={'등록'} />
       </S.SubmitContainer>
       <S.DetailContainer>
         <S.ContentContainer>

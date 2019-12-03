@@ -21,10 +21,9 @@ function Header({
   return (
     <S.Container>
       <Btn
-        grow={false}
-        fit={true}
+        fit
         styletype={'transparent'}
-        content={CREATE_EVENT}
+        children={CREATE_EVENT}
         to={ROUTES.EVENT_CREATE}
         onClick={onCreateEventBtnClickHandlerick}
       />
@@ -33,10 +32,9 @@ function Header({
         <S.Img alt={'Logo'} src={logo} />
       </S.StyledLink>
       <Btn
-        grow={false}
-        fit={true}
+        fit
         styletype={'transparent-border'}
-        content={userNameText}
+        children={userNameText}
         to={ROUTES.LOGIN}
         onClick={onAccountClickHandlerick}
       />
