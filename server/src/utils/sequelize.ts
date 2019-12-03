@@ -1,10 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Event, UserTicket, TicketType, User } from '../models';
-//import { readJSONData } from './readJSON';
-//import { resolve } from 'path';
+import { readJSONData } from './readJSON';
+import { resolve } from 'path';
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PW, DB_NAME } = process.env;
-//const SEED_DIR = resolve(__dirname, '../../db_seeds');
+const SEED_DIR = resolve(__dirname, '../../db_seeds');
 
 export const sequelize = new Sequelize({
   host: DB_HOST,
@@ -22,7 +22,6 @@ export async function migrate() {
   console.info('DB migration end...');
 }
 
-/*
 export async function seed() {
   console.info('DB seed start...');
   // UserData 추가
@@ -40,23 +39,10 @@ export async function seed() {
   const ticketData = await readJSONData<TicketType>(ticketPath);
   await TicketType.bulkCreate(ticketData);
 
-  // OrderData 추가
-  const orderPath = resolve(SEED_DIR, 'orders.json');
-  const orderData = await readJSONData<Order>(orderPath);
-  await Order.bulkCreate(orderData);
-
   // OrderTikcetData 추가
-  const orderTicketPath = resolve(SEED_DIR, 'orderTickets.json');
-  const orderTicketData = await readJSONData<OrderTicket>(orderTicketPath);
-  await OrderTicket.bulkCreate(orderTicketData);
-
-  // TicketSubscriptionData 추가
-  const ticketSubscriptionPath = resolve(SEED_DIR, 'ticketSubscription.json');
-  const ticketSubscriptionData = await readJSONData<TicketSubscription>(
-    ticketSubscriptionPath,
-  );
-  await TicketSubscription.bulkCreate(ticketSubscriptionData);
+  const userTicketPath = resolve(SEED_DIR, 'userTickets.json');
+  const userTicketData = await readJSONData<UserTicket>(userTicketPath);
+  await UserTicket.bulkCreate(userTicketData);
 
   console.info('DB seed end...');
 }
-*/
