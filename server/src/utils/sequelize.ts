@@ -1,17 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
-import {
-  Event,
-  Order,
-  OrderTicket,
-  TicketSubscription,
-  TicketType,
-  User,
-} from '../models';
-import { readJSONData } from './readJSON';
-import { resolve } from 'path';
+import { Event, UserTicket, TicketType, User } from '../models';
+//import { readJSONData } from './readJSON';
+//import { resolve } from 'path';
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PW, DB_NAME } = process.env;
-const SEED_DIR = resolve(__dirname, '../../db_seeds');
+//const SEED_DIR = resolve(__dirname, '../../db_seeds');
 
 export const sequelize = new Sequelize({
   host: DB_HOST,
@@ -20,7 +13,7 @@ export const sequelize = new Sequelize({
   password: DB_PW,
   database: DB_NAME,
   dialect: 'mariadb',
-  models: [Event, Order, OrderTicket, TicketSubscription, TicketType, User],
+  models: [Event, UserTicket, TicketType, User],
 });
 
 export async function migrate() {
@@ -29,6 +22,7 @@ export async function migrate() {
   console.info('DB migration end...');
 }
 
+/*
 export async function seed() {
   console.info('DB seed start...');
   // UserData 추가
@@ -65,3 +59,4 @@ export async function seed() {
 
   console.info('DB seed end...');
 }
+*/
