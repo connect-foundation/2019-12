@@ -2,13 +2,6 @@ import * as express from 'express';
 
 const router = express.Router();
 
-// 전체를 관통할 미들웨어를 이곳에 서술
-router.use(
-  (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    next();
-  },
-);
-// parameter를 뽑을 때 사용할 미들웨어
 router.param(
   'userId',
   (
@@ -22,6 +15,6 @@ router.param(
     next();
   },
 );
-router.post('/');
+router.post('/ticket');
 
 export default router;

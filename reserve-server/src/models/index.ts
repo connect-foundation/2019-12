@@ -1,6 +1,4 @@
 export { Event } from './Event';
-export { Order } from './Order';
-export { OrderTicket } from './OrderTicket';
-export { TicketSubscription } from './TicketSubscription';
+export { UserTicket } from './UserTicket';
 export { TicketType } from './TicketType';
 export { User } from './User';
