@@ -2,11 +2,11 @@ import {
   convertDate,
   getMorningAndAfternoonString,
   fillZero,
-  calcStringOfDateRange,
-  calcDiffDaysOfDateRange,
+  calculateStringOfDateRange,
+  calculateDiffDaysOfDateRange,
 } from './dateCalculator';
 
-describe('dateCalculator', () => {
+describe('datecalculateulator', () => {
   // given
   const startAt = '2019-12-21T03:00:00Z';
   const endAt = '2019-12-22T09:00:00Z';
@@ -43,7 +43,7 @@ describe('dateCalculator', () => {
     const endAtOneDay = '2018-04-22T09:00:00Z';
 
     // when
-    const resultString = calcStringOfDateRange(startAtOneDay, endAtOneDay);
+    const resultString = calculateStringOfDateRange(startAtOneDay, endAtOneDay);
 
     // then
     expect(resultString).toBe('2018년 04월 22일 (일)\n오전 09:00 - 오후 06:00');
@@ -51,7 +51,7 @@ describe('dateCalculator', () => {
 
   it('여러 날에 걸친 일정일 경우 형식이 올바르게 표시된다.', () => {
     // when
-    const resultString = calcStringOfDateRange(startAt, endAt);
+    const resultString = calculateStringOfDateRange(startAt, endAt);
 
     // then
     expect(resultString).toBe(
@@ -61,7 +61,7 @@ describe('dateCalculator', () => {
 
   it('날짜의 차를 계산하여 반환한다', () => {
     // when
-    const diffDays = calcDiffDaysOfDateRange(startAt, endAt);
+    const diffDays = calculateDiffDaysOfDateRange(startAt, endAt);
 
     // then
     expect(diffDays).toBe(1);

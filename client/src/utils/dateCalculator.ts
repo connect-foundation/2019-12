@@ -26,7 +26,10 @@ export function fillZero(targetNumber: number): string {
   return `${targetNumber}`;
 }
 
-export function calcStringOfDateRange(startAt: string, endAt: string): string {
+export function calculateStringOfDateRange(
+  startAt: string,
+  endAt: string,
+): string {
   const startAtDate = convertDate(startAt);
   const endAtDate = convertDate(endAt);
   const days = ['일', '월', '화', '수', '목', '금', '토'];
@@ -55,7 +58,7 @@ export function calcStringOfDateRange(startAt: string, endAt: string): string {
   return `${startDateStr} ${startTimeStr}\n- ${endDateStr} ${endTimeStr}`;
 }
 
-export function calcDiffDaysOfDateRange(
+export function calculateDiffDaysOfDateRange(
   startAt: string,
   endAt: string,
 ): number {
