@@ -1,5 +1,5 @@
 import * as express from 'express';
-
+import * as controllers from './controllers';
 const router = express.Router();
 
 router.param(
@@ -15,6 +15,6 @@ router.param(
     next();
   },
 );
-router.post('/ticket');
+router.post('/ticket', controllers.orderTicket);
 
 export default router;
