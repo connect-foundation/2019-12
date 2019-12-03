@@ -10,7 +10,8 @@
     ],
     "packages": [
       "client",
-      "server"
+      "server",
+      "reserve-server"
     ]
   },
   "scripts": {
