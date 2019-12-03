@@ -2,8 +2,8 @@ import React from 'react';
 import * as S from './style';
 
 export interface Props {
-  /** 버튼 내용 */
-  content: string;
+  /** 버튼 내용 또는 엘리먼트 */
+  children: React.ReactElement | string;
   /** react-router/Link 사용 (내부적인 routing)*/
   to?: string;
   /** 외부 링크 */
@@ -21,29 +21,46 @@ export interface Props {
 }
 
 function Btn({
-  content,
+  children,
   href,
   to,
   styletype = 'primary',
+  fit = false,
+  grow = false,
   ...props
 }: Props): React.ReactElement {
+  const customProps = {
+    fit,
+    grow,
+  };
+
   if (to) {
     return (
-      <S.StyledLink styletype={styletype} to={to} {...props}>
-        {content}
+      <S.StyledLink
+        styletype={styletype}
+        to={to}
+        customProps={customProps}
+        {...props}
+      >
+        {children}
       </S.StyledLink>
     );
-  }
-  if (href) {
+  } else if (href) {
     return (
-      <S.Anchor styletype={styletype} href={href} {...props}>
-        {content}
+      <S.Anchor
+        styletype={styletype}
+        href={href}
+        customProps={customProps}
+        {...props}
+      >
+        {children}
       </S.Anchor>
     );
   }
+
   return (
-    <S.StyledBtn styletype={styletype} {...props}>
-      {content}
+    <S.StyledBtn styletype={styletype} customProps={customProps} {...props}>
+      {children}
     </S.StyledBtn>
   );
 }

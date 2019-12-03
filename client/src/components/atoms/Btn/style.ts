@@ -4,19 +4,24 @@ import { Link } from 'react-router-dom';
 
 interface BtnStyleProps {
   styletype: string;
+  customProps?: {
+    fit: boolean;
+    grow: boolean;
+  };
 }
 
 export const BtnStyle = css<BtnStyleProps>`
   ${theme('fontStyle.button')}
+  flex-grow: ${ifProp('customProps.grow', '1', '0')};
+  width: ${ifProp('customProps.fit', 'fit-content', '18rem')};
+  height: ${ifProp('customProps.fit', 'auto', '4rem')};
   line-height: 1.4rem;
   background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
     palette(props.styletype),
   )};
   flex-shrink: 0;
-  flex-grow: ${ifProp('grow', '1', '0')};
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
-  width: ${ifProp('fit', 'fit-content', '18rem')};
   color: ${props =>
     props.styletype === 'transparent' ||
     props.styletype === 'transparent-border' ||
@@ -33,7 +38,6 @@ export const BtnStyle = css<BtnStyleProps>`
       : 'transparent'};
   outline: none;
   text-align: center;
-  height: ${ifProp('fit', 'auto', '4rem')};
   user-select: none;
   transition: opacity ease 0.2s, background-color ease 0.2s, color ease 0.2s;
   border-style: solid;
