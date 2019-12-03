@@ -29,7 +29,6 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     address,
     placeDesc,
   } = eventData;
-  const ticket = ticketType;
 
   const requestFetch = useFetch({
     method: 'get',
@@ -46,11 +45,9 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
       case 'request':
         reqEventData = Object.assign(eventData, { desc: loadingMsg });
         break;
-
       case 'success':
         // pass eventData
         break;
-
       case 'failure':
         // TODO: Route 404
         reqEventData = Object.assign(eventData, { desc: failureMsg });
@@ -88,7 +85,7 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
       }
       // TODO: eventContent will change to contentViewer component
       eventContent={<div dangerouslySetInnerHTML={{ __html: desc }} />}
-      ticket={<Ticket {...ticket} />}
+      ticket={<Ticket {...ticketType} />}
       place={<Place {...{ place, address, placeDesc, location }} />}
     />
   );
