@@ -5,10 +5,10 @@ const passportGoogle = GoogleStrategy.OAuth2Strategy;
 import { generateJWT } from '../utils/jwt';
 import { getUserByGoogleId, setUser } from '../services';
 
-export const makeUserObj: any = async (
+export const makeUserObj = async (
   exist: boolean,
   id: number,
-  googleId: number,
+  googleId: string,
   email: string,
 ) => {
   const token = await generateJWT(exist, id, +googleId, email);
@@ -48,14 +48,10 @@ export default function setUpPassport(): void {
         const { id: googleId, emails } = profile;
 
         // 이메일이 존재하지 않을 경우를 검사함
-        let email = null;
-        if (emails !== undefined) {
-          email = emails[0].value;
-        } else {
-          // 이메일이 존재하지 않을 경우
+        if (emails === undefined) {
           return done(null, false, { message: 'any email exist' });
         }
-
+        const email = emails[0].value;
         // User 정보가 있는지에 대한 검사.
         try {
           const user = await getUserByGoogleId(+googleId);

@@ -1,22 +1,21 @@
 import { Request, Response, NextFunction } from 'express';
-import * as JWT from 'jsonwebtoken';
+import { verifyJWT } from '../../../../utils/jwt';
 
-const { JWT_SECURE } = process.env;
-
-export const authToken = (req: Request, res: Response, next: NextFunction) => {
+export const authToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const token = req.cookies.UID;
-  JWT.verify(token, JWT_SECURE || '', (err: JWT.VerifyErrors, decoded: any) => {
-    if (err) next(err);
-    const value = Object.keys(decoded).every(key => key !== undefined);
-
-    if (!value) return next({ message: 'unable to verify token' });
-    const { exist, id, googleId, email } = decoded;
-    const decodeToken = {
+  try {
+    const { exist, id, googleId, email } = await verifyJWT(token);
+    res.send({
       exist,
       id,
       googleId,
       email,
-    };
-    res.send(decodeToken);
-  });
+    });
+  } catch (err) {
+    next(err);
+  }
 };
