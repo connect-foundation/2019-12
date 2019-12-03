@@ -1,7 +1,6 @@
 import { EventDetail } from '../types/Data';
 
 export interface SignUpFormState {
-  email: string;
   lastName: string;
   firstName: string;
   phoneNumber: string;
@@ -13,4 +12,16 @@ export interface SignUpFormState {
 
 export interface EventDetailState {
   data: EventDetail | any;
+}
+
+export interface AccountState {
+  // Account 상태가 False일 경우, 모든 항목이 null임, 만약 true일 경우 모든 항목이 다 있어야함.
+  // 만약 회원가입을 하지 않아서 값이 넘어오질 않으면, 이 State를 업데이트하지 않음.
+  isLogin: boolean;
+  userId: number;
+  googleId: number;
+  email: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  phoneNumber?: number | null;
 }

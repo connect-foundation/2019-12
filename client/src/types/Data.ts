@@ -31,3 +31,10 @@ export interface EventDetail {
   ticketTypes: TicketType[];
   user: User;
 }
+
+export interface Token {
+  exist: boolean;
+  id: number;
+  googleId: number;
+  email: string;
+}
