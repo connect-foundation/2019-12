@@ -24,12 +24,12 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     endAt,
     user,
     desc,
-    ticketTypes,
+    ticketType,
     place,
     address,
     placeDesc,
   } = eventData;
-  const ticket = ticketTypes[0];
+  const ticket = ticketType;
 
   const requestFetch = useFetch({
     method: 'get',
@@ -82,7 +82,7 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
             startAt,
             endAt,
             user,
-            ticketTypes,
+            ticketType,
           }}
         />
       }
