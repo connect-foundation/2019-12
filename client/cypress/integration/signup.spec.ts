@@ -62,11 +62,4 @@ context('회원가입 페이지', () => {
       expect(items[3]).to.have.css('visibility', 'hidden');
     });
   });
-
-  it('토큰이 없거나 폼이 유효하지 않다면 회원가입이 이루어지지 않는다.', () => {
-    cy.get('[data-testid=signupform-submit]').click();
-    cy.wait('@postUser').then(xhr => {
-      expect(xhr.status).equal(500);
-    });
-  });
 });
