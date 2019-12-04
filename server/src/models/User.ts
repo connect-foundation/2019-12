@@ -9,7 +9,6 @@ import {
   HasMany,
   AutoIncrement,
 } from 'sequelize-typescript';
-import { Order } from './Order';
 import { Event } from './Event';
 
 @Table({
@@ -44,9 +43,6 @@ export class User extends Model<User> {
 
   @UpdatedAt
   public readonly updatedAt!: Date;
-
-  @HasMany(() => Order, 'userId')
-  public orders!: Order[];
 
   @HasMany(() => Event, 'userId')
   public events!: Event[];

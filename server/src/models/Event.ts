@@ -8,7 +8,7 @@ import {
   UpdatedAt,
   DataType,
   BelongsTo,
-  HasMany,
+  HasOne,
   AutoIncrement,
 } from 'sequelize-typescript';
 import { User } from './User';
@@ -51,6 +51,12 @@ export class Event extends Model<Event> {
   @Column(DataType.STRING)
   public placeDesc!: string;
 
+  @Column(DataType.DECIMAL(10, 8))
+  public latitude!: number;
+
+  @Column(DataType.DECIMAL(11, 8))
+  public longitude!: number;
+
   @Column(DataType.STRING)
   public mainImg!: string;
 
@@ -63,6 +69,6 @@ export class Event extends Model<Event> {
   @UpdatedAt
   public readonly updatedAt!: Date;
 
-  @HasMany(() => TicketType, 'eventId')
-  public ticketTypes!: TicketType[];
+  @HasOne(() => TicketType, 'eventId')
+  public ticketType!: TicketType;
 }

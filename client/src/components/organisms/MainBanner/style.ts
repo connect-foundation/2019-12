@@ -38,6 +38,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   ${theme('fontStyle.h5')};
+  font-family: 'S-CoreDream-8Heavy';
   color: ${palette('white')};
   margin: 2.4rem 0;
 

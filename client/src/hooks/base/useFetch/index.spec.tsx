@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { mount } from 'enzyme';
 import axios from 'axios';
 
-import { useFetch } from './';
+import { useFetch, FetchProps } from './';
 
 describe('Hooks', () => {
   it('useFetch (Mock API)', async () => {
@@ -21,10 +21,10 @@ describe('Hooks', () => {
     const mockURL = 'http://www.mocky.io/v2/5dde1af02f00004b697eacd6';
     let step = 0;
     const steps = [
-      { type: 'request', isLoading: true },
-      { type: 'success', isLoading: false, data: { hello: 'world' } },
+      { type: 'request' },
+      { type: 'success', data: { hello: 'world' } },
     ];
-    const resultTypes: object[] = [];
+    const resultTypes: FetchProps<any>[] = [];
 
     function MockComponent(): React.ReactElement {
       const result = useFetch({
