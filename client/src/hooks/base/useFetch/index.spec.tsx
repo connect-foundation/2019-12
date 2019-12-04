@@ -27,7 +27,7 @@ describe('Hooks', () => {
     const resultTypes: FetchProps<any>[] = [];
 
     function MockComponent(): React.ReactElement {
-      const result = useFetch({
+      const result = useFetch<object>({
         method: 'get',
         url: mockURL,
       });
