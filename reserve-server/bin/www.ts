@@ -1,5 +1,6 @@
 import '../src/env';
 import '../src/utils/sequelize';
+import '../src/utils/redis';
 import app from '../src/app';
 
 const { APP_PORT } = process.env;
