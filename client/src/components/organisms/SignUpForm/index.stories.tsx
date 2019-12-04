@@ -64,7 +64,7 @@ const FormInputs = {
 };
 
 const Button = {
-  content: text('컨텐츠', ''),
+  children: text('컨텐츠', ''),
   styletype: 'primary',
   grow: true,
 };
