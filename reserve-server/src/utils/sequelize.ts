@@ -11,4 +11,6 @@ export const sequelize = new Sequelize({
   database: DB_NAME,
   dialect: 'mariadb',
   models: [Event, UserTicket, TicketType, User],
+  logging: false,
 });
+
