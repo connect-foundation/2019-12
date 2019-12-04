@@ -1,9 +1,14 @@
 import { Router } from 'express';
 
-import userRouter from './users';
+import * as controllers from './controllers';
 
 const router = Router();
 
-router.use('/users', userRouter);
+router.post(
+  '/users/ticket',
+  controllers.checkTicket,
+  controllers.authUser,
+  controllers.orderTicket,
+);
 
 export default router;
