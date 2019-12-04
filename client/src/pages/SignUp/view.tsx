@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import SignUpTemplate from './template';
 import SignUpForm from '../../components/organisms/SignUpForm';
-import Btn from '../../components/atoms/Btn';
-
+import ImgBtn from '../../components/molecules/ImgBtn';
+import logo from '../../assets/img/logo.svg';
+import ROUTES from '../../commons/constants/routes';
 import { SignUpAction, SignUpState } from './store';
 import { UserAccountState } from '../../stores/accountStore';
 
@@ -85,7 +86,7 @@ function SignUpView(): React.ReactElement {
 
   return (
     <SignUpTemplate
-      header={<Btn children={'대충 로고'} to="/" />}
+      header={<ImgBtn to={ROUTES.HOME} alt={'Logo'} src={logo} />}
       content={<SignUpForm FormInputs={FormInputs} Button={Button} />}
     />
   );
