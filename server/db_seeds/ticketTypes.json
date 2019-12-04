@@ -1,49 +1,7 @@
 [
   {
-    "id": 4,
-    "eventId": 4,
-    "name": "일반 티켓",
-    "desc": "개발자들을 위한 축제에 초대합니다",
-    "price": 10000,
-    "quantity": 100,
-    "leftCnt": 89,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-01-29T15:51:10.279Z",
-    "salesEndAt": "2018-12-31T21:00:00.066Z",
-    "refundEndAt": "2018-12-31T21:00:00.066Z"
-  },
-  {
-    "id": 7,
-    "eventId": 6,
-    "name": "학생 티켓",
-    "desc": "중고등학생 전용 티켓입니다. 당일 현장에서 학생증을 지참하시기 바랍니다.",
-    "price": 5500,
-    "quantity": 20,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-02-05T01:00:00.000Z",
-    "salesEndAt": "2018-02-23T01:30:00.000Z",
-    "refundEndAt": "2018-02-23T01:30:00.000Z"
-  },
-  {
-    "id": 6,
-    "eventId": 7,
-    "name": "일반 티켓",
-    "desc": "GDG Campus Korea 새해 밋업에 초대합니다",
-    "price": 10000,
-    "quantity": 100,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-01-28T15:00:00.000Z",
-    "salesEndAt": "2018-02-08T14:59:59.000Z",
-    "refundEndAt": "2018-02-08T14:59:59.000Z"
-  },
-  {
-    "id": 9,
-    "eventId": 8,
+    "id": 1,
+    "eventId": 1,
     "name": "대학생 참가",
     "desc": "",
     "price": 10000,
@@ -56,22 +14,8 @@
     "refundEndAt": "2018-02-28T15:00:00.000Z"
   },
   {
-    "id": 14,
-    "eventId": 9,
-    "name": "일반 참가",
-    "desc": "TypeScript Korea Meetup 참가권과 함께 간단한 저녁식사가 제공됩니다.",
-    "price": 10000,
-    "quantity": 150,
-    "leftCnt": 150,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-01-10T09:30:00.000Z",
-    "salesEndAt": "2018-01-15T12:10:00.000Z",
-    "refundEndAt": "2018-03-10T01:30:00.000Z"
-  },
-  {
-    "id": 16,
-    "eventId": 10,
+    "id": 2,
+    "eventId": 2,
     "name": "선착순 (참가확정)",
     "desc": "",
     "price": 0,
@@ -84,8 +28,8 @@
     "refundEndAt": "2018-03-06T10:30:00.000Z"
   },
   {
-    "id": 32,
-    "eventId": 11,
+    "id": 3,
+    "eventId": 3,
     "name": "추가판매",
     "desc": "",
     "price": 40000,
@@ -98,8 +42,8 @@
     "refundEndAt": null
   },
   {
-    "id": 21,
-    "eventId": 13,
+    "id": 4,
+    "eventId": 4,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -112,8 +56,8 @@
     "refundEndAt": "2018-03-14T09:00:00.000Z"
   },
   {
-    "id": 22,
-    "eventId": 14,
+    "id": 5,
+    "eventId": 5,
     "name": "일반",
     "desc": "",
     "price": 10000,
@@ -126,8 +70,8 @@
     "refundEndAt": "2018-03-23T04:00:00.000Z"
   },
   {
-    "id": 25,
-    "eventId": 15,
+    "id": 6,
+    "eventId": 6,
     "name": "입장권",
     "desc": "5천원은 보증금 명목이며, 출석 확인 시 행사 종료 후 환급",
     "price": 5000,
@@ -140,8 +84,8 @@
     "refundEndAt": "2018-03-30T14:59:00.000Z"
   },
   {
-    "id": 27,
-    "eventId": 16,
+    "id": 7,
+    "eventId": 7,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -154,8 +98,8 @@
     "refundEndAt": "2018-03-29T03:00:00.000Z"
   },
   {
-    "id": 28,
-    "eventId": 18,
+    "id": 8,
+    "eventId": 8,
     "name": "입장권",
     "desc": "음료 교환권 포함",
     "price": 20000,
@@ -168,8 +112,8 @@
     "refundEndAt": "2018-04-14T01:00:00.000Z"
   },
   {
-    "id": 29,
-    "eventId": 19,
+    "id": 9,
+    "eventId": 9,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -182,8 +126,8 @@
     "refundEndAt": null
   },
   {
-    "id": 30,
-    "eventId": 20,
+    "id": 10,
+    "eventId": 10,
     "name": "선착순 (참가확정)",
     "desc": "",
     "price": 0,
@@ -196,8 +140,8 @@
     "refundEndAt": null
   },
   {
-    "id": 34,
-    "eventId": 21,
+    "id": 11,
+    "eventId": 11,
     "name": "참가대기",
     "desc": "",
     "price": 0,
@@ -210,8 +154,8 @@
     "refundEndAt": null
   },
   {
-    "id": 35,
-    "eventId": 22,
+    "id": 12,
+    "eventId": 12,
     "name": "무료 입장권",
     "desc": "스터디 참가용 티켓",
     "price": 0,
@@ -224,8 +168,8 @@
     "refundEndAt": null
   },
   {
-    "id": 36,
-    "eventId": 23,
+    "id": 13,
+    "eventId": 13,
     "name": "성인 (선착순)",
     "desc": "성별 구분 없음",
     "price": 10000,
@@ -238,8 +182,8 @@
     "refundEndAt": null
   },
   {
-    "id": 39,
-    "eventId": 25,
+    "id": 14,
+    "eventId": 14,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -252,8 +196,8 @@
     "refundEndAt": null
   },
   {
-    "id": 40,
-    "eventId": 26,
+    "id": 15,
+    "eventId": 15,
     "name": "일반 입장권",
     "desc": "행사 입장을 위한 일반 입장권입니다. 본 입장권에는 1잔의 맥주나 칵테일 혹은 커피를 드실 수 있는 음료 쿠폰이 기본으로 포함됩니다. 음료 쿠폰은 행사 당일, 취향관 컨시어지에서 체크인 후 드립니다.",
     "price": 20000,
@@ -266,8 +210,8 @@
     "refundEndAt": null
   },
   {
-    "id": 41,
-    "eventId": 27,
+    "id": 16,
+    "eventId": 16,
     "name": "일반",
     "desc": "",
     "price": 0,
@@ -280,8 +224,8 @@
     "refundEndAt": null
   },
   {
-    "id": 42,
-    "eventId": 28,
+    "id": 17,
+    "eventId": 17,
     "name": "일반 참가",
     "desc": "일반 참가입니다.",
     "price": 5000,
@@ -294,8 +238,8 @@
     "refundEndAt": null
   },
   {
-    "id": 43,
-    "eventId": 29,
+    "id": 18,
+    "eventId": 18,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -308,8 +252,8 @@
     "refundEndAt": null
   },
   {
-    "id": 44,
-    "eventId": 31,
+    "id": 19,
+    "eventId": 19,
     "name": "일반권",
     "desc": "",
     "price": 5000,
@@ -322,8 +266,8 @@
     "refundEndAt": null
   },
   {
-    "id": 45,
-    "eventId": 32,
+    "id": 20,
+    "eventId": 20,
     "name": "일반",
     "desc": "",
     "price": 10000,
@@ -336,8 +280,8 @@
     "refundEndAt": null
   },
   {
-    "id": 46,
-    "eventId": 33,
+    "id": 21,
+    "eventId": 21,
     "name": "5월 격월 파이썬 세미나 - '나의 파이썬 레시피'",
     "desc": "",
     "price": 10000,
@@ -350,8 +294,8 @@
     "refundEndAt": null
   },
   {
-    "id": 47,
-    "eventId": 34,
+    "id": 22,
+    "eventId": 22,
     "name": "일반티켓",
     "desc": "행사 참여를 위한 티켓입니다.",
     "price": 10000,
@@ -364,8 +308,8 @@
     "refundEndAt": null
   },
   {
-    "id": 48,
-    "eventId": 35,
+    "id": 23,
+    "eventId": 23,
     "name": "온라인 예매",
     "desc": "온라인 예매 티켓",
     "price": 4000,
@@ -378,8 +322,8 @@
     "refundEndAt": null
   },
   {
-    "id": 49,
-    "eventId": 36,
+    "id": 24,
+    "eventId": 24,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -392,22 +336,8 @@
     "refundEndAt": null
   },
   {
-    "id": 51,
-    "eventId": 37,
-    "name": "참석권",
-    "desc": "",
-    "price": 4000,
-    "quantity": 80,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-06-08T03:00:00.000Z",
-    "salesEndAt": "2018-06-19T12:00:00.000Z",
-    "refundEndAt": null
-  },
-  {
-    "id": 53,
-    "eventId": 38,
+    "id": 25,
+    "eventId": 25,
     "name": "학생티켓(중고생)",
     "desc": "행사 당일 신분 증명이 필요합니다.",
     "price": 10000,
@@ -420,8 +350,8 @@
     "refundEndAt": null
   },
   {
-    "id": 54,
-    "eventId": 39,
+    "id": 26,
+    "eventId": 26,
     "name": "일반",
     "desc": "",
     "price": 10000,
@@ -434,8 +364,8 @@
     "refundEndAt": null
   },
   {
-    "id": 58,
-    "eventId": 41,
+    "id": 27,
+    "eventId": 27,
     "name": "후원 티켓",
     "desc": "양일권과 동일하며, 가격을 더 높여 후원할 수 있습니다. 워크샵 등록이 가능합니다.",
     "price": 30000,
@@ -448,22 +378,8 @@
     "refundEndAt": null
   },
   {
-    "id": 59,
-    "eventId": 42,
-    "name": "무료 입장권",
-    "desc": "스터디 참가용 티켓",
-    "price": 0,
-    "quantity": 10,
-    "leftCnt": 8,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-06-20T02:00:00.000Z",
-    "salesEndAt": "2018-07-03T10:00:00.000Z",
-    "refundEndAt": null
-  },
-  {
-    "id": 60,
-    "eventId": 43,
+    "id": 28,
+    "eventId": 28,
     "name": "일반",
     "desc": "",
     "price": 0,
@@ -476,8 +392,8 @@
     "refundEndAt": null
   },
   {
-    "id": 61,
-    "eventId": 44,
+    "id": 29,
+    "eventId": 29,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -490,8 +406,8 @@
     "refundEndAt": null
   },
   {
-    "id": 63,
-    "eventId": 45,
+    "id": 30,
+    "eventId": 30,
     "name": "세션+뒷풀이",
     "desc": "",
     "price": 20000,
@@ -504,8 +420,8 @@
     "refundEndAt": null
   },
   {
-    "id": 64,
-    "eventId": 46,
+    "id": 31,
+    "eventId": 31,
     "name": "입장권",
     "desc": "",
     "price": 18000,
@@ -518,8 +434,8 @@
     "refundEndAt": null
   },
   {
-    "id": 65,
-    "eventId": 47,
+    "id": 32,
+    "eventId": 32,
     "name": "입장권",
     "desc": "",
     "price": 18000,
@@ -532,8 +448,8 @@
     "refundEndAt": null
   },
   {
-    "id": 67,
-    "eventId": 48,
+    "id": 33,
+    "eventId": 33,
     "name": "대학생",
     "desc": "당일날 학생증 지참 필수",
     "price": 9900,
@@ -546,8 +462,8 @@
     "refundEndAt": null
   },
   {
-    "id": 69,
-    "eventId": 49,
+    "id": 34,
+    "eventId": 34,
     "name": "참석자",
     "desc": "당일날 참석자로 등록합니다.",
     "price": 0,
@@ -560,8 +476,8 @@
     "refundEndAt": null
   },
   {
-    "id": 70,
-    "eventId": 50,
+    "id": 35,
+    "eventId": 35,
     "name": "참가 티켓",
     "desc": "참가비에는 당일 무한 주류 및 기본 음식 비용이 모두 포함되어 있습니다.",
     "price": 10000,
@@ -574,8 +490,8 @@
     "refundEndAt": null
   },
   {
-    "id": 71,
-    "eventId": 51,
+    "id": 36,
+    "eventId": 36,
     "name": "입장권",
     "desc": "",
     "price": 10000,
@@ -588,8 +504,8 @@
     "refundEndAt": null
   },
   {
-    "id": 72,
-    "eventId": 52,
+    "id": 37,
+    "eventId": 37,
     "name": "입장권",
     "desc": "강연 참석자 분들에게는 콰르텟 녹차와 쿠키가 제공됩니다.",
     "price": 18000,
@@ -602,8 +518,8 @@
     "refundEndAt": null
   },
   {
-    "id": 73,
-    "eventId": 53,
+    "id": 38,
+    "eventId": 38,
     "name": "참가 티켓",
     "desc": "",
     "price": 5000,
@@ -616,8 +532,8 @@
     "refundEndAt": null
   },
   {
-    "id": 74,
-    "eventId": 55,
+    "id": 39,
+    "eventId": 39,
     "name": "페스타 회원용",
     "desc": "",
     "price": 0,
@@ -630,8 +546,8 @@
     "refundEndAt": null
   },
   {
-    "id": 75,
-    "eventId": 57,
+    "id": 40,
+    "eventId": 40,
     "name": "입장권",
     "desc": "강연 참석자 분들에게는 콰르텟에서 준비한 다과가 제공됩니다.",
     "price": 18000,
@@ -644,8 +560,8 @@
     "refundEndAt": null
   },
   {
-    "id": 76,
-    "eventId": 58,
+    "id": 41,
+    "eventId": 41,
     "name": "성입 입장권(대학생부터)",
     "desc": "",
     "price": 20000,
@@ -658,8 +574,8 @@
     "refundEndAt": null
   },
   {
-    "id": 78,
-    "eventId": 59,
+    "id": 42,
+    "eventId": 42,
     "name": "성인 입장권",
     "desc": "",
     "price": 5000,
@@ -672,8 +588,8 @@
     "refundEndAt": null
   },
   {
-    "id": 79,
-    "eventId": 60,
+    "id": 43,
+    "eventId": 43,
     "name": "참가 티켓",
     "desc": "",
     "price": 5000,
@@ -686,8 +602,8 @@
     "refundEndAt": null
   },
   {
-    "id": 80,
-    "eventId": 61,
+    "id": 44,
+    "eventId": 44,
     "name": "일반 입장권",
     "desc": "",
     "price": 5000,
@@ -700,8 +616,8 @@
     "refundEndAt": "2018-09-20T07:00:00.000Z"
   },
   {
-    "id": 81,
-    "eventId": 62,
+    "id": 45,
+    "eventId": 45,
     "name": "일반 티켓",
     "desc": "",
     "price": 10000,
@@ -714,8 +630,8 @@
     "refundEndAt": null
   },
   {
-    "id": 84,
-    "eventId": 63,
+    "id": 46,
+    "eventId": 46,
     "name": "8월 24일 티켓",
     "desc": "1인 창작자 구독모델: 일간 이슬아 이슬아 작가",
     "price": 40000,
@@ -728,22 +644,8 @@
     "refundEndAt": null
   },
   {
-    "id": 86,
-    "eventId": 64,
-    "name": "입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 50,
-    "leftCnt": 6,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-08-02T09:00:00.000Z",
-    "salesEndAt": "2018-08-12T09:00:00.000Z",
-    "refundEndAt": null
-  },
-  {
-    "id": 87,
-    "eventId": 65,
+    "id": 47,
+    "eventId": 47,
     "name": "참가",
     "desc": "외부신청 모임입니다. 본문을 확인해주세요.",
     "price": 0,
@@ -756,8 +658,8 @@
     "refundEndAt": "2018-09-11T14:59:59.000Z"
   },
   {
-    "id": 88,
-    "eventId": 66,
+    "id": 48,
+    "eventId": 48,
     "name": "청소년 및 어른",
     "desc": "14~64세",
     "price": 8000,
@@ -770,8 +672,8 @@
     "refundEndAt": null
   },
   {
-    "id": 92,
-    "eventId": 67,
+    "id": 49,
+    "eventId": 49,
     "name": "참석 티켓",
     "desc": "간단한 간식이 제공됩니다. / 무단결석시 다음 회차 행사 참가 불이익 있음.",
     "price": 0,
@@ -784,8 +686,8 @@
     "refundEndAt": "2018-09-15T04:00:00.000Z"
   },
   {
-    "id": 94,
-    "eventId": 68,
+    "id": 50,
+    "eventId": 50,
     "name": "참가",
     "desc": "외부링크신청 모임입니다. 본문을 확인해주세요.",
     "price": 0,
@@ -798,8 +700,8 @@
     "refundEndAt": null
   },
   {
-    "id": 95,
-    "eventId": 69,
+    "id": 51,
+    "eventId": 51,
     "name": "참가",
     "desc": "외부링크신청 모임입니다. 본문을 확인해주세요.",
     "price": 0,
@@ -812,8 +714,8 @@
     "refundEndAt": "2018-08-16T05:00:00.000Z"
   },
   {
-    "id": 96,
-    "eventId": 70,
+    "id": 52,
+    "eventId": 52,
     "name": "참여티켓",
     "desc": "본 행사는 외부행사입니다. Festa에서 티켓을 구입하실 수 없습니다.",
     "price": 10000,
@@ -826,8 +728,8 @@
     "refundEndAt": "2018-08-28T14:30:59.000Z"
   },
   {
-    "id": 97,
-    "eventId": 71,
+    "id": 53,
+    "eventId": 53,
     "name": "입장권",
     "desc": "",
     "price": 10000,
@@ -840,8 +742,8 @@
     "refundEndAt": "2018-08-24T14:30:00.000Z"
   },
   {
-    "id": 98,
-    "eventId": 72,
+    "id": 54,
+    "eventId": 54,
     "name": "입장 티켓",
     "desc": "",
     "price": 0,
@@ -854,8 +756,8 @@
     "refundEndAt": "2018-08-21T15:00:00.000Z"
   },
   {
-    "id": 121,
-    "eventId": 75,
+    "id": 55,
+    "eventId": 55,
     "name": "현장 예매 ",
     "desc": "",
     "price": 75000,
@@ -868,8 +770,8 @@
     "refundEndAt": "2018-09-14T09:30:00.000Z"
   },
   {
-    "id": 104,
-    "eventId": 76,
+    "id": 56,
+    "eventId": 56,
     "name": "제89회 Open Technet 사전등록",
     "desc": "외부링크신청 모임입니다. 본문을 확인해주세요.",
     "price": 0,
@@ -882,8 +784,8 @@
     "refundEndAt": "2018-08-28T08:00:00.000Z"
   },
   {
-    "id": 106,
-    "eventId": 77,
+    "id": 57,
+    "eventId": 57,
     "name": "입장권",
     "desc": "",
     "price": 10000,
@@ -896,8 +798,8 @@
     "refundEndAt": "2018-09-07T14:30:00.000Z"
   },
   {
-    "id": 107,
-    "eventId": 78,
+    "id": 58,
+    "eventId": 58,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -910,8 +812,8 @@
     "refundEndAt": "2018-11-03T00:00:00.000Z"
   },
   {
-    "id": 108,
-    "eventId": 79,
+    "id": 59,
+    "eventId": 59,
     "name": "무료 입장권",
     "desc": "스터디 참가용 티켓",
     "price": 0,
@@ -924,8 +826,8 @@
     "refundEndAt": "2018-09-05T14:30:00.000Z"
   },
   {
-    "id": 111,
-    "eventId": 80,
+    "id": 60,
+    "eventId": 60,
     "name": "일반",
     "desc": "",
     "price": 10000,
@@ -938,8 +840,8 @@
     "refundEndAt": "2018-09-15T01:00:00.000Z"
   },
   {
-    "id": 112,
-    "eventId": 81,
+    "id": 61,
+    "eventId": 61,
     "name": "일반 입장권",
     "desc": "피자 및 음료가 제공됩니다.",
     "price": 10000,
@@ -952,8 +854,8 @@
     "refundEndAt": "2018-09-16T19:00:00.000Z"
   },
   {
-    "id": 119,
-    "eventId": 83,
+    "id": 62,
+    "eventId": 62,
     "name": "제7회 공개SW 거버넌스 아카데미 사전등록",
     "desc": "외부링크신청 모임입니다. 본문을 확인해주세요.",
     "price": 0,
@@ -966,8 +868,8 @@
     "refundEndAt": "2018-09-11T04:30:00.000Z"
   },
   {
-    "id": 126,
-    "eventId": 87,
+    "id": 63,
+    "eventId": 63,
     "name": "개인 후원",
     "desc": " 개인 후원자 분들에게는 행사 홈페이지에 프로필 등록할 예정입니다 *_*, 후원티켓 판매 대금은 행사 예산으로 사용됩니다. 후원 금액은 5만원이며 (추가로 현장에서 더 주셔도 됩니다 *_*), 후원 금액에 상관없이 1장의 티켓을 제공합니다 (티켓 양도 가능)",
     "price": 50000,
@@ -980,8 +882,8 @@
     "refundEndAt": "2018-10-03T15:00:00.000Z"
   },
   {
-    "id": 130,
-    "eventId": 90,
+    "id": 64,
+    "eventId": 64,
     "name": "FEConf 2018 참가 티켓",
     "desc": "FEConf 2018에 참가할 수 있는 티켓입니다.",
     "price": 30000,
@@ -994,8 +896,8 @@
     "refundEndAt": "2018-09-30T14:30:00.000Z"
   },
   {
-    "id": 134,
-    "eventId": 93,
+    "id": 65,
+    "eventId": 65,
     "name": "뻔뻔한 발표 입장권",
     "desc": "간단한 저녁거리 제공합니다.",
     "price": 5000,
@@ -1008,50 +910,8 @@
     "refundEndAt": "2018-10-16T15:00:00.000Z"
   },
   {
-    "id": 135,
-    "eventId": 94,
-    "name": "등록",
-    "desc": "",
-    "price": 0,
-    "quantity": 100,
-    "leftCnt": 14,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-09-30T15:00:00.000Z",
-    "salesEndAt": "2018-11-09T14:30:00.000Z",
-    "refundEndAt": "2018-11-09T14:30:00.000Z"
-  },
-  {
-    "id": 137,
-    "eventId": 95,
-    "name": "ㅊ",
-    "desc": "ㅊ",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-09-27T15:00:00.000Z",
-    "salesEndAt": "2018-09-27T15:00:00.000Z",
-    "refundEndAt": "2018-09-27T15:00:00.000Z"
-  },
-  {
-    "id": 138,
-    "eventId": 96,
-    "name": "테스트",
-    "desc": "테스트",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-09-27T22:00:00.000Z",
-    "salesEndAt": "2018-09-27T22:00:00.000Z",
-    "refundEndAt": "2018-09-27T22:00:00.000Z"
-  },
-  {
-    "id": 141,
-    "eventId": 98,
+    "id": 66,
+    "eventId": 66,
     "name": "test 입장권",
     "desc": "이것은 테스트입니다.",
     "price": 0,
@@ -1064,8 +924,8 @@
     "refundEndAt": "2018-10-01T15:00:00.000Z"
   },
   {
-    "id": 143,
-    "eventId": 99,
+    "id": 67,
+    "eventId": 67,
     "name": "청와대 국민청원 데이터로 파이썬 자연어처리 입문하기",
     "desc": "[세션2] 16:30-19:30 (3시간 진행)",
     "price": 15000,
@@ -1078,8 +938,8 @@
     "refundEndAt": "2018-10-12T14:30:00.000Z"
   },
   {
-    "id": 144,
-    "eventId": 100,
+    "id": 68,
+    "eventId": 68,
     "name": "2018 Korea Mesosphere DC/OS First Conference",
     "desc": "",
     "price": 0,
@@ -1092,8 +952,8 @@
     "refundEndAt": "2018-10-08T02:00:00.000Z"
   },
   {
-    "id": 148,
-    "eventId": 104,
+    "id": 69,
+    "eventId": 69,
     "name": "개인 입장 티켓",
     "desc": "Google Next Extended Seoul 2018에서 진행되는 모든 세션에 참가할 수 있는 입장권인 동시에 행사 개인 후원금으로 사용됩니다.",
     "price": 0,
@@ -1106,22 +966,8 @@
     "refundEndAt": "2018-10-13T11:00:00.000Z"
   },
   {
-    "id": 147,
-    "eventId": 105,
-    "name": "일반",
-    "desc": "간단한 다과를 제공합니다",
-    "price": 5000,
-    "quantity": 60,
-    "leftCnt": 20,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-10-05T06:00:00.000Z",
-    "salesEndAt": "2018-10-22T02:30:00.000Z",
-    "refundEndAt": "2018-10-22T02:30:00.000Z"
-  },
-  {
-    "id": 150,
-    "eventId": 106,
+    "id": 70,
+    "eventId": 70,
     "name": "독서모임",
     "desc": "음료는 추가 구입해야함",
     "price": 2000,
@@ -1134,22 +980,8 @@
     "refundEndAt": "2018-10-05T15:00:00.000Z"
   },
   {
-    "id": 159,
-    "eventId": 111,
-    "name": "Let'Ticket 5-Pack",
-    "desc": "(세션 + 기념품) * 5명 단체",
-    "price": 160000,
-    "quantity": 5,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-10-10T11:00:00.000Z",
-    "salesEndAt": "2018-11-02T15:00:00.000Z",
-    "refundEndAt": "2018-11-02T15:00:00.000Z"
-  },
-  {
-    "id": 155,
-    "eventId": 112,
+    "id": 71,
+    "eventId": 71,
     "name": "일반입장권",
     "desc": "무료음료 및 핑거푸드를 제공합니다",
     "price": 0,
@@ -1162,8 +994,8 @@
     "refundEndAt": "2018-10-19T08:30:00.000Z"
   },
   {
-    "id": 156,
-    "eventId": 113,
+    "id": 72,
+    "eventId": 72,
     "name": "일반 입장권",
     "desc": "간단한 저녁식사 및 스티커를 제공합니다.",
     "price": 10000,
@@ -1176,8 +1008,8 @@
     "refundEndAt": "2018-10-19T14:30:00.000Z"
   },
   {
-    "id": 158,
-    "eventId": 114,
+    "id": 73,
+    "eventId": 73,
     "name": "텥.",
     "desc": "무료 음료",
     "price": 1000,
@@ -1190,8 +1022,8 @@
     "refundEndAt": "2018-10-08T15:00:00.000Z"
   },
   {
-    "id": 160,
-    "eventId": 117,
+    "id": 74,
+    "eventId": 74,
     "name": "일반 입장권",
     "desc": "무료 참석입니다.",
     "price": 0,
@@ -1204,8 +1036,8 @@
     "refundEndAt": "2018-11-01T15:00:00.000Z"
   },
   {
-    "id": 161,
-    "eventId": 118,
+    "id": 75,
+    "eventId": 75,
     "name": "일반티켓",
     "desc": "",
     "price": 0,
@@ -1218,8 +1050,8 @@
     "refundEndAt": "2018-10-17T22:30:00.000Z"
   },
   {
-    "id": 173,
-    "eventId": 119,
+    "id": 76,
+    "eventId": 76,
     "name": "무료 입장권",
     "desc": "세션",
     "price": 0,
@@ -1232,22 +1064,8 @@
     "refundEndAt": "2018-11-23T14:30:00.000Z"
   },
   {
-    "id": 172,
-    "eventId": 128,
-    "name": "입장권",
-    "desc": "콘샐러드(Con-Salad) 2회의 모든 세션 및 네트워킹에 참여하실 수 있습니다.",
-    "price": 0,
-    "quantity": 60,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-10-18T08:00:00.000Z",
-    "salesEndAt": "2018-10-23T15:00:00.000Z",
-    "refundEndAt": "2018-10-23T15:00:00.000Z"
-  },
-  {
-    "id": 180,
-    "eventId": 133,
+    "id": 77,
+    "eventId": 77,
     "name": "일반 입장권",
     "desc": "간단한 다과(과자, 음료)가 준비되어 있습니다.",
     "price": 0,
@@ -1260,8 +1078,8 @@
     "refundEndAt": "2018-10-31T06:00:00.000Z"
   },
   {
-    "id": 187,
-    "eventId": 136,
+    "id": 78,
+    "eventId": 78,
     "name": "후원 티켓",
     "desc": "1인 참석 + 나머지 금액은 행사를 위한 후원금으로 사용됩니다.",
     "price": 30000,
@@ -1274,50 +1092,8 @@
     "refundEndAt": "2018-11-20T21:00:00.000Z"
   },
   {
-    "id": 189,
-    "eventId": 138,
-    "name": "입장권",
-    "desc": "",
-    "price": 5000,
-    "quantity": 60,
-    "leftCnt": 41,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-11-01T15:00:00.000Z",
-    "salesEndAt": "2018-11-16T15:00:00.000Z",
-    "refundEndAt": "2018-11-16T15:00:00.000Z"
-  },
-  {
-    "id": 192,
-    "eventId": 140,
-    "name": "네트워킹 티켓",
-    "desc": "(세션 + 네트워킹) 모든 세션이 끝난 후 별도로 마련한 장소로 이동해서 네트워킹을 진행할 예정입니다.",
-    "price": 20000,
-    "quantity": 15,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-11-06T05:00:00.000Z",
-    "salesEndAt": "2018-11-25T14:30:00.000Z",
-    "refundEndAt": "2018-11-25T14:30:00.000Z"
-  },
-  {
-    "id": 202,
-    "eventId": 145,
-    "name": "DBUG",
-    "desc": "공간 사용료'만' 포함되어 있습니다. 드실 음료나 마실 것등은 참석하실 때 별도록 구매해 오시면 됩니다.",
-    "price": 10000,
-    "quantity": 6,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-11-09T15:00:00.000Z",
-    "salesEndAt": "2018-11-22T15:00:00.000Z",
-    "refundEndAt": "2018-11-22T15:00:00.000Z"
-  },
-  {
-    "id": 203,
-    "eventId": 146,
+    "id": 79,
+    "eventId": 79,
     "name": "MESS ME 입장권",
     "desc": "",
     "price": 3000,
@@ -1330,36 +1106,8 @@
     "refundEndAt": "2018-11-28T09:00:00.000Z"
   },
   {
-    "id": 205,
-    "eventId": 147,
-    "name": "일반 입장권",
-    "desc": "사은품을 제공합니다. ",
-    "price": 0,
-    "quantity": 100,
-    "leftCnt": 30,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-11-12T04:00:00.000Z",
-    "salesEndAt": "2018-11-23T03:30:00.000Z",
-    "refundEndAt": "2018-11-23T03:30:00.000Z"
-  },
-  {
-    "id": 206,
-    "eventId": 148,
-    "name": "일반 입장권",
-    "desc": "장소대여료'만' 포함되어있습니다.",
-    "price": 10000,
-    "quantity": 10,
-    "leftCnt": 10,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-11-12T15:00:00.000Z",
-    "salesEndAt": "2018-11-20T15:00:00.000Z",
-    "refundEndAt": "2018-11-20T15:00:00.000Z"
-  },
-  {
-    "id": 212,
-    "eventId": 153,
+    "id": 80,
+    "eventId": 80,
     "name": "일반 입장권",
     "desc": "말라리아 퇴치를 위한 기부에 사용 됩니다.",
     "price": 5000,
@@ -1372,22 +1120,8 @@
     "refundEndAt": "2018-11-29T15:00:00.000Z"
   },
   {
-    "id": 215,
-    "eventId": 157,
-    "name": "일반 입장권",
-    "desc": "무료 음료를 제공합니다.",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-11-20T15:00:00.000Z",
-    "salesEndAt": "2018-11-20T16:00:00.000Z",
-    "refundEndAt": "2018-11-20T16:00:00.000Z"
-  },
-  {
-    "id": 216,
-    "eventId": 167,
+    "id": 81,
+    "eventId": 81,
     "name": "일반 입장권",
     "desc": "맥주와 간단한 스낵이 제공됩니다.",
     "price": 30000,
@@ -1400,8 +1134,8 @@
     "refundEndAt": "2018-12-18T15:00:00.000Z"
   },
   {
-    "id": 217,
-    "eventId": 168,
+    "id": 82,
+    "eventId": 82,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -1414,22 +1148,8 @@
     "refundEndAt": "2018-12-13T15:00:00.000Z"
   },
   {
-    "id": 218,
-    "eventId": 169,
-    "name": "입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 15,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-12-02T15:00:00.000Z",
-    "salesEndAt": "2019-01-10T14:30:00.000Z",
-    "refundEndAt": "2019-01-10T14:30:00.000Z"
-  },
-  {
-    "id": 220,
-    "eventId": 172,
+    "id": 83,
+    "eventId": 83,
     "name": "연합모임 + 송년회 파티",
     "desc": "이 티켓에는 송년회 파티 참가가 포함되어있습니다.",
     "price": 10000,
@@ -1442,8 +1162,8 @@
     "refundEndAt": "2018-12-17T23:00:00.000Z"
   },
   {
-    "id": 221,
-    "eventId": 173,
+    "id": 84,
+    "eventId": 84,
     "name": "세미나 참석권",
     "desc": "세미나 참석 및 네트워크세션에서 저녁식사를 제공합니다.   '올해의 삽질왕'에 도전해보세요 (삽질 사연 신청하기: https://goo.gl/forms/WtIpGLcijEsaRrco2)",
     "price": 20000,
@@ -1456,8 +1176,8 @@
     "refundEndAt": "2018-12-28T15:00:00.000Z"
   },
   {
-    "id": 222,
-    "eventId": 174,
+    "id": 85,
+    "eventId": 85,
     "name": "입장권",
     "desc": "",
     "price": 20000,
@@ -1470,50 +1190,8 @@
     "refundEndAt": "2019-01-19T01:00:00.000Z"
   },
   {
-    "id": 223,
-    "eventId": 176,
-    "name": "참가희망",
-    "desc": "무료 커피가 제공 됩니다.",
-    "price": 10000,
-    "quantity": 10,
-    "leftCnt": 10,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-12-13T01:30:00.000Z",
-    "salesEndAt": "2018-12-14T13:30:00.000Z",
-    "refundEndAt": "2018-12-14T13:30:00.000Z"
-  },
-  {
-    "id": 225,
-    "eventId": 179,
-    "name": "세미나 입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 13,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-12-18T10:30:00.000Z",
-    "salesEndAt": "2018-12-21T09:00:00.000Z",
-    "refundEndAt": "2018-12-21T09:00:00.000Z"
-  },
-  {
-    "id": 226,
-    "eventId": 180,
-    "name": "참여권",
-    "desc": "무료입장입니다",
-    "price": 0,
-    "quantity": 60,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2018-12-18T20:30:00.000Z",
-    "salesEndAt": "2019-01-02T14:30:00.000Z",
-    "refundEndAt": "2019-01-02T14:30:00.000Z"
-  },
-  {
-    "id": 229,
-    "eventId": 182,
+    "id": 86,
+    "eventId": 86,
     "name": "로켓 탑승권 (First Class)",
     "desc": "맥주와 치킨을 제공합니다",
     "price": 12900,
@@ -1526,8 +1204,8 @@
     "refundEndAt": "2019-01-08T04:00:00.000Z"
   },
   {
-    "id": 231,
-    "eventId": 183,
+    "id": 87,
+    "eventId": 87,
     "name": "학생 입장권",
     "desc": "",
     "price": 0,
@@ -1540,22 +1218,8 @@
     "refundEndAt": "2019-01-21T03:00:00.000Z"
   },
   {
-    "id": 233,
-    "eventId": 185,
-    "name": "발표자",
-    "desc": "",
-    "price": 0,
-    "quantity": 20,
-    "leftCnt": 11,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-01-03T15:00:00.000Z",
-    "salesEndAt": "2019-01-10T06:00:00.000Z",
-    "refundEndAt": "2019-01-10T06:00:00.000Z"
-  },
-  {
-    "id": 237,
-    "eventId": 186,
+    "id": 88,
+    "eventId": 88,
     "name": "뒷풀이 입장권",
     "desc": "간단한 스낵과 맥주 및 뒷풀이 식사와 음료가 제공됩니다.",
     "price": 30000,
@@ -1568,36 +1232,8 @@
     "refundEndAt": "2019-01-21T12:30:00.000Z"
   },
   {
-    "id": 240,
-    "eventId": 189,
-    "name": "일반 입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 10,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-01-09T15:00:00.000Z",
-    "salesEndAt": "2019-01-16T15:00:00.000Z",
-    "refundEndAt": "2019-01-16T15:00:00.000Z"
-  },
-  {
-    "id": 241,
-    "eventId": 191,
-    "name": "글쓰는 사람",
-    "desc": "노쇼를 방지하고자 소정의 금액을 받습니다",
-    "price": 5000,
-    "quantity": 130,
-    "leftCnt": 14,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-03-07T15:00:00.000Z",
-    "salesEndAt": "2019-03-22T15:00:00.000Z",
-    "refundEndAt": "2019-03-22T15:00:00.000Z"
-  },
-  {
-    "id": 242,
-    "eventId": 192,
+    "id": 89,
+    "eventId": 89,
     "name": "행사 참가 티켓",
     "desc": "행사 참가권이며 간단한 음식이 제공됩니다.",
     "price": 7900,
@@ -1610,22 +1246,8 @@
     "refundEndAt": "2019-02-14T03:00:00.000Z"
   },
   {
-    "id": 244,
-    "eventId": 196,
-    "name": "입장권",
-    "desc": "",
-    "price": 5000,
-    "quantity": 45,
-    "leftCnt": 10,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-01-23T11:00:00.000Z",
-    "salesEndAt": "2019-02-15T14:30:00.000Z",
-    "refundEndAt": "2019-02-15T14:30:00.000Z"
-  },
-  {
-    "id": 247,
-    "eventId": 198,
+    "id": 90,
+    "eventId": 90,
     "name": "개인 후원",
     "desc": "식사와 간단한 선물이 제공됩니다.",
     "price": 50000,
@@ -1638,8 +1260,8 @@
     "refundEndAt": "2019-02-10T07:00:00.000Z"
   },
   {
-    "id": 248,
-    "eventId": 199,
+    "id": 91,
+    "eventId": 91,
     "name": "일반 입장권",
     "desc": "간단한 스낵과 맥주가 제공됩니다.",
     "price": 10000,
@@ -1652,22 +1274,8 @@
     "refundEndAt": "2019-02-18T15:00:00.000Z"
   },
   {
-    "id": 250,
-    "eventId": 200,
-    "name": "일반 티켓",
-    "desc": "행사 참가권입니다.",
-    "price": 22000,
-    "quantity": 200,
-    "leftCnt": 2,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-02-01T01:00:00.000Z",
-    "salesEndAt": "2019-02-21T07:30:00.000Z",
-    "refundEndAt": "2019-02-21T07:30:00.000Z"
-  },
-  {
-    "id": 266,
-    "eventId": 201,
+    "id": 92,
+    "eventId": 92,
     "name": "학생 입장권",
     "desc": "학생할인 티켓입니다. 간식 및 작은 선물이 준비되어 있습니다.",
     "price": 10000,
@@ -1680,8 +1288,8 @@
     "refundEndAt": "2019-04-04T15:00:00.000Z"
   },
   {
-    "id": 254,
-    "eventId": 202,
+    "id": 93,
+    "eventId": 93,
     "name": "발표자 티켓",
     "desc": "첫 번째 세션에서 발표를 하고자 하신다면 이 티켓을 구매하세요!",
     "price": 5000,
@@ -1694,8 +1302,8 @@
     "refundEndAt": "2019-02-19T05:00:00.000Z"
   },
   {
-    "id": 256,
-    "eventId": 203,
+    "id": 94,
+    "eventId": 94,
     "name": "일반 입장권",
     "desc": "피자, 음료 제공 예정입니다.",
     "price": 10000,
@@ -1708,8 +1316,8 @@
     "refundEndAt": "2019-02-17T14:30:00.000Z"
   },
   {
-    "id": 257,
-    "eventId": 204,
+    "id": 95,
+    "eventId": 95,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -1722,8 +1330,8 @@
     "refundEndAt": "2019-02-10T15:00:00.000Z"
   },
   {
-    "id": 259,
-    "eventId": 205,
+    "id": 96,
+    "eventId": 96,
     "name": "인공지능센터 교육접수",
     "desc": "접수는 센터 홈페이지 http://ai.koipa.or.kr/에서 하시기 바랍니다.",
     "price": 0,
@@ -1736,8 +1344,8 @@
     "refundEndAt": "2019-02-27T09:00:00.000Z"
   },
   {
-    "id": 262,
-    "eventId": 207,
+    "id": 97,
+    "eventId": 97,
     "name": "뒷풀이 입장권",
     "desc": "간단한 스낵과 맥주 및 뒷풀이 식사가 제공됩니다.",
     "price": 30000,
@@ -1750,8 +1358,8 @@
     "refundEndAt": "2019-03-18T15:00:00.000Z"
   },
   {
-    "id": 263,
-    "eventId": 208,
+    "id": 98,
+    "eventId": 98,
     "name": "일반 티켓",
     "desc": "",
     "price": 0,
@@ -1764,8 +1372,8 @@
     "refundEndAt": "2019-02-27T15:00:00.000Z"
   },
   {
-    "id": 264,
-    "eventId": 209,
+    "id": 99,
+    "eventId": 99,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -1778,8 +1386,8 @@
     "refundEndAt": "2019-03-28T15:00:00.000Z"
   },
   {
-    "id": 270,
-    "eventId": 212,
+    "id": 100,
+    "eventId": 100,
     "name": "일반 티켓",
     "desc": "",
     "price": 0,
@@ -1792,8 +1400,8 @@
     "refundEndAt": "2019-03-15T15:00:00.000Z"
   },
   {
-    "id": 267,
-    "eventId": 213,
+    "id": 101,
+    "eventId": 101,
     "name": "19세 이상, 본 행사 + 뒷풀이 참가",
     "desc": "19세 이상의 성인이며, 뒷풀이 참가를 원하시는 경우에 해당합니다.",
     "price": 20000,
@@ -1806,8 +1414,8 @@
     "refundEndAt": "2019-04-25T15:00:00.000Z"
   },
   {
-    "id": 271,
-    "eventId": 214,
+    "id": 102,
+    "eventId": 102,
     "name": "신청",
     "desc": "꾸준히 함께 해주실꺼죠?!",
     "price": 0,
@@ -1820,8 +1428,8 @@
     "refundEndAt": "2019-03-10T06:00:00.000Z"
   },
   {
-    "id": 273,
-    "eventId": 215,
+    "id": 103,
+    "eventId": 103,
     "name": "일반 입장권",
     "desc": "샌드위치와 음료수제공",
     "price": 10000,
@@ -1834,8 +1442,8 @@
     "refundEndAt": "2019-03-21T08:00:00.000Z"
   },
   {
-    "id": 274,
-    "eventId": 225,
+    "id": 104,
+    "eventId": 104,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -1848,8 +1456,8 @@
     "refundEndAt": "2019-03-15T14:00:00.000Z"
   },
   {
-    "id": 275,
-    "eventId": 226,
+    "id": 105,
+    "eventId": 105,
     "name": "일반 입장권",
     "desc": "",
     "price": 22000,
@@ -1862,22 +1470,8 @@
     "refundEndAt": "2019-04-05T15:00:00.000Z"
   },
   {
-    "id": 276,
-    "eventId": 227,
-    "name": "일반 티켓",
-    "desc": "",
-    "price": 7000,
-    "quantity": 100,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 5,
-    "salesStartAt": "2019-03-12T15:00:00.000Z",
-    "salesEndAt": "2019-03-27T03:00:00.000Z",
-    "refundEndAt": "2019-03-27T03:00:00.000Z"
-  },
-  {
-    "id": 279,
-    "eventId": 229,
+    "id": 106,
+    "eventId": 106,
     "name": "입장권",
     "desc": "음료와 다과를 제공 합니다",
     "price": 0,
@@ -1890,22 +1484,8 @@
     "refundEndAt": "2019-04-04T15:00:00.000Z"
   },
   {
-    "id": 280,
-    "eventId": 230,
-    "name": "참관권",
-    "desc": "",
-    "price": 0,
-    "quantity": 8,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-03-17T15:00:00.000Z",
-    "salesEndAt": "2019-04-04T15:00:00.000Z",
-    "refundEndAt": "2019-04-04T15:00:00.000Z"
-  },
-  {
-    "id": 281,
-    "eventId": 233,
+    "id": 107,
+    "eventId": 107,
     "name": "3월 세미나 입장권(사전 예약)",
     "desc": "3월 세미나 입장권",
     "price": 10000,
@@ -1918,8 +1498,8 @@
     "refundEndAt": "2019-03-27T09:00:00.000Z"
   },
   {
-    "id": 283,
-    "eventId": 234,
+    "id": 108,
+    "eventId": 108,
     "name": "간단한 스낵과 맥주가 제공됩니다.",
     "desc": "간단한 스낵과 맥주 및 뒷풀이 식사가 제공됩니다.",
     "price": 30000,
@@ -1932,8 +1512,8 @@
     "refundEndAt": "2019-04-22T15:00:00.000Z"
   },
   {
-    "id": 284,
-    "eventId": 235,
+    "id": 109,
+    "eventId": 109,
     "name": "세미나 신청",
     "desc": "",
     "price": 5000,
@@ -1946,8 +1526,8 @@
     "refundEndAt": "2019-04-03T04:00:00.000Z"
   },
   {
-    "id": 285,
-    "eventId": 236,
+    "id": 110,
+    "eventId": 110,
     "name": "TBWM",
     "desc": "",
     "price": 0,
@@ -1960,36 +1540,8 @@
     "refundEndAt": "2019-03-29T15:00:00.000Z"
   },
   {
-    "id": 286,
-    "eventId": 237,
-    "name": "일반",
-    "desc": "일반 세션만 참석",
-    "price": 30000,
-    "quantity": 230,
-    "leftCnt": 225,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-03-24T23:00:00.000Z",
-    "salesEndAt": "2019-04-13T15:00:00.000Z",
-    "refundEndAt": "2019-04-13T15:00:00.000Z"
-  },
-  {
-    "id": 288,
-    "eventId": 238,
-    "name": "일반 입장권",
-    "desc": "장소와 여러 다과를 제공합니다.",
-    "price": 80000,
-    "quantity": 10,
-    "leftCnt": 9,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-03-27T15:00:00.000Z",
-    "salesEndAt": "2019-04-08T15:00:00.000Z",
-    "refundEndAt": "2019-04-08T15:00:00.000Z"
-  },
-  {
-    "id": 289,
-    "eventId": 241,
+    "id": 111,
+    "eventId": 111,
     "name": "스터디 세미나 참석",
     "desc": "",
     "price": 20000,
@@ -2002,8 +1554,8 @@
     "refundEndAt": "2019-04-19T15:00:00.000Z"
   },
   {
-    "id": 290,
-    "eventId": 242,
+    "id": 112,
+    "eventId": 112,
     "name": "워크숍 입장권",
     "desc": "워크숍 동영상을 제공합니다.",
     "price": 50000,
@@ -2016,22 +1568,8 @@
     "refundEndAt": "2019-04-10T11:30:00.000Z"
   },
   {
-    "id": 291,
-    "eventId": 243,
-    "name": "일반 테스트",
-    "desc": "테스트입니다.",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-03-31T15:00:00.000Z",
-    "salesEndAt": "2019-03-31T15:00:00.000Z",
-    "refundEndAt": "2019-03-31T15:00:00.000Z"
-  },
-  {
-    "id": 292,
-    "eventId": 244,
+    "id": 113,
+    "eventId": 113,
     "name": "세미나 참가",
     "desc": "모든 참가자를 위한 티켓입니다.",
     "price": 10000,
@@ -2044,8 +1582,8 @@
     "refundEndAt": "2019-04-19T14:30:00.000Z"
   },
   {
-    "id": 293,
-    "eventId": 245,
+    "id": 114,
+    "eventId": 114,
     "name": "참가자",
     "desc": "간단한 간식 및 음료를 제공합니다.",
     "price": 5000,
@@ -2058,22 +1596,8 @@
     "refundEndAt": "2019-04-16T13:00:00.000Z"
   },
   {
-    "id": 294,
-    "eventId": 247,
-    "name": "일반입장권",
-    "desc": "참석 확인 후 환불됩니다.",
-    "price": 5000,
-    "quantity": 15,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-02T15:00:00.000Z",
-    "salesEndAt": "2019-04-19T14:30:00.000Z",
-    "refundEndAt": "2019-04-19T14:30:00.000Z"
-  },
-  {
-    "id": 295,
-    "eventId": 248,
+    "id": 115,
+    "eventId": 115,
     "name": "일반 티켓",
     "desc": "1.  음료 ☕️🥤 2.다과 🥨를 드립니다!",
     "price": 7900,
@@ -2086,22 +1610,8 @@
     "refundEndAt": "2019-04-25T15:00:00.000Z"
   },
   {
-    "id": 296,
-    "eventId": 249,
-    "name": "슈퍼 얼리버드",
-    "desc": "30% 할인된 가격으로 판매합니다.",
-    "price": 3100,
-    "quantity": 10,
-    "leftCnt": 10,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-03T15:00:00.000Z",
-    "salesEndAt": "2019-04-03T15:00:00.000Z",
-    "refundEndAt": "2019-04-03T15:00:00.000Z"
-  },
-  {
-    "id": 331,
-    "eventId": 250,
+    "id": 116,
+    "eventId": 116,
     "name": "학생/자원봉사자/발표자",
     "desc": "발표 세션 참석 및 전시 부스 체험 (커뮤니티가 함께 만들어나가는 행사인만큼 자원봉사자 및 발표자 분들도 여유가 되는 경우 티켓을 구매하고 있습니다. 더불어 학생들에게도 가장 큰 할인 혜택을 제공합니다.)",
     "price": 30000,
@@ -2114,22 +1624,8 @@
     "refundEndAt": "2019-05-25T15:00:00.000Z"
   },
   {
-    "id": 342,
-    "eventId": 251,
-    "name": "일반 입장권 (추가 티켓)",
-    "desc": "간단한 식사와 다과를 제공합니다. (30일 오후 2시에 열립니다)",
-    "price": 7900,
-    "quantity": 4,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-30T05:00:00.000Z",
-    "salesEndAt": "2019-04-30T07:00:00.000Z",
-    "refundEndAt": "2019-04-30T07:00:00.000Z"
-  },
-  {
-    "id": 303,
-    "eventId": 253,
+    "id": 117,
+    "eventId": 117,
     "name": "수강권",
     "desc": "5~6시간",
     "price": 20000,
@@ -2142,36 +1638,8 @@
     "refundEndAt": "2019-04-13T14:30:00.000Z"
   },
   {
-    "id": 305,
-    "eventId": 254,
-    "name": "[2019 Women TechMakers] Tech 업계 여성을 위한 청춘 성장 이야기",
-    "desc": "",
-    "price": 0,
-    "quantity": 100,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-10T11:00:00.000Z",
-    "salesEndAt": "2019-04-19T15:00:00.000Z",
-    "refundEndAt": "2019-04-19T15:00:00.000Z"
-  },
-  {
-    "id": 306,
-    "eventId": 255,
-    "name": "ㅇㅇ",
-    "desc": "ㅇㅇ",
-    "price": 222,
-    "quantity": 100,
-    "leftCnt": 100,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-09T15:00:00.000Z",
-    "salesEndAt": "2019-04-09T15:00:00.000Z",
-    "refundEndAt": "2019-04-09T15:00:00.000Z"
-  },
-  {
-    "id": 308,
-    "eventId": 256,
+    "id": 118,
+    "eventId": 118,
     "name": "일반 티켓",
     "desc": "음료와 다과가 제공됩니다.",
     "price": 5000,
@@ -2184,8 +1652,8 @@
     "refundEndAt": "2019-04-23T15:00:00.000Z"
   },
   {
-    "id": 313,
-    "eventId": 258,
+    "id": 119,
+    "eventId": 119,
     "name": "초대권",
     "desc": "",
     "price": 0,
@@ -2198,36 +1666,8 @@
     "refundEndAt": "2019-04-23T15:00:00.000Z"
   },
   {
-    "id": 314,
-    "eventId": 259,
-    "name": "일반 티켓",
-    "desc": "SWAG와 간단한 간식이 제공 됩니다.",
-    "price": 8000,
-    "quantity": 45,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-17T05:00:00.000Z",
-    "salesEndAt": "2019-04-25T14:30:00.000Z",
-    "refundEndAt": "2019-04-25T14:30:00.000Z"
-  },
-  {
-    "id": 316,
-    "eventId": 260,
-    "name": "이벤트",
-    "desc": "이벤트",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-03-31T15:00:00.000Z",
-    "salesEndAt": "2019-04-29T15:00:00.000Z",
-    "refundEndAt": "2019-04-29T15:00:00.000Z"
-  },
-  {
-    "id": 323,
-    "eventId": 261,
+    "id": 120,
+    "eventId": 120,
     "name": "남성 참가자 티켓",
     "desc": "간단한 식사와 음료를 제공합니다.",
     "price": 7000,
@@ -2240,8 +1680,8 @@
     "refundEndAt": "2019-04-21T15:00:00.000Z"
   },
   {
-    "id": 318,
-    "eventId": 262,
+    "id": 121,
+    "eventId": 121,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -2254,8 +1694,8 @@
     "refundEndAt": "2019-04-30T15:00:00.000Z"
   },
   {
-    "id": 319,
-    "eventId": 263,
+    "id": 122,
+    "eventId": 122,
     "name": "일반 입장권 (무료)",
     "desc": "파티에 입장할 수 있는 일반 입장권입니다. No-Show 보증금을 받고 있으며, 당일 등록대에서 전액 환불됩니다.",
     "price": 15000,
@@ -2268,22 +1708,8 @@
     "refundEndAt": "2019-04-22T15:00:00.000Z"
   },
   {
-    "id": 321,
-    "eventId": 264,
-    "name": "입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-14T15:00:00.000Z",
-    "salesEndAt": "2019-04-18T15:00:00.000Z",
-    "refundEndAt": "2019-04-18T15:00:00.000Z"
-  },
-  {
-    "id": 322,
-    "eventId": 266,
+    "id": 123,
+    "eventId": 123,
     "name": "참가자 입장권",
     "desc": "무료 입장권",
     "price": 0,
@@ -2296,8 +1722,8 @@
     "refundEndAt": "2019-04-27T03:00:00.000Z"
   },
   {
-    "id": 325,
-    "eventId": 267,
+    "id": 124,
+    "eventId": 124,
     "name": "일반입장권",
     "desc": "무료로 다과를 준비하였습니다.",
     "price": 0,
@@ -2310,36 +1736,8 @@
     "refundEndAt": "2019-05-11T15:00:00.000Z"
   },
   {
-    "id": 327,
-    "eventId": 268,
-    "name": "개발 참가자 전용 티켓",
-    "desc": "4/8~21까지 진행된 Flutter 개발에 참가한 참가자가 구입할 수 있는 티켓입니다. 참가자는 이 티켓을 구입해주세요.",
-    "price": 6000,
-    "quantity": 40,
-    "leftCnt": 28,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-18T00:00:00.000Z",
-    "salesEndAt": "2019-04-26T10:00:00.000Z",
-    "refundEndAt": "2019-04-24T09:00:00.000Z"
-  },
-  {
-    "id": 328,
-    "eventId": 269,
-    "name": "참가티켓",
-    "desc": "서브웨이 샌드위치 및 행사 swag를 제공합니다. *추가정보입력 필수입니다",
-    "price": 0,
-    "quantity": 51,
-    "leftCnt": 23,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-02T05:00:00.000Z",
-    "salesEndAt": "2019-05-22T08:30:00.000Z",
-    "refundEndAt": "2019-05-21T08:00:00.000Z"
-  },
-  {
-    "id": 329,
-    "eventId": 270,
+    "id": 125,
+    "eventId": 125,
     "name": "여성 학생 참가자 티켓",
     "desc": "간단한 식사와 음료를 제공합니다",
     "price": 3000,
@@ -2352,8 +1750,8 @@
     "refundEndAt": "2019-04-21T14:30:00.000Z"
   },
   {
-    "id": 332,
-    "eventId": 271,
+    "id": 126,
+    "eventId": 126,
     "name": "일반 입장권",
     "desc": "샌드위치와 음료를 제공합니다.",
     "price": 5000,
@@ -2366,8 +1764,8 @@
     "refundEndAt": "2019-04-26T14:30:00.000Z"
   },
   {
-    "id": 334,
-    "eventId": 272,
+    "id": 127,
+    "eventId": 127,
     "name": "클라우드 히어로 티켓",
     "desc": "간식, 음료, 기념품을 제공합니다",
     "price": 5000,
@@ -2380,36 +1778,8 @@
     "refundEndAt": "2019-04-30T15:00:00.000Z"
   },
   {
-    "id": 335,
-    "eventId": 273,
-    "name": "test1234",
-    "desc": "",
-    "price": 10000,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-23T15:00:00.000Z",
-    "salesEndAt": "2019-04-23T15:00:00.000Z",
-    "refundEndAt": "2019-04-23T15:00:00.000Z"
-  },
-  {
-    "id": 336,
-    "eventId": 277,
-    "name": "test1234",
-    "desc": "",
-    "price": 1000,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-04-23T15:00:00.000Z",
-    "salesEndAt": "2019-04-25T15:00:00.000Z",
-    "refundEndAt": "2019-04-25T15:00:00.000Z"
-  },
-  {
-    "id": 338,
-    "eventId": 278,
+    "id": 128,
+    "eventId": 128,
     "name": "뒷풀이 입장권",
     "desc": "간단한 스낵과 맥주 및 뒷풀이 식사가 제공됩니다.",
     "price": 30000,
@@ -2422,22 +1792,8 @@
     "refundEndAt": "2019-05-13T15:00:00.000Z"
   },
   {
-    "id": 339,
-    "eventId": 279,
-    "name": "암호화폐 결제 10DAI / 0.1ETH",
-    "desc": "암호화폐로 결제한 티켓입니다.",
-    "price": 0,
-    "quantity": 300,
-    "leftCnt": 300,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 50,
-    "salesStartAt": "2019-04-25T15:00:00.000Z",
-    "salesEndAt": "2019-04-25T15:00:00.000Z",
-    "refundEndAt": "2019-04-25T15:00:00.000Z"
-  },
-  {
-    "id": 341,
-    "eventId": 280,
+    "id": 129,
+    "eventId": 129,
     "name": "크립토 티켓 2",
     "desc": "티켓 2",
     "price": 0,
@@ -2450,8 +1806,8 @@
     "refundEndAt": "2019-04-29T15:00:00.000Z"
   },
   {
-    "id": 344,
-    "eventId": 281,
+    "id": 130,
+    "eventId": 130,
     "name": "참가권",
     "desc": "결제 후 설문까지 하셔야 참가 신청이 완료됩니다.",
     "price": 10000,
@@ -2464,22 +1820,8 @@
     "refundEndAt": "2019-05-10T01:00:00.000Z"
   },
   {
-    "id": 345,
-    "eventId": 282,
-    "name": "프리미엄 티켓",
-    "desc": "음료 제공",
-    "price": 137000,
-    "quantity": 80,
-    "leftCnt": 80,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-04-29T15:00:00.000Z",
-    "salesEndAt": "2019-04-29T15:00:00.000Z",
-    "refundEndAt": "2019-04-29T15:00:00.000Z"
-  },
-  {
-    "id": 346,
-    "eventId": 283,
+    "id": 131,
+    "eventId": 131,
     "name": "일반참가자",
     "desc": "간식과 음료를 제공합니다.",
     "price": 10000,
@@ -2492,22 +1834,8 @@
     "refundEndAt": "2019-05-14T09:00:00.000Z"
   },
   {
-    "id": 347,
-    "eventId": 284,
-    "name": "TCMA",
-    "desc": "",
-    "price": 0,
-    "quantity": 120,
-    "leftCnt": 12,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-03T04:00:00.000Z",
-    "salesEndAt": "2019-05-11T04:00:00.000Z",
-    "refundEndAt": "2019-05-11T03:30:00.000Z"
-  },
-  {
-    "id": 348,
-    "eventId": 285,
+    "id": 132,
+    "eventId": 132,
     "name": "무료 입장권",
     "desc": "무료 이벤트 입니다",
     "price": 0,
@@ -2520,8 +1848,8 @@
     "refundEndAt": "2019-06-04T09:00:00.000Z"
   },
   {
-    "id": 350,
-    "eventId": 286,
+    "id": 133,
+    "eventId": 133,
     "name": "Observer 티켓",
     "desc": "개인으로 자유롭게 참가하실 수 있고, 원하실 경우 팀으로 진행하거나 결과물 공유를 하실 수 있습니다. ",
     "price": 15000,
@@ -2534,8 +1862,8 @@
     "refundEndAt": "2019-05-13T03:00:00.000Z"
   },
   {
-    "id": 351,
-    "eventId": 287,
+    "id": 134,
+    "eventId": 134,
     "name": "코드랩 참석권",
     "desc": "노쇼를 방지하기 위해 티켓 비용을 받고 있습니다.",
     "price": 5000,
@@ -2548,36 +1876,8 @@
     "refundEndAt": "2019-06-06T15:00:00.000Z"
   },
   {
-    "id": 352,
-    "eventId": 291,
-    "name": "일반 입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 50,
-    "leftCnt": 12,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-13T15:00:00.000Z",
-    "salesEndAt": "2019-05-24T15:00:00.000Z",
-    "refundEndAt": "2019-05-24T15:00:00.000Z"
-  },
-  {
-    "id": 353,
-    "eventId": 292,
-    "name": "입장권",
-    "desc": "다과와 스웩을 드립니다.",
-    "price": 8900,
-    "quantity": 200,
-    "leftCnt": 200,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-28T15:00:00.000Z",
-    "salesEndAt": "2019-06-21T15:00:00.000Z",
-    "refundEndAt": "2019-06-21T15:00:00.000Z"
-  },
-  {
-    "id": 354,
-    "eventId": 293,
+    "id": 135,
+    "eventId": 135,
     "name": "일반입장권",
     "desc": "",
     "price": 10000,
@@ -2590,10 +1890,10 @@
     "refundEndAt": "2019-05-24T14:30:00.000Z"
   },
   {
-    "id": 355,
-    "eventId": 294,
+    "id": 136,
+    "eventId": 136,
     "name": "일반 입장권",
-    "desc": "참석 등록과 함께 네트워킹 때 &quot;피자 + 맥주&quot;를 제공드립니다.",
+    "desc": "참석 등록과 함께 네트워킹 때 '피자 + 맥주'를 제공드립니다.",
     "price": 10000,
     "quantity": 80,
     "leftCnt": 0,
@@ -2604,8 +1904,8 @@
     "refundEndAt": "2019-05-26T15:00:00.000Z"
   },
   {
-    "id": 356,
-    "eventId": 295,
+    "id": 137,
+    "eventId": 137,
     "name": "MESSY-TAG 입장권",
     "desc": "",
     "price": 3000,
@@ -2618,22 +1918,8 @@
     "refundEndAt": "2019-05-29T03:00:00.000Z"
   },
   {
-    "id": 357,
-    "eventId": 296,
-    "name": "밋업 참가",
-    "desc": "",
-    "price": 0,
-    "quantity": 120,
-    "leftCnt": 118,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-19T15:00:00.000Z",
-    "salesEndAt": "2019-05-30T06:30:00.000Z",
-    "refundEndAt": "2019-05-30T06:30:00.000Z"
-  },
-  {
-    "id": 368,
-    "eventId": 297,
+    "id": 138,
+    "eventId": 138,
     "name": "Two Days Pass",
     "desc": "6월 27일(목), 28일(금) 양일 이용권",
     "price": 66000,
@@ -2646,8 +1932,8 @@
     "refundEndAt": "2019-06-25T08:00:00.000Z"
   },
   {
-    "id": 359,
-    "eventId": 298,
+    "id": 139,
+    "eventId": 139,
     "name": "참가비",
     "desc": "간단한 간식과 음료를 제공합니다.",
     "price": 10000,
@@ -2660,36 +1946,8 @@
     "refundEndAt": "2019-05-27T09:00:00.000Z"
   },
   {
-    "id": 360,
-    "eventId": 299,
-    "name": "일반 티켓",
-    "desc": "소정의 기념품을 제공해드립니다.",
-    "price": 10000,
-    "quantity": 1200,
-    "leftCnt": 112,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-05-23T01:00:00.000Z",
-    "salesEndAt": "2019-06-30T02:00:00.000Z",
-    "refundEndAt": "2019-06-27T14:30:00.000Z"
-  },
-  {
-    "id": 371,
-    "eventId": 300,
-    "name": "도우미 초대 티켓",
-    "desc": "이 티켓은  초대자 한정 티켓이며 초대 코드를 입력하지 않을 경우 임의로 환불처리될 수 있습니다.",
-    "price": 7500,
-    "quantity": 2,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-23T15:00:00.000Z",
-    "salesEndAt": "2019-06-07T15:00:00.000Z",
-    "refundEndAt": "2019-05-24T15:00:00.000Z"
-  },
-  {
-    "id": 362,
-    "eventId": 301,
+    "id": 140,
+    "eventId": 140,
     "name": "특별한",
     "desc": "간식과 물 제공",
     "price": 5000,
@@ -2702,36 +1960,8 @@
     "refundEndAt": "2019-05-27T14:30:00.000Z"
   },
   {
-    "id": 364,
-    "eventId": 302,
-    "name": "일반 티켓",
-    "desc": "소정의 답례품, 간단한 간식과 음료를 제공합니다.",
-    "price": 5000,
-    "quantity": 150,
-    "leftCnt": 2,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 5,
-    "salesStartAt": "2019-05-23T15:00:00.000Z",
-    "salesEndAt": "2019-06-19T15:00:00.000Z",
-    "refundEndAt": "2019-06-19T15:00:00.000Z"
-  },
-  {
-    "id": 367,
-    "eventId": 304,
-    "name": "구지원의 아모르 생일 파티 특별 초대권",
-    "desc": "세상에 단 5장 뿐인 티겟입니다 모두와서 즐기고 먹고 축하해주세요",
-    "price": 0,
-    "quantity": 5,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-23T15:00:00.000Z",
-    "salesEndAt": "2019-05-24T14:30:00.000Z",
-    "refundEndAt": "2019-05-24T14:30:00.000Z"
-  },
-  {
-    "id": 372,
-    "eventId": 305,
+    "id": 141,
+    "eventId": 141,
     "name": "일반 입장권",
     "desc": "간단한 스낵과 맥주가 제공됩니다.",
     "price": 10000,
@@ -2744,8 +1974,8 @@
     "refundEndAt": "2019-06-17T15:00:00.000Z"
   },
   {
-    "id": 375,
-    "eventId": 306,
+    "id": 142,
+    "eventId": 142,
     "name": "공식문서 번역 기여자",
     "desc": "TensorFlow 공식 문서 번역에 기여해 봅니다.",
     "price": 0,
@@ -2758,8 +1988,8 @@
     "refundEndAt": "2019-05-29T15:00:00.000Z"
   },
   {
-    "id": 376,
-    "eventId": 307,
+    "id": 143,
+    "eventId": 143,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -2772,8 +2002,8 @@
     "refundEndAt": "2019-06-14T09:00:00.000Z"
   },
   {
-    "id": 377,
-    "eventId": 309,
+    "id": 144,
+    "eventId": 144,
     "name": "도삭댄스 관람권",
     "desc": "토마토탕 반대하는 사람이 쏘기",
     "price": 0,
@@ -2786,36 +2016,8 @@
     "refundEndAt": "2019-05-31T07:00:00.000Z"
   },
   {
-    "id": 379,
-    "eventId": 311,
-    "name": "입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 200,
-    "leftCnt": 68,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-05-29T15:00:00.000Z",
-    "salesEndAt": "2019-06-15T09:00:00.000Z",
-    "refundEndAt": "2019-06-15T09:00:00.000Z"
-  },
-  {
-    "id": 380,
-    "eventId": 314,
-    "name": "학생용",
-    "desc": "기념품 제공",
-    "price": 3000,
-    "quantity": 30,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-06-02T15:00:00.000Z",
-    "salesEndAt": "2019-07-06T07:30:00.000Z",
-    "refundEndAt": "2019-07-05T04:30:00.000Z"
-  },
-  {
-    "id": 383,
-    "eventId": 315,
+    "id": 145,
+    "eventId": 145,
     "name": "일반 티켓",
     "desc": "간단한 저녁식사와 음료, 기념품이 제공됩니다.",
     "price": 7000,
@@ -2828,22 +2030,8 @@
     "refundEndAt": "2019-06-18T15:00:00.000Z"
   },
   {
-    "id": 388,
-    "eventId": 317,
-    "name": "추가 판매 티켓 ",
-    "desc": "티케팅때 성공하지 못하신 분들을 위한 마지막..! 티케팅 (일반티켓과 똑같이 모든걸 드립니다)",
-    "price": 10900,
-    "quantity": 20,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-11T04:00:00.000Z",
-    "salesEndAt": "2019-06-20T15:00:00.000Z",
-    "refundEndAt": "2019-06-18T15:00:00.000Z"
-  },
-  {
-    "id": 386,
-    "eventId": 318,
+    "id": 146,
+    "eventId": 146,
     "name": "일반 참가",
     "desc": "",
     "price": 5000,
@@ -2856,22 +2044,8 @@
     "refundEndAt": "2019-06-18T15:00:00.000Z"
   },
   {
-    "id": 389,
-    "eventId": 319,
-    "name": "코드랩 참석 티켓",
-    "desc": "코드랩 참석을 위한 티켓입니다",
-    "price": 0,
-    "quantity": 130,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-03T15:00:00.000Z",
-    "salesEndAt": "2019-06-20T15:00:00.000Z",
-    "refundEndAt": "2019-06-20T15:00:00.000Z"
-  },
-  {
-    "id": 390,
-    "eventId": 322,
+    "id": 147,
+    "eventId": 147,
     "name": "참가 회비",
     "desc": "음료 및 간단한 식사 제공",
     "price": 5000,
@@ -2884,8 +2058,8 @@
     "refundEndAt": "2019-06-16T03:00:00.000Z"
   },
   {
-    "id": 391,
-    "eventId": 324,
+    "id": 148,
+    "eventId": 148,
     "name": "입장권",
     "desc": "(6/12 수 오후 3시부터 판매 시작) 고급 다과와 음료, 한정판 스티커를 제공합니다.",
     "price": 9900,
@@ -2898,22 +2072,8 @@
     "refundEndAt": "2019-06-19T06:00:00.000Z"
   },
   {
-    "id": 392,
-    "eventId": 326,
-    "name": "일반 입장권",
-    "desc": "참석 등록과 함께 &quot;피자 + 맥주&quot;를 제공드립니다.",
-    "price": 10000,
-    "quantity": 70,
-    "leftCnt": 19,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-11T00:00:00.000Z",
-    "salesEndAt": "2019-06-21T15:00:00.000Z",
-    "refundEndAt": "2019-06-21T15:00:00.000Z"
-  },
-  {
-    "id": 393,
-    "eventId": 327,
+    "id": 149,
+    "eventId": 149,
     "name": "우분투한국커뮤니티 2019년 상반기 서울지역 세미나",
     "desc": "우분투한국커뮤니티 2019년 상반기 서울지역 세미나",
     "price": 0,
@@ -2926,8 +2086,8 @@
     "refundEndAt": "2019-06-27T15:00:00.000Z"
   },
   {
-    "id": 394,
-    "eventId": 328,
+    "id": 150,
+    "eventId": 150,
     "name": "우분투한국커뮤니티 2019년 상반기 서울지역 세미나",
     "desc": "",
     "price": 0,
@@ -2940,22 +2100,8 @@
     "refundEndAt": "2019-06-27T15:00:00.000Z"
   },
   {
-    "id": 396,
-    "eventId": 330,
-    "name": "TICKET",
-    "desc": "의미없음",
-    "price": 0,
-    "quantity": 99,
-    "leftCnt": 99,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 3,
-    "salesStartAt": "2019-06-11T15:00:00.000Z",
-    "salesEndAt": "2019-06-28T09:00:00.000Z",
-    "refundEndAt": "2019-06-28T09:00:00.000Z"
-  },
-  {
-    "id": 397,
-    "eventId": 331,
+    "id": 151,
+    "eventId": 151,
     "name": "111",
     "desc": "",
     "price": 0,
@@ -2968,22 +2114,8 @@
     "refundEndAt": "2019-06-12T15:00:00.000Z"
   },
   {
-    "id": 398,
-    "eventId": 337,
-    "name": "일반 티켓",
-    "desc": "소정의 기념품과 다과를 제공해드립니다.",
-    "price": 5000,
-    "quantity": 100,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 5,
-    "salesStartAt": "2019-06-19T15:00:00.000Z",
-    "salesEndAt": "2019-07-18T15:00:00.000Z",
-    "refundEndAt": "2019-07-17T15:00:00.000Z"
-  },
-  {
-    "id": 399,
-    "eventId": 338,
+    "id": 152,
+    "eventId": 152,
     "name": "4차 산업혁명 미래 디자이너 최재붕 교수의  세미나",
     "desc": "선착순 마감 시, 참가 신청이 취소 될 수 있습니다.",
     "price": 0,
@@ -2996,8 +2128,8 @@
     "refundEndAt": "2019-06-25T15:00:00.000Z"
   },
   {
-    "id": 400,
-    "eventId": 339,
+    "id": 153,
+    "eventId": 153,
     "name": "참가권",
     "desc": "소정의 기념품을 제공합니다.",
     "price": 0,
@@ -3010,22 +2142,8 @@
     "refundEndAt": "2019-07-12T03:00:00.000Z"
   },
   {
-    "id": 402,
-    "eventId": 340,
-    "name": "The Police",
-    "desc": "무료 음료를 제공합니다.",
-    "price": 0,
-    "quantity": 10,
-    "leftCnt": 9,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-06-15T15:00:00.000Z",
-    "salesEndAt": "2019-10-01T15:00:00.000Z",
-    "refundEndAt": "2019-10-01T15:00:00.000Z"
-  },
-  {
-    "id": 404,
-    "eventId": 341,
+    "id": 154,
+    "eventId": 154,
     "name": "CDE",
     "desc": "",
     "price": 0,
@@ -3038,50 +2156,8 @@
     "refundEndAt": "2019-06-21T14:30:00.000Z"
   },
   {
-    "id": 405,
-    "eventId": 342,
-    "name": "양일 티켓",
-    "desc": "이곳에는 티켓 설명이 들어갑니다.",
-    "price": 30000,
-    "quantity": 1000,
-    "leftCnt": 1000,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 20,
-    "salesStartAt": "2019-06-15T15:00:00.000Z",
-    "salesEndAt": "2019-07-16T15:00:00.000Z",
-    "refundEndAt": "2019-07-16T15:00:00.000Z"
-  },
-  {
-    "id": 406,
-    "eventId": 343,
-    "name": "일반 입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-16T15:00:00.000Z",
-    "salesEndAt": "2019-06-16T15:00:00.000Z",
-    "refundEndAt": "2019-06-16T15:00:00.000Z"
-  },
-  {
-    "id": 407,
-    "eventId": 344,
-    "name": "일반 입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 264,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-07T15:00:00.000Z",
-    "salesEndAt": "2019-08-13T15:00:00.000Z",
-    "refundEndAt": "2019-08-13T15:00:00.000Z"
-  },
-  {
-    "id": 409,
-    "eventId": 345,
+    "id": 155,
+    "eventId": 155,
     "name": "2차 등록 티켓",
     "desc": "1차 등록 티켓과 동일하게, 간단한 굿즈와 음료 및 다과가 제공됩니다.",
     "price": 9900,
@@ -3094,64 +2170,8 @@
     "refundEndAt": "2019-07-03T06:00:00.000Z"
   },
   {
-    "id": 410,
-    "eventId": 347,
-    "name": "TBWM-BERT",
-    "desc": "세션 1 - BERT 튜토리얼 티켓입니다. ",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-18T14:00:00.000Z",
-    "salesEndAt": "2019-06-28T14:30:00.000Z",
-    "refundEndAt": "2019-06-28T14:30:00.000Z"
-  },
-  {
-    "id": 413,
-    "eventId": 348,
-    "name": "TBWM-ES",
-    "desc": "",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-18T14:00:00.000Z",
-    "salesEndAt": "2019-06-28T14:30:00.000Z",
-    "refundEndAt": "2019-06-28T14:30:00.000Z"
-  },
-  {
-    "id": 414,
-    "eventId": 350,
-    "name": "양일 입장권",
-    "desc": "18, 19일 참가권입니다. 추가 정보(초청코드)를 정확하게 입력해 주시기 바랍니다. ",
-    "price": 0,
-    "quantity": 250,
-    "leftCnt": 71,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-23T07:00:00.000Z",
-    "salesEndAt": "2019-07-17T09:00:00.000Z",
-    "refundEndAt": "2019-07-17T09:00:00.000Z"
-  },
-  {
-    "id": 416,
-    "eventId": 352,
-    "name": "학생 입장권",
-    "desc": "18, 19일 참가권입니다. 학생 신분을 증명할 수 있는 서류를 사무국 메일(event@plan9.co.kr)로 전달해 주셔야 합니다.",
-    "price": 20000,
-    "quantity": 28,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-19T15:00:00.000Z",
-    "salesEndAt": "2019-07-17T09:00:00.000Z",
-    "refundEndAt": "2019-07-17T09:00:00.000Z"
-  },
-  {
-    "id": 418,
-    "eventId": 353,
+    "id": 156,
+    "eventId": 156,
     "name": "일반",
     "desc": "",
     "price": 300000,
@@ -3164,8 +2184,8 @@
     "refundEndAt": "2019-07-12T14:00:00.000Z"
   },
   {
-    "id": 420,
-    "eventId": 354,
+    "id": 157,
+    "eventId": 157,
     "name": "일반 입장권",
     "desc": "",
     "price": 10000,
@@ -3178,8 +2198,8 @@
     "refundEndAt": "2019-07-24T10:00:00.000Z"
   },
   {
-    "id": 422,
-    "eventId": 355,
+    "id": 158,
+    "eventId": 158,
     "name": "일반 입장권",
     "desc": "간단한 스낵과 맥주가 제공됩니다.",
     "price": 10000,
@@ -3192,22 +2212,8 @@
     "refundEndAt": "2019-07-22T15:00:00.000Z"
   },
   {
-    "id": 423,
-    "eventId": 356,
-    "name": "일반 입장권",
-    "desc": "",
-    "price": 100,
-    "quantity": 10,
-    "leftCnt": 10,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-23T15:00:00.000Z",
-    "salesEndAt": "2019-06-23T15:00:00.000Z",
-    "refundEndAt": "2019-06-23T15:00:00.000Z"
-  },
-  {
-    "id": 424,
-    "eventId": 357,
+    "id": 159,
+    "eventId": 159,
     "name": "SOCKET",
     "desc": "",
     "price": 0,
@@ -3220,22 +2226,8 @@
     "refundEndAt": "2019-06-26T14:30:00.000Z"
   },
   {
-    "id": 431,
-    "eventId": 358,
-    "name": "일반 입장권 + 10,000 후원",
-    "desc": "10,000원을 추가 후원하는 티켓입니다",
-    "price": 25000,
-    "quantity": 2,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-17T01:00:00.000Z",
-    "salesEndAt": "2019-07-19T03:00:00.000Z",
-    "refundEndAt": "2019-07-17T15:00:00.000Z"
-  },
-  {
-    "id": 429,
-    "eventId": 359,
+    "id": 160,
+    "eventId": 160,
     "name": "일반 참가",
     "desc": "약간의 다과를 제공합니다",
     "price": 5000,
@@ -3248,36 +2240,8 @@
     "refundEndAt": "2019-07-08T15:00:00.000Z"
   },
   {
-    "id": 432,
-    "eventId": 360,
-    "name": "일반 참가자",
-    "desc": "가벼운 식사와 기념품이 제공됩니다.",
-    "price": 5900,
-    "quantity": 80,
-    "leftCnt": 23,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-28T23:00:00.000Z",
-    "salesEndAt": "2019-07-15T11:00:00.000Z",
-    "refundEndAt": "2019-07-14T14:00:00.000Z"
-  },
-  {
-    "id": 433,
-    "eventId": 361,
-    "name": "페이퍼 프로토타이핑 참가권",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-06-28T15:00:00.000Z",
-    "salesEndAt": "2019-07-05T15:00:00.000Z",
-    "refundEndAt": "2019-07-05T15:00:00.000Z"
-  },
-  {
-    "id": 434,
-    "eventId": 363,
+    "id": 161,
+    "eventId": 161,
     "name": "모임 참여",
     "desc": "꾸준히 참여해 주실거죠?",
     "price": 10000,
@@ -3290,36 +2254,8 @@
     "refundEndAt": "2019-07-03T05:00:00.000Z"
   },
   {
-    "id": 436,
-    "eventId": 364,
-    "name": "후원 / VC / 투자자 전용 티켓",
-    "desc": "맨 앞 좌석을 드립니다.",
-    "price": 30000,
-    "quantity": 15,
-    "leftCnt": 5,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 3,
-    "salesStartAt": "2019-07-04T04:00:00.000Z",
-    "salesEndAt": "2019-07-13T15:00:00.000Z",
-    "refundEndAt": "2019-07-13T15:00:00.000Z"
-  },
-  {
-    "id": 439,
-    "eventId": 366,
-    "name": "티켓",
-    "desc": "",
-    "price": 10000,
-    "quantity": 50,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-03T12:00:00.000Z",
-    "salesEndAt": "2019-07-17T09:00:00.000Z",
-    "refundEndAt": "2019-07-17T09:00:00.000Z"
-  },
-  {
-    "id": 440,
-    "eventId": 370,
+    "id": 162,
+    "eventId": 162,
     "name": "일반 입장권",
     "desc": "다과 제공",
     "price": 5000,
@@ -3332,64 +2268,8 @@
     "refundEndAt": "2019-07-17T15:00:00.000Z"
   },
   {
-    "id": 441,
-    "eventId": 371,
-    "name": "풀 패키지",
-    "desc": "네",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 29,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-04T15:00:00.000Z",
-    "salesEndAt": "2019-08-30T15:00:00.000Z",
-    "refundEndAt": "2019-08-30T15:00:00.000Z"
-  },
-  {
-    "id": 442,
-    "eventId": 372,
-    "name": "'말말말' 강연 입장권",
-    "desc": "예쁜 보틀과 스티커 무료 제공에 안내견인형이 선착순으로 증정됩니다. 간단한 다과도 준비되어 있습니다.",
-    "price": 6000,
-    "quantity": 50,
-    "leftCnt": 50,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-07-05T04:00:00.000Z",
-    "salesEndAt": "2019-07-13T05:00:00.000Z",
-    "refundEndAt": "2019-07-12T09:00:00.000Z"
-  },
-  {
-    "id": 450,
-    "eventId": 373,
-    "name": "(추가) 일반 티켓 ",
-    "desc": "Try! Flutter 2차 티켓",
-    "price": 10000,
-    "quantity": 20,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-11T04:00:00.000Z",
-    "salesEndAt": "2019-07-25T13:00:00.000Z",
-    "refundEndAt": "2019-07-25T13:00:00.000Z"
-  },
-  {
-    "id": 445,
-    "eventId": 375,
-    "name": "Super Pass",
-    "desc": "반드시 안내 내용을 읽어보고 구매해주세요. 내용을 읽지 않을 시 환불 처리될 수 있습니다.",
-    "price": 100000,
-    "quantity": 10,
-    "leftCnt": 10,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-06T15:00:00.000Z",
-    "salesEndAt": "2019-09-06T15:00:00.000Z",
-    "refundEndAt": "2019-08-27T15:00:00.000Z"
-  },
-  {
-    "id": 612,
-    "eventId": 376,
+    "id": 163,
+    "eventId": 163,
     "name": "김미영님_티켓",
     "desc": "",
     "price": 0,
@@ -3402,8 +2282,8 @@
     "refundEndAt": "2019-09-23T15:00:00.000Z"
   },
   {
-    "id": 448,
-    "eventId": 377,
+    "id": 164,
+    "eventId": 164,
     "name": "3040 수련회",
     "desc": "참가비는 현장접수 합니다(인당 20,000원)",
     "price": 0,
@@ -3416,10 +2296,10 @@
     "refundEndAt": "2019-10-19T04:00:00.000Z"
   },
   {
-    "id": 465,
-    "eventId": 378,
+    "id": 165,
+    "eventId": 165,
     "name": "일반 입장권 (추가 티켓)",
-    "desc": "참석 등록과 함께 &quot;피자 + 맥주&quot;를 제공드립니다. (추가 티켓)",
+    "desc": "참석 등록과 함께 '피자 + 맥주'를 제공드립니다. (추가 티켓)",
     "price": 10000,
     "quantity": 15,
     "leftCnt": 0,
@@ -3430,8 +2310,8 @@
     "refundEndAt": "2019-07-19T15:00:00.000Z"
   },
   {
-    "id": 451,
-    "eventId": 379,
+    "id": 166,
+    "eventId": 166,
     "name": "티켓",
     "desc": "기본 티켓입니다.",
     "price": 10000,
@@ -3444,8 +2324,8 @@
     "refundEndAt": "2019-07-13T09:30:00.000Z"
   },
   {
-    "id": 454,
-    "eventId": 381,
+    "id": 167,
+    "eventId": 167,
     "name": "[7월 14일] 원데이클래스 입장권",
     "desc": "[7월 14일] 원데이클래스 참가 + 음료 1잔 (아이스 라임티)",
     "price": 38000,
@@ -3458,8 +2338,8 @@
     "refundEndAt": "2019-07-12T15:00:00.000Z"
   },
   {
-    "id": 459,
-    "eventId": 383,
+    "id": 168,
+    "eventId": 168,
     "name": "일반 티켓",
     "desc": "",
     "price": 0,
@@ -3472,22 +2352,8 @@
     "refundEndAt": "2019-07-19T14:30:00.000Z"
   },
   {
-    "id": 461,
-    "eventId": 385,
-    "name": "B 트랙: Material Design",
-    "desc": "",
-    "price": 5000,
-    "quantity": 50,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-13T15:00:00.000Z",
-    "salesEndAt": "2019-07-26T15:00:00.000Z",
-    "refundEndAt": "2019-07-26T15:00:00.000Z"
-  },
-  {
-    "id": 463,
-    "eventId": 386,
+    "id": 169,
+    "eventId": 169,
     "name": "일반",
     "desc": "",
     "price": 10000,
@@ -3500,8 +2366,8 @@
     "refundEndAt": "2019-07-26T03:00:00.000Z"
   },
   {
-    "id": 466,
-    "eventId": 388,
+    "id": 170,
+    "eventId": 170,
     "name": "7월 실천 모임 신청권",
     "desc": "음료 한잔 제공",
     "price": 20000,
@@ -3514,22 +2380,8 @@
     "refundEndAt": "2019-07-15T15:00:00.000Z"
   },
   {
-    "id": 467,
-    "eventId": 389,
-    "name": "참석",
-    "desc": "",
-    "price": 0,
-    "quantity": 50,
-    "leftCnt": 19,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-18T03:30:00.000Z",
-    "salesEndAt": "2019-07-27T04:00:00.000Z",
-    "refundEndAt": "2019-07-27T04:00:00.000Z"
-  },
-  {
-    "id": 468,
-    "eventId": 390,
+    "id": 171,
+    "eventId": 171,
     "name": "ㅇ",
     "desc": "ㅇ",
     "price": 0,
@@ -3542,8 +2394,8 @@
     "refundEndAt": "2019-07-18T15:00:00.000Z"
   },
   {
-    "id": 469,
-    "eventId": 391,
+    "id": 172,
+    "eventId": 172,
     "name": "ㅇ",
     "desc": "ㅇ",
     "price": 0,
@@ -3556,22 +2408,8 @@
     "refundEndAt": "2019-07-18T15:00:00.000Z"
   },
   {
-    "id": 470,
-    "eventId": 394,
-    "name": "발표자용 티켓",
-    "desc": "나의 삽질을 들어줘",
-    "price": 5000,
-    "quantity": 10,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-23T22:00:00.000Z",
-    "salesEndAt": "2019-08-02T14:30:00.000Z",
-    "refundEndAt": "2019-08-02T14:30:00.000Z"
-  },
-  {
-    "id": 472,
-    "eventId": 395,
+    "id": 173,
+    "eventId": 173,
     "name": "비소득자(학생) 입장권",
     "desc": "간단한 점심 식사와 음료를 제공합니다.",
     "price": 10000,
@@ -3584,8 +2422,8 @@
     "refundEndAt": "2019-07-30T15:00:00.000Z"
   },
   {
-    "id": 473,
-    "eventId": 396,
+    "id": 174,
+    "eventId": 174,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -3598,8 +2436,8 @@
     "refundEndAt": "2019-07-30T10:00:00.000Z"
   },
   {
-    "id": 474,
-    "eventId": 397,
+    "id": 175,
+    "eventId": 175,
     "name": "티켓",
     "desc": "",
     "price": 10000,
@@ -3612,8 +2450,8 @@
     "refundEndAt": "2019-08-07T09:00:00.000Z"
   },
   {
-    "id": 475,
-    "eventId": 398,
+    "id": 176,
+    "eventId": 176,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -3626,8 +2464,8 @@
     "refundEndAt": "2019-07-30T03:30:00.000Z"
   },
   {
-    "id": 476,
-    "eventId": 399,
+    "id": 177,
+    "eventId": 177,
     "name": "일반 입장권",
     "desc": "맥주x피자 제공!",
     "price": 0,
@@ -3640,22 +2478,8 @@
     "refundEndAt": "2019-07-30T03:00:00.000Z"
   },
   {
-    "id": 477,
-    "eventId": 400,
-    "name": "이벤트 참석 티켓",
-    "desc": "",
-    "price": 10000,
-    "quantity": 100,
-    "leftCnt": 54,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-25T15:00:00.000Z",
-    "salesEndAt": "2019-08-01T15:00:00.000Z",
-    "refundEndAt": "2019-08-01T15:00:00.000Z"
-  },
-  {
-    "id": 478,
-    "eventId": 401,
+    "id": 178,
+    "eventId": 178,
     "name": "일반입장권",
     "desc": "간단한 스낵과 맥주가 제공됩니다.",
     "price": 10000,
@@ -3668,22 +2492,8 @@
     "refundEndAt": "2019-08-19T15:00:00.000Z"
   },
   {
-    "id": 480,
-    "eventId": 402,
-    "name": "일반 티켓",
-    "desc": "음료와 다과가 제공됩니다",
-    "price": 3900,
-    "quantity": 150,
-    "leftCnt": 108,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-07-25T15:00:00.000Z",
-    "salesEndAt": "2019-08-06T09:00:00.000Z",
-    "refundEndAt": "2019-08-05T14:30:00.000Z"
-  },
-  {
-    "id": 482,
-    "eventId": 405,
+    "id": 179,
+    "eventId": 179,
     "name": "얼리버드",
     "desc": "",
     "price": 150000,
@@ -3696,8 +2506,8 @@
     "refundEndAt": "2019-08-16T14:00:00.000Z"
   },
   {
-    "id": 483,
-    "eventId": 406,
+    "id": 180,
+    "eventId": 180,
     "name": "일반 입장권",
     "desc": "무료 음료를 제공합니다.",
     "price": 100,
@@ -3710,8 +2520,8 @@
     "refundEndAt": "2019-07-25T15:00:00.000Z"
   },
   {
-    "id": 484,
-    "eventId": 408,
+    "id": 181,
+    "eventId": 181,
     "name": "일반 입장권",
     "desc": "일반 참가가 가능한 티켓입니다.",
     "price": 0,
@@ -3724,50 +2534,8 @@
     "refundEndAt": "2019-09-20T16:00:00.000Z"
   },
   {
-    "id": 485,
-    "eventId": 409,
-    "name": "일반",
-    "desc": "점심 포함",
-    "price": 0,
-    "quantity": 40,
-    "leftCnt": 34,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-30T15:00:00.000Z",
-    "salesEndAt": "2019-07-31T15:00:00.000Z",
-    "refundEndAt": "2019-07-31T15:00:00.000Z"
-  },
-  {
-    "id": 486,
-    "eventId": 410,
-    "name": "일반",
-    "desc": "점심 포함",
-    "price": 0,
-    "quantity": 40,
-    "leftCnt": 3,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-30T15:00:00.000Z",
-    "salesEndAt": "2019-08-04T15:00:00.000Z",
-    "refundEndAt": "2019-08-04T15:00:00.000Z"
-  },
-  {
-    "id": 487,
-    "eventId": 411,
-    "name": "ㅇㅇㅇ",
-    "desc": "ㅇㅇㅇㅇ",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-07-30T15:00:00.000Z",
-    "salesEndAt": "2019-07-30T15:00:00.000Z",
-    "refundEndAt": "2019-07-30T15:00:00.000Z"
-  },
-  {
-    "id": 488,
-    "eventId": 413,
+    "id": 182,
+    "eventId": 182,
     "name": "일반 입장권",
     "desc": "",
     "price": 5000,
@@ -3780,8 +2548,8 @@
     "refundEndAt": "2019-08-23T09:00:00.000Z"
   },
   {
-    "id": 489,
-    "eventId": 414,
+    "id": 183,
+    "eventId": 183,
     "name": "리얼리눅스 교육세미나 입장권",
     "desc": "",
     "price": 0,
@@ -3794,36 +2562,8 @@
     "refundEndAt": "2019-09-04T09:00:00.000Z"
   },
   {
-    "id": 490,
-    "eventId": 416,
-    "name": "참가 희망 신청 (RSVP)",
-    "desc": "등록 현황 및 잔여 좌석 등에 따라 최종 컨펌은 8월 14일 (수) 개별 이메일로 공유 예정입니다.",
-    "price": 0,
-    "quantity": 20,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-08T07:00:00.000Z",
-    "salesEndAt": "2019-08-11T15:00:00.000Z",
-    "refundEndAt": "2019-08-11T15:00:00.000Z"
-  },
-  {
-    "id": 491,
-    "eventId": 417,
-    "name": "일반 입장권",
-    "desc": "음료 및 다과를 제공해요.",
-    "price": 5000,
-    "quantity": 70,
-    "leftCnt": 11,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-04T15:00:00.000Z",
-    "salesEndAt": "2019-08-26T10:00:00.000Z",
-    "refundEndAt": "2019-08-26T10:00:00.000Z"
-  },
-  {
-    "id": 494,
-    "eventId": 418,
+    "id": 184,
+    "eventId": 184,
     "name": "일반 입장권",
     "desc": "참석자 선정 후 8월 20일(화)에 안내메일 발송될 예정입니다.",
     "price": 0,
@@ -3836,8 +2576,8 @@
     "refundEndAt": "2019-08-19T15:00:00.000Z"
   },
   {
-    "id": 493,
-    "eventId": 419,
+    "id": 185,
+    "eventId": 185,
     "name": "일반 입장권",
     "desc": "간단한 저녁 식사와 음료를 제공합니다.",
     "price": 0,
@@ -3850,8 +2590,8 @@
     "refundEndAt": "2019-08-25T15:00:00.000Z"
   },
   {
-    "id": 497,
-    "eventId": 422,
+    "id": 186,
+    "eventId": 186,
     "name": "Kotliners",
     "desc": "기념품과 음료를 제공합니다.",
     "price": 10000,
@@ -3864,8 +2604,8 @@
     "refundEndAt": "2019-08-23T14:30:00.000Z"
   },
   {
-    "id": 498,
-    "eventId": 423,
+    "id": 187,
+    "eventId": 187,
     "name": "구글폼을 작성해 주세요! ",
     "desc": "",
     "price": 0,
@@ -3878,8 +2618,8 @@
     "refundEndAt": "2019-08-18T02:00:00.000Z"
   },
   {
-    "id": 499,
-    "eventId": 424,
+    "id": 188,
+    "eventId": 188,
     "name": "일반입장권",
     "desc": "간단한 다과, 음료와, 네트워킹 타임에 피자,치킨,맥주를 제공합니다.",
     "price": 0,
@@ -3892,36 +2632,8 @@
     "refundEndAt": "2019-08-21T08:00:00.000Z"
   },
   {
-    "id": 501,
-    "eventId": 425,
-    "name": "얼리버드",
-    "desc": "",
-    "price": 150000,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-09T15:00:00.000Z",
-    "salesEndAt": "2019-08-31T15:00:00.000Z",
-    "refundEndAt": "2019-08-31T15:00:00.000Z"
-  },
-  {
-    "id": 502,
-    "eventId": 426,
-    "name": "일반 입장권",
-    "desc": "",
-    "price": 99000,
-    "quantity": 700,
-    "leftCnt": 222,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-08-19T04:00:00.000Z",
-    "salesEndAt": "2019-10-16T03:00:00.000Z",
-    "refundEndAt": "2019-10-16T02:00:00.000Z"
-  },
-  {
-    "id": 503,
-    "eventId": 427,
+    "id": 189,
+    "eventId": 189,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -3934,8 +2646,8 @@
     "refundEndAt": "2019-08-25T15:00:00.000Z"
   },
   {
-    "id": 504,
-    "eventId": 428,
+    "id": 190,
+    "eventId": 190,
     "name": "일반입장권",
     "desc": "간단한 다과, 음료와, 네트워킹 타임에 피자,치킨,맥주를 제공합니다.",
     "price": 0,
@@ -3948,22 +2660,8 @@
     "refundEndAt": "2019-08-20T08:00:00.000Z"
   },
   {
-    "id": 505,
-    "eventId": 429,
-    "name": "일반 입장권",
-    "desc": "무료",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-11T15:00:00.000Z",
-    "salesEndAt": "2019-08-11T15:00:00.000Z",
-    "refundEndAt": "2019-08-11T15:00:00.000Z"
-  },
-  {
-    "id": 506,
-    "eventId": 430,
+    "id": 191,
+    "eventId": 191,
     "name": "ㅋㅋㅋ",
     "desc": "ㅋㅋ",
     "price": 0,
@@ -3976,8 +2674,8 @@
     "refundEndAt": "2019-08-13T15:00:00.000Z"
   },
   {
-    "id": 507,
-    "eventId": 431,
+    "id": 192,
+    "eventId": 192,
     "name": "일반 입장권",
     "desc": "피자와 맥주를 제공합니다.",
     "price": 20000,
@@ -3990,8 +2688,8 @@
     "refundEndAt": "2019-09-02T07:00:00.000Z"
   },
   {
-    "id": 508,
-    "eventId": 434,
+    "id": 193,
+    "eventId": 193,
     "name": "일반 입장권",
     "desc": "간단한 저녁식사, 음료 제공",
     "price": 5000,
@@ -4004,36 +2702,8 @@
     "refundEndAt": "2019-09-04T15:00:00.000Z"
   },
   {
-    "id": 510,
-    "eventId": 435,
-    "name": "VIP 입장권",
-    "desc": "테스트 용입니다.",
-    "price": 0,
-    "quantity": 1000,
-    "leftCnt": 999,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 3,
-    "salesStartAt": "2019-08-13T15:00:00.000Z",
-    "salesEndAt": "2020-12-31T15:00:00.000Z",
-    "refundEndAt": "2020-12-31T15:00:00.000Z"
-  },
-  {
-    "id": 532,
-    "eventId": 436,
-    "name": "스탠딩 티켓",
-    "desc": "자리가 부족하여... 스탠딩으로 마련했습니다..",
-    "price": 10000,
-    "quantity": 50,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-19T15:00:00.000Z",
-    "salesEndAt": "2019-08-26T15:00:00.000Z",
-    "refundEndAt": "2019-08-26T15:00:00.000Z"
-  },
-  {
-    "id": 512,
-    "eventId": 437,
+    "id": 194,
+    "eventId": 194,
     "name": "일반 입장권",
     "desc": "간단한 저녁, 음료 제공",
     "price": 5000,
@@ -4046,8 +2716,8 @@
     "refundEndAt": "2019-08-29T15:00:00.000Z"
   },
   {
-    "id": 513,
-    "eventId": 439,
+    "id": 195,
+    "eventId": 195,
     "name": "일반 입장권",
     "desc": "간단한 음료와 다과가 제공 될 예정입니다. ",
     "price": 0,
@@ -4060,8 +2730,8 @@
     "refundEndAt": "2019-08-28T14:30:00.000Z"
   },
   {
-    "id": 514,
-    "eventId": 440,
+    "id": 196,
+    "eventId": 196,
     "name": "일반 입장권",
     "desc": "음료와 다과가 제공 될 예정입니다. ",
     "price": 0,
@@ -4074,8 +2744,8 @@
     "refundEndAt": "2019-08-28T14:30:00.000Z"
   },
   {
-    "id": 555,
-    "eventId": 441,
+    "id": 197,
+    "eventId": 197,
     "name": "일반 초대권",
     "desc": "초대권을 소지하신 분만 구입할 수 있는 티켓입니다. 초대권을 소지 하지 않은 분이 구입하실 경우 당일 입장이 제한될 수 있습니다.",
     "price": 9800,
@@ -4088,10 +2758,10 @@
     "refundEndAt": "2019-08-28T15:00:00.000Z"
   },
   {
-    "id": 516,
-    "eventId": 442,
+    "id": 198,
+    "eventId": 198,
     "name": "일반 입장권",
-    "desc": "참석 등록과 함께 &quot;피자 + 맥주&quot;를 제공드립니다.",
+    "desc": "참석 등록과 함께 '피자 + 맥주'를 제공드립니다.",
     "price": 10000,
     "quantity": 50,
     "leftCnt": 0,
@@ -4102,8 +2772,8 @@
     "refundEndAt": "2019-08-22T15:00:00.000Z"
   },
   {
-    "id": 519,
-    "eventId": 443,
+    "id": 199,
+    "eventId": 199,
     "name": "교육 + 프로젝트 입장권",
     "desc": "오프라인 교육 2회와 프로젝트를 함께 진행할 수 있습니다.",
     "price": 149000,
@@ -4116,8 +2786,8 @@
     "refundEndAt": "2019-08-29T15:00:00.000Z"
   },
   {
-    "id": 521,
-    "eventId": 446,
+    "id": 200,
+    "eventId": 200,
     "name": "일반",
     "desc": "30% 할인 행사 중 입니다.",
     "price": 210000,
@@ -4130,8 +2800,8 @@
     "refundEndAt": "2019-08-30T14:00:00.000Z"
   },
   {
-    "id": 525,
-    "eventId": 447,
+    "id": 201,
+    "eventId": 201,
     "name": "일반 티켓",
     "desc": "",
     "price": 0,
@@ -4144,8 +2814,8 @@
     "refundEndAt": "2019-08-23T14:30:00.000Z"
   },
   {
-    "id": 526,
-    "eventId": 448,
+    "id": 202,
+    "eventId": 202,
     "name": "일반 입장권",
     "desc": "티셔츠와 굿즈를 제공합니다.",
     "price": 9800,
@@ -4158,22 +2828,8 @@
     "refundEndAt": "2019-09-19T15:00:00.000Z"
   },
   {
-    "id": 527,
-    "eventId": 449,
-    "name": "입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 140,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-17T15:00:00.000Z",
-    "salesEndAt": "2019-08-29T15:00:00.000Z",
-    "refundEndAt": "2019-08-29T15:00:00.000Z"
-  },
-  {
-    "id": 528,
-    "eventId": 450,
+    "id": 203,
+    "eventId": 203,
     "name": "AIU 10월 컨퍼런스",
     "desc": "",
     "price": 0,
@@ -4186,8 +2842,8 @@
     "refundEndAt": "2019-08-17T15:00:00.000Z"
   },
   {
-    "id": 530,
-    "eventId": 452,
+    "id": 204,
+    "eventId": 204,
     "name": "참석",
     "desc": "부득이한 사정으로 불참하실 경우 꼭 취소해주세요. ",
     "price": 0,
@@ -4200,8 +2856,8 @@
     "refundEndAt": "2019-08-25T14:30:00.000Z"
   },
   {
-    "id": 546,
-    "eventId": 455,
+    "id": 205,
+    "eventId": 205,
     "name": "RSVP",
     "desc": "티켓 가격은 예치금이며, 현장에서 캐시백 해드립니다. 무료 저녁을 제공합니다.",
     "price": 5000,
@@ -4214,8 +2870,8 @@
     "refundEndAt": "2019-09-25T14:30:00.000Z"
   },
   {
-    "id": 533,
-    "eventId": 456,
+    "id": 206,
+    "eventId": 206,
     "name": "일반 입장권",
     "desc": "OOO, OOO, 간식 포함",
     "price": 80000,
@@ -4228,8 +2884,8 @@
     "refundEndAt": "2019-08-22T15:00:00.000Z"
   },
   {
-    "id": 535,
-    "eventId": 457,
+    "id": 207,
+    "eventId": 207,
     "name": "일반 입장권",
     "desc": "간단한 음료 및 다과가 제공 될 예정입니다.",
     "price": 0,
@@ -4242,8 +2898,8 @@
     "refundEndAt": "2019-09-06T09:30:00.000Z"
   },
   {
-    "id": 536,
-    "eventId": 460,
+    "id": 208,
+    "eventId": 208,
     "name": "일반 입장권",
     "desc": "피자와 음료를 제공합니다.",
     "price": 0,
@@ -4256,8 +2912,8 @@
     "refundEndAt": "2019-09-03T15:00:00.000Z"
   },
   {
-    "id": 537,
-    "eventId": 461,
+    "id": 209,
+    "eventId": 209,
     "name": "일반 입장권",
     "desc": "피자와 음료를 제공합니다.",
     "price": 0,
@@ -4270,8 +2926,8 @@
     "refundEndAt": "2019-09-03T15:00:00.000Z"
   },
   {
-    "id": 538,
-    "eventId": 464,
+    "id": 210,
+    "eventId": 210,
     "name": "후원 티켓",
     "desc": "구매하지마세요.",
     "price": 400000,
@@ -4284,8 +2940,8 @@
     "refundEndAt": "2019-08-24T15:30:00.000Z"
   },
   {
-    "id": 543,
-    "eventId": 465,
+    "id": 211,
+    "eventId": 211,
     "name": "일반 티켓",
     "desc": "",
     "price": 13000,
@@ -4298,8 +2954,8 @@
     "refundEndAt": "2019-09-14T15:00:00.000Z"
   },
   {
-    "id": 544,
-    "eventId": 466,
+    "id": 212,
+    "eventId": 212,
     "name": "티켓",
     "desc": "",
     "price": 10000,
@@ -4312,8 +2968,8 @@
     "refundEndAt": "2019-09-18T09:00:00.000Z"
   },
   {
-    "id": 545,
-    "eventId": 467,
+    "id": 213,
+    "eventId": 213,
     "name": "AI PARTY 입장권",
     "desc": "피자와 음료를 제공합니다.",
     "price": 0,
@@ -4326,50 +2982,8 @@
     "refundEndAt": "2019-09-03T15:00:00.000Z"
   },
   {
-    "id": 547,
-    "eventId": 469,
-    "name": "VIP티켓",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-25T15:00:00.000Z",
-    "salesEndAt": "2019-09-20T14:30:00.000Z",
-    "refundEndAt": "2019-09-20T14:30:00.000Z"
-  },
-  {
-    "id": 548,
-    "eventId": 470,
-    "name": "VIP티켓",
-    "desc": "기업 생산성 향상을 위한 DevOps 세미나에 관심있는 기업 관리자를 초대합니다. ",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-26T00:00:00.000Z",
-    "salesEndAt": "2019-09-20T09:00:00.000Z",
-    "refundEndAt": "2019-09-20T09:00:00.000Z"
-  },
-  {
-    "id": 549,
-    "eventId": 471,
-    "name": "VIP티켓",
-    "desc": "기업 생산성 향상을 위한 DevOps 세미나에 관심있는 기업 관리자를 초대합니다. ",
-    "price": 0,
-    "quantity": 500,
-    "leftCnt": 233,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-26T00:00:00.000Z",
-    "salesEndAt": "2019-09-20T09:00:00.000Z",
-    "refundEndAt": "2019-09-20T09:00:00.000Z"
-  },
-  {
-    "id": 550,
-    "eventId": 473,
+    "id": 214,
+    "eventId": 214,
     "name": "일반 참가",
     "desc": "하시코프 사용자 모임은 기술 교육이 아니며 참여자 모두가 함께 만들어가는 커뮤니티입니다. 참가비는 커뮤니티 운영을 위해 발표자 모임 준비, 발표자 사례비, 세미나 경비 등으로 사용합니다.",
     "price": 10000,
@@ -4382,8 +2996,8 @@
     "refundEndAt": "2019-09-16T15:00:00.000Z"
   },
   {
-    "id": 552,
-    "eventId": 474,
+    "id": 215,
+    "eventId": 215,
     "name": "뒷풀이 입장권",
     "desc": "간단한 스낵과 맥주 및 뒷풀이 식사가 제공됩니다.",
     "price": 30000,
@@ -4396,8 +3010,8 @@
     "refundEndAt": "2019-09-16T15:00:00.000Z"
   },
   {
-    "id": 553,
-    "eventId": 477,
+    "id": 216,
+    "eventId": 216,
     "name": "입장권",
     "desc": "김밥, 음료가 제공될 예정입니다.",
     "price": 0,
@@ -4410,50 +3024,8 @@
     "refundEndAt": "2019-08-29T05:00:00.000Z"
   },
   {
-    "id": 554,
-    "eventId": 479,
-    "name": "입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 200,
-    "leftCnt": 30,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-26T15:00:00.000Z",
-    "salesEndAt": "2019-09-21T04:00:00.000Z",
-    "refundEndAt": "2019-09-21T03:30:00.000Z"
-  },
-  {
-    "id": 556,
-    "eventId": 481,
-    "name": "8/31 참가권",
-    "desc": "",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-30T01:00:00.000Z",
-    "salesEndAt": "2019-08-30T08:00:00.000Z",
-    "refundEndAt": "2019-08-30T08:00:00.000Z"
-  },
-  {
-    "id": 557,
-    "eventId": 482,
-    "name": "9/3일 참가권",
-    "desc": "",
-    "price": 0,
-    "quantity": 40,
-    "leftCnt": 14,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-08-30T01:00:00.000Z",
-    "salesEndAt": "2019-09-03T01:00:00.000Z",
-    "refundEndAt": "2019-08-30T08:00:00.000Z"
-  },
-  {
-    "id": 558,
-    "eventId": 484,
+    "id": 217,
+    "eventId": 217,
     "name": "일반",
     "desc": "점심 포함",
     "price": 0,
@@ -4466,8 +3038,8 @@
     "refundEndAt": "2019-09-03T15:00:00.000Z"
   },
   {
-    "id": 559,
-    "eventId": 485,
+    "id": 218,
+    "eventId": 218,
     "name": "일반",
     "desc": "점심 포함",
     "price": 0,
@@ -4480,8 +3052,8 @@
     "refundEndAt": "2019-09-17T15:00:00.000Z"
   },
   {
-    "id": 560,
-    "eventId": 486,
+    "id": 219,
+    "eventId": 219,
     "name": "일반",
     "desc": "점심 포함",
     "price": 0,
@@ -4494,8 +3066,8 @@
     "refundEndAt": "2019-09-19T15:00:00.000Z"
   },
   {
-    "id": 561,
-    "eventId": 488,
+    "id": 220,
+    "eventId": 220,
     "name": "FEConf 2019 일반 입장권",
     "desc": "",
     "price": 30000,
@@ -4508,8 +3080,8 @@
     "refundEndAt": "2019-10-22T14:30:00.000Z"
   },
   {
-    "id": 564,
-    "eventId": 492,
+    "id": 221,
+    "eventId": 221,
     "name": "청소년",
     "desc": "19세 미만 청소년 참가자를 위한 옵션입니다.",
     "price": 5000,
@@ -4522,8 +3094,8 @@
     "refundEndAt": "2019-10-03T06:00:00.000Z"
   },
   {
-    "id": 616,
-    "eventId": 500,
+    "id": 222,
+    "eventId": 222,
     "name": "[2차] 데이터홀릭 공개방송 입장권",
     "desc": "데이터홀릭 공개방송 입장을 위한 티켓입니다.",
     "price": 0,
@@ -4536,8 +3108,8 @@
     "refundEndAt": "2019-10-21T10:00:00.000Z"
   },
   {
-    "id": 566,
-    "eventId": 501,
+    "id": 223,
+    "eventId": 223,
     "name": "test",
     "desc": "",
     "price": 0,
@@ -4550,8 +3122,8 @@
     "refundEndAt": "2019-09-06T04:00:00.000Z"
   },
   {
-    "id": 568,
-    "eventId": 503,
+    "id": 224,
+    "eventId": 224,
     "name": "9월 18일 (수)",
     "desc": "",
     "price": 0,
@@ -4564,8 +3136,8 @@
     "refundEndAt": "2019-09-16T15:00:00.000Z"
   },
   {
-    "id": 574,
-    "eventId": 504,
+    "id": 225,
+    "eventId": 225,
     "name": "레고4스크럼 워크숍 입장권",
     "desc": "점심 식사가 제공됩니다.",
     "price": 180000,
@@ -4578,8 +3150,8 @@
     "refundEndAt": "2019-10-10T06:00:00.000Z"
   },
   {
-    "id": 572,
-    "eventId": 505,
+    "id": 226,
+    "eventId": 226,
     "name": "Agile Planning  워크숍 입장권",
     "desc": "",
     "price": 60000,
@@ -4592,8 +3164,8 @@
     "refundEndAt": "2019-10-08T15:00:00.000Z"
   },
   {
-    "id": 573,
-    "eventId": 506,
+    "id": 227,
+    "eventId": 227,
     "name": "Leading SAFe 워크숍 입장권",
     "desc": "점심 식사가 제공됩니다.",
     "price": 1500000,
@@ -4606,22 +3178,8 @@
     "refundEndAt": "2019-10-09T15:00:00.000Z"
   },
   {
-    "id": 577,
-    "eventId": 514,
-    "name": "코드랩 참석권",
-    "desc": "커피와 다과류를 제공합니다.",
-    "price": 10000,
-    "quantity": 70,
-    "leftCnt": 9,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-09-08T15:00:00.000Z",
-    "salesEndAt": "2019-09-17T15:00:00.000Z",
-    "refundEndAt": "2019-09-17T15:00:00.000Z"
-  },
-  {
-    "id": 578,
-    "eventId": 520,
+    "id": 228,
+    "eventId": 228,
     "name": "GitLab.Meetup.Ticket",
     "desc": "간단한 다과를 준비 했습니다.  (노쇼 방지용)",
     "price": 5000,
@@ -4634,8 +3192,8 @@
     "refundEndAt": "2019-09-24T10:00:00.000Z"
   },
   {
-    "id": 579,
-    "eventId": 522,
+    "id": 229,
+    "eventId": 229,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -4648,8 +3206,8 @@
     "refundEndAt": "2019-09-10T15:00:00.000Z"
   },
   {
-    "id": 580,
-    "eventId": 523,
+    "id": 230,
+    "eventId": 230,
     "name": "VIP티켓",
     "desc": "Autodesk의 다양한 기능을 전문 엔지니어와 함께합니다.",
     "price": 0,
@@ -4662,8 +3220,8 @@
     "refundEndAt": "2019-10-14T09:00:00.000Z"
   },
   {
-    "id": 581,
-    "eventId": 524,
+    "id": 231,
+    "eventId": 231,
     "name": "치킨디너",
     "desc": "치킨 + 맥주(또는 음료)",
     "price": 15000,
@@ -4676,8 +3234,8 @@
     "refundEndAt": "2019-09-18T09:00:00.000Z"
   },
   {
-    "id": 586,
-    "eventId": 526,
+    "id": 232,
+    "eventId": 232,
     "name": "(10/3) 컨퍼런스 참가 ",
     "desc": "로보틱스와 인공지능분야의 전문가, 커뮤니티리더 분들을 모시고 열리는 AI Robotics KR 의 첫번째 컨퍼런스 참여 티켓",
     "price": 5000,
@@ -4690,10 +3248,10 @@
     "refundEndAt": "2019-10-01T05:00:00.000Z"
   },
   {
-    "id": 588,
-    "eventId": 527,
+    "id": 233,
+    "eventId": 233,
     "name": "일반 입장권",
-    "desc": "참석 등록과 함께 &quot;피자 + 맥주&quot;를 제공드립니다.",
+    "desc": "참석 등록과 함께 '피자 + 맥주'를 제공드립니다.",
     "price": 10000,
     "quantity": 80,
     "leftCnt": 24,
@@ -4704,8 +3262,8 @@
     "refundEndAt": "2019-09-25T15:00:00.000Z"
   },
   {
-    "id": 589,
-    "eventId": 528,
+    "id": 234,
+    "eventId": 234,
     "name": "일반 입장권",
     "desc": "점심 도시락을 제공합니다.",
     "price": 30000,
@@ -4718,8 +3276,8 @@
     "refundEndAt": "2019-09-22T01:00:00.000Z"
   },
   {
-    "id": 591,
-    "eventId": 529,
+    "id": 235,
+    "eventId": 235,
     "name": "티켓",
     "desc": "세미나 참가 + 저녁식사 참가 티켓",
     "price": 0,
@@ -4732,8 +3290,8 @@
     "refundEndAt": "2019-10-14T09:00:00.000Z"
   },
   {
-    "id": 592,
-    "eventId": 530,
+    "id": 236,
+    "eventId": 236,
     "name": "TBWM",
     "desc": "",
     "price": 0,
@@ -4746,8 +3304,8 @@
     "refundEndAt": "2019-09-20T14:30:00.000Z"
   },
   {
-    "id": 594,
-    "eventId": 531,
+    "id": 237,
+    "eventId": 237,
     "name": "리얼 Git 수강권",
     "desc": "오픈소스로 배우는 진짜 Git 활용법: 리얼 Git 반 10월 개강 (2주 과정)",
     "price": 120000,
@@ -4760,8 +3318,8 @@
     "refundEndAt": "2019-09-30T09:00:00.000Z"
   },
   {
-    "id": 596,
-    "eventId": 534,
+    "id": 238,
+    "eventId": 238,
     "name": "임프라브",
     "desc": "신나게 고고씽!",
     "price": 400000,
@@ -4774,8 +3332,8 @@
     "refundEndAt": "2019-10-14T09:00:00.000Z"
   },
   {
-    "id": 597,
-    "eventId": 535,
+    "id": 239,
+    "eventId": 239,
     "name": "임프로그 공연티켓",
     "desc": "입장권입니다.",
     "price": 10000,
@@ -4788,8 +3346,8 @@
     "refundEndAt": "2019-10-11T13:00:00.000Z"
   },
   {
-    "id": 598,
-    "eventId": 536,
+    "id": 240,
+    "eventId": 240,
     "name": "일반",
     "desc": "행사 참여가 가능한 티켓 입니다.",
     "price": 3000,
@@ -4802,8 +3360,8 @@
     "refundEndAt": "2019-10-02T15:00:00.000Z"
   },
   {
-    "id": 599,
-    "eventId": 537,
+    "id": 241,
+    "eventId": 241,
     "name": "일반 입장권",
     "desc": "참석자 선정 후 10월 15일(화)과 21일(월)에 안내메일 발송될 예정입니다.",
     "price": 0,
@@ -4816,8 +3374,8 @@
     "refundEndAt": "2019-10-22T12:30:00.000Z"
   },
   {
-    "id": 601,
-    "eventId": 540,
+    "id": 242,
+    "eventId": 242,
     "name": "티켓",
     "desc": "세미나 참가 + 저녁식사 초대",
     "price": 0,
@@ -4830,8 +3388,8 @@
     "refundEndAt": "2019-10-14T09:00:00.000Z"
   },
   {
-    "id": 602,
-    "eventId": 541,
+    "id": 243,
+    "eventId": 243,
     "name": "세미나 초대권",
     "desc": "외부인의 출입신청을 위하여 필요합니다.",
     "price": 0,
@@ -4844,8 +3402,8 @@
     "refundEndAt": "2019-09-24T09:00:00.000Z"
   },
   {
-    "id": 603,
-    "eventId": 542,
+    "id": 244,
+    "eventId": 244,
     "name": "외부인 초대권",
     "desc": "출입신청을 위한 개인정보 수집을 위한 신청페이지입니다.",
     "price": 0,
@@ -4858,8 +3416,8 @@
     "refundEndAt": "2019-09-24T09:00:00.000Z"
   },
   {
-    "id": 604,
-    "eventId": 543,
+    "id": 245,
+    "eventId": 245,
     "name": "리눅스OS중급반A 수강권",
     "desc": "",
     "price": 220000,
@@ -4872,8 +3430,8 @@
     "refundEndAt": "2019-10-04T09:00:00.000Z"
   },
   {
-    "id": 605,
-    "eventId": 545,
+    "id": 246,
+    "eventId": 246,
     "name": "리눅스 SW기본반 수강권",
     "desc": "",
     "price": 170000,
@@ -4886,8 +3444,8 @@
     "refundEndAt": "2019-09-30T14:30:00.000Z"
   },
   {
-    "id": 606,
-    "eventId": 546,
+    "id": 247,
+    "eventId": 247,
     "name": "리눅스 노베이스반 수강권",
     "desc": "",
     "price": 170000,
@@ -4900,8 +3458,8 @@
     "refundEndAt": "2019-09-30T09:00:00.000Z"
   },
   {
-    "id": 641,
-    "eventId": 548,
+    "id": 248,
+    "eventId": 248,
     "name": "비직장인 티켓",
     "desc": "고정적인 수입이 없는 학생 등을 대상으로 하는 티켓입니다",
     "price": 10000,
@@ -4914,8 +3472,8 @@
     "refundEndAt": "2019-10-11T15:30:00.000Z"
   },
   {
-    "id": 673,
-    "eventId": 549,
+    "id": 249,
+    "eventId": 249,
     "name": "코드랩 참가권 (추가 티켓)",
     "desc": "간단한 간식과 커피, 기념품이 같이 제공됩니다.",
     "price": 25000,
@@ -4928,8 +3486,8 @@
     "refundEndAt": "2019-10-12T14:30:00.000Z"
   },
   {
-    "id": 611,
-    "eventId": 550,
+    "id": 250,
+    "eventId": 250,
     "name": "일반 입장권",
     "desc": "노트북이 있으시면 가져오시면 함께 실습하실 수 있습니다.",
     "price": 0,
@@ -4942,8 +3500,8 @@
     "refundEndAt": "2019-10-02T09:00:00.000Z"
   },
   {
-    "id": 614,
-    "eventId": 551,
+    "id": 251,
+    "eventId": 251,
     "name": "LTP",
     "desc": "",
     "price": 0,
@@ -4956,8 +3514,8 @@
     "refundEndAt": "2019-09-27T14:30:00.000Z"
   },
   {
-    "id": 615,
-    "eventId": 552,
+    "id": 252,
+    "eventId": 252,
     "name": "데브옵스의 날 2019",
     "desc": "모든 세션 / 간식 제공",
     "price": 0,
@@ -4970,8 +3528,8 @@
     "refundEndAt": "2019-10-01T03:00:00.000Z"
   },
   {
-    "id": 618,
-    "eventId": 553,
+    "id": 253,
+    "eventId": 253,
     "name": "학생 입장권",
     "desc": "학생 입장권입니다.",
     "price": 5000,
@@ -4984,22 +3542,8 @@
     "refundEndAt": "2019-10-05T03:00:00.000Z"
   },
   {
-    "id": 620,
-    "eventId": 555,
-    "name": "[선착순] 브루 워크샵 참여 입장권",
-    "desc": "영상편집입문을 위한 입장권입니다.",
-    "price": 0,
-    "quantity": 15,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-09-24T15:00:00.000Z",
-    "salesEndAt": "2019-10-04T14:30:00.000Z",
-    "refundEndAt": "2019-10-04T14:30:00.000Z"
-  },
-  {
-    "id": 621,
-    "eventId": 556,
+    "id": 254,
+    "eventId": 254,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -5012,36 +3556,8 @@
     "refundEndAt": "2019-10-02T09:30:00.000Z"
   },
   {
-    "id": 658,
-    "eventId": 557,
-    "name": "무료 입장권",
-    "desc": "세션",
-    "price": 0,
-    "quantity": 100,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-09-24T15:00:00.000Z",
-    "salesEndAt": "2019-11-23T14:30:00.000Z",
-    "refundEndAt": "2019-11-23T14:30:00.000Z"
-  },
-  {
-    "id": 625,
-    "eventId": 559,
-    "name": "입장권",
-    "desc": "",
-    "price": 15000,
-    "quantity": 1000,
-    "leftCnt": 168,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 50,
-    "salesStartAt": "2019-09-30T00:00:00.000Z",
-    "salesEndAt": "2019-10-20T08:00:00.000Z",
-    "refundEndAt": "2019-10-12T15:00:00.000Z"
-  },
-  {
-    "id": 626,
-    "eventId": 562,
+    "id": 255,
+    "eventId": 255,
     "name": "ㅇㅇ",
     "desc": "",
     "price": 0,
@@ -5054,36 +3570,8 @@
     "refundEndAt": "2019-09-25T15:00:00.000Z"
   },
   {
-    "id": 627,
-    "eventId": 563,
-    "name": "참가티켓",
-    "desc": "",
-    "price": 0,
-    "quantity": 20,
-    "leftCnt": 6,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-09-26T15:00:00.000Z",
-    "salesEndAt": "2019-10-01T10:00:00.000Z",
-    "refundEndAt": "2019-10-01T10:00:00.000Z"
-  },
-  {
-    "id": 628,
-    "eventId": 569,
-    "name": "무료 입장권",
-    "desc": "무료 장소와 무료 커피가 제공됩니다.",
-    "price": 0,
-    "quantity": 50,
-    "leftCnt": 36,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 5,
-    "salesStartAt": "2019-09-26T15:00:00.000Z",
-    "salesEndAt": "2019-10-04T15:00:00.000Z",
-    "refundEndAt": "2019-10-04T15:00:00.000Z"
-  },
-  {
-    "id": 630,
-    "eventId": 570,
+    "id": 256,
+    "eventId": 256,
     "name": "일반 티켓",
     "desc": "",
     "price": 0,
@@ -5096,8 +3584,8 @@
     "refundEndAt": "2019-10-04T14:30:00.000Z"
   },
   {
-    "id": 631,
-    "eventId": 571,
+    "id": 257,
+    "eventId": 257,
     "name": "일반 입장권",
     "desc": "무료 음료 및 다과를 드립니다.",
     "price": 10000,
@@ -5110,8 +3598,8 @@
     "refundEndAt": "2019-11-14T15:00:00.000Z"
   },
   {
-    "id": 632,
-    "eventId": 572,
+    "id": 258,
+    "eventId": 258,
     "name": "미래도전기술 경진대회 설명회",
     "desc": "",
     "price": 0,
@@ -5124,8 +3612,8 @@
     "refundEndAt": "2019-10-06T11:00:00.000Z"
   },
   {
-    "id": 633,
-    "eventId": 573,
+    "id": 259,
+    "eventId": 259,
     "name": "대관비",
     "desc": "2시간 대관에 쓰이는 비용입니다! ",
     "price": 4000,
@@ -5138,8 +3626,8 @@
     "refundEndAt": "2019-10-17T15:00:00.000Z"
   },
   {
-    "id": 635,
-    "eventId": 574,
+    "id": 260,
+    "eventId": 260,
     "name": "일반",
     "desc": "",
     "price": 300000,
@@ -5152,8 +3640,8 @@
     "refundEndAt": "2019-10-11T14:00:00.000Z"
   },
   {
-    "id": 636,
-    "eventId": 575,
+    "id": 261,
+    "eventId": 261,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -5166,8 +3654,8 @@
     "refundEndAt": "2019-09-29T15:00:00.000Z"
   },
   {
-    "id": 637,
-    "eventId": 576,
+    "id": 262,
+    "eventId": 262,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -5180,8 +3668,8 @@
     "refundEndAt": "2019-10-01T15:00:00.000Z"
   },
   {
-    "id": 643,
-    "eventId": 577,
+    "id": 263,
+    "eventId": 263,
     "name": "비직장인 티켓",
     "desc": "일정한 수입이 없는 학생 등을 대상으로 한 티켓입니다",
     "price": 10000,
@@ -5194,8 +3682,8 @@
     "refundEndAt": "2019-10-11T15:30:00.000Z"
   },
   {
-    "id": 645,
-    "eventId": 578,
+    "id": 264,
+    "eventId": 264,
     "name": "부트캠프",
     "desc": "부트캠프 입장",
     "price": 0,
@@ -5208,8 +3696,8 @@
     "refundEndAt": "2019-09-30T15:00:00.000Z"
   },
   {
-    "id": 646,
-    "eventId": 582,
+    "id": 265,
+    "eventId": 265,
     "name": "일반 입장권",
     "desc": "무료 음료를 제공합니다.",
     "price": 10000,
@@ -5222,36 +3710,8 @@
     "refundEndAt": "2019-10-11T09:00:00.000Z"
   },
   {
-    "id": 648,
-    "eventId": 583,
-    "name": "오픈 기념 할인 수강권",
-    "desc": "환불은 10월 19일 이전까지만 가능합니다. (강의장 대관 비용으로 인해 제한이 있는 점 양해 바랍니다.)",
-    "price": 300000,
-    "quantity": 24,
-    "leftCnt": 24,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-01T15:00:00.000Z",
-    "salesEndAt": "2019-10-25T14:30:00.000Z",
-    "refundEndAt": "2019-10-18T15:00:00.000Z"
-  },
-  {
-    "id": 650,
-    "eventId": 584,
-    "name": "오픈 기념 할인 수강권",
-    "desc": "환불은 10월 19일 이전까지만 가능합니다. (강의장 대관 비용으로 인해 제한이 있는 점 양해 바랍니다.)",
-    "price": 300000,
-    "quantity": 24,
-    "leftCnt": 9,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-01T15:00:00.000Z",
-    "salesEndAt": "2019-10-25T14:30:00.000Z",
-    "refundEndAt": "2019-10-18T15:00:00.000Z"
-  },
-  {
-    "id": 651,
-    "eventId": 585,
+    "id": 266,
+    "eventId": 266,
     "name": "입장권",
     "desc": "식사와 음료를 제공합니다.",
     "price": 0,
@@ -5264,22 +3724,8 @@
     "refundEndAt": "2019-10-07T08:00:00.000Z"
   },
   {
-    "id": 657,
-    "eventId": 587,
-    "name": "교육",
-    "desc": "",
-    "price": 400000,
-    "quantity": 5,
-    "leftCnt": 5,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-03T15:00:00.000Z",
-    "salesEndAt": "2019-10-03T15:00:00.000Z",
-    "refundEndAt": "2019-10-03T15:00:00.000Z"
-  },
-  {
-    "id": 730,
-    "eventId": 590,
+    "id": 267,
+    "eventId": 267,
     "name": "일반 참가권 2",
     "desc": "",
     "price": 9000,
@@ -5292,8 +3738,8 @@
     "refundEndAt": "2019-10-23T15:00:00.000Z"
   },
   {
-    "id": 654,
-    "eventId": 591,
+    "id": 268,
+    "eventId": 268,
     "name": "10월 5일 참석",
     "desc": "",
     "price": 0,
@@ -5306,8 +3752,8 @@
     "refundEndAt": "2019-10-02T15:00:00.000Z"
   },
   {
-    "id": 655,
-    "eventId": 592,
+    "id": 269,
+    "eventId": 269,
     "name": "입장권",
     "desc": "간단한 먹을거리가 준비되어 있습니다.",
     "price": 3000,
@@ -5320,8 +3766,8 @@
     "refundEndAt": "2019-10-24T10:00:00.000Z"
   },
   {
-    "id": 656,
-    "eventId": 594,
+    "id": 270,
+    "eventId": 270,
     "name": "Shopee Korea 동남아시아 글로벌셀링 세미나 ",
     "desc": "",
     "price": 0,
@@ -5334,8 +3780,8 @@
     "refundEndAt": "2019-10-24T12:00:00.000Z"
   },
   {
-    "id": 659,
-    "eventId": 595,
+    "id": 271,
+    "eventId": 271,
     "name": "세미나 참가",
     "desc": "모든 참가자를 위한 티켓입니다.",
     "price": 10000,
@@ -5348,8 +3794,8 @@
     "refundEndAt": "2019-10-11T13:00:00.000Z"
   },
   {
-    "id": 660,
-    "eventId": 597,
+    "id": 272,
+    "eventId": 272,
     "name": "일반권",
     "desc": "",
     "price": 2200000,
@@ -5362,22 +3808,8 @@
     "refundEndAt": "2019-11-11T14:30:00.000Z"
   },
   {
-    "id": 662,
-    "eventId": 598,
-    "name": "A.I. PLUS + 2019 (추첨권)",
-    "desc": "확정 티켓이 아닌 추첨용 티켓이며 확정자에 한하여 개별 연락드립니다.  ",
-    "price": 0,
-    "quantity": 1000,
-    "leftCnt": 403,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-16T06:00:00.000Z",
-    "salesEndAt": "2019-10-28T14:30:00.000Z",
-    "refundEndAt": "2019-10-28T14:30:00.000Z"
-  },
-  {
-    "id": 663,
-    "eventId": 600,
+    "id": 273,
+    "eventId": 273,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -5390,36 +3822,8 @@
     "refundEndAt": "2019-10-21T14:30:00.000Z"
   },
   {
-    "id": 664,
-    "eventId": 601,
-    "name": "스타트업 어벤져스 CEO과정 수강권",
-    "desc": "호텔 조찬비, 워크샵 비용 일체 포함",
-    "price": 1540000,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-09-24T15:00:00.000Z",
-    "salesEndAt": "2019-10-14T14:30:00.000Z",
-    "refundEndAt": "2019-10-14T14:30:00.000Z"
-  },
-  {
-    "id": 666,
-    "eventId": 602,
-    "name": "Let'Ticket School",
-    "desc": "학생 전용 티켓입니다.",
-    "price": 20000,
-    "quantity": 20,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-10T06:00:00.000Z",
-    "salesEndAt": "2019-10-31T06:00:00.000Z",
-    "refundEndAt": "2019-10-31T06:00:00.000Z"
-  },
-  {
-    "id": 668,
-    "eventId": 603,
+    "id": 274,
+    "eventId": 274,
     "name": "입장권",
     "desc": "무료 음료 및 다과 제공",
     "price": 10000,
@@ -5432,8 +3836,8 @@
     "refundEndAt": "2019-10-25T07:00:00.000Z"
   },
   {
-    "id": 669,
-    "eventId": 604,
+    "id": 275,
+    "eventId": 275,
     "name": "1:1 교육",
     "desc": "경제의 흐름 , 부동산의 전망, 심층적인 재테크 교육",
     "price": 40000,
@@ -5446,8 +3850,8 @@
     "refundEndAt": "2019-12-30T15:00:00.000Z"
   },
   {
-    "id": 671,
-    "eventId": 606,
+    "id": 276,
+    "eventId": 276,
     "name": "후원 티켓",
     "desc": "세션 + 행사 후원 + 간단한 저녁식사와 음료, 기념품이 제공됩니다.",
     "price": 20000,
@@ -5460,8 +3864,8 @@
     "refundEndAt": "2019-11-12T15:00:00.000Z"
   },
   {
-    "id": 672,
-    "eventId": 607,
+    "id": 277,
+    "eventId": 277,
     "name": "일반 입장권",
     "desc": "점심식사, 다과와 음료를 제공합니다.",
     "price": 50000,
@@ -5474,36 +3878,8 @@
     "refundEndAt": "2019-10-24T15:00:00.000Z"
   },
   {
-    "id": 721,
-    "eventId": 609,
-    "name": "일반 입장권 (추가 티켓)",
-    "desc": "참석 등록과 함께 &quot;피자 + 맥주&quot;를 제공드립니다.",
-    "price": 10000,
-    "quantity": 10,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-23T01:00:00.000Z",
-    "salesEndAt": "2019-10-27T15:00:00.000Z",
-    "refundEndAt": "2019-10-27T15:00:00.000Z"
-  },
-  {
-    "id": 688,
-    "eventId": 611,
-    "name": "얼리버드 - 실습 세션(세션2)",
-    "desc": "",
-    "price": 3000,
-    "quantity": 10,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 10,
-    "salesStartAt": "2019-10-14T15:00:00.000Z",
-    "salesEndAt": "2019-11-16T05:00:00.000Z",
-    "refundEndAt": "2019-11-10T05:00:00.000Z"
-  },
-  {
-    "id": 677,
-    "eventId": 612,
+    "id": 278,
+    "eventId": 278,
     "name": "일반 입장권",
     "desc": "",
     "price": 5000,
@@ -5516,22 +3892,8 @@
     "refundEndAt": "2019-10-15T03:00:00.000Z"
   },
   {
-    "id": 678,
-    "eventId": 613,
-    "name": "입장권",
-    "desc": "",
-    "price": 5000,
-    "quantity": 200,
-    "leftCnt": 130,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 5,
-    "salesStartAt": "2019-10-13T15:00:00.000Z",
-    "salesEndAt": "2019-11-22T14:30:00.000Z",
-    "refundEndAt": "2019-11-22T14:30:00.000Z"
-  },
-  {
-    "id": 679,
-    "eventId": 614,
+    "id": 279,
+    "eventId": 279,
     "name": "리눅스 노베이스반 11월 수강권",
     "desc": "",
     "price": 170000,
@@ -5544,8 +3906,8 @@
     "refundEndAt": "2019-11-04T09:30:00.000Z"
   },
   {
-    "id": 680,
-    "eventId": 615,
+    "id": 280,
+    "eventId": 280,
     "name": "리눅스 SW기본반 11월 수강권",
     "desc": "",
     "price": 170000,
@@ -5558,8 +3920,8 @@
     "refundEndAt": "2019-11-01T10:00:00.000Z"
   },
   {
-    "id": 681,
-    "eventId": 616,
+    "id": 281,
+    "eventId": 281,
     "name": "리눅스 OS중급반 A 11월 수강권",
     "desc": "",
     "price": 220000,
@@ -5572,8 +3934,8 @@
     "refundEndAt": "2019-11-01T04:00:00.000Z"
   },
   {
-    "id": 682,
-    "eventId": 617,
+    "id": 282,
+    "eventId": 282,
     "name": "리눅스 OS중급반 B 11월 수강권",
     "desc": "",
     "price": 220000,
@@ -5586,8 +3948,8 @@
     "refundEndAt": "2019-11-01T04:00:00.000Z"
   },
   {
-    "id": 683,
-    "eventId": 618,
+    "id": 283,
+    "eventId": 283,
     "name": "리얼 Git 11월 수강권",
     "desc": "",
     "price": 120000,
@@ -5600,8 +3962,8 @@
     "refundEndAt": "2019-11-01T04:00:00.000Z"
   },
   {
-    "id": 684,
-    "eventId": 621,
+    "id": 284,
+    "eventId": 284,
     "name": "참가권",
     "desc": "",
     "price": 0,
@@ -5614,8 +3976,8 @@
     "refundEndAt": "2019-10-29T14:30:00.000Z"
   },
   {
-    "id": 685,
-    "eventId": 622,
+    "id": 285,
+    "eventId": 285,
     "name": "일반 입장권",
     "desc": "",
     "price": 18000,
@@ -5628,8 +3990,8 @@
     "refundEndAt": "2019-10-27T15:00:00.000Z"
   },
   {
-    "id": 686,
-    "eventId": 623,
+    "id": 286,
+    "eventId": 286,
     "name": "입장권",
     "desc": "가벼운 저녁식사와 소정의 기념품이 제공됩니다.",
     "price": 5900,
@@ -5642,22 +4004,8 @@
     "refundEndAt": "2019-11-02T17:00:00.000Z"
   },
   {
-    "id": 689,
-    "eventId": 626,
-    "name": "일반 입장권",
-    "desc": "무료 음료를 제공합니다.",
-    "price": 10000,
-    "quantity": 14,
-    "leftCnt": 2,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-14T15:00:00.000Z",
-    "salesEndAt": "2019-10-22T10:00:00.000Z",
-    "refundEndAt": "2019-10-21T14:30:00.000Z"
-  },
-  {
-    "id": 690,
-    "eventId": 627,
+    "id": 287,
+    "eventId": 287,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -5670,8 +4018,8 @@
     "refundEndAt": "2019-10-24T15:00:00.000Z"
   },
   {
-    "id": 702,
-    "eventId": 628,
+    "id": 288,
+    "eventId": 288,
     "name": "블라인드 티켓",
     "desc": "간단한 간식 및 음료, 기념품이 제공됩니다. 블라인드 티켓의 환불마감일은 10월 27일입니다. 이후 티켓 환불이 필요하신 경우 양도를 부탁드립니다. 🙏",
     "price": 15000,
@@ -5684,8 +4032,8 @@
     "refundEndAt": "2019-10-27T14:30:00.000Z"
   },
   {
-    "id": 693,
-    "eventId": 629,
+    "id": 289,
+    "eventId": 289,
     "name": "세마나 등록 티켓(2인실)",
     "desc": "2인실 침대방 사용과 식사제공",
     "price": 200000,
@@ -5698,22 +4046,8 @@
     "refundEndAt": "2019-10-29T15:00:00.000Z"
   },
   {
-    "id": 694,
-    "eventId": 630,
-    "name": "초대권",
-    "desc": "간단한 식사를 제공합니다.",
-    "price": 0,
-    "quantity": 50,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-16T15:00:00.000Z",
-    "salesEndAt": "2019-10-28T15:00:00.000Z",
-    "refundEndAt": "2019-10-28T15:00:00.000Z"
-  },
-  {
-    "id": 695,
-    "eventId": 632,
+    "id": 290,
+    "eventId": 290,
     "name": "TinySpec 입장권",
     "desc": "",
     "price": 0,
@@ -5726,8 +4060,8 @@
     "refundEndAt": "2019-11-05T05:00:00.000Z"
   },
   {
-    "id": 696,
-    "eventId": 633,
+    "id": 291,
+    "eventId": 291,
     "name": "10월 19일 참석",
     "desc": "",
     "price": 0,
@@ -5740,8 +4074,8 @@
     "refundEndAt": "2019-10-18T23:00:00.000Z"
   },
   {
-    "id": 697,
-    "eventId": 635,
+    "id": 292,
+    "eventId": 292,
     "name": "태환쓰 생일선물",
     "desc": "생파에 올 수 있는 권한입니다",
     "price": 10000,
@@ -5754,22 +4088,8 @@
     "refundEndAt": "2019-10-21T03:00:00.000Z"
   },
   {
-    "id": 698,
-    "eventId": 636,
-    "name": "무료 입장권",
-    "desc": "",
-    "price": 0,
-    "quantity": 8,
-    "leftCnt": 8,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 2,
-    "salesStartAt": "2019-10-17T15:00:00.000Z",
-    "salesEndAt": "2019-10-21T15:00:00.000Z",
-    "refundEndAt": "2019-10-21T15:00:00.000Z"
-  },
-  {
-    "id": 699,
-    "eventId": 638,
+    "id": 293,
+    "eventId": 293,
     "name": "참가 보증금",
     "desc": "간단한 다과를 제공 합니다.",
     "price": 5000,
@@ -5782,22 +4102,8 @@
     "refundEndAt": "2019-11-01T14:30:00.000Z"
   },
   {
-    "id": 700,
-    "eventId": 639,
-    "name": "ㅁㄴㅇㄹ",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-18T15:00:00.000Z",
-    "salesEndAt": "2019-10-18T15:00:00.000Z",
-    "refundEndAt": "2019-10-18T15:00:00.000Z"
-  },
-  {
-    "id": 701,
-    "eventId": 640,
+    "id": 294,
+    "eventId": 294,
     "name": "WM_RSVP",
     "desc": "참석 신청",
     "price": 0,
@@ -5810,8 +4116,8 @@
     "refundEndAt": "2019-10-25T13:00:00.000Z"
   },
   {
-    "id": 703,
-    "eventId": 641,
+    "id": 295,
+    "eventId": 295,
     "name": "일반 입장권",
     "desc": "",
     "price": 5000,
@@ -5824,78 +4130,8 @@
     "refundEndAt": "2019-10-22T03:00:00.000Z"
   },
   {
-    "id": 704,
-    "eventId": 644,
-    "name": "DFSEL19AD",
-    "desc": "4",
-    "price": 330000,
-    "quantity": 1,
-    "leftCnt": 0,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-20T15:00:00.000Z",
-    "salesEndAt": "2019-10-31T15:00:00.000Z",
-    "refundEndAt": "2019-10-20T15:00:00.000Z"
-  },
-  {
-    "id": 743,
-    "eventId": 646,
-    "name": "[월요일] 고지형 강사님 2, 3주차 강의",
-    "desc": "고지형 강사님의 2, 3주차의 강의를 수강하실 수 있습니다.",
-    "price": 36000,
-    "quantity": 1,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-24T15:00:00.000Z",
-    "salesEndAt": "2019-10-31T15:00:00.000Z",
-    "refundEndAt": "2019-10-31T15:00:00.000Z"
-  },
-  {
-    "id": 720,
-    "eventId": 650,
-    "name": "AI PLUS 2019(추첨권)",
-    "desc": "확정 티켓이 아닌 추첨용 티켓이며 확정자에 한하여 개별 연락드립니다.  ",
-    "price": 0,
-    "quantity": 500,
-    "leftCnt": 496,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-23T00:30:00.000Z",
-    "salesEndAt": "2019-10-31T13:00:00.000Z",
-    "refundEndAt": "2019-10-31T13:00:00.000Z"
-  },
-  {
-    "id": 722,
-    "eventId": 651,
-    "name": "일반 입장권",
-    "desc": "무료 음료를 제공합니다",
-    "price": 10000,
-    "quantity": 14,
-    "leftCnt": 2,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-22T15:00:00.000Z",
-    "salesEndAt": "2019-11-05T10:00:00.000Z",
-    "refundEndAt": "2019-11-05T10:00:00.000Z"
-  },
-  {
-    "id": 726,
-    "eventId": 652,
-    "name": "ICON x STEEM Meetup",
-    "desc": "",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 29,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-22T15:00:00.000Z",
-    "salesEndAt": "2019-11-02T15:00:00.000Z",
-    "refundEndAt": "2019-11-02T15:00:00.000Z"
-  },
-  {
-    "id": 756,
-    "eventId": 653,
+    "id": 296,
+    "eventId": 296,
     "name": "참가비",
     "desc": "1박2일 숙박과 석식, 간식 제공 해드립니다. ",
     "price": 5000,
@@ -5908,8 +4144,8 @@
     "refundEndAt": "2019-11-05T15:00:00.000Z"
   },
   {
-    "id": 729,
-    "eventId": 654,
+    "id": 297,
+    "eventId": 297,
     "name": "일반 참가권",
     "desc": "",
     "price": 10000,
@@ -5922,8 +4158,8 @@
     "refundEndAt": "2019-11-13T04:00:00.000Z"
   },
   {
-    "id": 732,
-    "eventId": 655,
+    "id": 298,
+    "eventId": 298,
     "name": "무료",
     "desc": "추첨을 통해 100분을 선정합니다. 추첨 결과는 11/1(금) 개별적으로 안내 드릴 예정입니다. ",
     "price": 0,
@@ -5936,8 +4172,8 @@
     "refundEndAt": "2019-10-30T06:00:00.000Z"
   },
   {
-    "id": 733,
-    "eventId": 656,
+    "id": 299,
+    "eventId": 299,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -5950,36 +4186,8 @@
     "refundEndAt": "2019-10-30T09:00:00.000Z"
   },
   {
-    "id": 734,
-    "eventId": 657,
-    "name": "Meetup Guest",
-    "desc": "간단한 스낵과 기념품이 제공될 예정입니다.",
-    "price": 10000,
-    "quantity": 60,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 5,
-    "salesStartAt": "2019-10-23T15:00:00.000Z",
-    "salesEndAt": "2019-11-19T15:00:00.000Z",
-    "refundEndAt": "2019-11-14T15:00:00.000Z"
-  },
-  {
-    "id": 735,
-    "eventId": 658,
-    "name": "등록",
-    "desc": "",
-    "price": 0,
-    "quantity": 60,
-    "leftCnt": 41,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-23T15:00:00.000Z",
-    "salesEndAt": "2019-11-16T15:00:00.000Z",
-    "refundEndAt": "2019-11-16T15:00:00.000Z"
-  },
-  {
-    "id": 736,
-    "eventId": 659,
+    "id": 300,
+    "eventId": 300,
     "name": "스탠딩 기본 초대권 (1매)",
     "desc": "",
     "price": 5000,
@@ -5992,8 +4200,8 @@
     "refundEndAt": "2019-10-30T02:00:00.000Z"
   },
   {
-    "id": 740,
-    "eventId": 662,
+    "id": 301,
+    "eventId": 301,
     "name": "테스트 입장권",
     "desc": "테스트",
     "price": 1,
@@ -6006,8 +4214,8 @@
     "refundEndAt": "2019-11-15T14:30:00.000Z"
   },
   {
-    "id": 744,
-    "eventId": 665,
+    "id": 302,
+    "eventId": 302,
     "name": "일반 입장권",
     "desc": "",
     "price": 5000,
@@ -6020,8 +4228,8 @@
     "refundEndAt": "2019-10-29T02:00:00.000Z"
   },
   {
-    "id": 746,
-    "eventId": 666,
+    "id": 303,
+    "eventId": 303,
     "name": "일반",
     "desc": "",
     "price": 300000,
@@ -6034,8 +4242,8 @@
     "refundEndAt": "2019-11-15T14:00:00.000Z"
   },
   {
-    "id": 747,
-    "eventId": 667,
+    "id": 304,
+    "eventId": 304,
     "name": "입장권",
     "desc": "무료 음료 및 다과 제공",
     "price": 10000,
@@ -6048,8 +4256,8 @@
     "refundEndAt": "2019-11-08T08:00:00.000Z"
   },
   {
-    "id": 752,
-    "eventId": 668,
+    "id": 305,
+    "eventId": 305,
     "name": "4회차(11월 28일)",
     "desc": "사회에서 성공하는 덕후를 꿈꾸기 위한 커뮤니티 리더십",
     "price": 0,
@@ -6062,36 +4270,8 @@
     "refundEndAt": "2019-11-28T06:00:00.000Z"
   },
   {
-    "id": 753,
-    "eventId": 669,
-    "name": "입장권",
-    "desc": "간단한 식사(샌드위치)와 음료를 제공합니다.",
-    "price": 0,
-    "quantity": 61,
-    "leftCnt": 1,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-10-29T00:00:00.000Z",
-    "salesEndAt": "2019-11-01T03:00:00.000Z",
-    "refundEndAt": "2019-11-01T03:00:00.000Z"
-  },
-  {
-    "id": 754,
-    "eventId": 671,
-    "name": "일반 티켓",
-    "desc": "DevFest 세션 + 간단한 저녁 식사와 음료가 제공됩니다.",
-    "price": 5000,
-    "quantity": 50,
-    "leftCnt": 16,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 4,
-    "salesStartAt": "2019-10-28T15:00:00.000Z",
-    "salesEndAt": "2019-11-17T14:30:00.000Z",
-    "refundEndAt": "2019-11-17T14:30:00.000Z"
-  },
-  {
-    "id": 755,
-    "eventId": 672,
+    "id": 306,
+    "eventId": 306,
     "name": "세미나 입장권",
     "desc": "샌드위치와 무료 음료가 제공됩니다.",
     "price": 10000,
@@ -6104,8 +4284,8 @@
     "refundEndAt": "2019-11-27T15:00:00.000Z"
   },
   {
-    "id": 757,
-    "eventId": 674,
+    "id": 307,
+    "eventId": 307,
     "name": "11월 2일 참석",
     "desc": "",
     "price": 0,
@@ -6118,8 +4298,8 @@
     "refundEndAt": "2019-11-02T03:00:00.000Z"
   },
   {
-    "id": 758,
-    "eventId": 675,
+    "id": 308,
+    "eventId": 308,
     "name": "수련 참석",
     "desc": "",
     "price": 5000,
@@ -6132,8 +4312,8 @@
     "refundEndAt": "2019-11-05T03:00:00.000Z"
   },
   {
-    "id": 759,
-    "eventId": 679,
+    "id": 309,
+    "eventId": 309,
     "name": "일반 티켓",
     "desc": "",
     "price": 0,
@@ -6146,22 +4326,8 @@
     "refundEndAt": "2019-11-15T14:30:00.000Z"
   },
   {
-    "id": 760,
-    "eventId": 681,
-    "name": "test",
-    "desc": "",
-    "price": 15000,
-    "quantity": 30,
-    "leftCnt": 30,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 3,
-    "salesStartAt": "2019-10-30T15:00:00.000Z",
-    "salesEndAt": "2019-10-30T15:00:00.000Z",
-    "refundEndAt": "2019-10-30T15:00:00.000Z"
-  },
-  {
-    "id": 762,
-    "eventId": 682,
+    "id": 310,
+    "eventId": 310,
     "name": "교육 티켓",
     "desc": "",
     "price": 0,
@@ -6174,8 +4340,8 @@
     "refundEndAt": "2019-11-01T06:00:00.000Z"
   },
   {
-    "id": 763,
-    "eventId": 683,
+    "id": 311,
+    "eventId": 311,
     "name": "교육 티켓",
     "desc": "",
     "price": 0,
@@ -6188,8 +4354,8 @@
     "refundEndAt": "2019-11-01T06:00:00.000Z"
   },
   {
-    "id": 764,
-    "eventId": 685,
+    "id": 312,
+    "eventId": 312,
     "name": "설명회 참석",
     "desc": "",
     "price": 0,
@@ -6202,36 +4368,8 @@
     "refundEndAt": "2019-11-14T10:00:00.000Z"
   },
   {
-    "id": 765,
-    "eventId": 686,
-    "name": "일반 입장권",
-    "desc": "ㅇㅅㅇ!",
-    "price": 0,
-    "quantity": 100,
-    "leftCnt": 89,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 100,
-    "salesStartAt": "2019-11-03T15:00:00.000Z",
-    "salesEndAt": "2019-11-20T15:00:00.000Z",
-    "refundEndAt": "2019-11-20T15:00:00.000Z"
-  },
-  {
-    "id": 767,
-    "eventId": 687,
-    "name": "일반",
-    "desc": "토즈 사용료는 각자 계산합니다.(1회 대략 6천원~7천원)",
-    "price": 0,
-    "quantity": 10,
-    "leftCnt": 4,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-03T15:00:00.000Z",
-    "salesEndAt": "2019-11-06T14:30:00.000Z",
-    "refundEndAt": "2019-11-06T14:30:00.000Z"
-  },
-  {
-    "id": 768,
-    "eventId": 690,
+    "id": 313,
+    "eventId": 313,
     "name": "일반 입장권",
     "desc": "코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다.",
     "price": 10000,
@@ -6244,8 +4382,8 @@
     "refundEndAt": "2019-11-28T14:00:00.000Z"
   },
   {
-    "id": 769,
-    "eventId": 691,
+    "id": 314,
+    "eventId": 314,
     "name": "모임 참가",
     "desc": "",
     "price": 6000,
@@ -6258,8 +4396,8 @@
     "refundEndAt": "2019-11-18T03:00:00.000Z"
   },
   {
-    "id": 780,
-    "eventId": 692,
+    "id": 315,
+    "eventId": 315,
     "name": "참가 보증금",
     "desc": "18일 참석자에 한해, 환불 해드릴 예정입니다. 음료와 간단한 식사가 제공됩니다.",
     "price": 10000,
@@ -6272,8 +4410,8 @@
     "refundEndAt": "2019-11-15T05:00:00.000Z"
   },
   {
-    "id": 771,
-    "eventId": 693,
+    "id": 316,
+    "eventId": 316,
     "name": "프로자백러 되기",
     "desc": "",
     "price": 440000,
@@ -6286,36 +4424,8 @@
     "refundEndAt": "2019-11-09T15:00:00.000Z"
   },
   {
-    "id": 772,
-    "eventId": 694,
-    "name": "안녕",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-05T15:00:00.000Z",
-    "salesEndAt": "2019-11-05T15:00:00.000Z",
-    "refundEndAt": "2019-11-05T15:00:00.000Z"
-  },
-  {
-    "id": 774,
-    "eventId": 695,
-    "name": "티켓",
-    "desc": "",
-    "price": 10000,
-    "quantity": 45,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-07T00:00:00.000Z",
-    "salesEndAt": "2019-11-16T15:00:00.000Z",
-    "refundEndAt": "2019-11-16T15:00:00.000Z"
-  },
-  {
-    "id": 775,
-    "eventId": 696,
+    "id": 317,
+    "eventId": 317,
     "name": "워크숍참여권",
     "desc": "",
     "price": 10000,
@@ -6328,8 +4438,8 @@
     "refundEndAt": "2019-11-14T15:00:00.000Z"
   },
   {
-    "id": 778,
-    "eventId": 697,
+    "id": 318,
+    "eventId": 318,
     "name": "특별권",
     "desc": "",
     "price": 1000,
@@ -6342,50 +4452,8 @@
     "refundEndAt": "2020-01-16T15:00:00.000Z"
   },
   {
-    "id": 779,
-    "eventId": 698,
-    "name": "참가신청",
-    "desc": "저녁을 위한 서브웨이 샌드위치를 제공해드립니다",
-    "price": 0,
-    "quantity": 38,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-05T15:00:00.000Z",
-    "salesEndAt": "2019-11-26T15:00:00.000Z",
-    "refundEndAt": "2019-11-25T15:00:00.000Z"
-  },
-  {
-    "id": 781,
-    "eventId": 706,
-    "name": "이름",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-06T15:00:00.000Z",
-    "salesEndAt": "2019-11-06T15:00:00.000Z",
-    "refundEndAt": "2019-11-06T15:00:00.000Z"
-  },
-  {
-    "id": 782,
-    "eventId": 709,
-    "name": "test",
-    "desc": "",
-    "price": 0,
-    "quantity": 1,
-    "leftCnt": 1,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-06T15:00:00.000Z",
-    "salesEndAt": "2019-11-06T15:00:00.000Z",
-    "refundEndAt": "2019-11-06T15:00:00.000Z"
-  },
-  {
-    "id": 783,
-    "eventId": 712,
+    "id": 319,
+    "eventId": 319,
     "name": "코딩 수련",
     "desc": "",
     "price": 5000,
@@ -6398,22 +4466,8 @@
     "refundEndAt": "2019-11-11T23:00:00.000Z"
   },
   {
-    "id": 784,
-    "eventId": 713,
-    "name": "블라인드 티켓",
-    "desc": "행사 상세 내용이 공지되기 전 사전 판매되는 티켓입니다.",
-    "price": 10000,
-    "quantity": 10,
-    "leftCnt": 10,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-08T15:00:00.000Z",
-    "salesEndAt": "2019-12-12T15:00:00.000Z",
-    "refundEndAt": "2019-12-12T15:00:00.000Z"
-  },
-  {
-    "id": 785,
-    "eventId": 714,
+    "id": 320,
+    "eventId": 320,
     "name": "일반 입장권",
     "desc": "음료와 샌드위치 및 간단한 다과제공",
     "price": 11000,
@@ -6426,50 +4480,8 @@
     "refundEndAt": "2019-12-06T01:00:00.000Z"
   },
   {
-    "id": 786,
-    "eventId": 715,
-    "name": "참가티켓",
-    "desc": "",
-    "price": 0,
-    "quantity": 100,
-    "leftCnt": 75,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-09T15:00:00.000Z",
-    "salesEndAt": "2019-11-21T08:00:00.000Z",
-    "refundEndAt": "2019-11-21T07:00:00.000Z"
-  },
-  {
-    "id": 787,
-    "eventId": 716,
-    "name": "참가티켓",
-    "desc": "",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 18,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-12T15:00:00.000Z",
-    "salesEndAt": "2019-11-20T14:30:00.000Z",
-    "refundEndAt": "2019-11-19T15:00:00.000Z"
-  },
-  {
-    "id": 788,
-    "eventId": 717,
-    "name": "참가티켓",
-    "desc": "",
-    "price": 0,
-    "quantity": 30,
-    "leftCnt": 19,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-09T15:00:00.000Z",
-    "salesEndAt": "2019-11-25T14:30:00.000Z",
-    "refundEndAt": "2019-11-25T14:30:00.000Z"
-  },
-  {
-    "id": 789,
-    "eventId": 720,
+    "id": 321,
+    "eventId": 321,
     "name": "입장권",
     "desc": "입장권",
     "price": 0,
@@ -6482,8 +4494,8 @@
     "refundEndAt": "2019-11-15T11:00:00.000Z"
   },
   {
-    "id": 790,
-    "eventId": 721,
+    "id": 322,
+    "eventId": 322,
     "name": "입장권",
     "desc": "",
     "price": 0,
@@ -6496,22 +4508,8 @@
     "refundEndAt": "2019-11-22T10:00:00.000Z"
   },
   {
-    "id": 791,
-    "eventId": 722,
-    "name": "일반 입장권",
-    "desc": "무료 음료를 제공합니다.",
-    "price": 10000,
-    "quantity": 14,
-    "leftCnt": 0,
-    "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
-    "salesStartAt": "2019-11-10T15:00:00.000Z",
-    "salesEndAt": "2019-11-26T10:00:00.000Z",
-    "refundEndAt": "2019-11-26T10:00:00.000Z"
-  },
-  {
-    "id": 792,
-    "eventId": 723,
+    "id": 323,
+    "eventId": 323,
     "name": "입장권",
     "desc": "무료 음료 및 다과를 제공합니다.",
     "price": 10000,
@@ -6524,8 +4522,8 @@
     "refundEndAt": "2019-12-02T10:00:00.000Z"
   },
   {
-    "id": 793,
-    "eventId": 724,
+    "id": 324,
+    "eventId": 324,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -6538,8 +4536,8 @@
     "refundEndAt": "2019-11-14T15:00:00.000Z"
   },
   {
-    "id": 794,
-    "eventId": 725,
+    "id": 325,
+    "eventId": 325,
     "name": "일반 입장권",
     "desc": "",
     "price": 0,
@@ -6552,22 +4550,8 @@
     "refundEndAt": "2019-11-23T15:00:00.000Z"
   },
   {
-    "id": 795,
-    "eventId": 726,
-    "name": "트랙 A ",
-    "desc": "강연만 듣는 티켓입니다. ",
-    "price": 20000,
-    "quantity": 100,
-    "leftCnt": 23,
-    "isPublicLeftCnt": true,
-    "maxCntPerPerson": 2,
-    "salesStartAt": "2019-11-11T15:00:00.000Z",
-    "salesEndAt": "2019-11-30T03:00:00.000Z",
-    "refundEndAt": "2019-11-30T03:00:00.000Z"
-  },
-  {
-    "id": 797,
-    "eventId": 728,
+    "id": 326,
+    "eventId": 326,
     "name": "일반 입장권",
     "desc": "참석자 선정 후 12월 3일(화)과 9일(월)에 안내메일 발송될 예정입니다.",
     "price": 0,
@@ -6580,8 +4564,8 @@
     "refundEndAt": "2019-12-10T12:30:00.000Z"
   },
   {
-    "id": 798,
-    "eventId": 729,
+    "id": 327,
+    "eventId": 327,
     "name": "리눅스 노베이스반 12월 수강권",
     "desc": "",
     "price": 240000,
@@ -6594,8 +4578,8 @@
     "refundEndAt": "2019-12-02T14:30:00.000Z"
   },
   {
-    "id": 799,
-    "eventId": 730,
+    "id": 328,
+    "eventId": 328,
     "name": "리눅스 SW기본반 12월 수강권",
     "desc": "",
     "price": 240000,
@@ -6608,8 +4592,8 @@
     "refundEndAt": "2019-11-30T14:30:00.000Z"
   },
   {
-    "id": 800,
-    "eventId": 731,
+    "id": 329,
+    "eventId": 329,
     "name": "리눅스커널 v5.3 메모리 단기특강 12월 수강권",
     "desc": "",
     "price": 160000,
@@ -6622,9 +4606,9 @@
     "refundEndAt": "2019-12-07T03:00:00.000Z"
   },
   {
-    "id": 801,
-    "eventId": 732,
-    "name": "리눅스커널 v5.3 파일&amp;블록I/O 단기특강 12월 수강권",
+    "id": 330,
+    "eventId": 330,
+    "name": "리눅스커널 v5.3 파일&블록I/O 단기특강 12월 수강권",
     "desc": "",
     "price": 160000,
     "quantity": 12,
@@ -6636,8 +4620,8 @@
     "refundEndAt": "2019-12-09T14:30:00.000Z"
   },
   {
-    "id": 802,
-    "eventId": 733,
+    "id": 331,
+    "eventId": 331,
     "name": "리눅스커널 v5.3 네트워크 단기특강 12월 수강권",
     "desc": "",
     "price": 160000,
