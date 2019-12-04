@@ -18,7 +18,7 @@ function MainBanner({
           <br />
           가장 쉬운 방법
         </S.Title>
-        <Btn styletype="primary" to={'/'} content={CREATE_EVENT} />
+        <Btn styletype="primary" to={'/'} children={CREATE_EVENT} />
       </S.Container>
     </S.Wrapper>
   );
