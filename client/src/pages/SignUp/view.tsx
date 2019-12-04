@@ -85,7 +85,7 @@ function SignUpView(): React.ReactElement {
 
   return (
     <SignUpTemplate
-      header={<Btn children={'대충 로고'} to="/" />}
+      header={<Btn children={'대충 로고'} to="/" data-testid={'signup-logo'} />}
       content={<SignUpForm FormInputs={FormInputs} Button={Button} />}
     />
   );

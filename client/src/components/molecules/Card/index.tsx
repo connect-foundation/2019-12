@@ -50,7 +50,7 @@ function Card({
       ? `${title.slice(0, EVENT_NAME_MAX_LENGTH)}...`
       : title;
   return (
-    <S.LinkWrapper to={to}>
+    <S.LinkWrapper to={to} data-testid={'main-card'}>
       <S.HeaderWrapper></S.HeaderWrapper>
       <S.ImgDiv imgSrc={img} ref={setRef} />
       <S.InnerContainer>
