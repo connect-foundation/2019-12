@@ -12,10 +12,10 @@ export interface Props {
   lazy?: boolean;
 }
 
-function Img({ alt, src, lazy = true }: Props): React.ReactElement {
-  const [imgSrc, setImage] = useState(
-    lazy ? 'https://media.giphy.com/media/swhRkVYLJDrCE/source.gif' : src,
-  );
+function Img({ alt, src, lazy = false }: Props): React.ReactElement {
+  // TODO: default 이미지로 저해상도의 사진이 좋을 것 같음
+  // 5 Dec 2019 by inthewalter
+  const [imgSrc, setImage] = useState(lazy ? '' : src);
   const [, setRef] = useIntersect(
     async (
       entry: IntersectionObserverEntry,
