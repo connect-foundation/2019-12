@@ -31,17 +31,18 @@ exports[`Atom / IconBtn [SNAPSHOT] with circular img 렌더링 1`] = `
 }
 
 .c0 {
-  line-height: 1.4rem;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
   flex-grow: 0;
+  width: 18rem;
+  height: 4rem;
+  line-height: 1.4rem;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   cursor: pointer;
   pointer-events: auto;
-  width: 18rem;
   -webkit-user-drag: none;
   display: inline-block;
   padding: 1.2rem 2rem;
@@ -49,7 +50,6 @@ exports[`Atom / IconBtn [SNAPSHOT] with circular img 렌더링 1`] = `
   border-color: transparent;
   outline: none;
   text-align: center;
-  height: 4rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -140,21 +140,24 @@ exports[`Atom / IconBtn [SNAPSHOT] with circular img 렌더링 1`] = `
   ",
               [Function],
               "
+  flex-grow: ",
+              [Function],
+              ";
+  width: ",
+              [Function],
+              ";
+  height: ",
+              [Function],
+              ";
   line-height: 1.4rem;
   background-color: ",
               [Function],
               ";
   flex-shrink: 0;
-  flex-grow: ",
-              [Function],
-              ";
   cursor: ",
               [Function],
               ";
   pointer-events: ",
-              [Function],
-              ";
-  width: ",
               [Function],
               ";
   color: ",
@@ -169,9 +172,6 @@ exports[`Atom / IconBtn [SNAPSHOT] with circular img 렌더링 1`] = `
               ";
   outline: none;
   text-align: center;
-  height: ",
-              [Function],
-              ";
   user-select: none;
   transition: opacity ease 0.2s, background-color ease 0.2s, color ease 0.2s;
   border-style: solid;
@@ -613,17 +613,18 @@ exports[`Atom / IconBtn [SNAPSHOT] 렌더링 1`] = `
 }
 
 .c0 {
-  line-height: 1.4rem;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
   flex-grow: 0;
+  width: 18rem;
+  height: 4rem;
+  line-height: 1.4rem;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   cursor: pointer;
   pointer-events: auto;
-  width: 18rem;
   -webkit-user-drag: none;
   display: inline-block;
   padding: 1.2rem 2rem;
@@ -631,7 +632,6 @@ exports[`Atom / IconBtn [SNAPSHOT] 렌더링 1`] = `
   border-color: transparent;
   outline: none;
   text-align: center;
-  height: 4rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -714,21 +714,24 @@ exports[`Atom / IconBtn [SNAPSHOT] 렌더링 1`] = `
   ",
               [Function],
               "
+  flex-grow: ",
+              [Function],
+              ";
+  width: ",
+              [Function],
+              ";
+  height: ",
+              [Function],
+              ";
   line-height: 1.4rem;
   background-color: ",
               [Function],
               ";
   flex-shrink: 0;
-  flex-grow: ",
-              [Function],
-              ";
   cursor: ",
               [Function],
               ";
   pointer-events: ",
-              [Function],
-              ";
-  width: ",
               [Function],
               ";
   color: ",
@@ -743,9 +746,6 @@ exports[`Atom / IconBtn [SNAPSHOT] 렌더링 1`] = `
               ";
   outline: none;
   text-align: center;
-  height: ",
-              [Function],
-              ";
   user-select: none;
   transition: opacity ease 0.2s, background-color ease 0.2s, color ease 0.2s;
   border-style: solid;
