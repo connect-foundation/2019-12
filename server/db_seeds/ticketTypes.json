@@ -10,8 +10,8 @@
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
     "salesStartAt": "2018-02-23T04:00:00.000Z",
-    "salesEndAt": "2018-02-28T15:00:00.000Z",
-    "refundEndAt": "2018-02-28T15:00:00.000Z"
+    "salesEndAt": "2200-02-28T15:00:00.000Z",
+    "refundEndAt": "2200-02-28T15:00:00.000Z"
   },
   {
     "id": 2,
@@ -20,12 +20,12 @@
     "desc": "",
     "price": 0,
     "quantity": 30,
-    "leftCnt": 0,
+    "leftCnt": 10,
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
     "salesStartAt": "2018-03-02T06:00:00.000Z",
-    "salesEndAt": "2018-03-06T10:30:00.000Z",
-    "refundEndAt": "2018-03-06T10:30:00.000Z"
+    "salesEndAt": "2200-03-06T10:30:00.000Z",
+    "refundEndAt": "2200-03-06T10:30:00.000Z"
   },
   {
     "id": 3,
@@ -34,11 +34,11 @@
     "desc": "",
     "price": 40000,
     "quantity": 150,
-    "leftCnt": 0,
+    "leftCnt": 10,
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
-    "salesStartAt": "2018-04-03T11:00:00.000Z",
-    "salesEndAt": "2018-04-20T11:00:00.000Z",
+    "salesStartAt": "2200-04-03T11:00:00.000Z",
+    "salesEndAt": "2200-04-20T11:00:00.000Z",
     "refundEndAt": null
   },
   {
