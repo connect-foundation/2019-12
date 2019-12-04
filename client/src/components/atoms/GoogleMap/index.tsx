@@ -9,30 +9,16 @@ const { REACT_APP_GOOGLE_MAP_API_KEY } = process.env;
 const defaultZoom = 17;
 
 interface Props {
-  /** location */
-  location: {
-    lat: number;
-    lng: number;
-  };
+  latitude: number;
+  longitude: number;
 }
 
-/*
- const { status, candidates } = await Axios.get(ROUTES.GOOGLE_MAP_API, {
-      params: {
-        key: REACT_APP_GOOGLE_MAP_API_KEY,
-        input: address,
-        inputtype: 'textquery',
-        language: 'ko',
-        fields: 'geometry/location',
-      },
-    });
-    */
-function GoogleMap({ location }: Props): React.ReactElement {
+function GoogleMap({ latitude, longitude }: Props): React.ReactElement {
   return (
     <S.Container>
       <GoogleMapReact
         bootstrapURLKeys={{ key: `${REACT_APP_GOOGLE_MAP_API_KEY}` }}
-        defaultCenter={location}
+        center={{ lat: latitude, lng: longitude }}
         defaultZoom={defaultZoom}
       >
         <Icon
