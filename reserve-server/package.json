@@ -4,7 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nodemon"
+    "start:prod": "node bin/www.js",
+    "start:dev": "nodemon",
+    "test": "jest",
+    "build": "tsc",
+    "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
+    "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
+    "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
+    "lint:type": "tsc --noEmit",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
