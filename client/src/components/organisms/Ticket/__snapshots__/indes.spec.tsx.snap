@@ -1,0 +1,750 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Organisms / Ticket Rendering 1`] = `
+.c0 {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+}
+
+.c1 {
+  padding: 2rem 0rem;
+  margin-top: 1rem;
+  border-top: 2px dashed;
+  border-bottom: 2px dashed;
+}
+
+.c2 {
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.c3 {
+  margin-bottom: 2rem;
+}
+
+.c4 {
+  margin-bottom: 4rem;
+}
+
+.c5 {
+  margin: 2rem 0rem;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin: 1rem 0rem;
+}
+
+.c8 {
+  margin-left: 1rem;
+}
+
+.c7 {
+  height: 1.5rem;
+}
+
+<Ticket
+  desc="코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다."
+  isPublicLeftCnt={false}
+  leftCnt={0}
+  maxCntPerPerson={5}
+  name="일반 입장권"
+  price={10000}
+  quantity={80}
+  refundEndAt="2019-11-28T14:00:00.000Z"
+  salesEndAt="2019-11-28T14:00:00.000Z"
+  salesStartAt="2019-11-04T15:00:00.000Z"
+>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  ",
+              [Function],
+              ";
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="c0"
+      >
+        티켓
+      </div>
+    </StyledComponent>
+  </styled.div>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bwzfXH",
+            "isStatic": false,
+            "lastClassName": "c1",
+            "rules": Array [
+              "
+  padding: 2rem 0rem;
+  margin-top: 1rem;
+  border-top: 2px dashed ",
+              [Function],
+              ";
+  border-bottom: 2px dashed ",
+              [Function],
+              ";
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bwzfXH",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="c1"
+      >
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htpNat",
+                  "isStatic": false,
+                  "lastClassName": "c2",
+                  "rules": Array [
+                    "
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+",
+                  ],
+                },
+                "displayName": "styled.div",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htpNat",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="c2"
+            >
+              <styled.div>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-bxivhb",
+                        "isStatic": false,
+                        "lastClassName": "c3",
+                        "rules": Array [
+                          "
+  ",
+                          [Function],
+                          "
+  margin-bottom: 2rem;
+",
+                        ],
+                      },
+                      "displayName": "styled.div",
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-bxivhb",
+                      "target": "div",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="c3"
+                  >
+                    <Price
+                      mount={10000}
+                      separated={true}
+                    >
+                      <styled.div>
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-dnqmqq",
+                                "isStatic": false,
+                                "lastClassName": "bDsesi",
+                                "rules": Array [],
+                              },
+                              "displayName": "styled.div",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-dnqmqq",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            className=""
+                          >
+                            ₩ 10,000
+                          </div>
+                        </StyledComponent>
+                      </styled.div>
+                    </Price>
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <styled.div>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-ifAKCX",
+                        "isStatic": false,
+                        "lastClassName": "c4",
+                        "rules": Array [
+                          "
+  ",
+                          [Function],
+                          "
+  margin-bottom: 4rem;
+",
+                        ],
+                      },
+                      "displayName": "styled.div",
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-ifAKCX",
+                      "target": "div",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="c4"
+                  >
+                    일반 입장권
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <styled.div>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-EHOje",
+                        "isStatic": false,
+                        "lastClassName": "c5",
+                        "rules": Array [
+                          "
+  ",
+                          [Function],
+                          "
+  margin:  2rem 0rem;
+",
+                        ],
+                      },
+                      "displayName": "styled.div",
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-EHOje",
+                      "target": "div",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="c5"
+                  >
+                    코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다.
+                  </div>
+                </StyledComponent>
+              </styled.div>
+              <IconLabel
+                iconProps={
+                  Object {
+                    "alt": "check",
+                    "height": "1.5rem",
+                    "src": "check-black.svg",
+                  }
+                }
+                labelContent="1인당 5개 구입 가능"
+              >
+                <styled.div>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bZQynM",
+                          "isStatic": false,
+                          "lastClassName": "c6",
+                          "rules": Array [
+                            "
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0rem;
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bZQynM",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="c6"
+                    >
+                      <Icon
+                        alt="check"
+                        height="1.5rem"
+                        src="check-black.svg"
+                      >
+                        <styled.img
+                          alt="check"
+                          height="1.5rem"
+                          src="check-black.svg"
+                        >
+                          <StyledComponent
+                            alt="check"
+                            forwardedComponent={
+                              Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": Array [],
+                                "componentStyle": ComponentStyle {
+                                  "componentId": "sc-htoDjs",
+                                  "isStatic": false,
+                                  "lastClassName": "c7",
+                                  "rules": Array [
+                                    "
+  height: ",
+                                    [Function],
+                                    ";
+  border-radius: ",
+                                    [Function],
+                                    ";
+",
+                                  ],
+                                },
+                                "displayName": "styled.img",
+                                "foldedComponentIds": Array [],
+                                "render": [Function],
+                                "styledComponentId": "sc-htoDjs",
+                                "target": "img",
+                                "toString": [Function],
+                                "warnTooManyClasses": [Function],
+                                "withComponent": [Function],
+                              }
+                            }
+                            forwardedRef={null}
+                            height="1.5rem"
+                            src="check-black.svg"
+                          >
+                            <img
+                              alt="check"
+                              className="c7"
+                              height="1.5rem"
+                              src="check-black.svg"
+                            />
+                          </StyledComponent>
+                        </styled.img>
+                      </Icon>
+                      <styled.div>
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "c8",
+                                "rules": Array [
+                                  "
+  ",
+                                  [Function],
+                                  "
+  margin-left: 1rem;
+",
+                                ],
+                              },
+                              "displayName": "styled.div",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            className="c8"
+                          >
+                            1인당 5개 구입 가능
+                          </div>
+                        </StyledComponent>
+                      </styled.div>
+                    </div>
+                  </StyledComponent>
+                </styled.div>
+              </IconLabel>
+              <IconLabel
+                iconProps={
+                  Object {
+                    "alt": "calendar",
+                    "height": "1.5rem",
+                    "src": "calendar-black.svg",
+                  }
+                }
+                labelContent="2019-11-28 판매마감"
+              >
+                <styled.div>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bZQynM",
+                          "isStatic": false,
+                          "lastClassName": "c6",
+                          "rules": Array [
+                            "
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0rem;
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bZQynM",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="c6"
+                    >
+                      <Icon
+                        alt="calendar"
+                        height="1.5rem"
+                        src="calendar-black.svg"
+                      >
+                        <styled.img
+                          alt="calendar"
+                          height="1.5rem"
+                          src="calendar-black.svg"
+                        >
+                          <StyledComponent
+                            alt="calendar"
+                            forwardedComponent={
+                              Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": Array [],
+                                "componentStyle": ComponentStyle {
+                                  "componentId": "sc-htoDjs",
+                                  "isStatic": false,
+                                  "lastClassName": "c7",
+                                  "rules": Array [
+                                    "
+  height: ",
+                                    [Function],
+                                    ";
+  border-radius: ",
+                                    [Function],
+                                    ";
+",
+                                  ],
+                                },
+                                "displayName": "styled.img",
+                                "foldedComponentIds": Array [],
+                                "render": [Function],
+                                "styledComponentId": "sc-htoDjs",
+                                "target": "img",
+                                "toString": [Function],
+                                "warnTooManyClasses": [Function],
+                                "withComponent": [Function],
+                              }
+                            }
+                            forwardedRef={null}
+                            height="1.5rem"
+                            src="calendar-black.svg"
+                          >
+                            <img
+                              alt="calendar"
+                              className="c7"
+                              height="1.5rem"
+                              src="calendar-black.svg"
+                            />
+                          </StyledComponent>
+                        </styled.img>
+                      </Icon>
+                      <styled.div>
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "c8",
+                                "rules": Array [
+                                  "
+  ",
+                                  [Function],
+                                  "
+  margin-left: 1rem;
+",
+                                ],
+                              },
+                              "displayName": "styled.div",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            className="c8"
+                          >
+                            2019-11-28 판매마감
+                          </div>
+                        </StyledComponent>
+                      </styled.div>
+                    </div>
+                  </StyledComponent>
+                </styled.div>
+              </IconLabel>
+              <IconLabel
+                iconProps={
+                  Object {
+                    "alt": "people",
+                    "height": "1.5rem",
+                    "src": "multiple-users-silhouette.svg",
+                  }
+                }
+                labelContent="0개 판매"
+              >
+                <styled.div>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bZQynM",
+                          "isStatic": false,
+                          "lastClassName": "c6",
+                          "rules": Array [
+                            "
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0rem;
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bZQynM",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="c6"
+                    >
+                      <Icon
+                        alt="people"
+                        height="1.5rem"
+                        src="multiple-users-silhouette.svg"
+                      >
+                        <styled.img
+                          alt="people"
+                          height="1.5rem"
+                          src="multiple-users-silhouette.svg"
+                        >
+                          <StyledComponent
+                            alt="people"
+                            forwardedComponent={
+                              Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": Array [],
+                                "componentStyle": ComponentStyle {
+                                  "componentId": "sc-htoDjs",
+                                  "isStatic": false,
+                                  "lastClassName": "c7",
+                                  "rules": Array [
+                                    "
+  height: ",
+                                    [Function],
+                                    ";
+  border-radius: ",
+                                    [Function],
+                                    ";
+",
+                                  ],
+                                },
+                                "displayName": "styled.img",
+                                "foldedComponentIds": Array [],
+                                "render": [Function],
+                                "styledComponentId": "sc-htoDjs",
+                                "target": "img",
+                                "toString": [Function],
+                                "warnTooManyClasses": [Function],
+                                "withComponent": [Function],
+                              }
+                            }
+                            forwardedRef={null}
+                            height="1.5rem"
+                            src="multiple-users-silhouette.svg"
+                          >
+                            <img
+                              alt="people"
+                              className="c7"
+                              height="1.5rem"
+                              src="multiple-users-silhouette.svg"
+                            />
+                          </StyledComponent>
+                        </styled.img>
+                      </Icon>
+                      <styled.div>
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "c8",
+                                "rules": Array [
+                                  "
+  ",
+                                  [Function],
+                                  "
+  margin-left: 1rem;
+",
+                                ],
+                              },
+                              "displayName": "styled.div",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            className="c8"
+                          >
+                            0개 판매
+                          </div>
+                        </StyledComponent>
+                      </styled.div>
+                    </div>
+                  </StyledComponent>
+                </styled.div>
+              </IconLabel>
+            </div>
+          </StyledComponent>
+        </styled.div>
+      </div>
+    </StyledComponent>
+  </styled.div>
+</Ticket>
+`;

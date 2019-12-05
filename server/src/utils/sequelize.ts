@@ -1,12 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-import {
-  Event,
-  Order,
-  OrderTicket,
-  TicketSubscription,
-  TicketType,
-  User,
-} from '../models';
+import { Event, UserTicket, TicketType, User } from '../models';
 import { readJSONData } from './readJSON';
 import { resolve } from 'path';
 
@@ -20,7 +13,7 @@ export const sequelize = new Sequelize({
   password: DB_PW,
   database: DB_NAME,
   dialect: 'mariadb',
-  models: [Event, Order, OrderTicket, TicketSubscription, TicketType, User],
+  models: [Event, UserTicket, TicketType, User],
 });
 
 export async function migrate() {
@@ -46,22 +39,10 @@ export async function seed() {
   const ticketData = await readJSONData<TicketType>(ticketPath);
   await TicketType.bulkCreate(ticketData);
 
-  // OrderData 추가
-  const orderPath = resolve(SEED_DIR, 'orders.json');
-  const orderData = await readJSONData<Order>(orderPath);
-  await Order.bulkCreate(orderData);
-
   // OrderTikcetData 추가
-  const orderTicketPath = resolve(SEED_DIR, 'orderTickets.json');
-  const orderTicketData = await readJSONData<OrderTicket>(orderTicketPath);
-  await OrderTicket.bulkCreate(orderTicketData);
-
-  // TicketSubscriptionData 추가
-  const ticketSubscriptionPath = resolve(SEED_DIR, 'ticketSubscription.json');
-  const ticketSubscriptionData = await readJSONData<TicketSubscription>(
-    ticketSubscriptionPath,
-  );
-  await TicketSubscription.bulkCreate(ticketSubscriptionData);
+  const userTicketPath = resolve(SEED_DIR, 'userTickets.json');
+  const userTicketData = await readJSONData<UserTicket>(userTicketPath);
+  await UserTicket.bulkCreate(userTicketData);
 
   console.info('DB seed end...');
 }

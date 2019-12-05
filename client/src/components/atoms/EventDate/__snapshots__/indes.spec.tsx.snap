@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Atom / Divider [SNAPSHOT] 렌더링 (diff date) 1`] = `
+<EventDate
+  endAt="2019-12-22T09:00:00Z"
+  startAt="2019-12-21T03:00:00Z"
+>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "bDWFJH",
+            "rules": Array [],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className=""
+      >
+        2019년 12월 21일 (토) 오후 12:00
+- 12월 22일 (일) 오후 06:00
+      </div>
+    </StyledComponent>
+  </styled.div>
+</EventDate>
+`;
+
+exports[`Atom / Divider [SNAPSHOT] 렌더링 (same date) 1`] = `
+<EventDate
+  endAt="2018-04-22T09:00:00Z"
+  startAt="2018-04-22T00:00:00Z"
+>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "bDWFJH",
+            "rules": Array [],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className=""
+      >
+        2018년 04월 22일 (일)
+오전 09:00 - 오후 06:00
+      </div>
+    </StyledComponent>
+  </styled.div>
+</EventDate>
+`;
