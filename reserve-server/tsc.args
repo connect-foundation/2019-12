@@ -1,0 +1,6 @@
+--noEmit
+--strict
+--skipLibCheck
+--pretty
+--experimentalDecorators
+--emitDecoratorMetadata

@@ -10,19 +10,23 @@
     ],
     "packages": [
       "client",
-      "server"
+      "server",
+      "reserve-server"
     ]
   },
   "scripts": {
     "test": "run-s test:server test:client",
     "test:server": "yarn workspace server test",
     "test:client": "yarn workspace client test",
+    "test:reserve-server": "yarn workspace reserve-server test",
     "lint": "run-p lint:server lint:client",
     "lint:server": "yarn workspace server lint:fix",
     "lint:client": "yarn workspace client lint:fix",
+    "lint:reserve-server": "yarn workspace reserve-server lint:fix",
     "precommit:server": "yarn workspace server precommit",
     "precommit:client": "yarn workspace client precommit",
-    "precommit": "run-p precommit:server precommit:client",
+    "precommit:reserve-server": "yarn workspace reserve-server precommit",
+    "precommit": "run-p precommit:server precommit:client precommit:reserve-server",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\""
   },
   "devDependencies": {
