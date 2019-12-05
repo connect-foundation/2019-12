@@ -13,4 +13,9 @@ context('메인 페이지', () => {
     cy.get('[data-testid=header-account]').click();
     cy.location('pathname').should('eq', '/login');
   });
+
+  it('로고 클릭 시 메인 페이지로 이동한다.', () => {
+    cy.get('[data-testid=header-home]').click();
+    cy.location('pathname').should('eq', '/');
+  });
 });
