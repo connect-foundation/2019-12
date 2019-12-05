@@ -33,6 +33,7 @@ const eventData = {
     profileImgUrl:
       'https://cf.festa.io/img/2019-5-30/754f6674-e1e4-41d0-b24b-f4bef430dfe5.jpeg',
   },
+  eventId: 733,
 };
 
 export const index: React.FC = () => {
