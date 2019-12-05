@@ -13,8 +13,11 @@ const defaultState: EventDetailState = {
     place: '',
     address: '',
     placeDesc: '',
+    latitude: 0,
+    longitude: 0,
     mainImg: '',
     desc: '',
+
     ticketType: {
       name: '',
       desc: '',
@@ -29,7 +32,6 @@ const defaultState: EventDetailState = {
     },
 
     user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
-    location: { lat: 0, lng: 0 },
   },
 };
 
