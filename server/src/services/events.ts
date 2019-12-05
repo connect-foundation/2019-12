@@ -66,7 +66,7 @@ interface CoordinateRespone {
 export async function placeToCoordinate(
   input: string,
 ): Promise<{ latitude: number; longitude: number }> {
-  const qs = stringify({
+  const queryString = stringify({
     key: process.env.GOOGLE_MAP_API_KEY,
     inputtype: 'textquery',
     language: 'ko',
@@ -76,7 +76,7 @@ export async function placeToCoordinate(
   const {
     data: { candidates, status },
   } = await axios.get<CoordinateRespone>(
-    `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?${qs}`,
+    `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?${queryString}`,
   );
   if (status !== 'OK') throw new Error(status);
 
