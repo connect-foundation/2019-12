@@ -2,7 +2,7 @@ import * as request from 'supertest';
 import app from '../../src/app';
 import { sequelize } from '../../src/utils/sequelize';
 import { Event } from '../../src/models';
-import { OK, NOT_FOUND } from 'http-status';
+import { OK, NO_CONTENT, NOT_FOUND } from 'http-status';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -91,5 +91,25 @@ describe('GET /api/events/:eventId/tickets', () => {
     const eventId = 0;
     const { status } = await request(app).get(`/api/events/${eventId}/tickets`);
     expect(status).toBe(404);
+  });
+});
+
+describe('GET /api/events/coordinate', async () => {
+  it('정상적으로 응답', async () => {
+    const { body } = await request(app)
+      .get('/api/events/coordinate')
+      .query({ place: '서울시청' })
+      .expect(OK)
+      .expect('Content-type', /application\/json/);
+
+    expect(body).toHaveProperty('latitude', 37.5662952);
+    expect(body).toHaveProperty('longitude', 126.9779451);
+  });
+
+  it('쿼리 결과가 없으면 No-Content 응답', async () => {
+    await request(app)
+      .get('/api/events/coordinate')
+      .query({ place: '!@#' })
+      .expect(NO_CONTENT);
   });
 });

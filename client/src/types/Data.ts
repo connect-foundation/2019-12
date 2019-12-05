@@ -18,6 +18,11 @@ export interface TicketType {
   refundEndAt: string;
 }
 
+export interface Location {
+  latitude: number;
+  longitude: number;
+}
+
 export interface EventDetail {
   title: string;
   startAt: string;
@@ -25,8 +30,7 @@ export interface EventDetail {
   place: string;
   address: string;
   placeDesc: string;
-  latitude: number;
-  longitude: number;
+  location: Location;
   mainImg: string;
   desc: string;
   ticketType: TicketType;
