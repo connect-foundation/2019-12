@@ -7,7 +7,7 @@
     "start:prod": "node bin/www.js",
     "start:dev": "nodemon",
     "test": "jest --coverage --verbose",
-    "build": "tsc",
+    "build": "tsc --sourceMap false",
     "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
