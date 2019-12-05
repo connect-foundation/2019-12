@@ -25,16 +25,12 @@ export interface EventDetail {
   place: string;
   address: string;
   placeDesc: string;
+  latitude: number;
+  longitude: number;
   mainImg: string;
   desc: string;
   ticketType: TicketType;
   user: User;
-  location: Location;
-}
-
-export interface Location {
-  lat: number;
-  lng: number;
 }
 
 export interface Token {
