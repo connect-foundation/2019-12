@@ -6,8 +6,8 @@ build/
 .env
 .env.*
 !.env.template
-!.env.production.enc
-!.env.development.enc
+secrets.tar
+!secrets.tar.enc
 # Default
 .DS_Store
 Thumbs.db
