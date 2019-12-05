@@ -51,6 +51,12 @@ export class Event extends Model<Event> {
   @Column(DataType.STRING)
   public placeDesc!: string;
 
+  @Column(DataType.DECIMAL(10, 8))
+  public latitude!: number;
+
+  @Column(DataType.DECIMAL(11, 8))
+  public longitude!: number;
+
   @Column(DataType.STRING)
   public mainImg!: string;
 
