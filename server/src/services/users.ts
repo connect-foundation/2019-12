@@ -1,13 +1,14 @@
 import { User } from '../models';
+import { WhereOptions } from 'sequelize';
 
 export async function getUserById(id: number): Promise<User | null> {
-  const where = { id };
+  const where: WhereOptions = { id };
   return await User.findOne({ where });
 }
 export async function getUserByGoogleId(
   googleId: number,
 ): Promise<User | null> {
-  const where = { googleId: +googleId };
+  const where: WhereOptions = { googleId: +googleId };
   return await User.findOne({ where });
 }
 
@@ -16,7 +17,8 @@ export async function setUser(
   googleId: number,
   email: string,
 ): Promise<[User, boolean]> {
-  return await User.findOrCreate({ where: { googleId, email } });
+  const where: WhereOptions = { googleId, email };
+  return await User.findOrCreate({ where });
 }
 // User가 회원가입을 할 때 사용되는 Service
 export async function setUserInfo(
@@ -31,6 +33,6 @@ export async function setUserInfo(
     lastName,
     phoneNumber,
   };
-  const where = { id, googleId };
+  const where: WhereOptions = { id, googleId };
   return await User.update(values, { where });
 }
