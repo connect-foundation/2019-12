@@ -7,7 +7,7 @@ build/
 .env.*
 !.env.template
 !.env.production.enc
-
+!.env.development.enc
 # Default
 .DS_Store
 Thumbs.db
