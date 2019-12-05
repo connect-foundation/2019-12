@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { palette } from 'styled-tools';
 
-// interface Props {}
 export const ContainerWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -22,6 +21,6 @@ export const Container = styled.div`
 `;
 export const Header = styled.div`
   text-align: center;
-  margin-bottom: 7.5rem;
+  margin-bottom: 4.5rem;
 `;
 export const Content = styled.div``;
