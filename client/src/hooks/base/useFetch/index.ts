@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { useReducer, useEffect } from 'react';
+import { OK } from 'http-status';
 
 export interface FetchProps<T> {
   type: 'request' | 'success' | 'failure';
@@ -36,7 +37,7 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
     const fetchData = async () => {
       try {
         const { status, data } = await axios(axiosOptions);
-        if (status === 200) {
+        if (status === OK) {
           dispatch({ type: 'success', data });
         }
       } catch (err) {

@@ -2,6 +2,7 @@ import * as request from 'supertest';
 import app from '../../src/app';
 import { sequelize } from '../../src/utils/sequelize';
 import { Event } from '../../src/models';
+import { OK, NOT_FOUND } from 'http-status';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -20,7 +21,7 @@ describe('Router / Events', () => {
         request(app)
           .get('/api/events')
           .query({ cnt })
-          .expect(200)
+          .expect(OK)
           .expect('Content-type', /application\/json/)
           .expect(res => expect(res.body).toHaveLength(cnt));
       },
@@ -30,7 +31,7 @@ describe('Router / Events', () => {
         request(app)
           .get('/api/events')
           .query({ startAt })
-          .expect(200)
+          .expect(OK)
           .expect('Content-type', /application\/json/)
           .expect(res =>
             res.body.forEach((e: Event) =>
@@ -55,7 +56,7 @@ describe('Router / Events', () => {
 
     const { body } = await request(app)
       .get(`/api/events/${eventId}`)
-      .expect(200)
+      .expect(OK)
       .expect('Content-type', /application\/json/);
 
     expect(body.title).toBe('Saturday Azure Live! 1803');
@@ -67,6 +68,6 @@ describe('Router / Events', () => {
     const eventId = 'wrong';
     await request(app)
       .get(`/api/events/${eventId}`)
-      .expect(404);
+      .expect(NOT_FOUND);
   });
 });
