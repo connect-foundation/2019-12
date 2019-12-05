@@ -10,5 +10,6 @@ const router = Router();
 router.param('eventId', middlewares.requestParamHandler);
 router.get('/', validators.getEvents, badRequestHandler, controllers.getEvents);
 router.get('/:eventId', controllers.getEvent);
+router.get('/:eventId/tickets', controllers.getEventTickets);
 
 export default router;
