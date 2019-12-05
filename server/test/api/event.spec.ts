@@ -49,4 +49,24 @@ describe('Router / Events', () => {
       },
     ]);
   });
+
+  it('GET /api/events/:eventId - 정상적으로 응답', async () => {
+    const eventId = 5;
+
+    const { body } = await request(app)
+      .get(`/api/events/${eventId}`)
+      .expect(200)
+      .expect('Content-type', /application\/json/);
+
+    expect(body.title).toBe('Saturday Azure Live! 1803');
+    expect(body.user).toHaveProperty('firstName', '성동');
+    expect(body.ticketType).toHaveProperty('price', 10000);
+  });
+
+  it('GET /api/events/:eventId - 없는 아이디 요청은 404 응답', async () => {
+    const eventId = 'wrong';
+    await request(app)
+      .get(`/api/events/${eventId}`)
+      .expect(404);
+  });
 });
