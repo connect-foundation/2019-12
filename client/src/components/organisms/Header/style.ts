@@ -1,6 +1,5 @@
-// example
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import ImgBtn from '../../molecules/ImgBtn';
 
 export const Container = styled.div`
   width: 100%;
@@ -10,8 +9,10 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Img = styled.img`
-  height: 4.5rem;
-`;
+export const LogoBtn = styled(ImgBtn)`
+  height: 3rem;
 
-export const StyledLink = styled(Link)``;
+  @media screen and (min-width: 64rem) {
+    height: 4rem;
+  }
+`;

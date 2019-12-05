@@ -14,8 +14,9 @@
     "baseUrl": ".",
     "lib": ["esnext"],
     "paths": {
-      "*": ["node_modules/*", "src/types/*"]
+      "*": ["node_modules/*"]
     },
+    "typeRoots": ["./node_modules/@types", "src/types"],
     "skipLibCheck": true
   },
   "include": ["src/**/*", "bin"],

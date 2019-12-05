@@ -31,14 +31,11 @@ export const FooterContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
-interface ImgDivProps {
-  imgSrc: string;
-}
 
-export const ImgDiv = styled.div<ImgDivProps>`
+export const ImgWrapper = styled.div`
   width: 100%;
   height: 13rem;
-  background: url(${p => p.imgSrc}) center center / cover;
+  object-fit: cover;
 `;
 
 export const Date = styled.span`

@@ -10,14 +10,16 @@
   "extends": [
     "react-app",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:cypress/recommended"
   ],
-  "plugins": ["react", "jest"],
+  "plugins": ["react", "jest", "cypress"],
   "env": {
     "es6": true,
     "node": true,
     "browser": true,
-    "jest/globals": true
+    "jest/globals": true,
+    "cypress/globals": true
   },
   "globals": {
     "Atomics": "readonly",
@@ -28,6 +30,9 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "off",
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "off",
+    "cypress/assertion-before-screenshot": "warn"
   }
 }
