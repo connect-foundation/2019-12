@@ -57,7 +57,7 @@ jobs:
     - yarn workspace server db:migrate
     - yarn workspace server db:seed
     - yarn workspace server redis:migrate
-    - yarn test:server
+    - yarn workspace server coveralls
   - name: Client
     before_script:
     - yarn
