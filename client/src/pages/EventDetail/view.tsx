@@ -5,8 +5,8 @@ import Ticket from 'components/organisms/Ticket';
 import Place from 'components/organisms/Place';
 
 import { EventDataAction, EventDataState } from './store';
-import { useFetch } from '../../hooks/base/useFetch';
-import { EventDetail } from '../../types/Data';
+import { useFetch } from 'hooks/base/useFetch';
+import { Event } from 'types/Data';
 
 const { REACT_APP_SERVER_URL } = process.env;
 interface Props {
@@ -22,12 +22,12 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     title,
     startAt,
     endAt,
-    user,
     desc,
-    ticketType,
     place,
     address,
     placeDesc,
+    user,
+    ticketType,
   } = eventData;
 
   const requestFetch = useFetch({
@@ -39,7 +39,7 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     const { type } = requestFetch;
     const loadingMsg = '<h3>이벤트 정보를 불러오는 중...</h3>';
     const failureMsg = '<h3>서버 요청을 실패했습니다.</h3>';
-    let reqEventData = requestFetch.data as EventDetail;
+    let reqEventData = requestFetch.data as Event;
 
     switch (type) {
       case 'request':
