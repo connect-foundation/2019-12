@@ -33,6 +33,7 @@ env:
   - JWT_SECURE=1234
 jobs:
   include:
+
   - stage: TEST
     name: Reserve Server
     install:
@@ -46,6 +47,7 @@ jobs:
     - yarn workspace server db:seed
     - yarn workspace server redis:migrate
     - yarn test:reserve-server
+
   - name: Server
     install:
     - docker run --name mysql -d -e MYSQL_ROOT_PASSWORD=$DB_PW -e MYSQL_DATABASE=$DB_NAME
@@ -58,11 +60,41 @@ jobs:
     - yarn workspace server db:seed
     - yarn workspace server redis:migrate
     - yarn test:server
+
   - name: Client
     before_script:
     - yarn
     script:
     - yarn test:client
+
+  - stage: PRE_DEPLOY
+    name: Reserve Server
+    if: type = push AND branch = develop
+    before_install:
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    script:
+    - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release ./reserve-server
+    - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release
+  
+  - name: Server
+    if: type = push AND branch = develop
+    before_install:
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    script:
+    - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release ./server
+    - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release
+  
+  - name: Client
+    if: type = push AND branch = develop
+    before_install:
+    - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
+      -in .env.production.enc -out ./client/.env.production -d
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    script:
+    - yarn workspace client build
+    - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release ./client
+    - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release
+
   - stage: DEPLOY
     name: Reserve Server
     if: type = push AND branch = master
@@ -72,6 +104,7 @@ jobs:
     - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}" ./reserve-server
     - docker tag "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}" "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest"
     - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
+  
   - name: Server
     if: type = push AND branch = master
     before_install:
@@ -80,6 +113,7 @@ jobs:
     - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" ./server
     - docker tag "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" "${DOCKER_USER}/${BE_IMAGE_NAME}:latest"
     - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}"
+  
   - name: Client
     if: type = push AND branch = master
     before_install:
@@ -91,4 +125,3 @@ jobs:
     - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
     - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
     - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
-
