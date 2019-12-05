@@ -7,6 +7,7 @@ export default {
 };
 
 const eventData = {
+  id: 2,
   title:
     '[저자특강] 코어 자바스크립트 : 핵심 개념과 동작 원리로 이해하는 자바스크립트 프로그래밍',
   startAt: '2019-11-30T05:00:00.000Z',
@@ -15,6 +16,8 @@ const eventData = {
   address: '서울시 강남구 강남대로 340',
   mainImg: 'https://bookus.kr.object.ncloudstorage.com/690',
   ticketType: {
+    id: 1,
+    eventId: 2,
     name: '일반 입장권',
     desc: '코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다.',
     price: 10000,
