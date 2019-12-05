@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
+import { NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } from 'http-status';
 
 export function badRequestHandler(
   req: Request,
@@ -7,7 +8,7 @@ export function badRequestHandler(
   next: NextFunction,
 ) {
   if (!validationResult(req).isEmpty())
-    return res.status(400).json(validationResult(req));
+    return res.status(BAD_REQUEST).json(validationResult(req));
   next();
 }
 
@@ -16,7 +17,7 @@ export function notFoundHandler(
   res: Response,
   next: NextFunction,
 ) {
-  res.sendStatus(404);
+  res.sendStatus(NOT_FOUND);
 }
 
 export function internelServerErrorHandler(
@@ -26,5 +27,5 @@ export function internelServerErrorHandler(
   next: NextFunction,
 ) {
   console.error(error.message);
-  res.sendStatus(500);
+  res.sendStatus(INTERNAL_SERVER_ERROR);
 }

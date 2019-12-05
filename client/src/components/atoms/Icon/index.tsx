@@ -9,8 +9,6 @@ export interface IconProps {
   height?: string;
   /** 아이콘 소스 */
   src: any;
-  /** custom style */
-  style?: object;
   /** circular img */
   circular?: boolean;
 }

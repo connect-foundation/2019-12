@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './style';
 import Btn from 'components/atoms/Btn';
 import { CREATE_EVENT } from 'commons/constants/string';
+import ROUTES from 'commons/constants/routes';
 
 interface Props {
   imgSrc?: string;
@@ -18,7 +19,11 @@ function MainBanner({
           <br />
           가장 쉬운 방법
         </S.Title>
-        <Btn styletype="primary" to={'/'} children={CREATE_EVENT} />
+        <Btn
+          styletype="primary"
+          to={ROUTES.EVENT_CREATE}
+          children={CREATE_EVENT}
+        />
       </S.Container>
     </S.Wrapper>
   );
