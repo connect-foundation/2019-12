@@ -7,7 +7,7 @@ import CardGrid from 'components/organisms/CardGrid';
 import { Event } from 'types/Data';
 import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
-const { REACT_APP_SERVER_UR: SERVER_URL } = process.env;
+const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
 
 const fetchEvents = async (startAt: string) => {
   const { data } = await axios({
@@ -23,6 +23,7 @@ const fetchEvents = async (startAt: string) => {
 };
 
 function Main(): React.ReactElement {
+  console.log(SERVER_URL);
   const eventsState = useContext(EventsStoreState);
   const { eventsDispather } = useContext(EventsStoreAction);
 
