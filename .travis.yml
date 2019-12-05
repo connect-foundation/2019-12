@@ -59,7 +59,7 @@ jobs:
     - yarn workspace server redis:migrate
     - yarn test:server
   - name: Client
-  before_install:
+    before_install:
     - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
     -in ./client/env.development.enc -out ./client/.env.development -d
     before_script:
