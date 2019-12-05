@@ -30,7 +30,7 @@ export const general: React.FC = () => (
       styleTypeS.defaultValue,
     )}
     disabled={boolean('disabled', false)}
-    content={text('content', 'Button')}
+    children={text('content', 'Button')}
     onClick={action('onClick')}
   />
 );
@@ -43,7 +43,7 @@ export const anchor: React.FC = () => (
       styleTypeS.defaultValue,
     )}
     disabled={boolean('disabled', false)}
-    content={text('content', 'Button')}
+    children={text('content', 'Button')}
     href={text('href', 'https://naver.com')}
     onClick={action('onClick')}
   />
@@ -58,7 +58,7 @@ export const link: React.FC = () => (
         styleTypeS.defaultValue,
       )}
       disabled={boolean('disabled', false)}
-      content={text('content', 'Button')}
+      children={text('content', 'Button')}
       to={text('to', '/signup')}
       onClick={action('onClick')}
     />
@@ -75,53 +75,49 @@ export const allstyle: React.FC = () => (
     <Btn
       styletype={'primary'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'secondary'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'danger'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'alert'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'success'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'transparent'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'transparent-border'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
-      href={''}
-      to={''}
+      children={'Button'}
       onClick={action('onClick')}
     />
     <Btn
       styletype={'transparent-hover'}
       disabled={boolean('disabled', false)}
-      content={'Button'}
-      href={''}
-      to={''}
+      children={'Button'}
       onClick={action('onClick')}
     />
   </div>
