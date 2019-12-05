@@ -28,6 +28,8 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     place,
     address,
     placeDesc,
+    latitude,
+    longitude,
   } = eventData;
 
   const requestFetch = useFetch({
@@ -63,10 +65,6 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
   // TODO: need profileImgUrl, Location in user table (DB)
   user.profileImgUrl =
     'https://cf.festa.io/img/2019-5-30/754f6674-e1e4-41d0-b24b-f4bef430dfe5.jpeg';
-  const location = {
-    lat: 37.5662952,
-    lng: 126.9779451,
-  };
 
   return (
     <EventDetailTemplate
@@ -86,7 +84,7 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
       // TODO: eventContent will change to contentViewer component
       eventContent={<div dangerouslySetInnerHTML={{ __html: desc }} />}
       ticket={<Ticket {...ticketType} />}
-      place={<Place {...{ place, address, placeDesc, location }} />}
+      place={<Place {...{ place, address, placeDesc, latitude, longitude }} />}
     />
   );
 }

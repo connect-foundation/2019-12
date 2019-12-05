@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { mount } from 'enzyme';
 import axios from 'axios';
+import { OK } from 'http-status';
 
 import { useFetch, FetchProps } from './';
 
@@ -13,7 +14,7 @@ describe('Hooks', () => {
       url: mockURL,
     });
     const { status, data } = result;
-    expect(status).toBe(200);
+    expect(status).toBe(OK);
     expect(data.hello).toBe('world');
   });
   it('useFetch가 정상적으로 이루어진다.', async () => {
@@ -27,7 +28,7 @@ describe('Hooks', () => {
     const resultTypes: FetchProps<any>[] = [];
 
     function MockComponent(): React.ReactElement {
-      const result = useFetch({
+      const result = useFetch<object>({
         method: 'get',
         url: mockURL,
       });
