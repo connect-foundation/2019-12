@@ -64,7 +64,7 @@ jobs:
   - name: Client
     before_install:
     - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-      -in ./client/env.development.enc -out ./client/.env.development -d
+      -in ./client/.env.development.enc -out ./client/.env.development -d
     before_script:
     - yarn
     script:
@@ -122,7 +122,7 @@ jobs:
     if: type = push AND branch = master
     before_install:
     - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-      -in ./client/env.production.enc -out ./client/.env.production -d
+      -in ./client/.env.production.enc -out ./client/.env.production -d
     - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
     script:
     - yarn workspace client build
