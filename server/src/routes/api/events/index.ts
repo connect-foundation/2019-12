@@ -9,7 +9,7 @@ const router = Router();
 
 router.param('eventId', middlewares.requestParamHandler);
 router.get('/', validators.getEvents, badRequestHandler, controllers.getEvents);
-router.get('/coordinate', controllers.placeToCoordinate);
+router.get('/coordinate', controllers.convertPlaceToCoordinate);
 router.get('/:eventId', controllers.getEvent);
 
 export default router;
