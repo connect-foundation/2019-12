@@ -7,7 +7,6 @@ import { EventsAction } from 'types/Actions';
 export const defaultEventsState: EventsState = {
   events: new Map<number, Event>(),
   order: [],
-  seletedEventId: -1,
 };
 
 const produceMap = (
@@ -33,7 +32,6 @@ export function eventsReducer(state: EventsState, action: EventsAction) {
       return {
         ...state,
         events: produceMap(state.events, action.value.events),
-        seletedEventId: action.value.seletedEventId,
       };
     }
     default: {

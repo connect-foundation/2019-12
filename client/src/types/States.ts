@@ -27,7 +27,6 @@ export interface AccountState {
 }
 
 export interface EventsState {
-  events: Map<number, Event>; // TODO: plz help me
+  events: Map<number, Event>;
   order?: number[];
-  seletedEventId?: number;
 }
