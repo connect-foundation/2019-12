@@ -36,7 +36,9 @@ function FormInput({
     <S.FormInputContainer>
       <Label name={name} {...labelProps} />
       <S.FormInput invalid={invalid} {...props} />
-      <S.FormCaption invalid={invalid}>{captionContent}</S.FormCaption>
+      <S.FormCaption invalid={invalid} data-testid={'formcaption'}>
+        {captionContent}
+      </S.FormCaption>
     </S.FormInputContainer>
   );
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import { EVENT_NAME_MAX_LENGTH } from '../../../commons/constants/number';
 import * as S from './style';
 import Divider from '../../atoms/Divider';
+import Img from '../../atoms/Img';
 
 export interface Props {
   /** 라우팅 URL */
@@ -34,9 +35,11 @@ function Card({
 }: Props): React.ReactElement {
   const eventTitle = shortenTitle(title);
   return (
-    <S.LinkWrapper to={to}>
+    <S.LinkWrapper to={to} data-testid={'main-card'}>
       <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgDiv imgSrc={imgSrc} />
+      <S.ImgWrapper>
+        <Img alt={'card Image'} src={imgSrc} />
+      </S.ImgWrapper>
       <S.InnerContainer>
         <S.ContentContainer>
           <S.Date>{date}</S.Date>
