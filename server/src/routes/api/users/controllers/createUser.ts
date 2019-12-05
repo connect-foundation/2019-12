@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { setUserInfo } from '../../../../services';
-
 import { generateJWT, verifyJWT } from '../../../../utils/jwt';
+import { BAD_REQUEST } from 'http-status';
 
 export async function createUser(
   req: Request,
@@ -13,7 +13,8 @@ export async function createUser(
     const { exist } = await verifyJWT(requestToken);
     const { id, email, googleId, firstName, lastName, phoneNumber } = req.body;
     // Exist가 False일 경우, Token이 회원가입이 안되어 있음을 말함.
-    if (exist) return res.status(400).send({ message: 'Cannot Signup' });
+    if (exist)
+      return res.status(BAD_REQUEST).send({ message: 'Cannot Signup' });
     const result = await setUserInfo(
       id,
       googleId,
@@ -22,7 +23,7 @@ export async function createUser(
       phoneNumber,
     );
     if (result[0] !== 1)
-      return res.status(400).send({ message: 'Cannot Signup' });
+      return res.status(BAD_REQUEST).send({ message: 'Cannot Signup' });
     const responseToken = await generateJWT(true, id, googleId, email);
     res
       .cookie('UID', responseToken, {
