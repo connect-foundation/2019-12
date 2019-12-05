@@ -34,7 +34,7 @@ function Card({
       : title;
 
   return (
-    <S.LinkWrapper to={to}>
+    <S.LinkWrapper to={to} data-testid={'main-card'}>
       <S.HeaderWrapper></S.HeaderWrapper>
       <S.ImgWrapper>
         <Img alt={'card Image'} src={imgSrc} />

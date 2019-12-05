@@ -86,7 +86,14 @@ function SignUpView(): React.ReactElement {
 
   return (
     <SignUpTemplate
-      header={<ImgBtn to={ROUTES.HOME} alt={'Logo'} src={logo} />}
+      header={
+        <ImgBtn
+          to={ROUTES.HOME}
+          alt={'Logo'}
+          src={logo}
+          data-testid={'signup-logo'}
+        />
+      }
       content={<SignUpForm FormInputs={FormInputs} Button={Button} />}
     />
   );
