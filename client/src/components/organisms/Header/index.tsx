@@ -18,8 +18,14 @@ function Header(): React.ReactElement {
         styletype={'transparent'}
         children={CREATE_EVENT}
         to={ROUTES.EVENT_CREATE}
+        data-testid={'header-create'}
       />
-      <S.LogoBtn to={ROUTES.HOME} alt={'Logo'} src={logo} />
+      <S.LogoBtn
+        to={ROUTES.HOME}
+        alt={'Logo'}
+        src={logo}
+        data-testid={'header-home'}
+      />
       <Btn
         fit
         styletype={'transparent-border'}
@@ -29,6 +35,7 @@ function Header(): React.ReactElement {
             : `${account.lastName}${account.firstName}`
         }
         to={account.isLogin ? '/' : ROUTES.LOGIN}
+        data-testid={'header-account'}
       />
     </S.Container>
   );
