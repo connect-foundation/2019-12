@@ -14,10 +14,9 @@ function Header(): React.ReactElement {
   return (
     <S.Container>
       <Btn
-        grow={false}
-        fit={true}
+        fit
         styletype={'transparent'}
-        content={CREATE_EVENT}
+        children={CREATE_EVENT}
         to={ROUTES.EVENT_CREATE}
       />
 
@@ -26,10 +25,9 @@ function Header(): React.ReactElement {
       </S.StyledLink>
 
       <Btn
-        grow={false}
-        fit={true}
+        fit
         styletype={'transparent-border'}
-        content={
+        children={
           !account.isLogin
             ? '로그인'
             : `${account.lastName}${account.firstName}`

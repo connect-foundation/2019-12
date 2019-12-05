@@ -13,6 +13,17 @@ services:
     ports:
       - '${DB_PORT}:3306'
 
+  redis:
+    image: redis:5.0.7-alpine
+    container_name: bu-redis
+    volumes:
+      - redisdata:/data
+    ports:
+      - '${REDIS_PORT}:6379'
+
+
 volumes:
   dbdata:
+    driver: local
+  redisdata:
     driver: local
