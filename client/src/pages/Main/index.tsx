@@ -23,7 +23,6 @@ const fetchEvents = async (startAt: string) => {
 };
 
 function Main(): React.ReactElement {
-  console.log(SERVER_URL);
   const eventsState = useContext(EventsStoreState);
   const { eventsDispather } = useContext(EventsStoreAction);
 
