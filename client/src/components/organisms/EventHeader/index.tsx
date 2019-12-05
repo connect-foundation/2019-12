@@ -66,7 +66,7 @@ function EventHeader({
           <Icon alt={'people'} src={MultipleUsers} />
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
-        <S.SubmitBtn content={'등록'} />
+        <S.SubmitBtn children={'등록'} />
       </S.SubmitContainer>
     </S.HeaderContainer>
   );

@@ -75,7 +75,7 @@ function SignUpView(): React.ReactElement {
   };
 
   const Button = {
-    content: SIGNUP_BTN,
+    children: SIGNUP_BTN,
     styletype: 'primary',
     grow: true,
     onClick: () => {
@@ -85,7 +85,7 @@ function SignUpView(): React.ReactElement {
 
   return (
     <SignUpTemplate
-      header={<Btn content={'대충 로고'} to="/" />}
+      header={<Btn children={'대충 로고'} to="/" />}
       content={<SignUpForm FormInputs={FormInputs} Button={Button} />}
     />
   );

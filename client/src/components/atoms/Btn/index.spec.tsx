@@ -1,14 +1,12 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Btn from '.';
-import * as S from './style';
-import { ifProp, palette, theme } from 'styled-tools';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 describe('Atom / Btn', () => {
   it('[SNAPSHOT] StyledBtn 렌더링', () => {
     // given
-    const wrapper = mount(<Btn styletype={'primary'} content={'Button'} />);
+    const wrapper = mount(<Btn styletype={'primary'} children={'Button'} />);
 
     // then
     expect(wrapper).toMatchSnapshot();
@@ -19,7 +17,7 @@ describe('Atom / Btn', () => {
     const wrapper = mount(
       <Btn
         styletype={'primary'}
-        content={'Button'}
+        children={'Button'}
         href={'https://naver.com'}
       />,
     );
@@ -35,7 +33,7 @@ describe('Atom / Btn', () => {
       <Router>
         <Switch>
           <Route path="/login">
-            <Btn styletype={'primary'} content={'Button'} to={'/home'} />,
+            <Btn styletype={'primary'} children={'Button'} to={'/home'} />,
           </Route>
         </Switch>
       </Router>,
@@ -47,7 +45,7 @@ describe('Atom / Btn', () => {
 
   it('content가 표시된다.', () => {
     // given
-    const wrapper = mount(<Btn styletype={'primary'} content={'Button'} />);
+    const wrapper = mount(<Btn styletype={'primary'} children={'Button'} />);
     const buttonElement = wrapper.find('button');
 
     // then
@@ -57,10 +55,10 @@ describe('Atom / Btn', () => {
   it('disabled prop에 따라 다른 스타일이 적용된다.', () => {
     // given
     const wrapperIsDisabled = mount(
-      <Btn disabled={true} styletype={'primary'} content={'Button'} />,
+      <Btn disabled={true} styletype={'primary'} children={'Button'} />,
     );
     const wrapperIsNotDisabled = mount(
-      <Btn disabled={false} styletype={'primary'} content={'Button'} />,
+      <Btn disabled={false} styletype={'primary'} children={'Button'} />,
     );
 
     // then
@@ -76,19 +74,15 @@ describe('Atom / Btn', () => {
   it('fit prop에 따라 다른 스타일이 적용된다.', () => {
     // given
     const wrapperIsFit = mount(
-      <Btn
-        fit={true}
-        disabled={true}
-        styletype={'primary'}
-        content={'Button'}
-      />,
+      <Btn fit disabled styletype={'primary'} children={'Button'} />,
     );
     const wrapperIsNotFit = mount(
-      <Btn disabled={true} styletype={'primary'} content={'Button'} />,
+      <Btn disabled styletype={'primary'} children={'Button'} />,
     );
-
     // then
     expect(wrapperIsFit).toHaveStyleRule('height', 'auto');
+    expect(wrapperIsFit).toHaveStyleRule('width', 'fit-content');
     expect(wrapperIsNotFit).toHaveStyleRule('height', '4rem');
+    expect(wrapperIsNotFit).toHaveStyleRule('width', '18rem');
   });
 });
