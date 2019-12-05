@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Main from './pages/Main';
 import EventDetail from './pages/EventDetail';
+import EventJoin from './pages/EventJoin';
 
 import GlobalStoreProvider from './stores';
 
@@ -26,6 +27,10 @@ const App: React.FC = () => (
             exact
             path="/events/:eventId([0-9]+)"
             component={EventDetail}
+          />
+          <Route
+            path="/events/:eventId([0-9]+)/register/tickets"
+            component={EventJoin}
           />
           <Route path="*">
             <div>404 page</div>
