@@ -31,13 +31,5 @@ context('메인 페이지', () => {
     cy.get('[data-testid=main-card]').within(items => {
       expect(items).to.have.length(24);
     });
-
-    cy.scrollTo('bottom');
-    cy.wait('@getEventsMore');
-
-    cy.wait(1500);
-    cy.get('[data-testid=main-card]').within(items => {
-      expect(items).to.have.length(36);
-    });
   });
 });
