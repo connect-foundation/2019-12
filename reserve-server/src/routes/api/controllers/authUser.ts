@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { verifyJWT } from '../../../utils/jwt';
 
-export default async (req: Request, res: Response, next: NextFunction) => {
+export default async (req: any, res: Response, next: NextFunction) => {
   const token = req.cookies.UID;
   try {
     const { id } = await verifyJWT(token);
