@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { verifyJWT } from '../../../utils/jwt';
+import { UNAUTHORIZED } from 'http-status';
 
 export default async (req: any, res: Response, next: NextFunction) => {
   const token = req.cookies.UID;
@@ -8,6 +9,6 @@ export default async (req: any, res: Response, next: NextFunction) => {
     req.user = { id };
     next();
   } catch (err) {
-    res.status(401).send('need to login');
+    res.status(UNAUTHORIZED).send('need to login');
   }
 };

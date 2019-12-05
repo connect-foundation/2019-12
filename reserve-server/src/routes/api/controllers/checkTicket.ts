@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { TicketCacheData, getTicketCache } from '../../../services';
+import { FORBIDDEN, NOT_FOUND } from 'http-status';
 
 export default async (req: any, res: Response, next: NextFunction) => {
   const time = Date.now();
@@ -12,8 +13,8 @@ export default async (req: any, res: Response, next: NextFunction) => {
     if (isBlock === '0' && time > +salesStartAt && time < +salesEndAt)
       return next();
 
-    return res.status(403).send({ message: 'failure' });
+    return res.status(FORBIDDEN).send({ message: 'failure' });
   } catch (err) {
-    return res.status(404).send({ message: 'no Ticket Exist' });
+    return res.status(NOT_FOUND).send({ message: 'no Ticket Exist' });
   }
 };
