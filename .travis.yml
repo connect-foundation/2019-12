@@ -10,8 +10,8 @@ services:
 - docker
 env:
   global:
-  - FE_IMAGE_TAG=0.3.2
-  - BE_IMAGE_TAG=0.3.2
+  - FE_IMAGE_TAG=0.3.3
+  - BE_IMAGE_TAG=0.3.3
   - RESERVE_IMAGE_TAG=0.0.1
   - FE_IMAGE_NAME=bu-front
   - BE_IMAGE_NAME=bu-back
