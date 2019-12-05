@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('메인 페이지', () => {
+context('헤더', () => {
   beforeEach(() => {
     cy.visit('/');
   });
