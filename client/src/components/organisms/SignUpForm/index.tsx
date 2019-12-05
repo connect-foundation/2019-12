@@ -18,12 +18,21 @@ function SignUpForm({ FormInputs, Button }: Props): React.ReactElement {
     <S.SignUpFormContainer>
       <FormInput {...FormInputs.email} />
       <S.NameContainer>
-        <FormInput {...FormInputs.lastName} />
-        <FormInput {...FormInputs.firstName} />
+        <FormInput
+          {...FormInputs.lastName}
+          data-testid={'signupform-lastname'}
+        />
+        <FormInput
+          {...FormInputs.firstName}
+          data-testid={'signupform-firstname'}
+        />
       </S.NameContainer>
-      <FormInput {...FormInputs.phoneNumber} />
+      <FormInput
+        {...FormInputs.phoneNumber}
+        data-testid={'signupform-phonenumber'}
+      />
       <S.BtnWrapper>
-        <Btn {...Button} />
+        <Btn {...Button} data-testid={'signupform-submit'} />
       </S.BtnWrapper>
     </S.SignUpFormContainer>
   );
