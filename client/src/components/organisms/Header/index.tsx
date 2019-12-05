@@ -20,11 +20,12 @@ function Header(): React.ReactElement {
         to={ROUTES.EVENT_CREATE}
         data-testid={'header-create'}
       />
-
-      <S.StyledLink to={ROUTES.HOME} data-testid={'header-home'}>
-        <S.Img alt={'Logo'} src={logo} />
-      </S.StyledLink>
-
+      <S.LogoBtn
+        to={ROUTES.HOME}
+        alt={'Logo'}
+        src={logo}
+        data-testid={'header-home'}
+      />
       <Btn
         fit
         styletype={'transparent-border'}
