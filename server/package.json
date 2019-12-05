@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,7 @@
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
     "lint:type": "tsc --noEmit",
-    "precommit": "lint-staged"
+    "precommit": "tsc --noEmit && lint-staged"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -67,10 +67,6 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,scss,css,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "*.{ts,tsx}": [
-      "tsc @tsc.args",
       "git add"
     ],
     "*.{ts,tsx,js,jsx}": [
