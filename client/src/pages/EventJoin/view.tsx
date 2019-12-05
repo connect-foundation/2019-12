@@ -7,6 +7,7 @@ import TicketBox from 'components/organisms/TicketBox';
 import Counter from 'components/molecules/Counter';
 import Btn from 'components/atoms/Btn';
 import * as S from './style';
+import { useHistory } from 'react-router-dom';
 
 const { REACT_APP_SERVER_RESERVE_URL } = process.env;
 
@@ -28,24 +29,14 @@ interface Props {
 }
 
 function EventJoin({ eventId }: Props): React.ReactElement {
+  const history = useHistory();
   let ticketCount = 0;
-  /**
-   * .post('/api/users/ticket')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
-      .send({
-        ticketId: 2,
-        orderTicketNum: 1,
-      })
-   */
+
   const counterHandler = (count: number) => {
     ticketCount = count;
   };
 
   const requestOrder = async () => {
-    console.log(REACT_APP_SERVER_RESERVE_URL);
     await axios({
       url: `${REACT_APP_SERVER_RESERVE_URL}/api/users/ticket`,
       method: 'POST',
@@ -58,6 +49,9 @@ function EventJoin({ eventId }: Props): React.ReactElement {
       },
       withCredentials: true,
     });
+
+    alert('예약이 완료되었습니다.');
+    history.push('/');
   };
 
   return (
