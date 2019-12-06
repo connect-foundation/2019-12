@@ -120,4 +120,3 @@ jobs:
     - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
     - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
     - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
-
