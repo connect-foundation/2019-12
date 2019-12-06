@@ -1,4 +1,4 @@
-import { Transaction } from 'sequelize';
+import { Transaction, WhereOptions } from 'sequelize';
 import { UserTicket } from '../models';
 
 export const updateUserTicket = (
@@ -22,8 +22,7 @@ export const countUserTicket = (
   transaction: Transaction,
   userId: number,
   ticketId: number,
-) =>
-  UserTicket.count({
-    where: { userId, ticketTypeId: ticketId },
-    transaction,
-  });
+) => {
+  const where: WhereOptions = { userId, ticketTypeId: ticketId };
+  return UserTicket.count({ where, transaction });
+};
