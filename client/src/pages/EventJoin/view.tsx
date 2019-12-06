@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import EventJoinTemplate from './template';
@@ -29,6 +28,8 @@ interface Props {
 }
 
 function EventJoin({ eventId }: Props): React.ReactElement {
+  const [isReserved, setisReserved] = useState(false);
+
   const history = useHistory();
   let ticketCount = 0;
 
@@ -37,6 +38,13 @@ function EventJoin({ eventId }: Props): React.ReactElement {
   };
 
   const requestOrder = async () => {
+    if (isReserved) {
+      return;
+    }
+    if (ticketCount <= 0) {
+      alert('티켓 개수는 1개 이상이어야 합니다.');
+      return;
+    }
     await axios({
       url: `${REACT_APP_SERVER_RESERVE_URL}/api/users/ticket`,
       method: 'POST',
@@ -49,6 +57,7 @@ function EventJoin({ eventId }: Props): React.ReactElement {
       },
       withCredentials: true,
     });
+    setisReserved(true);
 
     alert('예약이 완료되었습니다.');
     history.push('/');
