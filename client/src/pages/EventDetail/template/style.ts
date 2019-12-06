@@ -15,11 +15,14 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+
+  img {
+    width: 60rem;
+  }
 `;
 
 export const TicketWrapper = styled.div`
   width: 31rem;
-  margin-left: 3rem;
   flex-shrink: 0;
 `;
 
