@@ -4,7 +4,7 @@ import axios from 'axios';
 import MainTemplate from './template';
 import MainBanner from 'components/organisms/MainBanner';
 import CardGrid from 'components/organisms/CardGrid';
-import { Event } from 'types/Data';
+import { EventDetail } from 'types/Data';
 import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
@@ -14,8 +14,8 @@ const fetchEvents = async (startAt: string) => {
     method: 'GET',
     url: `${SERVER_URL}/api/events?cnt=12${startAt}`,
   });
-  const events = new Map<number, Event>();
-  const order = data.map((event: Event) => {
+  const events = new Map<number, EventDetail>();
+  const order = data.map((event: EventDetail) => {
     events.set(event.id, event);
     return event.id;
   });
