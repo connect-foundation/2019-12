@@ -30,7 +30,8 @@ export interface EventDetail {
   place: string;
   address: string;
   placeDesc: string;
-  location: Location;
+  latitude: number;
+  longitude: number;
   mainImg: string;
   desc: string;
   ticketType: TicketType;

@@ -13,10 +13,8 @@ const defaultState: EventDetailState = {
     place: '',
     address: '',
     placeDesc: '',
-    location: {
-      latitude: 0,
-      longitude: 0,
-    },
+    latitude: 37.5662952,
+    longitude: 126.9779451,
     mainImg: '',
     desc: '',
 
