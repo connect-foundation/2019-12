@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
     "db:seed": "ts-node bin/seed",
     "redis:migrate": "ts-node bin/redis-migrate",
     "redis:delete": "ts-node bin/redis-delete",
-    "build": "tsc",
+    "build": "tsc --sourceMap false",
     "test": "jest --coverage --verbose",
     "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",

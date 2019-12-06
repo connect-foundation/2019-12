@@ -1,7 +1,9 @@
 import React from 'react';
+
 import * as S from './style';
 import Card from 'components/molecules/Card';
 import { EventsState } from 'types/States';
+import ROUTES from 'commons/constants/routes';
 
 interface Props {
   eventsState: EventsState;
@@ -29,7 +31,7 @@ function CardGrid({ eventsState, setRef }: Props): React.ReactElement {
               title={title}
               host={user.lastName + user.firstName}
               price={ticketType.price}
-              to={`/events/${id}`}
+              to={`${ROUTES.EVENT_DETAIL}/${id}`}
             />
           );
         })}
