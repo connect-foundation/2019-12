@@ -1,7 +1,9 @@
 import React from 'react';
+
 import * as S from './style';
-import Card from '../../molecules/Card';
-import { Event } from '../../../types/Event';
+import Card from 'components/molecules/Card';
+import { Event } from 'types/Event';
+import ROUTES from 'commons/constants/routes';
 
 interface Props {
   cards: Event[];
@@ -20,7 +22,7 @@ function CardGrid({ cards, setRef }: Props): React.ReactElement {
             title={card.title}
             host={card.user.lastName + card.user.firstName}
             price={card.ticketType.price}
-            to={`/events/${card.id}`}
+            to={`${ROUTES.EVENT_DETAIL}/${card.id}`}
           />
         ))}
       </S.CardGridContainer>
