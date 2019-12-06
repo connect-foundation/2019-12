@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 interface OptionProps {
-  root?: null;
+  root?: HTMLElement | null;
   threshold?: number;
   rootMargin?: string;
 }
@@ -23,7 +23,6 @@ export const useIntersect = (
   React.Dispatch<React.SetStateAction<HTMLElement | null>>,
 ] => {
   const [ref, setRef] = useState<HTMLElement | null>(null);
-  // intersecting이 있을 때 target 엔트리와 observer를 넘겨주자.
   const checkIntersect = useCallback(
     ([entry]: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       if (entry.isIntersecting) {
@@ -32,7 +31,6 @@ export const useIntersect = (
     },
     [onIntersect],
   );
-  // ref나 option이 바뀔 경우 observer를 새로 등록한다.
   useEffect(() => {
     let observer: IntersectionObserver;
     if (ref) {
@@ -40,7 +38,6 @@ export const useIntersect = (
         ...baseOption,
         ...option,
       });
-      // start to observe ref
       observer.observe(ref);
     }
     return (): void => observer && observer.disconnect();
@@ -52,6 +49,5 @@ export const useIntersect = (
     checkIntersect,
     option,
   ]);
-  // setRef를 넘겨주어서 ref를 변경시킬 수 있도록 한다.
   return [ref, setRef];
 };

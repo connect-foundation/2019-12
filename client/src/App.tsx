@@ -1,16 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from '../src/commons/style/themes/default';
-import Normalize from '../src/commons/style/Normalize';
-import GlobalStyles from '../src/commons/style/GlobalStyle';
 
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Main from './pages/Main';
-import EventDetail from './pages/EventDetail';
-
-import GlobalStoreProvider from './stores';
+import defaultTheme from 'commons/style/themes/default';
+import Normalize from 'commons/style/Normalize';
+import GlobalStyles from 'commons/style/GlobalStyle';
+import Login from 'pages/Login';
+import SignUp from 'pages/SignUp';
+import Main from 'pages/Main';
+import EventDetail from 'pages/EventDetail';
+import EventJoin from 'pages/EventJoin';
+import NotFound from 'pages/NotFound';
+import GlobalStoreProvider from 'stores';
 
 const App: React.FC = () => (
   <GlobalStoreProvider>
@@ -27,9 +28,11 @@ const App: React.FC = () => (
             path="/events/:eventId([0-9]+)"
             component={EventDetail}
           />
-          <Route path="*">
-            <div>404 page</div>
-          </Route>
+          <Route
+            path="/events/:eventId([0-9]+)/register/tickets"
+            component={EventJoin}
+          />
+          <Route path="*" component={NotFound} />
         </Switch>
       </Router>
     </ThemeProvider>

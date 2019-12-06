@@ -10,7 +10,7 @@ interface Props {
 
 function CardGrid({ cards, setRef }: Props): React.ReactElement {
   return (
-    <S.CardGridWrapper>
+    <>
       <S.CardGridContainer>
         {cards.map(card => (
           <Card
@@ -25,7 +25,7 @@ function CardGrid({ cards, setRef }: Props): React.ReactElement {
         ))}
       </S.CardGridContainer>
       <div ref={setRef}></div>
-    </S.CardGridWrapper>
+    </>
   );
 }
 

@@ -18,6 +18,7 @@ interface Props {
   endAt: string;
   user: User;
   ticketType: TicketType;
+  eventId: number;
 }
 
 function EventHeader({
@@ -28,6 +29,7 @@ function EventHeader({
   endAt,
   user,
   ticketType,
+  eventId,
 }: Props): React.ReactElement {
   const ticketInfo = ticketType;
   const { firstName, lastName, profileImgUrl } = user;
@@ -66,7 +68,10 @@ function EventHeader({
           <Icon alt={'people'} src={MultipleUsers} />
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
-        <S.SubmitBtn children={'등록'} />
+        <S.SubmitBtn
+          children={'등록'}
+          to={`/events/${eventId}/register/tickets`}
+        />
       </S.SubmitContainer>
     </S.HeaderContainer>
   );
