@@ -1,17 +1,17 @@
 import produce from 'immer';
 
-import { Event } from 'types/Data';
+import { EventDetail } from 'types/Data';
 import { EventsState } from 'types/States';
 import { EventsAction } from 'types/Actions';
 
 export const defaultEventsState: EventsState = {
-  events: new Map<number, Event>(),
+  events: new Map<number, EventDetail>(),
   order: [],
 };
 
 const produceMap = (
-  sourceMap: Map<number, Event>,
-  targetMap: Map<number, Event>,
+  sourceMap: Map<number, EventDetail>,
+  targetMap: Map<number, EventDetail>,
 ) =>
   produce(sourceMap, draft => {
     targetMap.forEach(value => {

@@ -25,7 +25,7 @@ export interface Location {
   longitude: number;
 }
 
-export interface Event {
+export interface EventDetail {
   id: number;
   title: string;
   startAt: string;
