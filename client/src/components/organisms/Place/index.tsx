@@ -16,6 +16,7 @@ function Place({
   placeDesc,
   location,
 }: Props): React.ReactElement {
+  console.log('###', location);
   return (
     <S.PlaceDetailContainer>
       <GoogleMap {...location} />
