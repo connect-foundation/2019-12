@@ -1,7 +1,7 @@
 <h1>BookUs!</h1>
 <p>
     <img alt="travis" src="https://api.travis-ci.org/connect-foundation/2019-12.svg?branch=master" />
-    <img alt="Version" src="https://img.shields.io/badge/version-0.3.4-blue.svg?cacheSeconds=2592000" />
+    <img alt="Release" src="https://img.shields.io/github/v/release/connect-foundation/2019-12" />
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
