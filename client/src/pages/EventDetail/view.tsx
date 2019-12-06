@@ -83,7 +83,7 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
         />
       }
       // TODO: eventContent will change to contentViewer component
-      eventContent={<div dangerouslySetInnerHTML={{ __html: desc }} />}
+      eventContent={desc}
       ticket={<Ticket {...ticketType} />}
       place={
         <Place
