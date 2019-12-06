@@ -28,7 +28,8 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     place,
     address,
     placeDesc,
-    location,
+    latitude,
+    longitude,
   } = eventData;
 
   const requestFetch = useFetch({
@@ -84,7 +85,11 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
       // TODO: eventContent will change to contentViewer component
       eventContent={<div dangerouslySetInnerHTML={{ __html: desc }} />}
       ticket={<Ticket {...ticketType} />}
-      place={<Place {...{ place, address, placeDesc, location }} />}
+      place={
+        <Place
+          {...{ place, address, placeDesc, location: { latitude, longitude } }}
+        />
+      }
     />
   );
 }
