@@ -1,20 +1,25 @@
 import React from 'react';
 
 import * as S from './style';
-import Header from '../../../components/organisms/Header';
-import Footer from '../../../components/organisms/Footer';
+import Header from 'components/organisms/Header';
+import Footer from 'components/organisms/Footer';
+import Loading from 'components/atoms/Loading';
 
 interface Props {
+  loading?: boolean;
   children: React.ReactNode;
 }
 
-function BasedTemplate({ children }: Props): React.ReactElement {
+function BasedTemplate({
+  children,
+  loading = false,
+}: Props): React.ReactElement {
   return (
     <S.Container>
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
-      <S.ChildrenWrapper>{children}</S.ChildrenWrapper>
+      <S.ChildrenWrapper>{loading ? <Loading /> : children}</S.ChildrenWrapper>
       <S.FooterWrapper>
         <Footer />
       </S.FooterWrapper>
