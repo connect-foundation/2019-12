@@ -6,7 +6,8 @@
 </p>
 
 ### 📺 [HomePage](http://www.foorg.xyz/)
-### 📕 [Storybook for Bookus](https://compassionate-swartz-fe4719.netlify.com/)  
+
+### 📕 [Storybook for Bookus](https://storybook-bookus.netlify.com/)
 
 [Bookus!](http://www.foorg.xyz/)는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로젝트입니다. 순간적으로 많은 트래픽이 몰리더라도 중단되지 않는 **안정적인** 선착순 예약 서비스를 목표로 하고 있습니다. 따라서 다음과 같은 도전과제를 갖고 있습니다.
 
@@ -25,16 +26,25 @@ Storybook을 통한 컴포넌트의 독립된 테스팅, Cypress를 통한 UI의
 ### 과중한 트래픽이 몰려도 안정적으로 예약이 가능한 시스템
 
 - Infra Architecture & Orchestration
-  
-<img width="843" alt="cd" src="https://user-images.githubusercontent.com/10372359/69915158-5197c080-148f-11ea-85d4-2c5e728c0a83.png">
 
-도커 Swarm을 통한 서비스 제공 Front와 Back의 서비스의 Replica를 각각 3개씩 만들어서 이를 서비스하며 Ncloud 의 로드벨런서를 이용하여 서비스함.
-예약이 필요한 시점마다 늘어나는 트래픽을 감당하기 위한 Container Orchestration 툴로 Docker Swarm을 선택했습니다.
- 
+<img width="743" alt="CD" src="https://user-images.githubusercontent.com/10372359/70304855-31c51b80-1846-11ea-8d4e-6f52c2e33bb2.png">
+
+도커 Swarm을 통한 서비스 제공 Front와 Back의 서비스의 Replica를 각각 3개씩 만들어서 이를 서비스하며 Ncloud 의 로드벨런서를 이용하여 서비스함. 예약이 필요한 시점마다 늘어나는 트래픽을 감당하기 위한 Container Orchestration 툴로 Docker Swarm을 선택했습니다.
+
 ### DevOps
-  <img width="886" alt="CI" src="https://user-images.githubusercontent.com/10372359/69914668-de3f8000-1489-11ea-8aa4-5c5f59dc06a9.png"> 
+
+ <img width="878" alt="CI" src="https://user-images.githubusercontent.com/10372359/70304713-e9a5f900-1845-11ea-8ad7-afa855dfb152.png">
+
+**[Travis CI](https://travis-ci.org/connect-foundation/2019-12/)**
+
+**Docker hub**
+
+- [Frontend image](https://hub.docker.com/repository/docker/jdd04026/bu-front)
+- [Backend image](https://hub.docker.com/repository/docker/jdd04026/bu-back)
+- [Reserve Server image](https://hub.docker.com/repository/docker/jdd04026/bu-reserve)
 
 ### TEST
+
 테스트 커버리지 80를 목표로 하는 검증된 코드를 통한 안정적인 서비스를 목표로 합니다.
 
 - Front-End : Jest + Enzyme
