@@ -15,15 +15,17 @@ export const Container = styled.div``;
 export const ChildrenWrapper = styled.div`
   ${commonStyle}
   padding: 0;
+  min-height: 70vh;
 `;
 
 export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
-  height: 6.8rem;
+  height: 9vh;
   ${commonStyle}
 `;
 
 export const FooterWrapper = styled.div`
   ${commonStyle}
+  height: 21vh;
 `;
