@@ -4,7 +4,7 @@ import {
   fillZero,
   calculateStringOfDateRange,
   calculateDiffDaysOfDateRange,
-} from './dateCalculator';
+} from '.';
 
 describe('datecalculateulator', () => {
   // given

@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import SignUpTemplate from './template';
-import SignUpForm from '../../components/organisms/SignUpForm';
-import ImgBtn from '../../components/molecules/ImgBtn';
-import logo from '../../assets/img/logo.svg';
-import ROUTES from '../../commons/constants/routes';
+import { SignUpForm, ImgBtn } from 'components';
+import logo from 'assets/img/logo.svg';
+import ROUTES from 'commons/constants/routes';
 import { SignUpAction, SignUpState } from './store';
-import { UserAccountState } from '../../stores/accountStore';
+import { UserAccountState } from 'stores/accountStore';
 
 import {
   SIGNUP_EMAIL,
@@ -13,7 +12,7 @@ import {
   SIGNUP_LAST_NAME,
   SIGNUP_PHONE_NUMBER,
   SIGNUP_BTN,
-} from '../../commons/constants/string';
+} from 'commons/constants/string';
 
 function SignUpView(): React.ReactElement {
   const { email } = useContext(UserAccountState);

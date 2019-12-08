@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import EventDetailTemplate from './template';
-import EventHeader from 'components/organisms/EventHeader';
-import Ticket from 'components/organisms/Ticket';
-import Place from 'components/organisms/Place';
+import { Place, Ticket, EventHeader } from 'components';
 
 import { EventDataAction, EventDataState } from './store';
 import { useFetch } from 'hooks/base/useFetch';
@@ -28,7 +26,8 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
     placeDesc,
     user,
     ticketType,
-    location,
+    latitude,
+    longitude,
   } = eventData;
 
   const requestFetch = useFetch({
@@ -82,9 +81,13 @@ function EventDetailView({ eventId }: Props): React.ReactElement {
         />
       }
       // TODO: eventContent will change to contentViewer component
-      eventContent={<div dangerouslySetInnerHTML={{ __html: desc }} />}
+      eventContent={desc}
       ticket={<Ticket {...ticketType} />}
-      place={<Place {...{ place, address, placeDesc, location }} />}
+      place={
+        <Place
+          {...{ place, address, placeDesc, location: { latitude, longitude } }}
+        />
+      }
     />
   );
 }

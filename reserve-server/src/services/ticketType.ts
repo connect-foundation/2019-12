@@ -1,18 +1,19 @@
-import { Transaction, literal } from 'sequelize';
+import { Transaction, literal, WhereOptions } from 'sequelize';
 import { TicketType } from '../models';
 
-export const getTicketType = (transaction: Transaction, ticketId: number) =>
-  TicketType.findOne({
-    where: { id: ticketId },
-    transaction,
-  });
+export const getTicketType = (transaction: Transaction, ticketId: number) => {
+  const where: WhereOptions = { id: ticketId };
+  return TicketType.findOne({ where, transaction });
+};
 
 export const updateTicketType = (
   transaction: Transaction,
   ticketId: number,
   orderTicketNum: number,
-) =>
-  TicketType.update(
+) => {
+  const where: WhereOptions = { id: ticketId };
+  return TicketType.update(
     { leftCnt: literal(`left_cnt -  ${orderTicketNum}`) },
-    { where: { id: ticketId }, transaction },
+    { where, transaction },
   );
+};

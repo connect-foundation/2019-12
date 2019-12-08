@@ -32,6 +32,10 @@ exports[`Organisms / Ticket Rendering 1`] = `
   margin: 2rem 0rem;
 }
 
+.c7 {
+  height: 1.5rem;
+}
+
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -45,10 +49,6 @@ exports[`Organisms / Ticket Rendering 1`] = `
 
 .c8 {
   margin-left: 1rem;
-}
-
-.c7 {
-  height: 1.5rem;
 }
 
 <Ticket
@@ -221,15 +221,15 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-dnqmqq",
+                                "componentId": "sc-cSHVUG",
                                 "isStatic": false,
-                                "lastClassName": "bDsesi",
+                                "lastClassName": "CAuLq",
                                 "rules": Array [],
                               },
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-dnqmqq",
+                              "styledComponentId": "sc-cSHVUG",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -342,7 +342,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "sc-bZQynM",
+                          "componentId": "sc-iRbamj",
                           "isStatic": false,
                           "lastClassName": "c6",
                           "rules": Array [
@@ -356,7 +356,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "displayName": "styled.div",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "sc-bZQynM",
+                        "styledComponentId": "sc-iRbamj",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -385,7 +385,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                                 "$$typeof": Symbol(react.forward_ref),
                                 "attrs": Array [],
                                 "componentStyle": ComponentStyle {
-                                  "componentId": "sc-htoDjs",
+                                  "componentId": "sc-gZMcBi",
                                   "isStatic": false,
                                   "lastClassName": "c7",
                                   "rules": Array [
@@ -402,7 +402,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                                 "displayName": "styled.img",
                                 "foldedComponentIds": Array [],
                                 "render": [Function],
-                                "styledComponentId": "sc-htoDjs",
+                                "styledComponentId": "sc-gZMcBi",
                                 "target": "img",
                                 "toString": [Function],
                                 "warnTooManyClasses": [Function],
@@ -429,7 +429,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-gzVnrw",
+                                "componentId": "sc-jlyJG",
                                 "isStatic": false,
                                 "lastClassName": "c8",
                                 "rules": Array [
@@ -444,7 +444,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-gzVnrw",
+                              "styledComponentId": "sc-jlyJG",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -481,7 +481,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "sc-bZQynM",
+                          "componentId": "sc-iRbamj",
                           "isStatic": false,
                           "lastClassName": "c6",
                           "rules": Array [
@@ -495,7 +495,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "displayName": "styled.div",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "sc-bZQynM",
+                        "styledComponentId": "sc-iRbamj",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -524,7 +524,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                                 "$$typeof": Symbol(react.forward_ref),
                                 "attrs": Array [],
                                 "componentStyle": ComponentStyle {
-                                  "componentId": "sc-htoDjs",
+                                  "componentId": "sc-gZMcBi",
                                   "isStatic": false,
                                   "lastClassName": "c7",
                                   "rules": Array [
@@ -541,7 +541,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                                 "displayName": "styled.img",
                                 "foldedComponentIds": Array [],
                                 "render": [Function],
-                                "styledComponentId": "sc-htoDjs",
+                                "styledComponentId": "sc-gZMcBi",
                                 "target": "img",
                                 "toString": [Function],
                                 "warnTooManyClasses": [Function],
@@ -568,7 +568,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-gzVnrw",
+                                "componentId": "sc-jlyJG",
                                 "isStatic": false,
                                 "lastClassName": "c8",
                                 "rules": Array [
@@ -583,7 +583,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-gzVnrw",
+                              "styledComponentId": "sc-jlyJG",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -620,7 +620,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "sc-bZQynM",
+                          "componentId": "sc-iRbamj",
                           "isStatic": false,
                           "lastClassName": "c6",
                           "rules": Array [
@@ -634,7 +634,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "displayName": "styled.div",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "sc-bZQynM",
+                        "styledComponentId": "sc-iRbamj",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -663,7 +663,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                                 "$$typeof": Symbol(react.forward_ref),
                                 "attrs": Array [],
                                 "componentStyle": ComponentStyle {
-                                  "componentId": "sc-htoDjs",
+                                  "componentId": "sc-gZMcBi",
                                   "isStatic": false,
                                   "lastClassName": "c7",
                                   "rules": Array [
@@ -680,7 +680,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                                 "displayName": "styled.img",
                                 "foldedComponentIds": Array [],
                                 "render": [Function],
-                                "styledComponentId": "sc-htoDjs",
+                                "styledComponentId": "sc-gZMcBi",
                                 "target": "img",
                                 "toString": [Function],
                                 "warnTooManyClasses": [Function],
@@ -707,7 +707,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-gzVnrw",
+                                "componentId": "sc-jlyJG",
                                 "isStatic": false,
                                 "lastClassName": "c8",
                                 "rules": Array [
@@ -722,7 +722,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-gzVnrw",
+                              "styledComponentId": "sc-jlyJG",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],

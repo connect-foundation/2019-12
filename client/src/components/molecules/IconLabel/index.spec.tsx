@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import IconLabel from '.';
-import Check from '../../../assets/img/check-black.svg';
+import Check from 'assets/img/check-black.svg';
 
 describe('Atom / IconBtn', () => {
   it('[SNAPSHOT] 렌더링', () => {

@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import EventJoinTemplate from './template';
-import TicketBox from 'components/organisms/TicketBox';
-import Counter from 'components/molecules/Counter';
-import Btn from 'components/atoms/Btn';
+import { Btn, Counter, TicketBox } from 'components';
 import * as S from './style';
 import { useHistory } from 'react-router-dom';
 import httpStatus from 'http-status';

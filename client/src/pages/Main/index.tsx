@@ -2,11 +2,11 @@ import React, { useCallback, useContext } from 'react';
 import axios from 'axios';
 
 import MainTemplate from './template';
-import MainBanner from 'components/organisms/MainBanner';
-import CardGrid from 'components/organisms/CardGrid';
+import { MainBanner, CardGrid } from 'components';
 import { EventDetail } from 'types/Data';
 import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
+
 const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
 
 const fetchEvents = async (startAt: string) => {
