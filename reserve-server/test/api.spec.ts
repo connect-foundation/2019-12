@@ -10,6 +10,14 @@ import {
   FORBIDDEN,
   NOT_FOUND,
 } from 'http-status';
+import {
+  SOLD_OUT,
+  NOT_EXIST,
+  NOT_OPEN,
+  EXCEED_LIMIT,
+  UNAUTH,
+  SUCCESS,
+} from '../src/constants';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -50,10 +58,7 @@ describe('Router /api/users/ticket', () => {
       })
       .expect(FORBIDDEN)
       .expect(res => {
-        expect(res.body).toStrictEqual({
-          state: 0,
-          message: 'wrong date',
-        });
+        expect(res.body).toStrictEqual(NOT_OPEN);
       });
   });
 
@@ -71,10 +76,7 @@ describe('Router /api/users/ticket', () => {
       })
       .expect(FORBIDDEN)
       .expect(res => {
-        expect(res.body).toStrictEqual({
-          state: 0,
-          message: 'wrong date',
-        });
+        expect(res.body).toStrictEqual(NOT_OPEN);
       });
   });
 
@@ -88,7 +90,10 @@ describe('Router /api/users/ticket', () => {
         ticketId: 2,
         orderTicketNum: 1,
       })
-      .expect(UNAUTHORIZED);
+      .expect(UNAUTHORIZED)
+      .expect(res => {
+        expect(res.body).toStrictEqual(UNAUTH);
+      });
   });
 
   it('존재하지 않는 티켓의 경우 404', async () => {
@@ -105,9 +110,7 @@ describe('Router /api/users/ticket', () => {
       })
       .expect(NOT_FOUND)
       .expect(res => {
-        expect(res.body).toStrictEqual({
-          message: 'wrong number of ticket',
-        });
+        expect(res.body).toStrictEqual(NOT_EXIST);
       });
   });
 
@@ -123,7 +126,10 @@ describe('Router /api/users/ticket', () => {
         ticketId: 2,
         orderTicketNum: 1,
       })
-      .expect(OK);
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toStrictEqual(SUCCESS);
+      });
   });
 
   it('티켓이 남아있지 않을 경우 403', async () => {
@@ -140,10 +146,7 @@ describe('Router /api/users/ticket', () => {
       })
       .expect(FORBIDDEN)
       .expect(res => {
-        expect(res.body).toStrictEqual({
-          state: 1,
-          message: 'ticket sold out',
-        });
+        expect(res.body).toStrictEqual(SOLD_OUT);
       });
   });
 
@@ -161,10 +164,7 @@ describe('Router /api/users/ticket', () => {
       })
       .expect(FORBIDDEN)
       .expect(res => {
-        expect(res.body).toStrictEqual({
-          state: 2,
-          message: 'limit exceed ticket per person',
-        });
+        expect(res.body).toStrictEqual(EXCEED_LIMIT);
       });
   });
 });

@@ -8,7 +8,7 @@ export default async (req: any, res: Response, next: NextFunction) => {
   const { ticketId, orderTicketNum } = req.body;
 
   if (ticketId === undefined || orderTicketNum === undefined)
-    return res.status(BAD_REQUEST).send();
+    return res.sendStatus(BAD_REQUEST);
 
   try {
     const { isBlock, salesEndAt, salesStartAt } = (await getTicketCache(
