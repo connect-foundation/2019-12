@@ -11,7 +11,6 @@ export async function getUserByGoogleId(
   const where: WhereOptions = { googleId: +googleId };
   return await User.findOne({ where });
 }
-
 // User가 로그인을 할 때 사용되는 Service
 export async function setUser(
   googleId: number,
