@@ -46,14 +46,14 @@ const createUser = (
 ) =>
   axios(`${REACT_APP_SERVER_URL}/api/users`, {
     method: 'post',
-    data: Object.assign({
+    data: {
       id,
       googleId,
       email,
       firstName,
       lastName,
       phoneNumber,
-    }),
+    },
     withCredentials: true,
   });
 
@@ -100,8 +100,8 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
 
   // Axios
   useEffect(() => {
+    if (!submit) return;
     (async function getToken() {
-      if (!submit) return;
       if (
         firstNameValidate ||
         lastNameValidate ||
@@ -140,7 +140,20 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
       }
     })();
     dispatcher({ type: 'submit', value: false });
-  }, [email, firstName, firstNameValidate, googleId, history, lastName, lastNameValidate, phoneNumber, phoneValidate, setLoginState, submit, userId]);
+  }, [
+    email,
+    firstName,
+    firstNameValidate,
+    googleId,
+    history,
+    lastName,
+    lastNameValidate,
+    phoneNumber,
+    phoneValidate,
+    setLoginState,
+    submit,
+    userId,
+  ]);
 
   return (
     <SignUpAction.Provider value={dispatcher}>

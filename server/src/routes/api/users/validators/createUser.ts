@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { body, validationResult } from 'express-validator';
+import { FORBIDDEN } from 'http-status';
 import {
   validatePhoneNumber,
   validateName,
@@ -45,6 +46,6 @@ async function validate(req: Request, res: Response, next: NextFunction) {
   const result = validationResult(req);
 
   if (!result.isEmpty()) return next();
-  res.status(403).send(result);
+  res.status(FORBIDDEN).send(result);
 }
 export default validate;
