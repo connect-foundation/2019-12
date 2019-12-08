@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
+import ImgBtn from 'components/molecules/ImgBtn';
 
 const commonStyle = css`
   max-width: 100%;
   padding: 0 2rem;
+
   @media screen and (min-width: 64rem) {
     width: 100%;
     max-width: 1060px;
@@ -10,7 +12,6 @@ const commonStyle = css`
     padding: 0 2.4rem;
   }
 `;
-export const Container = styled.div``;
 
 export const ChildrenWrapper = styled.div`
   ${commonStyle}
@@ -28,4 +29,12 @@ export const HeaderWrapper = styled.div`
 export const FooterWrapper = styled.div`
   ${commonStyle}
   height: 21vh;
+`;
+
+export const InternalServerError = styled(ImgBtn)`
+  min-height: inherit;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  object-fit: contain;
 `;
