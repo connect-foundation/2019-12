@@ -1,6 +1,7 @@
 import { Response, NextFunction } from 'express';
 import { verifyJWT } from '../../../utils/jwt';
 import { UNAUTHORIZED } from 'http-status';
+import { UNAUTH } from '../../../constants';
 
 export default async (req: any, res: Response, next: NextFunction) => {
   const token = req.cookies.UID;
@@ -9,6 +10,6 @@ export default async (req: any, res: Response, next: NextFunction) => {
     req.user = { id };
     next();
   } catch (err) {
-    res.status(UNAUTHORIZED).send({ message: 'unauthorized' });
+    res.status(UNAUTHORIZED).send(UNAUTH);
   }
 };
