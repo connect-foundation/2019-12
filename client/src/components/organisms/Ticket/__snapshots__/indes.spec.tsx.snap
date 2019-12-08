@@ -342,7 +342,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "sc-iRbamj",
+                          "componentId": "sc-gipzik",
                           "isStatic": false,
                           "lastClassName": "c6",
                           "rules": Array [
@@ -356,7 +356,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "displayName": "styled.div",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "sc-iRbamj",
+                        "styledComponentId": "sc-gipzik",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -429,7 +429,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-jlyJG",
+                                "componentId": "sc-csuQGl",
                                 "isStatic": false,
                                 "lastClassName": "c8",
                                 "rules": Array [
@@ -444,7 +444,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-jlyJG",
+                              "styledComponentId": "sc-csuQGl",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -481,7 +481,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "sc-iRbamj",
+                          "componentId": "sc-gipzik",
                           "isStatic": false,
                           "lastClassName": "c6",
                           "rules": Array [
@@ -495,7 +495,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "displayName": "styled.div",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "sc-iRbamj",
+                        "styledComponentId": "sc-gipzik",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -568,7 +568,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-jlyJG",
+                                "componentId": "sc-csuQGl",
                                 "isStatic": false,
                                 "lastClassName": "c8",
                                 "rules": Array [
@@ -583,7 +583,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-jlyJG",
+                              "styledComponentId": "sc-csuQGl",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -620,7 +620,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "sc-iRbamj",
+                          "componentId": "sc-gipzik",
                           "isStatic": false,
                           "lastClassName": "c6",
                           "rules": Array [
@@ -634,7 +634,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                         "displayName": "styled.div",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "sc-iRbamj",
+                        "styledComponentId": "sc-gipzik",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -707,7 +707,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "sc-jlyJG",
+                                "componentId": "sc-csuQGl",
                                 "isStatic": false,
                                 "lastClassName": "c8",
                                 "rules": Array [
@@ -722,7 +722,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                               "displayName": "styled.div",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "sc-jlyJG",
+                              "styledComponentId": "sc-csuQGl",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
