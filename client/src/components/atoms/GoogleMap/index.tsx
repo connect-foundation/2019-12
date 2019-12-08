@@ -4,12 +4,15 @@ import GoogleMapReact from 'google-map-react';
 import * as S from './style';
 import Pin from '../../../assets/img/pin.svg';
 
-const defaultZoom = 17;
-const defaultCenter = { lat: 37.5662952, lng: 126.9779451 };
 const {
   REACT_APP_GOOGLE_MAP_API_KEY,
   STORYBOOK_GOOGLE_MAP_API_KEY,
 } = process.env;
+
+const googleApiKey =
+  REACT_APP_GOOGLE_MAP_API_KEY || STORYBOOK_GOOGLE_MAP_API_KEY;
+const defaultZoom = 17;
+const defaultCenter = { lat: 37.5662952, lng: 126.9779451 };
 
 interface Props {
   latitude: number;
@@ -17,9 +20,6 @@ interface Props {
 }
 
 function GoogleMap({ latitude, longitude }: Props): React.ReactElement {
-  const googleApiKey =
-    REACT_APP_GOOGLE_MAP_API_KEY || STORYBOOK_GOOGLE_MAP_API_KEY;
-
   return (
     <S.Container>
       <GoogleMapReact
