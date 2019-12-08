@@ -44,7 +44,7 @@ async function validate(req: Request, res: Response, next: NextFunction) {
   await Promise.all(validatorFunc(req));
   const result = validationResult(req);
 
-  if (result.isEmpty()) return next();
+  if (!result.isEmpty()) return next();
   res.status(403).send(result);
 }
 export default validate;

@@ -46,15 +46,14 @@ const createUser = (
 ) =>
   axios(`${REACT_APP_SERVER_URL}/api/users`, {
     method: 'post',
-    data: Object.assign(
-      { id, googleId },
-      {
-        email,
-        firstName,
-        lastName,
-        phoneNumber,
-      },
-    ),
+    data: Object.assign({
+      id,
+      googleId,
+      email,
+      firstName,
+      lastName,
+      phoneNumber,
+    }),
     withCredentials: true,
   });
 
@@ -67,7 +66,15 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   const { userId, googleId, email } = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
 
-  const { phoneNumber, firstName, lastName, submit } = states;
+  const {
+    phoneNumber,
+    firstName,
+    lastName,
+    submit,
+    firstNameValidate,
+    lastNameValidate,
+    phoneValidate,
+  } = states;
 
   // Validation Features
   useEffect(() => {
@@ -94,44 +101,46 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   // Axios
   useEffect(() => {
     (async function getToken() {
-      if (submit) {
-        // Userdata를 서버로 보냄.
-        try {
-          const updateUserRes = await createUser(
-            userId,
-            googleId,
-            email,
-            firstName,
-            lastName,
-            +phoneNumber,
-          );
-          if (updateUserRes.status === 200) {
-            alert('회원가입이 완료되었습니다.');
-            dispatcher({ type: 'submit', value: false });
-            setLoginState(true);
-            history.push('/');
-          }
-        } catch (err) {
-          //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
-          if (err.response.status === 400) {
-            alert('이미 가입되어있는 회원입니다.');
-            dispatcher({ type: 'submit', value: false });
-            history.push('/');
-          }
+      if (!submit) return;
+      if (
+        firstNameValidate ||
+        lastNameValidate ||
+        phoneValidate ||
+        !firstName ||
+        !lastName ||
+        !phoneNumber
+      ) {
+        alert('입력값을 확인해주세요');
+        return;
+      }
+      // Userdata를 서버로 보냄.
+      try {
+        const updateUserRes = await createUser(
+          userId,
+          googleId,
+          email,
+          firstName,
+          lastName,
+          +phoneNumber,
+        );
+        if (updateUserRes.status === 200) {
+          alert('회원가입이 완료되었습니다.');
+          setLoginState(true);
+          history.push('/');
+        }
+      } catch (err) {
+        //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
+        if (err.response.status === 403) {
+          alert('잘못된 입력값입니다.');
+        }
+        if (err.response.status === 400) {
+          alert('이미 가입되어있는 회원입니다.');
+          history.push('/');
         }
       }
     })();
-  }, [
-    email,
-    firstName,
-    googleId,
-    history,
-    lastName,
-    phoneNumber,
-    setLoginState,
-    submit,
-    userId,
-  ]);
+    dispatcher({ type: 'submit', value: false });
+  }, [email, firstName, firstNameValidate, googleId, history, lastName, lastNameValidate, phoneNumber, phoneValidate, setLoginState, submit, userId]);
 
   return (
     <SignUpAction.Provider value={dispatcher}>
