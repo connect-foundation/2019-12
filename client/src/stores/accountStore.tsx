@@ -6,23 +6,12 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import axios from 'axios';
 
-import { AccountAction } from '../types/Actions';
-import { AccountState } from '../types/States';
-import { AccountReducer } from '../types/CustomHooks';
-import { accountReducer, defaultAccountState } from '../hooks';
-
-const { REACT_APP_SERVER_URL } = process.env;
-
-const verifyToken = () =>
-  axios(`${REACT_APP_SERVER_URL}/api/auth`, {
-    method: 'post',
-    withCredentials: true,
-  });
-
-const getUserInfo = (id: number) =>
-  axios.post(`${REACT_APP_SERVER_URL}/api/users/${id}`);
+import { AccountAction } from 'types/Actions';
+import { AccountState } from 'types/States';
+import { AccountReducer } from 'types/CustomHooks';
+import { accountReducer, defaultAccountState } from 'hooks';
+import { verifyToken, getUserInfo } from 'apis';
 
 export const UserAccountState = createContext<AccountState>(
   defaultAccountState,
