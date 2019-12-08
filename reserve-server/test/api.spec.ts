@@ -3,7 +3,13 @@ import app from '../src/app';
 import { sequelize } from '../src/utils/sequelize';
 import redis from '../src/utils/redis';
 import { generateJWT } from '../src/utils/jwt';
-import { OK, UNAUTHORIZED, FORBIDDEN, NOT_FOUND } from 'http-status';
+import {
+  BAD_REQUEST,
+  OK,
+  UNAUTHORIZED,
+  FORBIDDEN,
+  NOT_FOUND,
+} from 'http-status';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -16,6 +22,20 @@ afterAll(() => {
 });
 
 describe('Router /api/users/ticket', () => {
+  it('인자를 안주거나 잘못 줫을 경우 400', async () => {
+    const token = await generateJWT(true, 1, 1, '');
+    await request(app)
+      .post('/api/users/ticket')
+      .set({
+        Cookie: `UID-${token}`,
+        Accept: 'application/json',
+      })
+      .send({
+        ticketId: 3,
+      })
+      .expect(BAD_REQUEST);
+  });
+
   it('티켓 구매 날짜가 아닐 경우 403', async () => {
     const token = await generateJWT(true, 1, 1, '');
     await request(app)

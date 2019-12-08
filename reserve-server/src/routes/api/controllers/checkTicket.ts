@@ -1,11 +1,14 @@
 import { Response, NextFunction } from 'express';
 import { TicketCacheData, getTicketCache } from '../../../services';
-import { FORBIDDEN, NOT_FOUND } from 'http-status';
+import { BAD_REQUEST, FORBIDDEN, NOT_FOUND } from 'http-status';
 import { NOT_OPEN, SOLD_OUT, NOT_EXIST } from '../../../constants';
 
 export default async (req: any, res: Response, next: NextFunction) => {
   const time = Date.now();
-  const { ticketId } = req.body;
+  const { ticketId, orderTicketNum } = req.body;
+
+  if (ticketId === undefined || orderTicketNum === undefined)
+    return res.status(BAD_REQUEST).send();
 
   try {
     const { isBlock, salesEndAt, salesStartAt } = (await getTicketCache(
