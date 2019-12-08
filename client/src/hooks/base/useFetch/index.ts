@@ -36,8 +36,8 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
     type: 'request',
   };
   const [result, dispatch] = useReducer<Reducer<T>>(reducer, initialState);
-  let retry = true;
   useEffect(() => {
+    let retry = true;
     const fetchData = async () => {
       try {
         const { status, data } = await axios(axiosOptions);
@@ -61,7 +61,7 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
     if (result.type === 'request') {
       fetchData();
     }
-  }, [result.type, axiosOptions, retry]);
+  }, [result.type, axiosOptions]);
 
   return result;
 }
