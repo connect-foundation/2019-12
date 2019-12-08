@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, Dispatch } from 'react';
 
-import { useStateReducer } from 'hooks/base/useStateReduter';
+import { useStateReducer } from 'hooks/base/useStateReducer';
 import { UseStateReducer } from 'types/CustomHooks';
 import { ActionParams } from 'types/Actions';
 import { EventDetailState } from 'types/States';
