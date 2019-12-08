@@ -1,7 +1,7 @@
 import {
   validatePhoneNumber,
   validateName,
-} from '../src/routes/api/users/validators/validateSignUpForms';
+} from '../../src/utils/validateSignUpForms';
 
 describe('휴대폰 번호 validator', () => {
   it('휴대폰 번호가 숫자가 아닐경우', () => {
