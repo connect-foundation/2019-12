@@ -9,5 +9,10 @@ export const createUser = (
   phoneNumber: number,
 ) =>
   mainAxios.post('users', {
-    data: { id, googleId, email, firstName, lastName, phoneNumber },
+    id,
+    googleId,
+    email,
+    firstName,
+    lastName,
+    phoneNumber,
   });
