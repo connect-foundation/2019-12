@@ -1,5 +1,5 @@
-import { AccountState } from '../../../types/States';
-import { AccountAction } from '../../../types/Actions';
+import { AccountState } from 'types/States';
+import { AccountAction } from 'types/Actions';
 
 export const defaultAccountState: AccountState = {
   isLogin: false,

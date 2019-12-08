@@ -2,8 +2,7 @@ import React from 'react';
 
 import * as S from './style';
 import TicketImg from 'assets/img/ticket.svg';
-import IconLabel from 'components/molecules/IconLabel';
-import Price from 'components/atoms/Price';
+import { IconLabel, Price } from 'components';
 import { TicketType } from 'types/Data';
 import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
 

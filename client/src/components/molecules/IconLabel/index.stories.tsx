@@ -2,7 +2,7 @@ import React from 'react';
 import { text, object } from '@storybook/addon-knobs';
 
 import IconLabel from '.';
-import Check from '../../../assets/img/check-black.svg';
+import Check from 'assets/img/check-black.svg';
 
 export default {
   title: 'Molecules / IconLabel',

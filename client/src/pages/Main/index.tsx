@@ -1,11 +1,10 @@
 import React, { useState, useCallback } from 'react';
 
 import MainTemplate from './template';
-import MainBanner from 'components/organisms/MainBanner';
-import CardGrid from 'components/organisms/CardGrid';
-import { Event } from '../../types/Event';
-import { useIntersect } from '../../hooks';
-import delay from '../../utils/delay';
+import { MainBanner, CardGrid } from 'components';
+import { Event } from 'types/Event';
+import { useIntersect } from 'hooks';
+import delay from 'utils/delay';
 import { getEvents } from 'apis';
 
 const requestEventNum = 12;
