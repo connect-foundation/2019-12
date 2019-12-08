@@ -2,7 +2,8 @@ import * as request from 'supertest';
 import app from '../../src/app';
 import { sequelize } from '../../src/utils/sequelize';
 import { Event } from '../../src/models';
-import { OK, NO_CONTENT, NOT_FOUND } from 'http-status';
+import { OK, NO_CONTENT, BAD_REQUEST, NOT_FOUND } from 'http-status';
+import { cloneDeep } from 'lodash';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -111,5 +112,59 @@ describe('GET /api/events/coordinate', async () => {
       .get('/api/events/coordinate')
       .query({ place: '!@#' })
       .expect(NO_CONTENT);
+  });
+});
+
+describe('POST /api/events', async () => {
+  const createEventBody = {
+    isPublic: true,
+    title: '이벤트의 제목',
+    startAt: new Date('2020-01-01 13:00:00'),
+    endAt: new Date('2020-02-01 13:00:00'),
+    place: '패스트파이브 강남 4호점',
+    address: '서울시 강남구',
+    placeDesc: '주차 불가',
+    desc: '설명',
+    ticket: {
+      name: '일반',
+      desc: '일반',
+      quantity: 30,
+      isPublicLeftCnt: false,
+      maxCntPerPerson: 10,
+    },
+  };
+
+  it('정상적으로 응답', async () => {
+    await request(app)
+      .post('/api/events')
+      .send(createEventBody)
+      .expect(OK);
+  });
+
+  it('startAt 이 endAt 보다 크면 400 응답', async () => {
+    const body = cloneDeep(createEventBody);
+    body.startAt = new Date('2020-03-01 13:00:00');
+    await request(app)
+      .post('/api/events')
+      .send(body)
+      .expect(BAD_REQUEST);
+  });
+
+  it('ticket 의 maxCntPerPerson 가 quantity 보다 크면 400 응답', async () => {
+    const body = cloneDeep(createEventBody);
+    body.ticket.maxCntPerPerson = body.ticket.quantity + 5;
+    await request(app)
+      .post('/api/events')
+      .send(body)
+      .expect(BAD_REQUEST);
+  });
+
+  it('필수 항목이 없을 경우 400 응답', async () => {
+    const body = cloneDeep(createEventBody);
+    delete body.title;
+    await request(app)
+      .post('/api/events')
+      .send(body)
+      .expect(BAD_REQUEST);
   });
 });
