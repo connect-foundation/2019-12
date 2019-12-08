@@ -83,3 +83,16 @@ export async function placeToCoordinate(
   const { lat: latitude, lng: longitude } = candidates[0].geometry.location;
   return { latitude, longitude };
 }
+
+export async function createEventAndTicket(
+  event: Partial<Event>,
+  ticket: Partial<TicketType>,
+) {
+  const newEvent = await Event.create(event);
+  const newTicket = await TicketType.create({
+    ...ticket,
+    eventId: newEvent.id,
+  });
+
+  return { eventId: newEvent.id, ticketId: newTicket.id };
+}
