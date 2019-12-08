@@ -12,10 +12,7 @@ import { useStateReducer } from '../../hooks/base/useStateReduter';
 import { ActionParams } from '../../types/Actions';
 import { SignUpFormState } from '../../types/States';
 import { UseStateReducer } from '../../types/CustomHooks';
-import {
-  validatePhoneNumber,
-  validateName,
-} from '../../utils/validateSignUpForms';
+import { validatePhoneNumber, validateName } from '../../utils/validateInput';
 
 import { UserAccountState, UserAccountAction } from '../../stores/accountStore';
 
