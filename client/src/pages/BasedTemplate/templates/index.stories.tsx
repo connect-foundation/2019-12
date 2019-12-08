@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BasedTemplate from '../templates';
+import BasedTemplate from 'pages/BasedTemplate/templates';
 
 export default {
   title: 'Templates / BasedTemplate',

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { palette } from 'styled-tools';
 
-import Button from '../../atoms/Btn';
-import Image from '../../atoms/Img';
+import { Btn, Img } from 'components';
 
-export const Btn = styled(Button)`
+export const Button = styled(Btn)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +13,7 @@ export const Btn = styled(Button)`
   padding: 0;
 `;
 
-export const Img = styled(Image)`
+export const Image = styled(Img)`
   &:hover {
     opacity: ${palette('opacityscale', 1)};
     transition: opacity 1s;

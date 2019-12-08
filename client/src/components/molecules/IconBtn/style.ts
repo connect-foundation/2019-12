@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
-import { BtnStyle } from '../../atoms/Btn/style';
-import Icon from '../../atoms/Icon';
+import { BtnStyle } from 'components/atoms/Btn/style';
+import { Icon } from 'components';
 
 interface ContainerProps {
   fullid: boolean;

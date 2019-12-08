@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Icon from '.';
-import ExternalLinkSymbol from '../../../assets/img/external-link-symbol.svg';
+import ExternalLinkSymbol from 'src/assets/img/external-link-symbol.svg';
 
 describe('Atom / Icon', () => {
   it('[SNAPSHOT] 렌더링', () => {

@@ -3,8 +3,8 @@ import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import IconBtn from '.';
-import ExternalLinkSymbol from '../../../assets/img/external-link-black.svg';
-import ExternalLinkSymbolColored from '../../../assets/img/external-link-colored.svg';
+import ExternalLinkSymbol from 'assets/img/external-link-black.svg';
+import ExternalLinkSymbolColored from 'assets/img/external-link-colored.svg';
 const tempCircleImgSrc =
   'https://cf.festa.io/default-images/host-profiles/Profile-00047.jpg';
 

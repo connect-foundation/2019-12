@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import BasedTemplate from '../../BasedTemplate/templates';
+import BasedTemplate from 'pages/BasedTemplate/templates';
 
 interface Props {
   TicketHeader: React.ReactNode;
