@@ -9,6 +9,6 @@ export default async (req: any, res: Response, next: NextFunction) => {
     req.user = { id };
     next();
   } catch (err) {
-    res.status(UNAUTHORIZED).send('need to login');
+    res.status(UNAUTHORIZED).send({ message: 'unauthorized' });
   }
 };
