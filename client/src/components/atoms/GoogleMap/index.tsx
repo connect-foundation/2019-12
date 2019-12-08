@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import * as S from './style';
-import Pin from '../../../assets/img/pin.svg';
+import Pin from 'assets/img/pin.svg';
 
 const {
   REACT_APP_GOOGLE_MAP_API_KEY,

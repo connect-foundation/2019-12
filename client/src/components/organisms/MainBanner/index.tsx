@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import Btn from 'components/atoms/Btn';
+import { Btn } from 'components';
 import { CREATE_EVENT } from 'commons/constants/string';
 import ROUTES from 'commons/constants/routes';
 

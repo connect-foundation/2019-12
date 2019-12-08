@@ -1,4 +1,4 @@
-import { EventDetail } from '../types/Data';
+import { EventDetail } from 'types/Data';
 
 export interface SignUpFormState {
   lastName: string;

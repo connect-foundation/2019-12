@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import Icon from 'components/atoms/Icon';
+import { Icon } from 'components';
 import LeftArrow from 'assets/img/left-arrow.svg';
 import RightArrow from 'assets/img/right-arrow.svg';
 
