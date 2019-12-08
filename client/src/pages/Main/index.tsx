@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import axios from 'axios';
 
 import MainTemplate from './template';
 import MainBanner from 'components/organisms/MainBanner';
@@ -7,24 +6,20 @@ import CardGrid from 'components/organisms/CardGrid';
 import { Event } from '../../types/Event';
 import { useIntersect } from '../../hooks';
 import delay from '../../utils/delay';
+import { getEvents } from 'apis';
+
+const requestEventNum = 12;
 
 function Main(): React.ReactElement {
   const [events, setEvents] = useState<Event[]>([]);
-  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
-
   const fetchItems = useCallback(async () => {
     const startAt =
-      events.length === 0
-        ? ''
-        : `&startAt=${events[events.length - 1].startAt}`;
-    const { data } = await axios({
-      method: 'GET',
-      url: `${SERVER_URL}/api/events?cnt=12${startAt}`,
-      withCredentials: true,
-    });
+      events.length === 0 ? '' : `${events[events.length - 1].startAt}`;
+    const { data } = await getEvents(requestEventNum, startAt);
+
     await delay(100);
     setEvents([...events, ...data]);
-  }, [SERVER_URL, events]);
+  }, [events]);
 
   const [, setRef] = useIntersect(
     async (
