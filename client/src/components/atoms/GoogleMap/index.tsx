@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import * as S from './style';
-import Pin from '../../../assets/img/pin.svg';
+import Pin from 'assets/img/pin.svg';
 
 const {
   REACT_APP_GOOGLE_MAP_API_KEY,
@@ -27,6 +27,7 @@ function GoogleMap({ latitude, longitude }: Props): React.ReactElement {
         center={{ lat: latitude, lng: longitude }}
         defaultCenter={defaultCenter}
         defaultZoom={defaultZoom}
+        draggable={false}
       >
         <S.PinIcon alt={'pin'} height={'3rem'} src={Pin} />
       </GoogleMapReact>

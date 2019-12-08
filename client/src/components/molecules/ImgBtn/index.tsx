@@ -15,9 +15,9 @@ interface Props {
 
 function ImgBtn({ src, alt, ...props }: Props): React.ReactElement {
   return (
-    <S.Btn {...props}>
-      <S.Img alt={alt} src={src} />
-    </S.Btn>
+    <S.Button {...props}>
+      <S.Image alt={alt} src={src} />
+    </S.Button>
   );
 }
 

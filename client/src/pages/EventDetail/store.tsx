@@ -1,9 +1,9 @@
 import React, { createContext, useReducer, Dispatch } from 'react';
 
-import { useStateReducer } from '../../hooks/base/useStateReduter';
-import { UseStateReducer } from '../../types/CustomHooks';
-import { ActionParams } from '../../types/Actions';
-import { EventDetailState } from '../../types/States';
+import { useStateReducer } from 'hooks/base/useStateReduter';
+import { UseStateReducer } from 'types/CustomHooks';
+import { ActionParams } from 'types/Actions';
+import { EventDetailState } from 'types/States';
 
 const defaultState: EventDetailState = {
   eventData: {

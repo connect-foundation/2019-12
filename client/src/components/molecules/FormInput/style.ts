@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ifProp, palette, theme } from 'styled-tools';
-import Input from '../../atoms/Input';
+import Input from 'components/atoms/Input';
 
 interface Props {
   invalid?: boolean;

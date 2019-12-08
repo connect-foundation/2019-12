@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ImgBtn from '../../molecules/ImgBtn';
+import { ImgBtn } from 'components';
 
 export const Container = styled.div`
   width: 100%;
