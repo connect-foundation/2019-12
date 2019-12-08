@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
 import { BtnStyle } from 'components/atoms/Btn/style';
-import { Icon } from 'components';
+import Icon from 'components/atoms/Icon';
 
 interface ContainerProps {
   fullid: boolean;
