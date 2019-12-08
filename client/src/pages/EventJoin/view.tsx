@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import httpStatus from 'http-status';
+import { useHistory } from 'react-router-dom';
 
 import EventJoinTemplate from './template';
 import TicketBox from 'components/organisms/TicketBox';
 import Counter from 'components/molecules/Counter';
 import Btn from 'components/atoms/Btn';
 import * as S from './style';
-import { useHistory } from 'react-router-dom';
-import httpStatus from 'http-status';
-
-const { REACT_APP_SERVER_RESERVE_URL } = process.env;
+import { joinEvent } from 'apis';
 
 const ticketData = {
   name: '일반 입장권',
@@ -49,18 +47,7 @@ function EventJoin({ eventId }: Props): React.ReactElement {
     // 401 : 로그인
     // 403, 404 : ban
 
-    await axios({
-      url: `${REACT_APP_SERVER_RESERVE_URL}/api/users/ticket`,
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-      },
-      data: {
-        ticketId: eventId,
-        orderTicketNum: ticketCount,
-      },
-      withCredentials: true,
-    })
+    await joinEvent(eventId, ticketCount)
       .then(res => {
         const { status } = res;
         if (status === httpStatus.OK) {
