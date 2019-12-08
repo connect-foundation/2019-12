@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-
 import { useStateReducer } from '../../hooks/base/useStateReduter';
 import { ActionParams } from '../../types/Actions';
 import { SignUpFormState } from '../../types/States';
@@ -16,8 +15,8 @@ import {
   validatePhoneNumber,
   validateName,
 } from '../../utils/validateSignUpForms';
-
 import { UserAccountState, UserAccountAction } from '../../stores/accountStore';
+import { BAD_REQUEST, FORBIDDEN, OK } from 'http-status';
 
 const { REACT_APP_SERVER_URL } = process.env;
 
@@ -98,7 +97,6 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
     });
   }, [lastName]);
 
-  // Axios
   useEffect(() => {
     if (!submit) return;
     (async function getToken() {
@@ -113,7 +111,6 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         alert('입력값을 확인해주세요');
         return;
       }
-      // Userdata를 서버로 보냄.
       try {
         const updateUserRes = await createUser(
           userId,
@@ -123,17 +120,17 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
           lastName,
           +phoneNumber,
         );
-        if (updateUserRes.status === 200) {
+        if (updateUserRes.status === OK) {
           alert('회원가입이 완료되었습니다.');
           setLoginState(true);
           history.push('/');
         }
       } catch (err) {
         //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
-        if (err.response.status === 403) {
+        if (err.response.status === FORBIDDEN) {
           alert('잘못된 입력값입니다.');
         }
-        if (err.response.status === 400) {
+        if (err.response.status === BAD_REQUEST) {
           alert('이미 가입되어있는 회원입니다.');
           history.push('/');
         }
