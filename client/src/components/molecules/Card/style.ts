@@ -1,6 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { palette, theme } from 'styled-tools';
 import { Link } from 'react-router-dom';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+`;
 
 export const LinkWrapper = styled(Link)`
   display: flex;
@@ -8,6 +17,7 @@ export const LinkWrapper = styled(Link)`
   background-color: ${palette('white', 0)};
   box-shadow: ${palette('grayscale', 5)} 0px 2px 4px 0px;
   cursor: pointer;
+  animation: ${fadeIn} 1s;
 `;
 
 export const HeaderWrapper = styled.div``;
