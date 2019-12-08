@@ -2,11 +2,11 @@ import { checkSchema, CustomValidator } from 'express-validator';
 import { resolveObject } from '../../../../utils/objectResolver';
 
 const isLessThan = (key: string): { options: CustomValidator } => ({
-  options: (value, { req }) => resolveObject(req.body, key) > value,
+  options: (value, { req }) => resolveObject(req.body, key) >= value,
 });
 
 const isGreaterThan = (key: string): { options: CustomValidator } => ({
-  options: (value, { req }) => resolveObject(req.body, key) < value,
+  options: (value, { req }) => resolveObject(req.body, key) <= value,
 });
 
 export default checkSchema({
