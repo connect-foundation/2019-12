@@ -27,6 +27,7 @@ function GoogleMap({ latitude, longitude }: Props): React.ReactElement {
         center={{ lat: latitude, lng: longitude }}
         defaultCenter={defaultCenter}
         defaultZoom={defaultZoom}
+        draggable={false}
       >
         <S.PinIcon alt={'pin'} height={'3rem'} src={Pin} />
       </GoogleMapReact>
