@@ -1,13 +1,13 @@
 import React from 'react';
 
 import * as S from './style';
-import BasedTemplate from '../../BasedTemplate/templates';
+import BasedTemplate from 'pages/BasedTemplate/templates';
 
 interface Props {
   loading: boolean;
   internalServerError: boolean;
   eventHeader: React.ReactNode;
-  eventContent: React.ReactNode;
+  eventContent: string;
   ticket: React.ReactNode;
   place: React.ReactNode;
 }
@@ -25,7 +25,9 @@ function EventDetailTemplate({
       <S.Container>
         {eventHeader}
         <S.ContentContainer>
-          <S.ContentWrapper>{eventContent}</S.ContentWrapper>
+          <S.ContentWrapper
+            dangerouslySetInnerHTML={{ __html: eventContent }}
+          />
           <S.TicketWrapper>{ticket}</S.TicketWrapper>
         </S.ContentContainer>
         <S.PlaceWrapper>{place}</S.PlaceWrapper>

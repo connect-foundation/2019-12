@@ -1,4 +1,4 @@
-import { validatePhoneNumber, validateName } from './validateSignUpForms';
+import { validatePhoneNumber, validateName } from '.';
 
 describe('휴대폰 번호 validator', () => {
   it('휴대폰 번호가 숫자가 아닐경우', () => {

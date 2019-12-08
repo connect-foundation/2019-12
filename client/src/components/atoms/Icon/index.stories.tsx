@@ -2,7 +2,7 @@ import React from 'react';
 import { text } from '@storybook/addon-knobs';
 
 import Icon from '.';
-import ExternalLinkSymbol from '../../../assets/img/external-link-symbol.svg';
+import ExternalLinkSymbol from 'assets/img/external-link-symbol.svg';
 
 export default {
   title: 'Atoms / Icon',

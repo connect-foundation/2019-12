@@ -1,7 +1,9 @@
 import React from 'react';
 import * as S from './style';
-import FormInput, { Props as FormInputProps } from '../../molecules/FormInput';
-import Btn, { Props as BtnProps } from '../../atoms/Btn';
+import FormInput, {
+  Props as FormInputProps,
+} from 'components/molecules/FormInput';
+import Btn, { Props as BtnProps } from 'components/atoms/Btn';
 
 export interface Props {
   FormInputs: {

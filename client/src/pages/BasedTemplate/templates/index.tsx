@@ -1,10 +1,9 @@
 import React from 'react';
 
 import * as S from './style';
-import Header from 'components/organisms/Header';
-import Footer from 'components/organisms/Footer';
-import Loading from 'components/atoms/Loading';
+
 import ROUTES from 'commons/constants/routes';
+import { Header, Footer, Loading } from 'components';
 
 interface Props {
   loading?: boolean;

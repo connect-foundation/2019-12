@@ -1,8 +1,8 @@
 import React from 'react';
 
 import * as S from './style';
-import Card from 'components/molecules/Card';
 import { EventsState } from 'types/States';
+import { Card } from 'components';
 import ROUTES from 'commons/constants/routes';
 
 interface Props {

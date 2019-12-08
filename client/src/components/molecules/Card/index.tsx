@@ -1,9 +1,8 @@
 import React from 'react';
 
-import * as S from './style';
 import { EVENT_NAME_MAX_LENGTH } from 'commons/constants/number';
-import Divider from 'components/atoms/Divider';
-import Img from 'components/atoms/Img';
+import * as S from './style';
+import { Divider, Img } from 'components';
 
 export interface Props {
   /** 라우팅 URL */

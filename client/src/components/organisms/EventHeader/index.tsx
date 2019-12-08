@@ -1,14 +1,12 @@
 import React from 'react';
 
 import * as S from './style';
-import Icon from '../../atoms/Icon';
-import IconBtn from '../../molecules/IconBtn';
-import Price from '../../atoms/Price';
-import { User, TicketType } from '../../../types/Data';
+import { Icon, IconBtn, Price } from 'components';
+import { User, TicketType } from 'types/Data';
 
-import MultipleUsers from '../../../assets/img/multiple-users-silhouette.svg';
-import ExternalSymbolBlack from '../../../assets/img/external-link-black.svg';
-import ExternalSymbolColored from '../../../assets/img/external-link-colored.svg';
+import MultipleUsers from 'assets/img/multiple-users-silhouette.svg';
+import ExternalSymbolBlack from 'assets/img/external-link-black.svg';
+import ExternalSymbolColored from 'assets/img/external-link-colored.svg';
 
 interface Props {
   id: number;

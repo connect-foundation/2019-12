@@ -11,6 +11,36 @@ import { useFetch } from 'hooks/base/useFetch';
 import { EventDetail } from 'types/Data';
 
 const { REACT_APP_SERVER_URL } = process.env;
+// TODO: type에 해당 defaultValue도 같이 있어주면 어떨까라는 생각을 함
+// 8 Dec 2019 by inthewalter
+const defaultEventDetail: EventDetail = {
+  id: 0,
+  title: '',
+  startAt: '',
+  endAt: '',
+  place: '',
+  address: '',
+  placeDesc: '',
+  latitude: 0,
+  longitude: 0,
+  mainImg: '',
+  desc: '',
+  ticketType: {
+    id: 0,
+    eventId: 0,
+    name: '',
+    desc: '',
+    price: 0,
+    quantity: 0,
+    leftCnt: 0,
+    isPublicLeftCnt: false,
+    maxCntPerPerson: 0,
+    salesStartAt: '',
+    salesEndAt: '',
+    refundEndAt: '',
+  },
+  user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
+};
 
 const checkEventIsInState = (
   events: Map<number, EventDetail>,
@@ -25,7 +55,25 @@ function EventDetailView(): React.ReactElement {
   const [internalServerError, setinternalError] = useState(false);
   const history = useHistory();
 
-  const events = eventsState.events.get(+eventId!)!;
+  const events = checkEventIsInState(eventsState.events, +eventId!)
+    ? eventsState.events.get(+eventId!)!
+    : defaultEventDetail;
+
+  const {
+    id,
+    mainImg,
+    title,
+    startAt,
+    endAt,
+    user,
+    desc,
+    ticketType,
+    place,
+    address,
+    placeDesc,
+    latitude,
+    longitude,
+  } = events;
   const loading = events ? false : true;
 
   const requestFetch = useFetch({
@@ -59,17 +107,33 @@ function EventDetailView(): React.ReactElement {
 
   return (
     <EventDetailTemplate
-      eventHeader={<EventHeader {...(events && events)} />}
-      // TODO: eventContent will change to contentViewer component
-      eventContent={
-        <div
-          dangerouslySetInnerHTML={{
-            __html: events && events.desc,
+      eventHeader={
+        <EventHeader
+          {...{
+            id,
+            mainImg,
+            title,
+            startAt,
+            endAt,
+            user,
+            place,
+            ticketType,
           }}
         />
       }
-      ticket={<Ticket {...(events && events.ticketType)} />}
-      place={<Place {...(events && events)} />}
+      // TODO: eventContent will change to contentViewer component
+      eventContent={desc}
+      ticket={<Ticket {...ticketType} />}
+      place={
+        <Place
+          {...{
+            place,
+            address,
+            placeDesc,
+            location: { latitude, longitude },
+          }}
+        />
+      }
       loading={loading}
       internalServerError={internalServerError}
     />
