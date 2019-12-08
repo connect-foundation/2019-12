@@ -36,7 +36,7 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
     type: 'request',
   };
   const [result, dispatch] = useReducer<Reducer<T>>(reducer, initialState);
-  let tryCnt = 0;
+  let retry = true;
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,8 +48,8 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
         if (err.response && err.response.status === NOT_FOUND) {
           dispatch({ type: 'failure', err, status: NOT_FOUND });
         } else {
-          if (tryCnt < 3) {
-            tryCnt += 1;
+          if (retry) {
+            retry = !retry;
             await delay(1000);
             fetchData();
           } else {
@@ -61,7 +61,7 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
     if (result.type === 'request') {
       fetchData();
     }
-  }, [result.type, axiosOptions, tryCnt]);
+  }, [result.type, axiosOptions, retry]);
 
   return result;
 }
