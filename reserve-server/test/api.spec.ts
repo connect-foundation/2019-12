@@ -28,7 +28,13 @@ describe('Router /api/users/ticket', () => {
         ticketId: 3,
         orderTicketNum: 1,
       })
-      .expect(FORBIDDEN);
+      .expect(FORBIDDEN)
+      .expect(res => {
+        expect(res.body).toStrictEqual({
+          state: 0,
+          message: 'wrong date',
+        });
+      });
   });
 
   it('티켓 구매 날짜가 지났을 경우 403', async () => {
@@ -43,7 +49,13 @@ describe('Router /api/users/ticket', () => {
         ticketId: 4,
         orderTicketNum: 1,
       })
-      .expect(FORBIDDEN);
+      .expect(FORBIDDEN)
+      .expect(res => {
+        expect(res.body).toStrictEqual({
+          state: 0,
+          message: 'wrong date',
+        });
+      });
   });
 
   it('티켓 정보는 다 맞지만, 로그인을 하지 않았을 경우 401', async () => {
@@ -71,7 +83,12 @@ describe('Router /api/users/ticket', () => {
         ticketId: 10000,
         orderTicketNum: 1,
       })
-      .expect(NOT_FOUND);
+      .expect(NOT_FOUND)
+      .expect(res => {
+        expect(res.body).toStrictEqual({
+          message: 'wrong number of ticket',
+        });
+      });
   });
 
   it('Ticket 구매가 가능할 경우 200', async () => {
@@ -101,7 +118,13 @@ describe('Router /api/users/ticket', () => {
         ticketId: 1,
         orderTicketNum: 1,
       })
-      .expect(FORBIDDEN);
+      .expect(FORBIDDEN)
+      .expect(res => {
+        expect(res.body).toStrictEqual({
+          state: 1,
+          message: 'ticket sold out',
+        });
+      });
   });
 
   it('티켓이 남아있지만, 한 사람이 살 수 있는 최대 개수를 초과할 경우 403', async () => {
@@ -116,6 +139,12 @@ describe('Router /api/users/ticket', () => {
         ticketId: 2,
         orderTicketNum: 1,
       })
-      .expect(FORBIDDEN);
+      .expect(FORBIDDEN)
+      .expect(res => {
+        expect(res.body).toStrictEqual({
+          state: 2,
+          message: 'limit exceed ticket per person',
+        });
+      });
   });
 });
