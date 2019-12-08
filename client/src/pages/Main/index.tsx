@@ -26,17 +26,20 @@ function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
   const { eventsDispather } = useContext(EventsStoreAction);
 
-  const getNextEvents = useCallback(async () => {
-    let startAt = '';
-    if (eventsState.order!.length !== 0) {
-      const lastItemIndex = eventsState.order!.slice(-1)[0];
-      startAt = `&startAt=${eventsState.events.get(lastItemIndex)!.startAt}`;
-    }
-    eventsDispather({
-      type: 'MAIN',
-      value: await fetchEvents(startAt),
-    });
-  }, [eventsDispather, eventsState.events, eventsState.order]);
+  const getNextEvents = useCallback(
+    async function() {
+      let startAt = '';
+      if (eventsState.order!.length !== 0) {
+        const lastItemIndex = eventsState.order!.slice(-1)[0];
+        startAt = `&startAt=${eventsState.events.get(lastItemIndex)!.startAt}`;
+      }
+      eventsDispather({
+        type: 'MAIN',
+        value: await fetchEvents(startAt),
+      });
+    },
+    [eventsDispather, eventsState.events, eventsState.order],
+  );
 
   const callback = async (
     entry: IntersectionObserverEntry,
