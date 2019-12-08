@@ -9,6 +9,12 @@ const router = Router();
 
 router.param('eventId', middlewares.requestParamHandler);
 router.get('/', validators.getEvents, badRequestHandler, controllers.getEvents);
+router.post(
+  '/',
+  validators.createEvent,
+  badRequestHandler,
+  controllers.createEvent,
+);
 router.get('/coordinate', controllers.convertPlaceToCoordinate);
 router.get('/:eventId', controllers.getEvent);
 router.get('/:eventId/tickets', controllers.getEventTickets);
