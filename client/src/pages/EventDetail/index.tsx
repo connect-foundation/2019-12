@@ -6,6 +6,7 @@ import EventDetailTemplate from './template';
 import { EventHeader, Ticket, Place } from 'components';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
+import delay from 'utils/delay';
 
 const defaultEventDetail: EventDetail = {
   id: 0,
@@ -81,7 +82,10 @@ function EventDetailView(): React.ReactElement {
     if (eventsState.status === NOT_FOUND) {
       history.replace('/NOT_FOUND');
     } else if (eventsState.status === INTERNAL_SERVER_ERROR) {
-      setInternalError(true);
+      (async () => {
+        await delay(2000);
+        setInternalError(true);
+      })();
     }
   }, [eventFetchDispatcher, eventId, eventsState.status, history]);
 
