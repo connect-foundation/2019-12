@@ -93,6 +93,16 @@
       "ts-jest": {
         "enableTsDiagnostics": true
       }
+    },
+    "moduleNameMapper": {
+      "^app$": "<rootDir>/src/app",
+      "^env$": "<rootDir>/src/env",
+      "^models$": "<rootDir>/src/models",
+      "^routes/(.*)$": "<rootDir>/src/routes/$1",
+      "^services$": "<rootDir>/src/services",
+      "^services/(.*)$": "<rootDir>/src/services/$1",
+      "^types/(.*)$": "<rootDir>/src/types/$1",
+      "^utils/(.*)$": "<rootDir>/src/utils/$1"
     }
   }
 }
