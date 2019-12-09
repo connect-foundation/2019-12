@@ -74,7 +74,6 @@ describe('Hooks', () => {
       });
 
       useEffect(() => {
-        console.log(result.type);
         resultTypes.push(result.type);
       }, [result]);
 
