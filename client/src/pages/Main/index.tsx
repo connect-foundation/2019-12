@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import axios from 'axios';
+import { getEvents } from 'apis';
 
 import MainTemplate from './template';
 import { MainBanner, CardGrid } from 'components';
@@ -7,13 +7,11 @@ import { EventDetail } from 'types/Data';
 import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 
-const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+const requestEventNum = 12;
 
 const fetchEvents = async (startAt: string) => {
-  const { data } = await axios({
-    method: 'GET',
-    url: `${SERVER_URL}/api/events?cnt=12${startAt}`,
-  });
+  const { data } = await getEvents(requestEventNum, startAt);
+
   const events = new Map<number, EventDetail>();
   const order = data.map((event: EventDetail) => {
     events.set(event.id, event);
@@ -31,7 +29,7 @@ function Main(): React.ReactElement {
       let startAt = '';
       if (eventsState.order!.length !== 0) {
         const lastItemIndex = eventsState.order!.slice(-1)[0];
-        startAt = `&startAt=${eventsState.events.get(lastItemIndex)!.startAt}`;
+        startAt = eventsState.events.get(lastItemIndex)!.startAt;
       }
       eventsDispather({
         type: 'MAIN',
