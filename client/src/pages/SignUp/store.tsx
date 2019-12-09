@@ -6,17 +6,15 @@ import React, {
   Dispatch,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { OK, BAD_REQUEST } from 'http-status';
 
 import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
 import { SignUpFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
 import { validatePhoneNumber, validateName } from 'utils/validateInput';
-
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
-
-const { REACT_APP_SERVER_URL } = process.env;
+import { createUser } from 'apis';
 
 const defaultState: SignUpFormState = {
   lastName: '',
@@ -32,28 +30,6 @@ export const SignUpState = createContext<SignUpFormState>(defaultState);
 export const SignUpAction = createContext<
   Dispatch<ActionParams<SignUpFormState>>
 >(() => {});
-
-const createUser = (
-  id: number,
-  googleId: number,
-  email: string,
-  firstName: string,
-  lastName: string,
-  phoneNumber: number,
-) =>
-  axios(`${REACT_APP_SERVER_URL}/api/users`, {
-    method: 'post',
-    data: Object.assign(
-      { id, googleId },
-      {
-        email,
-        firstName,
-        lastName,
-        phoneNumber,
-      },
-    ),
-    withCredentials: true,
-  });
 
 function StoreProvider({ children }: { children: React.ReactElement }) {
   const history = useHistory();
@@ -88,7 +64,6 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
     });
   }, [lastName]);
 
-  // Axios
   useEffect(() => {
     (async function getToken() {
       if (submit) {
@@ -102,7 +77,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
             lastName,
             +phoneNumber,
           );
-          if (updateUserRes.status === 200) {
+          if (updateUserRes.status === OK) {
             alert('회원가입이 완료되었습니다.');
             dispatcher({ type: 'submit', value: false });
             setLoginState(true);
@@ -110,7 +85,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
           }
         } catch (err) {
           //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
-          if (err.response.status === 400) {
+          if (err.response.status === BAD_REQUEST) {
             alert('이미 가입되어있는 회원입니다.');
             dispatcher({ type: 'submit', value: false });
             history.push('/');
