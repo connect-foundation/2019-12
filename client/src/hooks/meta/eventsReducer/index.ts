@@ -35,8 +35,7 @@ export function eventsReducer(state: EventsState, action: EventsAction) {
         events: produceMap(state.events!, action.value.events!),
         status: action.value.status,
       };
-    case '404':
-    case '500':
+    case 'ERROR':
       return {
         ...state,
         status: action.value.status,
