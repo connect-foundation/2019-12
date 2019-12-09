@@ -6,6 +6,7 @@ import { MainBanner, CardGrid } from 'components';
 import { EventDetail } from 'types/Data';
 import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
+import { EventsState } from 'types/States';
 
 const requestEventNum = 12;
 
@@ -20,23 +21,29 @@ const fetchEvents = async (startAt: string) => {
   return { events, order };
 };
 
+const getStartAt = (eventsState: EventsState) => {
+  let startAt = '';
+  if (eventsState.order!.length !== 0) {
+    const lastItemIndex = eventsState.order!.slice(-1)[0];
+    startAt = eventsState.events.get(lastItemIndex)!.startAt;
+  }
+  return startAt;
+};
+
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
   const { eventsDispather } = useContext(EventsStoreAction);
 
   const getNextEvents = useCallback(
     async function() {
-      let startAt = '';
-      if (eventsState.order!.length !== 0) {
-        const lastItemIndex = eventsState.order!.slice(-1)[0];
-        startAt = eventsState.events.get(lastItemIndex)!.startAt;
-      }
+      const startAt = getStartAt(eventsState);
+
       eventsDispather({
         type: 'MAIN',
         value: await fetchEvents(startAt),
       });
     },
-    [eventsDispather, eventsState.events, eventsState.order],
+    [eventsDispather, eventsState],
   );
 
   const callback = async (
