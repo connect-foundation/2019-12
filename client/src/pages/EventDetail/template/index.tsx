@@ -6,7 +6,6 @@ import BasedTemplate from 'pages/BasedTemplate/templates';
 interface Props {
   loading: boolean;
   internalServerError: boolean;
-  notFoundError: boolean;
   eventHeader: React.ReactNode;
   eventContent: string;
   ticket: React.ReactNode;
@@ -16,18 +15,13 @@ interface Props {
 function EventDetailTemplate({
   loading,
   internalServerError,
-  notFoundError,
   eventHeader,
   eventContent,
   ticket,
   place,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate
-      loading={loading}
-      notFoundError={notFoundError}
-      internalServerError={internalServerError}
-    >
+    <BasedTemplate loading={loading} internalServerError={internalServerError}>
       <S.Container>
         {eventHeader}
         <S.ContentContainer>

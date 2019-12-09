@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import EventDetailTemplate from './template';
 import EventHeader from 'components/organisms/EventHeader';
@@ -53,7 +53,7 @@ function EventDetailView(): React.ReactElement {
   const { eventsDispather } = useContext(EventsStoreAction);
   const { eventId } = useParams();
   const [internalServerError, setInternalError] = useState(false);
-  const [notFoundError, setNotFoundError] = useState(false);
+  const history = useHistory();
   const isEventInState = checkIfEventIsInState(eventsState.events, +eventId!);
 
   const events = isEventInState
@@ -98,11 +98,12 @@ function EventDetailView(): React.ReactElement {
           });
           break;
         case 'failure':
-          if (requestFetch.status === 404) setNotFoundError(true);
-          else setInternalError(true);
+          if (requestFetch.status === 404) {
+            history.replace('/NOT_FOUND');
+          } else setInternalError(true);
       }
     }
-  }, [requestFetch, eventId, eventsDispather, eventsState, isEventInState]);
+  }, [requestFetch, eventId, eventsDispather, eventsState, isEventInState, history]);
 
   return (
     <EventDetailTemplate
@@ -135,7 +136,6 @@ function EventDetailView(): React.ReactElement {
       }
       loading={loading}
       internalServerError={internalServerError}
-      notFoundError={notFoundError}
     />
   );
 }
