@@ -8,7 +8,6 @@ import {
   SIGNUP_FIRST_NAME,
   SIGNUP_LAST_NAME,
   SIGNUP_PHONE_NUMBER,
-  SIGNUP_PASSSWORD,
 } from '../../../commons/constants/string';
 
 export default {

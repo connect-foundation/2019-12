@@ -8,10 +8,10 @@ import React, {
 } from 'react';
 import axios from 'axios';
 
-import { AccountAction } from '../types/Actions';
-import { AccountState } from '../types/States';
-import { AccountReducer } from '../types/CustomHooks';
-import { accountReducer, defaultAccountState } from '../hooks';
+import { AccountAction } from 'types/Actions';
+import { AccountState } from 'types/States';
+import { AccountReducer } from 'types/CustomHooks';
+import { accountReducer, defaultAccountState } from 'hooks';
 
 const { REACT_APP_SERVER_URL } = process.env;
 

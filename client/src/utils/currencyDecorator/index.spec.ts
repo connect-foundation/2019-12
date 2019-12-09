@@ -1,4 +1,4 @@
-import currencyDecorator from './currencyDecorator';
+import currencyDecorator from '.';
 
 describe('currencyDecorator', () => {
   // given

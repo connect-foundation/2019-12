@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { prop, theme, palette } from 'styled-tools';
 
-import Btn from '../../atoms/Btn';
+import { Btn } from 'components';
 
 export const Container = styled.div``;
 
