@@ -1,7 +1,5 @@
 sudo: required
 language: node_js
-cache:
-  npm: false
 node_js:
   - 12.13
 branches:
