@@ -8,11 +8,11 @@ import { EventsState } from 'types/States';
 
 const requestEventNum = 12;
 
-const getStartAt = (eventsState: EventsState) => {
+const getStartAt = ({ events, order }: Partial<EventsState>) => {
   let startAt = '';
-  if (eventsState.order!.length !== 0) {
-    const lastItemIndex = eventsState.order!.slice(-1)[0];
-    startAt = eventsState.events.get(lastItemIndex)!.startAt;
+  if (order!.length !== 0) {
+    const lastItemIndex = order!.slice(-1)[0];
+    startAt = events!.get(lastItemIndex)!.startAt;
   }
   return startAt;
 };
@@ -20,10 +20,11 @@ const getStartAt = (eventsState: EventsState) => {
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
   const { eventFetchDispatcher } = useContext(EventsStoreAction);
+  const { events, order } = eventsState;
 
   const getNextEvents = useCallback(
     async function() {
-      const startAt = getStartAt(eventsState);
+      const startAt = getStartAt({ events, order });
       eventFetchDispatcher({
         type: 'EVENTS',
         params: {
@@ -32,7 +33,7 @@ function Main(): React.ReactElement {
         },
       });
     },
-    [eventsState, eventFetchDispatcher],
+    [events, order, eventFetchDispatcher],
   );
 
   const [, setRef] = useIntersect(callback, {
@@ -49,7 +50,9 @@ function Main(): React.ReactElement {
   return (
     <MainTemplate
       mainBanner={<MainBanner />}
-      cardGrid={<CardGrid eventsState={eventsState} setRef={setRef} />}
+      cardGrid={
+        <CardGrid events={events!} eventsOrder={order!} setRef={setRef} />
+      }
     />
   );
 }
