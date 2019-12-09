@@ -21,7 +21,7 @@ const produceMap = (
 
 export function eventsReducer(state: EventsState, action: EventsAction) {
   switch (action.type) {
-    case 'MAIN':
+    case 'EVENTS':
       return {
         ...state,
         events: produceMap(state.events, action.value.events),
