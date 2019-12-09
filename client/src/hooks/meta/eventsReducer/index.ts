@@ -7,6 +7,7 @@ import { EventsAction } from 'types/Actions';
 export const defaultEventsState: EventsState = {
   events: new Map<number, EventDetail>(),
   order: [],
+  status: 0,
 };
 
 const produceMap = (
@@ -24,13 +25,21 @@ export function eventsReducer(state: EventsState, action: EventsAction) {
     case 'EVENTS':
       return {
         ...state,
-        events: produceMap(state.events, action.value.events),
+        events: produceMap(state.events!, action.value.events!),
         order: [...state.order!, ...action.value.order!],
+        status: action.value.status,
       };
     case 'EVENT':
       return {
         ...state,
-        events: produceMap(state.events, action.value.events),
+        events: produceMap(state.events!, action.value.events!),
+        status: action.value.status,
+      };
+    case '404':
+    case '500':
+      return {
+        ...state,
+        status: action.value.status,
       };
     default:
       throw new Error(`unexpected action.type: ${action.type}`);
