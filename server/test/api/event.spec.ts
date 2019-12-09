@@ -94,7 +94,7 @@ describe('GET /api/events/:eventId/tickets', () => {
   });
 });
 
-describe('GET /api/events/coordinate', async () => {
+describe('GET /api/events/coordinate', () => {
   it('정상적으로 응답', async () => {
     const { body } = await request(app)
       .get('/api/events/coordinate')
