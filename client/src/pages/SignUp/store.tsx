@@ -8,7 +8,7 @@ import React, {
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import { useStateReducer } from 'hooks/base/useStateReduter';
+import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
 import { SignUpFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
