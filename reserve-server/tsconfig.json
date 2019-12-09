@@ -17,6 +17,7 @@
       "*": ["node_modules/*"],
       "app": ["app"],
       "env": ["env"],
+      "common/*": ["common/*"],
       "models": ["models"],
       "routes/*": ["routes/*"],
       "services": ["services"],

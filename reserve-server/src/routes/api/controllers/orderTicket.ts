@@ -2,7 +2,8 @@ import { Response } from 'express';
 import { sequelize } from 'utils/sequelize';
 import { Transaction } from 'sequelize/types';
 import { orderTransaction } from 'services';
-import { FORBIDDEN } from 'http-status';
+import { FORBIDDEN, NOT_FOUND } from 'http-status';
+import { SUCCESS } from 'common/constants';
 
 export default async (req: any, res: Response) => {
   const userId = req.user.id;
@@ -12,8 +13,9 @@ export default async (req: any, res: Response) => {
       async (t: Transaction) =>
         await orderTransaction(t, userId, ticketId, orderTicketNum),
     );
-    res.send({ message: 'success' });
+    res.send(SUCCESS);
   } catch (err) {
-    res.status(FORBIDDEN).send({ message: 'failure' });
+    if (err.state === 404) return res.status(NOT_FOUND).send(err);
+    return res.status(FORBIDDEN).send(err);
   }
 };
