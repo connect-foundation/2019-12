@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import EventDetailTemplate from './template';
-import EventHeader from 'components/organisms/EventHeader';
-import Ticket from 'components/organisms/Ticket';
-import Place from 'components/organisms/Place';
+import { Place, Ticket, EventHeader } from 'components';
 
 import { EventDataAction, EventDataState } from './store';
-import { useFetch } from '../../hooks/base/useFetch';
-import { EventDetail } from '../../types/Data';
+import { useFetch } from 'hooks/base/useFetch';
+import { EventDetail } from 'types/Data';
 
 const { REACT_APP_SERVER_URL } = process.env;
 interface Props {

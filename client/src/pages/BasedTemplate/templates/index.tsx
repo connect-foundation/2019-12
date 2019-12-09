@@ -1,8 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import Header from '../../../components/organisms/Header';
-import Footer from '../../../components/organisms/Footer';
+import { Header, Footer } from 'components';
 
 interface Props {
   children: React.ReactNode;

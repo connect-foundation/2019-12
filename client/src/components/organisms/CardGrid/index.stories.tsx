@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CardGrid from '.';
-import { Event } from '../../../types/Event';
+import { Event } from 'types/Event';
 
 export default {
   title: 'Organisms / CardGrid',

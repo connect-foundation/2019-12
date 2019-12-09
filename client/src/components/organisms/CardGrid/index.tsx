@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import Card from 'components/molecules/Card';
+import { Card } from 'components';
 import { Event } from 'types/Event';
 import ROUTES from 'commons/constants/routes';
 

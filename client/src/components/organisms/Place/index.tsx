@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { Location } from 'types/Data';
-import GoogleMap from '../../atoms/GoogleMap';
+import { GoogleMap } from 'components';
 
 interface Props {
   place: string;
