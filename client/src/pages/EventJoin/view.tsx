@@ -45,7 +45,7 @@ function EventJoin({ eventId }: Props): React.ReactElement {
     // 401 : 로그인
     // 403, 404 : ban
 
-    await joinEvent(eventId, ticketCount)
+    joinEvent(eventId, ticketCount)
       .then(res => {
         const { status } = res;
         if (status === httpStatus.OK) {
