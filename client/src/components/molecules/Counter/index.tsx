@@ -5,7 +5,7 @@ import { Icon } from 'components';
 import LeftArrow from 'assets/img/left-arrow.svg';
 import RightArrow from 'assets/img/right-arrow.svg';
 
-interface Props {
+export interface Props {
   minCount: number;
   maxCount: number;
   handler?: (count: number) => void;
@@ -60,7 +60,14 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
     } else if (rightArrowDisabled) {
       setRightArrowDisabled(false);
     }
-  }, [count, minCount, maxCount, handler, leftArrowDisabled, rightArrowDisabled]);
+  }, [
+    count,
+    minCount,
+    maxCount,
+    handler,
+    leftArrowDisabled,
+    rightArrowDisabled,
+  ]);
 
   return (
     <S.Container>
