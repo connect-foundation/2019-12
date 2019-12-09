@@ -21,21 +21,18 @@ const produceMap = (
 
 export function eventsReducer(state: EventsState, action: EventsAction) {
   switch (action.type) {
-    case 'MAIN': {
+    case 'MAIN':
       return {
         ...state,
         events: produceMap(state.events, action.value.events),
         order: [...state.order!, ...action.value.order!],
       };
-    }
-    case 'DETAIL': {
+    case 'EVENT':
       return {
         ...state,
         events: produceMap(state.events, action.value.events),
       };
-    }
-    default: {
+    default:
       throw new Error(`unexpected action.type: ${action.type}`);
-    }
   }
 }
