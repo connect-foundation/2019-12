@@ -30,6 +30,7 @@ const validateOptions = checkSchema({
   },
   firstName: {
     in: 'body',
+    isString: true,
     exists: { options: { checkFalsy: true } },
     custom: {
       options: (value, { req }) => validateName(value),
@@ -37,6 +38,7 @@ const validateOptions = checkSchema({
   },
   lastName: {
     in: 'body',
+    isString: true,
     exists: { options: { checkFalsy: true } },
     custom: {
       options: (value, { req }) => validateName(value),
@@ -44,6 +46,7 @@ const validateOptions = checkSchema({
   },
   phoneNumber: {
     in: 'body',
+    isNumeric: true,
     exists: { options: { checkFalsy: true } },
     custom: {
       options: (value, { req }) => validatePhoneNumber(value),

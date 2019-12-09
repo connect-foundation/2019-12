@@ -25,7 +25,7 @@ export async function setUserInfo(
   googleId: number,
   firstName: string,
   lastName: string,
-  phoneNumber: number,
+  phoneNumber: string,
 ): Promise<[number, User[]]> {
   const values = {
     firstName,

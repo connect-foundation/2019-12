@@ -73,8 +73,8 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   }, [lastName]);
 
   useEffect(() => {
-    if (!submit) return;
     (async function getToken() {
+      if (!submit) return;
       if (
         firstNameValidate ||
         lastNameValidate ||
@@ -84,6 +84,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         !phoneNumber
       ) {
         alert('입력값을 확인해주세요');
+        dispatcher({ type: 'submit', value: false });
         return;
       }
       try {
@@ -93,7 +94,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
           email,
           firstName,
           lastName,
-          +phoneNumber,
+          phoneNumber,
         );
         if (updateUserRes.status === OK) {
           alert('회원가입이 완료되었습니다.');
@@ -104,6 +105,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
         if (err.response.status === FORBIDDEN) {
           alert('잘못된 입력값입니다.');
+          dispatcher({ type: 'submit', value: false });
         }
         if (err.response.status === BAD_REQUEST) {
           alert('이미 가입되어있는 회원입니다.');
@@ -111,7 +113,6 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
         }
       }
     })();
-    dispatcher({ type: 'submit', value: false });
   }, [
     email,
     firstName,
