@@ -13,6 +13,7 @@
     "outDir": "dist",
     "baseUrl": "./src",
     "lib": ["esnext"],
+    "types": ["jest"],
     "paths": {
       "*": ["node_modules/*"],
       "app": ["app"],
