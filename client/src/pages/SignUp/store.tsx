@@ -6,7 +6,7 @@ import React, {
   Dispatch,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import httpStatus from 'http-status';
+import { OK, BAD_REQUEST } from 'http-status';
 
 import { useStateReducer } from 'hooks/base/useStateReduter';
 import { ActionParams } from 'types/Actions';
@@ -77,7 +77,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
             lastName,
             +phoneNumber,
           );
-          if (updateUserRes.status === httpStatus.OK) {
+          if (updateUserRes.status === OK) {
             alert('회원가입이 완료되었습니다.');
             dispatcher({ type: 'submit', value: false });
             setLoginState(true);
@@ -85,7 +85,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
           }
         } catch (err) {
           //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
-          if (err.response.status === httpStatus.BAD_REQUEST) {
+          if (err.response.status === BAD_REQUEST) {
             alert('이미 가입되어있는 회원입니다.');
             dispatcher({ type: 'submit', value: false });
             history.push('/');
