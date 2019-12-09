@@ -19,7 +19,7 @@ export interface Props {
   price: number;
 }
 
-const shortenTitle = (title: string) =>
+export const shortenTitle = (title: string) =>
   title.length >= EVENT_NAME_MAX_LENGTH
     ? `${title.slice(0, EVENT_NAME_MAX_LENGTH)}...`
     : title;

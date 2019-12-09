@@ -53,6 +53,8 @@ exports[`Organisms / Ticket Rendering 1`] = `
 
 <Ticket
   desc="코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다."
+  eventId={2}
+  id={1}
   isPublicLeftCnt={false}
   leftCnt={0}
   maxCntPerPerson={5}

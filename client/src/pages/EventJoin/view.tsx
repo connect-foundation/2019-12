@@ -8,6 +8,8 @@ import * as S from './style';
 import { joinEvent } from 'apis';
 
 const ticketData = {
+  id: 1,
+  eventId: 2,
   name: '일반 입장권',
   desc: '발표자 선물 및 음료/다과 구입으로 사용됩니다.',
   price: 10000,

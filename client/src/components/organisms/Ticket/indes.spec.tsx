@@ -5,6 +5,8 @@ import Ticket from '.';
 
 describe('Organisms / Ticket', () => {
   const ticketData = {
+    id: 1,
+    eventId: 2,
     name: '일반 입장권',
     desc: '코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다.',
     price: 10000,
