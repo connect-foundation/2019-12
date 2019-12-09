@@ -3,7 +3,16 @@ import { UNAUTHORIZED, FORBIDDEN, NOT_FOUND } from 'http-status';
 import { useHistory } from 'react-router-dom';
 
 import EventJoinTemplate from './template';
-import { Btn, CounterBox, TicketBox } from 'components';
+import {
+  Btn,
+  CounterBox,
+  TicketBox,
+  StepList,
+  EventSection,
+  Place,
+  Ticket,
+  Price,
+} from 'components';
 import {
   BUY_TICKET_BTN,
   COUNTER_BOX_LABEL,
@@ -20,6 +29,7 @@ import {
 import ROUTES from 'commons/constants/routes';
 import * as S from './style';
 import { joinEvent } from 'apis';
+import { calculateStringOfDateRange } from 'utils/dateCalculator';
 
 interface Props {
   eventId: number;
@@ -76,7 +86,8 @@ const eventData = {
 function EventJoin({ eventId }: Props): React.ReactElement {
   const [isReserved, setisReserved] = useState(false);
   const [isTicketChecked, setIsTicketChecked] = useState(false);
-  const [ticketCount, setTicketCount] = useState(0);
+  const [ticketCount, setTicketCount] = useState(1);
+  const [templateStep, setTemplateStep] = useState(1);
 
   const history = useHistory();
 
@@ -86,14 +97,19 @@ function EventJoin({ eventId }: Props): React.ReactElement {
   };
 
   const requestOrder = async () => {
+    if (!isTicketChecked || ticketCount <= 0) {
+      return alert('티켓을 선택해주세요.');
+    }
+    setTemplateStep(templateStep + 1);
+  };
+
+  const purchaseOrder = async () => {
     if (isReserved) {
       return;
     }
-
     if (ticketCount <= 0) {
       return alert(RESERVE_MIN_FAIL);
     }
-
     try {
       await joinEvent(eventId, ticketCount);
       setisReserved(true);
@@ -102,12 +118,10 @@ function EventJoin({ eventId }: Props): React.ReactElement {
     } catch (err) {
       const { response } = err;
       const { status } = response;
-
       if (status === UNAUTHORIZED) {
         history.push(ROUTES.LOGIN);
         return;
       }
-
       if (status === FORBIDDEN || status === NOT_FOUND) {
         alert(RESERVE_BAD_FAIL);
       }
@@ -116,20 +130,37 @@ function EventJoin({ eventId }: Props): React.ReactElement {
 
   return (
     <EventJoinTemplate
-      TicketHeader={<S.TicketHeader>Tickets</S.TicketHeader>}
-      TicketBox={
-        <TicketBox
-          {...ticketData}
-          chkBoxProps={{
-            checked: isTicketChecked,
-            onClick: () => {
-              setIsTicketChecked(!isTicketChecked);
-            },
-          }}
+      step={templateStep}
+      stepList={<StepList steps={steps} pivot={templateStep} />}
+      eventSection={
+        <EventSection
+          title={eventData.title}
+          subtitle={['일시', '주최']}
+          content={[
+            calculateStringOfDateRange(eventData.startAt, eventData.endAt),
+            eventData.user.lastName + eventData.user.firstName,
+          ]}
+          imgSrc={
+            'https://cf.festa.io/img/2019-11-31/42d5aedc-0f66-44a4-a288-0086ff5836c1.png'
+          }
         />
       }
-      Counter={
-        isVisibleCounter() && (
+      place={<Place googleMapHeight={'20rem'} {...eventData} />}
+      ticketChoiceProps={{
+        header: <S.ContentHeader>{TICKET_CHOICE_TITLE}</S.ContentHeader>,
+        ticketBox: (
+          <TicketBox
+            {...ticketData}
+            chkBoxProps={{
+              checked: isTicketChecked,
+              onClick: () => {
+                setIsTicketChecked(!isTicketChecked);
+              },
+            }}
+          />
+        ),
+
+        counter: isVisibleCounter() && (
           <CounterBox
             label={COUNTER_BOX_LABEL}
             counterProps={{
@@ -138,16 +169,26 @@ function EventJoin({ eventId }: Props): React.ReactElement {
               handler: setTicketCount,
             }}
           />
-        )
-      }
-      SubmitBtn={
-        <Btn
-          styletype={'secondary'}
-          onClick={requestOrder}
-          grow={true}
-          children={BUY_TICKET_BTN}
-        />
-      }
+        ),
+        submitBtn: (
+          <Btn
+            styletype={'secondary'}
+            onClick={requestOrder}
+            children={BUY_TICKET_BTN}
+          />
+        ),
+      }}
+      ticketPurchaseProps={{
+        header: <S.ContentHeader>{TICKET_PURCHASE_TITLE}</S.ContentHeader>,
+        ticket: <Ticket count={ticketCount} {...eventData.ticketType} />,
+        totalPriceLabel: TOTAL_PRICE_LABEL,
+        price: (
+          <Price mount={eventData.ticketType.price * ticketCount} separated />
+        ),
+        purchaseBtn: (
+          <Btn grow children={TICKET_PURCHASE_BTN} onClick={purchaseOrder} />
+        ),
+      }}
     />
   );
 }
