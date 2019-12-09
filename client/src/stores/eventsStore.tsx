@@ -6,6 +6,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
+import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 
 import { EventsAction } from 'types/Actions';
 import { EventsState } from 'types/States';
@@ -56,19 +57,37 @@ function EventsProvider({ children }: { children: React.ReactElement }) {
           });
           eventsDispather({
             type: 'EVENTS',
-            value: { events, order },
+            value: { events, order, status: OK },
           });
         })();
         break;
       case 'EVENT':
-        (async () => {
+        (async function fetchData() {
           const { eventId } = eventFetch.params;
-          const { data } = await getEvent(eventId);
-          const events = new Map([[data.id, data]]);
-          eventsDispather({
-            type: 'EVENT',
-            value: { events },
-          });
+          try {
+            const { data } = await getEvent(eventId);
+            const events = new Map([[data.id, data]]);
+            eventsDispather({
+              type: 'EVENT',
+              value: { events, status: OK },
+            });
+          } catch (err) {
+            if (err.response && err.response.status === NOT_FOUND) {
+              eventsDispather({
+                type: String(NOT_FOUND),
+                value: {
+                  status: NOT_FOUND,
+                },
+              });
+            } else {
+              eventsDispather({
+                type: String(INTERNAL_SERVER_ERROR),
+                value: {
+                  status: INTERNAL_SERVER_ERROR,
+                },
+              });
+            }
+          }
         })();
         break;
     }
