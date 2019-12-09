@@ -23,7 +23,7 @@ describe('Hooks', () => {
     let step = 0;
     const steps = [
       { type: 'request' },
-      { type: 'success', data: { hello: 'world' }, status: OK },
+      { type: 'success', data: { hello: 'world' } },
     ];
     const resultTypes: FetchProps<any>[] = [];
 
@@ -74,6 +74,7 @@ describe('Hooks', () => {
       });
 
       useEffect(() => {
+        console.log(result.type);
         resultTypes.push(result.type);
       }, [result]);
 
