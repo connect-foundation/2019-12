@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { palette } from 'styled-tools';
+import { ifProp, palette } from 'styled-tools';
 
 export const Container = styled.div`
   display: flex;
@@ -7,15 +7,30 @@ export const Container = styled.div`
   width: 16rem;
 `;
 
-export const ArrowWrapper = styled.div`
+interface ArrowWrapperProps {
+  disabled?: boolean;
+}
+
+export const ArrowWrapper = styled.div<ArrowWrapperProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  width: 4rem;
+  width: 5rem;
   height: 4rem;
-  background-color: ${palette('grayscale', 3)};
+  border-radius: 0 0.2rem 0.2rem 0;
+  background-color: ${ifProp(
+    'disabled',
+    palette('grayscale', 5),
+    palette('grayscale', 2),
+  )};
   user-select: none;
+  cursor: ${ifProp('disabled', 'initial', 'pointer')};
+  transition: background-color ease 0.2s;
+
+  &:hover {
+    background-color: ${ifProp('disabled', '', palette('grayscale', 1))};
+  }
 `;
 
 export const Count = styled.div`
@@ -23,12 +38,12 @@ export const Count = styled.div`
   height: 4rem;
   line-height: 3.5rem;
   text-align: center;
-  font-size: 15px;
-  color: rgb(74, 74, 74);
-  border-radius: 0px;
-  border-width: 1px 1px;
+  font-size: 1.5rem;
+  color: ${palette('grayscale', 2)};
+  border-radius: 0;
+  border-width: 0.1rem 0.1rem;
   border-style: solid none;
-  border-color: rgb(200, 200, 200) rgb(200, 200, 200);
+  border-color: ${palette('grayscale', 3)} ${palette('grayscale', 3)};
   border-image: initial;
   border-left: none;
   border-right: none;
