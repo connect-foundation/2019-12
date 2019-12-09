@@ -20,7 +20,6 @@ function TicketBox({
   chkBoxProps,
 }: Props): React.ReactElement {
   const remainDays = calculateDiffDaysOfDateRange(salesStartAt, salesEndAt);
-  const { checked } = chkBoxProps;
 
   return (
     <S.Container>
@@ -39,7 +38,7 @@ function TicketBox({
           labelContent={`${remainDays}일 후에 판매마감`}
         />
       </S.TicketInfoContainer>
-      <ChkBox checked={checked} />
+      <ChkBox {...chkBoxProps} />
     </S.Container>
   );
 }
