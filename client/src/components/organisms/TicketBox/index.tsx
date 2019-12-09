@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import * as S from './style';
 import TicketImg from 'assets/img/ticket.svg';
@@ -9,6 +9,7 @@ import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
 
 interface Props extends TicketType {
   chkBoxProps: ChkBoxProps;
+  checked?: boolean;
 }
 
 function TicketBox({
@@ -19,10 +20,23 @@ function TicketBox({
   salesEndAt,
   chkBoxProps,
 }: Props): React.ReactElement {
+  const [checked, setChecked] = useState(false);
   const remainDays = calculateDiffDaysOfDateRange(salesStartAt, salesEndAt);
 
+  if (chkBoxProps.onClick) {
+    const copyParentOnClick = Object.assign(chkBoxProps.onClick);
+    chkBoxProps.onClick = event => {
+      copyParentOnClick(event);
+      setChecked(!checked);
+    };
+  } else {
+    chkBoxProps.onClick = () => {
+      setChecked(!checked);
+    };
+  }
+
   return (
-    <S.Container>
+    <S.Container checked={checked}>
       <S.TicketInfoContainer>
         <S.Name>{name}</S.Name>
         <S.PriceWrapper>
