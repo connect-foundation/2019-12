@@ -25,3 +25,4 @@ export { default as Place } from './organisms/Place';
 export { default as SignUpForm } from './organisms/SignUpForm';
 export { default as Ticket } from './organisms/Ticket';
 export { default as TicketBox } from './organisms/TicketBox';
+export { default as CounterBox } from './organisms/CounterBox';
