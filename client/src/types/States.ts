@@ -25,3 +25,8 @@ export interface AccountState {
   lastName?: string;
   phoneNumber?: number;
 }
+
+export interface EventsState {
+  events: Map<number, EventDetail>;
+  order?: number[];
+}

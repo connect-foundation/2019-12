@@ -6,6 +6,8 @@ export interface User {
 }
 
 export interface TicketType {
+  id: number;
+  eventId: number;
   name: string;
   desc: string;
   price: number;
@@ -24,6 +26,7 @@ export interface Location {
 }
 
 export interface EventDetail {
+  id: number;
   title: string;
   startAt: string;
   endAt: string;
