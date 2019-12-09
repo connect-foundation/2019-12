@@ -6,16 +6,15 @@ import React, {
   Dispatch,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { useStateReducer } from 'hooks/base/useStateReduter';
+import { BAD_REQUEST, FORBIDDEN, OK } from 'http-status';
+
+import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
 import { SignUpFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
 import { validatePhoneNumber, validateName } from 'utils/validateInput';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
-import { BAD_REQUEST, FORBIDDEN, OK } from 'http-status';
-
-const { REACT_APP_SERVER_URL } = process.env;
+import { createUser } from 'apis';
 
 const defaultState: SignUpFormState = {
   lastName: '',
@@ -31,27 +30,6 @@ export const SignUpState = createContext<SignUpFormState>(defaultState);
 export const SignUpAction = createContext<
   Dispatch<ActionParams<SignUpFormState>>
 >(() => {});
-
-const createUser = (
-  id: number,
-  googleId: number,
-  email: string,
-  firstName: string,
-  lastName: string,
-  phoneNumber: number,
-) =>
-  axios(`${REACT_APP_SERVER_URL}/api/users`, {
-    method: 'post',
-    data: {
-      id,
-      googleId,
-      email,
-      firstName,
-      lastName,
-      phoneNumber,
-    },
-    withCredentials: true,
-  });
 
 function StoreProvider({ children }: { children: React.ReactElement }) {
   const history = useHistory();
