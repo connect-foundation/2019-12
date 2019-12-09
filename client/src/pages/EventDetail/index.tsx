@@ -1,18 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 
 import EventDetailTemplate from './template';
-import EventHeader from 'components/organisms/EventHeader';
-import Ticket from 'components/organisms/Ticket';
-import Place from 'components/organisms/Place';
-
+import { EventHeader, Ticket, Place } from 'components';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
-import { useFetch } from 'hooks/base/useFetch';
 import { EventDetail } from 'types/Data';
 
-const { REACT_APP_SERVER_URL } = process.env;
-// TODO: type에 해당 defaultValue도 같이 있어주면 어떨까라는 생각을 함
-// 8 Dec 2019 by inthewalter
 const defaultEventDetail: EventDetail = {
   id: 0,
   title: '',
@@ -50,17 +44,16 @@ const checkIfEventIsInState = (
 function EventDetailView(): React.ReactElement {
   window.scrollTo(0, 0);
   const eventsState = useContext(EventsStoreState);
-  const { eventsDispather } = useContext(EventsStoreAction);
+  const { eventFetchDispatcher } = useContext(EventsStoreAction);
   const { eventId } = useParams();
   const [internalServerError, setInternalError] = useState(false);
   const history = useHistory();
-  const isEventInState = checkIfEventIsInState(eventsState.events, +eventId!);
+  const isEventInState = checkIfEventIsInState(eventsState.events!, +eventId!);
 
   const events = isEventInState
-    ? eventsState.events.get(+eventId!)!
+    ? eventsState.events!.get(+eventId!)!
     : defaultEventDetail;
   const loading = isEventInState ? false : true;
-
   const {
     id,
     mainImg,
@@ -77,33 +70,20 @@ function EventDetailView(): React.ReactElement {
     longitude,
   } = events;
 
-  const requestFetch = useFetch({
-    method: 'get',
-    url: `${REACT_APP_SERVER_URL}/api/events/${eventId}`,
-  });
-
   useEffect(() => {
-    if (!isEventInState) {
-      const { type } = requestFetch;
-      const reqEventData = requestFetch.data as EventDetail;
-      switch (type) {
-        case 'request':
-          break;
-        case 'success':
-          eventsDispather({
-            type: 'DETAIL',
-            value: {
-              events: new Map([[reqEventData.id, reqEventData]]),
-            },
-          });
-          break;
-        case 'failure':
-          if (requestFetch.status === 404) {
-            history.replace('/NOT_FOUND');
-          } else setInternalError(true);
-      }
+    eventFetchDispatcher({
+      type: 'EVENT',
+      params: {
+        eventId,
+      },
+    });
+
+    if (eventsState.status === NOT_FOUND) {
+      history.replace('/NOT_FOUND');
+    } else if (eventsState.status === INTERNAL_SERVER_ERROR) {
+      setInternalError(true);
     }
-  }, [requestFetch, eventId, eventsDispather, eventsState, isEventInState, history]);
+  }, [eventFetchDispatcher, eventId, eventsState.status, history]);
 
   return (
     <EventDetailTemplate
