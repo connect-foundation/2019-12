@@ -74,7 +74,7 @@ function EventJoin({ eventId }: Props): React.ReactElement {
   return (
     <EventJoinTemplate
       TicketHeader={<S.TicketHeader>Tickets</S.TicketHeader>}
-      TicketBox={<TicketBox {...ticketData} />}
+      TicketBox={<TicketBox {...ticketData} chkBoxProps={{ checked: false }} />}
       Counter={
         <Counter
           minCount={0}

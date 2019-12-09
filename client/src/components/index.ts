@@ -7,6 +7,7 @@ export { default as Img } from './atoms/Img';
 export { default as Input } from './atoms/Input';
 export { default as Label } from './atoms/Label';
 export { default as Price } from './atoms/Price';
+export { default as ChkBox } from './atoms/ChkBox';
 
 export { default as Card } from './molecules/Card';
 export { default as Counter } from './molecules/Counter';

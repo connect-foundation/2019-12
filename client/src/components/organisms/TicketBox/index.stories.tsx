@@ -21,4 +21,6 @@ const ticketData = {
   refundEndAt: '2019-11-28T14:00:00.000Z',
 };
 
-export const index: React.FC = () => <TicketBox {...ticketData} />;
+export const index: React.FC = () => (
+  <TicketBox {...ticketData} chkBoxProps={{ checked: false }} />
+);

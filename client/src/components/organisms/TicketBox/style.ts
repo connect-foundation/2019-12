@@ -3,11 +3,18 @@ import { theme, palette } from 'styled-tools';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 2rem 3rem;
   background-color: rgb(254, 244, 223);
   border-radius: 0.3rem;
   color: ${palette('grayscale', 1)};
+`;
+
+export const TicketInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Name = styled.div`
