@@ -17,6 +17,7 @@ export interface Props {
   host: string;
   /** 가격 */
   price: number;
+  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
 export const shortenTitle = (title: string) =>
@@ -31,6 +32,7 @@ function Card({
   title,
   host,
   price,
+  setRef,
 }: Props): React.ReactElement {
   const eventTitle = shortenTitle(title);
   return (
@@ -50,6 +52,7 @@ function Card({
           <S.Price>{price}</S.Price>
         </S.FooterContainer>
       </S.InnerContainer>
+      <div ref={setRef}></div>
     </S.LinkWrapper>
   );
 }
