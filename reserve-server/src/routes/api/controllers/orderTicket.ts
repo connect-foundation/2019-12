@@ -1,9 +1,9 @@
 import { Response } from 'express';
-import { sequelize } from '../../../utils/sequelize';
+import { sequelize } from 'utils/sequelize';
 import { Transaction } from 'sequelize/types';
-import { orderTransaction } from '../../../services';
+import { orderTransaction } from 'services';
 import { FORBIDDEN, NOT_FOUND } from 'http-status';
-import { SUCCESS } from '../../../constants';
+import { SUCCESS } from 'common/constants';
 
 export default async (req: any, res: Response) => {
   const userId = req.user.id;

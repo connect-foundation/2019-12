@@ -5,9 +5,9 @@ import {
   updateTicketType,
   updateUserTicket,
 } from './';
-import { SOLD_OUT, NOT_EXIST, NOT_OPEN, EXCEED_LIMIT } from '../constants';
-import { TicketType } from '../models';
-import redis from '../utils/redis';
+import { TicketType } from 'models';
+import redis from 'utils/redis';
+import { SOLD_OUT, NOT_EXIST, NOT_OPEN, EXCEED_LIMIT } from 'common/constants';
 
 export const orderTransaction = async (
   transaction: Transaction,

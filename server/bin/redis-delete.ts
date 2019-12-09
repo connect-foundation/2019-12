@@ -1,4 +1,4 @@
-import '../src/env';
-import { redisDeleteKey } from '../src/utils/redis';
+import 'env';
+import { redisDeleteKey } from 'utils/redis';
 
 redisDeleteKey();

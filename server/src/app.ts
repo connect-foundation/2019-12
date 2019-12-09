@@ -1,16 +1,16 @@
-import '../src/env';
+import 'env';
 import * as express from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as passport from 'passport';
 import * as cors from 'cors';
 
-import setUpPassport from './utils/passport';
-import indexRouter from './routes/api';
+import setUpPassport from 'utils/passport';
+import indexRouter from 'routes/api';
 
 import {
   notFoundHandler,
   internelServerErrorHandler,
-} from '../src/utils/errorHandler';
+} from 'utils/errorHandler';
 
 const { CLIENT_URL } = process.env;
 

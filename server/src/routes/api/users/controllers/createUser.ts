@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { setUserInfo } from '../../../../services';
-import { generateJWT, verifyJWT } from '../../../../utils/jwt';
+import { setUserInfo } from 'services/users';
+import { generateJWT, verifyJWT } from 'utils/jwt';
 import { BAD_REQUEST } from 'http-status';
 
 export async function createUser(
