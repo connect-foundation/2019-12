@@ -14,9 +14,7 @@ function ChkBox({ checked, ...props }: Props): React.ReactElement {
   return (
     <S.Wrapper
       onClick={event => {
-        if (onClick) {
-          onClick(event);
-        }
+        onClick && onClick(event);
         setIsChecked(!isChecked);
       }}
     >
