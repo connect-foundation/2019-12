@@ -21,7 +21,7 @@ export const Step = styled.span<StepProps>`
 
 export const StepArrow = styled.span<StepProps>`
   ${StepText};
-  padding: 0rem 3rem;
+  padding: 0rem 2rem;
 `;
 
 export const Container = styled.div`

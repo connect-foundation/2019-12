@@ -12,7 +12,7 @@ interface Props {
 const makeSteps = (steps: string[], pivot: number) => {
   return steps.map((step, index, arr) => (
     <>
-      <S.Step highlight={index <= pivot}>{step}</S.Step>
+      <S.Step highlight={index <= pivot}>{`${index + 1}. ${step}`}</S.Step>
       {index < arr.length - 1 && (
         <S.StepArrow highlight={index + 1 <= pivot}>&lt;</S.StepArrow>
       )}
