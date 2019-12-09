@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
-import httpStatus from 'http-status';
+import { UNAUTHORIZED, FORBIDDEN, NOT_FOUND } from 'http-status';
 import { useHistory } from 'react-router-dom';
 
 import EventJoinTemplate from './template';
-import { Btn, Counter, TicketBox } from 'components';
+import { Btn, CounterBox, TicketBox } from 'components';
+import {
+  BUY_TICKET_BTN,
+  COUNTER_BOX_LABEL,
+  RESERVE_COMPLETE,
+  RESERVE_BAD_FAIL,
+  RESERVE_MIN_FAIL,
+} from 'commons/constants/string';
+import ROUTES from 'commons/constants/routes';
 import * as S from './style';
 import { joinEvent } from 'apis';
 
+interface Props {
+  eventId: number;
+}
+
+const minTicketCount = 1;
 const ticketData = {
   id: 1,
   eventId: 2,
@@ -22,72 +35,79 @@ const ticketData = {
   refundEndAt: '2019-11-28T14:00:00.000Z',
 };
 
-interface Props {
-  eventId: number;
-}
-
 function EventJoin({ eventId }: Props): React.ReactElement {
   const [isReserved, setisReserved] = useState(false);
+  const [isTicketChecked, setIsTicketChecked] = useState(false);
+  const [ticketCount, setTicketCount] = useState(0);
 
   const history = useHistory();
-  let ticketCount = 0;
 
-  const counterHandler = (count: number) => {
-    ticketCount = count;
+  const { maxCntPerPerson } = ticketData;
+  const isVisibleCounter = () => {
+    return maxCntPerPerson > minTicketCount && isTicketChecked;
   };
 
   const requestOrder = async () => {
     if (isReserved) {
       return;
     }
+
     if (ticketCount <= 0) {
-      alert('티켓 개수는 1개 이상이어야 합니다.');
-      return;
+      return alert(RESERVE_MIN_FAIL);
     }
-    // 401 : 로그인
-    // 403, 404 : ban
 
-    joinEvent(eventId, ticketCount)
-      .then(res => {
-        const { status } = res;
-        if (status === httpStatus.OK) {
-          setisReserved(true);
+    try {
+      await joinEvent(eventId, ticketCount);
+      setisReserved(true);
+      alert(RESERVE_COMPLETE);
+      history.push(ROUTES.HOME);
+    } catch (err) {
+      const { response } = err;
+      const { status } = response;
 
-          alert('예약이 완료되었습니다.');
-          history.push('/');
-        }
-      })
-      .catch(err => {
-        const { response } = err;
-        const { status } = response;
-        if (status === httpStatus.UNAUTHORIZED) {
-          history.push('/login');
-        } else if (
-          status === httpStatus.FORBIDDEN ||
-          status === httpStatus.NOT_FOUND
-        ) {
-          alert('티켓 구매에 실패했습니다. 😔');
-        }
-      });
+      if (status === UNAUTHORIZED) {
+        history.push(ROUTES.LOGIN);
+        return;
+      }
+
+      if (status === FORBIDDEN || status === NOT_FOUND) {
+        alert(RESERVE_BAD_FAIL);
+      }
+    }
   };
 
   return (
     <EventJoinTemplate
       TicketHeader={<S.TicketHeader>Tickets</S.TicketHeader>}
-      TicketBox={<TicketBox {...ticketData} chkBoxProps={{ checked: false }} />}
-      Counter={
-        <Counter
-          minCount={0}
-          maxCount={ticketData.maxCntPerPerson}
-          handler={counterHandler}
+      TicketBox={
+        <TicketBox
+          {...ticketData}
+          chkBoxProps={{
+            checked: isTicketChecked,
+            onClick: () => {
+              setIsTicketChecked(!isTicketChecked);
+            },
+          }}
         />
+      }
+      Counter={
+        isVisibleCounter() && (
+          <CounterBox
+            label={COUNTER_BOX_LABEL}
+            counterProps={{
+              minCount: minTicketCount,
+              maxCount: maxCntPerPerson,
+              handler: setTicketCount,
+            }}
+          />
+        )
       }
       SubmitBtn={
         <Btn
           styletype={'secondary'}
           onClick={requestOrder}
           grow={true}
-          children={'구매하기'}
+          children={BUY_TICKET_BTN}
         />
       }
     />
