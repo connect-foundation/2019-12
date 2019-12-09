@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import EventDetailTemplate from './template';
 import EventHeader from 'components/organisms/EventHeader';
@@ -42,7 +42,7 @@ const defaultEventDetail: EventDetail = {
   user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
 };
 
-const checkEventIsInState = (
+const checkIfEventIsInState = (
   events: Map<number, EventDetail>,
   eventId: number,
 ) => (events.get(eventId) ? true : false);
@@ -52,12 +52,14 @@ function EventDetailView(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
   const { eventsDispather } = useContext(EventsStoreAction);
   const { eventId } = useParams();
-  const [internalServerError, setinternalError] = useState(false);
-  const history = useHistory();
+  const [internalServerError, setInternalError] = useState(false);
+  const [notFoundError, setNotFoundError] = useState(false);
+  const isEventInState = checkIfEventIsInState(eventsState.events, +eventId!);
 
-  const events = checkEventIsInState(eventsState.events, +eventId!)
+  const events = isEventInState
     ? eventsState.events.get(+eventId!)!
     : defaultEventDetail;
+  const loading = isEventInState ? false : true;
 
   const {
     id,
@@ -74,7 +76,6 @@ function EventDetailView(): React.ReactElement {
     latitude,
     longitude,
   } = events;
-  const loading = events ? false : true;
 
   const requestFetch = useFetch({
     method: 'get',
@@ -82,7 +83,7 @@ function EventDetailView(): React.ReactElement {
   });
 
   useEffect(() => {
-    if (!checkEventIsInState(eventsState.events, +eventId!)) {
+    if (!isEventInState) {
       const { type } = requestFetch;
       const reqEventData = requestFetch.data as EventDetail;
       switch (type) {
@@ -97,13 +98,11 @@ function EventDetailView(): React.ReactElement {
           });
           break;
         case 'failure':
-          if (requestFetch.status === 404) {
-            history.replace('/NOTFOUND');
-          } else setinternalError(true);
-          break;
+          if (requestFetch.status === 404) setNotFoundError(true);
+          else setInternalError(true);
       }
     }
-  }, [requestFetch, eventId, eventsDispather, eventsState, history]);
+  }, [requestFetch, eventId, eventsDispather, eventsState, isEventInState]);
 
   return (
     <EventDetailTemplate
@@ -136,6 +135,7 @@ function EventDetailView(): React.ReactElement {
       }
       loading={loading}
       internalServerError={internalServerError}
+      notFoundError={notFoundError}
     />
   );
 }
