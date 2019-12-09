@@ -40,6 +40,7 @@ export const Count = styled.div`
   text-align: center;
   font-size: 1.5rem;
   color: ${palette('grayscale', 2)};
+  background-color: ${palette('white')};
   border-radius: 0;
   border-width: 0.1rem 0.1rem;
   border-style: solid none;
