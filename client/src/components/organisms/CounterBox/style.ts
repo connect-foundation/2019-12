@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 1rem 3rem;
   background-color: rgb(254, 244, 223);
   color: ${palette('grayscale', 1)};
+  user-select: none;
 `;
 
 export const CountLabel = styled.span`
