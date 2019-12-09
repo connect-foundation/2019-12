@@ -17,7 +17,7 @@ import {
   EXCEED_LIMIT,
   UNAUTH,
   SUCCESS,
-} from '../src/constants';
+} from '../src/common/constants';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
