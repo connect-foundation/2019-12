@@ -6,7 +6,7 @@ export const getEvents = (cnt: number, startAt: string) => {
     startAt.length !== 0 ? { startAt } : {},
   );
 
-  return mainAxios.get('events', {
+  return mainAxios.get('/events', {
     params,
     headers: { Accept: 'application/json' },
   });
@@ -14,7 +14,7 @@ export const getEvents = (cnt: number, startAt: string) => {
 
 export const joinEvent = (ticketId: number, orderTicketNum: number) =>
   reserveAxios.post(
-    'users/ticket',
+    '/users/ticket',
     { ticketId, orderTicketNum },
     { headers: { Accept: 'application/json' } },
   );

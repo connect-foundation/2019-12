@@ -8,7 +8,7 @@ export const createUser = (
   lastName: string,
   phoneNumber: number,
 ) =>
-  mainAxios.post('users', {
+  mainAxios.post('/users', {
     id,
     googleId,
     email,
