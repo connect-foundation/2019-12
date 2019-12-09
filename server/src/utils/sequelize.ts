@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-import { Event, UserTicket, TicketType, User } from '../models';
+import { Event, UserTicket, TicketType, User } from 'models';
 import { readJSONData } from './readJSON';
 import { resolve } from 'path';
 

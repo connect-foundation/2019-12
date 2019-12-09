@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import { sequelize } from '../../../utils/sequelize';
+import { sequelize } from 'utils/sequelize';
 import { Transaction } from 'sequelize/types';
-import { orderTransaction } from '../../../services';
+import { orderTransaction } from 'services';
 import { FORBIDDEN } from 'http-status';
 
 export default async (req: any, res: Response) => {

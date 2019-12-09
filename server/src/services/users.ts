@@ -1,4 +1,4 @@
-import { User } from '../models';
+import { User } from 'models';
 import { WhereOptions } from 'sequelize';
 
 export async function getUserById(id: number): Promise<User | null> {
