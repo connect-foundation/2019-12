@@ -45,9 +45,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
   }, [count, minCount, setCount]);
 
   useEffect(() => {
-    if (handler) {
-      handler(count);
-    }
+    handler && handler(count);
 
     if (count === minCount) {
       return setLeftArrowDisabled(true);
