@@ -12,6 +12,12 @@ export const getEvents = (cnt: number, startAt: string) => {
   });
 };
 
+export const getEvent = (eventId: number) => {
+  return mainAxios.get(`/events/${eventId}`, {
+    headers: { Accept: 'application/json' },
+  });
+};
+
 export const joinEvent = (ticketId: number, orderTicketNum: number) =>
   reserveAxios.post(
     '/users/ticket',
