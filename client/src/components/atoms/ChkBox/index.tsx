@@ -5,7 +5,7 @@ import CheckSvg from 'assets/img/check.svg';
 
 export interface Props {
   checked: boolean;
-  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onClick?: (event?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 function ChkBox({ checked, ...props }: Props): React.ReactElement {
