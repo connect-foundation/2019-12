@@ -39,7 +39,10 @@ function Ticket({
           />
           <IconLabel
             iconProps={{ height: '1.5rem', alt: 'calendar', src: Calendar }}
-            labelContent={`${salesEndAt.split('T')[0]} 판매마감`}
+            labelContent={`${calculateDiffDaysOfDateRange(
+              salesStartAt,
+              salesEndAt,
+            )}일 후에 판매마감`}
           />
           <IconLabel
             iconProps={{
