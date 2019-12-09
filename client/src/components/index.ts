@@ -15,6 +15,7 @@ export { default as FormInput } from './molecules/FormInput';
 export { default as IconBtn } from './molecules/IconBtn';
 export { default as IconLabel } from './molecules/IconLabel';
 export { default as ImgBtn } from './molecules/ImgBtn';
+export { default as StepList } from './molecules/StepList';
 
 export { default as CardGrid } from './organisms/CardGrid';
 export { default as EventHeader } from './organisms/EventHeader';
