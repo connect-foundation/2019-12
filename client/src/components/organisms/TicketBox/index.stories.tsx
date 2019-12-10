@@ -1,7 +1,7 @@
 import React from 'react';
+import { boolean } from '@storybook/addon-knobs';
 
 import TicketBox from '.';
-import { boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Organisms / TicketBox',
@@ -27,5 +27,8 @@ export const index: React.FC = () => (
     {...ticketData}
     chkBoxProps={{ checked: false }}
     checked={boolean('checked', false)}
+    chkBoxDesc={'출석체크'}
+    showPurchaseDate={'2019-11-20'}
+    showTicketId={12345}
   />
 );
