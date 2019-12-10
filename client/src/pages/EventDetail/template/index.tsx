@@ -21,7 +21,11 @@ function EventDetailTemplate({
   place,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate loading={loading} internalServerError={internalServerError}>
+    <BasedTemplate
+      hasHeaderLine
+      loading={loading}
+      internalServerError={internalServerError}
+    >
       <S.Container>
         {eventHeader}
         <S.ContentContainer>

@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
-import { TicketCacheData, getTicketCache } from '../../../services';
+import { TicketCacheData, getTicketCache } from 'services';
 import { BAD_REQUEST, FORBIDDEN, NOT_FOUND } from 'http-status';
-import { NOT_OPEN, SOLD_OUT, NOT_EXIST } from '../../../constants';
+import { NOT_OPEN, SOLD_OUT, NOT_EXIST } from 'common/constants';
 
 export default async (req: any, res: Response, next: NextFunction) => {
   const time = Date.now();

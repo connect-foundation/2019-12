@@ -1,20 +1,21 @@
 import React from 'react';
 
 import * as S from './style';
-
 import ROUTES from 'commons/constants/routes';
-import { Header, Footer, Loading } from 'components';
+import { Header, Footer, Divider, Loading } from 'components';
 
 interface Props {
   loading?: boolean;
   internalServerError?: boolean;
   children: React.ReactNode;
+  hasHeaderLine?: boolean;
 }
 
 function BasedTemplate({
   children,
   loading = false,
   internalServerError = false,
+  hasHeaderLine = false,
 }: Props): React.ReactElement {
   const conditionalRender = () => {
     if (internalServerError)
@@ -28,12 +29,12 @@ function BasedTemplate({
     if (loading) return <Loading />;
     return children;
   };
-
   return (
     <>
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
+      {hasHeaderLine && <Divider borderWidth={'0.05rem'} />}
       <S.ChildrenWrapper>{conditionalRender()}</S.ChildrenWrapper>
       <S.FooterWrapper>
         <Footer />

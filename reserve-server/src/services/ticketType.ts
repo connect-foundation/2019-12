@@ -1,5 +1,5 @@
 import { Transaction, literal, WhereOptions } from 'sequelize';
-import { TicketType } from '../models';
+import { TicketType } from 'models';
 
 export const getTicketType = (transaction: Transaction, ticketId: number) => {
   const where: WhereOptions = { id: ticketId };

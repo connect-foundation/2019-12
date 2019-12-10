@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { placeToCoordinate } from '../../../../services/events';
+import { placeToCoordinate } from 'services/events';
 import { NO_CONTENT } from 'http-status';
 
 export default async (req: Request, res: Response, next: NextFunction) => {

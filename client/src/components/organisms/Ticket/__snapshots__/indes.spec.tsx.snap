@@ -283,7 +283,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                   <div
                     className="c4"
                   >
-                    일반 입장권
+                    일반 입장권 
                   </div>
                 </StyledComponent>
               </styled.div>
@@ -472,7 +472,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                     "src": "calendar-black.svg",
                   }
                 }
-                labelContent="2019-11-28 판매마감"
+                labelContent="23일 후에 판매마감"
               >
                 <styled.div>
                   <StyledComponent
@@ -595,7 +595,7 @@ exports[`Organisms / Ticket Rendering 1`] = `
                           <div
                             className="c8"
                           >
-                            2019-11-28 판매마감
+                            23일 후에 판매마감
                           </div>
                         </StyledComponent>
                       </styled.div>

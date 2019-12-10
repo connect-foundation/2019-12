@@ -1,24 +1,30 @@
 import styled from 'styled-components';
 
-export const ContainerWrapper = styled.div``;
+export const StepListWrapper = styled.div`
+  padding: 4rem 2rem;
+`;
 
-export const TicketContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  text-align: left;
-`;
-
-export const HeaderWrapper = styled.div`
-  margin: 1rem 0rem;
-`;
-
-export const TicketWrapper = styled.div`
-  margin: 1rem 0rem;
-`;
-
-export const CouterWrapper = styled.div`
+  width: 100%;
+  flex-grow: 1;
+  padding: 0rem 2rem;
   margin-bottom: 5rem;
 `;
 
-export const EventContainer = styled.div``;
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const EventContainer = styled.div`
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+`;
+
+export const PlaceWrapper = styled.div`
+  margin-top: 3rem;
+`;

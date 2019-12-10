@@ -1,4 +1,4 @@
-import redis from '../utils/redis';
+import redis from 'utils/redis';
 
 export type TicketCacheData = {
   id: string;

@@ -1,4 +1,4 @@
-import '../src/env';
-import { redisMigrate } from '../src/utils/redis';
+import 'env';
+import { redisMigrate } from 'utils/redis';
 
 redisMigrate();
