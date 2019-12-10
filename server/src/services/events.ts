@@ -5,7 +5,7 @@ import {
   Includeable,
   FindAttributeOptions,
 } from 'sequelize';
-import { Event, TicketType, User } from '../models';
+import { Event, TicketType, User } from 'models';
 import axios from 'axios';
 import { stringify } from 'query-string';
 

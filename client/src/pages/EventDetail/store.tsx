@@ -1,12 +1,13 @@
 import React, { createContext, useReducer, Dispatch } from 'react';
 
-import { useStateReducer } from '../../hooks/base/useStateReduter';
-import { UseStateReducer } from '../../types/CustomHooks';
-import { ActionParams } from '../../types/Actions';
-import { EventDetailState } from '../../types/States';
+import { useStateReducer } from 'hooks/base/useStateReducer';
+import { UseStateReducer } from 'types/CustomHooks';
+import { ActionParams } from 'types/Actions';
+import { EventDetailState } from 'types/States';
 
 const defaultState: EventDetailState = {
   eventData: {
+    id: 1,
     title: '',
     startAt: '',
     endAt: '',
@@ -19,6 +20,8 @@ const defaultState: EventDetailState = {
     desc: '',
 
     ticketType: {
+      id: 1,
+      eventId: 1,
       name: '',
       desc: '',
       price: 0,
@@ -30,7 +33,6 @@ const defaultState: EventDetailState = {
       salesEndAt: '',
       refundEndAt: '',
     },
-
     user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
   },
 };

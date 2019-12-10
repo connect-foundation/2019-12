@@ -1,30 +1,40 @@
 import React from 'react';
 
 import * as S from './style';
-import Card from 'components/molecules/Card';
-import { Event } from 'types/Event';
+import { EventsState } from 'types/States';
+import { Card } from 'components';
 import ROUTES from 'commons/constants/routes';
 
 interface Props {
-  cards: Event[];
+  eventsState: EventsState;
   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
-function CardGrid({ cards, setRef }: Props): React.ReactElement {
+function CardGrid({ eventsState, setRef }: Props): React.ReactElement {
   return (
     <>
       <S.CardGridContainer>
-        {cards.map(card => (
-          <Card
-            key={card.id}
-            imgSrc={card.mainImg}
-            date={card.startAt}
-            title={card.title}
-            host={card.user.lastName + card.user.firstName}
-            price={card.ticketType.price}
-            to={`${ROUTES.EVENT_DETAIL}/${card.id}`}
-          />
-        ))}
+        {eventsState.order!.map(index => {
+          const {
+            id,
+            mainImg,
+            startAt,
+            title,
+            user,
+            ticketType,
+          } = eventsState.events.get(index)!;
+          return (
+            <Card
+              key={id}
+              imgSrc={mainImg}
+              date={startAt}
+              title={title}
+              host={user.lastName + user.firstName}
+              price={ticketType.price}
+              to={`${ROUTES.EVENT_DETAIL}/${id}`}
+            />
+          );
+        })}
       </S.CardGridContainer>
       <div ref={setRef}></div>
     </>

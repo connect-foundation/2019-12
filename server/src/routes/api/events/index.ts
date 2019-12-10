@@ -3,7 +3,7 @@ import { Router } from 'express';
 import * as controllers from './controllers';
 import * as validators from './validators';
 import * as middlewares from './middlewares';
-import { badRequestHandler } from '../../../utils/errorHandler';
+import { badRequestHandler } from 'utils/errorHandler';
 
 const router = Router();
 

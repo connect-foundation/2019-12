@@ -1,12 +1,15 @@
 import React from 'react';
 
 import TicketBox from '.';
+import { boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Organisms / TicketBox',
 };
 
 const ticketData = {
+  id: 1,
+  eventId: 2,
   name: '일반 입장권',
   desc: '코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다.',
   price: 10000,
@@ -19,4 +22,10 @@ const ticketData = {
   refundEndAt: '2019-11-28T14:00:00.000Z',
 };
 
-export const index: React.FC = () => <TicketBox {...ticketData} />;
+export const index: React.FC = () => (
+  <TicketBox
+    {...ticketData}
+    chkBoxProps={{ checked: false }}
+    checked={boolean('checked', false)}
+  />
+);

@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { EVENT_NAME_MAX_LENGTH } from '../../../commons/constants/number';
+import { EVENT_NAME_MAX_LENGTH } from 'commons/constants/number';
 import * as S from './style';
-import Divider from '../../atoms/Divider';
-import Img from '../../atoms/Img';
+import { Divider, Img } from 'components';
 
 export interface Props {
   /** 라우팅 URL */
@@ -20,7 +19,7 @@ export interface Props {
   price: number;
 }
 
-const shortenTitle = (title: string) =>
+export const shortenTitle = (title: string) =>
   title.length >= EVENT_NAME_MAX_LENGTH
     ? `${title.slice(0, EVENT_NAME_MAX_LENGTH)}...`
     : title;

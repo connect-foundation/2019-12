@@ -1,7 +1,7 @@
 import * as redis from 'redis';
-import '../env';
-import { sequelize } from './sequelize';
-import { TicketType } from '../models';
+import 'env';
+import { sequelize } from 'utils/sequelize';
+import { TicketType } from 'models';
 
 const { REDIS_PORT, REDIS_HOST } = process.env;
 

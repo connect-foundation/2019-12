@@ -11,12 +11,24 @@
     "pretty": true,
     "rootDir": "./",
     "outDir": "dist",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "lib": ["esnext"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types",
+      "./src/types"
+    ],
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["node_modules/*"],
+      "app": ["app"],
+      "env": ["env"],
+      "models": ["models"],
+      "routes/*": ["routes/*"],
+      "services": ["services"],
+      "services/*": ["services/*"],
+      "types/*": ["types/*"],
+      "utils/*": ["utils/*"]
     },
-    "typeRoots": ["./node_modules/@types", "src/types"],
     "skipLibCheck": true
   },
   "include": ["src/**/*", "bin"],

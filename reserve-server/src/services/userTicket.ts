@@ -1,5 +1,5 @@
 import { Transaction, WhereOptions } from 'sequelize';
-import { UserTicket } from '../models';
+import { UserTicket } from 'models';
 
 export const updateUserTicket = (
   transaction: Transaction,
