@@ -1,8 +1,15 @@
 import * as request from 'supertest';
 import app from '../../src/app';
 import { sequelize } from '../../src/utils/sequelize';
+import { UserTicket } from '../../src/models';
 import { generateJWT } from '../../src/utils/jwt';
-import { OK, UNAUTHORIZED, NO_CONTENT } from 'http-status';
+import {
+  OK,
+  UNAUTHORIZED,
+  NO_CONTENT,
+  NOT_FOUND,
+  BAD_REQUEST,
+} from 'http-status';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -38,7 +45,7 @@ describe('Router GET /api/users/tickets', () => {
       });
   });
   it('유저 데이터를 불러왔고, 데이터가 없을 경우 204', async () => {
-    const token = await generateJWT(true, 1, 1, '1234@gmail.com');
+    const token = await generateJWT(true, 100, 1, '1234@gmail.com');
     await request(app)
       .get('/api/users/tickets')
       .set({
@@ -49,5 +56,59 @@ describe('Router GET /api/users/tickets', () => {
       .expect(res => {
         expect(res.body).toStrictEqual({});
       });
+  });
+});
+
+describe('Router DELETE ', () => {
+  async function createDummyUserTicket(userId: number, ticketTypeId: number) {
+    return await UserTicket.create({ userId, ticketTypeId });
+  }
+
+  it('로그인 안했을 경우', async () => {
+    const token = await generateJWT(false, 1, 1, '1234@gmail.com');
+    await request(app)
+      .delete('/api/users/ticket')
+      .set({
+        Cookie: `UID=${token}`,
+        Accept: 'application/json',
+      })
+      .expect(UNAUTHORIZED);
+  });
+  it('로그인을 했고, 티켓을 지웠을 경우, 204', async () => {
+    const data = await createDummyUserTicket(1, 1);
+    const token = await generateJWT(true, 1, 1, '1234@gmail.com');
+    await request(app)
+      .delete('/api/users/ticket')
+      .set({
+        Cookie: `UID=${token}`,
+        Accept: 'application/json',
+      })
+      .send({
+        ticketId: data.id,
+      })
+      .expect(NO_CONTENT);
+  });
+  it('로그인을 했고, 없는 티켓을 지울경우, 404', async () => {
+    const token = await generateJWT(true, 1, 1, '1234@gmail.com');
+    await request(app)
+      .delete('/api/users/ticket')
+      .set({
+        Cookie: `UID=${token}`,
+        Accept: 'application/json',
+      })
+      .send({
+        ticketId: 100000,
+      })
+      .expect(NOT_FOUND);
+  });
+  it('로그인을 했고, 바디를 주지 않을 경우 400', async () => {
+    const token = await generateJWT(true, 1, 1, '1234@gmail.com');
+    await request(app)
+      .delete('/api/users/ticket')
+      .set({
+        Cookie: `UID=${token}`,
+        Accept: 'application/json',
+      })
+      .expect(BAD_REQUEST);
   });
 });
