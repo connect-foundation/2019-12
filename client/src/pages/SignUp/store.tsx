@@ -6,7 +6,7 @@ import React, {
   Dispatch,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import { OK, BAD_REQUEST } from 'http-status';
+import { BAD_REQUEST, FORBIDDEN, OK } from 'http-status';
 
 import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
@@ -40,7 +40,15 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   const { userId, googleId, email } = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
 
-  const { phoneNumber, firstName, lastName, submit } = states;
+  const {
+    phoneNumber,
+    firstName,
+    lastName,
+    submit,
+    firstNameValidate,
+    lastNameValidate,
+    phoneValidate,
+  } = states;
 
   // Validation Features
   useEffect(() => {
@@ -66,40 +74,55 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
 
   useEffect(() => {
     (async function getToken() {
-      if (submit) {
-        // Userdata를 서버로 보냄.
-        try {
-          const updateUserRes = await createUser(
-            userId,
-            googleId,
-            email,
-            firstName,
-            lastName,
-            +phoneNumber,
-          );
-          if (updateUserRes.status === OK) {
-            alert('회원가입이 완료되었습니다.');
-            dispatcher({ type: 'submit', value: false });
-            setLoginState(true);
-            history.push('/');
-          }
-        } catch (err) {
-          //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
-          if (err.response.status === BAD_REQUEST) {
-            alert('이미 가입되어있는 회원입니다.');
-            dispatcher({ type: 'submit', value: false });
-            history.push('/');
-          }
+      if (!submit) return;
+      if (
+        firstNameValidate ||
+        lastNameValidate ||
+        phoneValidate ||
+        !firstName ||
+        !lastName ||
+        !phoneNumber
+      ) {
+        alert('입력값을 확인해주세요');
+        dispatcher({ type: 'submit', value: false });
+        return;
+      }
+      try {
+        const updateUserRes = await createUser(
+          userId,
+          googleId,
+          email,
+          firstName,
+          lastName,
+          phoneNumber,
+        );
+        if (updateUserRes.status === OK) {
+          alert('회원가입이 완료되었습니다.');
+          setLoginState(true);
+          history.push('/');
+        }
+      } catch (err) {
+        //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
+        if (err.response.status === FORBIDDEN) {
+          alert('잘못된 입력값입니다.');
+          dispatcher({ type: 'submit', value: false });
+        }
+        if (err.response.status === BAD_REQUEST) {
+          alert('이미 가입되어있는 회원입니다.');
+          history.push('/');
         }
       }
     })();
   }, [
     email,
     firstName,
+    firstNameValidate,
     googleId,
     history,
     lastName,
+    lastNameValidate,
     phoneNumber,
+    phoneValidate,
     setLoginState,
     submit,
     userId,

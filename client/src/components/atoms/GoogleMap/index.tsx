@@ -16,14 +16,16 @@ const defaultZoom = 17;
 interface Props {
   latitude: number;
   longitude: number;
+  height?: string;
 }
 
 function GoogleMap({
   latitude: lat,
   longitude: lng,
+  height = '28rem',
 }: Props): React.ReactElement {
   return (
-    <S.Container>
+    <S.Container height={height}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: `${googleApiKey}` }}
         center={{ lat, lng }}

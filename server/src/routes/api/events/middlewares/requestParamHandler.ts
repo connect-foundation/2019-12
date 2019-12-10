@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { getEventById } from '../../../../services/events';
+import { getEventById } from 'services/events';
 import { NOT_FOUND } from 'http-status';
 
 export default async (

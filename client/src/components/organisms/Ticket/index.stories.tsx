@@ -22,5 +22,5 @@ const ticketData = {
 };
 
 export const index: React.FC = () => {
-  return <Ticket {...ticketData} />;
+  return <Ticket count={3} {...ticketData} />;
 };

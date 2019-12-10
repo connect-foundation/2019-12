@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TicketBox from '.';
+import { boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Organisms / TicketBox',
@@ -21,4 +22,10 @@ const ticketData = {
   refundEndAt: '2019-11-28T14:00:00.000Z',
 };
 
-export const index: React.FC = () => <TicketBox {...ticketData} />;
+export const index: React.FC = () => (
+  <TicketBox
+    {...ticketData}
+    chkBoxProps={{ checked: false }}
+    checked={boolean('checked', false)}
+  />
+);
