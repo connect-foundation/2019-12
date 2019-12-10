@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Editor from 'tui-editor';
 import 'tui-editor/dist/tui-editor.css'; // editor's ui
 import 'tui-editor/dist/tui-editor-contents.css'; // editor's content
