@@ -5,6 +5,7 @@ import { UNAUTHORIZED } from 'http-status';
 export default async (req: any, res: Response, next: NextFunction) => {
   const token = req.cookies.UID;
   try {
+    if (!token) throw new Error('no token');
     const { id } = await verifyJWT(token);
     req.user = { id };
     next();
