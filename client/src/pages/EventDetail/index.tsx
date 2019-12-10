@@ -76,7 +76,7 @@ function EventDetailView(): React.ReactElement {
       eventFetchDispatcher({
         type: 'EVENT',
         params: {
-          eventId,
+          eventId: +eventId!,
         },
       });
 
