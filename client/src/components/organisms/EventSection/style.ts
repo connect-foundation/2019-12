@@ -12,7 +12,10 @@ export const RootContainer = styled.div<ContainerProps>`
     top: 'column',
     left: 'row',
   })};
-  border: ${ifProp('border', `0.1rem solid ${palette('grayscale', 4)}`, '')};
+  padding: 2rem;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: ${ifProp('border', palette('grayscale', 4), '')};
 `;
 
 export const Container = styled.div`
@@ -41,7 +44,7 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
-  padding-top: 2rem;
+  padding-top: 3rem;
 `;
 
 export const EachContentContainer = styled.div`
@@ -59,6 +62,7 @@ export const Place = styled.span`
   ${theme('fontStyle.h6')}
   color: ${palette('grayscale', 3)};
   font-weight:bold;
+  margin-top: 1rem;
 `;
 
 export const SubTitle = styled.span`

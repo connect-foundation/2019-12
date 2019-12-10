@@ -1,7 +1,7 @@
 import React from 'react';
 
 import EventSection from '.';
-import { text, array } from '@storybook/addon-knobs';
+import { text, array, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Organisms / EventSection',
@@ -20,5 +20,6 @@ export const index: React.FC = () => (
       'https://cf.festa.io/img/2019-11-31/42d5aedc-0f66-44a4-a288-0086ff5836c1.png'
     }
     imgPosition={text('imgPosition', 'top') as 'top' | 'left'}
+    border={boolean('border', false)}
   />
 );
