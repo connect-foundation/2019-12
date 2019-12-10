@@ -45,17 +45,17 @@ export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
           dispatch({ type: 'success', data, status });
         }
       } catch (err) {
-        if (err.response && err.response.status === NOT_FOUND) {
-          dispatch({ type: 'failure', err, status: NOT_FOUND });
-        } else {
-          if (retry) {
-            retry = !retry;
-            await delay(1000);
-            fetchData();
-          } else {
-            dispatch({ type: 'failure', err, status: INTERNAL_SERVER_ERROR });
-          }
-        }
+        if (err.response && err.response.status === NOT_FOUND)
+          return dispatch({ type: 'failure', err, status: NOT_FOUND });
+        if (!retry)
+          return dispatch({
+            type: 'failure',
+            err,
+            status: INTERNAL_SERVER_ERROR,
+          });
+        retry = !retry;
+        await delay(1000);
+        fetchData();
       }
     };
     if (result.type === 'request') {
