@@ -1,0 +1,37 @@
+import '../../src/env';
+import isLogin from '../../src/routes/middlewares/isLogin';
+import { generateJWT } from '../../src/utils/jwt';
+import * as httpMocks from 'node-mocks-http';
+
+describe('LoginCheck Middleware', () => {
+  it('로그인이 되어있을 경우', async () => {
+    const token = await generateJWT(true, 1, 1, 'jdd04026@gmail.com');
+    const request = httpMocks.createRequest({
+      cookies: { UID: token.toString() },
+    });
+    const response = httpMocks.createResponse();
+    const nextFunc = jest.fn();
+
+    await isLogin(request, response, nextFunc);
+    expect(nextFunc).toHaveBeenCalled();
+  });
+  it('회원 정보는 있지만 회원가입이 안되어있을 경우', async () => {
+    const token = await generateJWT(false, 1, 1, 'jdd04026@gmail.com');
+    const request = httpMocks.createRequest({
+      cookies: { UID: token.toString() },
+    });
+    const response = httpMocks.createResponse();
+    const nextFunc = jest.fn();
+
+    await isLogin(request, response, nextFunc);
+    expect(response.statusCode).toBe(401);
+  });
+  it('로그인이 안되어있을 경우', async () => {
+    const request = httpMocks.createRequest();
+    const response = httpMocks.createResponse();
+    const nextFunc = jest.fn();
+
+    await isLogin(request, response, nextFunc);
+    expect(response.statusCode).toBe(401);
+  });
+});
