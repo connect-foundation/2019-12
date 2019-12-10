@@ -3,11 +3,11 @@ import Viewer from 'tui-editor/dist/tui-editor-Viewer';
 import 'tui-editor/dist/tui-editor-contents.css';
 import 'highlight.js/styles/github.css';
 
-export interface TuiViewProps {
+export interface TuiViewerProps {
   content: string;
 }
 
-function TuiView({ content }: TuiViewProps): React.ReactElement {
+function TuiViewer({ content }: TuiViewerProps): React.ReactElement {
   useEffect(() => {
     new Viewer({
       el: document.getElementById('tui-viewer')!,
@@ -18,4 +18,4 @@ function TuiView({ content }: TuiViewProps): React.ReactElement {
   return <div id="tui-viewer"></div>;
 }
 
-export default TuiView;
+export default TuiViewer;
