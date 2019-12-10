@@ -1,59 +1,55 @@
 import React, { useCallback, useContext } from 'react';
-import { getEvents } from 'apis';
 
 import MainTemplate from './template';
 import { MainBanner, CardGrid } from 'components';
-import { EventDetail } from 'types/Data';
 import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
+import { EventsState } from 'types/States';
 
 const requestEventNum = 12;
 
-const fetchEvents = async (startAt: string) => {
-  const { data } = await getEvents(requestEventNum, startAt);
-
-  const events = new Map<number, EventDetail>();
-  const order = data.map((event: EventDetail) => {
-    events.set(event.id, event);
-    return event.id;
-  });
-  return { events, order };
+const getStartAt = ({ events, order }: Partial<EventsState>) => {
+  if (order!.length === 0) return '';
+  const lastItemIndex = order!.slice(-1)[0];
+  return events!.get(lastItemIndex)!.startAt;
 };
 
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
-  const { eventsDispather } = useContext(EventsStoreAction);
+  const { eventFetchDispatcher } = useContext(EventsStoreAction);
+  const { events, order } = eventsState;
 
   const getNextEvents = useCallback(
     async function() {
-      let startAt = '';
-      if (eventsState.order!.length !== 0) {
-        const lastItemIndex = eventsState.order!.slice(-1)[0];
-        startAt = eventsState.events.get(lastItemIndex)!.startAt;
-      }
-      eventsDispather({
-        type: 'MAIN',
-        value: await fetchEvents(startAt),
+      const startAt = getStartAt({ events, order });
+      eventFetchDispatcher({
+        type: 'EVENTS',
+        params: {
+          cnt: requestEventNum,
+          startAt,
+        },
       });
     },
-    [eventsDispather, eventsState.events, eventsState.order],
+    [events, order, eventFetchDispatcher],
   );
-
-  const callback = async (
-    entry: IntersectionObserverEntry,
-    observer: IntersectionObserver,
-  ) => await getNextEvents();
 
   const [, setRef] = useIntersect(callback, {
     root: null,
     threshold: 1.0,
-    rootMargin: '0% 0% 25% 0%',
+    rootMargin: '0% 0% 50% 0%',
   });
+
+  async function callback() {
+    setRef(null);
+    await getNextEvents();
+  }
 
   return (
     <MainTemplate
       mainBanner={<MainBanner />}
-      cardGrid={<CardGrid eventsState={eventsState} setRef={setRef} />}
+      cardGrid={
+        <CardGrid events={events!} eventsOrder={order!} setRef={setRef} />
+      }
     />
   );
 }
