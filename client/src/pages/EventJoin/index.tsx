@@ -178,7 +178,7 @@ function EventJoin(): React.ReactElement {
       }
       place={<Place googleMapHeight={'20rem'} {...eventData} />}
       ticketChoiceProps={{
-        header: <S.ContentHeader>{TICKET_CHOICE_TITLE}</S.ContentHeader>,
+        header: TICKET_CHOICE_TITLE,
         ticketBox: (
           <TicketBox
             {...ticketData}
@@ -211,7 +211,7 @@ function EventJoin(): React.ReactElement {
         ),
       }}
       ticketPurchaseProps={{
-        header: <S.ContentHeader>{TICKET_PURCHASE_TITLE}</S.ContentHeader>,
+        header: TICKET_PURCHASE_TITLE,
         ticket: <Ticket count={ticketCount} {...eventData.ticketType} />,
         totalPriceLabel: TOTAL_PRICE_LABEL,
         price: (

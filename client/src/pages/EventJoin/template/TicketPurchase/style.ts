@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const HeaderWrapper = styled.div`
   margin: 1rem 0rem;
+  ${theme('fontStyle.h4')}
 `;
 
 export const TotalContainer = styled.div`
