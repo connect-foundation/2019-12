@@ -24,16 +24,14 @@ function GoogleMap({
 }: Props): React.ReactElement {
   return (
     <S.Container>
-      {lat && lng && (
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: `${googleApiKey}` }}
-          center={{ lat, lng }}
-          defaultZoom={defaultZoom}
-          draggable={false}
-        >
-          <S.PinIcon alt={'pin'} height={'3rem'} src={Pin} />
-        </GoogleMapReact>
-      )}
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: `${googleApiKey}` }}
+        center={{ lat, lng }}
+        defaultZoom={defaultZoom}
+        draggable={false}
+      >
+        <S.PinIcon alt={'pin'} height={'3rem'} src={Pin} />
+      </GoogleMapReact>
     </S.Container>
   );
 }
