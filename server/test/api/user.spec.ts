@@ -12,6 +12,16 @@ import {
   NOT_FOUND,
 } from 'http-status';
 
+const createDummyUserTicket = async (userId: number, ticketTypeId: number) =>
+  await UserTicket.create({ userId, ticketTypeId });
+
+const setHeader = (token: Secret) => {
+  return {
+    Cookie: `UID=${token}`,
+    Accept: 'application/json',
+  };
+};
+
 beforeAll(async () => {
   sequelize.options.logging = false;
   await sequelize.sync();
@@ -22,13 +32,6 @@ afterAll(() => {
 });
 
 describe('Router GET /api/users/tickets', () => {
-  function setHeader(token: Secret) {
-    return {
-      Cookie: `UID=${token}`,
-      Accept: 'application/json',
-    };
-  }
-
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
     await request(app)
@@ -63,18 +66,11 @@ describe('Router GET /api/users/tickets', () => {
 });
 
 describe('Router DELETE ', () => {
-  async function createDummyUserTicket(userId: number, ticketTypeId: number) {
-    return await UserTicket.create({ userId, ticketTypeId });
-  }
-
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
     await request(app)
       .delete('/api/users/ticket')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .expect(UNAUTHORIZED);
   });
   it('로그인을 했고, 티켓을 지웠을 경우, 204', async () => {
@@ -82,10 +78,7 @@ describe('Router DELETE ', () => {
     const token = await generateJWT(true, 1, 1, '1234@gmail.com');
     await request(app)
       .delete('/api/users/ticket')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .send({
         ticketId: data.id,
       })
@@ -95,10 +88,7 @@ describe('Router DELETE ', () => {
     const token = await generateJWT(true, 1, 1, '1234@gmail.com');
     await request(app)
       .delete('/api/users/ticket')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .send({
         ticketId: 100000,
       })
@@ -108,10 +98,7 @@ describe('Router DELETE ', () => {
     const token = await generateJWT(true, 1, 1, '1234@gmail.com');
     await request(app)
       .delete('/api/users/ticket')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .expect(BAD_REQUEST);
   });
 });
