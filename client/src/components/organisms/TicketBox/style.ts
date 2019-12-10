@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme, palette, ifProp } from 'styled-tools';
-import { boolean } from '@storybook/addon-knobs';
 
 interface ContainerProps {
   checked: boolean;
