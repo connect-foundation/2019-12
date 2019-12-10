@@ -16,8 +16,8 @@ import {
 import {
   BUY_TICKET_BTN,
   COUNTER_BOX_LABEL,
+  RESERVE_REQUIRE_LOGIN,
   RESERVE_COMPLETE,
-  RESERVE_BAD_FAIL,
   RESERVE_MIN_FAIL,
   JOIN_STEP_CHOICE,
   JOIN_STEP_PURCHASE,
@@ -25,7 +25,13 @@ import {
   TICKET_PURCHASE_TITLE,
   TOTAL_PRICE_LABEL,
   TICKET_PURCHASE_BTN,
+  RESERVE_REQUIRE_CHOICE,
+  RESERVE_INVALID_DATE,
+  RESERVE_SOLD_OUT,
+  RESERVE_PER_PERSON_OVER,
+  RESERVE_WRONG_NUMBER,
 } from 'commons/constants/string';
+import { NOT_OPEN, SOLD_OUT, EXCEED_LIMIT } from 'commons/constants/number';
 import ROUTES from 'commons/constants/routes';
 import * as S from './style';
 import { joinEvent } from 'apis';
@@ -37,6 +43,7 @@ interface Props {
 
 const minTicketCount = 1;
 const steps = [JOIN_STEP_CHOICE, JOIN_STEP_PURCHASE];
+
 const ticketData = {
   id: 1,
   eventId: 2,
@@ -98,7 +105,7 @@ function EventJoin({ eventId }: Props): React.ReactElement {
 
   const requestOrder = async () => {
     if (!isTicketChecked || ticketCount <= 0) {
-      return alert('티켓을 선택해주세요.');
+      return alert(RESERVE_REQUIRE_CHOICE);
     }
     setTemplateStep(templateStep + 1);
   };
@@ -117,13 +124,30 @@ function EventJoin({ eventId }: Props): React.ReactElement {
       history.push(ROUTES.HOME);
     } catch (err) {
       const { response } = err;
-      const { status } = response;
-      if (status === UNAUTHORIZED) {
+      const { status: statusCode, data } = response;
+
+      if (statusCode === UNAUTHORIZED) {
+        alert(RESERVE_REQUIRE_LOGIN);
         history.push(ROUTES.LOGIN);
         return;
       }
-      if (status === FORBIDDEN || status === NOT_FOUND) {
-        alert(RESERVE_BAD_FAIL);
+
+      const { state } = data;
+      if (statusCode === FORBIDDEN) {
+        switch (state) {
+          case NOT_OPEN:
+            return alert(RESERVE_INVALID_DATE);
+
+          case SOLD_OUT:
+            return alert(RESERVE_SOLD_OUT);
+
+          case EXCEED_LIMIT:
+            return alert(RESERVE_PER_PERSON_OVER);
+        }
+      }
+
+      if (statusCode === NOT_FOUND) {
+        return alert(RESERVE_WRONG_NUMBER);
       }
     }
   };
