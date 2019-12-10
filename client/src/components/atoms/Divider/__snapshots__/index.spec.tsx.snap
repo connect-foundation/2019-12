@@ -9,7 +9,7 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
 <Divider>
   <styled.hr
     borderWidth="1px"
-    grayScaleLevel={6}
+    grayScaleLevel={5}
     type="solid"
   >
     <StyledComponent
@@ -47,7 +47,7 @@ exports[`Atom / Divider [SNAPSHOT] 렌더링 1`] = `
         }
       }
       forwardedRef={null}
-      grayScaleLevel={6}
+      grayScaleLevel={5}
       type="solid"
     >
       <hr

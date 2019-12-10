@@ -27,15 +27,17 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
   checked={false}
 >
   <styled.div
+    data-testid="ticketbox-chkbox"
     onClick={[Function]}
   >
     <StyledComponent
+      data-testid="ticketbox-chkbox"
       forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bYSBpT",
+            "componentId": "sc-iQKALj",
             "isStatic": false,
             "lastClassName": "c0",
             "rules": Array [
@@ -65,7 +67,7 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
           "displayName": "styled.div",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-bYSBpT",
+          "styledComponentId": "sc-iQKALj",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -77,6 +79,7 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
     >
       <div
         className="c0"
+        data-testid="ticketbox-chkbox"
         onClick={[Function]}
       />
     </StyledComponent>

@@ -7,7 +7,7 @@ exports[`Molecules / StepList [SNAPSHOT] 렌더링 1`] = `
 
 .c2 {
   font-weight: bold;
-  padding: 0rem 3rem;
+  padding: 0rem 2rem;
 }
 
 .c0 {
@@ -67,248 +67,275 @@ exports[`Molecules / StepList [SNAPSHOT] 렌더링 1`] = `
       <div
         className="c0"
       >
-        <styled.span
-          highlight={true}
+        <div
+          key="0"
         >
-          <StyledComponent
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bdVaJa",
-                  "isStatic": false,
-                  "lastClassName": "c1",
-                  "rules": Array [
-                    "
-  ",
-                    "
-  ",
-                    [Function],
-                    ";
-  font-weight: bold;
-  color: ",
-                    [Function],
-                    ";
-",
-                    ";
-",
-                  ],
-                },
-                "displayName": "styled.span",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bdVaJa",
-                "target": "span",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              }
-            }
-            forwardedRef={null}
+          <styled.span
+            data-testid="steplist-step"
             highlight={true}
           >
-            <span
-              className="c1"
-            >
-              a
-            </span>
-          </StyledComponent>
-        </styled.span>
-        <styled.span
-          highlight={false}
-        >
-          <StyledComponent
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bwzfXH",
-                  "isStatic": false,
-                  "lastClassName": "c2",
-                  "rules": Array [
-                    "
+            <StyledComponent
+              data-testid="steplist-step"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bdVaJa",
+                    "isStatic": false,
+                    "lastClassName": "c1",
+                    "rules": Array [
+                      "
   ",
-                    "
+                      "
   ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
   font-weight: bold;
   color: ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
 ",
-                    ";
-  padding: 0rem 3rem;
+                      ";
 ",
-                  ],
-                },
-                "displayName": "styled.span",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bwzfXH",
-                "target": "span",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bdVaJa",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
               }
-            }
-            forwardedRef={null}
+              forwardedRef={null}
+              highlight={true}
+            >
+              <span
+                className="c1"
+                data-testid="steplist-step"
+              >
+                1. a
+              </span>
+            </StyledComponent>
+          </styled.span>
+          <styled.span
+            data-testid="steplist-step-arrow"
             highlight={false}
           >
-            <span
-              className="c2"
-            >
-              &lt;
-            </span>
-          </StyledComponent>
-        </styled.span>
-        <styled.span
-          highlight={false}
-        >
-          <StyledComponent
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bdVaJa",
-                  "isStatic": false,
-                  "lastClassName": "c1",
-                  "rules": Array [
-                    "
+            <StyledComponent
+              data-testid="steplist-step-arrow"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": false,
+                    "lastClassName": "c2",
+                    "rules": Array [
+                      "
   ",
-                    "
+                      "
   ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
   font-weight: bold;
   color: ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
 ",
-                    ";
+                      ";
+  padding: 0rem 2rem;
 ",
-                  ],
-                },
-                "displayName": "styled.span",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bdVaJa",
-                "target": "span",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
               }
-            }
-            forwardedRef={null}
+              forwardedRef={null}
+              highlight={false}
+            >
+              <span
+                className="c2"
+                data-testid="steplist-step-arrow"
+              >
+                &gt;
+              </span>
+            </StyledComponent>
+          </styled.span>
+        </div>
+        <div
+          key="1"
+        >
+          <styled.span
+            data-testid="steplist-step"
             highlight={false}
           >
-            <span
-              className="c1"
-            >
-              b
-            </span>
-          </StyledComponent>
-        </styled.span>
-        <styled.span
-          highlight={false}
-        >
-          <StyledComponent
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bwzfXH",
-                  "isStatic": false,
-                  "lastClassName": "c2",
-                  "rules": Array [
-                    "
+            <StyledComponent
+              data-testid="steplist-step"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bdVaJa",
+                    "isStatic": false,
+                    "lastClassName": "c1",
+                    "rules": Array [
+                      "
   ",
-                    "
+                      "
   ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
   font-weight: bold;
   color: ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
 ",
-                    ";
-  padding: 0rem 3rem;
+                      ";
 ",
-                  ],
-                },
-                "displayName": "styled.span",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bwzfXH",
-                "target": "span",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bdVaJa",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
               }
-            }
-            forwardedRef={null}
+              forwardedRef={null}
+              highlight={false}
+            >
+              <span
+                className="c1"
+                data-testid="steplist-step"
+              >
+                2. b
+              </span>
+            </StyledComponent>
+          </styled.span>
+          <styled.span
+            data-testid="steplist-step-arrow"
             highlight={false}
           >
-            <span
-              className="c2"
-            >
-              &lt;
-            </span>
-          </StyledComponent>
-        </styled.span>
-        <styled.span
-          highlight={false}
-        >
-          <StyledComponent
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bdVaJa",
-                  "isStatic": false,
-                  "lastClassName": "c1",
-                  "rules": Array [
-                    "
+            <StyledComponent
+              data-testid="steplist-step-arrow"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": false,
+                    "lastClassName": "c2",
+                    "rules": Array [
+                      "
   ",
-                    "
+                      "
   ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
   font-weight: bold;
   color: ",
-                    [Function],
-                    ";
+                      [Function],
+                      ";
 ",
-                    ";
+                      ";
+  padding: 0rem 2rem;
 ",
-                  ],
-                },
-                "displayName": "styled.span",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bdVaJa",
-                "target": "span",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
               }
-            }
-            forwardedRef={null}
+              forwardedRef={null}
+              highlight={false}
+            >
+              <span
+                className="c2"
+                data-testid="steplist-step-arrow"
+              >
+                &gt;
+              </span>
+            </StyledComponent>
+          </styled.span>
+        </div>
+        <div
+          key="2"
+        >
+          <styled.span
+            data-testid="steplist-step"
             highlight={false}
           >
-            <span
-              className="c1"
+            <StyledComponent
+              data-testid="steplist-step"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bdVaJa",
+                    "isStatic": false,
+                    "lastClassName": "c1",
+                    "rules": Array [
+                      "
+  ",
+                      "
+  ",
+                      [Function],
+                      ";
+  font-weight: bold;
+  color: ",
+                      [Function],
+                      ";
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bdVaJa",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+              highlight={false}
             >
-              c
-            </span>
-          </StyledComponent>
-        </styled.span>
+              <span
+                className="c1"
+                data-testid="steplist-step"
+              >
+                3. c
+              </span>
+            </StyledComponent>
+          </styled.span>
+        </div>
       </div>
     </StyledComponent>
   </styled.div>
