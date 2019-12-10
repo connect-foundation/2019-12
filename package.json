@@ -6,7 +6,7 @@
   "license": "MIT",
   "workspaces": {
     "nohoist": [
-      "huksy"
+      "@types/*"
     ],
     "packages": [
       "client",
