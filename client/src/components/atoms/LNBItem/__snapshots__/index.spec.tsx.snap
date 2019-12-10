@@ -1,60 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
+exports[`Atom / LNBItem [SNAPSHOT] 렌더링 1`] = `
 .c0 {
-  width: 2.5rem;
-  height: 2.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 0.2rem;
-  border: 0.1rem solid;
+  border-bottom: 0.3rem solid;
+  padding: 2rem;
+  font-weight: bold;
+  -webkit-transition: background-color ease 0.2s;
+  transition: background-color ease 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-flex: 1 1 0;
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  text-align: center;
 }
 
-<ChkBox
-  checked={false}
+<LNBItem
+  active={true}
 >
   <styled.div
-    data-testid="ticketbox-chkbox"
+    active={true}
     onClick={[Function]}
   >
     <StyledComponent
-      data-testid="ticketbox-chkbox"
+      active={true}
       forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bwCtUz",
+            "componentId": "sc-bdVaJa",
             "isStatic": false,
             "lastClassName": "c0",
             "rules": Array [
               "
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: ",
+  ",
               [Function],
               ";
-  border-radius: 0.2rem;
-  border: 0.1rem solid ",
+  border-bottom: 0.3rem solid
+    ",
               [Function],
               ";
+  color: ",
+              [Function],
+              ";
+  padding: 2rem;
+  font-weight: bold;
+  transition: background-color ease 0.2s;
+  user-select: none;
+  cursor: pointer;
+  flex: 1 1 0;
+  text-align: center;
 
   &:hover {
     background-color: ",
@@ -67,7 +66,7 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
           "displayName": "styled.div",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-bwCtUz",
+          "styledComponentId": "sc-bdVaJa",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -79,10 +78,11 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
     >
       <div
         className="c0"
-        data-testid="ticketbox-chkbox"
         onClick={[Function]}
-      />
+      >
+        내 티켓
+      </div>
     </StyledComponent>
   </styled.div>
-</ChkBox>
+</LNBItem>
 `;
