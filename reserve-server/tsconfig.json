@@ -13,6 +13,7 @@
     "outDir": "dist",
     "baseUrl": "./src",
     "lib": ["esnext"],
+    "typeRoots": ["./node_modules", "./src/types"],
     "paths": {
       "*": ["node_modules/*"],
       "app": ["app"],
