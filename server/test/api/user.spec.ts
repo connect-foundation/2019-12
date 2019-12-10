@@ -1,5 +1,6 @@
 import * as request from 'supertest';
 import app from '../../src/app';
+import { Secret } from 'jsonwebtoken';
 import { sequelize } from '../../src/utils/sequelize';
 import { UserTicket } from '../../src/models';
 import { generateJWT } from '../../src/utils/jwt';
@@ -7,8 +8,8 @@ import {
   OK,
   UNAUTHORIZED,
   NO_CONTENT,
-  NOT_FOUND,
   BAD_REQUEST,
+  NOT_FOUND,
 } from 'http-status';
 
 beforeAll(async () => {
@@ -21,37 +22,39 @@ afterAll(() => {
 });
 
 describe('Router GET /api/users/tickets', () => {
+  function setHeader(token: Secret) {
+    return {
+      Cookie: `UID=${token}`,
+      Accept: 'application/json',
+    };
+  }
+
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
     await request(app)
       .get('/api/users/tickets')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .expect(UNAUTHORIZED);
   });
   it('유저 데이터를 불러왔고, 데이터가 있을 경우', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
       .get('/api/users/tickets')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .expect(OK)
       .expect(res => {
-        expect(res.body).toMatchSnapshot();
+        const data = res.body[0];
+        const { userTickets, ...body } = data;
+        const { createdAt, ...userTicket } = userTickets[0];
+        expect(body).toMatchSnapshot();
+        expect(userTicket).toMatchSnapshot();
       });
   });
   it('유저 데이터를 불러왔고, 데이터가 없을 경우 204', async () => {
     const token = await generateJWT(true, 100, 1, '1234@gmail.com');
     await request(app)
       .get('/api/users/tickets')
-      .set({
-        Cookie: `UID=${token}`,
-        Accept: 'application/json',
-      })
+      .set(setHeader(token))
       .expect(NO_CONTENT)
       .expect(res => {
         expect(res.body).toStrictEqual({});
