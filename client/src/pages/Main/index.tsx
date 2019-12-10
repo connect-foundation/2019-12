@@ -9,12 +9,9 @@ import { EventsState } from 'types/States';
 const requestEventNum = 12;
 
 const getStartAt = ({ events, order }: Partial<EventsState>) => {
-  let startAt = '';
-  if (order!.length !== 0) {
-    const lastItemIndex = order!.slice(-1)[0];
-    startAt = events!.get(lastItemIndex)!.startAt;
-  }
-  return startAt;
+  if (order!.length === 0) return '';
+  const lastItemIndex = order!.slice(-1)[0];
+  return events!.get(lastItemIndex)!.startAt;
 };
 
 function Main(): React.ReactElement {
