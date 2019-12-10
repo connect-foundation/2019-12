@@ -3,7 +3,7 @@ import { getUserTicketsByUserId } from 'services';
 
 export async function getUserTicket(req: Request, res: Response) {
   try {
-    const result = await getUserTicketsByUserId(+req.query.id);
+    const result = await getUserTicketsByUserId(+req.user!.id);
     if (!result) return res.status(400).send({ message: 'Cannot get data' });
 
     const data1 = result.reduce<Array<any>>((acc, cur) => {
