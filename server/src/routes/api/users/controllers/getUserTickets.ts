@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
 import { getUserTicketsByUserId } from 'services';
+import { BAD_REQUEST } from 'http-status';
 
 export async function getUserTicket(req: Request, res: Response) {
   try {
     const result = await getUserTicketsByUserId(+req.user!.id);
-    if (!result) return res.status(400).send({ message: 'Cannot get data' });
+    if (!result)
+      return res.status(BAD_REQUEST).send({ message: 'Cannot get data' });
 
     const data1 = result.reduce<Array<any>>((acc, cur) => {
       const current: any = cur.get({ plain: true });
@@ -22,6 +24,6 @@ export async function getUserTicket(req: Request, res: Response) {
     }, []);
     res.send(data1);
   } catch (err) {
-    res.sendStatus(400);
+    res.sendStatus(BAD_REQUEST);
   }
 }
