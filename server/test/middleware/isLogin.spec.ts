@@ -1,15 +1,16 @@
 import '../../src/env';
 import isLogin from '../../src/routes/middlewares/isLogin';
 import { generateJWT } from '../../src/utils/jwt';
-import * as httpMocks from 'node-mocks-http';
+import { createRequest, createResponse } from 'node-mocks-http';
+import { UNAUTHORIZED } from 'http-status';
 
 describe('LoginCheck Middleware', () => {
   it('로그인이 되어있을 경우', async () => {
     const token = await generateJWT(true, 1, 1, 'jdd04026@gmail.com');
-    const request = httpMocks.createRequest({
+    const request = createRequest({
       cookies: { UID: token.toString() },
     });
-    const response = httpMocks.createResponse();
+    const response = createResponse();
     const nextFunc = jest.fn();
 
     await isLogin(request, response, nextFunc);
@@ -17,21 +18,21 @@ describe('LoginCheck Middleware', () => {
   });
   it('회원 정보는 있지만 회원가입이 안되어있을 경우', async () => {
     const token = await generateJWT(false, 1, 1, 'jdd04026@gmail.com');
-    const request = httpMocks.createRequest({
+    const request = createRequest({
       cookies: { UID: token.toString() },
     });
-    const response = httpMocks.createResponse();
+    const response = createResponse();
     const nextFunc = jest.fn();
 
     await isLogin(request, response, nextFunc);
-    expect(response.statusCode).toBe(401);
+    expect(response.statusCode).toBe(UNAUTHORIZED);
   });
   it('로그인이 안되어있을 경우', async () => {
-    const request = httpMocks.createRequest();
-    const response = httpMocks.createResponse();
+    const request = createRequest();
+    const response = createResponse();
     const nextFunc = jest.fn();
 
     await isLogin(request, response, nextFunc);
-    expect(response.statusCode).toBe(401);
+    expect(response.statusCode).toBe(UNAUTHORIZED);
   });
 });
