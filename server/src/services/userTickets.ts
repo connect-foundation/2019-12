@@ -97,3 +97,12 @@ export async function getUserTicketsByUserId(
   const result = await UserTicket.findAll({ include, attributes, where });
   return result.reduce<Array<UserTicketEvent>>(userTicketReducer, []);
 }
+
+export async function deleteUserTicketById(
+  id: number,
+  userId: number,
+): Promise<number> {
+  if (!id) throw new Error('no id input');
+  const where: WhereOptions = { id, userId };
+  return await UserTicket.destroy({ where });
+}

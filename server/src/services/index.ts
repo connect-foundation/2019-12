@@ -1,2 +1,2 @@
 export { getUserById, getUserByGoogleId, setUser, setUserInfo } from './users';
-export { getUserTicketsByUserId } from './userTickets';
+export { getUserTicketsByUserId, deleteUserTicketById } from './userTickets';
