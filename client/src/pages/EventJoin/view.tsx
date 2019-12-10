@@ -199,6 +199,7 @@ function EventJoin({ eventId }: Props): React.ReactElement {
             styletype={'secondary'}
             onClick={requestOrder}
             children={BUY_TICKET_BTN}
+            data-testid={'ticketchoice-submitbtn'}
           />
         ),
       }}
@@ -210,7 +211,12 @@ function EventJoin({ eventId }: Props): React.ReactElement {
           <Price mount={eventData.ticketType.price * ticketCount} separated />
         ),
         purchaseBtn: (
-          <Btn grow children={TICKET_PURCHASE_BTN} onClick={purchaseOrder} />
+          <Btn
+            grow
+            children={TICKET_PURCHASE_BTN}
+            onClick={purchaseOrder}
+            data-testid={'ticketpurchase-purchasebtn'}
+          />
         ),
       }}
     />

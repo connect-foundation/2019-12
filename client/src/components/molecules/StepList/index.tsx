@@ -11,12 +11,20 @@ interface Props {
 
 const makeSteps = (steps: string[], pivot: number) => {
   return steps.map((step, index, arr) => (
-    <>
-      <S.Step highlight={index <= pivot}>{`${index + 1}. ${step}`}</S.Step>
+    <div key={index}>
+      <S.Step
+        highlight={index <= pivot}
+        data-testid={'steplist-step'}
+      >{`${index + 1}. ${step}`}</S.Step>
       {index < arr.length - 1 && (
-        <S.StepArrow highlight={index + 1 <= pivot}>&lt;</S.StepArrow>
+        <S.StepArrow
+          highlight={index + 1 <= pivot}
+          data-testid={'steplist-step-arrow'}
+        >
+          &gt;
+        </S.StepArrow>
       )}
-    </>
+    </div>
   ));
 };
 

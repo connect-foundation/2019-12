@@ -12,7 +12,7 @@ function CounterBox({ label, counterProps }: Props): React.ReactElement {
   const { maxCount } = counterProps;
 
   return (
-    <S.Container>
+    <S.Container data-testid={'counterbox-container'}>
       <S.CountLabel>{label}</S.CountLabel>
       <S.CountDesc>최대 {maxCount}개 구매 가능</S.CountDesc>
       <Counter {...counterProps} />

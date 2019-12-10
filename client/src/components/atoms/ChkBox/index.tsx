@@ -13,6 +13,7 @@ function ChkBox({ checked, ...props }: Props): React.ReactElement {
   const { onClick } = props;
   return (
     <S.Wrapper
+      data-testid={'ticketbox-chkbox'}
       onClick={event => {
         onClick && onClick(event);
         setIsChecked(!isChecked);
