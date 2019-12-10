@@ -13,9 +13,8 @@ function TuiEditor({
   placeholder = '내용을 입력해주세요.',
 }: TuiEditorProps): React.ReactElement {
   const [content, setContent] = useState('');
-  let editor: Editor;
   useEffect(() => {
-    editor = new Editor({
+    const editor = new Editor({
       el: document.getElementById('tui-editor')!,
       initialEditType: 'wysiwyg',
       height: '450px',
@@ -25,7 +24,7 @@ function TuiEditor({
     editor.on('change', () => {
       setContent(editor.getHtml());
     });
-  }, []);
+  }, [placeholder]);
 
   useEffect(() => {
     onChange(content);
