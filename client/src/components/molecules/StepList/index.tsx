@@ -11,7 +11,7 @@ interface Props {
 
 const makeSteps = (steps: string[], pivot: number) => {
   return steps.map((step, index, arr) => (
-    <div key={index}>
+    <React.Fragment key={index}>
       <S.Step
         highlight={index <= pivot}
         data-testid={'steplist-step'}
@@ -24,7 +24,7 @@ const makeSteps = (steps: string[], pivot: number) => {
           &gt;
         </S.StepArrow>
       )}
-    </div>
+    </React.Fragment>
   ));
 };
 
