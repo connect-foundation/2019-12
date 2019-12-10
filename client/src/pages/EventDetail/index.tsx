@@ -72,12 +72,13 @@ function EventDetailView(): React.ReactElement {
   } = events;
 
   useEffect(() => {
-    eventFetchDispatcher({
-      type: 'EVENT',
-      params: {
-        eventId,
-      },
-    });
+    if (!isEventInState)
+      eventFetchDispatcher({
+        type: 'EVENT',
+        params: {
+          eventId,
+        },
+      });
 
     if (eventsState.status === NOT_FOUND) {
       history.replace('/NOT_FOUND');
@@ -87,7 +88,13 @@ function EventDetailView(): React.ReactElement {
         setInternalError(true);
       })();
     }
-  }, [eventFetchDispatcher, eventId, eventsState.status, history]);
+  }, [
+    eventFetchDispatcher,
+    eventId,
+    eventsState.status,
+    history,
+    isEventInState,
+  ]);
 
   return (
     <EventDetailTemplate
