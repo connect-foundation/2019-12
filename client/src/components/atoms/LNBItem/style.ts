@@ -14,7 +14,8 @@ export const Container = styled.div<ContainerProps>`
   font-weight: bold;
   transition: background-color ease 0.2s;
   user-select: none;
-  flex-grow: 1;
+  cursor: pointer;
+  flex: 1 1 0;
   text-align: center;
 
   &:hover {
