@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import {
+  RESERVE_REQUIRE_LOGIN,
   RESERVE_REQUIRE_CHOICE,
   RESERVE_COMPLETE,
   RESERVE_WRONG_NUMBER,
@@ -75,16 +76,21 @@ context('이벤트 예약 페이지', () => {
   });
 
   it('로그인이 되어있지 않은 상태로 예약을 시도하면 alert와 login으로 리다이렉션이 이루어진다', () => {
-    cy.visit('/events/330/register/tickets');
-    cy.get('[data-testid=ticketbox-chkbox]').click();
-    cy.get('[data-testid=ticketchoice-submitbtn]').click();
+    cy.route({
+      method: 'POST',
+      url: '/api/users/ticket',
+      status: 401,
+      response: {},
+    });
+
+    goPurchasePage();
 
     const alertStub = cy.stub();
     cy.on('window:alert', alertStub);
     cy.get('[data-testid=ticketpurchase-purchasebtn]')
       .click()
       .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith('로그인이 필요합니다.');
+        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_REQUIRE_LOGIN);
       });
 
     cy.location('pathname').should('eq', '/login');
