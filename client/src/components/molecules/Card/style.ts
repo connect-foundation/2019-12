@@ -20,8 +20,6 @@ export const LinkWrapper = styled(Link)`
   animation: ${fadeIn} 1s;
 `;
 
-export const HeaderWrapper = styled.div``;
-
 export const InnerContainer = styled.div`
   height: 20rem;
   display: flex;

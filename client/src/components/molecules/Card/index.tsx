@@ -37,8 +37,7 @@ function Card({
   const eventTitle = shortenTitle(title);
   return (
     <S.LinkWrapper to={to} data-testid={'main-card'}>
-      <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgWrapper>
+      <S.ImgWrapper ref={setRef}>
         <Img alt={'card Image'} src={imgSrc} />
       </S.ImgWrapper>
       <S.InnerContainer>
@@ -52,7 +51,6 @@ function Card({
           <S.Price>{price}</S.Price>
         </S.FooterContainer>
       </S.InnerContainer>
-      <div ref={setRef}></div>
     </S.LinkWrapper>
   );
 }
