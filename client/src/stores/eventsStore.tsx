@@ -92,7 +92,6 @@ function EventsProvider({ children }: { children: React.ReactElement }) {
           eventsDispather({
             type,
             value: {
-              ...eventsState,
               events,
               order,
               status,
@@ -107,7 +106,6 @@ function EventsProvider({ children }: { children: React.ReactElement }) {
           eventsDispather({
             type,
             value: {
-              ...eventsState,
               events,
               status,
             },
@@ -115,7 +113,7 @@ function EventsProvider({ children }: { children: React.ReactElement }) {
         })();
         break;
     }
-  }, [eventFetch, eventsState]);
+  }, [eventFetch]);
 
   return (
     <EventsStoreState.Provider value={eventsState}>
