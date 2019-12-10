@@ -14,6 +14,8 @@ export const Container = styled.div<ContainerProps>`
   font-weight: bold;
   transition: background-color ease 0.2s;
   user-select: none;
+  flex-grow: 1;
+  text-align: center;
 
   &:hover {
     background-color: ${palette('grayscale', 6)};
