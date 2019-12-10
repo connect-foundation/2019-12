@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
+.c0 {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  border: 0.1rem solid;
+}
+
+<ChkBox
+  checked={false}
+>
+  <styled.div
+    data-testid="ticketbox-chkbox"
+    onClick={[Function]}
+  >
+    <StyledComponent
+      data-testid="ticketbox-chkbox"
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-iQKALj",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: ",
+              [Function],
+              ";
+  border-radius: 0.2rem;
+  border: 0.1rem solid ",
+              [Function],
+              ";
+
+  &:hover {
+    background-color: ",
+              [Function],
+              ";
+  }
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-iQKALj",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      onClick={[Function]}
+    >
+      <div
+        className="c0"
+        data-testid="ticketbox-chkbox"
+        onClick={[Function]}
+      />
+    </StyledComponent>
+  </styled.div>
+</ChkBox>
+`;

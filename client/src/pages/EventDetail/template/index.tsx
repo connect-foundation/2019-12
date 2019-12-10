@@ -17,7 +17,7 @@ function EventDetailTemplate({
   place,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate>
+    <BasedTemplate hasHeaderLine>
       <S.Container>
         {eventHeader}
         <S.ContentContainer>

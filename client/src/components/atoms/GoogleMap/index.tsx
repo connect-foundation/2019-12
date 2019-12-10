@@ -17,11 +17,16 @@ const defaultCenter = { lat: 37.5662952, lng: 126.9779451 };
 interface Props {
   latitude: number;
   longitude: number;
+  height?: string;
 }
 
-function GoogleMap({ latitude, longitude }: Props): React.ReactElement {
+function GoogleMap({
+  latitude,
+  longitude,
+  height = '28rem',
+}: Props): React.ReactElement {
   return (
-    <S.Container>
+    <S.Container height={height}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: `${googleApiKey}` }}
         center={{ lat: latitude, lng: longitude }}
