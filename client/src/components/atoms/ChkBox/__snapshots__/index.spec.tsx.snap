@@ -37,7 +37,7 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-iQKALj",
+            "componentId": "sc-bwCtUz",
             "isStatic": false,
             "lastClassName": "c0",
             "rules": Array [
@@ -67,7 +67,7 @@ exports[`Atom / ChkBox [SNAPSHOT] 렌더링 1`] = `
           "displayName": "styled.div",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-iQKALj",
+          "styledComponentId": "sc-bwCtUz",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
