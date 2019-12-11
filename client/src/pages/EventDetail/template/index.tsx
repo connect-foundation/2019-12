@@ -7,7 +7,7 @@ interface Props {
   loading: boolean;
   internalServerError: boolean;
   eventHeader: React.ReactNode;
-  eventContent: string;
+  eventContent: React.ReactNode;
   ticket: React.ReactNode;
   place: React.ReactNode;
 }
@@ -29,9 +29,7 @@ function EventDetailTemplate({
       <S.Container>
         {eventHeader}
         <S.ContentContainer>
-          <S.ContentWrapper
-            dangerouslySetInnerHTML={{ __html: eventContent }}
-          />
+          <S.ViewerWrapper>{eventContent}</S.ViewerWrapper>
           <S.TicketWrapper>{ticket}</S.TicketWrapper>
         </S.ContentContainer>
         <S.PlaceWrapper>{place}</S.PlaceWrapper>

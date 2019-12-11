@@ -1,5 +1,5 @@
 import '../../src/env';
-import isLogin from '../../src/routes/middlewares/isLogin';
+import requireLogin from '../../src/routes/middlewares/requireLogin';
 import { generateJWT } from '../../src/utils/jwt';
 import { createRequest, createResponse } from 'node-mocks-http';
 import { UNAUTHORIZED } from 'http-status';
@@ -13,7 +13,7 @@ describe('LoginCheck Middleware', () => {
     const response = createResponse();
     const nextFunc = jest.fn();
 
-    await isLogin(request, response, nextFunc);
+    await requireLogin(request, response, nextFunc);
     expect(nextFunc).toHaveBeenCalled();
   });
   it('회원 정보는 있지만 회원가입이 안되어있을 경우', async () => {
@@ -24,7 +24,7 @@ describe('LoginCheck Middleware', () => {
     const response = createResponse();
     const nextFunc = jest.fn();
 
-    await isLogin(request, response, nextFunc);
+    await requireLogin(request, response, nextFunc);
     expect(response.statusCode).toBe(UNAUTHORIZED);
   });
   it('로그인이 안되어있을 경우', async () => {
@@ -32,7 +32,7 @@ describe('LoginCheck Middleware', () => {
     const response = createResponse();
     const nextFunc = jest.fn();
 
-    await isLogin(request, response, nextFunc);
+    await requireLogin(request, response, nextFunc);
     expect(response.statusCode).toBe(UNAUTHORIZED);
   });
 });
