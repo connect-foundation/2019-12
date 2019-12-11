@@ -29,7 +29,8 @@
     "react-icons": "^3.8.0",
     "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.1",
-    "styled-tools": "^1.7.1"
+    "styled-tools": "^1.7.1",
+    "tui-editor": "^1.4.9"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^4.1.1",

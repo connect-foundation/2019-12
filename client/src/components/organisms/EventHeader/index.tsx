@@ -7,6 +7,7 @@ import { default as Theme } from 'commons/style/themes/default';
 import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
 
 interface Props {
+  id: number;
   mainImg: string;
   title: string;
   place: string;
@@ -14,10 +15,10 @@ interface Props {
   endAt: string;
   user: User;
   ticketType: TicketType;
-  eventId: number;
 }
 
 function EventHeader({
+  id: eventId,
   mainImg,
   title,
   place,
@@ -25,10 +26,11 @@ function EventHeader({
   endAt,
   user,
   ticketType,
-  eventId,
 }: Props): React.ReactElement {
   const ticketInfo = ticketType;
-  const { firstName, lastName, profileImgUrl } = user;
+  const { firstName, lastName } = user;
+  const profileImgUrl =
+    'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
 
   return (
     <S.HeaderContainer>

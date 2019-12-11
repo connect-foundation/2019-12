@@ -5,6 +5,6 @@ export default {
   title: 'Pages / EventDetail',
 };
 
-export const signUpPage: React.FC = () => {
+export const eventDetailPage: React.FC = () => {
   return <EventDetail />;
 };

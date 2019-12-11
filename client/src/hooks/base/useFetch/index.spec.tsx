@@ -23,7 +23,7 @@ describe('Hooks', () => {
     let step = 0;
     const steps = [
       { type: 'request' },
-      { type: 'success', data: { hello: 'world' } },
+      { type: 'success', data: { hello: 'world' }, status: OK },
     ];
     const resultTypes: FetchProps<any>[] = [];
 

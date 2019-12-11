@@ -1,8 +1,8 @@
-import { Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { verifyJWT } from 'utils/jwt';
 import { UNAUTHORIZED } from 'http-status';
 
-export default async (req: any, res: Response, next: NextFunction) => {
+export default async (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.UID;
   try {
     if (!token) throw new Error('no token');
