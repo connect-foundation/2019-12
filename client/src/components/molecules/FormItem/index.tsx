@@ -8,6 +8,7 @@ export interface Props {
   invalid?: boolean;
   required?: boolean;
   captionContent?: string;
+  direction?: string;
   children: React.ReactNode;
 }
 
@@ -17,10 +18,11 @@ function FormInput({
   invalid = false,
   required = false,
   captionContent = '',
+  direction = 'row',
   children,
 }: Props): React.ReactElement {
   return (
-    <S.FormItemContainer>
+    <S.FormItemContainer direction={direction}>
       <S.LabelContainer>
         <S.LabelWrapper>
           <Label name={label} required={required} />

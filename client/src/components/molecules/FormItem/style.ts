@@ -1,11 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { palette, theme } from 'styled-tools';
 import { fadeIn, fadeOut } from 'commons/style/animations';
 
-export const FormItemContainer = styled.div`
+interface FormItemContainerProps {
+  direction: string;
+}
+export const FormItemContainer = styled.div<FormItemContainerProps>`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-direction: ${props => props.direction};
+  ${props =>
+    props.direction &&
+    css`
+      ${ItemContainer} {
+        margin-top: 2rem;
+        width: 100%;
+      }
+    `}
 `;
 
 export const LabelContainer = styled.div`
@@ -13,6 +25,7 @@ export const LabelContainer = styled.div`
   flex-direction: column;
   width: 50%;
 `;
+
 export const LabelWrapper = styled.div`
   label {
     ${theme('fontStyle.h6')}
