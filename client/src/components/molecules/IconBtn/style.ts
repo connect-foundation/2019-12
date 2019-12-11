@@ -28,7 +28,7 @@ export const Content = styled.span`
   line-height: initial;
 `;
 
-export const ContentWrapper = styled.div`
+export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;

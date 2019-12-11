@@ -46,8 +46,8 @@ function IconBtn({
         setIconColor(noneIconColor);
       }}
     >
-      <S.ContainerWrapper {...btnProps}>
-        <S.ContentWrapper>
+      <S.ContentContainer {...btnProps}>
+        <S.ContentContainer>
           {circleImgSrc && (
             <S.CircleIconImg
               alt={'icon'}
@@ -65,8 +65,8 @@ function IconBtn({
               })}
             </S.IconWrapper>
           )}
-        </S.ContentWrapper>
-      </S.ContainerWrapper>
+        </S.ContentContainer>
+      </S.ContentContainer>
     </S.RootWrapper>
   );
 }
