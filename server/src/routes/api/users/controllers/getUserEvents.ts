@@ -9,7 +9,7 @@ export async function getUserEvent(
 ) {
   try {
     if (!req.user) throw new Error('no user id');
-    const userEvents = await getUserEventsByUserId(+req.user.id);
+    const userEvents = await getUserEventsByUserId(req.user.id);
     if (!userEvents.length) res.status(NO_CONTENT);
     res.send(userEvents);
   } catch (err) {
