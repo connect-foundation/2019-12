@@ -7,6 +7,13 @@ import { isLogin } from 'routes/middlewares';
 const router = express.Router();
 
 router.get('/events', isLogin);
+router.delete(
+  '/ticket',
+  isLogin,
+  validators.deleteUserTicket,
+  badRequestHandler,
+  controllers.deleteUserTicket,
+);
 router.get('/tickets', isLogin, controllers.getUserTicket);
 router.post('/:userId', controllers.getUser);
 router.post(
