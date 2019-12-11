@@ -11,7 +11,7 @@ export const FormItemContainer = styled.div<FormItemContainerProps>`
   align-items: flex-start;
   flex-direction: ${props => props.direction};
   ${props =>
-    props.direction &&
+    props.direction === 'column' &&
     css`
       ${ItemContainer} {
         margin-top: 2rem;
