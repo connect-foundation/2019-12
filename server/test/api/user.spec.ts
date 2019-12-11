@@ -78,7 +78,10 @@ describe('Router GET /api/users/events', () => {
     await request(app)
       .get('/api/users/events')
       .set(setHeader(token))
-      .expect(OK);
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toMatchSnapshot();
+      });
   });
   it('유저의 이벤트를 불러왔고, 데이터가 없을 경우 204', async () => {
     const token = await generateJWT(true, 100000, 1, '1234@gmail.com');

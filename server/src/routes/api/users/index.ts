@@ -6,7 +6,7 @@ import { requireLogin } from 'routes/middlewares';
 
 const router = express.Router();
 
-router.get('/events', requireLogin);
+router.get('/events', requireLogin, controllers.getUserEvent);
 router.delete(
   '/ticket',
   requireLogin,
