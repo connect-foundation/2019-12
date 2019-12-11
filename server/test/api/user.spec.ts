@@ -65,6 +65,36 @@ describe('Router GET /api/users/tickets', () => {
   });
 });
 
+describe('Router GET /api/users/events', () => {
+  it('로그인 안했을 경우', async () => {
+    const token = await generateJWT(false, 1, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/users/events')
+      .set(setHeader(token))
+      .expect(UNAUTHORIZED);
+  });
+  it('유저의 이벤트를 불러왔고, 데이터가 있을 경우 200', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/users/events')
+      .set(setHeader(token))
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toMatchSnapshot();
+      });
+  });
+  it('유저의 이벤트를 불러왔고, 데이터가 없을 경우 204', async () => {
+    const token = await generateJWT(true, 100000, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/users/events')
+      .set(setHeader(token))
+      .expect(NO_CONTENT)
+      .expect(res => {
+        expect(res.body).toStrictEqual({});
+      });
+  });
+});
+
 describe('Router DELETE ', () => {
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
