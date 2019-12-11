@@ -5,7 +5,7 @@ import 'tui-editor/dist/tui-editor-contents.css'; // editor's content
 
 export interface TuiEditorProps {
   onChange: (value: string) => void;
-  placeholder: string;
+  placeholder?: string;
 }
 
 function TuiEditor({

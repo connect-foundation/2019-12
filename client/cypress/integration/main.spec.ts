@@ -32,4 +32,14 @@ context('메인 페이지', () => {
       expect(items).to.have.length(24);
     });
   });
+
+  it('메인 배너의 이벤트 주최하기 버튼 클릭 시 이벤트 주최하기 페이지로 이동된다.', () => {
+    cy.get('[data-testid=mainbanner-btn]').click();
+    cy.location('pathname').should('eq', '/event/create');
+  });
+
+  it('카드를 클릭 시 이벤트 주최하기 페이지로 이동된다.', () => {
+    cy.get('[data-testid=main-card]:first').click();
+    cy.location('pathname').should('match', /^\/events\/[0-9]+$/);
+  });
 });
