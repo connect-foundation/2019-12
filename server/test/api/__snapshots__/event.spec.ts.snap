@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET /api/events/:eventId/users 내 이벤트에 접근한 경우 200 1`] = `
+Array [
+  Object {
+    "email": "sdong001@gmail.com",
+    "firstName": "성동",
+    "id": 2,
+    "lastName": "조",
+    "phoneNumber": "01012341234",
+    "userTickets": Array [
+      Object {
+        "createdAt": "2019-12-10T04:54:17.000Z",
+        "id": 1,
+        "isAttendance": true,
+        "ticketTypeId": 2,
+        "userId": 2,
+      },
+    ],
+  },
+]
+`;
