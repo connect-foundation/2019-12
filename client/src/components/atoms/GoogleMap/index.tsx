@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
+import { default as Theme } from 'commons/style/themes/default';
 import * as S from './style';
 import { IoMdPin } from 'react-icons/io';
 
@@ -34,7 +35,7 @@ function GoogleMap({
         defaultZoom={defaultZoom}
         draggable={false}
       >
-        <IoMdPin size={'3rem'} />
+        <IoMdPin size={'3rem'} color={Theme.palette.primary} />
       </GoogleMapReact>
     </S.Container>
   );
