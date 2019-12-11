@@ -27,6 +27,7 @@ export interface AccountState {
 }
 
 export interface EventsState {
-  events: Map<number, EventDetail>;
+  events?: Map<number, EventDetail>;
   order?: number[];
+  status: number;
 }
