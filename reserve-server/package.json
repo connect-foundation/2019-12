@@ -1,5 +1,6 @@
 {
   "name": "reserve-server",
+  "private": true,
   "version": "0.0.2",
   "main": "index.js",
   "license": "MIT",
@@ -78,6 +79,7 @@
     ],
     "globals": {
       "ts-jest": {
+        "tsConfig": "./tsconfig.json",
         "enableTsDiagnostics": true
       }
     },

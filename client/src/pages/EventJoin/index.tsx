@@ -35,7 +35,6 @@ import {
 } from 'commons/constants/string';
 import { NOT_OPEN, SOLD_OUT, EXCEED_LIMIT } from 'commons/constants/number';
 import ROUTES from 'commons/constants/routes';
-import * as S from './style';
 import { joinEvent } from 'apis';
 import { calculateStringOfDateRange } from 'utils/dateCalculator';
 

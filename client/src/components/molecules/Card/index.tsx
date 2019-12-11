@@ -17,6 +17,7 @@ export interface Props {
   host: string;
   /** 가격 */
   price: number;
+  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
 export const shortenTitle = (title: string) =>
@@ -31,12 +32,12 @@ function Card({
   title,
   host,
   price,
+  setRef,
 }: Props): React.ReactElement {
   const eventTitle = shortenTitle(title);
   return (
     <S.LinkWrapper to={to} data-testid={'main-card'}>
-      <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgWrapper>
+      <S.ImgWrapper ref={setRef}>
         <Img alt={'card Image'} src={imgSrc} />
       </S.ImgWrapper>
       <S.InnerContainer>

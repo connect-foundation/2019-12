@@ -1,28 +1,24 @@
 import React from 'react';
 
 import * as S from './style';
-import { EventsState } from 'types/States';
 import { Card } from 'components';
 import ROUTES from 'commons/constants/routes';
+import { EventDetail } from 'types/Data';
 
 interface Props {
-  eventsState: EventsState;
+  events: Map<number, EventDetail>;
+  eventsOrder: number[];
   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
-function CardGrid({ eventsState, setRef }: Props): React.ReactElement {
+function CardGrid({ events, eventsOrder, setRef }: Props): React.ReactElement {
   return (
     <>
       <S.CardGridContainer>
-        {eventsState.order!.map(index => {
-          const {
-            id,
-            mainImg,
-            startAt,
-            title,
-            user,
-            ticketType,
-          } = eventsState.events.get(index)!;
+        {eventsOrder.map((eventIndex, index) => {
+          const { id, mainImg, startAt, title, user, ticketType } = events.get(
+            eventIndex,
+          )!;
           return (
             <Card
               key={id}
@@ -32,11 +28,11 @@ function CardGrid({ eventsState, setRef }: Props): React.ReactElement {
               host={user.lastName + user.firstName}
               price={ticketType.price}
               to={`${ROUTES.EVENT_DETAIL}/${id}`}
+              setRef={eventsOrder.length - 1 === index ? setRef : undefined}
             />
           );
         })}
       </S.CardGridContainer>
-      <div ref={setRef}></div>
     </>
   );
 }
