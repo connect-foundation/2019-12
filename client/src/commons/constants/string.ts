@@ -27,3 +27,4 @@ export const TICKET_CHOICE_TITLE = 'Tickets';
 export const TICKET_PURCHASE_TITLE = '결제';
 export const TOTAL_PRICE_LABEL = '총 결제할 금액';
 export const TICKET_PURCHASE_BTN = '티켓 구입';
+export const TICKETBOX_REFUND_BTN = '환불하기';

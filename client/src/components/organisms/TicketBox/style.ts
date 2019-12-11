@@ -42,12 +42,16 @@ export const Desc = styled.div`
   margin: 1rem 0rem;
 `;
 
-export const OptionalContentWrapper = styled.div`
+interface OptionalContentWrapperProps {
+  showOptionBtn: boolean;
+}
+
+export const OptionalContentWrapper = styled.div<OptionalContentWrapperProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 15rem;
+  height: ${ifProp('showOptionBtn', '15rem', 'auto')};
 `;
 
 export const ChkBoxContainer = styled.div`
@@ -61,4 +65,7 @@ export const ChkBoxDesc = styled.span`
   ${theme('fontStyle.subtitle2')};
 `;
 
-export const RefundBtn = styled(Btn)``;
+export const IconWrapper = styled.div`
+  cursor: pointer;
+  user-select: none;
+`;

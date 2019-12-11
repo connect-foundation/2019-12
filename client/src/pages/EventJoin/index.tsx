@@ -181,12 +181,13 @@ function EventJoin(): React.ReactElement {
         ticketBox: (
           <TicketBox
             {...ticketData}
-            chkBoxProps={{
+            chkProps={{
               checked: isTicketChecked,
               onClick: () => {
                 setIsTicketChecked(!isTicketChecked);
               },
             }}
+            showDueDate
           />
         ),
 
