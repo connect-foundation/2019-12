@@ -1,5 +1,6 @@
 import { limitSizeSingleFile } from '../../src/routes/middlewares';
 import { createRequest, createResponse } from 'node-mocks-http';
+import { BAD_REQUEST } from 'http-status';
 
 describe('middleware - limitSizeSingleFile', () => {
   it('업로드 하는 파일이 없으면 next 함수 호출', () => {
@@ -32,6 +33,6 @@ describe('middleware - limitSizeSingleFile', () => {
     const next = jest.fn();
 
     limitSizeSingleFile(maxSize)(req, res, next);
-    expect(res.statusCode).toBe(400);
+    expect(res.statusCode).toBe(BAD_REQUEST);
   });
 });
