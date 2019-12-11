@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import { Price, IconLabel } from 'components';
+import { FaTicketAlt, FaRegCreditCard } from 'react-icons/fa';
+import { IconLabel, Price } from 'components';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
 import { TicketType } from 'types/Data';
 import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
-
-import TicketImg from 'assets/img/ticket.svg';
-import CreditcardImg from 'assets/img/credit-card.svg';
-import InVoiceImg from 'assets/img/invoice.svg';
 
 interface Props extends TicketType {
   chkBoxProps: ChkBoxProps;
@@ -56,31 +53,19 @@ function TicketBox({
         <S.Desc>{desc}</S.Desc>
         {showTicketId && (
           <IconLabel
-            iconProps={{
-              height: '1.5rem',
-              alt: 'ticket identity',
-              src: InVoiceImg,
-            }}
+            icon={<FaTicketAlt size={'1.5rem'} />}
             labelContent={`Ticket ID ${showTicketId}`}
           />
         )}
         {showPurchaseDate && (
           <IconLabel
-            iconProps={{
-              height: '1.5rem',
-              alt: 'purchase date',
-              src: CreditcardImg,
-            }}
+            icon={<FaRegCreditCard size={'1.5rem'} />}
             labelContent={`결제일 ${showPurchaseDate}`}
           />
         )}
         {showDueDate && (
           <IconLabel
-            iconProps={{
-              height: '1.5rem',
-              alt: 'ticket',
-              src: TicketImg,
-            }}
+            icon={<FaTicketAlt size={'1.5rem'} />}
             labelContent={`${remainDays}일 후에 판매마감`}
           />
         )}
