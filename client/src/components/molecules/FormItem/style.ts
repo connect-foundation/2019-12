@@ -26,7 +26,7 @@ export const LabelExplanation = styled.div`
 `;
 
 export const ItemContainer = styled.div`
-  width: 50%;
+  width: 45%;
 `;
 
 export const ChildrenWrapper = styled.div``;
