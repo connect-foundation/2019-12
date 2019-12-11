@@ -6,7 +6,6 @@ export async function getUserTicket(req: Request, res: Response) {
   try {
     if (!req.user) throw new Error('no user id');
     const userTickets = await getUserTicketsByUserId(+req.user.id);
-    console.log(userTickets);
     if (!userTickets.length) res.status(NO_CONTENT);
     res.send(userTickets);
   } catch (err) {
