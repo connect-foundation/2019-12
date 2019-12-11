@@ -1,12 +1,10 @@
 import React from 'react';
 
 import * as S from './style';
-import { Icon, IconBtn, Price } from 'components';
+import { IconBtn, Price } from 'components';
 import { User, TicketType } from 'types/Data';
-
-import MultipleUsers from 'assets/img/multiple-users-silhouette.svg';
-import ExternalSymbolBlack from 'assets/img/external-link-black.svg';
-import ExternalSymbolColored from 'assets/img/external-link-colored.svg';
+import { default as Theme } from 'commons/style/themes/default';
+import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
 
 interface Props {
   mainImg: string;
@@ -49,11 +47,14 @@ function EventHeader({
             </S.DateContainer>
             <S.Label>주최</S.Label>
             <IconBtn
-              styletype={'transparent-hover'}
-              content={lastName + firstName}
+              btnProps={{
+                styletype: 'transparent-hover',
+              }}
+              icon={FaExternalLinkAlt}
+              children={lastName + firstName}
+              noneIconColor={'black'}
+              hoveredIconColor={Theme.palette.primary}
               circleImgSrc={profileImgUrl}
-              iconSrc={ExternalSymbolBlack}
-              hoveredIconSrc={ExternalSymbolColored}
             />
           </S.HostDetailContainer>
         </S.HostContainer>
@@ -63,7 +64,7 @@ function EventHeader({
       </S.PriceWrapper>
       <S.SubmitContainer>
         <S.ReservedPeopleContainer>
-          <Icon alt={'people'} src={MultipleUsers} />
+          <FaUsers size={'2rem'} />
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
