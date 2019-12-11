@@ -1,12 +1,15 @@
 import React from 'react';
 
 import * as S from './style';
-import { IconBtn, Price } from 'components';
+import { Icon, IconBtn, Price } from 'components';
 import { User, TicketType } from 'types/Data';
-import { default as Theme } from 'commons/style/themes/default';
-import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
+
+import MultipleUsers from 'assets/img/multiple-users-silhouette.svg';
+import ExternalSymbolBlack from 'assets/img/external-link-black.svg';
+import ExternalSymbolColored from 'assets/img/external-link-colored.svg';
 
 interface Props {
+  id: number;
   mainImg: string;
   title: string;
   place: string;
@@ -14,10 +17,10 @@ interface Props {
   endAt: string;
   user: User;
   ticketType: TicketType;
-  eventId: number;
 }
 
 function EventHeader({
+  id: eventId,
   mainImg,
   title,
   place,
@@ -25,10 +28,11 @@ function EventHeader({
   endAt,
   user,
   ticketType,
-  eventId,
 }: Props): React.ReactElement {
   const ticketInfo = ticketType;
-  const { firstName, lastName, profileImgUrl } = user;
+  const { firstName, lastName } = user;
+  const profileImgUrl =
+    'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
 
   return (
     <S.HeaderContainer>
@@ -47,14 +51,11 @@ function EventHeader({
             </S.DateContainer>
             <S.Label>주최</S.Label>
             <IconBtn
-              btnProps={{
-                styletype: 'transparent-hover',
-              }}
-              icon={FaExternalLinkAlt}
-              children={lastName + firstName}
-              noneIconColor={'black'}
-              hoveredIconColor={Theme.palette.primary}
+              styletype={'transparent-hover'}
+              content={lastName + firstName}
               circleImgSrc={profileImgUrl}
+              iconSrc={ExternalSymbolBlack}
+              hoveredIconSrc={ExternalSymbolColored}
             />
           </S.HostDetailContainer>
         </S.HostContainer>
@@ -64,7 +65,7 @@ function EventHeader({
       </S.PriceWrapper>
       <S.SubmitContainer>
         <S.ReservedPeopleContainer>
-          <FaUsers size={'2rem'} />
+          <Icon alt={'people'} src={MultipleUsers} />
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn

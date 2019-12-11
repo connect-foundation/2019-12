@@ -1,70 +1,64 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import * as S from './style';
-import { Props as BtnProps } from 'components/atoms/Btn';
-import { IconType } from 'react-icons';
 
 interface Props {
-  btnProps: BtnProps;
   /** 아이콘 소스 */
-  icon?: IconType;
-  /** 버튼 내용 */
-  children: string | React.ReactNode;
-  /** 기본 아이콘 색상 */
-  noneIconColor?: string;
+  iconSrc: any;
   /** hover 아이콘 소스 */
-  hoveredIconColor?: string;
+  hoveredIconSrc?: any;
   /** 이미지 소스 */
-  circleImgSrc?: string;
+  circleImgSrc?: any;
+  /** 버튼 내용 */
+  content: string;
+  /** 크기 */
+  height?: string;
   /** 아이콘 크기 */
   IconHeight?: string;
-  /** fullid */
+  /** button styling type */
+  styletype?: string;
+  /** click handler */
+  onClick?: () => void;
+  /** fullid width */
   fullid?: boolean;
 }
 
 function IconBtn({
-  btnProps,
-  icon,
-  children,
-  noneIconColor = '',
-  hoveredIconColor = '',
-  circleImgSrc,
-  IconHeight = '1.5rem',
+  styletype = 'primary',
   fullid = false,
+  IconHeight = '1.5rem',
+  ...props
 }: Props): React.ReactElement {
-  const [iconColor, setIconColor] = useState(noneIconColor);
-
+  const { circleImgSrc } = props;
   return (
-    <S.RootWrapper
+    <S.Container
       fullid={fullid}
-      onMouseOver={() => {
-        setIconColor(hoveredIconColor);
-      }}
-      onMouseOut={() => {
-        setIconColor(noneIconColor);
-      }}
+      onClick={props.onClick}
+      styletype={styletype}
+      hoveredIconSrc={props.hoveredIconSrc}
     >
-      <S.ContainerWrapper {...btnProps}>
-        <S.ContentWrapper>
-          {circleImgSrc && (
+      <S.Wrapper>
+        {circleImgSrc && (
+          <>
             <S.CircleIconImg
               alt={'icon'}
               circular={true}
               src={circleImgSrc}
               height={`${parseInt(IconHeight) + 2}rem`}
             />
-          )}
-          <S.Content>{children}</S.Content>
-          <S.IconWrapper>
-            {icon &&
-              icon({
-                size: IconHeight,
-                color: iconColor,
-              })}
-          </S.IconWrapper>
-        </S.ContentWrapper>
-      </S.ContainerWrapper>
-    </S.RootWrapper>
+          </>
+        )}
+        <S.Content>{props.content}</S.Content>
+        <S.IconImg alt={'icon'} src={props.iconSrc} height={IconHeight} />
+        {props.hoveredIconSrc && (
+          <S.HoveredIconImg
+            alt={'icon'}
+            src={props.hoveredIconSrc}
+            height={IconHeight}
+          />
+        )}
+      </S.Wrapper>
+    </S.Container>
   );
 }
 
