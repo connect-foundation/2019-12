@@ -1,9 +1,12 @@
-import { UserTicket, Event, TicketType } from 'models';
+import { UserTicket, Event, TicketType, User } from 'models';
 import { WhereOptions, FindAttributeOptions, Includeable } from 'sequelize';
 
 interface BoughtEvent extends Partial<Event> {
   userTickets: UserBoughtTicket[];
   ticket: Partial<TicketType>;
+}
+interface AttendantTicket extends Partial<User> {
+  userTickets: UserBoughtTicket[];
 }
 interface UserBoughtTicket {
   id: number;
@@ -12,7 +15,22 @@ interface UserBoughtTicket {
   isAttendance: boolean;
   createdAt: Date;
 }
-
+function eventTicketReducer(
+  acc: AttendantTicket[],
+  cur: UserTicket,
+): AttendantTicket[] {
+  const { user, ...userTicket } = cur.get({ plain: true }) as UserTicket;
+  let data = acc.findIndex(a => a.id === user.id);
+  if (data === -1) {
+    acc.push({
+      ...user,
+      userTickets: [],
+    });
+    data = acc.length - 1;
+  }
+  acc[data].userTickets.push(userTicket);
+  return acc;
+}
 function userTicketReducer(acc: BoughtEvent[], cur: UserTicket): BoughtEvent[] {
   const {
     ticketType: { event, ...ticketTypes },
@@ -64,6 +82,27 @@ export async function getUserTicketsByUserId(
   ];
   const result = await UserTicket.findAll({ include, attributes, where });
   return result.reduce<BoughtEvent[]>(userTicketReducer, []);
+}
+
+export async function getUserTicketsByTicketId(
+  ticketTypeId: number,
+): Promise<AttendantTicket[]> {
+  const attributes: FindAttributeOptions = {
+    exclude: ['updatedAt'],
+  };
+  const where: WhereOptions = {
+    ticketTypeId,
+  };
+  const include: Includeable[] = [
+    {
+      model: User,
+      attributes: {
+        exclude: ['googleId', 'deviceToken', 'createdAt', 'updatedAt'],
+      },
+    },
+  ];
+  const result = await UserTicket.findAll({ where, include, attributes });
+  return result.reduce<AttendantTicket[]>(eventTicketReducer, []);
 }
 
 export async function deleteUserTicketById(
