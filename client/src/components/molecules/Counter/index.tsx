@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useCallback, Dispatch } from 'react';
 
 import * as S from './style';
-import { Icon } from 'components';
-import LeftArrow from 'assets/img/left-arrow.svg';
-import RightArrow from 'assets/img/right-arrow.svg';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export interface Props {
   minCount: number;
@@ -75,7 +73,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
           callbackDecrease();
         }}
       >
-        <Icon height={'1.3rem'} alt={'left count'} src={LeftArrow} />
+        <FaChevronLeft size={'1.3rem'} />
       </S.ArrowWrapper>
       <S.Count>{count}</S.Count>
       <S.ArrowWrapper
@@ -84,7 +82,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
           callbackIncrease();
         }}
       >
-        <Icon height={'1.3rem'} alt={'right count'} src={RightArrow} />
+        <FaChevronRight size={'1.3rem'} />
       </S.ArrowWrapper>
     </S.Container>
   );
