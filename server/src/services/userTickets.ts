@@ -47,6 +47,7 @@ export async function getUserTicketsByUserId(
       include: [
         {
           model: Event,
+          order: [['startAt', 'ASC']],
           attributes: {
             exclude: [
               'createdAt',
