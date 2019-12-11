@@ -4,7 +4,6 @@ import { Secret } from 'jsonwebtoken';
 import { sequelize } from '../../src/utils/sequelize';
 import { generateJWT } from '../../src/utils/jwt';
 import { OK, UNAUTHORIZED, NO_CONTENT } from 'http-status';
-import { enumNumberBody } from '@babel/types';
 
 beforeAll(async () => {
   sequelize.options.logging = false;
