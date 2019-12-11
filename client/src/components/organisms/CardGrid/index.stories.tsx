@@ -1,20 +1,21 @@
 import React from 'react';
 
 import CardGrid from '.';
-import { EventsState } from 'types/States';
+import { EventDetail } from 'types/Data';
 
 export default {
   title: 'Organisms / CardGrid',
 };
 
-const tempEventData = {
+const defaultEventData: EventDetail = {
   id: 733,
-  userId: 2,
   title: '리눅스 커널 v5.3 분석: 네트워크 TCP/IP 주말특강(12월)',
   startAt: '2019-12-21T03:00:00.000Z',
   endAt: '2019-12-22T09:00:00.000Z',
   place: '리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)',
   address: '테헤란로4길 38-5',
+  latitude: 1,
+  longitude: 1,
   placeDesc:
     "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
   mainImg: 'https://bookus.kr.object.ncloudstorage.com/733',
@@ -41,18 +42,14 @@ const tempEventData = {
     profileImgUrl: '',
   },
 };
-const eventMap = new Map();
-const eventOrder = [];
+const events = new Map<number, EventDetail>();
+const eventsOrder: number[] = [];
+
 for (let i = 1; i < 20; i += 1) {
-  eventMap.set(i, tempEventData);
-  eventOrder.push(i);
+  events.set(i, defaultEventData);
+  eventsOrder.push(i);
 }
 
-const eventsState: EventsState = {
-  events: eventMap,
-  order: eventOrder,
-};
-
 export const cardGrid: React.FC = () => {
-  return <CardGrid eventsState={eventsState} />;
+  return <CardGrid events={events} eventsOrder={eventsOrder} />;
 };

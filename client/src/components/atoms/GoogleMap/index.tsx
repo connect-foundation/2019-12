@@ -12,7 +12,6 @@ const {
 const googleApiKey =
   REACT_APP_GOOGLE_MAP_API_KEY || STORYBOOK_GOOGLE_MAP_API_KEY;
 const defaultZoom = 17;
-const defaultCenter = { lat: 37.5662952, lng: 126.9779451 };
 
 interface Props {
   latitude: number;
@@ -21,16 +20,15 @@ interface Props {
 }
 
 function GoogleMap({
-  latitude,
-  longitude,
+  latitude: lat,
+  longitude: lng,
   height = '28rem',
 }: Props): React.ReactElement {
   return (
     <S.Container height={height}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: `${googleApiKey}` }}
-        center={{ lat: latitude, lng: longitude }}
-        defaultCenter={defaultCenter}
+        center={{ lat, lng }}
         defaultZoom={defaultZoom}
         draggable={false}
       >
