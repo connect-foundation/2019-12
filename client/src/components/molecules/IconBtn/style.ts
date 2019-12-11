@@ -1,26 +1,50 @@
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
-import { Icon, Btn } from 'components';
+
+import { BtnStyle } from 'components/atoms/Btn/style';
+import Icon from 'components/atoms/Icon';
+
+interface ContainerProps {
+  fullid: boolean;
+  styletype: string;
+  hoveredIconSrc: any;
+}
 
 export const CircleIconImg = styled(Icon)``;
 
-interface RootWrapperProps {
-  fullid: boolean;
-}
-
-export const RootWrapper = styled.div<RootWrapperProps>`
-  width: ${ifProp('fullid', '100%', 'auto')};
+export const HoveredIconImg = styled(Icon)`
+  display: none;
 `;
 
-export const ContainerWrapper = styled(Btn)`
+export const IconImg = styled(Icon)``;
+
+export const Container = styled.div<ContainerProps>`
+  ${BtnStyle}
   display: inline-table;
   vertical-align: middle;
   width: ${ifProp('fullid', '100%', 'fit-content')};
-  height: 100%;
   flex-grow: 1;
 
   ${CircleIconImg} {
     margin-right: 1rem;
+  }
+
+  ${HoveredIconImg} {
+    margin-left: 1rem;
+  }
+
+  ${IconImg} {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    ${IconImg} {
+      display: ${ifProp('hoveredIconSrc', 'none', 'inline-block')};
+    }
+
+    ${HoveredIconImg} {
+      display: ${ifProp('hoveredIconSrc', 'inline-block', '')};
+    }
   }
 `;
 
@@ -28,13 +52,9 @@ export const Content = styled.span`
   line-height: initial;
 `;
 
-export const ContentWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`;
-
-export const IconWrapper = styled.span`
-  margin-left: 1rem;
 `;

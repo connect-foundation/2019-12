@@ -1,8 +1,8 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
+import { text, object } from '@storybook/addon-knobs';
 
 import IconLabel from '.';
-import { FaCheck } from 'react-icons/fa';
+import Check from 'assets/img/check-black.svg';
 
 export default {
   title: 'Molecules / IconLabel',
@@ -10,7 +10,11 @@ export default {
 
 export const index: React.FC = () => (
   <IconLabel
-    icon={<FaCheck size={'1.5rem'} />}
+    iconProps={object('iconProps', {
+      height: '1.5rem',
+      alt: 'check',
+      src: Check,
+    })}
     labelContent={text('labelContent', '1인당 2개 구입 가능')}
   />
 );

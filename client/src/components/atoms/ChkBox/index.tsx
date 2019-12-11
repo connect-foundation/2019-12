@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import { FaCheck } from 'react-icons/fa';
+import CheckSvg from 'assets/img/check.svg';
 
 export interface Props {
   checked: boolean;
@@ -19,7 +19,7 @@ function ChkBox({ checked, ...props }: Props): React.ReactElement {
         setIsChecked(!isChecked);
       }}
     >
-      {isChecked && <FaCheck size={'2rem'} color={'black'} />}
+      {isChecked && <S.ChkIcon alt={'check'} src={CheckSvg} />}
     </S.Wrapper>
   );
 }
