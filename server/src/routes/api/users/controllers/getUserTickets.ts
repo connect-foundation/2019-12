@@ -8,7 +8,8 @@ export async function getUserTicket(
   next: NextFunction,
 ) {
   try {
-    const userTickets = await getUserTicketsByUserId(req.user!.id);
+    if (!req.user) throw new Error('no user id');
+    const userTickets = await getUserTicketsByUserId(req.user.id);
     if (!userTickets.length) res.status(NO_CONTENT);
     res.send(userTickets);
   } catch (err) {
