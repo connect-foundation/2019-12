@@ -16,10 +16,8 @@ function LoginTemplate({
   return (
     <S.Container>
       <S.LogoWrapper>{logoImg}</S.LogoWrapper>
-
       <S.OauthContainer>
         <S.SocialLoginWrapper>{socialLoginLabel}</S.SocialLoginWrapper>
-
         {oauthContent}
       </S.OauthContainer>
     </S.Container>
