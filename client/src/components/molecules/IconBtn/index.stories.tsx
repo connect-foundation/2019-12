@@ -15,7 +15,6 @@ export const index: React.FC = () => (
   <IconBtn
     btnProps={{
       styletype: 'primary',
-      children: '',
       onClick: action('onClick'),
     }}
     icon={FaExternalLinkAlt}
