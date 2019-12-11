@@ -2,11 +2,11 @@ import * as express from 'express';
 import * as controllers from './controllers';
 import * as validators from './validators';
 import { badRequestHandler } from 'utils/errorHandler';
-import { requiredLogin } from 'routes/middlewares';
+import { requireLogin } from 'routes/middlewares';
 
 const router = express.Router();
 
-router.get('/tickets', requiredLogin, controllers.getUserTicket);
+router.get('/tickets', requireLogin, controllers.getUserTicket);
 router.post('/:userId', controllers.getUser);
 router.post(
   '/',
