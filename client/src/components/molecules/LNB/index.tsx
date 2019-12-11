@@ -29,7 +29,7 @@ function makeLNBItems(
   ];
 }
 
-function MyPageLNB({ items, tabIndex = 1 }: Props): React.ReactElement {
+function LNB({ items, tabIndex = 1 }: Props): React.ReactElement {
   const [currentTabIndex, setCurrentTabIndex] = useState(tabIndex);
 
   return (
@@ -39,4 +39,4 @@ function MyPageLNB({ items, tabIndex = 1 }: Props): React.ReactElement {
   );
 }
 
-export default MyPageLNB;
+export default LNB;
