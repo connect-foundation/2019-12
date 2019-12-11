@@ -10,9 +10,7 @@ export const index: React.FC = () => {
   return (
     <TuiEditor
       placeholder={text('placeholder', '내용을 입력해주세요.')}
-      onChange={value => {
-        console.log(value);
-      }}
+      onChange={() => {}}
     />
   );
 };
