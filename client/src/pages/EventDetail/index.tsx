@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 
 import EventDetailTemplate from './template';
-import { EventHeader, Ticket, Place } from 'components';
+import { EventHeader, Ticket, Place, TuiViewer } from 'components';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
 import delay from 'utils/delay';
@@ -112,8 +112,7 @@ function EventDetailView(): React.ReactElement {
           }}
         />
       }
-      // TODO: eventContent will change to contentViewer component
-      eventContent={desc}
+      eventContent={<TuiViewer content={desc} />}
       ticket={<Ticket {...ticketType} />}
       place={
         <Place
