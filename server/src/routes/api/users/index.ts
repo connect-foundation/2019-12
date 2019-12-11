@@ -1,8 +1,8 @@
 import * as express from 'express';
 import * as controllers from './controllers';
 import * as validators from './validators';
-import { badRequestHandler } from '../../../utils/errorHandler';
-import { isLogin } from '../../middlewares';
+import { badRequestHandler } from 'utils/errorHandler';
+import { isLogin } from 'routes/middlewares';
 
 const router = express.Router();
 
