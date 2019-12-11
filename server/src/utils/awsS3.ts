@@ -1,5 +1,4 @@
-import { S3, config, AWSError } from 'aws-sdk';
-import { PromiseResult } from 'aws-sdk/lib/request';
+import { S3, config } from 'aws-sdk';
 import { ReadStream } from 'fs';
 
 const {
@@ -13,12 +12,17 @@ const {
 config.update({ accessKeyId, secretAccessKey });
 const s3 = new S3({ region, endpoint });
 
-export function putObject(
+interface PutObjectResult {
+  URL: string;
+  ETag?: string;
+}
+
+export async function putObject(
   Key: string,
   Body: ReadStream | Buffer,
-): Promise<PromiseResult<S3.PutObjectOutput, AWSError>> {
+): Promise<PutObjectResult> {
   if (!Bucket) throw Error('Bucket Not Found');
-  return s3
+  const { ETag } = await s3
     .putObject({
       Bucket,
       Key,
@@ -26,4 +30,7 @@ export function putObject(
       ACL: 'public-read',
     })
     .promise();
+  const URL = `${endpoint}/${Bucket}/${Key}`;
+
+  return { URL, ETag };
 }
