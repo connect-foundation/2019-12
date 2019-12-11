@@ -88,6 +88,7 @@ export async function createEventAndTicket(
   event: Partial<Event>,
   ticket: Partial<TicketType>,
 ) {
+  // TODO : 트랜잭션으로 리팩토링
   const newEvent = await Event.create(event);
   const newTicket = await TicketType.create({
     ...ticket,
