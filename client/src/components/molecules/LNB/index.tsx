@@ -6,12 +6,14 @@ import { LNBItem } from 'components';
 export interface Props {
   items: string[];
   tabIndex?: number;
+  onTabClicked?: (tabIndex: number) => void;
 }
 
 function makeLNBItems(
   items: string[],
   currentTabIndex: number,
   setCurrentTabIndex: (curTabInd: number) => void,
+  onTabClicked?: (tabIndex: number) => void,
 ) {
   return [
     ...items.map((item, index) => {
@@ -22,6 +24,7 @@ function makeLNBItems(
           children={item}
           onClick={() => {
             setCurrentTabIndex(index + 1);
+            onTabClicked && onTabClicked(index + 1);
           }}
         />
       );
@@ -29,12 +32,12 @@ function makeLNBItems(
   ];
 }
 
-function LNB({ items, tabIndex = 1 }: Props): React.ReactElement {
+function LNB({ items, tabIndex = 1, onTabClicked }: Props): React.ReactElement {
   const [currentTabIndex, setCurrentTabIndex] = useState(tabIndex);
 
   return (
     <S.Container key={currentTabIndex}>
-      {makeLNBItems(items, currentTabIndex, setCurrentTabIndex)}
+      {makeLNBItems(items, currentTabIndex, setCurrentTabIndex, onTabClicked)}
     </S.Container>
   );
 }
