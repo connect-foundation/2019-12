@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from 'styled-tools';
+import { theme, palette } from 'styled-tools';
 
 interface WrapperProps {
   background?: string;
@@ -8,7 +8,7 @@ interface WrapperProps {
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;
   border-radius: 5px;
-  background-color: lightgray;
+  background-color: ${palette('grayscale', 6)};
   background-image: url('${props => props.background}');
   border: ${props => (props.background ? '0' : '2.5px dotted gray')};
   color: ${props => (props.background ? 'transparent' : 'inherit')};
