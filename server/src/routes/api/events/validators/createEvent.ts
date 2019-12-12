@@ -51,6 +51,16 @@ export default checkSchema({
     isString: true,
     exists: true,
   },
+  latitude: {
+    in: 'body',
+    isFloat: true,
+    toFloat: true,
+  },
+  longitude: {
+    in: 'body',
+    isFloat: true,
+    toFloat: true,
+  },
   desc: {
     in: 'body',
     isString: true,
