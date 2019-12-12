@@ -32,7 +32,7 @@ function ImageSelector({ onChange }: Props): ReactElement {
   return (
     <S.Wrapper {...{ background }}>
       <S.File type="file" accept="image/*" onChange={onChangeFileInput} />
-      <S.Info>png, jpg, jpeg 이미지만 업로드 가능합니다.</S.Info>
+      <S.Info>이미지 파일만 업로드 가능합니다.</S.Info>
       <S.Info>16:9 비율의 이미지가 가장 잘 어울립니다.</S.Info>
     </S.Wrapper>
   );
