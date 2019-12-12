@@ -36,4 +36,6 @@ export const RoadAddressName = styled.div`
   ${theme('fontStyle.caption')}
   color: ${palette('grayscale', 3)};
 `;
-export const KakaoMapWrapper = styled.div``;
+export const KakaoMapWrapper = styled.div`
+  margin-top: 1rem;
+`;
