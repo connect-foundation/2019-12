@@ -27,13 +27,13 @@ Storybook을 통한 컴포넌트의 독립된 테스팅, Cypress를 통한 UI의
 
 - Infra Architecture & Orchestration
 
-<img width="743" alt="CD" src="https://user-images.githubusercontent.com/10372359/70304855-31c51b80-1846-11ea-8d4e-6f52c2e33bb2.png">
+![Kubernetes-infra](https://user-images.githubusercontent.com/10372359/70730811-ff855380-1d48-11ea-96c7-b7ee207cf926.png)
 
-도커 Swarm을 통한 서비스 제공 Front와 Back의 서비스의 Replica를 각각 3개씩 만들어서 이를 서비스하며 Ncloud 의 로드벨런서를 이용하여 서비스함. 예약이 필요한 시점마다 늘어나는 트래픽을 감당하기 위한 Container Orchestration 툴로 Docker Swarm을 선택했습니다.
+예약이 필요한 시점마다 늘어나는 트래픽을 감당하기 위한 Container Orchestration 툴로 Kubernetes를 선택했습니다.
 
 ### DevOps
 
- <img width="878" alt="CI" src="https://user-images.githubusercontent.com/10372359/70304713-e9a5f900-1845-11ea-8ad7-afa855dfb152.png">
+ ![CICD pipeline](https://user-images.githubusercontent.com/10372359/70730814-00b68080-1d49-11ea-9fcf-d0251da08d0b.png)
 
 **[Travis CI](https://travis-ci.org/connect-foundation/2019-12/)**
 
@@ -52,7 +52,7 @@ Storybook을 통한 컴포넌트의 독립된 테스팅, Cypress를 통한 UI의
 
 ## Built With
 
-<img width="843" alt="tech" src="https://user-images.githubusercontent.com/10372359/69915159-5197c080-148f-11ea-93e7-3438d76fb0eb.png">
+![Dependancy](https://user-images.githubusercontent.com/10372359/70730864-14fa7d80-1d49-11ea-959f-b981d8460d90.png)
 
 - Language: Typescript
 - Front-end: React, Styled Component, Storybook
