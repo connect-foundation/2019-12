@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { prop } from 'styled-tools';
+import { prop, palette } from 'styled-tools';
 
-import { Icon } from 'components';
+import { IoMdPin } from 'react-icons/io';
 
 interface ContainerProps {
   height: string;
@@ -16,6 +16,6 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-export const PinIcon = styled(Icon)`
-  transform: 'translate(-50%, -50%)';
+export const PinIcon = styled(IoMdPin)`
+  color: ${palette('primary')};
 `;
