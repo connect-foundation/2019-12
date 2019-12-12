@@ -13,6 +13,16 @@ router.get('/', validators.getEvents, badRequestHandler, controllers.getEvents);
 router.get('/coordinate', controllers.convertPlaceToCoordinate);
 router.get('/:eventId', controllers.getEvent);
 router.get('/:eventId/tickets', controllers.getEventTickets);
-router.get('/:eventId/users', requireLogin, controllers.getAttendants);
+router.patch(
+  '/:eventId/ticket/:ticketId',
+  requireLogin,
+  controllers.checkAttendance,
+);
+router.get(
+  '/:eventId/users',
+  requireLogin,
+  validators.checkAttendance,
+  controllers.getAttendants,
+);
 
 export default router;

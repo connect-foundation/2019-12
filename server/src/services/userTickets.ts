@@ -84,6 +84,14 @@ export async function getUserTicketsByUserId(
   return result.reduce<BoughtEvent[]>(userTicketReducer, []);
 }
 
+export async function toggleUserAttendance(
+  id: number,
+  ticketTypeId: number,
+  attendance: boolean,
+): Promise<[number, UserTicket[]]> {
+  const where: WhereOptions = { id, ticketTypeId };
+  return await UserTicket.update({ isAttendance: attendance }, { where });
+}
 export async function getUserTicketsByTicketId(
   ticketTypeId: number,
 ): Promise<AttendantTicket[]> {

@@ -174,3 +174,62 @@ describe('GET /api/events/:eventId/users', () => {
       });
   });
 });
+
+describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
+  it('true 로 변경 요청을 보냈을 때 성공하면, 200', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: true,
+      })
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toStrictEqual({ id: 2, isAttendance: true });
+      });
+  });
+  it('False 로 변경 요청을 보냈을 때 성공하면, 200', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toStrictEqual({ id: 2, isAttendance: false });
+      });
+  });
+  it('로그인 실패하면 401', async () => {
+    const token = await generateJWT(false, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(UNAUTHORIZED);
+  });
+  it('이벤트가 로그인한 사용자의 것이 아닌경우 400', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/1/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(BAD_REQUEST);
+  });
+  it('이벤트가 로그인한 사용자의 것이지만 티켓이 없을경우 404', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/1000000')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(NOT_FOUND);
+  });
+});
