@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { BAD_REQUEST } from 'http-status';
 import multer = require('multer');
 
 const multerErrorCodes = [
@@ -28,7 +29,7 @@ export default (fieldName: string) => {
   return (req: Request, res: Response, next: NextFunction) => {
     upload(req, res, (err?: MulterError) => {
       if (err?.code && multerErrorCodes.includes(err.code))
-        return res.sendStatus(401);
+        return res.sendStatus(BAD_REQUEST);
       if (err) return next(err);
     });
   };
