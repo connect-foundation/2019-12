@@ -6,5 +6,13 @@
     "isAttendance": true,
     "createdAt": "",
     "updatedAt": ""
+  },
+  {
+    "id": 2,
+    "ticketTypeId": 3,
+    "userId": 2,
+    "isAttendance": false,
+    "createdAt": "",
+    "updatedAt": ""
   }
 ]

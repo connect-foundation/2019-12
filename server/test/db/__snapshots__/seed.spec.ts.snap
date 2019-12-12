@@ -14838,5 +14838,11 @@ Array [
     "ticketTypeId": 2,
     "userId": 2,
   },
+  Object {
+    "id": 2,
+    "isAttendance": false,
+    "ticketTypeId": 3,
+    "userId": 2,
+  },
 ]
 `;
