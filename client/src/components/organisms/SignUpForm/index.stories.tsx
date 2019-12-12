@@ -14,13 +14,13 @@ export default {
   title: 'Organisms / SignUpForm',
 };
 
-const Button = {
-  children: text('컨텐츠', ''),
-  styletype: 'primary',
-  grow: true,
-};
+export const index: React.FC = () => {
+  const Button = {
+    children: text('컨텐츠', ''),
+    styletype: 'primary',
+    grow: true,
+  };
 
-export const defaultInput: React.FC = () => {
   return (
     <>
       <h1 style={{ marginBottom: '4rem' }}>

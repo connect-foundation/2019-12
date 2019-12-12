@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import TicketImg from 'assets/img/ticket.svg';
+import { FaTicketAlt } from 'react-icons/fa';
 import { IconLabel, Price } from 'components';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
 import { TicketType } from 'types/Data';
@@ -44,11 +44,7 @@ function TicketBox({
         </S.PriceWrapper>
         <S.Desc>{desc}</S.Desc>
         <IconLabel
-          iconProps={{
-            height: '1.5rem',
-            alt: 'ticket',
-            src: TicketImg,
-          }}
+          icon={<FaTicketAlt size={'1.5rem'} />}
           labelContent={`${remainDays}일 후에 판매마감`}
         />
       </S.TicketInfoContainer>

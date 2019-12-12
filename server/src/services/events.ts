@@ -102,3 +102,19 @@ export async function createEventAndTicket(
 
   return { eventId: newEvent.id, ticketId: newTicket.id };
 }
+
+export async function getUserEventsByUserId(userId: number): Promise<Event[]> {
+  const where: WhereOptions = { userId };
+  const order: Order = [['startAt', 'DESC']];
+  const attributes: FindAttributeOptions = {
+    exclude: [
+      'createdAt',
+      'updatedAt',
+      'desc',
+      'latitude',
+      'longitude',
+      'isPublic',
+    ],
+  };
+  return await Event.findAll({ where, order, attributes });
+}
