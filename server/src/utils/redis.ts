@@ -43,4 +43,8 @@ export const redisDeleteKey = async () => {
   client.quit();
 };
 
+export function redisCreateKey(id: string, obj: Record<string, any>): boolean {
+  return client.hmset(id, obj);
+}
+
 export default client;
