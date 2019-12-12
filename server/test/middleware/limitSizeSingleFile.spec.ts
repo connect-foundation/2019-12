@@ -9,7 +9,7 @@ describe('middleware - limitSizeSingleFile', () => {
     const next = jest.fn();
 
     limitSizeSingleFile(3000)(req, res, next);
-    expect(next).toHaveBeenCalled();
+    expect(next).toHaveBeenCalledWith();
   });
 
   it('업로드 하는 파일의 용량이 제한보다 작으면 next 함수 호출', () => {
@@ -21,7 +21,7 @@ describe('middleware - limitSizeSingleFile', () => {
     const next = jest.fn();
 
     limitSizeSingleFile(maxSize)(req, res, next);
-    expect(next).toHaveBeenCalled();
+    expect(next).toHaveBeenCalledWith();
   });
 
   it('업로드 하는 파일의 용량이 제한보다 크면 400 응답', () => {
@@ -33,6 +33,7 @@ describe('middleware - limitSizeSingleFile', () => {
     const next = jest.fn();
 
     limitSizeSingleFile(maxSize)(req, res, next);
+    expect(next).not.toHaveBeenCalled();
     expect(res.statusCode).toBe(BAD_REQUEST);
   });
 });
