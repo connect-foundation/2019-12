@@ -18,9 +18,10 @@ export const index: React.FC = () => (
       onClick: action('onClick'),
     }}
     icon={FaExternalLinkAlt}
-    children={'Hello'}
     noneIconColor={'black'}
     hoveredIconColor={'blue'}
     circleImgSrc={tempCircleImgSrc}
-  />
+  >
+    Hello
+  </IconBtn>
 );
