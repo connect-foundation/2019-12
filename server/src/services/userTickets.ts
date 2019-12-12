@@ -1,5 +1,10 @@
 import { UserTicket, Event, TicketType } from 'models';
-import { WhereOptions, FindAttributeOptions, Includeable } from 'sequelize';
+import {
+  WhereOptions,
+  FindAttributeOptions,
+  Includeable,
+  literal,
+} from 'sequelize';
 
 interface BoughtEvent extends Partial<Event> {
   userTickets: UserBoughtTicket[];
@@ -64,6 +69,22 @@ export async function getUserTicketsByUserId(
   ];
   const result = await UserTicket.findAll({ include, attributes, where });
   return result.reduce<BoughtEvent[]>(userTicketReducer, []);
+}
+
+export async function toggleUserAttendance(
+  id: number,
+  ticketTypeId: number,
+): Promise<[number, UserTicket[]]> {
+  if (!id) throw new Error('no id input');
+  const where: WhereOptions = { id, ticketTypeId };
+  return await UserTicket.update(
+    {
+      field: {
+        isAttendance: literal('!is_attendance'),
+      },
+    },
+    { where },
+  );
 }
 
 export async function deleteUserTicketById(
