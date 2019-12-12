@@ -8,6 +8,7 @@ import {
 import { Event, TicketType, User } from 'models';
 import axios from 'axios';
 import { stringify } from 'query-string';
+import { redisCreateKey } from 'utils/redis';
 
 export async function getEvents(limit = 20, startAt: Date): Promise<Event[]> {
   const where: WhereOptions = startAt
@@ -92,9 +93,12 @@ export async function createEventAndTicket(
   const newEvent = await Event.create(event);
   const newTicket = await TicketType.create({
     ...ticket,
+    leftCnt: ticket.quantity,
     eventId: newEvent.id,
   });
 
-  newEvent.ticketType = newTicket;
-  return newEvent;
+  const { id, leftCnt, salesStartAt, salesEndAt } = newTicket;
+  redisCreateKey(`${id}`, { leftCnt, salesStartAt, salesEndAt });
+
+  return { eventId: newEvent.id, ticketId: newTicket.id };
 }

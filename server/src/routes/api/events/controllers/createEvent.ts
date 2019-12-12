@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { createEventAndTicket } from 'services/events';
 import { putObject } from 'utils/awsS3';
-import { redisCreateKey } from 'utils/redis';
 import { Event, TicketType } from 'models';
 import { v1 as uuid } from 'uuid';
 import { CREATED } from 'http-status';
@@ -47,14 +46,9 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    event.userId = req.user!.id;
-    const {
-      id,
-      ticketType: { leftCnt, salesStartAt, salesEndAt },
-    } = await createEventAndTicket(event, ticket);
-
-    redisCreateKey(`${id}`, { id, leftCnt, salesStartAt, salesEndAt });
-    res.sendStatus(CREATED);
+    event.userId = req.user?.id;
+    const { eventId, ticketId } = await createEventAndTicket(event, ticket);
+    res.status(CREATED).json({ eventId, ticketId });
   } catch (error) {
     next(error);
   }
