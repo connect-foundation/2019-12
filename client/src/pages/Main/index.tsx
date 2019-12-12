@@ -1,54 +1,42 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import MainTemplate from './template';
 import { MainBanner, CardGrid } from 'components';
-import { useIntersect } from 'hooks';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventsState } from 'types/States';
-
-const requestEventNum = 12;
-
-const getStartAt = ({ events, order }: Partial<EventsState>) => {
-  if (order!.length === 0) return '';
-  const lastItemIndex = order!.slice(-1)[0];
-  return events!.get(lastItemIndex)!.startAt;
-};
+import { REQUEST_EVENT_CARD_GRID_NUM } from 'commons/constants/number';
 
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
   const { eventFetchDispatcher } = useContext(EventsStoreAction);
   const { events, order } = eventsState;
 
-  const getNextEvents = useCallback(
-    async function() {
-      const startAt = getStartAt({ events, order });
-      eventFetchDispatcher({
-        type: 'EVENTS',
-        params: {
-          cnt: requestEventNum,
-          startAt,
-        },
-      });
-    },
-    [events, order, eventFetchDispatcher],
-  );
+  const getStartAt = ({ events, order }: Partial<EventsState>) => {
+    if (order!.length === 0) return '';
+    const lastItemIndex = order!.slice(-1)[0];
+    return events!.get(lastItemIndex)!.startAt;
+  };
 
-  const [, setRef] = useIntersect(callback, {
-    root: null,
-    threshold: 1.0,
-    rootMargin: '0% 0% 50% 0%',
-  });
-
-  async function callback() {
-    setRef(null);
-    await getNextEvents();
+  function getNextEvents() {
+    const startAt = getStartAt({ events, order });
+    eventFetchDispatcher({
+      type: 'EVENTS',
+      params: {
+        cnt: REQUEST_EVENT_CARD_GRID_NUM,
+        startAt,
+      },
+    });
   }
 
   return (
     <MainTemplate
       mainBanner={<MainBanner />}
       cardGrid={
-        <CardGrid events={events!} eventsOrder={order!} setRef={setRef} />
+        <CardGrid
+          events={events!}
+          eventsOrder={order!}
+          requestNextData={getNextEvents}
+        />
       }
     />
   );
