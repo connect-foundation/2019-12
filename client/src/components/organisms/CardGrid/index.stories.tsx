@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CardGrid from '.';
 import { EventDetail } from 'types/Data';
@@ -45,11 +45,39 @@ const defaultEventData: EventDetail = {
 const events = new Map<number, EventDetail>();
 const eventsOrder: number[] = [];
 
-for (let i = 1; i < 20; i += 1) {
+for (let i = 0; i < 10; i += 1) {
+  defaultEventData.id = i;
   events.set(i, defaultEventData);
   eventsOrder.push(i);
 }
 
-export const cardGrid: React.FC = () => {
+export const index = React.createElement(() => {
+  const [myEvents, setEvents] = useState(events);
+  const [myEventsOrder, setEventsOrder] = useState(eventsOrder);
+
+  function getNextEvents() {
+    const newEvents = Object.assign(myEvents);
+    const newOrder: number[] = [];
+    for (let i = 10; i < 20; i += 1) {
+      const event = events.get(i - 10)!;
+      event.id = i + 999;
+      newEvents.set(i, event);
+      newOrder.push(i);
+    }
+
+    setEvents(newEvents);
+    setEventsOrder(newOrder);
+  }
+
+  return (
+    <CardGrid
+      events={myEvents}
+      eventsOrder={myEventsOrder}
+      requestNextData={getNextEvents}
+    />
+  );
+});
+
+export const notIntersection: React.FC = () => {
   return <CardGrid events={events} eventsOrder={eventsOrder} />;
 };
