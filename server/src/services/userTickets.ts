@@ -20,15 +20,15 @@ function eventTicketReducer(
   cur: UserTicket,
 ): AttendantTicket[] {
   const { user, ...userTicket } = cur.get({ plain: true }) as UserTicket;
-  let data = acc.findIndex(a => a.id === user.id);
-  if (data === -1) {
+  let userIndex = acc.findIndex(user => user.id === user.id);
+  if (userIndex === -1) {
     acc.push({
       ...user,
       userTickets: [],
     });
-    data = acc.length - 1;
+    userIndex = acc.length - 1;
   }
-  acc[data].userTickets.push(userTicket);
+  acc[userIndex].userTickets.push(userTicket);
   return acc;
 }
 function userTicketReducer(acc: BoughtEvent[], cur: UserTicket): BoughtEvent[] {
@@ -36,16 +36,16 @@ function userTicketReducer(acc: BoughtEvent[], cur: UserTicket): BoughtEvent[] {
     ticketType: { event, ...ticketTypes },
     ...userTicket
   } = cur.get({ plain: true }) as UserTicket;
-  let data = acc.findIndex(a => a.id === cur.ticketType.eventId);
-  if (data === -1) {
+  let eventIndex = acc.findIndex(event => event.id === cur.ticketType.eventId);
+  if (eventIndex === -1) {
     acc.push({
       ...event,
       ticket: ticketTypes,
       userTickets: [],
     });
-    data = acc.length - 1;
+    eventIndex = acc.length - 1;
   }
-  acc[data].userTickets.push(userTicket);
+  acc[eventIndex].userTickets.push(userTicket);
   return acc;
 }
 

@@ -166,7 +166,11 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(OK)
       .expect(res => {
-        expect(res.body).toMatchSnapshot();
+        const data = res.body[0];
+        const { userTickets, ...body } = data;
+        const { createdAt, ...userTicket } = userTickets[0];
+        expect(body).toMatchSnapshot();
+        expect(userTicket).toMatchSnapshot();
       });
   });
 });
