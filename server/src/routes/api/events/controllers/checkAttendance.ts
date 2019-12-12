@@ -1,19 +1,24 @@
 import { Request, Response, NextFunction } from 'express';
 import { toggleUserAttendance } from 'services';
-import { NOT_FOUND } from 'http-status';
+import { NOT_FOUND, BAD_REQUEST } from 'http-status';
 
 export default async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const ticketType = req.event!.ticketType.id;
-    const userTicketId = +req.params.ticketId;
+  const userId = req.user!.id;
+  const event = req.event!;
+  if (userId !== event.userId) return res.sendStatus(BAD_REQUEST);
 
-    const [toggleCount, toggleRows] = await toggleUserAttendance(
+  try {
+    const { attendance } = req.body;
+    const ticketTypeId = event.ticketType.id;
+    const userTicketId = +req.params.ticketId;
+    const toggleResult = await toggleUserAttendance(
       userTicketId,
-      ticketType,
+      ticketTypeId,
+      attendance,
     );
-    if (toggleCount === 0) return res.sendStatus(NOT_FOUND);
-    console.log(toggleRows[0]);
-    res.send(toggleRows[0]);
+
+    if (toggleResult[0] === 0) return res.sendStatus(NOT_FOUND);
+    res.send({ id: userTicketId, isAttendance: attendance });
   } catch (err) {
     next(err);
   }
