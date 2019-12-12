@@ -26,8 +26,8 @@ export default (fieldName: string) => {
   }).single(fieldName);
 
   return (req: Request, res: Response, next: NextFunction) => {
-    upload(req, res, (err: MulterError) => {
-      if (err && err.code && multerErrorCodes.includes(err.code))
+    upload(req, res, (err?: MulterError) => {
+      if (err?.code && multerErrorCodes.includes(err.code))
         return res.sendStatus(401);
       if (err) return next(err);
     });
