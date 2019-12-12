@@ -2,7 +2,7 @@ import React, { ReactElement, SyntheticEvent, useState } from 'react';
 import * as S from './style';
 
 export interface Props {
-  onChange?: (data: string) => void;
+  onChange?: (data?: string, file?: File) => void;
 }
 
 function ImageSelector({ onChange }: Props): ReactElement {
@@ -23,9 +23,10 @@ function ImageSelector({ onChange }: Props): ReactElement {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (e: ProgressEvent<FileReader>) => {
-      const data: string = e.target!.result as string;
+      if (!e.target || !e.target.result) return;
+      const data: string = e.target.result.toString();
       setBackground(data);
-      if (onChange) return onChange(data);
+      if (onChange) return onChange(data, file);
     };
   };
 
