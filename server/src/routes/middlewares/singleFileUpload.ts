@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { BAD_REQUEST } from 'http-status';
+import fileType = require('file-type');
 import multer = require('multer');
 
 const multerErrorCodes = [
@@ -31,6 +32,8 @@ export default (fieldName: string) => {
       if (err?.code && multerErrorCodes.includes(err.code))
         return res.sendStatus(BAD_REQUEST);
       if (err) return next(err);
+
+      req.fileType = fileType(req.file.buffer);
       next();
     });
   };
