@@ -89,7 +89,6 @@ export async function toggleUserAttendance(
   ticketTypeId: number,
   attendance: boolean,
 ): Promise<[number, UserTicket[]]> {
-  if (!id) throw new Error('no id input');
   const where: WhereOptions = { id, ticketTypeId };
   return await UserTicket.update({ isAttendance: attendance }, { where });
 }
