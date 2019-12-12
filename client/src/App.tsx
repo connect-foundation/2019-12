@@ -9,6 +9,7 @@ import Login from 'pages/Login';
 import SignUp from 'pages/SignUp';
 import Main from 'pages/Main';
 import EventDetail from 'pages/EventDetail';
+import EventCreate from 'pages/EventCreate';
 import EventJoin from 'pages/EventJoin';
 import NotFound from 'pages/NotFound';
 import GlobalStoreProvider from 'stores';
@@ -23,6 +24,7 @@ const App: React.FC = () => (
           <Route exact path="/" component={Main} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
+          <Route exact path="/event/create" component={EventCreate} />
           <Route
             exact
             path="/events/:eventId([0-9]+)"

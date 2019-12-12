@@ -10,6 +10,7 @@ import { sequelize } from 'utils/sequelize';
 import { Event, TicketType, User } from 'models';
 import axios from 'axios';
 import { stringify } from 'query-string';
+import { redisCreateKey } from 'utils/redis';
 
 export async function getEvents(limit = 20, startAt: Date): Promise<Event[]> {
   const where: WhereOptions = startAt
@@ -90,18 +91,36 @@ export async function createEventAndTicket(
   event: Partial<Event>,
   ticket: Partial<TicketType>,
 ) {
-  return await sequelize.transaction<Event>(
+  return await sequelize.transaction<{ eventId: number; ticketId: number }>(
     async (transaction: Transaction) => {
       const newEvent = await Event.create(event, { transaction });
       const newTicket = await TicketType.create(
         {
           ...ticket,
+          leftCnt: ticket.quantity,
           eventId: newEvent.id,
         },
         { transaction },
       );
-      newEvent.ticketType = newTicket;
-      return newEvent;
+      const { id, leftCnt, salesStartAt, salesEndAt } = newTicket;
+      redisCreateKey(`${id}`, { leftCnt, salesStartAt, salesEndAt });
+      return { eventId: newEvent.id, ticketId: newTicket.id };
     },
   );
+}
+
+export async function getUserEventsByUserId(userId: number): Promise<Event[]> {
+  const where: WhereOptions = { userId };
+  const order: Order = [['startAt', 'DESC']];
+  const attributes: FindAttributeOptions = {
+    exclude: [
+      'createdAt',
+      'updatedAt',
+      'desc',
+      'latitude',
+      'longitude',
+      'isPublic',
+    ],
+  };
+  return await Event.findAll({ where, order, attributes });
 }

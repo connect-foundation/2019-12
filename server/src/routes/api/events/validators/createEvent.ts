@@ -66,9 +66,15 @@ export default checkSchema({
     isString: true,
     exists: true,
   },
+  'ticket.price': {
+    in: 'body',
+    isInt: { options: { gt: 0 } },
+    toInt: true,
+    exists: true,
+  },
   'ticket.quantity': {
     in: 'body',
-    isInt: true,
+    isInt: { options: { gt: 0 } },
     toInt: true,
     exists: true,
   },
@@ -84,5 +90,26 @@ export default checkSchema({
     toInt: true,
     exists: true,
     custom: isLessThan('ticket.quantity'),
+  },
+  'ticket.salesStartAt': {
+    in: 'body',
+    isISO8601: true,
+    exists: true,
+    toDate: true,
+    isAfter: { options: new Date().toString() },
+  },
+  'ticket.salesEndAt': {
+    in: 'body',
+    isISO8601: true,
+    exists: true,
+    toDate: true,
+    custom: isGreaterThan('ticket.salesStartAt'),
+  },
+  'ticket.refundEndAt': {
+    in: 'body',
+    isISO8601: true,
+    exists: true,
+    toDate: true,
+    custom: isGreaterThan('ticket.salesEndAt'),
   },
 });

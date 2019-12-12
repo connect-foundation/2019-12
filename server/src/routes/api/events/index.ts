@@ -28,5 +28,6 @@ router.post(
 router.get('/coordinate', controllers.convertPlaceToCoordinate);
 router.get('/:eventId', controllers.getEvent);
 router.get('/:eventId/tickets', controllers.getEventTickets);
+router.get('/:eventId/users', requireLogin, controllers.getAttendants);
 
 export default router;
