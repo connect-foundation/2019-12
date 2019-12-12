@@ -4,7 +4,6 @@ import { putObject } from 'utils/awsS3';
 import { Event, TicketType } from 'models';
 import { v1 as uuid } from 'uuid';
 import { CREATED } from 'http-status';
-import fileType = require('file-type');
 
 interface Body extends Partial<Event> {
   ticket: Partial<TicketType>;
@@ -34,9 +33,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     placeDesc,
     desc,
   };
-  const mainImageId = uuid();
-  const mainImageExtension = fileType(req.file.buffer)!.ext;
-  const mainImageKey = `${mainImageId}.${mainImageExtension}`;
+  const ext = req.fileType?.ext;
+  const mainImageKey = ext ? `${uuid()}.${ext}` : uuid();
 
   try {
     const { URL } = await putObject(mainImageKey, req.file.buffer);
