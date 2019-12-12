@@ -1,14 +1,14 @@
-import { limitTypeSingleFile } from '../../src/routes/middlewares';
+import { singleFileLimitImageType } from '../../src/routes/middlewares';
 import { createRequest, createResponse } from 'node-mocks-http';
 import { BAD_REQUEST } from 'http-status';
 
-describe('middleware - limitTypeSingleFile', () => {
+describe('middleware - singleFileLimitImageType', () => {
   it('이미지 파일이면 next 함수 호출', () => {
     const req = createRequest({ fileType: { mime: 'image/jpeg' } });
     const res = createResponse();
     const next = jest.fn();
 
-    limitTypeSingleFile(req, res, next);
+    singleFileLimitImageType(req, res, next);
     expect(next).toHaveBeenCalledWith();
   });
 
@@ -17,7 +17,7 @@ describe('middleware - limitTypeSingleFile', () => {
     const res = createResponse();
     const next = jest.fn();
 
-    limitTypeSingleFile(req, res, next);
+    singleFileLimitImageType(req, res, next);
     expect(res.statusCode).toBe(BAD_REQUEST);
     expect(next).not.toHaveBeenCalled();
   });
@@ -27,7 +27,7 @@ describe('middleware - limitTypeSingleFile', () => {
     const res = createResponse();
     const next = jest.fn();
 
-    limitTypeSingleFile(req, res, next);
+    singleFileLimitImageType(req, res, next);
     expect(res.statusCode).toBe(BAD_REQUEST);
     expect(next).not.toHaveBeenCalled();
   });
