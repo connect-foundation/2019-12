@@ -18,5 +18,6 @@ router.patch(
   requireLogin,
   controllers.checkAttendance,
 );
+router.get('/:eventId/users', requireLogin, controllers.getAttendants);
 
 export default router;
