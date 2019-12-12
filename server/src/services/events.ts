@@ -95,5 +95,6 @@ export async function createEventAndTicket(
     eventId: newEvent.id,
   });
 
-  return { eventId: newEvent.id, ticketId: newTicket.id };
+  newEvent.ticketType = newTicket;
+  return newEvent;
 }
