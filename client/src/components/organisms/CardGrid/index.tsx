@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import * as S from './style';
 import { Card } from 'components';
+import { useIntersect } from 'hooks';
 import ROUTES from 'commons/constants/routes';
 import { EventDetail } from 'types/Data';
 
 interface Props {
   events: Map<number, EventDetail>;
   eventsOrder: number[];
-  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+  requestNextData?: () => void;
 }
 
-function CardGrid({ events, eventsOrder, setRef }: Props): React.ReactElement {
+const fn = (): void => {};
+
+function CardGrid({
+  events,
+  eventsOrder,
+  requestNextData,
+}: Props): React.ReactElement {
+  const getNextEventsTrigger = useCallback(requestNextData || fn, [
+    requestNextData,
+  ]);
+
+  const [, setRef] = useIntersect(intersectCallback, {
+    root: null,
+    threshold: 1.0,
+    rootMargin: '0% 0% 50% 0%',
+  });
+
+  async function intersectCallback() {
+    setRef(null);
+    getNextEventsTrigger();
+  }
+
   return (
     <>
       <S.CardGridContainer>
@@ -28,7 +50,11 @@ function CardGrid({ events, eventsOrder, setRef }: Props): React.ReactElement {
               host={user.lastName + user.firstName}
               price={ticketType.price}
               to={`${ROUTES.EVENT_DETAIL}/${id}`}
-              setRef={eventsOrder.length - 1 === index ? setRef : undefined}
+              setRef={
+                requestNextData && eventsOrder.length - 1 === index
+                  ? setRef
+                  : undefined
+              }
             />
           );
         })}
