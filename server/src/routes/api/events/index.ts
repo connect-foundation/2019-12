@@ -8,9 +8,9 @@ import { badRequestHandler } from 'utils/errorHandler';
 
 const router = Router();
 
+router.param('eventId', middlewares.requestParamHandler);
 router.get('/', validators.getEvents, badRequestHandler, controllers.getEvents);
 router.get('/coordinate', controllers.convertPlaceToCoordinate);
-router.param('eventId', middlewares.requestParamHandler);
 router.get('/:eventId', controllers.getEvent);
 router.get('/:eventId/tickets', controllers.getEventTickets);
 router.patch(
