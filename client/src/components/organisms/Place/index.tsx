@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { Location } from 'types/Data';
-import { GoogleMap } from 'components';
+import { KakaoMap } from 'components';
 
 interface Props {
   place: string;
@@ -20,7 +20,7 @@ function Place({
 }: Props): React.ReactElement {
   return (
     <S.PlaceDetailContainer>
-      <GoogleMap height={googleMapHeight} {...location} />
+      <KakaoMap height={googleMapHeight} {...location} />
       <S.PlcaeLabel>장소</S.PlcaeLabel>
       <S.PlaceName>{place}</S.PlaceName>
       <S.PlaceDetail>{address}</S.PlaceDetail>
