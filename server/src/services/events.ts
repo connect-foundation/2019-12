@@ -4,7 +4,9 @@ import {
   WhereOptions,
   Includeable,
   FindAttributeOptions,
+  Transaction,
 } from 'sequelize';
+import { sequelize } from 'utils/sequelize';
 import { Event, TicketType, User } from 'models';
 import axios from 'axios';
 import { stringify } from 'query-string';
@@ -88,13 +90,18 @@ export async function createEventAndTicket(
   event: Partial<Event>,
   ticket: Partial<TicketType>,
 ) {
-  // TODO : 트랜잭션으로 리팩토링
-  const newEvent = await Event.create(event);
-  const newTicket = await TicketType.create({
-    ...ticket,
-    eventId: newEvent.id,
-  });
-
-  newEvent.ticketType = newTicket;
-  return newEvent;
+  return await sequelize.transaction<Event>(
+    async (transaction: Transaction) => {
+      const newEvent = await Event.create(event, { transaction });
+      const newTicket = await TicketType.create(
+        {
+          ...ticket,
+          eventId: newEvent.id,
+        },
+        { transaction },
+      );
+      newEvent.ticketType = newTicket;
+      return newEvent;
+    },
+  );
 }
