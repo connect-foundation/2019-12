@@ -117,7 +117,6 @@ export async function deleteUserTicketById(
   id: number,
   userId: number,
 ): Promise<void> {
-  if (!id) throw new Error('no id input');
   return await sequelize.transaction(async (transaction: Transaction) => {
     const where: WhereOptions = { id, userId };
     const userTicketData = await UserTicket.findOne({ where });
