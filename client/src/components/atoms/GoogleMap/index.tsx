@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import * as S from './style';
-import Pin from 'assets/img/pin.svg';
+import { IoMdPin } from 'react-icons/io';
 
 const {
   REACT_APP_GOOGLE_MAP_API_KEY,
@@ -32,7 +32,7 @@ function GoogleMap({
         defaultZoom={defaultZoom}
         draggable={false}
       >
-        <S.PinIcon alt={'pin'} height={'3rem'} src={Pin} />
+        <IoMdPin size={'3rem'} />
       </GoogleMapReact>
     </S.Container>
   );
