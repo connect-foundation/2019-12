@@ -3,7 +3,7 @@ import GoogleMap from '.';
 import { number } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Atoms / GoogleMap',
+  title: 'Atoms / KakaoMap',
 };
 
 export const index: React.FC = () => {
