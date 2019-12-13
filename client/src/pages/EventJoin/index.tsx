@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { UNAUTHORIZED, FORBIDDEN, NOT_FOUND } from 'http-status';
 import { useHistory } from 'react-router-dom';
+
+import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
+import { EventDetail } from 'types/Data';
 
 import EventJoinTemplate from './template';
 import {
@@ -38,28 +41,10 @@ import ROUTES from 'commons/constants/routes';
 import { joinEvent } from 'apis';
 import { calculateStringOfDateRange } from 'utils/dateCalculator';
 
-interface Props {
-  eventId: number;
-}
-
 const minTicketCount = 1;
 const steps = [JOIN_STEP_CHOICE, JOIN_STEP_PURCHASE];
 
-const ticketData = {
-  id: 1,
-  eventId: 2,
-  name: '일반 입장권',
-  desc: '발표자 선물 및 음료/다과 구입으로 사용됩니다.',
-  price: 10000,
-  quantity: 80,
-  leftCnt: 0,
-  isPublicLeftCnt: false,
-  maxCntPerPerson: 5,
-  salesStartAt: '2019-11-04T15:00:00.000Z',
-  salesEndAt: '2019-11-28T14:00:00.000Z',
-  refundEndAt: '2019-11-28T14:00:00.000Z',
-};
-const eventData = {
+const defaultEventData = {
   id: 1,
   title: '이벤트 제목이랍니다.',
   startAt: '2019-11-04T15:00:00.000Z',
@@ -67,10 +52,8 @@ const eventData = {
   place: '위플레이스 강남점(서울시 강남구 강남대로 340 경원빌딩 3층)',
   address: '서울시 강남구 강남대로 340',
   placeDesc: '',
-  location: {
-    latitude: 37.5662952,
-    longitude: 126.9779451,
-  },
+  latitude: 37.5662952,
+  longitude: 126.9779451,
   mainImg: '',
   desc: '',
 
@@ -96,6 +79,10 @@ function EventJoin(): React.ReactElement {
   const [isTicketChecked, setIsTicketChecked] = useState(false);
   const [ticketCount, setTicketCount] = useState(1);
   const [templateStep, setTemplateStep] = useState(1);
+  const [eventState, setEventState] = useState(defaultEventData);
+  const eventsState = useContext(EventsStoreState);
+  const { eventFetchDispatcher } = useContext(EventsStoreAction);
+  const { events, order } = eventsState;
 
   const history = useHistory();
   const { eventId: originEventId } = useParams();
@@ -104,7 +91,32 @@ function EventJoin(): React.ReactElement {
   }
   const eventId = +originEventId!;
 
-  const { maxCntPerPerson } = ticketData;
+  const memoizedCallback = useCallback(
+    (eventData: EventDetail) => {
+      setEventState(eventData);
+    },
+    [setEventState],
+  );
+
+  useEffect(() => {
+    if (eventsState && eventsState.events) {
+      const gettedEventData = eventsState.events.get(eventId);
+      console.log('eventId', eventId);
+      console.log(gettedEventData);
+      if (gettedEventData) {
+        memoizedCallback(gettedEventData);
+        // setEventState({gettedEventData });
+      } else {
+        eventFetchDispatcher({
+          type: 'EVENT',
+          params: { eventId },
+        });
+      }
+    }
+  }, [eventFetchDispatcher, eventId, eventsState, memoizedCallback]);
+
+  const { title, mainImg, startAt, endAt, user, ticketType } = eventState;
+  const { maxCntPerPerson } = ticketType;
   const isVisibleCounter = () => {
     return maxCntPerPerson > minTicketCount && isTicketChecked;
   };
@@ -164,23 +176,21 @@ function EventJoin(): React.ReactElement {
       stepList={<StepList steps={steps} pivot={templateStep} />}
       eventSection={
         <EventSection
-          title={eventData.title}
+          title={title}
           subtitle={['일시', '주최']}
           content={[
-            calculateStringOfDateRange(eventData.startAt, eventData.endAt),
-            eventData.user.lastName + eventData.user.firstName,
+            calculateStringOfDateRange(startAt, endAt),
+            user.lastName + user.firstName,
           ]}
-          imgSrc={
-            'https://cf.festa.io/img/2019-11-31/42d5aedc-0f66-44a4-a288-0086ff5836c1.png'
-          }
+          imgSrc={mainImg}
         />
       }
-      place={<Place googleMapHeight={'20rem'} {...eventData} />}
+      place={<Place googleMapHeight={'20rem'} {...eventState} />}
       ticketChoiceProps={{
         header: TICKET_CHOICE_TITLE,
         ticketBox: (
           <TicketBox
-            {...ticketData}
+            {...ticketType}
             chkProps={{
               checked: isTicketChecked,
               onClick: () => {
@@ -212,11 +222,9 @@ function EventJoin(): React.ReactElement {
       }}
       ticketPurchaseProps={{
         header: TICKET_PURCHASE_TITLE,
-        ticket: <Ticket count={ticketCount} {...eventData.ticketType} />,
+        ticket: <Ticket count={ticketCount} {...ticketType} />,
         totalPriceLabel: TOTAL_PRICE_LABEL,
-        price: (
-          <Price separated>{eventData.ticketType.price * ticketCount}</Price>
-        ),
+        price: <Price separated>{ticketType.price * ticketCount}</Price>,
         purchaseBtn: (
           <Btn
             grow
