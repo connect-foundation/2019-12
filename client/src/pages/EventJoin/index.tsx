@@ -100,8 +100,6 @@ function EventJoin(): React.ReactElement {
   useEffect(() => {
     if (eventsState && eventsState.events) {
       const gettedEventData = eventsState.events.get(eventId);
-      console.log('eventId', eventId);
-      console.log(gettedEventData);
       if (gettedEventData) {
         memoizedCallback(gettedEventData);
         // setEventState({gettedEventData });
