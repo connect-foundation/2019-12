@@ -90,7 +90,7 @@ function EventJoin(): React.ReactElement {
   }
   const eventId = +originEventId!;
 
-  const memoizedCallback = useCallback(
+  const getInEventState = useCallback(
     (eventData: EventDetail) => {
       setEventState(eventData);
     },
@@ -101,8 +101,7 @@ function EventJoin(): React.ReactElement {
     if (eventsState && eventsState.events) {
       const gettedEventData = eventsState.events.get(eventId);
       if (gettedEventData) {
-        memoizedCallback(gettedEventData);
-        // setEventState({gettedEventData });
+        getInEventState(gettedEventData);
       } else {
         eventFetchDispatcher({
           type: 'EVENT',
@@ -110,7 +109,7 @@ function EventJoin(): React.ReactElement {
         });
       }
     }
-  }, [eventFetchDispatcher, eventId, eventsState, memoizedCallback]);
+  }, [eventFetchDispatcher, eventId, eventsState, getInEventState]);
 
   const { title, mainImg, startAt, endAt, user, ticketType } = eventState;
   const { maxCntPerPerson } = ticketType;
