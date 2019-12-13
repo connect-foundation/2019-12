@@ -82,7 +82,6 @@ function EventJoin(): React.ReactElement {
   const [eventState, setEventState] = useState(defaultEventData);
   const eventsState = useContext(EventsStoreState);
   const { eventFetchDispatcher } = useContext(EventsStoreAction);
-  const { events, order } = eventsState;
 
   const history = useHistory();
   const { eventId: originEventId } = useParams();
