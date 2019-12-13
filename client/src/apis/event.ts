@@ -19,7 +19,7 @@ export const getEvent = (eventId: number) => () =>
 
 export const joinEvent = (ticketId: number, orderTicketNum: number) => () =>
   reserveAxios.post(
-    '/users/ticket',
+    '/users/reserve',
     { ticketId, orderTicketNum },
     { headers: { Accept: 'application/json' } },
   );
