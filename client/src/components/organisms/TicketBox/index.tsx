@@ -1,54 +1,109 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import { FaTicketAlt } from 'react-icons/fa';
-import { IconLabel, Price } from 'components';
+import { FaTicketAlt, FaRegCreditCard, FaCheckCircle } from 'react-icons/fa';
+import { IconLabel, Price, Btn } from 'components';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
 import { TicketType } from 'types/Data';
 import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
+import { TICKETBOX_REFUND_BTN } from 'commons/constants/string';
+import { default as Theme } from 'commons/style/themes/default';
+
+const { palette } = Theme;
 
 interface Props extends TicketType {
-  chkBoxProps: ChkBoxProps;
+  chkProps: ChkBoxProps;
   checked?: boolean;
+  chkDesc?: string;
+  purchaseDate?: string;
+  ticketId?: string;
+  showDueDate?: boolean;
+  showPurchaseDate?: boolean;
+  showTicketId?: boolean;
+  showChkIcon?: boolean;
+  showRefundBtn?: boolean;
 }
 
 function TicketBox({
+  chkProps,
+  checked,
+  purchaseDate,
+  ticketId,
   price,
   name,
   desc,
   salesStartAt,
   salesEndAt,
-  chkBoxProps,
+  showChkIcon,
+  chkDesc,
+  showDueDate,
+  showPurchaseDate,
+  showTicketId,
+  showRefundBtn,
 }: Props): React.ReactElement {
-  const [checked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(checked);
   const remainDays = calculateDiffDaysOfDateRange(salesStartAt, salesEndAt);
 
-  if (chkBoxProps.onClick) {
-    const copyParentOnClick = Object.assign(chkBoxProps.onClick);
-    chkBoxProps.onClick = event => {
+  if (chkProps.onClick) {
+    const copyParentOnClick = Object.assign(chkProps.onClick);
+    chkProps.onClick = event => {
       copyParentOnClick(event);
-      setChecked(!checked);
+      setChecked(!isChecked);
     };
   } else {
-    chkBoxProps.onClick = () => {
+    chkProps.onClick = () => {
       setChecked(!checked);
     };
   }
 
   return (
-    <S.Container checked={checked}>
+    <S.Container checked={!!isChecked}>
       <S.TicketInfoContainer>
         <S.Name>{name}</S.Name>
         <S.PriceWrapper>
-          <Price mount={price} separated={true} />
+          <Price separated>{price}</Price>
         </S.PriceWrapper>
         <S.Desc>{desc}</S.Desc>
-        <IconLabel
-          icon={<FaTicketAlt size={'1.5rem'} />}
-          labelContent={`${remainDays}일 후에 판매마감`}
-        />
+        {showTicketId && (
+          <IconLabel
+            icon={<FaTicketAlt size={'1.5rem'} />}
+            labelContent={`Ticket ID ${ticketId}`}
+          />
+        )}
+        {showPurchaseDate && (
+          <IconLabel
+            icon={<FaRegCreditCard size={'1.5rem'} />}
+            labelContent={`결제일 ${purchaseDate}`}
+          />
+        )}
+        {showDueDate && (
+          <IconLabel
+            icon={<FaTicketAlt size={'1.5rem'} />}
+            labelContent={`${remainDays}일 후에 판매마감`}
+          />
+        )}
       </S.TicketInfoContainer>
-      <ChkBox {...chkBoxProps} />
+
+      <S.OptionalContentWrapper showOptionBtn={!!showRefundBtn}>
+        <S.ChkBoxContainer>
+          {chkDesc && <S.ChkBoxDesc>{chkDesc}</S.ChkBoxDesc>}
+          {showChkIcon && (
+            <S.IconWrapper>
+              <FaCheckCircle
+                onClick={() => {
+                  setChecked(!isChecked);
+                }}
+                size={'3rem'}
+                color={isChecked ? palette.success : palette.grayscale[4]}
+              />
+            </S.IconWrapper>
+          )}
+          {!showChkIcon && <ChkBox {...chkProps} />}
+        </S.ChkBoxContainer>
+        {showRefundBtn && (
+          <Btn fit styletype={'transparent'} children={TICKETBOX_REFUND_BTN} />
+        )}
+      </S.OptionalContentWrapper>
     </S.Container>
   );
 }
