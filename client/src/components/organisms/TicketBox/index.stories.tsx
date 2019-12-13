@@ -1,7 +1,7 @@
 import React from 'react';
+import { text, object, boolean } from '@storybook/addon-knobs';
 
 import TicketBox from '.';
-import { boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Organisms / TicketBox',
@@ -20,12 +20,28 @@ const ticketData = {
   salesStartAt: '2019-11-04T15:00:00.000Z',
   salesEndAt: '2019-11-28T14:00:00.000Z',
   refundEndAt: '2019-11-28T14:00:00.000Z',
+  purchaseDate: '2019-11-28',
+  ticketId: '12345',
 };
 
 export const index: React.FC = () => (
   <TicketBox
     {...ticketData}
-    chkBoxProps={{ checked: false }}
+    chkProps={object('chkProps', { checked: false })}
     checked={boolean('checked', false)}
+    showDueDate={boolean('showDueDate', true)}
+  />
+);
+
+export const options: React.FC = () => (
+  <TicketBox
+    {...ticketData}
+    chkProps={object('chkProps', { checked: false })}
+    checked={boolean('checked', false)}
+    chkDesc={text('chkDesc', '출석체크')}
+    showPurchaseDate={boolean('showPurchaseDate', true)}
+    showTicketId={boolean('showTicketId', true)}
+    showChkIcon={boolean('showChkIcon', true)}
+    showRefundBtn={boolean('showRefundBtn', true)}
   />
 );

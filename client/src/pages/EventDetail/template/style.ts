@@ -1,5 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+const overrideTuiStyle = css`
+  h1,
+  h2 {
+    border: 0 !important;
+  }
+  img {
+    max-width: 100% !important;
+  }
+`;
 export const Container = styled.div`
   margin-top: 5.6rem;
 `;
@@ -9,21 +18,12 @@ export const ContentContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-
-  img {
-    width: 60rem;
-  }
+export const ViewerWrapper = styled.div`
+  width: 60%;
+  ${overrideTuiStyle}
 `;
-
 export const TicketWrapper = styled.div`
-  width: 31rem;
-  flex-shrink: 0;
+  width: 30%;
 `;
 
 export const PlaceWrapper = styled.div`

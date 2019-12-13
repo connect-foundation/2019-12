@@ -2,7 +2,7 @@ import React from 'react';
 
 import { EVENT_NAME_MAX_LENGTH } from 'commons/constants/number';
 import * as S from './style';
-import { Divider, Img } from 'components';
+import { Divider, Img, Price, EventDate } from 'components';
 
 export interface Props {
   /** 라우팅 URL */
@@ -17,6 +17,7 @@ export interface Props {
   host: string;
   /** 가격 */
   price: number;
+  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
 export const shortenTitle = (title: string) =>
@@ -31,23 +32,29 @@ function Card({
   title,
   host,
   price,
+  setRef,
 }: Props): React.ReactElement {
   const eventTitle = shortenTitle(title);
   return (
     <S.LinkWrapper to={to} data-testid={'main-card'}>
-      <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgWrapper>
+      <S.ImgWrapper ref={setRef}>
         <Img alt={'card Image'} src={imgSrc} />
       </S.ImgWrapper>
       <S.InnerContainer>
         <S.ContentContainer>
-          <S.Date>{date}</S.Date>
+          <S.DateWrappeer>
+            <S.DateWrappeer>
+              <EventDate>{date}</EventDate>
+            </S.DateWrappeer>
+          </S.DateWrappeer>
           <S.Title>{eventTitle}</S.Title>
           <S.Host>{host}</S.Host>
         </S.ContentContainer>
         <S.FooterContainer>
           <Divider />
-          <S.Price>{price}</S.Price>
+          <S.PriceWrapper>
+            <Price separated>{price}</Price>
+          </S.PriceWrapper>
         </S.FooterContainer>
       </S.InnerContainer>
     </S.LinkWrapper>

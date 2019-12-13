@@ -33,10 +33,10 @@ function AccountStoreProvider({ children }: { children: React.ReactElement }) {
     if (!loginState) return;
     (async function() {
       try {
-        const verifyTokenResult = await verifyToken();
+        const verifyTokenResult = await verifyToken()();
         let account = null;
         if (verifyTokenResult.data.exist) {
-          const accountData = await getUserInfo(verifyTokenResult.data.id);
+          const accountData = await getUserInfo(verifyTokenResult.data.id)();
           account = { ...accountData.data, isLogin: true };
         } else {
           const { id: userId, googleId, email } = verifyTokenResult.data;

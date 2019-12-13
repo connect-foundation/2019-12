@@ -39,3 +39,31 @@ export const Desc = styled.div`
   ${theme('fontStyle.body1')};
   margin: 1rem 0rem;
 `;
+
+interface OptionalContentWrapperProps {
+  showOptionBtn: boolean;
+}
+
+export const OptionalContentWrapper = styled.div<OptionalContentWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: ${ifProp('showOptionBtn', '15rem', 'auto')};
+`;
+
+export const ChkBoxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ChkBoxDesc = styled.span`
+  margin: 0 1rem;
+  ${theme('fontStyle.subtitle2')};
+`;
+
+export const IconWrapper = styled.div`
+  cursor: pointer;
+  user-select: none;
+`;

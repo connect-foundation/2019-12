@@ -23,6 +23,7 @@ function MainBanner({
           styletype="primary"
           to={ROUTES.EVENT_CREATE}
           children={CREATE_EVENT}
+          data-testid={'mainbanner-btn'}
         />
       </S.Container>
     </S.Wrapper>

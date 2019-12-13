@@ -1,8 +1,25 @@
+import '../../src/env';
 import * as request from 'supertest';
 import app from '../../src/app';
+import { Secret } from 'jsonwebtoken';
+import { client } from '../../src/utils/redis';
+import { generateJWT } from '../../src/utils/jwt';
 import { sequelize } from '../../src/utils/sequelize';
 import { Event } from '../../src/models';
-import { OK, NO_CONTENT, NOT_FOUND } from 'http-status';
+import {
+  OK,
+  NO_CONTENT,
+  NOT_FOUND,
+  UNAUTHORIZED,
+  BAD_REQUEST,
+} from 'http-status';
+
+const setHeader = (token: Secret) => {
+  return {
+    Cookie: `UID=${token}`,
+    Accept: 'application/json',
+  };
+};
 
 beforeAll(async () => {
   sequelize.options.logging = false;
@@ -11,6 +28,7 @@ beforeAll(async () => {
 
 afterAll(() => {
   sequelize.close();
+  client.quit();
 });
 
 describe('Router / Events', () => {
@@ -111,5 +129,109 @@ describe('GET /api/events/coordinate', () => {
       .get('/api/events/coordinate')
       .query({ place: '!@#' })
       .expect(NO_CONTENT);
+  });
+});
+
+describe('GET /api/events/:eventId/users', () => {
+  it('로그인을 안했을 경우 401', async () => {
+    const token = await generateJWT(false, 2, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/events/2/users')
+      .set(setHeader(token))
+      .expect(UNAUTHORIZED);
+  });
+  it('이벤트가 없는 경우 404', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/events/0/users')
+      .set(setHeader(token))
+      .expect(NOT_FOUND);
+  });
+  it('주최한 유저와 이벤트가 다를경우 (다른 유저의 이벤트를 보려고 하는 경우) 400', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/events/1/users')
+      .set(setHeader(token))
+      .expect(BAD_REQUEST);
+  });
+  it('내 이벤트에 접근한 경우, 티켓이 없을 때 204', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/events/9/users')
+      .set(setHeader(token))
+      .expect(NO_CONTENT);
+  });
+  it('내 이벤트에 접근한 경우 200', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .get('/api/events/2/users')
+      .set(setHeader(token))
+      .expect(OK)
+      .expect(res => {
+        const data = res.body[0];
+        const { userTickets, ...body } = data;
+        const { createdAt, ...userTicket } = userTickets[0];
+        expect(body).toMatchSnapshot();
+        expect(userTicket).toMatchSnapshot();
+      });
+  });
+});
+
+describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
+  it('true 로 변경 요청을 보냈을 때 성공하면, 200', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: true,
+      })
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toStrictEqual({ id: 2, isAttendance: true });
+      });
+  });
+  it('False 로 변경 요청을 보냈을 때 성공하면, 200', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(OK)
+      .expect(res => {
+        expect(res.body).toStrictEqual({ id: 2, isAttendance: false });
+      });
+  });
+  it('로그인 실패하면 401', async () => {
+    const token = await generateJWT(false, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(UNAUTHORIZED);
+  });
+  it('이벤트가 로그인한 사용자의 것이 아닌경우 400', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/1/ticket/2')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(BAD_REQUEST);
+  });
+  it('이벤트가 로그인한 사용자의 것이지만 티켓이 없을경우 404', async () => {
+    const token = await generateJWT(true, 2, 1, '1234@gmail.com');
+    await request(app)
+      .patch('/api/events/3/ticket/1000000')
+      .set(setHeader(token))
+      .send({
+        attendance: false,
+      })
+      .expect(NOT_FOUND);
   });
 });
