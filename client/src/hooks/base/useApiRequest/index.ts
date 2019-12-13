@@ -45,7 +45,6 @@ export default function useApiRequest<T>(
       try {
         const { status, data } = await apiRequest();
         if (status === OK) {
-          console.log('success!');
           dispatch({ type: SUCCESS, data, status });
         }
       } catch (err) {

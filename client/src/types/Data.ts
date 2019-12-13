@@ -20,11 +20,6 @@ export interface TicketType {
   refundEndAt: string;
 }
 
-export interface Location {
-  latitude: number;
-  longitude: number;
-}
-
 export interface EventCard {
   id: number;
   mainImg: string;
