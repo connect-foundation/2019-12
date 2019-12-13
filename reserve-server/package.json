@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:prod": "node bin/www.js",
+    "start:prod": "node -r tsconfig-paths/register bin/www.js",
     "start:dev": "nodemon",
     "test": "jest --coverage --verbose",
     "build": "tsc --sourceMap false",
