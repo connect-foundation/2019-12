@@ -92,7 +92,7 @@ interface UserEvents extends Partial<Event> {
 
 export async function getUserEventsByUserId(
   userId: number,
-): Promise<UserEvents[]> {
+): Promise<UserEvents[] | Event[]> {
   const where: WhereOptions = { userId };
   const order: Order = [['startAt', 'DESC']];
   const attributes: FindAttributeOptions = {
@@ -113,6 +113,7 @@ export async function getUserEventsByUserId(
     { model: User, attributes: ['id', 'lastName', 'firstName'] },
   ];
   const result = await Event.findAll({ where, order, attributes, include });
+  if (result.length === 0) return result;
   return result.map(event => {
     const { ticketType, user, ...events }: Partial<Event> = event.get({
       plain: true,
