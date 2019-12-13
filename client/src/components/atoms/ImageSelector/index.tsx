@@ -7,9 +7,10 @@ import {
 
 export interface Props {
   onChange?: (data?: string, file?: File) => void;
+  height?: string;
 }
 
-function ImageSelector({ onChange }: Props): ReactElement {
+function ImageSelector({ onChange, height = '20rem' }: Props): ReactElement {
   const [background, setBackground] = useState<string>();
 
   const onChangeFileInput: (
@@ -35,7 +36,7 @@ function ImageSelector({ onChange }: Props): ReactElement {
   };
 
   return (
-    <S.Wrapper {...{ background }}>
+    <S.Wrapper {...{ background, height }}>
       <S.File type="file" accept="image/*" onChange={onChangeFileInput} />
       <S.Info>{ONLY_IMAGE_FILE_INFO}</S.Info>
       <S.Info>{IMAGE_UPLOAD_INFO}</S.Info>
