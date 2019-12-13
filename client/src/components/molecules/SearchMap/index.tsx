@@ -22,7 +22,7 @@ function SearchMap(): React.ReactElement {
 
   const search = async (query: string) => {
     const { data } = await axios.get(
-      `https://dapi.kakao.com/v2/local/search/keyword.json?query=${query}&size=3`,
+      `https://dapi.kakao.com/v2/local/search/keyword.json?query=${query}&size=4`,
       {
         headers: {
           Authorization: `KakaoAK ${REACT_APP_KAKAO_REST_API_KEY}`,
@@ -61,15 +61,17 @@ function SearchMap(): React.ReactElement {
         <S.DropDown visible={visible}>
           {results.map((result, index) => {
             const {
-              x,
-              y,
+              x: longitude,
+              y: latitude,
               road_address_name: roadAddressName,
               place_name: placeName,
             } = result;
             return (
               <S.DropDownItem
                 key={index}
-                onClick={() => handleClickResult(y, x, roadAddressName)}
+                onClick={() =>
+                  handleClickResult(latitude, longitude, roadAddressName)
+                }
               >
                 <S.PlaceName>{placeName}</S.PlaceName>
                 <S.RoadAddressName>{roadAddressName}</S.RoadAddressName>
