@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useReducer } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+/*import useHistory, useParams 'react-router-dom';*/
 import { useCookies } from 'react-cookie';
 
 import MyPageTemplate from './template';
@@ -29,11 +29,11 @@ interface TemplateRoutesProps {
   [key: string]: string;
 }
 
-const templateRoutes: TemplateRoutesProps = {
-  tickets: ROUTES.MYPAGE_TICKETS,
-  events: ROUTES.MYPAGE_CREATED_EVENTS,
-  logout: ROUTES.LOGOUT,
-};
+// const templateRoutes: TemplateRoutesProps = {
+//   tickets: ROUTES.MYPAGE_TICKETS,
+//   events: ROUTES.MYPAGE_CREATED_EVENTS,
+//   logout: ROUTES.LOGOUT,
+// };
 
 function checkBoughtTicketEventRoute(url: string) {
   const boughtTicketEventRegex = url.match(/\/my\/tickets\/event\/([0-9]+)/);
@@ -47,7 +47,7 @@ function checkBoughtTicketEventRoute(url: string) {
 }
 
 function MyPage(): React.ReactElement {
-  const { templateName } = useParams();
+  // const { templateName } = useParams();
 
   const boughtTicketEventId = checkBoughtTicketEventRoute(window.location.href);
   const defaultReplace = boughtTicketEventId
@@ -55,7 +55,7 @@ function MyPage(): React.ReactElement {
     : '';
 
   const [requsetReplace, setRequestReplace] = useState(defaultReplace);
-  const [currrentTabIndex, setCurrentTabIndex] = useState();
+  // const [currrentTabIndex, setCurrentTabIndex] = useState();
   const [requestBoughtData, setRequestBoughtData] = useApiRequest<
     BoughtTicketEvent[]
   >(getBoughtTicketEvent());
@@ -65,7 +65,7 @@ function MyPage(): React.ReactElement {
 
   const [state, dispatch] = useReducer<Reducer>(MyPageReducer, defaultState);
 
-  const history = useHistory();
+  // const history = useHistory();
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
 
@@ -88,10 +88,10 @@ function MyPage(): React.ReactElement {
     routeActions[tabIndex - 1]();
   };
 
-  const isPossibleHistoryMove =
-    requsetReplace !== '' &&
-    templateName &&
-    templateRoutes[templateName] !== requsetReplace;
+  // const isPossibleHistoryMove =
+  //   requsetReplace !== '' &&
+  //   templateName &&
+  //   templateRoutes[templateName] !== requsetReplace;
 
   const convertToEventCardFromBought = (
     sourceMap: Map<number, BoughtTicketEvent>,
@@ -136,10 +136,9 @@ function MyPage(): React.ReactElement {
   };
 
   useEffect(() => {
-    if (templateName !== 'events' && state.events.size === 0) {
-      setRequestBoughtData({ type: REQUEST });
-    }
-  }, [setRequestBoughtData, state.events.size, templateName]);
+    setRequestBoughtData({ type: REQUEST });
+    setRequestCreatedEventData({ type: REQUEST });
+  }, [setRequestBoughtData, setRequestCreatedEventData]);
 
   useEffect(() => {
     const { type } = requestBoughtData;
@@ -168,7 +167,7 @@ function MyPage(): React.ReactElement {
         alert(`요청에 실패했습니다. ${requestBoughtData.status}`);
         break;
     }
-  }, [requestBoughtData, state.createdEvents, state.createdEventsOrder]);
+  }, [requestBoughtData, requestBoughtData.type, state.createdEvents, state.createdEventsOrder]);
 
   useEffect(() => {
     const { type } = requestCreatedEventData;
@@ -176,7 +175,6 @@ function MyPage(): React.ReactElement {
       case SUCCESS:
         const { data } = requestCreatedEventData;
         if (data) {
-          console.log('success createdevents');
           const createdEvents = new Map<number, CreatedEvent>();
           const createdEventsOrder = data.map((event: CreatedEvent) => {
             createdEvents.set(event.id, event);
@@ -198,36 +196,7 @@ function MyPage(): React.ReactElement {
         alert(`요청에 실패했습니다. ${requestBoughtData.status}`);
         break;
     }
-  }, [
-    requestBoughtData.status,
-    requestCreatedEventData,
-    state.events,
-    state.eventsOrder,
-  ]);
-
-  useEffect(() => {
-    console.log('move effect');
-    console.log('isPossibleHistoryMove', isPossibleHistoryMove);
-    if (isPossibleHistoryMove) {
-      if (
-        requsetReplace === ROUTES.MYPAGE_CREATED_EVENTS &&
-        state.createdEvents.size === 0
-      ) {
-        console.log('get createdEvent');
-        setRequestCreatedEventData({ type: REQUEST });
-      }
-
-      history.push(requsetReplace);
-      // setCurrentTabIndex();
-    }
-  }, [
-    history,
-    isPossibleHistoryMove,
-    requsetReplace,
-    setRequestCreatedEventData,
-    state.createdEvents.size,
-    templateName,
-  ]);
+  }, [requestBoughtData.status, requestCreatedEventData, requestCreatedEventData.type, state.events, state.eventsOrder]);
 
   return (
     <MyPageTemplate
@@ -235,7 +204,6 @@ function MyPage(): React.ReactElement {
       lnbTab={
         <LNB
           items={['내 티켓', '주최한 이벤트', '로그아웃']}
-          tabIndex={currrentTabIndex}
           onTabClicked={routeByTabIndex}
         />
       }
