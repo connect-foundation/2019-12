@@ -124,7 +124,7 @@ function EventJoin(): React.ReactElement {
       return alert(RESERVE_MIN_FAIL);
     }
     try {
-      await joinEvent(eventId, ticketCount);
+      await joinEvent(eventId, ticketCount)();
       setisReserved(true);
       alert(RESERVE_COMPLETE);
       history.push(ROUTES.HOME);
@@ -181,12 +181,13 @@ function EventJoin(): React.ReactElement {
         ticketBox: (
           <TicketBox
             {...ticketData}
-            chkBoxProps={{
+            chkProps={{
               checked: isTicketChecked,
               onClick: () => {
                 setIsTicketChecked(!isTicketChecked);
               },
             }}
+            showDueDate
           />
         ),
 
@@ -214,7 +215,7 @@ function EventJoin(): React.ReactElement {
         ticket: <Ticket count={ticketCount} {...eventData.ticketType} />,
         totalPriceLabel: TOTAL_PRICE_LABEL,
         price: (
-          <Price mount={eventData.ticketType.price * ticketCount} separated />
+          <Price separated>{eventData.ticketType.price * ticketCount}</Price>
         ),
         purchaseBtn: (
           <Btn
