@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { theme, palette, ifProp } from 'styled-tools';
 
-import { Btn } from 'components';
-
 interface ContainerProps {
   checked: boolean;
 }

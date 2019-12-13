@@ -61,7 +61,7 @@ function TicketBox({
       <S.TicketInfoContainer>
         <S.Name>{name}</S.Name>
         <S.PriceWrapper>
-          <Price mount={price} separated={true} />
+          <Price separated>{price}</Price>
         </S.PriceWrapper>
         <S.Desc>{desc}</S.Desc>
         {showTicketId && (

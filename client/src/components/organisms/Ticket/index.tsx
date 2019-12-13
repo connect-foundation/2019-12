@@ -27,7 +27,7 @@ function Ticket({
       <S.TicketContentContainer>
         <S.TicketContentWrapContainer>
           <S.TicketPriceWrapper>
-            <Price mount={price} separated={true} />
+            <Price separated>{price}</Price>
           </S.TicketPriceWrapper>
           <S.TicketName>{`${name} ${count ? `* ${count}` : ''}`}</S.TicketName>
           <S.TicketDesc>{desc}</S.TicketDesc>
