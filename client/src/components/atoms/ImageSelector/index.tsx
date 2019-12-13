@@ -36,11 +36,11 @@ function ImageSelector({ onChange, height = '20rem' }: Props): ReactElement {
   };
 
   return (
-    <S.Wrapper {...{ background, height }}>
+    <S.Container {...{ background, height }}>
       <S.File type="file" accept="image/*" onChange={onChangeFileInput} />
       <S.Info>{ONLY_IMAGE_FILE_INFO}</S.Info>
       <S.Info>{IMAGE_UPLOAD_INFO}</S.Info>
-    </S.Wrapper>
+    </S.Container>
   );
 }
 

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { theme, palette, prop } from 'styled-tools';
 
-interface WrapperProps {
+interface ContainerProps {
   background?: string;
   height?: string;
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Container = styled.div<ContainerProps>`
   position: relative;
   border-radius: 1rem;
   background-color: ${palette('grayscale', 6)};
