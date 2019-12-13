@@ -84,7 +84,15 @@ export async function placeToCoordinate(
   return { latitude, longitude };
 }
 
-export async function getUserEventsByUserId(userId: number): Promise<Event[]> {
+interface UserEvents extends Partial<Event> {
+  price: number;
+  firstName: string;
+  lastName: string;
+}
+
+export async function getUserEventsByUserId(
+  userId: number,
+): Promise<UserEvents[]> {
   const where: WhereOptions = { userId };
   const order: Order = [['startAt', 'DESC']];
   const attributes: FindAttributeOptions = {
@@ -97,5 +105,19 @@ export async function getUserEventsByUserId(userId: number): Promise<Event[]> {
       'isPublic',
     ],
   };
-  return await Event.findAll({ where, order, attributes });
+  const include: Includeable[] = [
+    {
+      model: TicketType,
+      attributes: ['price'],
+    },
+    { model: User, attributes: ['id', 'lastName', 'firstName'] },
+  ];
+  const result = await Event.findAll({ where, order, attributes, include });
+  return result.map(event => {
+    const { ticketType, user, ...events }: Partial<Event> = event.get({
+      plain: true,
+    });
+    const { firstName, lastName } = user!;
+    return { ...events, price: ticketType!.price, firstName, lastName };
+  });
 }
