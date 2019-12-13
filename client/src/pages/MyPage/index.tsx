@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useReducer } from 'react';
-/*import useHistory, useParams 'react-router-dom';*/
+// eslint-disable-next-line
+import { useHistory, useParams } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 import MyPageTemplate from './template';
@@ -135,68 +136,80 @@ function MyPage(): React.ReactElement {
     });
   };
 
-  useEffect(() => {
-    setRequestBoughtData({ type: REQUEST });
-    setRequestCreatedEventData({ type: REQUEST });
-  }, [setRequestBoughtData, setRequestCreatedEventData]);
+  useEffect(
+    () => {
+      setRequestBoughtData({ type: REQUEST });
+      setRequestCreatedEventData({ type: REQUEST });
+    },
+    // eslint-disable-next-line
+    [],
+  );
 
-  useEffect(() => {
-    const { type } = requestBoughtData;
-    switch (type) {
-      case SUCCESS:
-        const { data } = requestBoughtData;
-        if (data) {
-          const events = new Map<number, BoughtTicketEvent>();
-          const eventsOrder = data.map((event: BoughtTicketEvent) => {
-            events.set(event.id, event);
-            return event.id;
-          });
-          dispatch({
-            type: FETCH_EVENTS,
-            value: {
-              events,
-              eventsOrder,
-              createdEvents: state.createdEvents,
-              createdEventsOrder: state.createdEventsOrder,
-            },
-          });
-        }
-        break;
+  useEffect(
+    () => {
+      const { type } = requestBoughtData;
+      switch (type) {
+        case SUCCESS:
+          const { data } = requestBoughtData;
+          if (data) {
+            const events = new Map<number, BoughtTicketEvent>();
+            const eventsOrder = data.map((event: BoughtTicketEvent) => {
+              events.set(event.id, event);
+              return event.id;
+            });
+            dispatch({
+              type: FETCH_EVENTS,
+              value: {
+                events,
+                eventsOrder,
+                createdEvents: state.createdEvents,
+                createdEventsOrder: state.createdEventsOrder,
+              },
+            });
+          }
+          break;
 
-      case FAILURE:
-        alert(`요청에 실패했습니다. ${requestBoughtData.status}`);
-        break;
-    }
-  }, [requestBoughtData, requestBoughtData.type, state.createdEvents, state.createdEventsOrder]);
+        case FAILURE:
+          alert(`요청에 실패했습니다. ${requestBoughtData.status}`);
+          break;
+      }
+    },
+    // eslint-disable-next-line
+    [requestBoughtData.type],
+  );
 
-  useEffect(() => {
-    const { type } = requestCreatedEventData;
-    switch (type) {
-      case SUCCESS:
-        const { data } = requestCreatedEventData;
-        if (data) {
-          const createdEvents = new Map<number, CreatedEvent>();
-          const createdEventsOrder = data.map((event: CreatedEvent) => {
-            createdEvents.set(event.id, event);
-            return event.id;
-          });
-          dispatch({
-            type: FETCH_CREATED_EVENTS,
-            value: {
-              events: state.events,
-              eventsOrder: state.eventsOrder,
-              createdEvents,
-              createdEventsOrder,
-            },
-          });
-        }
-        break;
+  useEffect(
+    () => {
+      const { type } = requestCreatedEventData;
+      switch (type) {
+        case SUCCESS:
+          const { data } = requestCreatedEventData;
+          if (data) {
+            const createdEvents = new Map<number, CreatedEvent>();
+            const createdEventsOrder = data.map((event: CreatedEvent) => {
+              createdEvents.set(event.id, event);
+              return event.id;
+            });
+            dispatch({
+              type: FETCH_CREATED_EVENTS,
+              value: {
+                events: state.events,
+                eventsOrder: state.eventsOrder,
+                createdEvents,
+                createdEventsOrder,
+              },
+            });
+          }
+          break;
 
-      case FAILURE:
-        alert(`요청에 실패했습니다. ${requestBoughtData.status}`);
-        break;
-    }
-  }, [requestBoughtData.status, requestCreatedEventData, requestCreatedEventData.type, state.events, state.eventsOrder]);
+        case FAILURE:
+          alert(`요청에 실패했습니다. ${requestBoughtData.status}`);
+          break;
+      }
+    },
+    // eslint-disable-next-line
+    [requestCreatedEventData.type],
+  );
 
   return (
     <MyPageTemplate
