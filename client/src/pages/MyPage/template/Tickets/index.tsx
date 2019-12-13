@@ -1,7 +1,6 @@
 import React from 'react';
 
 import * as S from './style';
-import { CardGrid } from 'components';
 
 export interface Props {
   title: string;
