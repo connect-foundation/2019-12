@@ -1,5 +1,13 @@
 import { UserTicket, Event, TicketType, User } from 'models';
-import { WhereOptions, FindAttributeOptions, Includeable } from 'sequelize';
+import {
+  WhereOptions,
+  FindAttributeOptions,
+  Includeable,
+  Transaction,
+  literal,
+} from 'sequelize';
+import { sequelize } from 'utils/sequelize';
+import { redisNonBlockKey } from 'utils/redis';
 
 interface BoughtEvent extends Partial<Event> {
   userTickets: UserBoughtTicket[];
@@ -116,8 +124,21 @@ export async function getUserTicketsByTicketId(
 export async function deleteUserTicketById(
   id: number,
   userId: number,
-): Promise<number> {
-  if (!id) throw new Error('no id input');
-  const where: WhereOptions = { id, userId };
-  return await UserTicket.destroy({ where });
+): Promise<void> {
+  return await sequelize.transaction(async (transaction: Transaction) => {
+    const where: WhereOptions = { id, userId };
+    const userTicketData = await UserTicket.findOne({ where });
+    if (!userTicketData) throw new Error('no ticket exist');
+
+    await userTicketData.destroy({ transaction });
+
+    const ticketTypeId = userTicketData.ticketTypeId;
+    const updateTicketTypeResult = await TicketType.update(
+      { leftCnt: literal('left_cnt + 1') },
+      { where: { id: ticketTypeId } },
+    );
+    if (updateTicketTypeResult[0] === 0) throw new Error('internal error');
+
+    await redisNonBlockKey(ticketTypeId);
+  });
 }

@@ -34,7 +34,7 @@ function Header(): React.ReactElement {
             ? '로그인'
             : `${account.lastName}${account.firstName}`
         }
-        to={account.isLogin ? '/' : ROUTES.LOGIN}
+        to={account.isLogin ? ROUTES.MYPAGE_TICKETS : ROUTES.LOGIN}
         data-testid={'header-account'}
       />
     </S.Container>

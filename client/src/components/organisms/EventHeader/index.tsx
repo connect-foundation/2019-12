@@ -62,7 +62,7 @@ function EventHeader({
         </S.HostContainer>
       </S.BannerContainer>
       <S.PriceWrapper>
-        <Price mount={ticketInfo.price} separated={true} />
+        <Price separated>{ticketInfo.price}</Price>
       </S.PriceWrapper>
       <S.SubmitContainer>
         <S.ReservedPeopleContainer>

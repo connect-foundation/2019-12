@@ -1,3 +1,3 @@
 export { verifyToken, getUserInfo } from './auth';
-export { createUser } from './user';
+export { createUser, getBoughtTicketEvent, getCreatedEvents } from './user';
 export { getEvents, getEvent, joinEvent } from './event';
