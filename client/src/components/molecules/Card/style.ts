@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { palette, theme } from 'styled-tools';
 import { Link } from 'react-router-dom';
-import { EventDate } from 'components';
 
 const fadeIn = keyframes`
   0% {

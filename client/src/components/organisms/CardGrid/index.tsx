@@ -34,16 +34,11 @@ function CardGrid({
     getNextEventsTrigger();
   }
 
-  console.log('rerender cardgrid!');
-  console.log('rerender cardgrid! events', events);
-  console.log('rerender cardgrid! eventsOrder', eventsOrder);
-
   return (
     <>
       <S.CardGridContainer>
         {eventsOrder.map((eventIndex, index) => {
           const eventData = events.get(eventIndex);
-          console.log('rerender cardgrid! eventData', eventData);
           if (!eventData) {
             return <></>;
           }
