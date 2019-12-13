@@ -27,3 +27,5 @@ export const TICKET_CHOICE_TITLE = 'Tickets';
 export const TICKET_PURCHASE_TITLE = '결제';
 export const TOTAL_PRICE_LABEL = '총 결제할 금액';
 export const TICKET_PURCHASE_BTN = '티켓 구입';
+export const ONLY_IMAGE_FILE_INFO = '이미지 파일만 업로드 가능합니다.';
+export const IMAGE_UPLOAD_INFO = '16:9 비율의 이미지가 가장 잘 어울립니다.';
