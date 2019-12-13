@@ -120,7 +120,8 @@ function EventDetailView(): React.ReactElement {
             place,
             address,
             placeDesc,
-            location: { latitude, longitude },
+            latitude,
+            longitude,
           }}
         />
       }
