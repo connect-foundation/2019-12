@@ -2,6 +2,7 @@ import '../../src/env';
 import * as request from 'supertest';
 import app from '../../src/app';
 import { Secret } from 'jsonwebtoken';
+import { client } from '../../src/utils/redis';
 import { generateJWT } from '../../src/utils/jwt';
 import { sequelize } from '../../src/utils/sequelize';
 import { Event } from '../../src/models';
@@ -27,6 +28,7 @@ beforeAll(async () => {
 
 afterAll(() => {
   sequelize.close();
+  client.quit();
 });
 
 describe('Router / Events', () => {
