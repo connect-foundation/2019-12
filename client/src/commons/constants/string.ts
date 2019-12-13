@@ -30,3 +30,5 @@ export const TICKET_PURCHASE_BTN = '티켓 구입';
 export const TICKETBOX_REFUND_BTN = '환불하기';
 export const MY_TICKETS_STEP = 'tickets';
 export const CREATED_EVENTS_STEP = 'events';
+export const MY_TICKETS_TITLE = '구매 완료한 티켓';
+export const MY_CREATED_EVENTS = '나의 주최한 이벤트';
