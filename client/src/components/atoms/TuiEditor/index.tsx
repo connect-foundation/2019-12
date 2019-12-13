@@ -18,7 +18,7 @@ function TuiEditor({
     const tuiDOM = tuiRef.current;
     if (tuiDOM) {
       const editor = new Editor({
-        el: document.getElementById('tui-editor')!,
+        el: tuiDOM,
         initialEditType: 'wysiwyg',
         height: '45rem',
         previewStyle: 'vertical',
