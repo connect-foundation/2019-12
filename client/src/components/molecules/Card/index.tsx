@@ -2,7 +2,7 @@ import React from 'react';
 
 import { EVENT_NAME_MAX_LENGTH } from 'commons/constants/number';
 import * as S from './style';
-import { Divider, Img } from 'components';
+import { Divider, Img, Price, EventDate } from 'components';
 
 export interface Props {
   /** 라우팅 URL */
@@ -42,13 +42,19 @@ function Card({
       </S.ImgWrapper>
       <S.InnerContainer>
         <S.ContentContainer>
-          <S.Date>{date}</S.Date>
+          <S.DateWrappeer>
+            <S.DateWrappeer>
+              <EventDate>{date}</EventDate>
+            </S.DateWrappeer>
+          </S.DateWrappeer>
           <S.Title>{eventTitle}</S.Title>
           <S.Host>{host}</S.Host>
         </S.ContentContainer>
         <S.FooterContainer>
           <Divider />
-          <S.Price>{price}</S.Price>
+          <S.PriceWrapper>
+            <Price separated>{price}</Price>
+          </S.PriceWrapper>
         </S.FooterContainer>
       </S.InnerContainer>
     </S.LinkWrapper>

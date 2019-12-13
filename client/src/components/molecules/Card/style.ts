@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { palette, theme } from 'styled-tools';
 import { Link } from 'react-router-dom';
+import { EventDate } from 'components';
 
 const fadeIn = keyframes`
   0% {
@@ -46,12 +47,6 @@ export const ImgWrapper = styled.div`
   object-fit: cover;
 `;
 
-export const Date = styled.span`
-  ${theme('fontStyle.subtitle2')}
-  color: ${palette('grayscale', 3)};
-  line-height: 2;
-`;
-
 export const Title = styled.h3`
   ${theme('fontStyle.h6')}
   color: ${palette('grayscale', 1)};
@@ -64,8 +59,15 @@ export const Host = styled.span`
   line-height: 2;
 `;
 
-export const Price = styled.span`
+export const PriceWrapper = styled.div`
   ${theme('fontStyle.body2')}
-  color: ${palette('grayscale', 1)};
+  color: ${palette('grayscale', 0)};
   padding-bottom: 0.5rem;
+`;
+
+export const DateWrappeer = styled.div`
+  ${theme('fontStyle.caption')}
+  font-weight:bold;
+  color: ${palette('grayscale', 3)};
+  line-height: 1.5;
 `;
