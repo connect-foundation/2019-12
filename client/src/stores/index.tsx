@@ -1,6 +1,7 @@
 import React from 'react';
 import { default as AccountStoreProvider } from './accountStore';
 import { default as AfterLoginStoreProvider } from './afterLoginStore';
+import { default as EventsProvider } from './eventsStore';
 
 export default function GlobalStore({
   children,
@@ -9,7 +10,9 @@ export default function GlobalStore({
 }) {
   return (
     <AfterLoginStoreProvider>
-      <AccountStoreProvider>{children}</AccountStoreProvider>
+      <AccountStoreProvider>
+        <EventsProvider>{children}</EventsProvider>
+      </AccountStoreProvider>
     </AfterLoginStoreProvider>
   );
 }

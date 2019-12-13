@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NotFoundTemplate from './template';
-import ImgBtn from 'components/molecules/ImgBtn';
+import { ImgBtn } from 'components';
 import ROUTES from 'commons/constants/routes';
 
 function NotFound(): React.ReactElement {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getUserById } from '../../../../services';
+import { getUserById } from 'services/users';
 
 export async function getUser(req: Request, res: Response) {
   const result = await getUserById(+req.params.userId);

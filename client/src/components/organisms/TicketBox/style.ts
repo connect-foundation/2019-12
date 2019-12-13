@@ -1,13 +1,28 @@
 import styled from 'styled-components';
-import { theme, palette } from 'styled-tools';
+import { theme, palette, ifProp } from 'styled-tools';
 
-export const Container = styled.div`
+interface ContainerProps {
+  checked: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 2rem 3rem;
-  background-color: rgb(254, 244, 223);
+  background-color: ${ifProp(
+    'checked',
+    'rgb(254, 244, 223)',
+    palette('grayscale', 6),
+  )};
   border-radius: 0.3rem;
   color: ${palette('grayscale', 1)};
+`;
+
+export const TicketInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Name = styled.div`

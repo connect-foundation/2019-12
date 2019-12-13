@@ -1,22 +1,26 @@
 import React from 'react';
 
 import * as S from './style';
-import { TicketType } from '../../../types/Data';
-import IconLabel from '../../molecules/IconLabel';
+import { TicketType } from 'types/Data';
+import { IconLabel, Price } from 'components';
+import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
 
-import MultipleUsers from '../../../assets/img/multiple-users-silhouette.svg';
-import Check from '../../../assets/img/check-black.svg';
-import Calendar from '../../../assets/img/calendar-black.svg';
-import Price from '../../atoms/Price';
+import { FaUsers, FaCheck, FaRegCalendarAlt } from 'react-icons/fa';
+
+interface Prop extends TicketType {
+  count?: number;
+}
 
 function Ticket({
+  count,
   price,
   name,
   desc,
   maxCntPerPerson,
+  salesStartAt,
   salesEndAt,
   leftCnt,
-}: TicketType): React.ReactElement {
+}: Prop): React.ReactElement {
   return (
     <>
       <S.TicketLabel>티켓</S.TicketLabel>
@@ -25,22 +29,21 @@ function Ticket({
           <S.TicketPriceWrapper>
             <Price mount={price} separated={true} />
           </S.TicketPriceWrapper>
-          <S.TicketName>{name}</S.TicketName>
+          <S.TicketName>{`${name} ${count ? `* ${count}` : ''}`}</S.TicketName>
           <S.TicketDesc>{desc}</S.TicketDesc>
           <IconLabel
-            iconProps={{ height: '1.5rem', alt: 'check', src: Check }}
+            icon={<FaCheck size={'1.5rem'} />}
             labelContent={`1인당 ${maxCntPerPerson}개 구입 가능`}
           />
           <IconLabel
-            iconProps={{ height: '1.5rem', alt: 'calendar', src: Calendar }}
-            labelContent={`${salesEndAt.split('T')[0]} 판매마감`}
+            icon={<FaRegCalendarAlt size={'1.5rem'} />}
+            labelContent={`${calculateDiffDaysOfDateRange(
+              salesStartAt,
+              salesEndAt,
+            )}일 후에 판매마감`}
           />
           <IconLabel
-            iconProps={{
-              height: '1.5rem',
-              alt: 'people',
-              src: MultipleUsers,
-            }}
+            icon={<FaUsers size={'1.5rem'} />}
             labelContent={`${leftCnt}개 판매`}
           />
         </S.TicketContentWrapContainer>

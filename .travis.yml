@@ -31,6 +31,11 @@ env:
   - REDIS_HOST=127.0.0.1
   - REDIS_PORT=6379
   - JWT_SECURE=1234
+  - S3_ACCESS_KEY=CJyJbaenqZDeb9vlrX42
+  - S3_SECRET_KEY=IK6VM2bJNwVC6vwZ0ockxER8OvfpwWuXqBGHBOQl
+  - S3_REGION=kr-standard
+  - S3_ENDPOINT=https://kr.object.ncloudstorage.com
+  - S3_BUCKET_NAME=bookus
 jobs:
   include:
   - stage: TEST
@@ -120,4 +125,3 @@ jobs:
     - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
     - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
     - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
-

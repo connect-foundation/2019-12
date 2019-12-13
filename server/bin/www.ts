@@ -1,7 +1,7 @@
 import '../src/env';
-import '../src/utils/sequelize';
-import '../src/utils/redis';
-import app from '../src/app';
+import 'utils/sequelize';
+import 'utils/redis';
+import app from 'app';
 
 const { APP_PORT, JWT_SECURE } = process.env;
 

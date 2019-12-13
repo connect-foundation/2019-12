@@ -1,20 +1,16 @@
 import React from 'react';
 
 import * as S from './style';
-import Icon, { IconProps } from '../../atoms/Icon';
 
-export interface IconLabelProps {
-  iconProps: IconProps;
+export interface Props {
+  icon: React.ReactNode;
   labelContent: string;
 }
 
-function IconLabel({
-  iconProps,
-  labelContent,
-}: IconLabelProps): React.ReactElement {
+function IconLabel({ icon, labelContent }: Props): React.ReactElement {
   return (
     <S.Container>
-      <Icon {...iconProps} />
+      {icon}
       <S.Label>{labelContent}</S.Label>
     </S.Container>
   );

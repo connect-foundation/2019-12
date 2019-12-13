@@ -1,30 +1,26 @@
 import * as express from 'express';
-
 import * as controllers from './controllers';
+import * as validators from './validators';
+import { badRequestHandler } from 'utils/errorHandler';
+import { requireLogin } from 'routes/middlewares';
 
 const router = express.Router();
 
-// 전체를 관통할 미들웨어를 이곳에 서술
-router.use(
-  (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    next();
-  },
+router.get('/events', requireLogin, controllers.getUserEvent);
+router.delete(
+  '/ticket',
+  requireLogin,
+  validators.deleteUserTicket,
+  badRequestHandler,
+  controllers.deleteUserTicket,
 );
-// parameter를 뽑을 때 사용할 미들웨어
-router.param(
-  'userId',
-  (
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction,
-    value: any,
-    name: string,
-  ) => {
-    // 이곳에서 Validation 을 수행함.
-    next();
-  },
-);
+router.get('/tickets', requireLogin, controllers.getUserTicket);
 router.post('/:userId', controllers.getUser);
-router.post('/', controllers.createUser);
+router.post(
+  '/',
+  validators.createUser,
+  badRequestHandler,
+  controllers.createUser,
+);
 
 export default router;

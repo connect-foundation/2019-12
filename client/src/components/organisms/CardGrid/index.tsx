@@ -1,32 +1,64 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import * as S from './style';
-import Card from 'components/molecules/Card';
-import { Event } from 'types/Event';
+import { Card } from 'components';
+import { useIntersect } from 'hooks';
 import ROUTES from 'commons/constants/routes';
+import { EventDetail } from 'types/Data';
 
 interface Props {
-  cards: Event[];
-  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+  events: Map<number, EventDetail>;
+  eventsOrder: number[];
+  requestNextData?: () => void;
 }
 
-function CardGrid({ cards, setRef }: Props): React.ReactElement {
+const fn = (): void => {};
+
+function CardGrid({
+  events,
+  eventsOrder,
+  requestNextData,
+}: Props): React.ReactElement {
+  const getNextEventsTrigger = useCallback(requestNextData || fn, [
+    requestNextData,
+  ]);
+
+  const [, setRef] = useIntersect(intersectCallback, {
+    root: null,
+    threshold: 1.0,
+    rootMargin: '0% 0% 50% 0%',
+  });
+
+  async function intersectCallback() {
+    setRef(null);
+    getNextEventsTrigger();
+  }
+
   return (
     <>
       <S.CardGridContainer>
-        {cards.map(card => (
-          <Card
-            key={card.id}
-            imgSrc={card.mainImg}
-            date={card.startAt}
-            title={card.title}
-            host={card.user.lastName + card.user.firstName}
-            price={card.ticketType.price}
-            to={`${ROUTES.EVENT_DETAIL}/${card.id}`}
-          />
-        ))}
+        {eventsOrder.map((eventIndex, index) => {
+          const { id, mainImg, startAt, title, user, ticketType } = events.get(
+            eventIndex,
+          )!;
+          return (
+            <Card
+              key={id}
+              imgSrc={mainImg}
+              date={startAt}
+              title={title}
+              host={user.lastName + user.firstName}
+              price={ticketType.price}
+              to={`${ROUTES.EVENT_DETAIL}/${id}`}
+              setRef={
+                requestNextData && eventsOrder.length - 1 === index
+                  ? setRef
+                  : undefined
+              }
+            />
+          );
+        })}
       </S.CardGridContainer>
-      <div ref={setRef}></div>
     </>
   );
 }

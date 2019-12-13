@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { EVENT_NAME_MAX_LENGTH } from '../../../commons/constants/number';
+import { EVENT_NAME_MAX_LENGTH } from 'commons/constants/number';
 import * as S from './style';
-import Divider from '../../atoms/Divider';
-import Img from '../../atoms/Img';
+import { Divider, Img } from 'components';
 
 export interface Props {
   /** 라우팅 URL */
@@ -18,9 +17,10 @@ export interface Props {
   host: string;
   /** 가격 */
   price: number;
+  setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
-const shortenTitle = (title: string) =>
+export const shortenTitle = (title: string) =>
   title.length >= EVENT_NAME_MAX_LENGTH
     ? `${title.slice(0, EVENT_NAME_MAX_LENGTH)}...`
     : title;
@@ -32,12 +32,12 @@ function Card({
   title,
   host,
   price,
+  setRef,
 }: Props): React.ReactElement {
   const eventTitle = shortenTitle(title);
   return (
     <S.LinkWrapper to={to} data-testid={'main-card'}>
-      <S.HeaderWrapper></S.HeaderWrapper>
-      <S.ImgWrapper>
+      <S.ImgWrapper ref={setRef}>
         <Img alt={'card Image'} src={imgSrc} />
       </S.ImgWrapper>
       <S.InnerContainer>

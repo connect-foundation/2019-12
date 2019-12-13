@@ -1,4 +1,4 @@
-import { EventDetail } from '../types/Data';
+import { EventDetail } from 'types/Data';
 
 export interface SignUpFormState {
   lastName: string;
@@ -24,4 +24,10 @@ export interface AccountState {
   firstName?: string;
   lastName?: string;
   phoneNumber?: number;
+}
+
+export interface EventsState {
+  events?: Map<number, EventDetail>;
+  order?: number[];
+  status: number;
 }

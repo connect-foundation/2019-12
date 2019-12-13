@@ -1,4 +1,4 @@
-import '../src/env';
+import 'env';
 import * as express from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as cors from 'cors';
