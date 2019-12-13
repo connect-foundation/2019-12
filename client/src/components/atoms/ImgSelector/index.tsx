@@ -7,8 +7,8 @@ import React, {
 } from 'react';
 import * as S from './style';
 import {
-  ONLY_IMAGE_FILE_INFO,
-  IMAGE_UPLOAD_INFO,
+  ONLY_IMG_FILE_INFO,
+  IMG_UPLOAD_INFO,
   FILE_NOT_FOUND_ERROR_INFO,
 } from 'commons/constants/string';
 
@@ -32,7 +32,7 @@ function readFileOfInput(
     const file: File = inputRef.current.files[0];
     if (!file.type.startsWith('image')) {
       clearFileInput(inputRef);
-      return reject(new Error(ONLY_IMAGE_FILE_INFO));
+      return reject(new Error(ONLY_IMG_FILE_INFO));
     }
 
     const fileReader = new FileReader();
@@ -46,7 +46,7 @@ function readFileOfInput(
   });
 }
 
-function ImageSelector({ onChange, height = '20rem' }: Props): ReactElement {
+function ImgSelector({ onChange, height = '20rem' }: Props): ReactElement {
   const [background, setBackground] = useState<string>();
   const inputRef = useRef<HTMLInputElement>(null);
   const onChangeFile = useCallback(async () => {
@@ -67,10 +67,10 @@ function ImageSelector({ onChange, height = '20rem' }: Props): ReactElement {
         onChange={onChangeFile}
         ref={inputRef}
       />
-      <S.Info>{ONLY_IMAGE_FILE_INFO}</S.Info>
-      <S.Info>{IMAGE_UPLOAD_INFO}</S.Info>
+      <S.Info>{ONLY_IMG_FILE_INFO}</S.Info>
+      <S.Info>{IMG_UPLOAD_INFO}</S.Info>
     </S.Container>
   );
 }
 
-export default ImageSelector;
+export default ImgSelector;
