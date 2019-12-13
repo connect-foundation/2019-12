@@ -5,7 +5,7 @@ import { TicketType } from 'models';
 
 const { REDIS_PORT, REDIS_HOST } = process.env;
 
-const client = redis
+export const client = redis
   .createClient({
     host: REDIS_HOST,
     port: +(REDIS_PORT || 6379),
@@ -30,11 +30,18 @@ export const redisMigrate = async () => {
   );
   redisTickets.forEach(ticket => {
     client.hmset(`${ticket.id}`, ticket, redis.print);
-    client.hgetall(`${ticket.id}`, (err, reply) => {
-      console.log(reply);
-    });
+    client.hgetall(`${ticket.id}`);
   });
   client.quit();
+};
+
+export const redisNonBlockKey = (ticketTypeId: number) => {
+  return new Promise((resolve, reject) => {
+    client.hset(`${ticketTypeId}`, 'isBlock', '0', (err, res) => {
+      if (err) reject();
+      resolve(res);
+    });
+  });
 };
 
 export const redisDeleteKey = async () => {

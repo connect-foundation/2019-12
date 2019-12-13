@@ -2,7 +2,7 @@ import React from 'react';
 import { text } from '@storybook/addon-knobs';
 
 import Icon from '.';
-import ExternalLinkSymbol from 'assets/img/external-link-symbol.svg';
+import LogoSvg from 'assets/img/logo.svg';
 
 export default {
   title: 'Atoms / Icon',
@@ -11,9 +11,9 @@ export default {
 export const index: React.FC = () => (
   <div style={{ padding: '1rem', backgroundColor: 'gray' }}>
     <Icon
-      alt={text('alt', 'External Link Icon')}
+      alt={text('alt', 'Google')}
       height={text('height', '2rem')}
-      src={ExternalLinkSymbol}
+      src={LogoSvg}
     />
   </div>
 );
@@ -21,10 +21,10 @@ export const index: React.FC = () => (
 export const circular: React.FC = () => (
   <div style={{ padding: '1rem', backgroundColor: 'gray' }}>
     <Icon
-      alt={text('alt', 'External Link Icon')}
+      alt={text('alt', 'Google')}
       height={text('height', '2rem')}
-      src={ExternalLinkSymbol}
-      circular={true}
+      src={LogoSvg}
+      circular
     />
   </div>
 );
