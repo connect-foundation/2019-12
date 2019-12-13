@@ -11,6 +11,8 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 1rem;
   background-color: ${palette('grayscale', 6)};
   background-image: url('${prop('background')}');
+  background-size: cover;
+  background-position: center;
   border: ${props => (props.background ? '0' : '0.2rem dotted gray')};
   color: ${props => (props.background ? 'transparent' : 'inherit')};
   width: 100%;
