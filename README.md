@@ -5,7 +5,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
-### 📺 [HomePage](http://www.foorg.xyz/)
+### 📺 [HomePage](http://www.bookus.kr/)
 
 ### 📕 [Storybook for Bookus](https://storybook-bookus.netlify.com/)
 
