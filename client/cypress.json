@@ -1,8 +1,0 @@
-{
-  "video": false,
-  "projectId": "bookus",
-  "baseUrl": "http://localhost:3000",
-  "viewportWidth": 1360,
-  "viewportHeight": 768,
-  "requestTimeout": 15000
-}
