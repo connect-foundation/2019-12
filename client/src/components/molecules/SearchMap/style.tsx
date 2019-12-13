@@ -18,7 +18,7 @@ export const DropDown = styled.ul<DropDownProps>`
   width: 100%;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  box-shadow: 0 4px 2px -2px ${palette('grayscale', 3)};
+  box-shadow: 0 0.4rem 0.2rem -0.2rem ${palette('grayscale', 3)};
 `;
 export const DropDownItem = styled.li`
   padding: 1.5rem 1rem;
