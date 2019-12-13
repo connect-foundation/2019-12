@@ -1,35 +1,45 @@
 import React from 'react';
 
 import * as S from './style';
-import BasedTemplate from 'pages/BasedTemplate/templates';
+import { BasedTemplate } from 'pages';
 import TicektsTemplate, { Props as TicketsProps } from './Tickets';
 import CreatedEventsTemplate, {
   Props as CreatedEventsProps,
 } from './CreatedEvents';
+import BoughtTicketEventTemplate, {
+  Props as BoughtTicketEventTemplateProps,
+} from './BoughtTicketEvent';
+import ROUTES from 'commons/constants/routes';
 
 interface Props {
   lnbTab: React.ReactElement;
-  step: number;
+  routePath: string;
   ticketsProps: TicketsProps;
   createdEventsProps: CreatedEventsProps;
+  boughtTicketEventTemplateProps: BoughtTicketEventTemplateProps;
+  isLoading?: boolean;
 }
-
-const MY_TICKETS_STEP = 1;
-const CREATED_EVENTS_STEP = 2;
 
 function MyPageTemplate({
   lnbTab,
-  step,
+  routePath,
   ticketsProps,
   createdEventsProps,
+  boughtTicketEventTemplateProps,
+  isLoading,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate hasHeaderLine>
+    <BasedTemplate hasHeaderLine loading={isLoading}>
       {lnbTab}
       <S.Container>
-        {step == MY_TICKETS_STEP && <TicektsTemplate {...ticketsProps} />}
-        {step == CREATED_EVENTS_STEP && (
+        {routePath === ROUTES.MYPAGE_TICKETS && (
+          <TicektsTemplate {...ticketsProps} />
+        )}
+        {routePath === ROUTES.MYPAGE_CREATED_EVENTS && (
           <CreatedEventsTemplate {...createdEventsProps} />
+        )}
+        {routePath.startsWith(ROUTES.MYPAGE_TICKETS_EVENT) && (
+          <BoughtTicketEventTemplate {...boughtTicketEventTemplateProps} />
         )}
       </S.Container>
     </BasedTemplate>
