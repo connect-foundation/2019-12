@@ -175,7 +175,7 @@ function EventJoin(): React.ReactElement {
           }
         />
       }
-      place={<Place googleMapHeight={'20rem'} {...eventData} />}
+      place={<Place mapHeight={'20rem'} {...eventData} />}
       ticketChoiceProps={{
         header: TICKET_CHOICE_TITLE,
         ticketBox: (

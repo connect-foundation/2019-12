@@ -8,7 +8,7 @@ interface Props {
   address: string;
   placeDesc: string;
   location: Location;
-  googleMapHeight?: string;
+  mapHeight?: string;
 }
 
 function Place({
@@ -16,11 +16,11 @@ function Place({
   address,
   placeDesc,
   location,
-  googleMapHeight,
+  mapHeight,
 }: Props): React.ReactElement {
   return (
     <S.PlaceDetailContainer>
-      <KakaoMap height={googleMapHeight} {...location} />
+      <KakaoMap height={mapHeight} {...location} />
       <S.PlcaeLabel>장소</S.PlcaeLabel>
       <S.PlaceName>{place}</S.PlaceName>
       <S.PlaceDetail>{address}</S.PlaceDetail>
