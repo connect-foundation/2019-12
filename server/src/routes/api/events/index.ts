@@ -8,7 +8,7 @@ import {
   singleFileUpload,
   requireSingleFile,
   limitSizeSingleFile,
-  singleFileLimitImageType,
+  limitImageTypeSingleFile,
 } from 'routes/middlewares';
 import { badRequestHandler } from 'utils/errorHandler';
 
@@ -22,7 +22,7 @@ router.post(
   singleFileUpload('mainImg'),
   requireSingleFile('mainImg'),
   limitSizeSingleFile(1024 * 1024 * 10),
-  singleFileLimitImageType,
+  limitImageTypeSingleFile,
   validators.createEvent,
   badRequestHandler,
   controllers.createEvent,
