@@ -13,25 +13,50 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   const {
     isPublic,
     title,
-    mainImg,
     startAt,
     endAt,
     place,
     address,
     placeDesc,
     desc,
-    ticket,
+    latitude,
+    longitude,
+    ticket: {
+      name,
+      desc: ticketDesc,
+      quantity,
+      isPublicLeftCnt,
+      maxCntPerPerson,
+      price,
+      salesStartAt,
+      salesEndAt,
+      refundEndAt,
+    },
   } = req.body as Body;
+
   const event: Partial<Event> = {
     isPublic,
     title,
-    mainImg,
     startAt,
     endAt,
     place,
     address,
     placeDesc,
     desc,
+    latitude,
+    longitude,
+  };
+
+  const ticketType: Partial<TicketType> = {
+    name,
+    desc: ticketDesc,
+    quantity,
+    isPublicLeftCnt,
+    maxCntPerPerson,
+    price,
+    salesStartAt,
+    salesEndAt,
+    refundEndAt,
   };
   const ext = req.fileType?.ext;
   const mainImageKey = ext ? `${uuid()}.${ext}` : uuid();
@@ -45,7 +70,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
   try {
     event.userId = req.user?.id;
-    const { eventId, ticketId } = await createEventAndTicket(event, ticket);
+    const { eventId, ticketId } = await createEventAndTicket(event, ticketType);
     res.status(CREATED).json({ eventId, ticketId });
   } catch (error) {
     next(error);
