@@ -29,7 +29,7 @@
 
    - 비동기로 API 요청에 대한 처리가 주가 되는 상태 관리에 대한 테스트
 
-2. Playground for UI components of Storkbook
+2. Playground for UI components of Storybook
 
    - Storybook을 통한 독립된 환경에서의 컴포넌트 테스트
 
