@@ -5,9 +5,13 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
+[![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://cypress.io)
+
 ### 📺 [HomePage](http://www.foorg.xyz/)
 
 ### 📕 [Storybook for Bookus](https://storybook-bookus.netlify.com/)
+
+### 🌲 [Cypress for Bookus](https://dashboard.cypress.io/projects/wauqe2/runs)
 
 [Bookus!](http://www.foorg.xyz/)는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로젝트입니다. 순간적으로 많은 트래픽이 몰리더라도 중단되지 않는 **안정적인** 선착순 예약 서비스를 목표로 하고 있습니다. 따라서 다음과 같은 도전과제를 갖고 있습니다.
 
