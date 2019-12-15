@@ -17,6 +17,7 @@ export { default as KakaoMap } from './atoms/KakaoMap';
 export { default as Card } from './molecules/Card';
 export { default as Counter } from './molecules/Counter';
 export { default as FormInput } from './molecules/FormInput';
+export { default as FormItem } from './molecules/FormItem';
 export { default as IconBtn } from './molecules/IconBtn';
 export { default as IconLabel } from './molecules/IconLabel';
 export { default as ImgBtn } from './molecules/ImgBtn';
