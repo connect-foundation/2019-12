@@ -27,25 +27,28 @@ export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const FETCH_CREATED_EVENTS = 'FETCH_CREATED_EVENTS';
 export const FETCH_ERROR = 'FETCH_ERROR';
 
-export default function reducer(state: State, action: Action) {
+export default function reducer(
+  { events, eventsOrder, createdEvents, createdEventsOrder }: State,
+  action: Action,
+) {
   const { type, value } = action;
 
   switch (type) {
     case FETCH_EVENTS:
-      return Object.create({
+      return {
         events: value.events,
         eventsOrder: value.eventsOrder,
-        createdEvents: state.createdEvents,
-        createdEventsOrder: state.createdEventsOrder,
-      });
+        createdEvents,
+        createdEventsOrder,
+      };
 
     case FETCH_CREATED_EVENTS:
-      return Object.create({
-        events: state.events,
-        eventsOrder: state.eventsOrder,
+      return {
+        events,
+        eventsOrder,
         createdEvents: value.createdEvents,
         createdEventsOrder: value.createdEventsOrder,
-      });
+      };
 
     default:
       throw new Error(`unexpected action.type: ${type}`);
