@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as S from './style';
-import { Location } from 'types/Data';
 import { Input, KakaoMap } from 'components';
 
 const { REACT_APP_KAKAO_REST_API_KEY } = process.env;
+
+interface Location {
+  latitude: number;
+  longitude: number;
+}
 
 function SearchMap(): React.ReactElement {
   const [visible, setVisible] = useState<boolean>(true);
