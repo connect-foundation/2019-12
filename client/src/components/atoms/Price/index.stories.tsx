@@ -6,5 +6,5 @@ export default {
 };
 
 export const index: React.FC = () => {
-  return <Price mount={16000000} separated={true} />;
+  return <Price separated={true}>{16000000}</Price>;
 };

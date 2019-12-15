@@ -1,10 +1,11 @@
 {
   "name": "reserve-server",
-  "version": "0.0.2",
+  "private": true,
+  "version": "0.4.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:prod": "node bin/www.js",
+    "start:prod": "node -r tsconfig-paths/register bin/www.js",
     "start:dev": "nodemon",
     "test": "jest --coverage --verbose",
     "build": "tsc --sourceMap false",
@@ -12,7 +13,7 @@
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
     "lint:type": "tsc --noEmit",
-    "precommit": "lint-staged"
+    "precommit": "tsc --noEmit && lint-staged"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -49,19 +50,17 @@
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.3",
+    "nodemon": "^2.0.1",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.7.2"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,scss,css,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "*.{ts,tsx}": [
-      "tsc @tsc.args",
       "git add"
     ],
     "*.{ts,tsx,js,jsx}": [
@@ -80,8 +79,20 @@
     ],
     "globals": {
       "ts-jest": {
+        "tsConfig": "./tsconfig.json",
         "enableTsDiagnostics": true
       }
+    },
+    "moduleNameMapper": {
+      "^app$": "<rootDir>/src/app",
+      "^env$": "<rootDir>/src/env",
+      "^common/(.*)$": "<rootDir>/src/common/$1",
+      "^models$": "<rootDir>/src/models",
+      "^routes/(.*)$": "<rootDir>/src/routes/$1",
+      "^services$": "<rootDir>/src/services",
+      "^services/(.*)$": "<rootDir>/src/services/$1",
+      "^types/(.*)$": "<rootDir>/src/types/$1",
+      "^utils/(.*)$": "<rootDir>/src/utils/$1"
     }
   }
 }

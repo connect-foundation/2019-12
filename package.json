@@ -1,13 +1,10 @@
 {
   "name": "bookus",
   "private": true,
-  "version": "0.3.5",
+  "version": "0.4.1",
   "main": "index.js",
   "license": "MIT",
   "workspaces": {
-    "nohoist": [
-      "huksy"
-    ],
     "packages": [
       "client",
       "server",

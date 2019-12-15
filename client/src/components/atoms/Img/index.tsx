@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import { useIntersect } from '../../../hooks';
+import { useIntersect } from 'hooks';
 
 export interface Props {
   /** alternation img */

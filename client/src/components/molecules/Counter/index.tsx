@@ -1,48 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, Dispatch } from 'react';
 
 import * as S from './style';
-import Icon from 'components/atoms/Icon';
-import LeftArrow from 'assets/img/left-arrow.svg';
-import RightArrow from 'assets/img/right-arrow.svg';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-interface Props {
+export interface Props {
   minCount: number;
   maxCount: number;
   handler?: (count: number) => void;
 }
 
-function Counter({ minCount, maxCount, ...props }: Props): React.ReactElement {
-  const [count, setCount] = useState(0);
-  const { handler } = props;
+export function increase(
+  count: number,
+  maxCount: number,
+  setCount: Dispatch<number>,
+) {
+  if (count < maxCount) {
+    setCount(count + 1);
+  }
+}
 
-  const increase = () => {
-    if (count < maxCount) {
-      const draftCount = count + 1;
-      setCount(draftCount);
-      if (handler) {
-        handler(draftCount);
-      }
-    }
-  };
+export function decrease(
+  count: number,
+  minCount: number,
+  setCount: Dispatch<number>,
+) {
+  if (count > minCount) {
+    setCount(count - 1);
+  }
+}
 
-  const decrease = () => {
-    if (count > minCount) {
-      const draftCount = count - 1;
-      setCount(draftCount);
-      if (handler) {
-        handler(draftCount);
-      }
+function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
+  const [count, setCount] = useState(minCount);
+  const [leftArrowDisabled, setLeftArrowDisabled] = useState(false);
+  const [rightArrowDisabled, setRightArrowDisabled] = useState(false);
+
+  const callbackIncrease = useCallback(() => {
+    increase(count, maxCount, setCount);
+  }, [count, maxCount, setCount]);
+
+  const callbackDecrease = useCallback(() => {
+    decrease(count, minCount, setCount);
+  }, [count, minCount, setCount]);
+
+  useEffect(() => {
+    handler && handler(count);
+
+    if (count === minCount) {
+      return setLeftArrowDisabled(true);
+    } else if (leftArrowDisabled) {
+      setLeftArrowDisabled(false);
     }
-  };
+
+    if (count === maxCount) {
+      return setRightArrowDisabled(true);
+    } else if (rightArrowDisabled) {
+      setRightArrowDisabled(false);
+    }
+  }, [
+    count,
+    minCount,
+    maxCount,
+    handler,
+    leftArrowDisabled,
+    rightArrowDisabled,
+  ]);
 
   return (
     <S.Container>
-      <S.ArrowWrapper onClick={decrease}>
-        <Icon height={'1.5rem'} alt={'left count'} src={LeftArrow} />
+      <S.ArrowWrapper
+        disabled={leftArrowDisabled}
+        onClick={() => {
+          callbackDecrease();
+        }}
+      >
+        <FaChevronLeft size={'1.3rem'} />
       </S.ArrowWrapper>
       <S.Count>{count}</S.Count>
-      <S.ArrowWrapper onClick={increase}>
-        <Icon height={'1.5rem'} alt={'right count'} src={RightArrow} />
+      <S.ArrowWrapper
+        disabled={rightArrowDisabled}
+        onClick={() => {
+          callbackIncrease();
+        }}
+      >
+        <FaChevronRight size={'1.3rem'} />
       </S.ArrowWrapper>
     </S.Container>
   );

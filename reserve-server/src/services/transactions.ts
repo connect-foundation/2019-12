@@ -5,8 +5,9 @@ import {
   updateTicketType,
   updateUserTicket,
 } from './';
-import { TicketType } from '../models';
-import redis from '../utils/redis';
+import { TicketType } from 'models';
+import redis from 'utils/redis';
+import { SOLD_OUT, NOT_EXIST, NOT_OPEN, EXCEED_LIMIT } from 'common/constants';
 
 export const orderTransaction = async (
   transaction: Transaction,
@@ -20,13 +21,20 @@ export const orderTransaction = async (
     countUserTicket(transaction, userId, ticketId),
     getTicketType(transaction, ticketId),
   ]);
-  if (ticket.leftCnt === 0) redis.hset(`${ticketId}`, 'isBlock', '1');
 
-  if (ticket && ticket.maxCntPerPerson >= userTicketNum + orderTicketNum) {
-    // 구매할 티켓이 존재할 때, 유저가 산 티켓 개수가 살 수 있는 티켓 개수보다 적을경우,
-    await updateUserTicket(transaction, userId, ticketId, orderTicketNum);
-    await updateTicketType(transaction, ticketId, orderTicketNum);
-  } else {
-    throw new Error('transaction fail');
+  if (ticket.leftCnt === 0) {
+    redis.hset(`${ticketId}`, 'isBlock', '1');
+    throw SOLD_OUT; // 티켓이 다 팔렸을 경우
   }
+  if (!ticket) throw NOT_EXIST;
+
+  if (ticket.maxCntPerPerson < userTicketNum + orderTicketNum)
+    throw EXCEED_LIMIT; // 티켓의 구매 개수를 초과함
+
+  const time = Date.now();
+  if (time < +ticket.salesStartAt || time > +ticket.salesEndAt) throw NOT_OPEN; // 티켓이 아직 열리지 않음
+
+  // 구매할 티켓이 존재할 때, 유저가 산 티켓 개수가 살 수 있는 티켓 개수보다 적을경우,
+  await updateUserTicket(transaction, userId, ticketId, orderTicketNum);
+  await updateTicketType(transaction, ticketId, orderTicketNum);
 };

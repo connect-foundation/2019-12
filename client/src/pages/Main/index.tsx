@@ -1,49 +1,69 @@
-import React, { useState, useCallback } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 
 import MainTemplate from './template';
-import MainBanner from 'components/organisms/MainBanner';
-import CardGrid from 'components/organisms/CardGrid';
-import { Event } from '../../types/Event';
-import { useIntersect } from '../../hooks';
-import delay from '../../utils/delay';
+import { MainBanner, CardGrid } from 'components';
+import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
+import { EventsState } from 'types/States';
+import { REQUEST_EVENT_CARD_GRID_NUM } from 'commons/constants/number';
+import { EventDetail } from 'types/Data';
+import { EventCard } from '../../types/Data';
+import { produce } from 'immer';
 
 function Main(): React.ReactElement {
-  const [events, setEvents] = useState<Event[]>([]);
-  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+  const eventsState = useContext(EventsStoreState);
+  const { eventFetchDispatcher } = useContext(EventsStoreAction);
+  const { events, order } = eventsState;
 
-  const fetchItems = useCallback(async () => {
-    const startAt =
-      events.length === 0
-        ? ''
-        : `&startAt=${events[events.length - 1].startAt}`;
-    const { data } = await axios({
-      method: 'GET',
-      url: `${SERVER_URL}/api/events?cnt=12${startAt}`,
-      withCredentials: true,
+  if (!events || !order) {
+    return <MainTemplate mainBanner={<MainBanner />} cardGrid={<></>} />;
+  }
+
+  const getStartAt = ({ events, order }: Partial<EventsState>) => {
+    if (order!.length === 0) return '';
+    const lastItemIndex = order!.slice(-1)[0];
+    return events!.get(lastItemIndex)!.startAt;
+  };
+
+  function getNextEvents() {
+    const startAt = getStartAt({ events, order });
+    eventFetchDispatcher({
+      type: 'EVENTS',
+      params: {
+        cnt: REQUEST_EVENT_CARD_GRID_NUM,
+        startAt,
+      },
     });
-    await delay(100);
-    setEvents([...events, ...data]);
-  }, [SERVER_URL, events]);
+  }
 
-  const [, setRef] = useIntersect(
-    async (
-      entry: IntersectionObserverEntry,
-      observer: IntersectionObserver,
-    ) => {
-      await fetchItems();
-    },
-    {
-      root: null,
-      threshold: 1.0,
-      rootMargin: '0% 0% 25% 0%',
-    },
-  );
+  const convertToEventCardType = (sourceMap: Map<number, EventDetail>) => {
+    const targetMap = new Map<number, EventCard>();
+    return produce(targetMap, draft => {
+      sourceMap.forEach(value => {
+        const { id, mainImg, startAt, title, user, ticketType } = value;
+        const eventCard: EventCard = {
+          id,
+          mainImg,
+          startAt,
+          title,
+          name: user.lastName + user.firstName,
+          price: ticketType.price,
+        };
+
+        draft.set(value.id, eventCard);
+      });
+    });
+  };
 
   return (
     <MainTemplate
       mainBanner={<MainBanner />}
-      cardGrid={<CardGrid cards={events} setRef={setRef} />}
+      cardGrid={
+        <CardGrid
+          events={convertToEventCardType(events)}
+          eventsOrder={order}
+          requestNextData={getNextEvents}
+        />
+      }
     />
   );
 }

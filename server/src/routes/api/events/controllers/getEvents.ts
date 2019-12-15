@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { getEvents } from '../../../../services/events';
+import { getEvents } from 'services/events';
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   const { cnt: limit, startAt } = req.query;

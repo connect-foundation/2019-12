@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
 import * as S from './style';
-import Btn from '../../atoms/Btn';
-import logo from '../../../assets/img/logo.svg';
-import ROUTES from '../../../commons/constants/routes';
-import { CREATE_EVENT } from '../../../commons/constants/string';
+import { Btn } from 'components';
+import logo from 'assets/img/logo.svg';
+import ROUTES from 'commons/constants/routes';
+import { CREATE_EVENT } from 'commons/constants/string';
 
-import { UserAccountState } from '../../../stores/accountStore';
+import { UserAccountState } from 'stores/accountStore';
 
 function Header(): React.ReactElement {
   const account = useContext(UserAccountState);
@@ -34,7 +34,7 @@ function Header(): React.ReactElement {
             ? '로그인'
             : `${account.lastName}${account.firstName}`
         }
-        to={account.isLogin ? '/' : ROUTES.LOGIN}
+        to={account.isLogin ? ROUTES.MYPAGE_TICKETS : ROUTES.LOGIN}
         data-testid={'header-account'}
       />
     </S.Container>

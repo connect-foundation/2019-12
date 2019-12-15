@@ -9,17 +9,21 @@ export default {
 
 export const index: React.FC = () => (
   <div style={{ padding: '1rem', backgroundColor: 'gray' }}>
-    <Img
-      alt={text('alt', 'main banner img')}
-      src={
-        'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-1'
-      }
-    />
-    <Img
-      alt={text('alt', 'main banner img')}
-      src={
-        'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-2'
-      }
-    />
+    <div style={{ width: '100%' }}>
+      <Img
+        alt={text('alt', 'main banner img')}
+        src={
+          'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-1'
+        }
+      />
+    </div>
+    <div style={{ width: '100%' }}>
+      <Img
+        alt={text('alt', 'main banner img')}
+        src={
+          'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-2'
+        }
+      />
+    </div>
   </div>
 );

@@ -1,4 +1,4 @@
-import { User } from '../models';
+import { User } from 'models';
 import { WhereOptions } from 'sequelize';
 
 export async function getUserById(id: number): Promise<User | null> {
@@ -11,7 +11,6 @@ export async function getUserByGoogleId(
   const where: WhereOptions = { googleId: +googleId };
   return await User.findOne({ where });
 }
-
 // User가 로그인을 할 때 사용되는 Service
 export async function setUser(
   googleId: number,
@@ -26,7 +25,7 @@ export async function setUserInfo(
   googleId: number,
   firstName: string,
   lastName: string,
-  phoneNumber: number,
+  phoneNumber: string,
 ): Promise<[number, User[]]> {
   const values = {
     firstName,

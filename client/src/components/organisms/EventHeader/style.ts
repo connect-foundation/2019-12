@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { prop, theme, palette } from 'styled-tools';
 
-import Btn from '../../atoms/Btn';
+import { Btn } from 'components';
 
 export const Container = styled.div``;
 
@@ -20,7 +20,7 @@ export const HostContainer = styled.div`
   align-items: left;
   justify-content: center;
   @media screen and (min-width: 64em) {
-    width: 30rem;
+    width: 30%;
     min-height: 40rem;
     padding-top: 1.4rem;
     flex-shrink: 0;
@@ -36,7 +36,7 @@ interface BannerImgProps {
   url: string;
 }
 export const BannerImgWrapper = styled.div`
-  width: 73rem;
+  width: 70%;
   margin-right: 3rem;
 `;
 export const BannerImg = styled.div<BannerImgProps>`
@@ -46,11 +46,11 @@ export const BannerImg = styled.div<BannerImgProps>`
 `;
 
 export const Title = styled.div`
-  ${theme('fontStyle.h4')}
+  ${theme('fontStyle.h5')}
 `;
 
 export const ShortPlace = styled.div`
-  ${theme('fontStyle.h6')}
+  ${theme('fontStyle.subtitle1')}
   color: ${palette('grayscale', 3)};
   margin-top: 1.1rem;
   margin-bottom: 3.8rem;
@@ -68,11 +68,11 @@ export const Label = styled.div`
 `;
 
 export const Date = styled.div`
-  ${theme('fontStyle.subtitle1')}
+  ${theme('fontStyle.subtitle2')}
 `;
 
 export const PriceWrapper = styled.div`
-  ${theme('fontStyle.subtitle1')};
+  ${theme('fontStyle.subtitle2')};
   color: ${palette('grayscale', 2)};
   text-align: right;
   margin: 1rem 0;
@@ -99,5 +99,5 @@ export const ReservedPeople = styled.span`
 `;
 
 export const SubmitBtn = styled(Btn)`
-  width: 30rem;
+  width: 30%;
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import Btn from 'components/atoms/Btn';
+import { Btn } from 'components';
 import { CREATE_EVENT } from 'commons/constants/string';
 import ROUTES from 'commons/constants/routes';
 
@@ -23,6 +23,7 @@ function MainBanner({
           styletype="primary"
           to={ROUTES.EVENT_CREATE}
           children={CREATE_EVENT}
+          data-testid={'mainbanner-btn'}
         />
       </S.Container>
     </S.Wrapper>

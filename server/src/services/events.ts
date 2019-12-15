@@ -5,7 +5,7 @@ import {
   Includeable,
   FindAttributeOptions,
 } from 'sequelize';
-import { Event, TicketType, User } from '../models';
+import { Event, TicketType, User } from 'models';
 import axios from 'axios';
 import { stringify } from 'query-string';
 
@@ -82,4 +82,20 @@ export async function placeToCoordinate(
 
   const { lat: latitude, lng: longitude } = candidates[0].geometry.location;
   return { latitude, longitude };
+}
+
+export async function getUserEventsByUserId(userId: number): Promise<Event[]> {
+  const where: WhereOptions = { userId };
+  const order: Order = [['startAt', 'DESC']];
+  const attributes: FindAttributeOptions = {
+    exclude: [
+      'createdAt',
+      'updatedAt',
+      'desc',
+      'latitude',
+      'longitude',
+      'isPublic',
+    ],
+  };
+  return await Event.findAll({ where, order, attributes });
 }
