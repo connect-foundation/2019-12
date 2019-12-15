@@ -4,10 +4,10 @@ import * as S from './style';
 import { Card } from 'components';
 import { useIntersect } from 'hooks';
 import ROUTES from 'commons/constants/routes';
-import { EventDetail } from 'types/Data';
+import { EventCard } from 'types/Data';
 
 interface Props {
-  events: Map<number, EventDetail>;
+  events: Map<number, EventCard>;
   eventsOrder: number[];
   requestNextData?: () => void;
 }
@@ -38,18 +38,21 @@ function CardGrid({
     <>
       <S.CardGridContainer>
         {eventsOrder.map((eventIndex, index) => {
-          const { id, mainImg, startAt, title, user, ticketType } = events.get(
-            eventIndex,
-          )!;
+          const eventData = events.get(eventIndex);
+          if (!eventData) {
+            return <></>;
+          }
+          const { id, mainImg, startAt, title, name, price, to } = eventData;
+
           return (
             <Card
               key={id}
               imgSrc={mainImg}
               date={startAt}
               title={title}
-              host={user.lastName + user.firstName}
-              price={ticketType.price}
-              to={`${ROUTES.EVENT_DETAIL}/${id}`}
+              host={name}
+              price={price}
+              to={to || `${ROUTES.EVENT_DETAIL}/${id}`}
               setRef={
                 requestNextData && eventsOrder.length - 1 === index
                   ? setRef

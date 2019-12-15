@@ -1,26 +1,28 @@
 import React from 'react';
 import * as S from './style';
-import { Location } from 'types/Data';
 import { KakaoMap } from 'components';
 
 interface Props {
   place: string;
   address: string;
   placeDesc: string;
-  location: Location;
   mapHeight?: string;
+  latitude: number;
+  longitude: number;
+  googleMapHeight?: string;
 }
 
 function Place({
   place,
   address,
   placeDesc,
-  location,
-  mapHeight,
+  latitude,
+  longitude,
+  googleMapHeight,
 }: Props): React.ReactElement {
   return (
     <S.PlaceDetailContainer>
-      <KakaoMap height={mapHeight} {...location} />
+      <KakaoMap height={googleMapHeight} {...{ latitude, longitude }} />
       <S.PlcaeLabel>장소</S.PlcaeLabel>
       <S.PlaceName>{place}</S.PlaceName>
       <S.PlaceDetail>{address}</S.PlaceDetail>
