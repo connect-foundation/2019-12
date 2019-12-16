@@ -13,6 +13,7 @@ export { default as LNBItem } from './atoms/LNBItem';
 export { default as TuiEditor } from './atoms/TuiEditor';
 export { default as TuiViewer } from './atoms/TuiViewer';
 export { default as KakaoMap } from './atoms/KakaoMap';
+export { default as TimePicker } from './atoms/TimePicker';
 
 export { default as Card } from './molecules/Card';
 export { default as Counter } from './molecules/Counter';
