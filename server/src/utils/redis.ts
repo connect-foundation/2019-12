@@ -29,7 +29,7 @@ export const redisMigrate = async () => {
     },
   );
   redisTickets.forEach(ticket => {
-    client.hmset(`${ticket.id}`, ticket, redis.print);
+    client.hmset(`${ticket.id}`, ticket);
     client.hgetall(`${ticket.id}`);
   });
   client.quit();
