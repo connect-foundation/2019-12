@@ -47,32 +47,34 @@ export const CREATED_EVENTS_STEP = 'events';
 export const MY_TICKETS_TITLE = '구매 완료한 티켓';
 export const MY_CREATED_EVENTS = '나의 주최한 이벤트';
 
-export const EVENT_FORM_IS_PUBLIC = '공개 여부';
-export const EVENT_FORM_IS_PUBLIC_LABEL =
+export const EVENT_FORM_FORM_IS_PUBLIC = '공개 여부';
+export const EVENT_FORM_FORM_IS_PUBLIC_LABEL =
   '이벤트를 공개하지 않으면 링크로는 이벤트를 접속할 수 있지만 BookUs의 메인 페이지에는 나타나지 않습니다. 아직 공개할 준비가 안 되어 있거나, 메인에 공개하고 싶지 않으면 체크를 해제 하세요.';
-export const EVENT_TITLE = '이벤트 제목';
-export const EVENT_TITLE_LABEL = '주제를 잘 나타내는 멋진 제목을 입력해주세요.';
-export const EVENT_TITLE_CAPTION = '제목을 입력하세요.';
-export const EVENT_TITLE_PLACEHOLDER = '부스트캠프 2019 데모데이';
-export const EVENT_DATE = '이벤트 날짜 및 시간';
-export const EVENT_DATE_LABEL = '이벤트가 진행되는 날짜와 시간을 입력해주세요.';
-export const EVENT_PLACE = '장소';
-export const EVENT_PLACE_LABEL = '이벤트는 어떤 장소에서 진행되나요?';
-export const EVENT_PLACE_CAPTION = '장소를 입력하세요';
-export const EVENT_PLACE_PLACEHOLDER = '패스트파이브 강남 4호점';
-export const EVENT_PLACE_DESC = '장소 설명';
-export const EVENT_PLACE_DESC_LABEL =
+export const EVENT_FORM_TITLE = '이벤트 제목';
+export const EVENT_FORM_TITLE_LABEL =
+  '주제를 잘 나타내는 멋진 제목을 입력해주세요.';
+export const EVENT_FORM_TITLE_CAPTION = '제목을 입력하세요.';
+export const EVENT_FORM_TITLE_PLACEHOLDER = '부스트캠프 2019 데모데이';
+export const EVENT_FORM_DATE = '이벤트 날짜 및 시간';
+export const EVENT_FORM_DATE_LABEL =
+  '이벤트가 진행되는 날짜와 시간을 입력해주세요.';
+export const EVENT_FORM_PLACE = '장소';
+export const EVENT_FORM_PLACE_LABEL = '이벤트는 어떤 장소에서 진행되나요?';
+export const EVENT_FORM_PLACE_CAPTION = '장소를 입력하세요';
+export const EVENT_FORM_PLACE_PLACEHOLDER = '패스트파이브 강남 4호점';
+export const EVENT_FORM_PLACE_DESC = '장소 설명';
+export const EVENT_FORM_PLACE_DESC_LABEL =
   '장소에 대해 안내가 필요하다면 적어주세요.';
-export const EVENT_PLACE_DESC_PLACEHOLDER =
+export const EVENT_FORM_PLACE_DESC_PLACEHOLDER =
   '주차는 인근 주차장에서 가능합니다.';
-export const EVENT_ADDRESS = '상세 주소';
-export const EVENT_ADDRESS_LABEL =
+export const EVENT_FORM_ADDRESS = '상세 주소';
+export const EVENT_FORM_ADDRESS_LABEL =
   '쉽게 찾아갈 수 있도록 정확한 주소를 입력해주세요.';
-export const EVENT_ADDRESS_CAPTION = '상세 주소를 입력하세요';
-export const EVENT_MAIN_IMG = '대표 이미지';
-export const EVENT_MAIN_IMG_LABEL =
+export const EVENT_FORM_ADDRESS_CAPTION = '상세 주소를 입력하세요';
+export const EVENT_FORM_MAIN_IMG = '대표 이미지';
+export const EVENT_FORM_MAIN_IMG_LABEL =
   '이미지에 글자가 많으면 매력적이지 않습니다.';
-export const EVENT_DESC = '내용';
-export const EVENT_DESC_LABEL =
+export const EVENT_FORM_DESC = '내용';
+export const EVENT_FORM_DESC_LABEL =
   '행사의 상세한 내용을 알리는 글을 작성해주세요.';
-export const EVENT_DESC_CAPTION = '내용을 입력하세요';
+export const EVENT_FORM_DESC_CAPTION = '내용을 입력하세요';
