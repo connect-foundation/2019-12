@@ -15,69 +15,34 @@ export const index: React.FC = () => {
         isPublic: {
           onClick: action('isPublic onClick'),
         },
-        eventTitle: {
+        title: {
           invalid: boolean('eventTitle', false),
           onChange: action('eventTitle onChange'),
         },
-        eventDate: {
+        date: {
           invalid: boolean('eventDate', false),
           onChange: action('eventDate onChange'),
         },
-        eventPlace: {
+        place: {
           invalid: boolean('eventPlace', false),
           onChange: action('eventPlace onChange'),
         },
-        eventAddress: {
+        address: {
           invalid: boolean('eventAddress', false),
           onChange: action('eventAddress onChange'),
         },
-        eventPlaceDesc: {
+        placeDesc: {
           invalid: boolean('eventPlaceDesc', false),
           onChange: action('eventPlaceDesc onChange'),
         },
-        eventMainImg: {
+        mainImg: {
           invalid: boolean('eventMainImg', false),
           onChange: action('eventMainImg onChange'),
         },
-        eventDesc: {
+        desc: {
           invalid: boolean('eventDesc', false),
           onChange: action('eventDesc onChange'),
         },
-        ticketName: {
-          invalid: boolean('ticketName', false),
-          onChange: action('ticketName onChange'),
-        },
-        ticketDesc: {
-          invalid: boolean('ticketDesc', false),
-          onChange: action('ticketDesc onChange'),
-        },
-        ticketPrice: {
-          invalid: boolean('ticketPrice', false),
-          onChange: action('ticketPrice onChange'),
-        },
-        ticketQuantity: {
-          invalid: boolean('ticketQuantity', false),
-          onChange: action('ticketQuantity onChange'),
-        },
-        ticketIsPublicLeftCnt: {
-          invalid: boolean('ticketIsPublicLeftCnt', false),
-          onClick: action('ticketIsPublicLeftCnt onClick'),
-        },
-        ticketMaxCntPerPerson: {
-          invalid: boolean('ticketMaxCntPerPerson', false),
-          onChange: action('ticketMaxCntPerPerson onChange'),
-        },
-        ticketSalesDate: {
-          invalid: boolean('ticketSalesDate', false),
-          onChange: action('ticketSalesDate onChange'),
-        },
-        ticketRefundDate: {
-          invalid: boolean('ticketRefundDate', false),
-          onChange: action('ticketRefundDate onChange'),
-        },
-      }}
-      Button={{
-        onClick: action('createBtn onClick'),
       }}
     />
   );
