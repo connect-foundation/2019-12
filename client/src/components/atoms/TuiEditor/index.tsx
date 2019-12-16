@@ -4,7 +4,7 @@ import 'tui-editor/dist/tui-editor.css'; // editor's ui
 import 'tui-editor/dist/tui-editor-contents.css'; // editor's content
 
 export interface TuiEditorProps {
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   placeholder?: string;
 }
 
@@ -31,7 +31,7 @@ function TuiEditor({
   }, [placeholder]);
 
   useEffect(() => {
-    onChange(content);
+    if (onChange) onChange(content);
   }, [content, onChange]);
 
   return <div ref={tuiEditorRef}></div>;
