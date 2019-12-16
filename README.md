@@ -5,7 +5,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
-<img alt="Cypress.io tests" src="https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square" />
+<img alt="Cypress.io tests" src="https://img.shields.io/badge/cypress.io-tests-green.svg" />
 
 ### 📺 [HomePage](http://www.bookus.kr/)
 
