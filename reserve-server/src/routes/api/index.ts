@@ -5,7 +5,7 @@ import * as controllers from './controllers';
 const router = Router();
 
 router.post(
-  '/users/ticket',
+  '/users/reserve',
   controllers.checkTicket,
   controllers.authUser,
   controllers.orderTicket,
