@@ -9,7 +9,25 @@ export interface SignUpFormState {
   lastNameValidate: boolean;
   submit: boolean;
 }
-
+export interface EventCreateFormState {
+  isPublic: boolean;
+  eventTitle: string;
+  eventDate: string;
+  eventPlace: string;
+  eventAddress: string;
+  eventPlaceDesc: string;
+  eventMainImg: string;
+  eventDesc: string;
+  ticketName: string;
+  ticketDesc: string;
+  ticketPrice: string;
+  ticketQuantity: string;
+  ticketIsPublicLeftCnt: boolean;
+  ticketMaxCntPerPerson: string;
+  ticketSalesDate: string;
+  ticketRefundDate: string;
+  formValid: boolean;
+}
 export interface EventDetailState {
   eventData: EventDetail;
 }
