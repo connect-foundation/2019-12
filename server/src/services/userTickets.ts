@@ -28,7 +28,7 @@ function eventTicketReducer(
   cur: UserTicket,
 ): AttendantTicket[] {
   const { user, ...userTicket } = cur.get({ plain: true }) as UserTicket;
-  let userIndex = acc.findIndex(user => user.id === user.id);
+  let userIndex = acc.findIndex(existUser => existUser.id === user.id);
   if (userIndex === -1) {
     acc.push({
       ...user,
@@ -89,7 +89,8 @@ export async function getUserTicketsByUserId(
     },
   ];
   const result = await UserTicket.findAll({ include, attributes, where });
-  return result.reduce<BoughtEvent[]>(userTicketReducer, []);
+  const data = result.reduce<BoughtEvent[]>(userTicketReducer, []);
+  return data;
 }
 
 export async function toggleUserAttendance(
