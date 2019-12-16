@@ -9,6 +9,8 @@ import { EventDetail } from 'types/Data';
 import { EventCard } from '../../types/Data';
 import { produce } from 'immer';
 
+const { REACT_APP_IMAGE_SERVER_URL } = process.env;
+
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
   const { eventFetchDispatcher } = useContext(EventsStoreAction);
@@ -42,7 +44,7 @@ function Main(): React.ReactElement {
         const { id, mainImg, startAt, title, user, ticketType } = value;
         const eventCard: EventCard = {
           id,
-          mainImg,
+          mainImg: `${REACT_APP_IMAGE_SERVER_URL}/${mainImg}?type=f&w=240&h=135`,
           startAt,
           title,
           name: user.lastName + user.firstName,

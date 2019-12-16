@@ -8,6 +8,7 @@ import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
 import delay from 'utils/delay';
 
+const { REACT_APP_IMAGE_SERVER_URL } = process.env;
 const defaultEventDetail: EventDetail = {
   id: 0,
   title: '',
@@ -102,7 +103,7 @@ function EventDetailView(): React.ReactElement {
         <EventHeader
           {...{
             id,
-            mainImg,
+            mainImg: `${REACT_APP_IMAGE_SERVER_URL}/${mainImg}?type=f&w=688&h=387`,
             title,
             startAt,
             endAt,
