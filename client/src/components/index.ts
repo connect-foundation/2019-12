@@ -2,7 +2,6 @@ export { default as Btn } from './atoms/Btn';
 export { default as Divider } from './atoms/Divider';
 export { default as EventDate } from './atoms/EventDate';
 export { default as Icon } from './atoms/Icon';
-export { default as GoogleMap } from './atoms/GoogleMap';
 export { default as Img } from './atoms/Img';
 export { default as Input } from './atoms/Input';
 export { default as Label } from './atoms/Label';
