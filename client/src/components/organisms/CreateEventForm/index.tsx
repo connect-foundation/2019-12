@@ -2,6 +2,31 @@ import React from 'react';
 import * as S from './style';
 import { ChkBox, FormItem, Input, TuiEditor, SearchMap } from 'components';
 
+import {
+  EVENT_FORM_IS_PUBLIC,
+  EVENT_FORM_IS_PUBLIC_LABEL,
+  EVENT_TITLE,
+  EVENT_TITLE_LABEL,
+  EVENT_TITLE_CAPTION,
+  EVENT_TITLE_PLACEHOLDER,
+  EVENT_DATE,
+  EVENT_DATE_LABEL,
+  EVENT_PLACE,
+  EVENT_PLACE_LABEL,
+  EVENT_PLACE_CAPTION,
+  EVENT_PLACE_PLACEHOLDER,
+  EVENT_PLACE_DESC,
+  EVENT_PLACE_DESC_LABEL,
+  EVENT_PLACE_DESC_PLACEHOLDER,
+  EVENT_ADDRESS,
+  EVENT_ADDRESS_LABEL,
+  EVENT_ADDRESS_CAPTION,
+  EVENT_MAIN_IMG,
+  EVENT_MAIN_IMG_LABEL,
+  EVENT_DESC,
+  EVENT_DESC_LABEL,
+  EVENT_DESC_CAPTION,
+} from 'commons/constants/string';
 interface ChangableProps {
   invalid?: boolean;
   onChange: () => void;
@@ -28,65 +53,60 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
   return (
     <S.CreateEventFormContainer>
       <FormItem
-        label="공개 여부"
-        labelExplanation="이벤트를 공개하지 않으면 링크로는 이벤트를 접속할 수 있지만 BookUs의 메인 페이지에는 나타나지 않습니다. 아직 공개할 준비가 안 되어 있거나, 메인에 공개하고 싶지 않으면 체크를 해제 하세요."
+        label={EVENT_FORM_IS_PUBLIC}
+        labelExplanation={EVENT_FORM_IS_PUBLIC_LABEL}
       >
-        <ChkBox checked={false} />
+        <ChkBox checked={false} {...FormInputs.isPublic} />
       </FormItem>
       <FormItem
-        label="이벤트 제목"
-        labelExplanation="주제를 잘 나타내는 멋진 제목을 입력해주세요."
-        captionContent="제목을 입력하세요"
+        label={EVENT_TITLE}
+        labelExplanation={EVENT_TITLE_LABEL}
+        captionContent={EVENT_TITLE_CAPTION}
       >
         <Input
           inputName="eventTitle"
-          placeholder="부스트캠프 2019 데모데이"
+          placeholder={EVENT_TITLE_PLACEHOLDER}
           {...FormInputs.title}
         />
       </FormItem>
-      <FormItem
-        label="이벤트 날짜 및 시간"
-        labelExplanation="이벤트가 진행되는 날짜와 시간을 입력해주세요."
-      >
+      <FormItem label={EVENT_DATE} labelExplanation={EVENT_DATE_LABEL}>
         <Input inputName="eventDate" {...FormInputs.date} />
       </FormItem>
       <FormItem
-        label="장소"
-        labelExplanation="이벤트는 어떤 장소에서 진행되나요?"
-        captionContent="장소를 입력하세요"
+        label={EVENT_PLACE}
+        labelExplanation={EVENT_PLACE_LABEL}
+        captionContent={EVENT_PLACE_CAPTION}
       >
         <Input
           inputName="eventPlace"
-          placeholder="패스트파이브 강남 4호점"
+          placeholder={EVENT_PLACE_PLACEHOLDER}
           {...FormInputs.place}
         />
       </FormItem>
       <FormItem
-        label="장소 설명"
-        labelExplanation="장소에 대해 안내가 필요하다면 적어주세요."
+        label={EVENT_PLACE_DESC}
+        labelExplanation={EVENT_PLACE_DESC_LABEL}
       >
         <Input
           inputName="eventPlaceDesc"
-          placeholder="주차는 인근 주차장에서 가능합니다."
+          placeholder={EVENT_PLACE_DESC_PLACEHOLDER}
           {...FormInputs.placeDesc}
         />
       </FormItem>
       <FormItem
-        label="상세 주소"
-        labelExplanation="쉽게 찾아갈 수 있도록 정확한 주소를 입력해주세요."
-        captionContent="상세 주소를 입력하세요"
+        label={EVENT_ADDRESS}
+        labelExplanation={EVENT_ADDRESS_LABEL}
+        captionContent={EVENT_ADDRESS_CAPTION}
       >
         <SearchMap {...FormInputs.address} />
       </FormItem>
-      <FormItem
-        label="대표 이미지"
-        labelExplanation="이미지에 글자가 많으면 매력적이지 않습니다."
-      >
+      <FormItem label={EVENT_MAIN_IMG} labelExplanation={EVENT_MAIN_IMG_LABEL}>
         <Input inputName="eventMainImg" {...FormInputs.mainImg} />
       </FormItem>
       <FormItem
-        label="내용"
-        labelExplanation="행사의 상세한 내용을 알리는 글을 작성해주세요."
+        label={EVENT_DESC}
+        labelExplanation={EVENT_DESC_LABEL}
+        captionContent={EVENT_DESC_CAPTION}
         direction="column"
       >
         <TuiEditor {...FormInputs.desc} />
