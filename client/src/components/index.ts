@@ -3,6 +3,7 @@ export { default as Divider } from './atoms/Divider';
 export { default as EventDate } from './atoms/EventDate';
 export { default as Icon } from './atoms/Icon';
 export { default as Img } from './atoms/Img';
+export { default as ImgSelector } from './atoms/ImgSelector';
 export { default as Input } from './atoms/Input';
 export { default as Label } from './atoms/Label';
 export { default as Price } from './atoms/Price';

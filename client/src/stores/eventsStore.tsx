@@ -36,7 +36,7 @@ const handleFetchError = (err: any) => {
 };
 const fetchEvents = async (cnt: number, startAt: string) => {
   try {
-    const { data } = await getEvents(cnt, startAt)();
+    const { data } = await getEvents(cnt, startAt);
     const events = new Map<number, EventDetail>();
     const order = data.map((event: EventDetail) => {
       events.set(event.id, event);
@@ -49,7 +49,7 @@ const fetchEvents = async (cnt: number, startAt: string) => {
 };
 const fetchEvent = async (eventId: number) => {
   try {
-    const { data } = await getEvent(eventId)();
+    const { data } = await getEvent(eventId);
     const events = new Map([[data.id, data]]);
     return { ...defaultEventsState, type: 'EVENT', events, status: OK };
   } catch (err) {

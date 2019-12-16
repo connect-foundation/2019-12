@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "0.3.5",
+  "version": "0.4.1",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -10,9 +10,10 @@
     "cypress": "cypress run",
     "cypress:open": "cypress open",
     "cypress:dev": "start-server-and-test start http://localhost:3000 cypress:open",
+    "cypress:record": "cypress run --record --parallel",
     "test": "react-scripts test --coverage --verbose --watchAll=false && yarn test:cypress",
     "test:watch": "react-scripts test --coverage --verbose",
-    "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
+    "test:cypress": "start-server-and-test start http://localhost:3000 cypress:record",
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",

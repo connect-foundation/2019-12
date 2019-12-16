@@ -78,7 +78,7 @@ context('이벤트 예약 페이지', () => {
   it('로그인이 되어있지 않은 상태로 예약을 시도하면 alert와 login으로 리다이렉션이 이루어진다', () => {
     cy.route({
       method: 'POST',
-      url: '/api/users/ticket',
+      url: '/api/users/reserve',
       status: 401,
       response: {},
     });
@@ -99,7 +99,7 @@ context('이벤트 예약 페이지', () => {
   it('예약 응답이 NOT_FOUND 이라면 alert가 표시된다', () => {
     cy.route({
       method: 'POST',
-      url: '/api/users/ticket',
+      url: '/api/users/reserve',
       status: 404,
       response: {},
     });
@@ -118,7 +118,7 @@ context('이벤트 예약 페이지', () => {
   it('예약 응답이 FORBIDDEN / 유효하지 않은 일정이라면 alert가 표시된다', () => {
     cy.route({
       method: 'POST',
-      url: '/api/users/ticket',
+      url: '/api/users/reserve',
       status: 403,
       response: { state: NOT_OPEN },
     });
@@ -137,7 +137,7 @@ context('이벤트 예약 페이지', () => {
   it('예약 응답이 FORBIDDEN / 매진이라면 alert가 표시된다', () => {
     cy.route({
       method: 'POST',
-      url: '/api/users/ticket',
+      url: '/api/users/reserve',
       status: 403,
       response: { state: SOLD_OUT },
     });
@@ -156,7 +156,7 @@ context('이벤트 예약 페이지', () => {
   it('예약 응답이 FORBIDDEN / 1인당 티켓 개수 초과라면 alert가 표시된다', () => {
     cy.route({
       method: 'POST',
-      url: '/api/users/ticket',
+      url: '/api/users/reserve',
       status: 403,
       response: { state: EXCEED_LIMIT },
     });
@@ -173,7 +173,7 @@ context('이벤트 예약 페이지', () => {
   });
 
   it('예약이 성공적으로 이루어지면 alert와 main으로 리다이렉션이 이루어진다', () => {
-    cy.route('POST', '/api/users/ticket', {});
+    cy.route('POST', '/api/users/reserve', {});
 
     goPurchasePage();
     const alertStub = cy.stub();

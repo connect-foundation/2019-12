@@ -16,7 +16,7 @@ export const REQUEST = 'REQUEST';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
 
-function reducer<T = any>(
+export function reducer<T = any>(
   result: FetchProps<T>,
   action: FetchProps<T>,
 ): FetchProps<T> {
@@ -33,6 +33,20 @@ function reducer<T = any>(
   return result;
 }
 
+export async function fetchData<T>(
+  apiRequest: () => Promise<AxiosResponse<any>>,
+  dispatch: React.Dispatch<FetchProps<T>>,
+) {
+  try {
+    const { status, data } = await apiRequest();
+    if (status === OK) {
+      dispatch({ type: SUCCESS, data, status });
+    }
+  } catch (err) {
+    return dispatch({ type: FAILURE, err, status: err.response.status });
+  }
+}
+
 export default function useApiRequest<T>(
   apiRequest: () => Promise<AxiosResponse<any>>,
 ): [FetchProps<T>, React.Dispatch<FetchProps<T>>] {
@@ -41,18 +55,8 @@ export default function useApiRequest<T>(
   };
   const [result, dispatch] = useReducer<Reducer<T>>(reducer, initialState);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { status, data } = await apiRequest();
-        if (status === OK) {
-          dispatch({ type: SUCCESS, data, status });
-        }
-      } catch (err) {
-        return dispatch({ type: FAILURE, err, status: err.response.status });
-      }
-    };
     if (result.type === REQUEST) {
-      fetchData();
+      fetchData<T>(apiRequest, dispatch);
     }
   }, [result.type, apiRequest]);
 

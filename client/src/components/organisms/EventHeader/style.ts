@@ -68,7 +68,8 @@ export const Label = styled.div`
 `;
 
 export const Date = styled.div`
-  ${theme('fontStyle.subtitle2')}
+  ${theme('fontStyle.subtitle1')}
+  white-space: pre;
 `;
 
 export const PriceWrapper = styled.div`
