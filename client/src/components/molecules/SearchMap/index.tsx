@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { searchAddressByKeyword } from 'apis';
 import * as S from './style';
 import { Input, KakaoMap } from 'components';
+import { useDebounce } from 'hooks';
 import DropDown, { Item as DropDownItem } from 'components/molecules/DropDown';
 
 interface Location {
@@ -41,14 +42,15 @@ function SearchMap(): React.ReactElement {
     latitude: 37.4921311495846,
     longitude: 127.029771111346,
   });
+  const debouncedKeyword = useDebounce<string>(keyword, 300);
 
   useEffect(() => {
-    if (keyword) search(keyword);
+    if (debouncedKeyword) search(debouncedKeyword);
     else {
       setResults([]);
       setVisible(false);
     }
-  }, [keyword]);
+  }, [debouncedKeyword]);
 
   const search = async (query: string) => {
     const { data } = await searchAddressByKeyword(query, 4);
