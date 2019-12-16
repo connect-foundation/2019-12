@@ -122,8 +122,8 @@ describe('POST /api/events', () => {
   const defaultData: Record<string, string | boolean | number> = {
     isPublic: true,
     title: '이벤트의 제목',
-    startAt: '2200-01-01 13:00:00',
-    endAt: '2200-05-01 13:00:00',
+    startAt: '2200-12-15 10:00:00',
+    endAt: '2201-05-01 13:00:00',
     place: '패스트파이브 강남 4호점',
     address: '서울시 강남구',
     placeDesc: '주차 불가',
@@ -136,9 +136,9 @@ describe('POST /api/events', () => {
     'ticket[isPublicLeftCnt]': false,
     'ticket[maxCntPerPerson]': 10,
     'ticket[price]': 10000,
-    'ticket[salesStartAt]': '2019-12-15 10:00:00',
-    'ticket[salesEndAt]': '2019-12-17 13:00:00',
-    'ticket[refundEndAt]': '2019-12-20 13:00:00',
+    'ticket[salesStartAt]': '2200-12-15 10:00:00',
+    'ticket[salesEndAt]': '2200-12-17 13:00:00',
+    'ticket[refundEndAt]': '2200-12-20 13:00:00',
   };
 
   function getRequest(
