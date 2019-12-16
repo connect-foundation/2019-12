@@ -50,7 +50,6 @@ export default function useAction(dispatch: Dispatch<MyPageAction>) {
       boughtTicketResponse: FetchProps<BoughtTicketEvent[]>,
     ) => {
       const { data } = boughtTicketResponse;
-      console.log('data', data);
 
       if (data) {
         const events = new Map<number, BoughtTicketEvent>();
