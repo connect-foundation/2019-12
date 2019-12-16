@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import { IconBtn, Price } from 'components';
+import { IconBtn, Price, EventDate } from 'components';
 import { User, TicketType } from 'types/Data';
 import { default as Theme } from 'commons/style/themes/default';
 import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
@@ -44,8 +44,9 @@ function EventHeader({
           <S.HostDetailContainer>
             <S.Label>일시</S.Label>
             <S.DateContainer>
-              <S.Date>{startAt}</S.Date>
-              <S.Date>{endAt}</S.Date>
+              <S.Date>
+                <EventDate startAt={startAt} endAt={endAt} />
+              </S.Date>
             </S.DateContainer>
             <S.Label>주최</S.Label>
             <IconBtn
