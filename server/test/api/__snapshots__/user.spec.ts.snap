@@ -1053,7 +1053,9 @@ exports[`Router GET /api/users/tickets 유저 데이터를 불러왔고, 데이�
 Object {
   "address": "서울특별시 강남구 역삼동 736-40 아름다운 빌딩 6층 <복합문화공간 위플레이스>",
   "endAt": "2018-03-09T12:30:00.000Z",
+  "firstName": "성동",
   "id": 2,
+  "lastName": "조",
   "mainImg": "https://bookus.kr.object.ncloudstorage.com/10",
   "place": "역삼역 위플레이스 다목적홀",
   "placeDesc": "",

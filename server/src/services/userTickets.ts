@@ -10,6 +10,8 @@ import { sequelize } from 'utils/sequelize';
 import { redisNonBlockKey } from 'utils/redis';
 
 interface BoughtEvent extends Partial<Event> {
+  firstName?: string;
+  lastName?: string;
   userTickets: UserBoughtTicket[];
   ticket: Partial<TicketType>;
 }
@@ -41,13 +43,21 @@ function eventTicketReducer(
 }
 function userTicketReducer(acc: BoughtEvent[], cur: UserTicket): BoughtEvent[] {
   const {
-    ticketType: { event, ...ticketTypes },
+    ticketType: {
+      event: {
+        user: { firstName, lastName },
+        ...ticketEvent
+      },
+      ...ticketTypes
+    },
     ...userTicket
   } = cur.get({ plain: true }) as UserTicket;
   let eventIndex = acc.findIndex(event => event.id === cur.ticketType.eventId);
   if (eventIndex === -1) {
     acc.push({
-      ...event,
+      ...ticketEvent,
+      firstName,
+      lastName,
       ticket: ticketTypes,
       userTickets: [],
     });
@@ -84,6 +94,12 @@ export async function getUserTicketsByUserId(
               'isPublic',
             ],
           },
+          include: [
+            {
+              model: User,
+              attributes: ['firstName', 'lastName'],
+            },
+          ],
         },
       ],
     },
