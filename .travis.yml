@@ -31,8 +31,6 @@ env:
     - REDIS_HOST=127.0.0.1
     - REDIS_PORT=6379
     - JWT_SECURE=1234
-    - S3_ACCESS_KEY=CJyJbaenqZDeb9vlrX42
-    - S3_SECRET_KEY=IK6VM2bJNwVC6vwZ0ockxER8OvfpwWuXqBGHBOQl
     - S3_REGION=kr-standard
     - S3_ENDPOINT=https://kr.object.ncloudstorage.com
     - S3_BUCKET_NAME=bookus
