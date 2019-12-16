@@ -5,9 +5,14 @@ const flexColumnStyle = css`
   display: flex;
   flex-direction: column;
 `;
+
 export const LabelWrapper = styled.div`
   margin-bottom: 1rem;
+  label {
+    ${theme('fontStyle.body1')};
+  }
 `;
+
 interface Props {
   invalid: boolean;
 }
