@@ -45,7 +45,7 @@ function TicketBox({
   const remainDays = calculateDiffDaysOfDateRange(salesStartAt, salesEndAt);
 
   if (chkProps.onClick) {
-    const copyParentOnClick = Object.assign(chkProps.onClick);
+    const copyParentOnClick = chkProps.onClick;
     chkProps.onClick = event => {
       copyParentOnClick(event);
       setChecked(!isChecked);
