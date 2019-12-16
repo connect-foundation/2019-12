@@ -9,24 +9,29 @@ export interface SignUpFormState {
   lastNameValidate: boolean;
   submit: boolean;
 }
+
+interface FormState<T> {
+  valid: boolean;
+  value: T;
+}
 export interface EventCreateFormState {
-  isPublic: boolean;
-  eventTitle: string;
-  eventDate: string;
-  eventPlace: string;
-  eventAddress: string;
-  eventPlaceDesc: string;
-  eventMainImg: string;
-  eventDesc: string;
-  ticketName: string;
-  ticketDesc: string;
-  ticketPrice: string;
-  ticketQuantity: string;
-  ticketIsPublicLeftCnt: boolean;
-  ticketMaxCntPerPerson: string;
-  ticketSalesDate: string;
-  ticketRefundDate: string;
-  formValid: boolean;
+  isPublic: FormState<boolean>;
+  eventTitle: FormState<string>;
+  eventDate: FormState<string>;
+  eventPlace: FormState<string>;
+  eventAddress: FormState<string>;
+  eventPlaceDesc: FormState<string>;
+  eventMainImg: FormState<string>;
+  eventDesc: FormState<string>;
+  ticketName: FormState<string>;
+  ticketDesc: FormState<string>;
+  ticketPrice: FormState<string>;
+  ticketQuantity: FormState<string>;
+  ticketIsPublicLeftCnt: FormState<boolean>;
+  ticketMaxCntPerPerson: FormState<string>;
+  ticketSalesDate: FormState<string>;
+  ticketRefundDate: FormState<string>;
+  submit: boolean;
 }
 export interface EventDetailState {
   eventData: EventDetail;
