@@ -3,7 +3,14 @@ import { Router } from 'express';
 import * as controllers from './controllers';
 import * as validators from './validators';
 import * as middlewares from './middlewares';
-import { requireLogin, paramsValidator } from 'routes/middlewares';
+import {
+  requireLogin,
+  paramsValidator,
+  singleFileUpload,
+  requireSingleFile,
+  limitSizeSingleFile,
+  limitImageTypeSingleFile,
+} from 'routes/middlewares';
 import { badRequestHandler } from 'utils/errorHandler';
 
 const router = Router();
@@ -15,6 +22,17 @@ router.get(
   '/:eventId/tickets',
   paramsValidator('eventId'),
   controllers.getEventTickets,
+);
+router.post(
+  '/',
+  requireLogin,
+  singleFileUpload('mainImg'),
+  requireSingleFile('mainImg'),
+  limitSizeSingleFile(1024 * 1024 * 10),
+  limitImageTypeSingleFile,
+  validators.createEvent,
+  badRequestHandler,
+  controllers.createEvent,
 );
 router.patch(
   '/:eventId/ticket/:ticketId',

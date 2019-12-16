@@ -52,4 +52,16 @@ export const redisDeleteKey = async () => {
   client.quit();
 };
 
+export function redisCreateKey(
+  id: string,
+  ticket: Pick<TicketType, 'leftCnt' | 'salesStartAt' | 'salesEndAt'>,
+): boolean {
+  return client.hmset(id, {
+    id,
+    isBlock: ticket.leftCnt > 0 ? 0 : 1,
+    salesStartAt: ticket.salesStartAt.getTime(),
+    salesEndAt: ticket.salesEndAt.getTime(),
+  });
+}
+
 export default client;
