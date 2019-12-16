@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import axios from 'axios';
 import { OK } from 'http-status';
 
-import { useFetch, FetchProps } from './';
+import useFetch, { FetchProps } from './useFetch';
 
 describe('Hooks', () => {
   it('useFetch (Mock API)', async () => {

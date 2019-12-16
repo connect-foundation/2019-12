@@ -18,11 +18,7 @@ import MyPageReducer, {
   FETCH_CREATED_EVENTS,
 } from './reducer';
 import { getBoughtTicketEvent } from 'apis';
-import useApiRequest, {
-  REQUEST,
-  SUCCESS,
-  FAILURE,
-} from 'hooks/base/useApiRequest';
+import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
 import { produce } from 'immer';
 import { getCreatedEvents } from '../../apis/user';
 
