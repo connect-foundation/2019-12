@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { searchAddressByKeyword } from 'apis';
 import * as S from './style';
 import { Input, KakaoMap } from 'components';
-import DropDown, { Item as DropDownItem } from '../DropDown';
+import DropDown, { Item as DropDownItem } from 'components/molecules/DropDown';
 
 interface Location {
   latitude: number;
