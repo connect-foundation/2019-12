@@ -12,7 +12,6 @@ import { AccountState } from 'types/States';
 import { AccountReducer } from 'types/CustomHooks';
 import { accountReducer, defaultAccountState } from 'hooks';
 import { verifyToken, getUserInfo } from 'apis';
-import { OK, UNAUTHORIZED } from 'http-status';
 
 export const UserAccountState = createContext<AccountState>(
   defaultAccountState,
