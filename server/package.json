@@ -16,6 +16,7 @@
     "redis:delete": "ts-node -r tsconfig-paths/register bin/redis-delete",
     "build": "tsc --sourceMap false",
     "test": "jest --coverage --verbose",
+    "test:noseed": "jest --coverage --verbose --testPathIgnorePatterns test/db/seed",
     "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",

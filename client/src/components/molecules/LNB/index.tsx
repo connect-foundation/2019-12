@@ -9,15 +9,12 @@ export interface Props {
   onTabClicked?: (tabIndex: number) => void;
 }
 
-function makeLNBItems(
-  items: string[],
-  currentTabIndex: number,
-  setCurrentTabIndex: (curTabInd: number) => void,
-  onTabClicked?: (tabIndex: number) => void,
-) {
-  return [
-    ...items.map((item, index) => {
-      return (
+function LNB({ items, tabIndex = 1, onTabClicked }: Props): React.ReactElement {
+  const [currentTabIndex, setCurrentTabIndex] = useState(tabIndex);
+
+  return (
+    <S.Container key={currentTabIndex}>
+      {items.map((item, index) => (
         <LNBItem
           key={index}
           active={currentTabIndex - 1 === index}
@@ -27,17 +24,7 @@ function makeLNBItems(
             onTabClicked && onTabClicked(index + 1);
           }}
         />
-      );
-    }),
-  ];
-}
-
-function LNB({ items, tabIndex = 1, onTabClicked }: Props): React.ReactElement {
-  const [currentTabIndex, setCurrentTabIndex] = useState(tabIndex);
-
-  return (
-    <S.Container key={currentTabIndex}>
-      {makeLNBItems(items, currentTabIndex, setCurrentTabIndex, onTabClicked)}
+      ))}
     </S.Container>
   );
 }
