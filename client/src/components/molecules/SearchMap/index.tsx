@@ -10,7 +10,11 @@ interface Location {
   longitude: number;
 }
 
-function SearchMap(): React.ReactElement {
+interface Props {
+  onChange?: (roadAddressName: string) => void;
+}
+
+function SearchMap({ onChange }: Props): React.ReactElement {
   const [visible, setVisible] = useState<boolean>(true);
   const [keyword, setKeyword] = useState<string>('');
   const [results, setResults] = useState([]);
@@ -51,6 +55,7 @@ function SearchMap(): React.ReactElement {
     setVisible(false);
     setKeyword(roadAddressName);
     setLocation({ latitude, longitude });
+    if (onChange) onChange(roadAddressName);
   };
 
   return (
