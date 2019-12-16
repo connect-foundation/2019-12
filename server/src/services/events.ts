@@ -4,10 +4,13 @@ import {
   WhereOptions,
   Includeable,
   FindAttributeOptions,
+  Transaction,
 } from 'sequelize';
+import { sequelize } from 'utils/sequelize';
 import { Event, TicketType, User } from 'models';
 import axios from 'axios';
 import { stringify } from 'query-string';
+import { redisCreateKey } from 'utils/redis';
 
 export async function getEvents(limit = 20, startAt: Date): Promise<Event[]> {
   const where: WhereOptions = startAt
@@ -82,6 +85,28 @@ export async function placeToCoordinate(
 
   const { lat: latitude, lng: longitude } = candidates[0].geometry.location;
   return { latitude, longitude };
+}
+
+export async function createEventAndTicket(
+  event: Partial<Event>,
+  ticket: Partial<TicketType>,
+): Promise<{ eventId: number; ticketId: number }> {
+  return sequelize.transaction<{ eventId: number; ticketId: number }>(
+    async (transaction: Transaction) => {
+      const newEvent = await Event.create(event, { transaction });
+      const newTicket = await TicketType.create(
+        {
+          ...ticket,
+          leftCnt: ticket.quantity,
+          eventId: newEvent.id,
+        },
+        { transaction },
+      );
+      const { id, leftCnt, salesStartAt, salesEndAt } = newTicket;
+      redisCreateKey(`${id}`, { leftCnt, salesStartAt, salesEndAt });
+      return { eventId: newEvent.id, ticketId: newTicket.id };
+    },
+  );
 }
 
 export async function getUserEventsByUserId(userId: number): Promise<Event[]> {
