@@ -112,26 +112,6 @@ describe('GET /api/events/:eventId/tickets', () => {
   });
 });
 
-describe('GET /api/events/coordinate', () => {
-  it('정상적으로 응답', async () => {
-    const { body } = await request(app)
-      .get('/api/events/coordinate')
-      .query({ place: '서울시청' })
-      .expect(OK)
-      .expect('Content-type', /application\/json/);
-
-    expect(body).toHaveProperty('latitude', 37.5662952);
-    expect(body).toHaveProperty('longitude', 126.9779451);
-  });
-
-  it('쿼리 결과가 없으면 No-Content 응답', async () => {
-    await request(app)
-      .get('/api/events/coordinate')
-      .query({ place: '!@#' })
-      .expect(NO_CONTENT);
-  });
-});
-
 describe('GET /api/events/:eventId/users', () => {
   it('로그인을 안했을 경우 401', async () => {
     const token = await generateJWT(false, 2, 1, '1234@gmail.com');
