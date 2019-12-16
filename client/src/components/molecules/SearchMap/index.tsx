@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { searchAddressByKeyword } from 'apis';
 import * as S from './style';
 import { Input, KakaoMap } from 'components';
-
-const { REACT_APP_KAKAO_REST_API_KEY } = process.env;
 
 interface Location {
   latitude: number;
@@ -25,14 +23,7 @@ function SearchMap(): React.ReactElement {
   }, [keyword]);
 
   const search = async (query: string) => {
-    const { data } = await axios.get(
-      `https://dapi.kakao.com/v2/local/search/keyword.json?query=${query}&size=4`,
-      {
-        headers: {
-          Authorization: `KakaoAK ${REACT_APP_KAKAO_REST_API_KEY}`,
-        },
-      },
-    );
+    const { data } = await searchAddressByKeyword(query, 4);
     setResults(data.documents);
   };
 
