@@ -172,7 +172,7 @@ describe('POST /api/events', () => {
   });
 
   it('startAt 이 endAt 보다 크면 400 응답', async () => {
-    await getRequest({ startAt: '2201-03-01 13:00:00' }).expect(BAD_REQUEST);
+    await getRequest({ startAt: '2202-03-01 13:00:00' }).expect(BAD_REQUEST);
   });
 
   it('ticket 의 maxCntPerPerson 가 quantity 보다 크면 400 응답', async () => {
