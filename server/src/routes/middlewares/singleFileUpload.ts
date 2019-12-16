@@ -32,9 +32,14 @@ export default (fieldName: string) => {
       if (err?.code && multerErrorCodes.includes(err.code))
         return res.sendStatus(BAD_REQUEST);
       if (err) return next(err);
+      if (!req.file || !req.file.buffer) return res.status(BAD_REQUEST);
 
-      req.fileType = fileType(req.file.buffer);
-      next();
+      try {
+        req.fileType = fileType(req.file.buffer);
+        next();
+      } catch (error) {
+        next(error);
+      }
     });
   };
 };

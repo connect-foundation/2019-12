@@ -6,7 +6,6 @@ export default (fieldName?: string) => (
   res: Response,
   next: NextFunction,
 ) => {
-  if (!req.file || (fieldName && req.file.fieldname !== fieldName))
-    return res.sendStatus(BAD_REQUEST);
-  next();
+  if (req.file && req.file.fieldname === fieldName) return next();
+  return res.sendStatus(BAD_REQUEST);
 };

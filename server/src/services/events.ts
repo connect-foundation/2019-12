@@ -90,8 +90,8 @@ export async function placeToCoordinate(
 export async function createEventAndTicket(
   event: Partial<Event>,
   ticket: Partial<TicketType>,
-) {
-  return await sequelize.transaction<{ eventId: number; ticketId: number }>(
+): Promise<{ eventId: number; ticketId: number }> {
+  return sequelize.transaction<{ eventId: number; ticketId: number }>(
     async (transaction: Transaction) => {
       const newEvent = await Event.create(event, { transaction });
       const newTicket = await TicketType.create(
