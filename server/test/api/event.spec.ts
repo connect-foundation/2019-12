@@ -17,12 +17,10 @@ import {
   BAD_REQUEST,
 } from 'http-status';
 
-const setHeader = (token: Secret) => {
-  return {
-    Cookie: `UID=${token}`,
-    Accept: 'application/json',
-  };
-};
+const setHeader = (token: Secret) => ({
+  Cookie: `UID=${token}`,
+  Accept: 'application/json',
+});
 let token: Secret;
 
 beforeAll(async () => {
