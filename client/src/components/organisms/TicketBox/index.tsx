@@ -32,7 +32,6 @@ function TicketBox({
   price,
   name,
   desc,
-  salesStartAt,
   salesEndAt,
   showChkIcon,
   chkDesc,
@@ -42,7 +41,11 @@ function TicketBox({
   showRefundBtn,
 }: Props): React.ReactElement {
   const [isChecked, setChecked] = useState(checked);
-  const remainDays = calculateDiffDaysOfDateRange(salesStartAt, salesEndAt);
+
+  const remainDays = calculateDiffDaysOfDateRange(
+    Date().toString(),
+    salesEndAt,
+  );
 
   if (chkProps.onClick) {
     const copyParentOnClick = chkProps.onClick;
@@ -79,7 +82,11 @@ function TicketBox({
         {showDueDate && (
           <IconLabel
             icon={<FaTicketAlt size={'1.5rem'} />}
-            labelContent={`${remainDays}일 후에 판매마감`}
+            labelContent={
+              remainDays !== 0
+                ? `${remainDays}일 후에 판매마감`
+                : '오늘 마감입니다!'
+            }
           />
         )}
       </S.TicketInfoContainer>
