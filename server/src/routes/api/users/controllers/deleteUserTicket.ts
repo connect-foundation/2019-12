@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { deleteUserTicketById } from 'services';
+import { deleteUserTicketById } from 'services/userTickets';
 import { NO_CONTENT } from 'http-status';
 
 export async function deleteUserTicket(
