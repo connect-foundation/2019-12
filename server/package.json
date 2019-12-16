@@ -1,11 +1,11 @@
 {
   "name": "server",
   "private": true,
-  "version": "0.3.5",
+  "version": "0.4.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:prod": "node bin/www.js",
+    "start:prod": "node -r tsconfig-paths/register bin/www.js",
     "start:dev": "nodemon",
     "db:start": "docker-compose up -d",
     "db:stop": "docker-compose down",
