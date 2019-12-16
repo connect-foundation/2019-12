@@ -5,9 +5,13 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
+<img alt="Cypress.io tests" src="https://img.shields.io/badge/cypress.io-tests-green.svg" />
+
 ### 📺 [HomePage](http://www.bookus.kr/)
 
 ### 📕 [Storybook for Bookus](https://storybook-bookus.netlify.com/)
+
+### 🌲 [Cypress for Bookus](https://dashboard.cypress.io/projects/wauqe2/runs)
 
 [Bookus!](http://www.foorg.xyz/)는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로젝트입니다. 순간적으로 많은 트래픽이 몰리더라도 중단되지 않는 **안정적인** 선착순 예약 서비스를 목표로 하고 있습니다. 따라서 다음과 같은 도전과제를 갖고 있습니다.
 
@@ -19,9 +23,18 @@
 
 가장 작은 단위의 컴포넌트를 만들어, 큰 단위로 쌓아나가며 각각의 UI 단위를 만들어 나가는 디자인 패턴입니다. 이번 프로젝트에서는 재사용성이 뛰어난 UI를 위해 아토믹 디자인 패턴을 적용했습니다.
 
-- Storybook + Cypress
+### 실용적인 프론트엔드 테스트
 
-Storybook을 통한 컴포넌트의 독립된 테스팅, Cypress를 통한 UI의 테스트를 목표로 합니다.
+1. Custom Hooks Testing
+
+   - 비동기로 API 요청에 대한 처리가 주가 되는 상태 관리에 대한 테스트
+
+2. Playground for UI components of Storybook
+
+   - Storybook을 통한 독립된 환경에서의 컴포넌트 테스트
+
+3. Cypress를 이용한 End-to-End Testing
+   - 각 페이지와 컴포넌트 UI 테스트
 
 ### 과중한 트래픽이 몰려도 안정적으로 예약이 가능한 시스템
 
@@ -33,7 +46,7 @@ Storybook을 통한 컴포넌트의 독립된 테스팅, Cypress를 통한 UI의
 
 ### DevOps
 
- ![CICD pipeline](https://user-images.githubusercontent.com/10372359/70730814-00b68080-1d49-11ea-9fcf-d0251da08d0b.png)
+![CICD pipeline](https://user-images.githubusercontent.com/10372359/70730814-00b68080-1d49-11ea-9fcf-d0251da08d0b.png)
 
 **[Travis CI](https://travis-ci.org/connect-foundation/2019-12/)**
 
@@ -47,7 +60,7 @@ Storybook을 통한 컴포넌트의 독립된 테스팅, Cypress를 통한 UI의
 
 테스트 커버리지 80를 목표로 하는 검증된 코드를 통한 안정적인 서비스를 목표로 합니다.
 
-- Front-End : Jest + Enzyme
+- Front-End : Jest + Enzyme + Stroybook + Cypress
 - Back-End : Jest + Supertest
 
 ## Built With
