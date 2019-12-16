@@ -29,7 +29,7 @@ export const index = React.createElement(() => {
   const [myEventsOrder, setEventsOrder] = useState(eventsOrder);
 
   function getNextEvents() {
-    const newEvents = Object.assign(myEvents);
+    const newEvents = Object.assign({}, myEvents);
     const newOrder: number[] = [];
     for (let i = 10; i < 20; i += 1) {
       const event = events.get(i - 10)!;

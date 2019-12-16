@@ -7,7 +7,7 @@ export const createUser = (
   firstName: string,
   lastName: string,
   phoneNumber: string,
-) => () =>
+) =>
   mainAxios.post('/users', {
     id,
     googleId,
@@ -17,12 +17,12 @@ export const createUser = (
     phoneNumber,
   });
 
-export const getBoughtTicketEvent = () => () =>
+export const getBoughtTicketEvent = () =>
   mainAxios.get('/users/tickets', {
     headers: { Accept: 'application/json' },
   });
 
-export const getCreatedEvents = () => () =>
+export const getCreatedEvents = () =>
   mainAxios.get('/users/events', {
     headers: { Accept: 'application/json' },
   });

@@ -36,6 +36,7 @@ env:
     - S3_REGION=kr-standard
     - S3_ENDPOINT=https://kr.object.ncloudstorage.com
     - S3_BUCKET_NAME=bookus
+    - CYPRESS_RECORD_KEY=84ecdeae-ce65-4095-9b93-29e0fcdcfd44
 jobs:
   include:
     - stage: TEST
