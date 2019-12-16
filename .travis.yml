@@ -1,133 +1,128 @@
 sudo: required
 language: node_js
 node_js:
-- 12.13
+  - 12.13
 branches:
   only:
-  - master
-  - develop
+    - master
+    - develop
 services:
-- docker
+  - docker
 env:
   global:
-  - FE_IMAGE_TAG=0.4.1
-  - BE_IMAGE_TAG=0.4.1
-  - RESERVE_IMAGE_TAG=0.4.1
-  - FE_IMAGE_NAME=bu-front
-  - BE_IMAGE_NAME=bu-back
-  - RESERVE_IMAGE_NAME=bu-reserve
-  - DOCKER_USER=jdd04026
-  - secure: G9ePamZpTrvw0r11Md6Ydq88XjKvQkV5wInwbTgdnIQq9v6BY53ingtwjiKFvCiIzkPpZlmmw7UGKLZG/JYav6p7ZiFg4eaf8M992Pd4xXemT8ycegdtwkZeK7cbYQs0P45HUcfob9/mO0nGLbLGevkdjQf99EsFXLCihLgV5MX6cp/0a5bmA6Ht/dSp6P+kZRAt2l8zbTQZnjLS/3NNEIXzWGvpT+5wHDoyFMenkXrVcH9mFUla9oNKiUqKjo5GzM5keDJFdm1aUj60OemwpgnLWJKIIR5LaaY6rh9zCJTj5+hk85T2AXKI9cmyE/2zFRKVDoUYaquWVgA52zGOhcO0K3ragm8brgnr5a581YkrU/PKm/gzGaz2jQsSog7yyBdJbnSpN9NAzFpH9IukAt9aEgP2dTJumydkUL8sI5p9MWA1K999O6VXSba5VQ9f0Rn5Pj7rTHpQpVX8Hra27q006QqoUY/ImBxyk7LV/4e/J/b9MEP35sUIaootmbmAYvHoeRNxbD8OiHD4lXWjvooWigXWCRSjK0uIm6h1Qsjg2yp36aX/uhcL3W6dDio61AQFs+ZtseCeiHsNUxjiZl3WIOctHmpftM9UBN/y4Sxr4JHa3ACg5mYFzUR2JxspbeA+clGxywWhltWs5B39h1lub0zobFlrG+a/7v4onLE=
-  - CLIENT_URL=http://localhost:3000
-  - API_URL=http://localhost:13000
-  - CLIENT_ID=89261830012-cobrenh5fepq64nhj54jcdthoit1tjom.apps.googleusercontent.com
-  - secure: Zb2HiLM/eq+bFlU1iV5djvVC9cN56tXjprEPDnWU2n1b0jaBJ3502kJpHLGtupCeVqnqzWrs16qsX85S8n/V6M3EqUGMDnKG7BV3VQfxheIu0BNGo30cjxBUTwuZNP+e5aybyEDrvpDOjzrs7kPMkNZfXraCgVV/IfOkjZKXps5mO5dZacxNWEfQZB9UfTW/YSGJ8i3QZ5sM4v29QCulUs9VPAAY0fypvBs3FKemWZincD4QVGqtXAK2Cex1Lpfc1Q8gvQA0g/HZRlBnbt73Z6qyVHGkzxEciMS2vOtfONbdKf4o1NZLjhSoSg11JaFNbXDitMhLycqCXgCcdS8GEwqoh5EtkJm7zNgf25KgiCdV+jqhEQnBRSurnLR1m+j9m0In2LjIzRV4z/DxvjBtBj304QUVRuNFiVmZJ9ZNf2RobX5u4ntA1lHD40aHpCCR2Z4yiFgUZtGEamzjdBq6xaPHaLApytxLPvgK/tKIuF+fi45PvdaXNRVrWdP53S+rtW1tDx7zVJ8m0MRb0t1uabMXWUYM+zI3izrH9it+aIG8i1lFkiCK00IU9M5XnMYCwRqmS+jbBYu8VUht6cO2AtM12Xh2gl0TkORG/FI3yjWmMskeDXof+0LtJoRYOjBhAa2kTKMqmmuUwZKFh66thkShOLCZXS7ohPtk2yEUN1k=
-  - APP_PORT=3000
-  - DB_HOST=127.0.0.1
-  - DB_USER=user
-  - DB_NAME=bookus
-  - secure: C9PIv3PAVNasIpkZ7xXqiMjQGozvE0t+2qNo63Xwwr52fgJehtyNpOLw3uYbdDQ0OtwLGEx42TYkyuZKklWsc9KDpDfafzghueoHmdYkcIOsjxajxKn4F89VLbNQJw6jZxXqRRoYyqGMl6BBAK72dGrdq8h3zuV9Kx0nJD4pO3w/J3zsuVqrSVw2vPz7jcwCp+M6cL1HeNJfvPKmy0ss8choX6dZi5aESm2gTB3Al4O8tCNJfBws3N4xxVYN0C81lzKnnOgGqIDPr/Mg9X5Bt3BQr95YL8CGNX20jKsRCWa003fWU0TzK57NSVmYQUlXDoy9JU8YyT4Zqkfh34I45HamTl4rCuzerQFwSjxLbP5QVmOY+ulH/8lzn+8q2B+ANVB8DEHdyUyAsBKlLVuEqdYNWEA5rQ7sMNKDdGlCr8RLHxUbjZV+tK1li3vA8NA983gAJmuMYR8q4InjBODsaJYJy3AoeAP+HuWWz6yHlTReQWnFLHXUGVHDsISnPe+eK1p/8hhIBJGKufBqF4J5Dgh10xchPFREZRdVZNiIpceRskGV5rjjhs6ZfaIb4pVwvF1e3oJGersuaeo2bqCyDGj/ICsjY9Gh42/qgHe/fY+i3Suc7nsz4BWFEStZKiho5gBeSkdI+qhzmdSL8v410xBmHMNY3Om0jkYHJdb+B1A=
-  - secure: DHz62HM2a4bPMfLP+iNkYygPDCNa42xwlMTIbgkjrPOOlWH9fP2STURAL5OHIeiTgus1VhqmnibqpYP8FWHqiIxNW3UHSbPpww3mp9SsfOfUfqIqYXshPl/CuBAAL08kYq20l8Y4KGW4kX8hIqVIMeTIe2kMWSkmtTQIBRMozSoDmZnFRzgegnGZScq+2UAceit1bdVwS1+FjsSmhGMma0q5G+sjU3zLRmQky3c8Gj99cXbn+QjGvdkuVdkN6YiHNFPAZt2kqkInseRIvFZ4pkq4LgRLF0D7ijhordfRMXY6Pd9djrsYI8bZT/Qh6SABIV4Ui5yEC87rb/igROv4Vj4uYt7SsEdzYJazptAzobS83b7DvsERURken6quoUqgncZe2hE2kB8xseMo52CXVxP8oR+/YectU261FGjZs3vEL1YtpTvoniDceGuxWUlsmZ3muBUYTULCuAEE47dta5gBWO1lQEcrSUKIOPulLbmlQGrE07Y55U5/0JKJHSaRIAQVTTxUAq3ohDcpU5gu/NJDWpqqB53vM9tjUPlwTlOP+VF2+jSUEokJlnizSP/rCPWI20+drnVyeVKPQBtxRSkdusVrtP/XT9VrZxlumVvbNNylpoCtzTrAyW6wYGNnZaIciMEBxxciK7OubUCBhXTq1u4qqXrOXS0cYeVETi0=
-  - REDIS_HOST=127.0.0.1
-  - REDIS_PORT=6379
-  - JWT_SECURE=1234
-  - S3_ACCESS_KEY=CJyJbaenqZDeb9vlrX42
-  - S3_SECRET_KEY=IK6VM2bJNwVC6vwZ0ockxER8OvfpwWuXqBGHBOQl
-  - S3_REGION=kr-standard
-  - S3_ENDPOINT=https://kr.object.ncloudstorage.com
-  - S3_BUCKET_NAME=bookus
-  - secure: yXV1VXhwy36IuvKelbCmQQRXgofNy5IWDB488lhtv78uLFJ9DIw0BQiXGuh/JQ/c7x4SxnbUp26oZeXLvH3E2w8UuUF+dGf7QDTTTAxo0l8QSqtM4gFfZBECztvA7wWybxUwdjXv9Qm8eo0PtbwKdxngwpvUMEEOUPNAfffe58pd32swXkPDrwYhD2fEof+r0uY25jVyOS4FKPPB3hvCEUHTAOCCwPH7EdV/wCfGsIpDbqj/qM9Uena/8441DacwP9reirnexiwfsO/odLho6iW9lpxWUSqJpn6P1pv9stS02zetNtYF/lUc57WJUenTNMcbJKrZ9ko5a/zhSSA4dWRBQqB+wjb2NH4d/EJrQpKr2z/p2wsdnw3V/8GXxBK0hVxmxG994NFySV1nJ7wGjCWfvFCvxK51gT79zl9xrk8QvcUCi6JJX+A0QTSsjYbQTpWIYLh/pFrTW0uNZmWnv3SlikSol5jvkzJs+K1AAp+RtIX/lbIcVbJabb5ub0imoMbeDNMs9yAT/F6MHXbpNdWCJ3qoqCYqxb/MJ3f78BDqtx3yOFTNzRaqxU4haqvx2nf3Wwm7R7jJbQiWk7oH0wq4IW8jYE7fjyqqNnxsr4/WaXbK2T8VaaBGzufHYAVTLkPBaEA280GK3+lW9Ugmxk9D72DVQ1L/4MzGRtRNros=
-  - secure: jR8gFLekxFwTf0oobki5pFviFUy7o4ESMI/kYjlnqim8D4wXqqR5KdujFk9eC/oD/4aObXUBsxCGQ3p/BLSrvCQgxjRL9rWl7H3ZzvmEWPD97pWqKfJxtDtlZxhEoco4SU6RgaU7h8s7eYHIL9zrviALJCsT01VrstWf3VGz1+l6VJRtwm9+8+xMkpfqTwCvcp97yXWZHXjgSMx0AAYC91d3icvkm5X/DohKE7hHi1dIoIbRVRdMALDJhuLCtR8a0GIUkrYPpUoKLOeWZP0CA7E499Sqq5+Yy25JScw2SIF/Dlx5YseZpPdp9Ow8laHT6S6ZRacKNbI3oqHjnn0U4gx3MT6n0dSo343a+xcqqhhjUO47Bc1xHWMf/1F5bMaG8RyyYlAh5szKhXj4zNRPpJXZIJFxB/aqKPCjTOkOOwqG9Gjjun4z3oIT0rPvCNQTv1UHX14FBatGhMmGi3VFCV8nhIRkgbpp5GuiANv6aTYE5i6IhLk8mNWC/L5/j2vgiXeO/SSDQr+DXC5V+lTzh6fcxUuw0aEyOguZrZIU6jZ5ZBSrtJ8CXSLbeU8LniZw6LPsjPVfQAGHOUgYiJdsLczfU72g11CdzCr9mjInkWBLRGZZKCQWjazyV0FKZGZugqtINDYQYe5V243RmVGOWQ61eMTDCt2IXqS50YXGCXY=
+    - FE_IMAGE_TAG=0.4.1
+    - BE_IMAGE_TAG=0.4.1
+    - RESERVE_IMAGE_TAG=0.4.1
+    - FE_IMAGE_NAME=bu-front
+    - BE_IMAGE_NAME=bu-back
+    - RESERVE_IMAGE_NAME=bu-reserve
+    - DOCKER_USER=jdd04026
+    - secure: G9ePamZpTrvw0r11Md6Ydq88XjKvQkV5wInwbTgdnIQq9v6BY53ingtwjiKFvCiIzkPpZlmmw7UGKLZG/JYav6p7ZiFg4eaf8M992Pd4xXemT8ycegdtwkZeK7cbYQs0P45HUcfob9/mO0nGLbLGevkdjQf99EsFXLCihLgV5MX6cp/0a5bmA6Ht/dSp6P+kZRAt2l8zbTQZnjLS/3NNEIXzWGvpT+5wHDoyFMenkXrVcH9mFUla9oNKiUqKjo5GzM5keDJFdm1aUj60OemwpgnLWJKIIR5LaaY6rh9zCJTj5+hk85T2AXKI9cmyE/2zFRKVDoUYaquWVgA52zGOhcO0K3ragm8brgnr5a581YkrU/PKm/gzGaz2jQsSog7yyBdJbnSpN9NAzFpH9IukAt9aEgP2dTJumydkUL8sI5p9MWA1K999O6VXSba5VQ9f0Rn5Pj7rTHpQpVX8Hra27q006QqoUY/ImBxyk7LV/4e/J/b9MEP35sUIaootmbmAYvHoeRNxbD8OiHD4lXWjvooWigXWCRSjK0uIm6h1Qsjg2yp36aX/uhcL3W6dDio61AQFs+ZtseCeiHsNUxjiZl3WIOctHmpftM9UBN/y4Sxr4JHa3ACg5mYFzUR2JxspbeA+clGxywWhltWs5B39h1lub0zobFlrG+a/7v4onLE=
+    - CLIENT_URL=http://localhost:3000
+    - API_URL=http://localhost:13000
+    - CLIENT_ID=89261830012-cobrenh5fepq64nhj54jcdthoit1tjom.apps.googleusercontent.com
+    - secure: Zb2HiLM/eq+bFlU1iV5djvVC9cN56tXjprEPDnWU2n1b0jaBJ3502kJpHLGtupCeVqnqzWrs16qsX85S8n/V6M3EqUGMDnKG7BV3VQfxheIu0BNGo30cjxBUTwuZNP+e5aybyEDrvpDOjzrs7kPMkNZfXraCgVV/IfOkjZKXps5mO5dZacxNWEfQZB9UfTW/YSGJ8i3QZ5sM4v29QCulUs9VPAAY0fypvBs3FKemWZincD4QVGqtXAK2Cex1Lpfc1Q8gvQA0g/HZRlBnbt73Z6qyVHGkzxEciMS2vOtfONbdKf4o1NZLjhSoSg11JaFNbXDitMhLycqCXgCcdS8GEwqoh5EtkJm7zNgf25KgiCdV+jqhEQnBRSurnLR1m+j9m0In2LjIzRV4z/DxvjBtBj304QUVRuNFiVmZJ9ZNf2RobX5u4ntA1lHD40aHpCCR2Z4yiFgUZtGEamzjdBq6xaPHaLApytxLPvgK/tKIuF+fi45PvdaXNRVrWdP53S+rtW1tDx7zVJ8m0MRb0t1uabMXWUYM+zI3izrH9it+aIG8i1lFkiCK00IU9M5XnMYCwRqmS+jbBYu8VUht6cO2AtM12Xh2gl0TkORG/FI3yjWmMskeDXof+0LtJoRYOjBhAa2kTKMqmmuUwZKFh66thkShOLCZXS7ohPtk2yEUN1k=
+    - APP_PORT=3000
+    - DB_HOST=127.0.0.1
+    - DB_USER=user
+    - DB_NAME=bookus
+    - secure: C9PIv3PAVNasIpkZ7xXqiMjQGozvE0t+2qNo63Xwwr52fgJehtyNpOLw3uYbdDQ0OtwLGEx42TYkyuZKklWsc9KDpDfafzghueoHmdYkcIOsjxajxKn4F89VLbNQJw6jZxXqRRoYyqGMl6BBAK72dGrdq8h3zuV9Kx0nJD4pO3w/J3zsuVqrSVw2vPz7jcwCp+M6cL1HeNJfvPKmy0ss8choX6dZi5aESm2gTB3Al4O8tCNJfBws3N4xxVYN0C81lzKnnOgGqIDPr/Mg9X5Bt3BQr95YL8CGNX20jKsRCWa003fWU0TzK57NSVmYQUlXDoy9JU8YyT4Zqkfh34I45HamTl4rCuzerQFwSjxLbP5QVmOY+ulH/8lzn+8q2B+ANVB8DEHdyUyAsBKlLVuEqdYNWEA5rQ7sMNKDdGlCr8RLHxUbjZV+tK1li3vA8NA983gAJmuMYR8q4InjBODsaJYJy3AoeAP+HuWWz6yHlTReQWnFLHXUGVHDsISnPe+eK1p/8hhIBJGKufBqF4J5Dgh10xchPFREZRdVZNiIpceRskGV5rjjhs6ZfaIb4pVwvF1e3oJGersuaeo2bqCyDGj/ICsjY9Gh42/qgHe/fY+i3Suc7nsz4BWFEStZKiho5gBeSkdI+qhzmdSL8v410xBmHMNY3Om0jkYHJdb+B1A=
+    - secure: DHz62HM2a4bPMfLP+iNkYygPDCNa42xwlMTIbgkjrPOOlWH9fP2STURAL5OHIeiTgus1VhqmnibqpYP8FWHqiIxNW3UHSbPpww3mp9SsfOfUfqIqYXshPl/CuBAAL08kYq20l8Y4KGW4kX8hIqVIMeTIe2kMWSkmtTQIBRMozSoDmZnFRzgegnGZScq+2UAceit1bdVwS1+FjsSmhGMma0q5G+sjU3zLRmQky3c8Gj99cXbn+QjGvdkuVdkN6YiHNFPAZt2kqkInseRIvFZ4pkq4LgRLF0D7ijhordfRMXY6Pd9djrsYI8bZT/Qh6SABIV4Ui5yEC87rb/igROv4Vj4uYt7SsEdzYJazptAzobS83b7DvsERURken6quoUqgncZe2hE2kB8xseMo52CXVxP8oR+/YectU261FGjZs3vEL1YtpTvoniDceGuxWUlsmZ3muBUYTULCuAEE47dta5gBWO1lQEcrSUKIOPulLbmlQGrE07Y55U5/0JKJHSaRIAQVTTxUAq3ohDcpU5gu/NJDWpqqB53vM9tjUPlwTlOP+VF2+jSUEokJlnizSP/rCPWI20+drnVyeVKPQBtxRSkdusVrtP/XT9VrZxlumVvbNNylpoCtzTrAyW6wYGNnZaIciMEBxxciK7OubUCBhXTq1u4qqXrOXS0cYeVETi0=
+    - REDIS_HOST=127.0.0.1
+    - REDIS_PORT=6379
+    - JWT_SECURE=1234
+    - S3_REGION=kr-standard
+    - S3_ENDPOINT=https://kr.object.ncloudstorage.com
+    - S3_BUCKET_NAME=bookus
+    - secure: yXV1VXhwy36IuvKelbCmQQRXgofNy5IWDB488lhtv78uLFJ9DIw0BQiXGuh/JQ/c7x4SxnbUp26oZeXLvH3E2w8UuUF+dGf7QDTTTAxo0l8QSqtM4gFfZBECztvA7wWybxUwdjXv9Qm8eo0PtbwKdxngwpvUMEEOUPNAfffe58pd32swXkPDrwYhD2fEof+r0uY25jVyOS4FKPPB3hvCEUHTAOCCwPH7EdV/wCfGsIpDbqj/qM9Uena/8441DacwP9reirnexiwfsO/odLho6iW9lpxWUSqJpn6P1pv9stS02zetNtYF/lUc57WJUenTNMcbJKrZ9ko5a/zhSSA4dWRBQqB+wjb2NH4d/EJrQpKr2z/p2wsdnw3V/8GXxBK0hVxmxG994NFySV1nJ7wGjCWfvFCvxK51gT79zl9xrk8QvcUCi6JJX+A0QTSsjYbQTpWIYLh/pFrTW0uNZmWnv3SlikSol5jvkzJs+K1AAp+RtIX/lbIcVbJabb5ub0imoMbeDNMs9yAT/F6MHXbpNdWCJ3qoqCYqxb/MJ3f78BDqtx3yOFTNzRaqxU4haqvx2nf3Wwm7R7jJbQiWk7oH0wq4IW8jYE7fjyqqNnxsr4/WaXbK2T8VaaBGzufHYAVTLkPBaEA280GK3+lW9Ugmxk9D72DVQ1L/4MzGRtRNros=
+    - secure: jR8gFLekxFwTf0oobki5pFviFUy7o4ESMI/kYjlnqim8D4wXqqR5KdujFk9eC/oD/4aObXUBsxCGQ3p/BLSrvCQgxjRL9rWl7H3ZzvmEWPD97pWqKfJxtDtlZxhEoco4SU6RgaU7h8s7eYHIL9zrviALJCsT01VrstWf3VGz1+l6VJRtwm9+8+xMkpfqTwCvcp97yXWZHXjgSMx0AAYC91d3icvkm5X/DohKE7hHi1dIoIbRVRdMALDJhuLCtR8a0GIUkrYPpUoKLOeWZP0CA7E499Sqq5+Yy25JScw2SIF/Dlx5YseZpPdp9Ow8laHT6S6ZRacKNbI3oqHjnn0U4gx3MT6n0dSo343a+xcqqhhjUO47Bc1xHWMf/1F5bMaG8RyyYlAh5szKhXj4zNRPpJXZIJFxB/aqKPCjTOkOOwqG9Gjjun4z3oIT0rPvCNQTv1UHX14FBatGhMmGi3VFCV8nhIRkgbpp5GuiANv6aTYE5i6IhLk8mNWC/L5/j2vgiXeO/SSDQr+DXC5V+lTzh6fcxUuw0aEyOguZrZIU6jZ5ZBSrtJ8CXSLbeU8LniZw6LPsjPVfQAGHOUgYiJdsLczfU72g11CdzCr9mjInkWBLRGZZKCQWjazyV0FKZGZugqtINDYQYe5V243RmVGOWQ61eMTDCt2IXqS50YXGCXY=
 jobs:
   include:
-  - stage: TEST
-    name: Reserve Server
-    install:
-    - docker run --name mysql -d -e MYSQL_ROOT_PASSWORD=$DB_PW -e MYSQL_DATABASE=$DB_NAME
-      -e MYSQL_USER=$DB_USER -e MYSQL_PASSWORD=$DB_PW -p 3306:3306 jdd04026/mariadb-locale:latest
-    - docker run --name redis -d -p 6379:6379 redis:5.0.7-alpine
-    before_script:
-    - yarn
-    script:
-    - yarn workspace server db:migrate
-    - yarn workspace server db:seed
-    - yarn workspace server redis:migrate
-    - yarn test:reserve-server
-  - name: Server
-    install:
-    - docker run --name mysql -d -e MYSQL_ROOT_PASSWORD=$DB_PW -e MYSQL_DATABASE=$DB_NAME
-      -e MYSQL_USER=$DB_USER -e MYSQL_PASSWORD=$DB_PW -p 3306:3306 jdd04026/mariadb-locale:latest
-    - docker run --name redis -d -p 6379:6379 redis:5.0.7-alpine
-    before_script:
-    - yarn
-    script:
-    - yarn workspace server db:migrate
-    - yarn workspace server db:seed
-    - yarn workspace server redis:migrate
-    - yarn test:server seed
-    - yarn workspace server test:noseed
-  - name: Client
-    before_install:
-    - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-      -in secrets.tar.enc -out secrets.tar -d
-    - tar xvf secrets.tar
-    before_script:
-    - yarn
-    script:
-    - yarn test:client
-  - stage: PRE_DEPLOY
-    name: Reserve Server
-    if: type = push AND branch = develop
-    before_install:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-    script:
-    - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release ./reserve-server
-    - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release
-  - name: Server
-    if: type = push AND branch = develop
-    before_install:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-    script:
-    - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release ./server
-    - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release
-  - name: Client
-    if: type = push AND branch = develop
-    before_install:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-    script:
-    - yarn workspace client build
-    - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release ./client
-    - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release
-  - stage: DEPLOY
-    name: Reserve Server
-    if: type = push AND branch = master
-    before_install:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-    script:
-    - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
-      ./reserve-server
-    - docker tag "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}" "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest"
-    - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
-  - name: Server
-    if: type = push AND branch = master
-    before_install:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-    script:
-    - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" ./server
-    - docker tag "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" "${DOCKER_USER}/${BE_IMAGE_NAME}:latest"
-    - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}"
-  - name: Client
-    if: type = push AND branch = master
-    before_install:
-    - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-      -in secrets.tar.enc -out secrets.tar -d
-    - tar xvf secrets.tar
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-    script:
-    - yarn workspace client build
-    - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
-    - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
-    - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
-before_install:
-- openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-  -in secrets.tar.enc -out secrets.tar -d
+    - stage: TEST
+      name: Reserve Server
+      install:
+        - docker run --name mysql -d -e MYSQL_ROOT_PASSWORD=$DB_PW -e MYSQL_DATABASE=$DB_NAME
+          -e MYSQL_USER=$DB_USER -e MYSQL_PASSWORD=$DB_PW -p 3306:3306 jdd04026/mariadb-locale:latest
+        - docker run --name redis -d -p 6379:6379 redis:5.0.7-alpine
+      before_script:
+        - yarn
+      script:
+        - yarn workspace server db:migrate
+        - yarn workspace server db:seed
+        - yarn workspace server redis:migrate
+        - yarn test:reserve-server
+    - name: Server
+      install:
+        - docker run --name mysql -d -e MYSQL_ROOT_PASSWORD=$DB_PW -e MYSQL_DATABASE=$DB_NAME
+          -e MYSQL_USER=$DB_USER -e MYSQL_PASSWORD=$DB_PW -p 3306:3306 jdd04026/mariadb-locale:latest
+        - docker run --name redis -d -p 6379:6379 redis:5.0.7-alpine
+      before_script:
+        - yarn
+      script:
+        - yarn workspace server db:migrate
+        - yarn workspace server db:seed
+        - yarn workspace server redis:migrate
+        - yarn test:server seed
+        - yarn workspace server test:noseed
+    - name: Client
+      before_install:
+        - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
+          -in secrets.tar.enc -out secrets.tar -d
+        - tar xvf secrets.tar
+      before_script:
+        - yarn
+      script:
+        - yarn test:client
+    - stage: PRE_DEPLOY
+      name: Reserve Server
+      if: type = push AND branch = develop
+      before_install:
+        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      script:
+        - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release ./reserve-server
+        - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release
+    - name: Server
+      if: type = push AND branch = develop
+      before_install:
+        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      script:
+        - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release ./server
+        - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release
+    - name: Client
+      if: type = push AND branch = develop
+      before_install:
+        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      script:
+        - yarn workspace client build
+        - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release ./client
+        - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release
+    - stage: DEPLOY
+      name: Reserve Server
+      if: type = push AND branch = master
+      before_install:
+        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      script:
+        - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
+          ./reserve-server
+        - docker tag "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}" "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest"
+        - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
+    - name: Server
+      if: type = push AND branch = master
+      before_install:
+        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      script:
+        - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" ./server
+        - docker tag "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" "${DOCKER_USER}/${BE_IMAGE_NAME}:latest"
+        - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}"
+    - name: Client
+      if: type = push AND branch = master
+      before_install:
+        - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
+          -in secrets.tar.enc -out secrets.tar -d
+        - tar xvf secrets.tar
+        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      script:
+        - yarn workspace client build
+        - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
+        - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
+        - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"

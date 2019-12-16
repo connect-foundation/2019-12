@@ -27,7 +27,6 @@ router.post(
   badRequestHandler,
   controllers.createEvent,
 );
-router.get('/coordinate', controllers.convertPlaceToCoordinate);
 router.get('/:eventId', controllers.getEvent);
 router.get('/:eventId/tickets', controllers.getEventTickets);
 router.patch(
