@@ -60,7 +60,7 @@ const App: React.FC = () => {
 export default App;
 
 function PrivateRoute({
-  component: Component,
+  component: TargetPage,
   ...rest
 }: any): React.ReactElement {
   const [cookies] = useCookies(['UID']);
@@ -76,7 +76,7 @@ function PrivateRoute({
       {...rest}
       render={(props: any) =>
         cookies.UID && isLogin ? (
-          <Component {...props} />
+          <TargetPage {...props} />
         ) : (
           <Redirect to="/login" />
         )
