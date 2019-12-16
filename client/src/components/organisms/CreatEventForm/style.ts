@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { palette } from 'styled-tools';
 
 const commonStyle = css`
   & > div {
@@ -16,6 +17,11 @@ export const EventContainer = styled.div`
 `;
 export const TicketContainer = styled.div`
   ${commonStyle}
+  width: 100%;
+  padding: 3rem;
+  margin-bottom: 4rem;
+  border-radius: 0.3rem;
+  background-color: ${palette('grayscale', 6)};
 `;
 export const CreateBtnWrapper = styled.div`
   display: flex;
