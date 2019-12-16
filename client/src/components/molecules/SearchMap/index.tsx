@@ -68,7 +68,10 @@ function SearchMap(): React.ReactElement {
     value,
   }: {
     title: string;
-    value: any;
+    value: {
+      latitude: number;
+      longitude: number;
+    };
   }) => {
     setVisible(false);
     setKeyword(title);
