@@ -26,7 +26,7 @@ let token: Secret;
 beforeAll(async () => {
   sequelize.options.logging = false;
   await sequelize.sync();
-  token = await generateJWT(true, 2, 1, '1234@gmail.com');
+  token = await generateJWT(true, 3, 1, '1234@gmail.com');
 });
 
 afterAll(() => {
