@@ -8,5 +8,6 @@ export const TimePickerSelect = styled.select<Props>`
   border: 1px solid #dbdbdb;
   appearance: none;
   width: 100%;
+  height: 100%;
   padding: 11px 11px 9px;
 `;
