@@ -132,7 +132,7 @@ function EventJoin(): React.ReactElement {
       return alert(RESERVE_MIN_FAIL);
     }
     try {
-      await joinEvent(eventId, ticketCount)();
+      await joinEvent(eventId, ticketCount);
       setisReserved(true);
       alert(RESERVE_COMPLETE);
       history.push(ROUTES.HOME);

@@ -59,10 +59,10 @@ function MyPage(): React.ReactElement {
   // const [currrentTabIndex, setCurrentTabIndex] = useState();
   const [requestBoughtData, setRequestBoughtData] = useApiRequest<
     BoughtTicketEvent[]
-  >(getBoughtTicketEvent());
+  >(getBoughtTicketEvent);
   const [requestCreatedEventData, setRequestCreatedEventData] = useApiRequest<
     CreatedEvent[]
-  >(getCreatedEvents());
+  >(getCreatedEvents);
 
   const [state, dispatch] = useReducer<Reducer>(MyPageReducer, defaultState);
 

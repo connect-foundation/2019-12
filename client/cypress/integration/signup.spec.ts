@@ -1,5 +1,11 @@
 /// <reference types="Cypress" />
 
+import {
+  SIGNUP_VALIDATION_FIRST_NAME,
+  SIGNUP_VALIDATION_LAST_NAME,
+  SIGNUP_VALIDATION_PHONE_NUMBER,
+} from '../../src/commons/constants/string';
+
 context('회원가입 페이지', () => {
   beforeEach(() => {
     cy.server();
@@ -25,6 +31,7 @@ context('회원가입 페이지', () => {
     cy.get('[data-testid=signupform-lastname]').type('test');
     cy.get('[data-testid=formcaption]').within(items => {
       expect(items[1]).to.have.css('visibility', 'visible');
+      expect(items[1]).to.have.text(SIGNUP_VALIDATION_LAST_NAME);
     });
   });
 
@@ -39,6 +46,7 @@ context('회원가입 페이지', () => {
     cy.get('[data-testid=signupform-firstname]').type('test');
     cy.get('[data-testid=formcaption]').within(items => {
       expect(items[2]).to.have.css('visibility', 'visible');
+      expect(items[2]).to.have.text(SIGNUP_VALIDATION_FIRST_NAME);
     });
   });
 
@@ -53,6 +61,7 @@ context('회원가입 페이지', () => {
     cy.get('[data-testid=signupform-phonenumber]').type('0101234');
     cy.get('[data-testid=formcaption]').within(items => {
       expect(items[3]).to.have.css('visibility', 'visible');
+      expect(items[3]).to.have.text(SIGNUP_VALIDATION_PHONE_NUMBER);
     });
   });
 
