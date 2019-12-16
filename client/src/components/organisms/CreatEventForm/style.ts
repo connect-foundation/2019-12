@@ -6,11 +6,17 @@ const commonStyle = css`
   }
 `;
 
-export const CreateEventFormContainer = styled.div``;
+export const CreateEventFormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const EventContainer = styled.div`
   ${commonStyle}
 `;
 export const TicketContainer = styled.div`
   ${commonStyle}
+`;
+export const CreateBtnWrapper = styled.div`
+  display: flex;
 `;
