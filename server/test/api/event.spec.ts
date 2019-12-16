@@ -186,7 +186,7 @@ describe('POST /api/events', () => {
   });
 
   it('ticket 의 refundEndAt 이 refundEndAt 보다 늦으면 400 응답', async () => {
-    await getRequest({ 'ticket[salesStartAt]': '2201-03-01 13:00:00' }).expect(
+    await getRequest({ 'ticket[salesStartAt]': '2202-03-01 13:00:00' }).expect(
       BAD_REQUEST,
     );
   });
