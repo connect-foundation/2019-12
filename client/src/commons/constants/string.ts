@@ -78,3 +78,37 @@ export const EVENT_FORM_DESC = '내용';
 export const EVENT_FORM_DESC_LABEL =
   '행사의 상세한 내용을 알리는 글을 작성해주세요.';
 export const EVENT_FORM_DESC_CAPTION = '내용을 입력하세요';
+
+export const TICKET_FORM_NAME = '티켓 이름';
+export const TICKET_FORM_NAME_LABEL = '한 번 설정한 이름은 수정할 수 없습니다.';
+export const TICKET_FORM_NAME_CAPTION = '티켓 이름을 입력해주세요.';
+export const TICKET_FORM_NAME_PLACEHOLDER = '일반 입장권';
+export const TICKET_FORM_DESC = '티켓 설명';
+export const TICKET_FORM_DESC_LABEL =
+  '이 티켓에 대해 상세한 설명이 필요하다면 작성해주세요.';
+export const TICKET_FORM_DESC_CAPTION = '티켓 설명을 입력해주세요.';
+export const TICKET_FORM_DESC_PLACEHOLDER = '무료 음료를 제공합니다.';
+export const TICKET_FORM_PRICE = '가격';
+export const TICKET_FORM_PRICE_LABEL =
+  '구매자가 있는 경우 티켓 가격은 수정할 수 없습니다.';
+export const TICKET_FORM_PRICE_CAPTION = '가격을 입력해주세요.';
+export const TICKET_FORM_QUANTITY = '티켓 수량';
+export const TICKET_FORM_QUANTITY_LABEL =
+  '판매하고 싶은 최대 수량을 정해주세요.';
+export const TICKET_FORM_QUANTITY_CAPTION = '티켓 수량을 입력해주세요.';
+export const TICKET_FORM_IS_PUBLIC_LEFT_CNT = '티켓 수량 숨김';
+export const TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL =
+  '티켓의 전체 수량과 남은 개수를 표시하지 않습니다. 판매된 개수는 항상 표시됩니다.';
+export const TICKET_FORM_MAX_CNT_PER_PERSON = '1인당 구매 가능 개수';
+export const TICKET_FORM_MAX_CNT_PER_PERSON_LABEL =
+  '유저 1명이 구입할 수 있는 최대 개수입니다.';
+export const TICKET_FORM_MAX_CNT_PER_PERSON_CAPTION =
+  '1인당 구매 가능 개수를 입력해주세요.';
+export const TICKET_FORM_SALES_DATE = '판매 기간';
+export const TICKET_FORM_SALES_DATE_LABEL =
+  '티켓의 판매기간을 조정할 수 있습니다.';
+export const TICKET_FORM_SALES_DATE_CAPTION = '티켓의 판매기간을 선택해주세요.';
+export const TICKET_FORM_REFUND_DATE = '환불 마감 날짜';
+export const TICKET_FORM_REFUND_DATE_LABEL =
+  '판매 종료일을 설정하면 환불 마감 날짜는 자동으로 이와 동일하게 조정되지만 호스트가 원하는 날짜로 변경할 수도 있습니다.';
+export const TICKET_FORM_REFUND_DATE_CAPTION = '환불 마감날짜를 선택해주세요.';

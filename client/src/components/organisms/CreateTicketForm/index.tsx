@@ -1,7 +1,33 @@
 import React from 'react';
 import * as S from './style';
 import { ChkBox, FormItem, Input } from 'components';
-
+import {
+  TICKET_FORM_NAME,
+  TICKET_FORM_NAME_LABEL,
+  TICKET_FORM_NAME_CAPTION,
+  TICKET_FORM_NAME_PLACEHOLDER,
+  TICKET_FORM_DESC,
+  TICKET_FORM_DESC_LABEL,
+  TICKET_FORM_DESC_CAPTION,
+  TICKET_FORM_DESC_PLACEHOLDER,
+  TICKET_FORM_PRICE,
+  TICKET_FORM_PRICE_LABEL,
+  TICKET_FORM_PRICE_CAPTION,
+  TICKET_FORM_QUANTITY,
+  TICKET_FORM_QUANTITY_LABEL,
+  TICKET_FORM_QUANTITY_CAPTION,
+  TICKET_FORM_IS_PUBLIC_LEFT_CNT,
+  TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL,
+  TICKET_FORM_MAX_CNT_PER_PERSON,
+  TICKET_FORM_MAX_CNT_PER_PERSON_LABEL,
+  TICKET_FORM_MAX_CNT_PER_PERSON_CAPTION,
+  TICKET_FORM_SALES_DATE,
+  TICKET_FORM_SALES_DATE_LABEL,
+  TICKET_FORM_SALES_DATE_CAPTION,
+  TICKET_FORM_REFUND_DATE,
+  TICKET_FORM_REFUND_DATE_LABEL,
+  TICKET_FORM_REFUND_DATE_CAPTION,
+} from 'commons/constants/string';
 interface ChangableProps {
   invalid?: boolean;
   onChange: () => void;
@@ -26,46 +52,51 @@ function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
   return (
     <S.CreateTicketFormContainer>
       <FormItem
-        label="티켓 이름"
-        labelExplanation="한 번 설정한 이름은 수정할 수 없습니다."
+        label={TICKET_FORM_NAME}
+        labelExplanation={TICKET_FORM_NAME_LABEL}
+        captionContent={TICKET_FORM_NAME_CAPTION}
       >
         <Input
           inputName="ticketName"
-          placeholder="일반 입장권"
+          placeholder={TICKET_FORM_NAME_PLACEHOLDER}
           {...FormInputs.name}
         />
       </FormItem>
       <FormItem
-        label="티켓 설명"
-        labelExplanation="이 티켓에 대해 상세한 설명이 필요하다면 작성해주세요."
+        label={TICKET_FORM_DESC}
+        labelExplanation={TICKET_FORM_DESC_LABEL}
+        captionContent={TICKET_FORM_DESC_CAPTION}
       >
         <Input
           inputName="ticketDesc"
-          placeholder="무료 음료를 제공합니다."
+          placeholder={TICKET_FORM_DESC_PLACEHOLDER}
           {...FormInputs.desc}
         />
       </FormItem>
       <FormItem
-        label="가격"
-        labelExplanation="구매자가 있는 경우 티켓 가격은 수정할 수 없습니다."
+        label={TICKET_FORM_PRICE}
+        labelExplanation={TICKET_FORM_PRICE_LABEL}
+        captionContent={TICKET_FORM_PRICE_CAPTION}
       >
         <Input inputName="ticketPrice" {...FormInputs.price} />
       </FormItem>
       <FormItem
-        label="티켓 수량"
-        labelExplanation="판매하고 싶은 최대 수량을 정해주세요."
+        label={TICKET_FORM_QUANTITY}
+        labelExplanation={TICKET_FORM_QUANTITY_LABEL}
+        captionContent={TICKET_FORM_QUANTITY_CAPTION}
       >
         <Input inputName="ticketQuantity" {...FormInputs.quantity} />
       </FormItem>
       <FormItem
-        label="티켓 수량 숨김"
-        labelExplanation="티켓의 전체 수량과 남은 개수를 표시하지 않습니다. 판매된 개수는 항상 표시됩니다."
+        label={TICKET_FORM_IS_PUBLIC_LEFT_CNT}
+        labelExplanation={TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL}
       >
         <ChkBox checked={false} {...FormInputs.isPublicLeftCnt} />
       </FormItem>
       <FormItem
-        label="1인당 구매 가능 개수"
-        labelExplanation="유저 1명이 구입할 수 있는 최대 개수입니다."
+        label={TICKET_FORM_MAX_CNT_PER_PERSON}
+        labelExplanation={TICKET_FORM_MAX_CNT_PER_PERSON_LABEL}
+        captionContent={TICKET_FORM_MAX_CNT_PER_PERSON_CAPTION}
       >
         <Input
           inputName="ticketMaxCntPerPerson"
@@ -73,14 +104,16 @@ function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
         />
       </FormItem>
       <FormItem
-        label="판매 기간"
-        labelExplanation="티켓별로 판매기간을 조정할 수 있습니다."
+        label={TICKET_FORM_SALES_DATE}
+        labelExplanation={TICKET_FORM_SALES_DATE_LABEL}
+        captionContent={TICKET_FORM_SALES_DATE_CAPTION}
       >
         <Input inputName="ticketSalesDate" {...FormInputs.salesDate} />
       </FormItem>
       <FormItem
-        label="환불 마감 날짜"
-        labelExplanation="판매 종료일을 설정하면 환불 마감 날짜는 자동으로 이와 동일하게 조정되지만 호스트가 원하는 날짜로 변경할 수도 있습니다."
+        label={TICKET_FORM_REFUND_DATE}
+        labelExplanation={TICKET_FORM_REFUND_DATE_LABEL}
+        captionContent={TICKET_FORM_REFUND_DATE_CAPTION}
       >
         <Input inputName="ticketRefundDate" {...FormInputs.refundDate} />
       </FormItem>
