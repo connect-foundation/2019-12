@@ -126,6 +126,3 @@ jobs:
         - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
         - docker tag "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" "${DOCKER_USER}/${FE_IMAGE_NAME}:latest"
         - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}"
-before_install:
-  - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-    -in secrets.tar.enc -out secrets.tar -d
