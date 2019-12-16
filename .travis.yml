@@ -63,7 +63,8 @@ jobs:
         - yarn workspace server db:migrate
         - yarn workspace server db:seed
         - yarn workspace server redis:migrate
-        - yarn test:server
+        - yarn test:server seed
+        - yarn workspace server test:noseed
     - name: Client
       before_install:
         - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
