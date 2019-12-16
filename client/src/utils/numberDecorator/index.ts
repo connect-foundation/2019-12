@@ -1,4 +1,9 @@
-export default (mount: number, currency: '₩' | '$', separated: boolean) => {
+interface Props {
+  mount: number;
+  currency: '₩' | '$';
+  separated: boolean;
+}
+export default ({ mount, currency, separated }: Props) => {
   const seperator = (targetStr: string) => {
     return targetStr
       .split('')
