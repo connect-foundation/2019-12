@@ -1,6 +1,6 @@
 interface Props {
   mount: number;
-  currency: '₩' | '$';
+  currency?: '₩' | '$';
   separated: boolean;
 }
 export default ({ mount, currency, separated }: Props) => {
@@ -21,9 +21,8 @@ export default ({ mount, currency, separated }: Props) => {
   };
 
   let mountStr = `${mount}`;
-  if (separated) {
-    mountStr = seperator(mountStr);
-  }
+  if (separated) mountStr = seperator(mountStr);
 
-  return `${currency} ${mountStr}`;
+  if (currency) return `${currency} ${mountStr}`;
+  return mountStr;
 };
