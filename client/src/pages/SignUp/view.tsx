@@ -12,6 +12,11 @@ import {
   SIGNUP_LAST_NAME,
   SIGNUP_PHONE_NUMBER,
   SIGNUP_BTN,
+  SIGNUP_VALIDATION_EMAIL,
+  SIGNUP_VALIDATION_FIRST_NAME,
+  SIGNUP_VALIDATION_LAST_NAME,
+  SIGNUP_VALIDATION_PHONE_NUMBER,
+  SIGNUP_PLACEHOLDER_PHONE_NUMBER,
 } from 'commons/constants/string';
 
 function SignUpView(): React.ReactElement {
@@ -24,7 +29,7 @@ function SignUpView(): React.ReactElement {
   const FormInputs = {
     email: {
       inputName: 'email',
-      captionContent: '이메일을 입력하세요',
+      captionContent: SIGNUP_VALIDATION_EMAIL,
       disabled: true,
       value: email || '',
       labelProps: {
@@ -34,7 +39,7 @@ function SignUpView(): React.ReactElement {
     },
     firstName: {
       inputName: 'firstName',
-      captionContent: '성을 입력하세요',
+      captionContent: SIGNUP_VALIDATION_FIRST_NAME,
       invalid: firstNameValidate,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
@@ -47,7 +52,7 @@ function SignUpView(): React.ReactElement {
     },
     lastName: {
       inputName: 'lastName',
-      captionContent: '이름을 입력하세요',
+      captionContent: SIGNUP_VALIDATION_LAST_NAME,
       invalid: lastNameValidate,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
@@ -60,8 +65,8 @@ function SignUpView(): React.ReactElement {
     },
     phoneNumber: {
       inputName: 'phoneNumber',
-      captionContent: '올바른 휴대폰 번호가 아닙니다.',
-      placeholder: '- 없이 숫자만 입력해주세요.',
+      captionContent: SIGNUP_VALIDATION_PHONE_NUMBER,
+      placeholder: SIGNUP_PLACEHOLDER_PHONE_NUMBER,
       invalid: phoneValidate,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;

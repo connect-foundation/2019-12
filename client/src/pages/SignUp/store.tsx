@@ -95,7 +95,7 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
           firstName,
           lastName,
           phoneNumber,
-        )();
+        );
         if (updateUserRes.status === OK) {
           alert('회원가입이 완료되었습니다.');
           setLoginState(true);

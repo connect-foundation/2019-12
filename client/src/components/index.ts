@@ -2,8 +2,8 @@ export { default as Btn } from './atoms/Btn';
 export { default as Divider } from './atoms/Divider';
 export { default as EventDate } from './atoms/EventDate';
 export { default as Icon } from './atoms/Icon';
-export { default as GoogleMap } from './atoms/GoogleMap';
 export { default as Img } from './atoms/Img';
+export { default as ImgSelector } from './atoms/ImgSelector';
 export { default as Input } from './atoms/Input';
 export { default as Label } from './atoms/Label';
 export { default as Price } from './atoms/Price';
@@ -24,6 +24,7 @@ export { default as ImgBtn } from './molecules/ImgBtn';
 export { default as StepList } from './molecules/StepList';
 export { default as SearchMap } from './molecules/SearchMap';
 export { default as LNB } from './molecules/LNB';
+export { default as DropDown } from './molecules/DropDown';
 
 export { default as CardGrid } from './organisms/CardGrid';
 export { default as EventHeader } from './organisms/EventHeader';
