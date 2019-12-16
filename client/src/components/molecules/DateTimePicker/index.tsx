@@ -64,40 +64,52 @@ function DateTimePicker({
         <S.LabelWrapper>
           <Label name={firstLabelName} />
         </S.LabelWrapper>
-        <SingleDatePicker
-          date={startDate}
-          onDateChange={date => setStartDate(date)}
-          focused={focusStartDate}
-          onFocusChange={({ focused }) =>
-            handleOnFocusChange('startDate', focused)
-          }
-          id="firstDatePicker"
-          placeholder={firstPlaceholder}
-          keepFocusOnInput={false}
-          keepOpenOnDateSelect={false}
-          numberOfMonths={1}
-        />
-        <TimePicker onChange={() => {}} />
+        <S.PickerContainer>
+          <S.DatePickerWrapper>
+            <SingleDatePicker
+              date={startDate}
+              onDateChange={date => setStartDate(date)}
+              focused={focusStartDate}
+              onFocusChange={({ focused }) =>
+                handleOnFocusChange('startDate', focused)
+              }
+              id="firstDatePicker"
+              placeholder={firstPlaceholder}
+              keepFocusOnInput={false}
+              keepOpenOnDateSelect={false}
+              numberOfMonths={1}
+            />
+          </S.DatePickerWrapper>
+          <S.TimePickerWrapper>
+            <TimePicker onChange={() => {}} />
+          </S.TimePickerWrapper>
+        </S.PickerContainer>
       </S.FirstDateContainer>
       {range && (
         <S.SecondDateContainer>
           <S.LabelWrapper>
             <Label name={secondLabelName} />
           </S.LabelWrapper>
-          <SingleDatePicker
-            date={endDate}
-            onDateChange={date => setEndDate(date)}
-            focused={focusEndDate}
-            onFocusChange={({ focused }) =>
-              handleOnFocusChange('endDate', focused)
-            }
-            id="secondsDatePicker"
-            placeholder={secondPlaceholder}
-            keepFocusOnInput={false}
-            keepOpenOnDateSelect={false}
-            numberOfMonths={1}
-          />
-          <TimePicker onChange={() => {}} />
+          <S.PickerContainer>
+            <S.DatePickerWrapper>
+              <SingleDatePicker
+                date={endDate}
+                onDateChange={date => setEndDate(date)}
+                focused={focusEndDate}
+                onFocusChange={({ focused }) =>
+                  handleOnFocusChange('endDate', focused)
+                }
+                id="secondsDatePicker"
+                placeholder={secondPlaceholder}
+                keepFocusOnInput={false}
+                keepOpenOnDateSelect={false}
+                numberOfMonths={1}
+              />
+            </S.DatePickerWrapper>
+            <S.TimePickerWrapper>
+              <TimePicker onChange={() => {}} />
+            </S.TimePickerWrapper>
+          </S.PickerContainer>
         </S.SecondDateContainer>
       )}
     </S.DateTimePickerContainer>
