@@ -7,8 +7,8 @@ import { EventHeader, Ticket, Place, TuiViewer } from 'components';
 import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
 import delay from 'utils/delay';
+import { getImageURL, imageTypes } from 'utils/getImageURL';
 
-const { REACT_APP_IMAGE_SERVER_URL } = process.env;
 const defaultEventDetail: EventDetail = {
   id: 0,
   title: '',
@@ -103,7 +103,7 @@ function EventDetailView(): React.ReactElement {
         <EventHeader
           {...{
             id,
-            mainImg: `${REACT_APP_IMAGE_SERVER_URL}/${mainImg}?type=f&w=688&h=387`,
+            mainImg: getImageURL(mainImg, imageTypes.eventDetailImg),
             title,
             startAt,
             endAt,
