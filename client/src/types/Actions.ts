@@ -1,4 +1,4 @@
-import { AccountState, EventsState } from './States';
+import { AccountState, EventsState, MyPageState } from './States';
 
 export interface ActionParams<T> {
   type: keyof T;
@@ -12,4 +12,9 @@ export interface AccountAction {
 export interface EventsAction {
   type: string;
   value: EventsState;
+}
+
+export interface MyPageAction {
+  type: string;
+  value: MyPageState;
 }

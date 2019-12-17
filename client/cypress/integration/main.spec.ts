@@ -7,6 +7,7 @@ context('메인 페이지', () => {
     cy.route(/(\/api\/events\?cnt=12&startAt=).+/, 'fixture:events.json').as(
       'getEventsMore',
     );
+    cy.setCookie('UID', Cypress.env('auth_token'));
     cy.visit('/');
   });
 

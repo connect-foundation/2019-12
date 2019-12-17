@@ -29,7 +29,7 @@ export const redisMigrate = async () => {
     },
   );
   redisTickets.forEach(ticket => {
-    client.hmset(`${ticket.id}`, ticket, redis.print);
+    client.hmset(`${ticket.id}`, ticket);
     client.hgetall(`${ticket.id}`);
   });
   client.quit();
@@ -51,5 +51,17 @@ export const redisDeleteKey = async () => {
   tickets.map(({ id }) => client.del(`${id}`));
   client.quit();
 };
+
+export function redisCreateKey(
+  id: string,
+  ticket: Pick<TicketType, 'leftCnt' | 'salesStartAt' | 'salesEndAt'>,
+): boolean {
+  return client.hmset(id, {
+    id,
+    isBlock: ticket.leftCnt > 0 ? 0 : 1,
+    salesStartAt: ticket.salesStartAt.getTime(),
+    salesEndAt: ticket.salesEndAt.getTime(),
+  });
+}
 
 export default client;
