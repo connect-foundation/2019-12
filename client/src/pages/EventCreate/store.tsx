@@ -6,7 +6,6 @@ import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
 import { EventCreateFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
-import { validatePhoneNumber, validateName } from 'utils/validateInput';
 import { createEvent } from 'apis';
 
 const defaultState: EventCreateFormState = {
