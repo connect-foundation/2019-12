@@ -12,9 +12,13 @@ import {
   internelServerErrorHandler,
 } from 'utils/errorHandler';
 
+import { stream } from 'utils/winston';
+import * as morgan from 'morgan';
+
 const { CLIENT_URL } = process.env;
 
 const app = express();
+
 app.use(
   cors({
     origin: CLIENT_URL,
@@ -23,6 +27,7 @@ app.use(
   }),
 );
 app.use(express.json());
+app.use(morgan('combined', { stream }));
 app.use(cookieParser());
 app.use(passport.initialize());
 setUpPassport();
