@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import currencyDecorator from 'utils/currencyDecorator';
+import numberDecorator from 'utils/numberDecorator';
 
 export interface PriceProps {
   children: number;
@@ -14,7 +14,11 @@ function Price({
   currency = '₩',
   separated = false,
 }: PriceProps): React.ReactElement {
-  const convertedCurrency = currencyDecorator(children, currency, separated);
+  const convertedCurrency = numberDecorator({
+    mount: children,
+    currency,
+    separated,
+  });
 
   return (
     <S.Wrapper>

@@ -1,13 +1,13 @@
-import currencyDecorator from '.';
+import numberDecorator from '.';
 
-describe('currencyDecorator', () => {
+describe('numberDecorator', () => {
   // given
   const mount = 16000000;
   const currency = '₩';
   const separated = true;
 
   // when
-  const result = currencyDecorator(mount, currency, separated);
+  const result = numberDecorator({ mount, currency, separated });
 
   it('currency가 표시된다.', () => {
     const currencyIndex = result.indexOf('₩');
@@ -30,7 +30,7 @@ describe('currencyDecorator', () => {
 
   it('separted에 따라 분리하지 않는다', () => {
     // given
-    const nonSeparated = currencyDecorator(mount, currency, false);
+    const nonSeparated = numberDecorator({ mount, currency, separated: false });
 
     // when (non-separated)
     const commas = nonSeparated.split(',');
