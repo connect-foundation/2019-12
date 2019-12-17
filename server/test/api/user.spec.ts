@@ -27,7 +27,7 @@ afterAll(() => {
   client.quit();
 });
 
-describe('Router GET /api/users/tickets', () => {
+describe('GET /api/users/tickets', () => {
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
     await request(app)
@@ -63,7 +63,7 @@ describe('Router GET /api/users/tickets', () => {
   });
 });
 
-describe('Router GET /api/users/events', () => {
+describe('GET /api/users/events', () => {
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
     await request(app)
@@ -95,7 +95,7 @@ describe('Router GET /api/users/events', () => {
   });
 });
 
-describe('Router DELETE /api/users/ticket', () => {
+describe('DELETE /api/users/ticket', () => {
   it('로그인 안했을 경우', async () => {
     const token = await generateJWT(false, 1, 1, '1234@gmail.com');
     await request(app)
