@@ -35,7 +35,7 @@ function DateTimePicker({
   secondPlaceholder = '종료 날짜',
   handleOnChange,
 }: Props): React.ReactElement {
-  const [valid, setValid] = useState<boolean>(false);
+  const [valid, setValid] = useState<boolean>(range ? false : true);
   const [startDate, setStartDate] = useState<Moment | null>(moment());
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<string>('00:00');
@@ -61,9 +61,9 @@ function DateTimePicker({
     let endAt = '';
     if (startDate) startAt = `${startDate.format('YYYY-MM-DD')} ${startTime}`;
     if (endDate) endAt = `${endDate.format('YYYY-MM-DD')} ${endTime}`;
-    setValid(validateDate(moment(startAt), moment(endAt)));
+    if (range) setValid(validateDate(moment(startAt), moment(endAt)));
     if (handleOnChange) handleOnChange({ startAt, endAt, valid });
-  }, [startDate, startTime, endDate, endTime, valid, handleOnChange]);
+  }, [startDate, startTime, endDate, endTime, valid, handleOnChange, range]);
 
   return (
     <S.DateTimePickerContainer>
