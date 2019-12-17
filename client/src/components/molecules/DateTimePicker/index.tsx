@@ -32,10 +32,10 @@ function DateTimePicker({
   handleOnChange,
 }: Props): React.ReactElement {
   const [valid, setValid] = useState<boolean>(range ? false : true);
-  const [startDate, setStartDate] = useState<Moment | null>(moment());
+  const [startDate, setStartDate] = useState<Moment | null>(null);
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<string>('00:00');
-  const [endDate, setEndDate] = useState<Moment | null>(moment());
+  const [endDate, setEndDate] = useState<Moment | null>(null);
   const [focusEndDate, setFocusEndDate] = useState<boolean>(false);
   const [endTime, setEndTime] = useState<string>('00:00');
 
@@ -58,7 +58,8 @@ function DateTimePicker({
     if (startDate) startAt = `${startDate.format('YYYY-MM-DD')} ${startTime}`;
     if (endDate) endAt = `${endDate.format('YYYY-MM-DD')} ${endTime}`;
     if (range) setValid(validateDate(moment(startAt), moment(endAt)));
-    if (handleOnChange) handleOnChange({ startAt, endAt, valid });
+    if (valid && startDate && endDate && handleOnChange)
+      handleOnChange({ startAt, endAt, valid });
   }, [startDate, startTime, endDate, endTime, valid, handleOnChange, range]);
 
   return (
