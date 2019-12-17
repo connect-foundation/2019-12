@@ -8,9 +8,10 @@ interface Props {
 const renderOptions = () =>
   Array.from(Array(24).keys()).map(time => {
     const prefix = time < 12 ? '오전' : '오후';
-    const displayTime = `${prefix} ${time % 12}:00`;
+    const formattedHour = time % 12 >= 10 ? time % 12 : `0${time % 12}`;
+    const displayTime = `${prefix} ${formattedHour}:00`;
     return (
-      <option key={time} value={`${time}:00`}>
+      <option key={time} value={`${formattedHour}:00`}>
         {displayTime}
       </option>
     );
