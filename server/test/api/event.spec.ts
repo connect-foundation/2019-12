@@ -35,33 +35,33 @@ afterAll(() => {
 });
 
 describe('GET /api/events', () => {
-  it('정상적으로 응답', () => {
+  it('정상적으로 응답', async () => {
     const cnt = 2;
-    request(app)
+    const { body } = await request(app)
       .get('/api/events')
       .query({ cnt })
       .expect(OK)
-      .expect('Content-type', /application\/json/)
-      .expect(res => expect(res.body).toHaveLength(cnt));
+      .expect('Content-type', /application\/json/);
+
+    expect(body).toHaveLength(cnt);
   });
 
-  it('startAt 의 값을 포함하여 요청하면, 모든 값이 startAt 보다 작은 값을 응답', () => {
+  it('startAt 의 값을 포함하여 요청하면, 모든 값이 startAt 보다 작은 값을 응답', async () => {
     const startAt = new Date('2018-04-30T10:00:00.000Z');
-    request(app)
+    const { body } = await request(app)
       .get('/api/events')
       .query({ startAt })
       .expect(OK)
-      .expect('Content-type', /application\/json/)
-      .expect(res =>
-        res.body.forEach((e: Event) =>
-          expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
-        ),
-      );
+      .expect('Content-type', /application\/json/);
+
+    body.forEach((e: Event) =>
+      expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
+    );
   });
 
-  it('잘못된 param 으로 요청을 보내면 400 응답', () => {
+  it('잘못된 param 으로 요청을 보내면 400 응답', async () => {
     const wrongId = 'wrong';
-    request(app)
+    await request(app)
       .get('/api/events')
       .query({ lastId: wrongId })
       .expect(BAD_REQUEST)
