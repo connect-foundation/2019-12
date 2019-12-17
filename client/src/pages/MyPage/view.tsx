@@ -21,8 +21,14 @@ import {
 import { BoughtTicketEvent, EventCard, CreatedEvent } from 'types/Data';
 
 function MyPage(): React.ReactElement {
+  const myTicketEventsRoute = /\/my\/tickets\/event\/([0-9]+)/;
+  const tabRoutes = {
+    [ROUTES.MYPAGE_TICKETS]: 1,
+    [ROUTES.MYPAGE_CREATED_EVENTS]: 2,
+  };
+
   function checkBoughtTicketEventRoute(url: string) {
-    const boughtTicketEventRegex = url.match(/\/my\/tickets\/event\/([0-9]+)/);
+    const boughtTicketEventRegex = url.match(myTicketEventsRoute);
     let boughtTicketEventId = 0;
     if (boughtTicketEventRegex && boughtTicketEventRegex[1]) {
       boughtTicketEventId = +boughtTicketEventRegex[1];
@@ -33,16 +39,24 @@ function MyPage(): React.ReactElement {
   function routeByTabIndex(tabIndex: number) {
     const routeActions = [
       () => {
-        setHistoryPath({ index: 0, route: ROUTES.MYPAGE_TICKETS });
+        setHistoryPath({
+          method: 'push',
+          route: ROUTES.MYPAGE_TICKETS,
+        });
+        setCurrentTabIndex(1);
       },
       () => {
-        setHistoryPath({ index: 1, route: ROUTES.MYPAGE_CREATED_EVENTS });
+        setHistoryPath({
+          method: 'push',
+          route: ROUTES.MYPAGE_CREATED_EVENTS,
+        });
+        setCurrentTabIndex(2);
       },
       () => {
         removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
         alert(MY_PAGE_LOGOUT_ALERT);
-        setHistoryPath({ index: 2, route: ROUTES.HOME });
+        setHistoryPath({ method: 'replace', route: ROUTES.HOME });
       },
     ];
 
@@ -91,16 +105,16 @@ function MyPage(): React.ReactElement {
     });
   }
 
-  const boughtTicketEventId = checkBoughtTicketEventRoute(window.location.href);
+  const boughtTicketEventId = checkBoughtTicketEventRoute(
+    window.location.pathname,
+  );
 
-  const routes = {
-    [ROUTES.MYPAGE_TICKETS]: 0,
-    [ROUTES.MYPAGE_CREATED_EVENTS]: 1,
-  };
   const [historyPath, setHistoryPath] = useState({
-    index: routes[window.location.pathname],
+    method: '',
     route: window.location.pathname,
   });
+  const [currentTabIndex, setCurrentTabIndex] = useState(1);
+
   const { state, dispatch: useAction } = useContext(MyPageContext);
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
@@ -122,7 +136,21 @@ function MyPage(): React.ReactElement {
   }, [requestCreatedEvents]);
 
   useEffect(() => {
-    history.push(historyPath.route);
+    const { pathname } = window.location;
+    setCurrentTabIndex(tabRoutes[pathname]);
+  }, [tabRoutes]);
+
+  useEffect(() => {
+    const { route, method } = historyPath;
+    const { pathname } = window.location;
+    if (pathname === historyPath.route) {
+      return;
+    }
+    if (method === 'push') {
+      history.push(route);
+      return;
+    }
+    history.replace(route);
   }, [historyPath, history]);
 
   useEffect(() => {
@@ -164,7 +192,7 @@ function MyPage(): React.ReactElement {
             MY_PAGE_LOGOUT,
           ]}
           onTabClicked={routeByTabIndex}
-          tabIndex={historyPath.index + 1}
+          tabIndex={currentTabIndex}
         />
       }
       ticketsProps={{
