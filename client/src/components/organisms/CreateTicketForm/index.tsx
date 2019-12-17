@@ -1,6 +1,12 @@
 import React from 'react';
 import * as S from './style';
-import { ChkBox, FormItem, Input, DateTimePicker } from 'components';
+import {
+  ChkBox,
+  FormItem,
+  Input,
+  InputOnlyNumber,
+  DateTimePicker,
+} from 'components';
 import {
   TICKET_FORM_NAME,
   TICKET_FORM_NAME_LABEL,
@@ -36,8 +42,14 @@ export interface Props {
   FormInputs: {
     name: ChangableProps;
     desc: ChangableProps;
-    price: ChangableProps; // TODO
-    quantity: ChangableProps; // TODO
+    price: {
+      invalid?: boolean;
+      handleOnChange?: (value: string) => void;
+    };
+    quantity: {
+      invalid?: boolean;
+      handleOnChange?: (value: string) => void;
+    };
     isPublicLeftCnt: {
       invalid?: boolean;
       onClick: (
@@ -45,7 +57,10 @@ export interface Props {
         isChecked?: boolean,
       ) => void;
     };
-    maxCntPerPerson: ChangableProps; // TODO
+    maxCntPerPerson: {
+      invalid?: boolean;
+      handleOnChange?: (value: string) => void;
+    };
     salesDate: {
       invalid?: boolean;
       handleOnChange?: ({
@@ -102,14 +117,18 @@ function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
         labelExplanation={TICKET_FORM_PRICE_LABEL}
         captionContent={TICKET_FORM_PRICE_CAPTION}
       >
-        <Input inputName="ticketPrice" {...FormInputs.price} />
+        <InputOnlyNumber
+          inputName="ticketPrice"
+          prefix="₩"
+          {...FormInputs.price}
+        />
       </FormItem>
       <FormItem
         label={TICKET_FORM_QUANTITY}
         labelExplanation={TICKET_FORM_QUANTITY_LABEL}
         captionContent={TICKET_FORM_QUANTITY_CAPTION}
       >
-        <Input inputName="ticketQuantity" {...FormInputs.quantity} />
+        <InputOnlyNumber inputName="ticketQuantity" {...FormInputs.quantity} />
       </FormItem>
       <FormItem
         label={TICKET_FORM_IS_PUBLIC_LEFT_CNT}
@@ -122,7 +141,7 @@ function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
         labelExplanation={TICKET_FORM_MAX_CNT_PER_PERSON_LABEL}
         captionContent={TICKET_FORM_MAX_CNT_PER_PERSON_CAPTION}
       >
-        <Input
+        <InputOnlyNumber
           inputName="ticketMaxCntPerPerson"
           {...FormInputs.maxCntPerPerson}
         />

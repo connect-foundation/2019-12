@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { Btn, CreateEventForm, CreateTicketForm } from 'components';
 import EventCreateTemplate from './template';
-import { EventCreateAction } from './store';
+import { EventCreateAction, EventCreateState } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
-import { validateEmptyAndExceedMaximumLength } from 'utils/validateInput';
+import {
+  validateEmptyAndExceedMaximumLength,
+  validateIsSameOrLower,
+  validateIsNotEmptyString,
+} from 'utils/validateInput';
 import { SearchMapResult } from 'types/Data';
 
 function EventCreateView(): React.ReactElement {
@@ -14,7 +18,7 @@ function EventCreateView(): React.ReactElement {
         _e: React.MouseEvent<HTMLDivElement, MouseEvent>,
         isChecked?: boolean,
       ) => {
-        if (isChecked === true || isChecked === false) {
+        if (typeof isChecked === 'boolean') {
           dispatcher({
             type: 'isPublic',
             value: {
@@ -110,8 +114,8 @@ function EventCreateView(): React.ReactElement {
         dispatcher({
           type: 'eventDesc',
           value: {
-            valid: value.length !== 0,
-            value: value,
+            valid: validateIsNotEmptyString(value),
+            value,
           },
         });
       },
@@ -126,10 +130,26 @@ function EventCreateView(): React.ReactElement {
       onChange: () => {},
     },
     price: {
-      onChange: () => {},
+      handleOnChange: (value: string) => {
+        dispatcher({
+          type: 'ticketPrice',
+          value: {
+            valid: validateIsNotEmptyString(value),
+            value: value,
+          },
+        });
+      },
     },
     quantity: {
-      onChange: () => {},
+      handleOnChange: (value: string) => {
+        dispatcher({
+          type: 'ticketQuantity',
+          value: {
+            valid: validateIsNotEmptyString(value),
+            value: value,
+          },
+        });
+      },
     },
     isPublicLeftCnt: {
       onClick: (
@@ -148,7 +168,16 @@ function EventCreateView(): React.ReactElement {
       },
     },
     maxCntPerPerson: {
-      onChange: () => {},
+      handleOnChange: (value: string) => {
+        dispatcher({
+          type: 'ticketMaxCntPerPerson',
+          value: {
+            valid: validateIsNotEmptyString(value),
+            // && validateIsSameOrLower(+value, +ticketQuantity),
+            value,
+          },
+        });
+      },
     },
     salesDate: {
       handleOnChange: ({

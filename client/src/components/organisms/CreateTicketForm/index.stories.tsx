@@ -22,11 +22,11 @@ export const index: React.FC = () => {
         },
         price: {
           invalid: boolean('ticketPrice', false),
-          onChange: action('ticketPrice onChange'),
+          handleOnChange: action('ticketPrice handleOnChange'),
         },
         quantity: {
           invalid: boolean('ticketQuantity', false),
-          onChange: action('ticketQuantity onChange'),
+          handleOnChange: action('ticketQuantity handleOnChange'),
         },
         isPublicLeftCnt: {
           invalid: boolean('ticketIsPublicLeftCnt', false),
@@ -34,7 +34,7 @@ export const index: React.FC = () => {
         },
         maxCntPerPerson: {
           invalid: boolean('ticketMaxCntPerPerson', false),
-          onChange: action('ticketMaxCntPerPerson onChange'),
+          handleOnChange: action('ticketMaxCntPerPerson handleOnChange'),
         },
         salesDate: {
           invalid: boolean('ticketSalesDate', false),

@@ -9,3 +9,9 @@ export function validateName(name: string, type = false): boolean {
 export function validateEmptyAndExceedMaximumLength(title: string): boolean {
   return /^.{1,30}$/.test(title);
 }
+export function validateIsSameOrLower(a: number, b: number): boolean {
+  return a <= b;
+}
+export function validateIsNotEmptyString(value: string): boolean {
+  return value.length !== 0;
+}
