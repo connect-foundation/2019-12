@@ -31,7 +31,7 @@ function DateTimePicker({
   secondLabelName = '종료',
   handleOnChange,
 }: Props): React.ReactElement {
-  const [valid, setValid] = useState<boolean>(range ? false : true);
+  const [valid, setValid] = useState<boolean>(true);
   const [startDate, setStartDate] = useState<Moment | null>(moment());
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<string>('00:00');
