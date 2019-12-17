@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { BAD_REQUEST, NO_CONTENT } from 'http-status';
-import { getUserTicketsByTicketId } from 'services';
+import { getUserTicketsByTicketId } from 'services/userTickets';
 
 export default async function(req: Request, res: Response, next: NextFunction) {
   if (!req.event || !req.user) throw new Error('middleware error');

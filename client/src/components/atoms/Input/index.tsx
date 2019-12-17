@@ -21,7 +21,7 @@ export interface Props {
 }
 
 function Input({ inputName, ...props }: Props): React.ReactElement {
-  return <S.Input name={inputName} {...props} />;
+  return <S.Input name={inputName} {...props} autoComplete="off" />;
 }
 
 export default Input;

@@ -49,7 +49,6 @@ function checkBoughtTicketEventRoute(url: string) {
 
 function MyPage(): React.ReactElement {
   // const { templateName } = useParams();
-
   const boughtTicketEventId = checkBoughtTicketEventRoute(window.location.href);
   const defaultReplace = boughtTicketEventId
     ? `${ROUTES.MYPAGE_TICKETS_EVENT}/${boughtTicketEventId}`
@@ -66,9 +65,9 @@ function MyPage(): React.ReactElement {
 
   const [state, dispatch] = useReducer<Reducer>(MyPageReducer, defaultState);
 
-  // const history = useHistory();
+  const history = useHistory();
   const [, , removeCookie] = useCookies(['cookie-name']);
-  const { accountDispatcher } = useContext(UserAccountAction);
+  const { accountDispatcher, setLoginState } = useContext(UserAccountAction);
 
   const routeByTabIndex = (tabIndex: number) => {
     const routeActions = [
@@ -81,7 +80,9 @@ function MyPage(): React.ReactElement {
       () => {
         removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
+        setLoginState(true);
         alert('로그아웃 되었습니다.');
+        history.push('/');
         setRequestReplace(ROUTES.HOME);
       },
     ];

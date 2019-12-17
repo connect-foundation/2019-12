@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Viewer from 'tui-editor/dist/tui-editor-Viewer';
 import 'tui-editor/dist/tui-editor-contents.css';
 import 'highlight.js/styles/github.css';
@@ -8,14 +8,17 @@ export interface TuiViewerProps {
 }
 
 function TuiViewer({ content }: TuiViewerProps): React.ReactElement {
+  const tuiViewerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    new Viewer({
-      el: document.getElementById('tui-viewer')!,
-      initialValue: content,
-    });
+    const tuiViewerElement = tuiViewerRef.current;
+    if (tuiViewerElement)
+      new Viewer({
+        el: tuiViewerElement,
+        initialValue: content,
+      });
   }, [content]);
 
-  return <div id="tui-viewer"></div>;
+  return <div ref={tuiViewerRef}></div>;
 }
 
 export default TuiViewer;
