@@ -23,6 +23,8 @@ import {
 import GlobalStoreProvider from 'stores';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
 
+const { REACT_APP_TEST_UID_TOKEN } = process.env;
+
 const App: React.FC = () => {
   return (
     <GlobalStoreProvider>
@@ -70,6 +72,12 @@ function PrivateRoute({
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
+
+  if (cookies.UID === `${REACT_APP_TEST_UID_TOKEN}`) {
+    return (
+      <Route {...rest} render={(props: any) => <TargetPage {...props} />} />
+    );
+  }
 
   return (
     <Route
