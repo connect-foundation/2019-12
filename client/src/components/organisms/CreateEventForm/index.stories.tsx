@@ -16,32 +16,32 @@ export const index: React.FC = () => {
           onClick: action('isPublic onClick'),
         },
         title: {
-          invalid: boolean('eventTitle', false),
-          onChange: action('eventTitle onChange'),
+          invalid: boolean('title', false),
+          onChange: action('title onChange'),
         },
         date: {
-          invalid: boolean('eventDate', false),
-          handleOnChange: action('eventDate onChange'),
+          invalid: boolean('date', false),
+          handleOnChange: action('date onChange'),
         },
         place: {
-          invalid: boolean('eventPlace', false),
-          onChange: action('eventPlace onChange'),
+          invalid: boolean('place', false),
+          onChange: action('place onChange'),
         },
         address: {
-          invalid: boolean('eventAddress', false),
-          handleOnChange: action('eventAddress onChange'),
+          invalid: boolean('address', false),
+          handleOnChange: action('address onChange'),
         },
         placeDesc: {
-          invalid: boolean('eventPlaceDesc', false),
-          onChange: action('eventPlaceDesc onChange'),
+          invalid: boolean('placeDesc', false),
+          onChange: action('placeDesc onChange'),
         },
         mainImg: {
-          invalid: boolean('eventMainImg', false),
-          onChange: action('eventMainImg onChange'),
+          invalid: boolean('mainImg', false),
+          onChange: action('mainImg onChange'),
         },
         desc: {
-          invalid: boolean('eventDesc', false),
-          onChange: action('eventDesc onChange'),
+          invalid: boolean('desc', false),
+          onChange: action('desc onChange'),
         },
       }}
     />
