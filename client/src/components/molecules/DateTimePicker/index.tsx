@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import moment, { Moment } from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
@@ -32,13 +32,13 @@ function DateTimePicker({
   handleOnChange,
 }: Props): React.ReactElement {
   const [valid, setValid] = useState<boolean>(range ? false : true);
-  const [startDate, setStartDate] = useState<Moment | null>(null);
+  const [startDate, setStartDate] = useState<Moment | null>(moment());
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<string>('00:00');
-  const [endDate, setEndDate] = useState<Moment | null>(null);
+  const [endDate, setEndDate] = useState<Moment | null>(moment());
   const [focusEndDate, setFocusEndDate] = useState<boolean>(false);
   const [endTime, setEndTime] = useState<string>('00:00');
-
+  const isMount = useRef(true);
   const handleOnFocusChange = (target: string, focused: boolean | null) => {
     if (focused !== null) {
       switch (target) {
@@ -53,13 +53,16 @@ function DateTimePicker({
   };
 
   useEffect(() => {
+    if (isMount.current) {
+      isMount.current = false;
+      return;
+    }
     let startAt = '';
     let endAt = '';
     if (startDate) startAt = `${startDate.format('YYYY-MM-DD')} ${startTime}`;
     if (endDate) endAt = `${endDate.format('YYYY-MM-DD')} ${endTime}`;
     if (range) setValid(validateDate(moment(startAt), moment(endAt)));
-    if (valid && startDate && endDate && handleOnChange)
-      handleOnChange({ startAt, endAt, valid });
+    if (valid && handleOnChange) handleOnChange({ startAt, endAt, valid });
   }, [startDate, startTime, endDate, endTime, valid, handleOnChange, range]);
 
   return (

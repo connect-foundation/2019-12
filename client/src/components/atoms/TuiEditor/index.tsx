@@ -14,6 +14,7 @@ function TuiEditor({
 }: TuiEditorProps): React.ReactElement {
   const [content, setContent] = useState('');
   const tuiEditorRef = useRef<HTMLDivElement>(null);
+  const isMount = useRef(true);
   useEffect(() => {
     const tuiEditorElement = tuiEditorRef.current;
     if (tuiEditorElement) {
@@ -31,6 +32,10 @@ function TuiEditor({
   }, [placeholder]);
 
   useEffect(() => {
+    if (isMount.current) {
+      isMount.current = false;
+      return;
+    }
     if (onChange) onChange(content);
   }, [content, onChange]);
 
