@@ -5,7 +5,6 @@ import { EventAction, TicketAction } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
 import {
   validateEmptyAndExceedMaximumLength,
-  validateIsSameOrLower,
   validateIsNotEmptyString,
 } from 'utils/validateInput';
 import { SearchMapResult } from 'types/Data';
@@ -100,13 +99,13 @@ function EventCreateView(): React.ReactElement {
       },
     },
     mainImg: {
-      onChange: (data?: string) => {
-        if (!data) return;
+      onChange: (data?: string, file?: File) => {
+        if (!file || !data) return;
         eventFormDispatcher({
           type: 'mainImg',
           value: {
             valid: true,
-            value: data,
+            value: file,
           },
         });
       },
