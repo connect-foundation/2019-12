@@ -10,9 +10,7 @@ import * as S from './style';
 interface Props {
   range: boolean;
   firstLabelName: string;
-  firstPlaceholder: string;
   secondLabelName?: string;
-  secondPlaceholder?: string;
   handleOnChange?: ({
     startAt,
     endAt,
@@ -30,9 +28,7 @@ const validateDate = (startDate: Moment, endDate: Moment) =>
 function DateTimePicker({
   range,
   firstLabelName,
-  firstPlaceholder,
   secondLabelName = '종료',
-  secondPlaceholder = '종료 날짜',
   handleOnChange,
 }: Props): React.ReactElement {
   const [valid, setValid] = useState<boolean>(range ? false : true);
@@ -81,7 +77,6 @@ function DateTimePicker({
                 handleOnFocusChange('startDate', focused)
               }
               id="firstDatePicker"
-              placeholder={firstPlaceholder}
               keepFocusOnInput={false}
               keepOpenOnDateSelect={false}
               numberOfMonths={1}
@@ -107,7 +102,6 @@ function DateTimePicker({
                   handleOnFocusChange('endDate', focused)
                 }
                 id="secondsDatePicker"
-                placeholder={secondPlaceholder}
                 keepFocusOnInput={false}
                 keepOpenOnDateSelect={false}
                 numberOfMonths={1}
