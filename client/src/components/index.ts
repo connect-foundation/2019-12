@@ -5,6 +5,7 @@ export { default as Icon } from './atoms/Icon';
 export { default as Img } from './atoms/Img';
 export { default as ImgSelector } from './atoms/ImgSelector';
 export { default as Input } from './atoms/Input';
+export { default as InputOnlyNumber } from './atoms/InputOnlyNumber';
 export { default as Label } from './atoms/Label';
 export { default as Price } from './atoms/Price';
 export { default as Loading } from './atoms/Loading';
