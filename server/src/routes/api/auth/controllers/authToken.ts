@@ -7,6 +7,7 @@ export const authToken = async (
   next: NextFunction,
 ) => {
   const token = req.cookies.UID;
+  if (!token) return res.sendStatus(401);
   try {
     const { exist, id, googleId, email } = await verifyJWT(token);
     res.send({
