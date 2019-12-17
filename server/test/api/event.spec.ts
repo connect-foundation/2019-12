@@ -34,45 +34,43 @@ afterAll(() => {
   client.quit();
 });
 
-describe('Router / Events', () => {
-  it('GET /api/events', async () => {
-    await Promise.all([
-      () => {
-        const cnt = 2;
-        request(app)
-          .get('/api/events')
-          .query({ cnt })
-          .expect(OK)
-          .expect('Content-type', /application\/json/)
-          .expect(res => expect(res.body).toHaveLength(cnt));
-      },
-
-      () => {
-        const startAt = new Date('2018-04-30T10:00:00.000Z');
-        request(app)
-          .get('/api/events')
-          .query({ startAt })
-          .expect(OK)
-          .expect('Content-type', /application\/json/)
-          .expect(res =>
-            res.body.forEach((e: Event) =>
-              expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
-            ),
-          );
-      },
-
-      () => {
-        const wrongId = 'wrong';
-        request(app)
-          .get('/api/events')
-          .query({ lastId: wrongId })
-          .expect(400)
-          .expect('Content-type', /application\/json/);
-      },
-    ]);
+describe('GET /api/events', () => {
+  it('정상적으로 응답', () => {
+    const cnt = 2;
+    request(app)
+      .get('/api/events')
+      .query({ cnt })
+      .expect(OK)
+      .expect('Content-type', /application\/json/)
+      .expect(res => expect(res.body).toHaveLength(cnt));
   });
 
-  it('GET /api/events/:eventId - 정상적으로 응답', async () => {
+  it('startAt 의 값을 포함하여 요청하면, 모든 값이 startAt 보다 작은 값을 응답', () => {
+    const startAt = new Date('2018-04-30T10:00:00.000Z');
+    request(app)
+      .get('/api/events')
+      .query({ startAt })
+      .expect(OK)
+      .expect('Content-type', /application\/json/)
+      .expect(res =>
+        res.body.forEach((e: Event) =>
+          expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
+        ),
+      );
+  });
+
+  it('잘못된 param 으로 요청을 보내면 400 응답', () => {
+    const wrongId = 'wrong';
+    request(app)
+      .get('/api/events')
+      .query({ lastId: wrongId })
+      .expect(BAD_REQUEST)
+      .expect('Content-type', /application\/json/);
+  });
+});
+
+describe('GET /api/events/:eventId', () => {
+  it('정상적으로 응답', async () => {
     const eventId = 5;
 
     const { body } = await request(app)
@@ -85,7 +83,7 @@ describe('Router / Events', () => {
     expect(body.ticketType).toHaveProperty('price', 10000);
   });
 
-  it('GET /api/events/:eventId - 없는 아이디 요청은 404 응답', async () => {
+  it('없는 아이디 요청은 404 응답', async () => {
     const eventId = 'wrong';
     await request(app)
       .get(`/api/events/${eventId}`)
