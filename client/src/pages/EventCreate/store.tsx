@@ -20,49 +20,31 @@ const validateStates = (
   Object.values(eventFormStates).every(state => state.valid) &&
   Object.values(ticketFormStates).every(state => state.valid);
 
+const convertKeyWithObject = (key: string, object?: string) =>
+  object ? `${object}[${key}]` : key;
+const appendStatesToFormData = (
+  formData: FormData,
+  states: EventFormState | TicketFormState,
+  object?: string,
+) => {
+  for (const [key, state] of Object.entries(states)) {
+    const stateValue = state.value;
+    if (key === 'mainImg' || typeof stateValue !== 'object')
+      formData.append(convertKeyWithObject(key, object), stateValue);
+    else
+      for (const [key, value] of Object.entries<string>(stateValue))
+        formData.append(convertKeyWithObject(key, object), value);
+  }
+};
+
 const createFormData = (
   eventFormStates: EventFormState,
   ticketFormStates: TicketFormState,
-) => {
-  const form: any = {};
-  const ticket: any = {};
-  for (const [key, state] of Object.entries(eventFormStates)) {
-    if (typeof state.value !== 'object') form[key] = state.value;
-    else {
-      for (const [key, value] of Object.entries(state.value)) {
-        form[key] = value;
-      }
-    }
-  }
-  for (const [key, state] of Object.entries(ticketFormStates)) {
-    if (typeof state.value !== 'object') ticket[key] = state.value;
-    else {
-      for (const [key, value] of Object.entries(state.value)) {
-        ticket[key] = value;
-      }
-    }
-  }
-  console.log({ ...form, ticket });
-  // isPublic: true,
-  // title: '이벤트의 제목',
-  // startAt: '2200-12-15 10:00:00',
-  // endAt: '2201-05-01 13:00:00',
-  // place: '패스트파이브 강남 4호점',
-  // address: '서울시 강남구',
-  // placeDesc: '주차 불가',
-  // desc: '설명',
-  // latitude: 37.5662952,
-  // longitude: 126.9779451,
-  // 'ticket[name]': '티켓 이름',
-  // 'ticket[desc]': '티켓 설명',
-  // 'ticket[quantity]': 30,
-  // 'ticket[isPublicLeftCnt]': false,
-  // 'ticket[maxCntPerPerson]': 10,
-  // 'ticket[price]': 10000,
-  // 'ticket[salesStartAt]': '2200-12-15 10:00:00',
-  // 'ticket[salesEndAt]': '2200-12-17 13:00:00',
-  // 'ticket[refundEndAt]': '2200-12-20 13:00:00',
-  // console.log(formData);
+): FormData => {
+  const formData = new FormData();
+  appendStatesToFormData(formData, eventFormStates);
+  appendStatesToFormData(formData, ticketFormStates, 'ticket');
+  return formData;
 };
 
 const EventFormDefaultState: EventFormState = {
@@ -98,7 +80,7 @@ const EventFormDefaultState: EventFormState = {
   },
   mainImg: {
     valid: false,
-    value: '',
+    value: new File([], 'maiImg'),
   },
   desc: {
     valid: false,
@@ -144,6 +126,7 @@ const TicketFormDefaultState: TicketFormState = {
     },
   },
 };
+
 export const EventState = createContext<EventFormState>(EventFormDefaultState);
 export const EventAction = createContext<
   Dispatch<ActionParams<EventFormState>>
@@ -155,6 +138,14 @@ export const TicketAction = createContext<
   Dispatch<ActionParams<TicketFormState>>
 >(() => {});
 
+async function send(formData: FormData) {
+  try {
+    const { data } = await createEvent(formData);
+  } catch (err) {
+    console.log('fail');
+    console.dir(err);
+  }
+}
 function StoreProvider({ children }: { children: React.ReactElement }) {
   const [eventFormStates, eventFormDispatcher] = useReducer<
     UseStateReducer<EventFormState>
@@ -162,20 +153,21 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   const [ticketFormStates, ticketFormDispatcher] = useReducer<
     UseStateReducer<TicketFormState>
   >(useStateReducer, TicketFormDefaultState);
-  // const formValid = validateStates(states);
+  const formValid = validateStates(eventFormStates, ticketFormStates);
 
   // const { submit } = states;
 
   useEffect(() => {
     console.log('상태 변경!');
-    // console.log('eventFormStates', eventFormStates);
-    // console.log('ticketFormStates', ticketFormStates);
     console.log(
       '유효성 -> ',
       validateStates(eventFormStates, ticketFormStates),
     );
-    createFormData(eventFormStates, ticketFormStates);
-  }, [eventFormStates, ticketFormStates]);
+    if (formValid) {
+      const formData = createFormData(eventFormStates, ticketFormStates);
+      send(formData);
+    }
+  }, [eventFormStates, ticketFormStates, formValid]);
 
   // useEffect(() => {
   //   const createdFormData = createFormData(states);
