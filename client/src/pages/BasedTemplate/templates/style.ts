@@ -23,12 +23,14 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 9vh;
+  max-height: 10rem;
   ${commonStyle}
 `;
 
 export const FooterWrapper = styled.div`
   ${commonStyle}
   height: 21vh;
+  max-height: 20rem;
 `;
 
 export const InternalServerError = styled(ImgBtn)`

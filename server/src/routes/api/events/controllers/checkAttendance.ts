@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { toggleUserAttendance } from 'services';
+import { toggleUserAttendance } from 'services/userTickets';
 import { NOT_FOUND, BAD_REQUEST } from 'http-status';
 
 export default async (req: Request, res: Response, next: NextFunction) => {

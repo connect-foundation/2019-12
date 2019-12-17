@@ -1,6 +1,6 @@
 import { checkSchema } from 'express-validator';
 import { validatePhoneNumber, validateName } from 'utils/validateSignUpForms';
-import { getUserById } from 'services';
+import { getUserById } from 'services/users';
 
 const validateOptions = checkSchema({
   id: {
