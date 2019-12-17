@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Router GET /api/users/events 유저의 이벤트를 불러왔고, 데이터가 있을 경우 200 1`] = `
+exports[`GET /api/users/events 유저의 이벤트를 불러왔고, 데이터가 있을 경우 200 1`] = `
 Array [
   Object {
     "address": "경기 성남시 분당구 분당내곡로 117 크래프톤타워 6층",
@@ -962,7 +962,7 @@ Array [
 ]
 `;
 
-exports[`Router GET /api/users/tickets 유저 데이터를 불러왔고, 데이터가 있을 경우 1`] = `
+exports[`GET /api/users/tickets 유저 데이터를 불러왔고, 데이터가 있을 경우 1`] = `
 Object {
   "address": "서울특별시 강남구 역삼동 736-40 아름다운 빌딩 6층 <복합문화공간 위플레이스>",
   "endAt": "2018-03-09T12:30:00.000Z",
@@ -990,7 +990,7 @@ Object {
 }
 `;
 
-exports[`Router GET /api/users/tickets 유저 데이터를 불러왔고, 데이터가 있을 경우 2`] = `
+exports[`GET /api/users/tickets 유저 데이터를 불러왔고, 데이터가 있을 경우 2`] = `
 Object {
   "id": 1,
   "isAttendance": true,
