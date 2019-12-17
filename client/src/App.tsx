@@ -24,6 +24,7 @@ import {
 } from 'pages';
 import GlobalStoreProvider from 'stores';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
+import { defaultAccountState } from 'stores/accountStore/reducer';
 
 const { REACT_APP_TEST_UID_TOKEN } = process.env;
 
@@ -68,17 +69,20 @@ function PrivateRoute({
   ...rest
 }: any): React.ReactElement {
   const [cookies] = useCookies(['UID']);
-  const { isLogin } = useContext(UserAccountState);
+  const accountState = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
   const [isLoginCheck, setIsLoginCheck] = useState(false);
+  //최초에 실행되는 것을 막기 위한 상태이며, 지우면 안됩니다.
+  const [blockFirst, setIsBlocked] = useState(false);
 
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
 
   useEffect(() => {
-    setIsLoginCheck(true);
-  }, [isLogin]);
+    if (!blockFirst) return setIsBlocked(true);
+    if (defaultAccountState !== accountState) setIsLoginCheck(true);
+  }, [accountState, blockFirst]);
 
   if (cookies.UID === `${REACT_APP_TEST_UID_TOKEN}`) {
     return (
@@ -92,7 +96,7 @@ function PrivateRoute({
       render={(props: any) => {
         return !isLoginCheck ? (
           <Loading />
-        ) : isLogin ? (
+        ) : accountState.isLogin ? (
           <TargetPage {...props} />
         ) : (
           <Redirect to="/login" />
