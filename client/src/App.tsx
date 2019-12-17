@@ -25,7 +25,7 @@ import {
 import GlobalStoreProvider from 'stores';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
 import { defaultAccountState } from 'stores/accountStore/reducer';
-
+import { useIsMount } from 'hooks';
 const { REACT_APP_TEST_UID_TOKEN } = process.env;
 
 const App: React.FC = () => {
@@ -72,17 +72,14 @@ function PrivateRoute({
   const accountState = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
   const [isLoginCheck, setIsLoginCheck] = useState(false);
-  //최초에 실행되는 것을 막기 위한 상태이며, 지우면 안됩니다.
-  const [blockFirst, setIsBlocked] = useState(false);
 
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
 
-  useEffect(() => {
-    if (!blockFirst) return setIsBlocked(true);
+  useIsMount(() => {
     if (defaultAccountState !== accountState) setIsLoginCheck(true);
-  }, [accountState, blockFirst]);
+  }, accountState);
 
   if (cookies.UID === `${REACT_APP_TEST_UID_TOKEN}`) {
     return (
