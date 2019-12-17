@@ -16,6 +16,7 @@ describe('DB seed 데이터가 유효', () => {
     //then
     expect(users).toMatchSnapshot();
   });
+
   it('Event 데이터가 유효', async () => {
     //given, when
     const events = await Event.findAll({
@@ -24,6 +25,7 @@ describe('DB seed 데이터가 유효', () => {
     //then
     expect(events).toMatchSnapshot();
   });
+
   it('TicketType 데이터가 유효', async () => {
     //given, when
     const tickettypes = await TicketType.findAll({
@@ -32,6 +34,7 @@ describe('DB seed 데이터가 유효', () => {
     //then
     expect(tickettypes).toMatchSnapshot();
   });
+
   it('UserTicket 데이터가 유효', async () => {
     //given, when
     const ordertickets = await UserTicket.findAll({
