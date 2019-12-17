@@ -7,6 +7,7 @@ import {
   TuiEditor,
   SearchMap,
   ImgSelector,
+  DateTimePicker,
 } from 'components';
 import { SearchMapResult } from 'types/Data';
 
@@ -52,7 +53,18 @@ export interface Props {
   FormInputs: {
     isPublic: ClickableProps;
     title: ChangableProps;
-    date: ChangableProps;
+    date: {
+      invalid?: boolean;
+      handleOnChange?: ({
+        startAt,
+        endAt,
+        valid,
+      }: {
+        startAt: string;
+        endAt?: string;
+        valid: boolean;
+      }) => void;
+    };
     place: ChangableProps;
     address: {
       invalid?: boolean;
@@ -98,7 +110,12 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
         label={EVENT_FORM_DATE}
         labelExplanation={EVENT_FORM_DATE_LABEL}
       >
-        <Input inputName="eventDate" {...FormInputs.date} />
+        <DateTimePicker
+          range={true}
+          firstLabelName="시작"
+          secondLabelName="종료"
+          {...FormInputs.date}
+        />
       </FormItem>
       <FormItem
         label={EVENT_FORM_PLACE}

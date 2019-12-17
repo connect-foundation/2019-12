@@ -22,7 +22,10 @@ interface FormState<T> {
 export interface EventCreateFormState {
   isPublic: FormState<boolean>;
   eventTitle: FormState<string>;
-  eventDate: FormState<string>;
+  eventDate: FormState<{
+    startAt: string;
+    endAt?: string;
+  }>;
   eventPlace: FormState<string>;
   eventAddress: FormState<SearchMapResult>;
   eventPlaceDesc: FormState<string>;

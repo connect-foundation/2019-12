@@ -38,8 +38,25 @@ function EventCreateView(): React.ReactElement {
       },
     },
     date: {
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+      handleOnChange: ({
+        startAt,
+        endAt,
+        valid,
+      }: {
+        startAt: string;
+        endAt?: string;
+        valid: boolean;
+      }) => {
+        dispatcher({
+          type: 'eventDate',
+          value: {
+            valid,
+            value: {
+              startAt,
+              endAt,
+            },
+          },
+        });
       },
     },
     place: {

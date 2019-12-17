@@ -21,7 +21,7 @@ export const index: React.FC = () => {
         },
         date: {
           invalid: boolean('eventDate', false),
-          onChange: action('eventDate onChange'),
+          handleOnChange: action('eventDate onChange'),
         },
         place: {
           invalid: boolean('eventPlace', false),

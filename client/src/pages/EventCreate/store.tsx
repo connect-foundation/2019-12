@@ -27,7 +27,9 @@ const defaultState: EventCreateFormState = {
   },
   eventDate: {
     valid: false,
-    value: '',
+    value: {
+      startAt: '',
+    },
   },
   eventPlace: {
     valid: false,
