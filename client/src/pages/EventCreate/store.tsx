@@ -94,12 +94,9 @@ const defaultState: EventCreateFormState = {
   submit: false,
 };
 
-const validateStates = (states: EventCreateFormState) => {
-  return false;
-  // Object.keys(states).every(key => {
-  //   return states[key].valid;
-  // });
-};
+const validateStates = (states: EventCreateFormState) =>
+  Object.values(states).every(state => state.valid);
+
 const createFormData = (states: EventCreateFormState) => {
   const formData = new FormData();
   for (const [key, state] of Object.entries(states)) {
