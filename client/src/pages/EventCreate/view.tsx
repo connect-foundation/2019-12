@@ -78,7 +78,15 @@ function EventCreateView(): React.ReactElement {
       },
     },
     mainImg: {
-      onChange: () => {},
+      onChange: (data?: string, file?: File) => {
+        dispatcher({
+          type: 'eventMainImg',
+          value: {
+            valid: true,
+            value: { data, file },
+          },
+        });
+      },
     },
     desc: {
       onChange: () => {},

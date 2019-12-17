@@ -39,7 +39,7 @@ const defaultState: EventCreateFormState = {
   },
   eventMainImg: {
     valid: false,
-    value: '',
+    value: {},
   },
   eventDesc: {
     valid: false,

@@ -1,6 +1,13 @@
 import React from 'react';
 import * as S from './style';
-import { ChkBox, FormItem, Input, TuiEditor, SearchMap } from 'components';
+import {
+  ChkBox,
+  FormItem,
+  Input,
+  TuiEditor,
+  SearchMap,
+  ImgSelector,
+} from 'components';
 import { SearchMapResult } from 'types/Data';
 
 import {
@@ -56,7 +63,10 @@ export interface Props {
       }: SearchMapResult) => void;
     };
     placeDesc: ChangableProps;
-    mainImg: ChangableProps;
+    mainImg: {
+      invalid?: boolean;
+      onChange: (data?: string, file?: File) => void;
+    };
     desc: ChangableProps;
   };
 }
@@ -119,7 +129,7 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
         label={EVENT_FORM_MAIN_IMG}
         labelExplanation={EVENT_FORM_MAIN_IMG_LABEL}
       >
-        <Input inputName="eventMainImg" {...FormInputs.mainImg} />
+        <ImgSelector {...FormInputs.mainImg} />
       </FormItem>
       {/* <FormItem
         label={EVENT_FORM_DESC}

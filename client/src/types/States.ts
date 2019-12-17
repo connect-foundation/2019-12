@@ -21,7 +21,10 @@ export interface EventCreateFormState {
   eventPlace: FormState<string>;
   eventAddress: FormState<SearchMapResult>;
   eventPlaceDesc: FormState<string>;
-  eventMainImg: FormState<string>;
+  eventMainImg: FormState<{
+    data?: string;
+    file?: File;
+  }>;
   eventDesc: FormState<string>;
   ticketName: FormState<string>;
   ticketDesc: FormState<string>;
