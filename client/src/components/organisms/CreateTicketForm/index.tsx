@@ -32,18 +32,20 @@ interface ChangableProps {
   invalid?: boolean;
   onChange: () => void;
 }
-interface ClickableProps {
-  invalid?: boolean;
-  onClick: () => void;
-}
 export interface Props {
   FormInputs: {
     name: ChangableProps;
     desc: ChangableProps;
-    price: ChangableProps;
-    quantity: ChangableProps;
-    isPublicLeftCnt: ClickableProps;
-    maxCntPerPerson: ChangableProps;
+    price: ChangableProps; // TODO
+    quantity: ChangableProps; // TODO
+    isPublicLeftCnt: {
+      invalid?: boolean;
+      onClick: (
+        e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        isChecked?: boolean,
+      ) => void;
+    };
+    maxCntPerPerson: ChangableProps; // TODO
     salesDate: {
       invalid?: boolean;
       handleOnChange?: ({

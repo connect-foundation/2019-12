@@ -132,7 +132,20 @@ function EventCreateView(): React.ReactElement {
       onChange: () => {},
     },
     isPublicLeftCnt: {
-      onClick: () => {},
+      onClick: (
+        _e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        isChecked?: boolean,
+      ) => {
+        if (isChecked === true || isChecked === false) {
+          dispatcher({
+            type: 'ticketIsPublicLeftCnt',
+            value: {
+              valid: true,
+              value: isChecked,
+            },
+          });
+        }
+      },
     },
     maxCntPerPerson: {
       onChange: () => {},

@@ -41,17 +41,16 @@ interface ChangableProps {
   invalid?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-interface ClickableProps {
-  invalid?: boolean;
-  onClick: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    isChecked?: boolean,
-  ) => void;
-}
 
 export interface Props {
   FormInputs: {
-    isPublic: ClickableProps;
+    isPublic: {
+      invalid?: boolean;
+      onClick: (
+        e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        isChecked?: boolean,
+      ) => void;
+    };
     title: ChangableProps;
     date: {
       invalid?: boolean;
