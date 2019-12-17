@@ -54,3 +54,9 @@ export const MY_PAGE_LNB_MY_TICKETS = '내 티켓';
 export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';
 export const MY_PAGE_LOGOUT = '로그아웃';
 export const MY_PAGE_LOGOUT_ALERT = '로그아웃 되었습니다.';
+
+export const BOUGHT_TICKET_EVENT_TITLE = '보유 티켓';
+export const BOUGHT_TICKET_EVENT_TITLE_CAPTION = '현재 구매한 티켓 목록입니다.';
+
+export const HISTORY_METHOD_PUSH = 'PUSH';
+export const HISTORY_METHOD_REPLACE = 'REPLACE';
