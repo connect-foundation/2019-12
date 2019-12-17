@@ -23,7 +23,7 @@ interface Props {
 }
 
 const validateDate = (startDate: Moment, endDate: Moment) =>
-  startDate && endDate && startDate.isBefore(endDate);
+  startDate.isSameOrBefore(endDate);
 
 function DateTimePicker({
   range,
