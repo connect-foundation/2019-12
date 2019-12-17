@@ -95,7 +95,9 @@ const defaultState: EventCreateFormState = {
 };
 
 const validateStates = (states: EventCreateFormState) =>
-  Object.values(states).every(state => state.valid);
+  Object.values(states).every((state, index, arr) =>
+    index === arr.length - 1 ? true : state.valid,
+  );
 
 const createFormData = (states: EventCreateFormState) => {
   const formData = new FormData();
@@ -127,10 +129,14 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
     console.log(states);
   }, [states]);
 
-  // useEffect(() => {
-  // if (!formValid) return alert('입력값을 확인해주세요.');
-  // const createdFormData = createFormData(states);
-  // }, [formValid, submit]);
+  useEffect(() => {
+    console.log('formValid', formValid);
+    if (!formValid) {
+      dispatcher({ type: 'submit', value: false });
+      return alert('입력값을 확인해주세요.');
+    }
+    // const createdFormData = createFormData(states);
+  }, [formValid, submit]);
 
   return (
     <EventCreateState.Provider value={states}>

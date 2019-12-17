@@ -124,10 +124,28 @@ function EventCreateView(): React.ReactElement {
 
   const CreateTicketInputs = {
     name: {
-      onChange: () => {},
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        dispatcher({
+          type: 'ticketName',
+          value: {
+            valid: validateEmptyAndExceedMaximumLength(value),
+            value,
+          },
+        });
+      },
     },
     desc: {
-      onChange: () => {},
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        dispatcher({
+          type: 'ticketDesc',
+          value: {
+            valid: validateEmptyAndExceedMaximumLength(value),
+            value,
+          },
+        });
+      },
     },
     price: {
       handleOnChange: (value: string) => {
@@ -189,6 +207,7 @@ function EventCreateView(): React.ReactElement {
         endAt?: string;
         valid: boolean;
       }) => {
+        console.log(startAt, endAt, valid);
         dispatcher({
           type: 'ticketSalesDate',
           value: {

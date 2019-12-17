@@ -36,7 +36,7 @@ import {
 } from 'commons/constants/string';
 interface ChangableProps {
   invalid?: boolean;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export interface Props {
   FormInputs: {
