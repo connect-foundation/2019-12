@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { palette, theme } from 'styled-tools';
+import { fadeIn, fadeOut } from 'commons/style/animations';
 
 const flexColumnStyle = css`
   display: flex;
@@ -13,16 +14,8 @@ export const LabelWrapper = styled.div`
   }
 `;
 
-interface Props {
-  invalid: boolean;
-}
-export const DateTimePickerContainer = styled.div<Props>`
+export const DateTimePickerContainer = styled.div`
   ${flexColumnStyle}
-  ${props =>
-    props.invalid &&
-    `
-    border: 1px solid '${palette('primary')}';
-  `}
 `;
 export const PickerContainer = styled.div`
   display: flex;
@@ -52,4 +45,15 @@ export const FirstDateContainer = styled.div`
 `;
 export const SecondDateContainer = styled.div`
   ${flexColumnStyle}
+`;
+
+interface Props {
+  invalid: boolean;
+}
+export const Caption = styled.div<Props>`
+  ${theme('fontStyle.caption')}
+  color: ${palette('primary')};
+  margin-top: 0.8rem;
+  visibility: hidden;
+  animation: ${props => (props.invalid ? fadeIn : fadeOut)} 0.5s forwards;
 `;
