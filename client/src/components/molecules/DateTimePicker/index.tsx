@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { Label, TimePicker } from 'components';
+import { DATE_PICKER_CAPTION } from 'commons/constants/string';
 import * as S from './style';
 
 interface Props {
@@ -12,10 +13,19 @@ interface Props {
   firstPlaceholder: string;
   secondLabelName?: string;
   secondPlaceholder?: string;
+  handleOnChange?: ({
+    startAt,
+    endAt,
+    valid,
+  }: {
+    startAt: string;
+    endAt?: string;
+    valid: boolean;
+  }) => void;
 }
 
-const invalidDate = (startDate: Moment | null, endDate: Moment | null) =>
-  startDate && endDate && endDate.diff(startDate) < 0;
+const validateDate = (startDate: Moment, endDate: Moment) =>
+  startDate && endDate && endDate.diff(startDate) >= 0;
 
 function DateTimePicker({
   range,
@@ -23,15 +33,19 @@ function DateTimePicker({
   firstPlaceholder,
   secondLabelName = '종료',
   secondPlaceholder = '종료 날짜',
+  handleOnChange,
 }: Props): React.ReactElement {
-  const [invalid, setInvalid] = useState<boolean>(false);
-  const [startDate, setStartDate] = useState<Moment | null>(null);
+  const [valid, setValid] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState<Moment | null>(moment());
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
-  const [endDate, setEndDate] = useState<Moment | null>(null);
+  const [startTime, setStartTime] = useState<string>('00:00');
+  const [endDate, setEndDate] = useState<Moment | null>(moment());
   const [focusEndDate, setFocusEndDate] = useState<boolean>(false);
-  const handleOnFocusChange = (id: string, focused: boolean | null) => {
+  const [endTime, setEndTime] = useState<string>('00:00');
+
+  const handleOnFocusChange = (target: string, focused: boolean | null) => {
     if (focused !== null) {
-      switch (id) {
+      switch (target) {
         case 'startDate':
           setFocusStartDate(focused);
           break;
@@ -41,25 +55,18 @@ function DateTimePicker({
       }
     }
   };
+
   useEffect(() => {
-    if (invalidDate(startDate, endDate)) {
-      setFocusStartDate(true);
-      setInvalid(true);
-    } else {
-      setInvalid(false);
-    }
-  }, [endDate, startDate]);
-  useEffect(() => {
-    if (invalidDate(startDate, endDate)) {
-      setFocusEndDate(true);
-      setInvalid(true);
-    } else {
-      setInvalid(false);
-    }
-  }, [endDate, startDate]);
+    let startAt = '';
+    let endAt = '';
+    if (startDate) startAt = `${startDate.format('YYYY-MM-DD')} ${startTime}`;
+    if (endDate) endAt = `${endDate.format('YYYY-MM-DD')} ${endTime}`;
+    setValid(validateDate(moment(startAt), moment(endAt)));
+    if (handleOnChange) handleOnChange({ startAt, endAt, valid });
+  }, [startDate, startTime, endDate, endTime, valid, handleOnChange]);
 
   return (
-    <S.DateTimePickerContainer invalid={invalid}>
+    <S.DateTimePickerContainer>
       <S.FirstDateContainer>
         <S.LabelWrapper>
           <Label name={firstLabelName} />
@@ -68,7 +75,7 @@ function DateTimePicker({
           <S.DatePickerWrapper>
             <SingleDatePicker
               date={startDate}
-              onDateChange={date => setStartDate(date)}
+              onDateChange={setStartDate}
               focused={focusStartDate}
               onFocusChange={({ focused }) =>
                 handleOnFocusChange('startDate', focused)
@@ -81,7 +88,7 @@ function DateTimePicker({
             />
           </S.DatePickerWrapper>
           <S.TimePickerWrapper>
-            <TimePicker onChange={() => {}} />
+            <TimePicker onChange={setStartTime} />
           </S.TimePickerWrapper>
         </S.PickerContainer>
       </S.FirstDateContainer>
@@ -94,7 +101,7 @@ function DateTimePicker({
             <S.DatePickerWrapper>
               <SingleDatePicker
                 date={endDate}
-                onDateChange={date => setEndDate(date)}
+                onDateChange={setEndDate}
                 focused={focusEndDate}
                 onFocusChange={({ focused }) =>
                   handleOnFocusChange('endDate', focused)
@@ -107,11 +114,12 @@ function DateTimePicker({
               />
             </S.DatePickerWrapper>
             <S.TimePickerWrapper>
-              <TimePicker onChange={() => {}} />
+              <TimePicker onChange={setEndTime} />
             </S.TimePickerWrapper>
           </S.PickerContainer>
         </S.SecondDateContainer>
       )}
+      <S.Caption invalid={!valid}>{DATE_PICKER_CAPTION}</S.Caption>
     </S.DateTimePickerContainer>
   );
 }
