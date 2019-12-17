@@ -67,7 +67,10 @@ export interface Props {
       invalid?: boolean;
       onChange: (data?: string, file?: File) => void;
     };
-    desc: ChangableProps;
+    desc: {
+      invalid?: boolean;
+      onChange: (value: string) => void;
+    };
   };
 }
 
@@ -131,14 +134,14 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
       >
         <ImgSelector {...FormInputs.mainImg} />
       </FormItem>
-      {/* <FormItem
+      <FormItem
         label={EVENT_FORM_DESC}
         labelExplanation={EVENT_FORM_DESC_LABEL}
         captionContent={EVENT_FORM_DESC_CAPTION}
         direction="column"
       >
         <TuiEditor {...FormInputs.desc} />
-      </FormItem> */}
+      </FormItem>
     </S.CreateEventFormContainer>
   );
 }

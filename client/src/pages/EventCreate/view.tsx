@@ -89,7 +89,15 @@ function EventCreateView(): React.ReactElement {
       },
     },
     desc: {
-      onChange: () => {},
+      onChange: (value: string) => {
+        dispatcher({
+          type: 'eventDesc',
+          value: {
+            valid: value.length !== 0,
+            value: value,
+          },
+        });
+      },
     },
   };
 
