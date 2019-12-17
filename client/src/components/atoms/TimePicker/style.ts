@@ -10,4 +10,5 @@ export const TimePickerSelect = styled.select<Props>`
   width: 100%;
   height: 100%;
   padding: 11px 11px 9px;
+  background-color: white;
 `;
