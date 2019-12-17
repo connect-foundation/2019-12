@@ -1055,8 +1055,12 @@ Object {
   "endAt": "2018-03-09T12:30:00.000Z",
   "firstName": "성동",
   "id": 2,
-  "mainImg": "https://bookus.kr.object.ncloudstorage.com/10",
+  "lastName": "조",
+  "mainImg": "10",
   "place": "역삼역 위플레이스 다목적홀",
+  "placeDesc": "",
+  "startAt": "2018-03-09T10:30:00.000Z",
+  "ticket": Object {
     "desc": "",
     "eventId": 2,
     "id": 2,
