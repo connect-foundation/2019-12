@@ -12,7 +12,7 @@ const baseOption: OptionProps = {
   rootMargin: '0px',
 };
 
-export const useIntersect = (
+export default function useIntersect(
   onIntersect: (
     entry: IntersectionObserverEntry,
     observer: IntersectionObserver,
@@ -21,7 +21,7 @@ export const useIntersect = (
 ): [
   HTMLElement | null,
   React.Dispatch<React.SetStateAction<HTMLElement | null>>,
-] => {
+] {
   const [ref, setRef] = useState<HTMLElement | null>(null);
   const checkIntersect = useCallback(
     ([entry]: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -50,4 +50,4 @@ export const useIntersect = (
     option,
   ]);
   return [ref, setRef];
-};
+}

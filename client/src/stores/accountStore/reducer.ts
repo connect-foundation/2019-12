@@ -8,7 +8,10 @@ export const defaultAccountState: AccountState = {
   email: '',
 };
 
-export function accountReducer(state: AccountState, action: AccountAction) {
+export default function accountReducer(
+  state: AccountState,
+  action: AccountAction,
+) {
   switch (action.type) {
     case 'LOGOUT': {
       return defaultAccountState;
