@@ -7,7 +7,6 @@ import Btn, { Props as BtnProps } from 'components/atoms/Btn';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
 import { TicketType } from 'types/Data';
 import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
-import { TICKETBOX_REFUND_BTN } from 'commons/constants/string';
 import { default as Theme } from 'commons/style/themes/default';
 
 const { palette } = Theme;

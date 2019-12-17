@@ -7,11 +7,7 @@ import { LNB, CardGrid, EventSection } from 'components';
 import { UserAccountAction } from 'stores/accountStore';
 import { MyPageContext } from './store';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
-import {
-  getBoughtTicketEvent,
-  getCreatedEvents,
-  refundBoughtTicket,
-} from 'apis';
+import { getBoughtTicketEvent, getCreatedEvents } from 'apis';
 import ROUTES from 'commons/constants/routes';
 import {
   MY_TICKETS_TITLE,

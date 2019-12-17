@@ -44,7 +44,7 @@ function MyPageTemplate({
         {routePath === ROUTES.MYPAGE_CREATED_EVENTS && (
           <CreatedEventsTemplate {...createdEventsProps} />
         )}
-        {routePath.startsWith(ROUTES.MYPAGE_TICKETS_EVENT) && (
+        {routePath.startsWith(`${ROUTES.MYPAGE_TICKETS_EVENT}/`) && (
           <BoughtTicketEventTemplate {...boughtTicketEventTemplateProps} />
         )}
       </S.Container>

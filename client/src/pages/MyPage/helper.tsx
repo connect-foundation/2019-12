@@ -8,7 +8,6 @@ import {
   getKoreanDateString,
 } from 'utils/dateCalculator/index';
 import { Props as EventSectionProps } from 'components/organisms/EventSection';
-import { Props as TicketBoxProps } from 'components/organisms/TicketBox';
 import { TicketBox } from 'components';
 import { TICKETBOX_REFUND_BTN } from '../../commons/constants/string';
 
