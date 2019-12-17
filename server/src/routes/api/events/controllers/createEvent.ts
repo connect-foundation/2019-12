@@ -62,14 +62,14 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   const mainImageKey = ext ? `${uuid()}.${ext}` : uuid();
 
   try {
-    const { URL } = await putObject(mainImageKey, req.file.buffer);
-    event.mainImg = URL;
+    await putObject(mainImageKey, req.file.buffer);
   } catch (error) {
     next(error);
   }
 
   try {
     event.userId = req.user?.id;
+    event.mainImg = mainImageKey;
     const { eventId, ticketId } = await createEventAndTicket(event, ticketType);
     res.status(CREATED).json({ eventId, ticketId });
   } catch (error) {

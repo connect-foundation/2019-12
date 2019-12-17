@@ -1,6 +1,5 @@
 import React from 'react';
 
-import * as S from './style';
 import { calculateStringOfDateRange } from 'utils/dateCalculator';
 import { getKoreanDateString } from '../../../utils/dateCalculator/index';
 
