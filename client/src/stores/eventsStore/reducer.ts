@@ -20,7 +20,10 @@ const produceMap = (
     });
   });
 
-export function eventsReducer(state: EventsState, action: EventsAction) {
+export default function eventsReducer(
+  state: EventsState,
+  action: EventsAction,
+) {
   switch (action.type) {
     case 'EVENTS':
       return {

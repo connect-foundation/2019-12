@@ -11,7 +11,7 @@ import { EventDetail } from 'types/Data';
 import { EventsAction } from 'types/Actions';
 import { EventsState } from 'types/States';
 import { EventsReducer } from 'types/CustomHooks';
-import { eventsReducer, defaultEventsState } from 'hooks';
+import eventsReducer, { defaultEventsState } from './reducer';
 import { getEvents, getEvent } from 'apis';
 
 interface EventFetch {
