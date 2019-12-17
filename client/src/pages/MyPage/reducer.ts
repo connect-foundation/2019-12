@@ -23,7 +23,6 @@ export default function reducer(
   switch (type) {
     case FETCH_EVENTS:
     case FETCH_CREATED_EVENTS:
-      console.log('fetched!!');
       return internalActions(state, value)[type];
 
     default:
