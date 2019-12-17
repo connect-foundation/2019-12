@@ -29,11 +29,14 @@ import {
 } from 'commons/constants/string';
 interface ChangableProps {
   invalid?: boolean;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 interface ClickableProps {
   invalid?: boolean;
-  onClick: () => void;
+  onClick: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    isChecked?: boolean,
+  ) => void;
 }
 
 export interface Props {
@@ -96,27 +99,27 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
           {...FormInputs.placeDesc}
         />
       </FormItem>
-      <FormItem
+      {/* <FormItem
         label={EVENT_FORM_ADDRESS}
         labelExplanation={EVENT_FORM_ADDRESS_LABEL}
         captionContent={EVENT_FORM_ADDRESS_CAPTION}
       >
         <SearchMap {...FormInputs.address} />
-      </FormItem>
+      </FormItem> */}
       <FormItem
         label={EVENT_FORM_MAIN_IMG}
         labelExplanation={EVENT_FORM_MAIN_IMG_LABEL}
       >
         <Input inputName="eventMainImg" {...FormInputs.mainImg} />
       </FormItem>
-      <FormItem
+      {/* <FormItem
         label={EVENT_FORM_DESC}
         labelExplanation={EVENT_FORM_DESC_LABEL}
         captionContent={EVENT_FORM_DESC_CAPTION}
         direction="column"
       >
         <TuiEditor {...FormInputs.desc} />
-      </FormItem>
+      </FormItem> */}
     </S.CreateEventFormContainer>
   );
 }
