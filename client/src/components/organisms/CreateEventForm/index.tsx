@@ -76,7 +76,7 @@ export interface Props {
     placeDesc: ChangableProps;
     mainImg: {
       invalid?: boolean;
-      onChange: (data?: string) => void;
+      onChange: (data?: string, file?: File) => void;
     };
     desc: {
       invalid?: boolean;
