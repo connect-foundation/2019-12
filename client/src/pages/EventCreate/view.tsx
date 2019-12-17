@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Btn, CreateEventForm, CreateTicketForm } from 'components';
 import EventCreateTemplate from './template';
-import { EventAction, TicketAction } from './store';
+import { EventAction, TicketAction, SubmitContext } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
 import {
   validateEmptyAndExceedMaximumLength,
@@ -12,6 +12,7 @@ import { SearchMapResult } from 'types/Data';
 function EventCreateView(): React.ReactElement {
   const eventFormDispatcher = useContext(EventAction);
   const ticketFormDispatcher = useContext(TicketAction);
+  const setSubmit = useContext(SubmitContext);
   const CreateFormInputs = {
     isPublic: {
       onClick: (
@@ -245,8 +246,7 @@ function EventCreateView(): React.ReactElement {
     children: CREATE_EVENT,
     styletype: 'primary',
     grow: true,
-    onClick: () => console.log('button click'),
-    // onClick: () => dispatcher({ type: 'submit', value: true }),
+    onClick: () => setSubmit(true),
   };
   return (
     <EventCreateTemplate

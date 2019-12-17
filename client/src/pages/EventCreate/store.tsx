@@ -1,4 +1,11 @@
-import React, { useEffect, createContext, useReducer, Dispatch } from 'react';
+import React, {
+  useState,
+  SetStateAction,
+  useEffect,
+  createContext,
+  useReducer,
+  Dispatch,
+} from 'react';
 import { ActionParams } from 'types/Actions';
 import { EventFormState, TicketFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
@@ -137,16 +144,19 @@ export const TicketState = createContext<TicketFormState>(
 export const TicketAction = createContext<
   Dispatch<ActionParams<TicketFormState>>
 >(() => {});
-
+export const SubmitContext = createContext<Dispatch<SetStateAction<boolean>>>(
+  () => {},
+);
 async function send(formData: FormData) {
   try {
-    const { data } = await createEvent(formData);
+    await createEvent(formData);
   } catch (err) {
     console.log('fail');
     console.dir(err);
   }
 }
 function StoreProvider({ children }: { children: React.ReactElement }) {
+  const [submit, setSubmit] = useState<boolean>(false);
   const [eventFormStates, eventFormDispatcher] = useReducer<
     UseStateReducer<EventFormState>
   >(useStateReducer, EventFormDefaultState);
@@ -155,41 +165,34 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   >(useStateReducer, TicketFormDefaultState);
   const formValid = validateStates(eventFormStates, ticketFormStates);
 
-  // const { submit } = states;
-
   useEffect(() => {
     console.log('상태 변경!');
     console.log(
       '유효성 -> ',
       validateStates(eventFormStates, ticketFormStates),
     );
-    if (formValid) {
-      const formData = createFormData(eventFormStates, ticketFormStates);
-      send(formData);
-    }
+    console.log(eventFormStates);
+    console.log(ticketFormStates);
   }, [eventFormStates, ticketFormStates, formValid]);
 
-  // useEffect(() => {
-  //   const createdFormData = createFormData(states);
-  //   // console.log('formValid', formValid);
-  //   // if (!formValid) {
-  //   //   dispatcher({ type: 'submit', value: false });
-  //   //   return alert('입력값을 확인해주세요.');
-  //   // }
-
-  //   console.dir(createdFormData);
-  // }, [submit]);
+  useEffect(() => {
+    if (!formValid) return setSubmit(false);
+    const formData = createFormData(eventFormStates, ticketFormStates);
+    send(formData);
+  }, [eventFormStates, formValid, submit, ticketFormStates]);
 
   return (
-    <EventState.Provider value={eventFormStates}>
-      <EventAction.Provider value={eventFormDispatcher}>
+    <EventAction.Provider value={eventFormDispatcher}>
+      <TicketAction.Provider value={ticketFormDispatcher}>
         <TicketState.Provider value={ticketFormStates}>
-          <TicketAction.Provider value={ticketFormDispatcher}>
-            {children}
-          </TicketAction.Provider>
+          <EventState.Provider value={eventFormStates}>
+            <SubmitContext.Provider value={setSubmit}>
+              {children}
+            </SubmitContext.Provider>
+          </EventState.Provider>
         </TicketState.Provider>
-      </EventAction.Provider>
-    </EventState.Provider>
+      </TicketAction.Provider>
+    </EventAction.Provider>
   );
 }
 
