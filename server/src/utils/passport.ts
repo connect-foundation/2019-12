@@ -3,7 +3,7 @@ import * as GoogleStrategy from 'passport-google-oauth';
 const passportGoogle = GoogleStrategy.OAuth2Strategy;
 
 import { generateJWT } from '../utils/jwt';
-import { getUserByGoogleId, setUser } from '../services';
+import { getUserByGoogleId, setUser } from 'services/users';
 
 export const makeUserObj = async (
   exist: boolean,
