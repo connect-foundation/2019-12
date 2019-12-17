@@ -29,7 +29,7 @@ export interface EventFormState {
   place: FormState<string>;
   address: FormState<SearchMapResult>;
   placeDesc: FormState<string>;
-  mainImg: FormState<string>;
+  mainImg: FormState<File>;
   desc: FormState<string>;
 }
 
