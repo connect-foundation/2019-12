@@ -42,7 +42,7 @@ function MyPage(): React.ReactElement {
         removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
         alert(MY_PAGE_LOGOUT_ALERT);
-        setHistoryPath({ index: 2, route: ROUTES.HOME });
+        history.push('/');
       },
     ];
 

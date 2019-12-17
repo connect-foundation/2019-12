@@ -70,14 +70,14 @@ function PrivateRoute({
   const [cookies] = useCookies(['UID']);
   const { isLogin } = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
-  const [isLoginCheck, setIsLoginCheck] = useState(isLogin);
+  const [isLoginCheck, setIsLoginCheck] = useState(false);
 
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
 
   useEffect(() => {
-    setIsLoginCheck(isLogin);
+    setIsLoginCheck(true);
   }, [isLogin]);
 
   if (cookies.UID === `${REACT_APP_TEST_UID_TOKEN}`) {
