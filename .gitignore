@@ -8,6 +8,7 @@ build/
 !.env.template
 secrets.tar
 !secrets.tar.enc
+cypress.env.json
 # Default
 .DS_Store
 Thumbs.db
