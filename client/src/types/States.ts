@@ -19,37 +19,36 @@ interface FormState<T> {
   valid: boolean;
   value: T;
 }
-export interface EventCreateFormState {
+export interface EventFormState {
   isPublic: FormState<boolean>;
-  eventTitle: FormState<string>;
-  eventDate: FormState<{
+  title: FormState<string>;
+  date: FormState<{
     startAt: string;
     endAt?: string;
   }>;
-  eventPlace: FormState<string>;
-  eventAddress: FormState<SearchMapResult>;
-  eventPlaceDesc: FormState<string>;
-  eventMainImg: FormState<{
-    data?: string;
-    file?: File;
-  }>;
-  eventDesc: FormState<string>;
-  ticketName: FormState<string>;
-  ticketDesc: FormState<string>;
-  ticketPrice: FormState<string>;
-  ticketQuantity: FormState<string>;
-  ticketIsPublicLeftCnt: FormState<boolean>;
-  ticketMaxCntPerPerson: FormState<string>;
-  ticketSalesDate: FormState<{
-    startAt: string;
-    endAt?: string;
-  }>;
-  ticketRefundDate: FormState<{
-    startAt: string;
-    endAt?: string;
-  }>;
-  submit: boolean;
+  place: FormState<string>;
+  address: FormState<SearchMapResult>;
+  placeDesc: FormState<string>;
+  mainImg: FormState<string>;
+  desc: FormState<string>;
 }
+
+export interface TicketFormState {
+  name: FormState<string>;
+  desc: FormState<string>;
+  price: FormState<string>;
+  quantity: FormState<string>;
+  isPublicLeftCnt: FormState<boolean>;
+  maxCntPerPerson: FormState<string>;
+  salesDate: FormState<{
+    salesStartAt: string;
+    salesEndAt: string;
+  }>;
+  refundDate: FormState<{
+    refundEndAt: string;
+  }>;
+}
+
 export interface EventDetailState {
   eventData: EventDetail;
 }
