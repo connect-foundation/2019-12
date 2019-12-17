@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Btn, CreateEventForm, CreateTicketForm } from 'components';
 import EventCreateTemplate from './template';
-import { EventCreateAction, EventCreateState } from './store';
+import { EventAction, TicketAction } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
 import {
   validateEmptyAndExceedMaximumLength,
@@ -11,7 +11,8 @@ import {
 import { SearchMapResult } from 'types/Data';
 
 function EventCreateView(): React.ReactElement {
-  const dispatcher = useContext(EventCreateAction);
+  const eventFormDispatcher = useContext(EventAction);
+  const ticketFormDispatcher = useContext(TicketAction);
   const CreateFormInputs = {
     isPublic: {
       onClick: (
@@ -19,7 +20,7 @@ function EventCreateView(): React.ReactElement {
         isChecked?: boolean,
       ) => {
         if (typeof isChecked === 'boolean') {
-          dispatcher({
+          eventFormDispatcher({
             type: 'isPublic',
             value: {
               valid: true,
@@ -32,8 +33,8 @@ function EventCreateView(): React.ReactElement {
     title: {
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        dispatcher({
-          type: 'eventTitle',
+        eventFormDispatcher({
+          type: 'title',
           value: {
             valid: validateEmptyAndExceedMaximumLength(value),
             value,
@@ -51,8 +52,8 @@ function EventCreateView(): React.ReactElement {
         endAt?: string;
         valid: boolean;
       }) => {
-        dispatcher({
-          type: 'eventDate',
+        eventFormDispatcher({
+          type: 'date',
           value: {
             valid,
             value: {
@@ -66,8 +67,8 @@ function EventCreateView(): React.ReactElement {
     place: {
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        dispatcher({
-          type: 'eventPlace',
+        eventFormDispatcher({
+          type: 'place',
           value: {
             valid: validateEmptyAndExceedMaximumLength(value),
             value,
@@ -78,8 +79,8 @@ function EventCreateView(): React.ReactElement {
     placeDesc: {
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        dispatcher({
-          type: 'eventPlaceDesc',
+        eventFormDispatcher({
+          type: 'placeDesc',
           value: {
             valid: validateEmptyAndExceedMaximumLength(value),
             value,
@@ -89,8 +90,8 @@ function EventCreateView(): React.ReactElement {
     },
     address: {
       handleOnChange: ({ address, latitude, longitude }: SearchMapResult) => {
-        dispatcher({
-          type: 'eventAddress',
+        eventFormDispatcher({
+          type: 'address',
           value: {
             valid: true,
             value: { address, latitude, longitude },
@@ -99,20 +100,21 @@ function EventCreateView(): React.ReactElement {
       },
     },
     mainImg: {
-      onChange: (data?: string, file?: File) => {
-        dispatcher({
-          type: 'eventMainImg',
+      onChange: (data?: string) => {
+        if (!data) return;
+        eventFormDispatcher({
+          type: 'mainImg',
           value: {
             valid: true,
-            value: { data, file },
+            value: data,
           },
         });
       },
     },
     desc: {
       onChange: (value: string) => {
-        dispatcher({
-          type: 'eventDesc',
+        eventFormDispatcher({
+          type: 'desc',
           value: {
             valid: validateIsNotEmptyString(value),
             value,
@@ -126,8 +128,8 @@ function EventCreateView(): React.ReactElement {
     name: {
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        dispatcher({
-          type: 'ticketName',
+        ticketFormDispatcher({
+          type: 'name',
           value: {
             valid: validateEmptyAndExceedMaximumLength(value),
             value,
@@ -138,8 +140,8 @@ function EventCreateView(): React.ReactElement {
     desc: {
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        dispatcher({
-          type: 'ticketDesc',
+        ticketFormDispatcher({
+          type: 'desc',
           value: {
             valid: validateEmptyAndExceedMaximumLength(value),
             value,
@@ -149,8 +151,8 @@ function EventCreateView(): React.ReactElement {
     },
     price: {
       handleOnChange: (value: string) => {
-        dispatcher({
-          type: 'ticketPrice',
+        ticketFormDispatcher({
+          type: 'price',
           value: {
             valid: validateIsNotEmptyString(value),
             value: value,
@@ -160,8 +162,8 @@ function EventCreateView(): React.ReactElement {
     },
     quantity: {
       handleOnChange: (value: string) => {
-        dispatcher({
-          type: 'ticketQuantity',
+        ticketFormDispatcher({
+          type: 'quantity',
           value: {
             valid: validateIsNotEmptyString(value),
             value: value,
@@ -175,8 +177,8 @@ function EventCreateView(): React.ReactElement {
         isChecked?: boolean,
       ) => {
         if (isChecked === true || isChecked === false) {
-          dispatcher({
-            type: 'ticketIsPublicLeftCnt',
+          ticketFormDispatcher({
+            type: 'isPublicLeftCnt',
             value: {
               valid: true,
               value: isChecked,
@@ -187,8 +189,8 @@ function EventCreateView(): React.ReactElement {
     },
     maxCntPerPerson: {
       handleOnChange: (value: string) => {
-        dispatcher({
-          type: 'ticketMaxCntPerPerson',
+        ticketFormDispatcher({
+          type: 'maxCntPerPerson',
           value: {
             valid: validateIsNotEmptyString(value),
             // && validateIsSameOrLower(+value, +ticketQuantity),
@@ -207,14 +209,14 @@ function EventCreateView(): React.ReactElement {
         endAt?: string;
         valid: boolean;
       }) => {
-        console.log(startAt, endAt, valid);
-        dispatcher({
-          type: 'ticketSalesDate',
+        if (!endAt) return;
+        ticketFormDispatcher({
+          type: 'salesDate',
           value: {
             valid,
             value: {
-              startAt,
-              endAt,
+              salesStartAt: startAt,
+              salesEndAt: endAt,
             },
           },
         });
@@ -228,12 +230,12 @@ function EventCreateView(): React.ReactElement {
         startAt: string;
         valid: boolean;
       }) => {
-        dispatcher({
-          type: 'ticketRefundDate',
+        ticketFormDispatcher({
+          type: 'refundDate',
           value: {
             valid,
             value: {
-              startAt,
+              refundEndAt: startAt,
             },
           },
         });
@@ -244,7 +246,8 @@ function EventCreateView(): React.ReactElement {
     children: CREATE_EVENT,
     styletype: 'primary',
     grow: true,
-    onClick: () => dispatcher({ type: 'submit', value: true }),
+    onClick: () => console.log('button click'),
+    // onClick: () => dispatcher({ type: 'submit', value: true }),
   };
   return (
     <EventCreateTemplate
