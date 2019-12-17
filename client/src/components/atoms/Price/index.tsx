@@ -14,15 +14,15 @@ function Price({
   currency = '₩',
   separated = false,
 }: PriceProps): React.ReactElement {
-  const convertedCurrency = numberDecorator({
-    mount: children,
-    currency,
-    separated,
-  });
-
   return (
     <S.Wrapper>
-      {+convertedCurrency === 0 ? '무료' : convertedCurrency}
+      {+children === 0
+        ? '무료'
+        : numberDecorator({
+            mount: children,
+            currency,
+            separated,
+          })}
     </S.Wrapper>
   );
 }
