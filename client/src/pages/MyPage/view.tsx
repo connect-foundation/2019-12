@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef, useMemo } from 'react';
 import { useCookies } from 'react-cookie';
-import { produce } from 'immer';
 import { useHistory } from 'react-router-dom';
 
 import MyPageTemplate from './template';
-import { LNB, CardGrid } from 'components';
+import { LNB, CardGrid, EventSection } from 'components';
 import { UserAccountAction } from 'stores/accountStore';
 import { MyPageContext } from './store';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
-import { getBoughtTicketEvent, getCreatedEvents } from 'apis';
+import {
+  getBoughtTicketEvent,
+  getCreatedEvents,
+  refundBoughtTicket,
+} from 'apis';
 import ROUTES from 'commons/constants/routes';
 import {
   MY_TICKETS_TITLE,
@@ -17,108 +20,67 @@ import {
   MY_PAGE_CREATED_EVENTS,
   MY_PAGE_LOGOUT,
   MY_PAGE_LOGOUT_ALERT,
+  BOUGHT_TICKET_EVENT_TITLE,
+  BOUGHT_TICKET_EVENT_TITLE_CAPTION,
+  HISTORY_METHOD_PUSH,
+  HISTORY_METHOD_REPLACE,
 } from 'commons/constants/string';
-import { BoughtTicketEvent, EventCard, CreatedEvent } from 'types/Data';
+import {
+  MY_TICKETS_TAB_INDEX,
+  MY_CREATED_EVENT_TAB_INDEX,
+} from 'commons/constants/number';
+import { BoughtTicketEvent, CreatedEvent } from 'types/Data';
+import {
+  getEventSectionProps,
+  getTicketBoxesProps,
+  checkBoughtTicketEventRoute,
+  convertToEventCardFromBought,
+  convertToEventCardTypeFromCreated,
+} from './helper';
 
 function MyPage(): React.ReactElement {
-  const myTicketEventsRoute = /\/my\/tickets\/event\/([0-9]+)/;
-  const tabRoutes = {
-    [ROUTES.MYPAGE_TICKETS]: 1,
-    [ROUTES.MYPAGE_CREATED_EVENTS]: 2,
-  };
-
-  function checkBoughtTicketEventRoute(url: string) {
-    const boughtTicketEventRegex = url.match(myTicketEventsRoute);
-    let boughtTicketEventId = 0;
-    if (boughtTicketEventRegex && boughtTicketEventRegex[1]) {
-      boughtTicketEventId = +boughtTicketEventRegex[1];
-    }
-    return boughtTicketEventId;
-  }
-
+  const boughtTicketEventId = useMemo(
+    () => checkBoughtTicketEventRoute(window.location.pathname),
+    [],
+  );
+  const [historyPath, setHistoryPath] = useState({
+    method: '',
+    route: window.location.pathname,
+  });
+  const currentTabIndex = useRef(MY_TICKETS_TAB_INDEX);
+  const { state, dispatch: useAction } = useContext(MyPageContext);
+  const [, , removeCookie] = useCookies(['cookie-name']);
+  const { accountDispatcher } = useContext(UserAccountAction);
+  const history = useHistory();
   function routeByTabIndex(tabIndex: number) {
     const routeActions = [
       () => {
         setHistoryPath({
-          method: 'push',
+          method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_TICKETS,
         });
-        setCurrentTabIndex(1);
+        currentTabIndex.current = MY_TICKETS_TAB_INDEX;
       },
       () => {
         setHistoryPath({
-          method: 'push',
+          method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_CREATED_EVENTS,
         });
-        setCurrentTabIndex(2);
+        currentTabIndex.current = MY_CREATED_EVENT_TAB_INDEX;
       },
       () => {
         removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
         alert(MY_PAGE_LOGOUT_ALERT);
-        setHistoryPath({ method: 'replace', route: ROUTES.HOME });
+        setHistoryPath({
+          method: HISTORY_METHOD_REPLACE,
+          route: ROUTES.HOME,
+        });
       },
     ];
 
     routeActions[tabIndex - 1]();
   }
-
-  function convertToEventCardFromBought(
-    sourceMap: Map<number, BoughtTicketEvent>,
-  ) {
-    const targetMap = new Map<number, EventCard>();
-    return produce(targetMap, draft => {
-      sourceMap.forEach(value => {
-        const { id, mainImg, startAt, title, ticket } = value;
-
-        draft.set(value.id, {
-          id,
-          mainImg,
-          startAt,
-          title,
-          name: '',
-          price: ticket.price,
-          to: `${ROUTES.MYPAGE_TICKETS_EVENT}/${id}`,
-        });
-      });
-    });
-  }
-
-  function convertToEventCardTypeFromCreated(
-    sourceMap: Map<number, CreatedEvent>,
-  ) {
-    const targetMap = new Map<number, EventCard>();
-    return produce(targetMap, draft => {
-      sourceMap.forEach(value => {
-        const { id, mainImg, startAt, title } = value;
-
-        draft.set(value.id, {
-          id,
-          mainImg,
-          startAt,
-          title,
-          name: '',
-          price: 0,
-          to: `${ROUTES.MYPAGE_TICKETS_EVENT}/${id}`,
-        });
-      });
-    });
-  }
-
-  const boughtTicketEventId = checkBoughtTicketEventRoute(
-    window.location.pathname,
-  );
-
-  const [historyPath, setHistoryPath] = useState({
-    method: '',
-    route: window.location.pathname,
-  });
-  const [currentTabIndex, setCurrentTabIndex] = useState(1);
-
-  const { state, dispatch: useAction } = useContext(MyPageContext);
-  const [, , removeCookie] = useCookies(['cookie-name']);
-  const { accountDispatcher } = useContext(UserAccountAction);
-  const history = useHistory();
 
   const [boughtTicketResponse, requestBoughtTicket] = useApiRequest<
     BoughtTicketEvent[]
@@ -129,24 +91,25 @@ function MyPage(): React.ReactElement {
 
   useEffect(() => {
     requestBoughtTicket({ type: REQUEST });
-  }, [requestBoughtTicket]);
-
-  useEffect(() => {
     requestCreatedEvents({ type: REQUEST });
-  }, [requestCreatedEvents]);
+  }, [requestBoughtTicket, requestCreatedEvents]);
 
   useEffect(() => {
     const { pathname } = window.location;
-    setCurrentTabIndex(tabRoutes[pathname]);
-  }, [tabRoutes]);
+    if (pathname === historyPath.route) return;
+
+    setHistoryPath({
+      method: HISTORY_METHOD_REPLACE,
+      route: `${ROUTES.MYPAGE_TICKETS_EVENT}/${boughtTicketEventId}`,
+    });
+  }, [boughtTicketEventId, historyPath.route]);
 
   useEffect(() => {
     const { route, method } = historyPath;
     const { pathname } = window.location;
-    if (pathname === historyPath.route) {
-      return;
-    }
-    if (method === 'push') {
+    if (pathname === historyPath.route) return;
+
+    if (method === HISTORY_METHOD_PUSH) {
       history.push(route);
       return;
     }
@@ -192,7 +155,7 @@ function MyPage(): React.ReactElement {
             MY_PAGE_LOGOUT,
           ]}
           onTabClicked={routeByTabIndex}
-          tabIndex={currentTabIndex}
+          tabIndex={currentTabIndex.current}
         />
       }
       ticketsProps={{
@@ -213,7 +176,24 @@ function MyPage(): React.ReactElement {
           />
         ),
       }}
-      boughtTicketEventTemplateProps={{ eventId: boughtTicketEventId }}
+      boughtTicketEventTemplateProps={{
+        eventHeader: (
+          <EventSection
+            {...getEventSectionProps({
+              boughtTicketEventMap: state.events,
+              boughtTicketEventId,
+            })}
+            imgPosition="left"
+            border
+          />
+        ),
+        ticketsList: getTicketBoxesProps({
+          boughtTicketEventMap: state.events,
+          boughtTicketEventId,
+        }),
+        ticketsTitle: BOUGHT_TICKET_EVENT_TITLE,
+        ticektsTitleCaption: BOUGHT_TICKET_EVENT_TITLE_CAPTION,
+      }}
       isLoading={
         boughtTicketResponse.type === REQUEST ||
         createdEventsResponse.type === REQUEST
