@@ -6,6 +6,6 @@ export function validateName(name: string, type = false): boolean {
   if (name.length === 0) return !type;
   return /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,5}$/.test(name);
 }
-export function validateEventTitle(title: string): boolean {
+export function validateEmptyAndExceedMaximumLength(title: string): boolean {
   return /^.{1,30}$/.test(title);
 }
