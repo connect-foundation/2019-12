@@ -76,7 +76,7 @@ export interface Props {
     placeDesc: ChangableProps;
     mainImg: {
       invalid?: boolean;
-      onChange: (data?: string, file?: File) => void;
+      onChange: (data?: string) => void;
     };
     desc: {
       invalid?: boolean;
@@ -100,7 +100,7 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
         captionContent={EVENT_FORM_TITLE_CAPTION}
       >
         <Input
-          inputName="eventTitle"
+          inputName="title"
           placeholder={EVENT_FORM_TITLE_PLACEHOLDER}
           {...FormInputs.title}
         />
@@ -122,7 +122,7 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
         captionContent={EVENT_FORM_PLACE_CAPTION}
       >
         <Input
-          inputName="eventPlace"
+          inputName="place"
           placeholder={EVENT_FORM_PLACE_PLACEHOLDER}
           {...FormInputs.place}
         />
@@ -132,7 +132,7 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
         labelExplanation={EVENT_FORM_PLACE_DESC_LABEL}
       >
         <Input
-          inputName="eventPlaceDesc"
+          inputName="placeDesc"
           placeholder={EVENT_FORM_PLACE_DESC_PLACEHOLDER}
           {...FormInputs.placeDesc}
         />
