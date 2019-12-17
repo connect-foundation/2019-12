@@ -6,42 +6,41 @@ import {
 describe('utils - validatePhoneNumber()', () => {
   it('휴대폰 번호가 숫자가 아닐경우', () => {
     const data = 'aoeif-*j';
-
     expect(validatePhoneNumber(data)).toBe(false);
   });
+
   it('휴대폰 번호 중간에 특수문자가 있을 경우', () => {
     const data = '0109180-123';
-
     expect(validatePhoneNumber(data)).toBe(false);
   });
+
   it('휴대폰 번호가 010으로 시작하지 않을 경우', () => {
     const data = '01112345678';
-
     expect(validatePhoneNumber(data)).toBe(false);
   });
+
   it('휴대폰 번호가 10자리 미만일경우', () => {
     const data = '0101234567';
-
     expect(validatePhoneNumber(data)).toBe(false);
   });
+
   it('휴대폰 번호가 11자리 초과일 경우', () => {
     const data = '010123456789';
-
     expect(validatePhoneNumber(data)).toBe(false);
   });
+
   it('Type이 기본값일 경우, 휴대폰 번호가 입력이 안되어있을 때', () => {
     const data = '';
-
     expect(validatePhoneNumber(data)).toBe(true);
   });
+
   it('Type이 true일 경우, 휴대폰 번호가 입력이 안되어있을 때', () => {
     const data = '';
-
     expect(validatePhoneNumber(data, true)).toBe(false);
   });
+
   it('휴대폰 번호가 맞을 때', () => {
     const data = '01012345678';
-
     expect(validatePhoneNumber(data)).toBe(true);
   });
 });

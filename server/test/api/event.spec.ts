@@ -214,6 +214,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(UNAUTHORIZED);
   });
+
   it('이벤트가 없는 경우 404', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -221,6 +222,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(NOT_FOUND);
   });
+
   it('주최한 유저와 이벤트가 다를경우 (다른 유저의 이벤트를 보려고 하는 경우) 400', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -228,6 +230,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(BAD_REQUEST);
   });
+
   it('내 이벤트에 접근한 경우, 티켓이 없을 때 204', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -235,6 +238,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(NO_CONTENT);
   });
+
   it('내 이벤트에 접근한 경우 200', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -265,6 +269,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
         expect(res.body).toStrictEqual({ id: 2, isAttendance: true });
       });
   });
+
   it('False 로 변경 요청을 보냈을 때 성공하면, 200', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -278,6 +283,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
         expect(res.body).toStrictEqual({ id: 2, isAttendance: false });
       });
   });
+
   it('로그인 실패하면 401', async () => {
     const token = await generateJWT(false, 2, 1, '1234@gmail.com');
     await request(app)
@@ -288,6 +294,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
       })
       .expect(UNAUTHORIZED);
   });
+
   it('이벤트가 로그인한 사용자의 것이 아닌경우 400', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -298,6 +305,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
       })
       .expect(BAD_REQUEST);
   });
+
   it('이벤트가 로그인한 사용자의 것이지만 티켓이 없을경우 404', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)

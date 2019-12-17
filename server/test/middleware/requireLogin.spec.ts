@@ -16,6 +16,7 @@ describe('middleware - requireLogin', () => {
     await requireLogin(request, response, nextFunc);
     expect(nextFunc).toHaveBeenCalled();
   });
+
   it('회원 정보는 있지만 회원가입이 안되어있을 경우 401 응답', async () => {
     const token = await generateJWT(false, 1, 1, 'jdd04026@gmail.com');
     const request = createRequest({
@@ -27,6 +28,7 @@ describe('middleware - requireLogin', () => {
     await requireLogin(request, response, nextFunc);
     expect(response.statusCode).toBe(UNAUTHORIZED);
   });
+
   it('로그인이 안되어있을 경우 401 응답', async () => {
     const request = createRequest();
     const response = createResponse();
