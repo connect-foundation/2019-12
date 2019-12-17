@@ -46,6 +46,10 @@ export const CREATED_EVENTS_STEP = 'events';
 
 export const MY_TICKETS_TITLE = '구매 완료한 티켓';
 export const MY_CREATED_EVENTS = '나의 주최한 이벤트';
+
+export const DATE_PICKER_CAPTION =
+  '종료하는 날짜보다 시작하는 날짜가 앞설 수 없습니다.';
+
 export const MY_PAGE_LNB_MY_TICKETS = '내 티켓';
 export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';
 export const MY_PAGE_LOGOUT = '로그아웃';

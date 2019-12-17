@@ -13,7 +13,7 @@ export interface Props {
   /** placeholder content */
   placeholder?: string;
   /** input value(state) */
-  value?: string;
+  value?: string | number;
   /** onChange handler(setState) */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** onFocusOut handler */
