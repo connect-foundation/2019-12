@@ -3,7 +3,7 @@ import {
   validateName,
 } from '../../src/utils/validateSignUpForms';
 
-describe('휴대폰 번호 validator', () => {
+describe('utils - validatePhoneNumber()', () => {
   it('휴대폰 번호가 숫자가 아닐경우', () => {
     const data = 'aoeif-*j';
 
@@ -46,7 +46,7 @@ describe('휴대폰 번호 validator', () => {
   });
 });
 
-describe('이름 validator', () => {
+describe('utils - validateName()', () => {
   it('이름이 한글이 아닐경우', () => {
     const data = 'aoei';
 
