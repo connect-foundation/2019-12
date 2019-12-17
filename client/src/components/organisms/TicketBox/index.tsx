@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 import * as S from './style';
 import { FaTicketAlt, FaRegCreditCard, FaCheckCircle } from 'react-icons/fa';
-import { IconLabel, Price, Btn } from 'components';
+import { IconLabel, Price } from 'components';
+import Btn, { Props as BtnProps } from 'components/atoms/Btn';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
 import { TicketType } from 'types/Data';
 import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
@@ -11,8 +12,10 @@ import { default as Theme } from 'commons/style/themes/default';
 
 const { palette } = Theme;
 
-interface Props extends TicketType {
+type PickProps = Pick<TicketType, 'price' | 'name' | 'desc' | 'salesEndAt'>;
+export interface Props extends PickProps {
   chkProps: ChkBoxProps;
+  refundBtProps?: BtnProps;
   checked?: boolean;
   chkDesc?: string;
   purchaseDate?: string;
@@ -22,10 +25,12 @@ interface Props extends TicketType {
   showTicketId?: boolean;
   showChkIcon?: boolean;
   showRefundBtn?: boolean;
+  disabledChkIcon?: boolean;
 }
 
 function TicketBox({
   chkProps,
+  refundBtProps,
   checked,
   purchaseDate,
   ticketId,
@@ -39,6 +44,7 @@ function TicketBox({
   showPurchaseDate,
   showTicketId,
   showRefundBtn,
+  disabledChkIcon,
 }: Props): React.ReactElement {
   const [isChecked, setChecked] = useState(checked);
 
@@ -95,9 +101,12 @@ function TicketBox({
         <S.ChkBoxContainer>
           {chkDesc && <S.ChkBoxDesc>{chkDesc}</S.ChkBoxDesc>}
           {showChkIcon && (
-            <S.IconWrapper>
+            <S.IconWrapper disabledChkIcon={!!disabledChkIcon}>
               <FaCheckCircle
                 onClick={() => {
+                  if (disabledChkIcon) {
+                    return;
+                  }
                   setChecked(!isChecked);
                 }}
                 size={'3rem'}
@@ -108,7 +117,12 @@ function TicketBox({
           {!showChkIcon && <ChkBox {...chkProps} />}
         </S.ChkBoxContainer>
         {showRefundBtn && (
-          <Btn fit styletype={'transparent'} children={TICKETBOX_REFUND_BTN} />
+          <Btn
+            {...refundBtProps}
+            fit
+            styletype={'transparent'}
+            children={refundBtProps!.children}
+          />
         )}
       </S.OptionalContentWrapper>
     </S.Container>
