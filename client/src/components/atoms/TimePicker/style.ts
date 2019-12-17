@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
-interface Props {
-  styletype: string;
-}
-export const TimePickerSelect = styled.select<Props>`
+export const TimePickerSelect = styled.select`
   border-radius: 2px;
   border: 1px solid #dbdbdb;
   appearance: none;
