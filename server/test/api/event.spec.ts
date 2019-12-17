@@ -58,15 +58,6 @@ describe('GET /api/events', () => {
       expect(new Date(event.startAt).getTime()).toBeLessThan(startAt.getTime());
     });
   });
-
-  it('잘못된 param 으로 요청을 보내면 400 응답', async () => {
-    const wrongId = 'wrong';
-    await request(app)
-      .get('/api/events')
-      .query({ lastId: wrongId })
-      .expect(BAD_REQUEST)
-      .expect('Content-type', /application\/json/);
-  });
 });
 
 describe('GET /api/events/:eventId', () => {
