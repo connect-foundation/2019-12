@@ -54,9 +54,9 @@ describe('GET /api/events', () => {
       .expect(OK)
       .expect('Content-type', /application\/json/);
 
-    body.forEach((e: Event) =>
-      expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
-    );
+    body.forEach((event: Event) => {
+      expect(new Date(event.startAt).getTime()).toBeLessThan(startAt.getTime());
+    });
   });
 
   it('잘못된 param 으로 요청을 보내면 400 응답', async () => {
