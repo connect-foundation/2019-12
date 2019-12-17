@@ -32,22 +32,20 @@ function AccountStoreProvider({ children }: { children: React.ReactElement }) {
   useEffect(() => {
     if (!loginState) return;
     (async function() {
+      let account = null;
       try {
-        const verifyTokenResult = await verifyToken();
-        let account = null;
-        if (verifyTokenResult.data.exist) {
-          const accountData = await getUserInfo(verifyTokenResult.data.id);
+        const { data } = await verifyToken();
+        if (data.exist) {
+          const accountData = await getUserInfo(data.id);
           account = { ...accountData.data, isLogin: true };
-        } else {
-          const { id: userId, googleId, email } = verifyTokenResult.data;
-          account = { userId, googleId, email, isLogin: false };
         }
+      } catch (err) {
+        account = { isLogin: false };
+      } finally {
         accountDispatcher({
           type: 'LOGIN',
           value: account,
         });
-      } catch (err) {
-        // 만약 API 콜이 실패했을 경우 이곳에서 에러처리
       }
     })();
     setLoginState(false);
