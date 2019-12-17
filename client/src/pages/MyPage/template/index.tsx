@@ -18,6 +18,7 @@ interface Props {
   createdEventsProps: CreatedEventsProps;
   boughtTicketEventTemplateProps: BoughtTicketEventTemplateProps;
   isLoading?: boolean;
+  isInternalError?: boolean;
 }
 
 function MyPageTemplate({
@@ -27,9 +28,14 @@ function MyPageTemplate({
   createdEventsProps,
   boughtTicketEventTemplateProps,
   isLoading,
+  isInternalError,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate hasHeaderLine loading={isLoading}>
+    <BasedTemplate
+      hasHeaderLine
+      loading={isLoading}
+      internalServerError={isInternalError}
+    >
       {lnbTab}
       <S.Container>
         {routePath === ROUTES.MYPAGE_TICKETS && (

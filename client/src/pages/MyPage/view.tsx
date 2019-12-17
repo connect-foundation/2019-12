@@ -188,6 +188,10 @@ function MyPage(): React.ReactElement {
         boughtTicketResponse.type === REQUEST ||
         createdEventsResponse.type === REQUEST
       }
+      isInternalError={
+        boughtTicketResponse.type === FAILURE ||
+        createdEventsResponse.type === FAILURE
+      }
     />
   );
 }
