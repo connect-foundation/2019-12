@@ -10,13 +10,19 @@ export const authToken = async (
   const token = req.cookies.UID;
   if (!token) return res.sendStatus(401);
   try {
-    const { exist, id } = await verifyJWT(token);
-    if (!exist) return res.sendStatus(401);
+    const { exist, id, email, googleId } = await verifyJWT(token);
+    if (!exist)
+      return res.status(401).send({
+        userId: id,
+        email,
+        googleId,
+        message: 'need to login',
+      });
     const result = await getUserById(id);
     if (!result) return res.status(400).send({ message: 'Cannot get data' });
-    const { firstName, lastName, phoneNumber, email, googleId } = result;
+    const { firstName, lastName, phoneNumber } = result;
     const responseData = {
-      id,
+      userId: id,
       firstName,
       lastName,
       phoneNumber,

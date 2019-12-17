@@ -10,12 +10,16 @@ export async function createUser(
 ) {
   try {
     const requestToken = req.cookies.UID;
+    if (!requestToken) return res.sendStatus(400);
     const { exist } = await verifyJWT(requestToken);
     const { id, email, googleId, firstName, lastName, phoneNumber } = req.body;
     // exist가 False일 경우, Token이 회원가입이 안되어 있음을 말함.
     // true일 경우 회원가입이 되어있는 상태이므로 넘겨줌.
-    if (exist)
+
+    console.log(exist);
+    if (exist) {
       return res.status(BAD_REQUEST).send({ message: 'Cannot Signup' });
+    }
     const result = await setUserInfo(
       id,
       googleId,

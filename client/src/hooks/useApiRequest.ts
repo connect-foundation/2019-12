@@ -1,11 +1,11 @@
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosError } from 'axios';
 import { useReducer, useEffect } from 'react';
 import { OK } from 'http-status';
 
 export interface FetchProps<T> {
   type: '' | 'REQUEST' | 'SUCCESS' | 'FAILURE';
   data?: T;
-  err?: Error;
+  err?: AxiosError;
   status?: number;
 }
 
