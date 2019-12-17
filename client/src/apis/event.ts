@@ -25,7 +25,9 @@ export const joinEvent = (ticketId: number, orderTicketNum: number) =>
   );
 
 export const createEvent = (formData: FormData) =>
-  mainAxios.post('events', {
-    data: formData,
-    headers: { Accept: 'application/json' },
+  mainAxios.post('/events', formData, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Accept: 'application/json',
+    },
   });
