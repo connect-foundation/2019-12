@@ -8,13 +8,21 @@ import React, {
 import { useHistory } from 'react-router-dom';
 import { BAD_REQUEST, FORBIDDEN, OK } from 'http-status';
 
-import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
 import { SignUpFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
 import { validatePhoneNumber, validateName } from 'utils/validateInput';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
 import { createUser } from 'apis';
+
+export function useStateReducer<T>(state: T, action: ActionParams<T>): T {
+  const { type, value } = action;
+
+  return {
+    ...state,
+    [type]: value,
+  };
+}
 
 const defaultState: SignUpFormState = {
   lastName: '',

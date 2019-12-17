@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { getUserTicketsByUserId } from 'services';
+import { getUserTicketsByUserId } from 'services/userTickets';
 import { NO_CONTENT } from 'http-status';
 
 export async function getUserTicket(

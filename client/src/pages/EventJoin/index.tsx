@@ -181,7 +181,7 @@ function EventJoin(): React.ReactElement {
           imgSrc={mainImg}
         />
       }
-      place={<Place googleMapHeight={'20rem'} {...eventState} />}
+      place={<Place mapHeight={'20rem'} {...eventState} />}
       ticketChoiceProps={{
         header: TICKET_CHOICE_TITLE,
         ticketBox: (

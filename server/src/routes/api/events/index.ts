@@ -5,6 +5,7 @@ import * as validators from './validators';
 import * as middlewares from './middlewares';
 import {
   requireLogin,
+  paramsValidator,
   singleFileUpload,
   requireSingleFile,
   limitSizeSingleFile,
@@ -16,6 +17,12 @@ const router = Router();
 
 router.param('eventId', middlewares.requestParamHandler);
 router.get('/', validators.getEvents, badRequestHandler, controllers.getEvents);
+router.get('/:eventId', paramsValidator('eventId'), controllers.getEvent);
+router.get(
+  '/:eventId/tickets',
+  paramsValidator('eventId'),
+  controllers.getEventTickets,
+);
 router.post(
   '/',
   requireLogin,
@@ -27,15 +34,16 @@ router.post(
   badRequestHandler,
   controllers.createEvent,
 );
-router.get('/:eventId', controllers.getEvent);
-router.get('/:eventId/tickets', controllers.getEventTickets);
 router.patch(
   '/:eventId/ticket/:ticketId',
+  paramsValidator('eventId'),
+  paramsValidator('ticketId'),
   requireLogin,
   controllers.checkAttendance,
 );
 router.get(
   '/:eventId/users',
+  paramsValidator('eventId'),
   requireLogin,
   validators.checkAttendance,
   controllers.getAttendants,
