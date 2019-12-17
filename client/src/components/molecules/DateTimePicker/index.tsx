@@ -62,7 +62,7 @@ function DateTimePicker({
     if (startDate) startAt = `${startDate.format('YYYY-MM-DD')} ${startTime}`;
     if (endDate) endAt = `${endDate.format('YYYY-MM-DD')} ${endTime}`;
     if (range) setValid(validateDate(moment(startAt), moment(endAt)));
-    if (valid && handleOnChange) handleOnChange({ startAt, endAt, valid });
+    if (handleOnChange) handleOnChange({ startAt, endAt, valid });
   }, [startDate, startTime, endDate, endTime, valid, handleOnChange, range]);
 
   return (
