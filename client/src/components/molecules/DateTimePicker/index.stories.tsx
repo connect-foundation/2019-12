@@ -1,4 +1,6 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
+import { boolean, text } from '@storybook/addon-knobs';
 import DateTimePicker from '.';
 
 export default {
@@ -8,10 +10,10 @@ export default {
 export const index: React.FC = () => {
   return (
     <DateTimePicker
-      range={true}
-      firstLabelName="시작"
-      firstPlaceholder="시작날짜"
-      secondLabelName="종료"
+      range={boolean('range', true)}
+      firstLabelName={text('firstLabelName', '시작')}
+      secondLabelName={text('secondLabelName', '종료')}
+      handleOnChange={action('handleOnChange')}
     />
   );
 };
