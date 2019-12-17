@@ -63,6 +63,8 @@ export interface BoughtTicketEvent {
   address: string;
   placeDesc: string;
   mainImg: string;
+  firstName: string;
+  lastName: string;
   ticket: {
     id: number;
     eventId: number;
