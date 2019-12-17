@@ -40,8 +40,14 @@ export interface EventCreateFormState {
   ticketQuantity: FormState<string>;
   ticketIsPublicLeftCnt: FormState<boolean>;
   ticketMaxCntPerPerson: FormState<string>;
-  ticketSalesDate: FormState<string>;
-  ticketRefundDate: FormState<string>;
+  ticketSalesDate: FormState<{
+    startAt: string;
+    endAt?: string;
+  }>;
+  ticketRefundDate: FormState<{
+    startAt: string;
+    endAt?: string;
+  }>;
   submit: boolean;
 }
 export interface EventDetailState {

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import { ChkBox, FormItem, Input } from 'components';
+import { ChkBox, FormItem, Input, DateTimePicker } from 'components';
 import {
   TICKET_FORM_NAME,
   TICKET_FORM_NAME_LABEL,
@@ -44,8 +44,30 @@ export interface Props {
     quantity: ChangableProps;
     isPublicLeftCnt: ClickableProps;
     maxCntPerPerson: ChangableProps;
-    salesDate: ChangableProps;
-    refundDate: ChangableProps;
+    salesDate: {
+      invalid?: boolean;
+      handleOnChange?: ({
+        startAt,
+        endAt,
+        valid,
+      }: {
+        startAt: string;
+        endAt?: string;
+        valid: boolean;
+      }) => void;
+    };
+    refundDate: {
+      invalid?: boolean;
+      handleOnChange?: ({
+        startAt,
+        endAt,
+        valid,
+      }: {
+        startAt: string;
+        endAt?: string;
+        valid: boolean;
+      }) => void;
+    };
   };
 }
 function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
@@ -108,14 +130,23 @@ function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
         labelExplanation={TICKET_FORM_SALES_DATE_LABEL}
         captionContent={TICKET_FORM_SALES_DATE_CAPTION}
       >
-        <Input inputName="ticketSalesDate" {...FormInputs.salesDate} />
+        <DateTimePicker
+          range={true}
+          firstLabelName="시작"
+          secondLabelName="종료"
+          {...FormInputs.salesDate}
+        />
       </FormItem>
       <FormItem
         label={TICKET_FORM_REFUND_DATE}
         labelExplanation={TICKET_FORM_REFUND_DATE_LABEL}
         captionContent={TICKET_FORM_REFUND_DATE_CAPTION}
       >
-        <Input inputName="ticketRefundDate" {...FormInputs.refundDate} />
+        <DateTimePicker
+          range={false}
+          firstLabelName="환불 마감일"
+          {...FormInputs.refundDate}
+        />
       </FormItem>
     </S.CreateTicketFormContainer>
   );

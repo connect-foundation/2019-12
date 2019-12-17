@@ -38,11 +38,11 @@ export const index: React.FC = () => {
         },
         salesDate: {
           invalid: boolean('ticketSalesDate', false),
-          onChange: action('ticketSalesDate onChange'),
+          handleOnChange: action('ticketSalesDate handleOnChange'),
         },
         refundDate: {
           invalid: boolean('ticketRefundDate', false),
-          onChange: action('ticketRefundDate onChange'),
+          handleOnChange: action('ticketRefundDate handleOnChange'),
         },
       }}
     />

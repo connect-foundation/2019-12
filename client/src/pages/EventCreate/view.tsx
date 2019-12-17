@@ -138,10 +138,45 @@ function EventCreateView(): React.ReactElement {
       onChange: () => {},
     },
     salesDate: {
-      onChange: () => {},
+      handleOnChange: ({
+        startAt,
+        endAt,
+        valid,
+      }: {
+        startAt: string;
+        endAt?: string;
+        valid: boolean;
+      }) => {
+        dispatcher({
+          type: 'ticketSalesDate',
+          value: {
+            valid,
+            value: {
+              startAt,
+              endAt,
+            },
+          },
+        });
+      },
     },
     refundDate: {
-      onChange: () => {},
+      handleOnChange: ({
+        startAt,
+        valid,
+      }: {
+        startAt: string;
+        valid: boolean;
+      }) => {
+        dispatcher({
+          type: 'ticketRefundDate',
+          value: {
+            valid,
+            value: {
+              startAt,
+            },
+          },
+        });
+      },
     },
   };
   const Button = {

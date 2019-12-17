@@ -81,11 +81,15 @@ const defaultState: EventCreateFormState = {
   },
   ticketSalesDate: {
     valid: false,
-    value: '',
+    value: {
+      startAt: '',
+    },
   },
   ticketRefundDate: {
     valid: false,
-    value: '',
+    value: {
+      startAt: '',
+    },
   },
   submit: false,
 };
