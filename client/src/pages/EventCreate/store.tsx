@@ -2,11 +2,19 @@ import React, { useEffect, createContext, useReducer, Dispatch } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BAD_REQUEST, FORBIDDEN, OK } from 'http-status';
 
-import { useStateReducer } from 'hooks/base/useStateReducer';
 import { ActionParams } from 'types/Actions';
 import { EventCreateFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
 import { createEvent } from 'apis';
+
+export function useStateReducer<T>(state: T, action: ActionParams<T>): T {
+  const { type, value } = action;
+
+  return {
+    ...state,
+    [type]: value,
+  };
+}
 
 const defaultState: EventCreateFormState = {
   isPublic: {

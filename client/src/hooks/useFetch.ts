@@ -31,7 +31,9 @@ function reducer<T = any>(
   return result;
 }
 
-export function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProps<T> {
+export default function useFetch<T>(
+  axiosOptions: AxiosRequestConfig,
+): FetchProps<T> {
   const initialState: FetchProps<T> = {
     type: 'request',
   };
