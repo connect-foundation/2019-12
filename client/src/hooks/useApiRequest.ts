@@ -1,11 +1,11 @@
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosError } from 'axios';
 import { useReducer, useEffect } from 'react';
 import { OK } from 'http-status';
 
 export interface FetchProps<T> {
   type: '' | 'REQUEST' | 'SUCCESS' | 'FAILURE';
   data?: T;
-  err?: Error;
+  err?: AxiosError;
   status?: number;
 }
 
@@ -39,7 +39,7 @@ export async function fetchData<T>(
 ) {
   try {
     const { status, data } = await apiRequest();
-    if (status < 300) {
+    if (status === OK) {
       dispatch({ type: SUCCESS, data, status });
     }
   } catch (err) {
