@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { ChkBox, FormItem, Input, TuiEditor, SearchMap } from 'components';
+import { SearchMapResult } from 'types/Data';
 
 import {
   EVENT_FORM_FORM_IS_PUBLIC,
@@ -27,6 +28,7 @@ import {
   EVENT_FORM_DESC_LABEL,
   EVENT_FORM_DESC_CAPTION,
 } from 'commons/constants/string';
+
 interface ChangableProps {
   invalid?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -45,7 +47,14 @@ export interface Props {
     title: ChangableProps;
     date: ChangableProps;
     place: ChangableProps;
-    address: ChangableProps;
+    address: {
+      invalid?: boolean;
+      handleOnChange: ({
+        address,
+        latitude,
+        longitude,
+      }: SearchMapResult) => void;
+    };
     placeDesc: ChangableProps;
     mainImg: ChangableProps;
     desc: ChangableProps;
@@ -99,13 +108,13 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
           {...FormInputs.placeDesc}
         />
       </FormItem>
-      {/* <FormItem
+      <FormItem
         label={EVENT_FORM_ADDRESS}
         labelExplanation={EVENT_FORM_ADDRESS_LABEL}
         captionContent={EVENT_FORM_ADDRESS_CAPTION}
       >
         <SearchMap {...FormInputs.address} />
-      </FormItem> */}
+      </FormItem>
       <FormItem
         label={EVENT_FORM_MAIN_IMG}
         labelExplanation={EVENT_FORM_MAIN_IMG_LABEL}

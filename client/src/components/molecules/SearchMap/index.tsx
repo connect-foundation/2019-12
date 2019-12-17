@@ -3,6 +3,7 @@ import { searchAddressByKeyword } from 'apis';
 import * as S from './style';
 import { Input, KakaoMap } from 'components';
 import DropDown, { Item as DropDownItem } from 'components/molecules/DropDown';
+import { SearchMapResult } from 'types/Data';
 
 interface Location {
   latitude: number;
@@ -34,10 +35,10 @@ export const convertResultsToItems = (items: SearchResult[]): DropDownItem[] =>
   });
 
 interface Props {
-  onChange?: (roadAddressName: string) => void;
+  handleOnChange?: ({ address, latitude, longitude }: SearchMapResult) => void;
 }
 
-function SearchMap({ onChange }: Props): React.ReactElement {
+function SearchMap({ handleOnChange }: Props): React.ReactElement {
   const [visible, setVisible] = useState<boolean>(true);
   const [keyword, setKeyword] = useState<string>('');
   const [results, setResults] = useState<DropDownItem[]>([]);
@@ -80,7 +81,7 @@ function SearchMap({ onChange }: Props): React.ReactElement {
     setVisible(false);
     setKeyword(title);
     setLocation(value);
-    if (onChange) onChange(title);
+    if (handleOnChange) handleOnChange({ address: title, ...value });
   };
 
   return (

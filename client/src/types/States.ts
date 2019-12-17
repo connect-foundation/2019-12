@@ -1,4 +1,4 @@
-import { EventDetail } from './Data';
+import { EventDetail, SearchMapResult } from './Data';
 
 export interface SignUpFormState {
   lastName: string;
@@ -19,7 +19,7 @@ export interface EventCreateFormState {
   eventTitle: FormState<string>;
   eventDate: FormState<string>;
   eventPlace: FormState<string>;
-  eventAddress: FormState<string>;
+  eventAddress: FormState<SearchMapResult>;
   eventPlaceDesc: FormState<string>;
   eventMainImg: FormState<string>;
   eventDesc: FormState<string>;

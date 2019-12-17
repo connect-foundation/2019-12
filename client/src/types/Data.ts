@@ -99,3 +99,9 @@ export interface CreatedEvent {
   placeDesc: string;
   mainImg: string;
 }
+
+export interface SearchMapResult {
+  address: string;
+  latitude: number;
+  longitude: number;
+}

@@ -4,6 +4,7 @@ import EventCreateTemplate from './template';
 import { EventCreateAction } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
 import { validateEmptyAndExceedMaximumLength } from 'utils/validateInput';
+import { SearchMapResult } from 'types/Data';
 
 function EventCreateView(): React.ReactElement {
   const dispatcher = useContext(EventCreateAction);
@@ -66,7 +67,15 @@ function EventCreateView(): React.ReactElement {
       },
     },
     address: {
-      onChange: () => {},
+      handleOnChange: ({ address, latitude, longitude }: SearchMapResult) => {
+        dispatcher({
+          type: 'eventAddress',
+          value: {
+            valid: true,
+            value: { address, latitude, longitude },
+          },
+        });
+      },
     },
     mainImg: {
       onChange: () => {},

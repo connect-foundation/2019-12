@@ -29,7 +29,7 @@ export const index: React.FC = () => {
         },
         address: {
           invalid: boolean('eventAddress', false),
-          onChange: action('eventAddress onChange'),
+          handleOnChange: action('eventAddress onChange'),
         },
         placeDesc: {
           invalid: boolean('eventPlaceDesc', false),
