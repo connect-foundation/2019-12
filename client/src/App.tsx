@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from 'react-router-dom';
+
+import { Loading } from 'components';
 import { ThemeProvider } from 'styled-components';
 import { useCookies } from 'react-cookie';
 import defaultTheme from 'commons/style/themes/default';
@@ -68,10 +70,15 @@ function PrivateRoute({
   const [cookies] = useCookies(['UID']);
   const { isLogin } = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
+  const [isLoginCheck, setIsLoginCheck] = useState(isLogin);
 
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
+
+  useEffect(() => {
+    setIsLoginCheck(isLogin);
+  }, [isLogin]);
 
   if (cookies.UID === `${REACT_APP_TEST_UID_TOKEN}`) {
     return (
@@ -82,13 +89,15 @@ function PrivateRoute({
   return (
     <Route
       {...rest}
-      render={(props: any) =>
-        cookies.UID && isLogin ? (
+      render={(props: any) => {
+        return !isLoginCheck ? (
+          <Loading />
+        ) : isLogin ? (
           <TargetPage {...props} />
         ) : (
           <Redirect to="/login" />
-        )
-      }
+        );
+      }}
     />
   );
 }
