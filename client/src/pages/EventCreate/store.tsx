@@ -102,6 +102,8 @@ const createFormData = (states: EventCreateFormState) => {
   for (const [key, state] of Object.entries(states)) {
     formData.append(key, state.value);
   }
+  console.log(formData);
+  return formData;
 };
 
 export const EventCreateState = createContext<EventCreateFormState>(
@@ -118,63 +120,17 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   >(useStateReducer, defaultState);
   const formValid = validateStates(states);
 
-  const {
-    isPublic,
-    eventTitle,
-    eventDate,
-    eventPlace,
-    eventAddress,
-    eventPlaceDesc,
-    eventMainImg,
-    eventDesc,
-    ticketName,
-    ticketDesc,
-    ticketPrice,
-    ticketQuantity,
-    ticketIsPublicLeftCnt,
-    ticketMaxCntPerPerson,
-    ticketSalesDate,
-    ticketRefundDate,
-    submit,
-  } = states;
+  const { submit } = states;
+
   useEffect(() => {
     console.log('상태 변경!');
     console.log(states);
   }, [states]);
+
   useEffect(() => {
-    console.log(formValid);
-    if (formValid) {
-    } else {
-      alert('잘못된 폼이 있습니다. 확인해주세요.');
-      dispatcher({ type: 'submit', value: false });
-    }
-  }, [formValid, submit]);
-  useEffect(() => {
-    if (!formValid) return;
-    // if (
-    //   firstNameValidate ||
-    //   lastNameValidate ||
-    //   phoneValidate ||
-    //   !firstName ||
-    //   !lastName ||
-    //   !phoneNumber
-    // ) {
-    alert('입력값을 확인해주세요');
-    return;
-    // }
-    // try {
-    //   if (updateUserRes.status === OK) {
-    //     alert('이벤트 생성이 완료되었습니다.');
-    //     history.push('/');
-    //   }
-    // } catch (err) {
-    //   //400 관련 코드는 전부 err로 넘어옴. 이것을 catch로써 처리함.
-    //   if (err.response.status === FORBIDDEN) {
-    //     alert('잘못된 입력값입니다.');
-    //     dispatcher({ type: 'submit', value: false });
-    //   }
-    // }
-  }, [formValid]);
+    if (!formValid) return alert('입력값을 확인해주세요.');
+    const createdFormData = createFormData(states);
+  }, [formValid, states, submit]);
 
   return (
     <EventCreateAction.Provider value={dispatcher}>
