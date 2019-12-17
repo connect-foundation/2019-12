@@ -7,15 +7,16 @@ import { TicketType, UserTicket } from '../../src/models';
 import { generateJWT } from '../../src/utils/jwt';
 import { OK, UNAUTHORIZED, NO_CONTENT, BAD_REQUEST } from 'http-status';
 
-const createDummyUserTicket = async (userId: number, ticketTypeId: number) =>
-  await UserTicket.create({ userId, ticketTypeId, isAttendance: true });
+const createDummyUserTicket = (
+  userId: number,
+  ticketTypeId: number,
+): Promise<UserTicket> =>
+  UserTicket.create({ userId, ticketTypeId, isAttendance: true });
 
-const setHeader = (token: Secret) => {
-  return {
-    Cookie: `UID=${token}`,
-    Accept: 'application/json',
-  };
-};
+const setHeader = (token: Secret): { Cookie: string; Accept: string } => ({
+  Cookie: `UID=${token}`,
+  Accept: 'application/json',
+});
 
 beforeAll(async () => {
   sequelize.options.logging = false;

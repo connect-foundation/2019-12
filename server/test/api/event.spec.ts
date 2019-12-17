@@ -17,7 +17,7 @@ import {
   BAD_REQUEST,
 } from 'http-status';
 
-const setHeader = (token: Secret) => ({
+const setHeader = (token: Secret): { Cookie: string; Accept: string } => ({
   Cookie: `UID=${token}`,
   Accept: 'application/json',
 });
@@ -132,7 +132,7 @@ describe('POST /api/events', () => {
     data: Record<string, string | boolean | number> = {},
     imagePath: string = defaultImage,
     loggedIn = true,
-  ) {
+  ): request.Test {
     const req = request(app)
       .post('/api/events')
       .type('form')
