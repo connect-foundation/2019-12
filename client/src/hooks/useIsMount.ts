@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
-export default function(fn: Function, input: any) {
+export default function(fn: Function, input: React.ComponentState) {
   const didMountRef = useRef(false);
 
   useEffect(() => {
