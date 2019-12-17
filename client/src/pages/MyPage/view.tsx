@@ -64,6 +64,7 @@ function MyPage(): React.ReactElement {
           title,
           name: '',
           price: ticket.price,
+          to: `${ROUTES.MYPAGE_TICKETS_EVENT}/${id}`,
         });
       });
     });
@@ -84,6 +85,7 @@ function MyPage(): React.ReactElement {
           title,
           name: '',
           price: 0,
+          to: `${ROUTES.MYPAGE_TICKETS_EVENT}/${id}`,
         });
       });
     });
