@@ -3,10 +3,11 @@ import Input, { Props as InputProps } from 'components/atoms/Input';
 import numberDecorator from 'utils/numberDecorator';
 
 export const handleNumber = (value: string) => {
-  const re = /^([0-9]*[0-9|\,]*[0-9]+){0,7}$/;
-  if (value.length < 10 && (value === '' || re.test(value)))
+  const onlyString = value.replace(/\,/g, '');
+  const re = /^[0-9]{0,7}$/;
+  if (value === '' || re.test(onlyString))
     return numberDecorator({
-      mount: +value.replace(/\,/g, ''),
+      mount: +onlyString,
       separated: true,
     });
 };
