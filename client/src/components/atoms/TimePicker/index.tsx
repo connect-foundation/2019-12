@@ -25,11 +25,7 @@ function TimePicker({ onChange }: Props): React.ReactElement {
     onChange(time);
   }, [onChange, time]);
   return (
-    <S.TimePickerSelect
-      styletype="transparent"
-      name="timePicker"
-      onChange={handleOnChange}
-    >
+    <S.TimePickerSelect name="timePicker" onChange={handleOnChange}>
       {renderOptions()}
     </S.TimePickerSelect>
   );
