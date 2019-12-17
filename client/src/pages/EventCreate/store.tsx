@@ -127,17 +127,17 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
     console.log(states);
   }, [states]);
 
-  useEffect(() => {
-    if (!formValid) return alert('입력값을 확인해주세요.');
-    const createdFormData = createFormData(states);
-  }, [formValid, states, submit]);
+  // useEffect(() => {
+  // if (!formValid) return alert('입력값을 확인해주세요.');
+  // const createdFormData = createFormData(states);
+  // }, [formValid, submit]);
 
   return (
-    <EventCreateAction.Provider value={dispatcher}>
-      <EventCreateState.Provider value={states}>
+    <EventCreateState.Provider value={states}>
+      <EventCreateAction.Provider value={dispatcher}>
         {children}
-      </EventCreateState.Provider>
-    </EventCreateAction.Provider>
+      </EventCreateAction.Provider>
+    </EventCreateState.Provider>
   );
 }
 
