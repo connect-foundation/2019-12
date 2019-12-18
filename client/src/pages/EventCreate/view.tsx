@@ -256,9 +256,9 @@ function EventCreateView(): React.ReactElement {
       loading={false}
       eventCreateHeader={
         <>
-          이벤트 주최하기 <br />
-          새로운 이벤트를 주최하기 위해선 다음 단계들이 필요해요! <br />
-          이벤트를 만들면 바로 게시됩니다.
+          <div>이벤트 주최하기</div>
+          <p>새로운 이벤트를 주최하기 위해선 다음 단계들이 필요해요!</p>
+          <p>이벤트를 만들면 바로 게시됩니다.</p>
         </>
       }
       createEventForm={<CreateEventForm FormInputs={CreateFormInputs} />}
