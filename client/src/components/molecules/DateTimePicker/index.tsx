@@ -23,7 +23,8 @@ interface Props {
 }
 
 const validateDate = (startDate: Moment, endDate: Moment): boolean =>
-  startDate.isSameOrBefore(endDate);
+  startDate.isSameOrBefore(endDate) && startDate.isSameOrAfter(moment());
+
 const convertToDateAt = (date: Moment, time: string): string =>
   `${date.format('YYYY-MM-DD')} ${time}`;
 
