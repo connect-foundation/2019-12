@@ -82,7 +82,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'placeDesc',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: true,
             value,
           },
         });
