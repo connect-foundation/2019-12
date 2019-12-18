@@ -122,10 +122,11 @@ export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';
 export const MY_PAGE_LOGOUT = '로그아웃';
 export const MY_PAGE_LOGOUT_ALERT = '로그아웃 되었습니다.';
 
-export const FORM_NAME = {
+export const FORM_NAME: any = {
   event: {
     isPublic: '공개 여부',
     title: '이벤트 제목',
+    date: '이벤트 날짜',
     startAt: '이벤트 시작 날짜',
     endAt: '이벤트 종료 날짜',
     place: '이벤트 장소',
@@ -141,8 +142,10 @@ export const FORM_NAME = {
     quantity: '티켓 수량',
     isPublicLeftCnt: '티켓 수량 숨김',
     maxCntPerPerson: '1인당 구매 가능 개수',
+    salesDate: '티켓 판매 날짜',
     salesStartAt: '티켓 판매 시작 날짜',
     salesEndAt: '티켓 판매 종료 날짜',
+    refundDate: '티켓 판매 날짜',
     refundEndAt: '티켓 환불 마감 날짜',
   },
 };
