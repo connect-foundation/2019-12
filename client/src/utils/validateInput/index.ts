@@ -50,10 +50,22 @@ const validateDates = (
   }
   return true;
 };
+const validateQuantityAndMaxCntPerPerson = (
+  ticketFormStates: TicketFormState,
+): boolean => {
+  const quantity = ticketFormStates.quantity.value;
+  const maxCntPerPerson = ticketFormStates.maxCntPerPerson.value;
+  if (quantity < maxCntPerPerson) {
+    alert('티켓 수량보다 1인당 구매 가능 개수이 많을 수 없습니다.');
+    return false;
+  }
+  return true;
+};
 export const validateStates = (
   eventFormStates: EventFormState,
   ticketFormStates: TicketFormState,
 ): boolean =>
   validateStateWithTraverse(eventFormStates, 'event') &&
   validateStateWithTraverse(ticketFormStates, 'ticket') &&
-  validateDates(eventFormStates, ticketFormStates);
+  validateDates(eventFormStates, ticketFormStates) &&
+  validateQuantityAndMaxCntPerPerson(ticketFormStates);
