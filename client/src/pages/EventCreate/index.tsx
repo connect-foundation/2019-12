@@ -1,7 +1,14 @@
 import React from 'react';
 
-function EventCreate(): React.ReactElement {
-  return <>Hello EventCreate</>;
+import StoreProvider from './store';
+import View from './view';
+
+function EventCreatePage(): React.ReactElement {
+  return (
+    <StoreProvider>
+      <View />
+    </StoreProvider>
+  );
 }
 
-export default EventCreate;
+export default EventCreatePage;
