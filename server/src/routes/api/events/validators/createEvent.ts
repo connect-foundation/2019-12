@@ -72,8 +72,7 @@ export default checkSchema({
   placeDesc: {
     in: 'body',
     isString: true,
-    exists: true,
-    isLength: { options: { min: 1, max: 255 } },
+    optional: true,
   },
   latitude: {
     in: 'body',
@@ -100,8 +99,7 @@ export default checkSchema({
   'ticket.desc': {
     in: 'body',
     isString: true,
-    exists: true,
-    isLength: { options: { min: 1, max: 255 } },
+    optional: true,
   },
   'ticket.price': {
     in: 'body',
