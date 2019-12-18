@@ -10,11 +10,13 @@ import {
   ONLY_IMG_FILE_INFO,
   IMG_UPLOAD_INFO,
   FILE_NOT_FOUND_ERROR_INFO,
+  EXCEEDED_FILE_SIZE_LIMIT,
 } from 'commons/constants/string';
 
 export interface Props {
   onChange?: (data?: string, file?: File) => void;
   height?: string;
+  maxSize?: number;
 }
 
 function clearFileInput(inputRef: RefObject<HTMLInputElement>): void {
@@ -24,6 +26,7 @@ function clearFileInput(inputRef: RefObject<HTMLInputElement>): void {
 
 function readFileOfInput(
   inputRef: RefObject<HTMLInputElement>,
+  maxSize?: number,
 ): Promise<{ data: string; file: File }> {
   return new Promise((resolve, reject) => {
     if (!inputRef.current || !inputRef.current.files)
@@ -33,6 +36,11 @@ function readFileOfInput(
     if (!file.type.startsWith('image')) {
       clearFileInput(inputRef);
       return reject(new Error(ONLY_IMG_FILE_INFO));
+    }
+
+    if (maxSize && maxSize <= file.size) {
+      clearFileInput(inputRef);
+      return reject(new Error(EXCEEDED_FILE_SIZE_LIMIT));
     }
 
     const fileReader = new FileReader();
@@ -46,18 +54,22 @@ function readFileOfInput(
   });
 }
 
-function ImgSelector({ onChange, height = '20rem' }: Props): ReactElement {
+function ImgSelector({
+  onChange,
+  height = '20rem',
+  maxSize,
+}: Props): ReactElement {
   const [background, setBackground] = useState<string>();
   const inputRef = useRef<HTMLInputElement>(null);
   const onChangeFile = useCallback(async () => {
     try {
-      const { data, file } = await readFileOfInput(inputRef);
+      const { data, file } = await readFileOfInput(inputRef, maxSize);
       setBackground(data);
       onChange && onChange(data, file);
     } catch (error) {
       alert(error.message);
     }
-  }, [inputRef, onChange]);
+  }, [inputRef, onChange, maxSize]);
 
   return (
     <S.Container {...{ background, height }}>
