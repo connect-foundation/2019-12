@@ -197,7 +197,6 @@ function EventCreateView(): React.ReactElement {
           type: 'maxCntPerPerson',
           value: {
             valid: validateIsNotEmptyString(value),
-            // && validateIsSameOrLower(+value, +ticketQuantity),
             value,
           },
         });
@@ -213,7 +212,6 @@ function EventCreateView(): React.ReactElement {
         endAt?: string;
         valid: boolean;
       }): void => {
-        console.log('salesDate');
         if (!endAt) return;
         ticketFormDispatcher({
           type: 'salesDate',
@@ -235,7 +233,6 @@ function EventCreateView(): React.ReactElement {
         startAt: string;
         valid: boolean;
       }): void => {
-        console.log('refundDate');
         ticketFormDispatcher({
           type: 'refundDate',
           value: {
