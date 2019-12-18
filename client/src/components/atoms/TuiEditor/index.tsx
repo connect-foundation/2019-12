@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Editor from 'tui-editor';
 import 'tui-editor/dist/tui-editor.css'; // editor's ui
 import 'tui-editor/dist/tui-editor-contents.css'; // editor's content
@@ -14,7 +14,6 @@ function TuiEditor({
 }: TuiEditorProps): React.ReactElement {
   const [content, setContent] = useState('');
   const tuiEditorRef = useRef<HTMLDivElement>(null);
-  const isMount = useRef(true);
   useEffect(() => {
     const tuiEditorElement = tuiEditorRef.current;
     if (tuiEditorElement) {
@@ -30,14 +29,13 @@ function TuiEditor({
       });
     }
   }, [placeholder]);
-
-  useEffect(() => {
-    if (isMount.current) {
-      isMount.current = false;
-      return;
-    }
-    if (onChange) onChange(content);
-  }, [content, onChange]);
+  const onChangeCallback = useCallback(
+    (content: string) => {
+      if (onChange) onChange(content);
+    },
+    [onChange],
+  );
+  useEffect(() => onChangeCallback(content), [content, onChangeCallback]);
 
   return <div ref={tuiEditorRef}></div>;
 }
