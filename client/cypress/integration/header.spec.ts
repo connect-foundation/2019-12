@@ -3,10 +3,10 @@
 context('헤더', () => {
   beforeEach(() => {
     cy.server();
+    cy.setCookie('UID', Cypress.env('auth_token'));
   });
   it('이벤트 주최하기 클릭 시 이벤트 주최 페이지로 이동한다', () => {
     cy.visit('/');
-    cy.setCookie('UID', Cypress.env('auth_token'));
     cy.get('[data-testid=header-create]').click();
     cy.location('pathname').should('eq', '/event/create');
   });
