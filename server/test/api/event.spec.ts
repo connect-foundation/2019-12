@@ -109,8 +109,8 @@ describe('POST /api/events', () => {
   const defaultData: Record<string, string | boolean | number> = {
     isPublic: true,
     title: '이벤트의 제목',
-    startAt: '2200-12-15 10:00:00',
-    endAt: '2201-05-01 13:00:00',
+    startAt: '2200-01-01 10:00:00',
+    endAt: '2300-12-30 13:00:00',
     place: '패스트파이브 강남 4호점',
     address: '서울시 강남구',
     placeDesc: '주차 불가',
@@ -123,9 +123,9 @@ describe('POST /api/events', () => {
     'ticket[isPublicLeftCnt]': false,
     'ticket[maxCntPerPerson]': 10,
     'ticket[price]': 10000,
-    'ticket[salesStartAt]': '2200-12-15 10:00:00',
-    'ticket[salesEndAt]': '2200-12-17 13:00:00',
-    'ticket[refundEndAt]': '2200-12-20 13:00:00',
+    'ticket[salesStartAt]': '2220-12-15 10:00:00',
+    'ticket[salesEndAt]': '2250-12-17 13:00:00',
+    'ticket[refundEndAt]': '2240-12-20 13:00:00',
   };
 
   function getRequest(
@@ -156,12 +156,23 @@ describe('POST /api/events', () => {
     await getRequest({}, undefined, false).expect(UNAUTHORIZED);
   });
 
+  it('제목이 256 자 이상이면 400 응답', async () => {
+    const titleCount = 256;
+    await getRequest({
+      title: '0'.repeat(titleCount),
+    }).expect(BAD_REQUEST);
+  });
+
   it('startAt 이 오늘보다 전이면 400 응답', async () => {
-    await getRequest({ startAt: '1900-03-01 13:00:00' }).expect(BAD_REQUEST);
+    await getRequest({
+      startAt: '1900-03-01 13:00:00',
+    }).expect(BAD_REQUEST);
   });
 
   it('startAt 이 endAt 보다 크면 400 응답', async () => {
-    await getRequest({ startAt: '2202-03-01 13:00:00' }).expect(BAD_REQUEST);
+    await getRequest({
+      startAt: '2402-03-01 13:00:00',
+    }).expect(BAD_REQUEST);
   });
 
   it('ticket 의 maxCntPerPerson 가 quantity 보다 크면 400 응답', async () => {
@@ -169,13 +180,19 @@ describe('POST /api/events', () => {
   });
 
   it('ticket 의 salesStartAt 가 salesEndAt 보다 늦으면 400 응답', async () => {
-    await getRequest({ 'ticket[salesEndAt]': '2201-03-01 13:00:00' }).expect(
+    await getRequest({ 'ticket[salesStartAt]': '2261-03-01 13:00:00' }).expect(
       BAD_REQUEST,
     );
   });
 
-  it('ticket 의 refundEndAt 이 refundEndAt 보다 늦으면 400 응답', async () => {
-    await getRequest({ 'ticket[salesStartAt]': '2202-03-01 13:00:00' }).expect(
+  it('ticket 의 refundEndAt 이 endAt 보다 늦으면 400 응답', async () => {
+    await getRequest({ 'ticket[refundEndAt]': '2502-03-01 13:00:00' }).expect(
+      BAD_REQUEST,
+    );
+  });
+
+  it('ticket 의 refundEndAt 이 startAt 보다 빠르면 400 응답', async () => {
+    await getRequest({ 'ticket[refundEndAt]': '2002-03-01 13:00:00' }).expect(
       BAD_REQUEST,
     );
   });
