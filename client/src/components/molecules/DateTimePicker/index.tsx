@@ -28,12 +28,17 @@ const validateDate = (startDate: Moment, endDate: Moment): boolean =>
 const convertToDateAt = (date: Moment, time: string): string =>
   `${date.format('YYYY-MM-DD')} ${time}`;
 
-const handleOnFocusChange = (
-  target: string,
-  focused: boolean | null,
-  setFocusStartDate?: React.Dispatch<React.SetStateAction<boolean>>,
-  setFocusEndDate?: React.Dispatch<React.SetStateAction<boolean>>,
-): void => {
+const handleOnFocusChange = ({
+  target,
+  focused,
+  setFocusStartDate,
+  setFocusEndDate,
+}: {
+  target: string;
+  focused: boolean | null;
+  setFocusStartDate?: React.Dispatch<React.SetStateAction<boolean>>;
+  setFocusEndDate?: React.Dispatch<React.SetStateAction<boolean>>;
+}): void => {
   if (focused !== null) {
     switch (target) {
       case 'startDate':
@@ -92,9 +97,13 @@ function DateTimePicker({
               onDateChange={setStartDate}
               focused={focusStartDate}
               onFocusChange={({ focused }): void =>
-                handleOnFocusChange('startDate', focused, setFocusStartDate)
+                handleOnFocusChange({
+                  target: 'startDate',
+                  focused,
+                  setFocusStartDate,
+                })
               }
-              id={`${handleOnChange}firstDatePicker`}
+              id={`firstDatePicker ${Math.random()}`}
               keepFocusOnInput={false}
               keepOpenOnDateSelect={false}
               numberOfMonths={1}
@@ -117,9 +126,13 @@ function DateTimePicker({
                 onDateChange={setEndDate}
                 focused={focusEndDate}
                 onFocusChange={({ focused }): void =>
-                  handleOnFocusChange('endDate', focused, setFocusEndDate)
+                  handleOnFocusChange({
+                    target: 'endDate',
+                    focused,
+                    setFocusEndDate,
+                  })
                 }
-                id={`${handleOnChange}secondsDatePicker`}
+                id={`secondsDatePicker ${Math.random()}`}
                 keepFocusOnInput={false}
                 keepOpenOnDateSelect={false}
                 numberOfMonths={1}
