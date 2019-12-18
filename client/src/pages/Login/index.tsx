@@ -35,6 +35,7 @@ function Login(): React.ReactElement {
             },
           }}
           fullid
+          noneIconColor={'black'}
           circleImgSrc={googleSvg}
           children={OAUTH_GOOGLE}
         />

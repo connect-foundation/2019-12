@@ -19,7 +19,6 @@ export const index: React.FC = () => (
     }}
     icon={FaExternalLinkAlt}
     noneIconColor={'black'}
-    hoveredIconColor={'blue'}
     circleImgSrc={tempCircleImgSrc}
   >
     Hello

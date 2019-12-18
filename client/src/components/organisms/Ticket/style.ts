@@ -15,7 +15,14 @@ export const TicketContentContainer = styled.div`
   border-bottom: 2px dashed ${palette('grayscale', 4)};
 `;
 
-export const TicketContentWrapContainer = styled.div`
+interface TicketContentWrapContainerProps {
+  disabled: boolean;
+}
+
+export const TicketContentWrapContainer = styled.div<
+  TicketContentWrapContainerProps
+>`
+  color: ${palette('grayscale', 4)}
   padding-left: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { deleteUserTicketById } from 'services/userTickets';
-import { NO_CONTENT, BAD_REQUEST } from 'http-status';
+import { OK, BAD_REQUEST } from 'http-status';
 
 export async function deleteUserTicket(
   req: Request,
@@ -11,7 +11,7 @@ export async function deleteUserTicket(
     const { ticketId } = req.body;
     await deleteUserTicketById(ticketId, req.user!.id);
 
-    res.sendStatus(NO_CONTENT);
+    res.status(OK).send({ ticketId });
   } catch (err) {
     if (err === 'cannot refund ticket')
       return res

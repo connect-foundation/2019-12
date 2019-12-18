@@ -56,7 +56,11 @@ export const ShortPlace = styled.div`
   margin-bottom: 3.8rem;
 `;
 
-export const HostDetailContainer = styled.div``;
+export const HostDetailContainer = styled.div`
+  button {
+    cursor: auto;
+  }
+`;
 
 export const DateContainer = styled.div`
   margin-bottom: 2.5rem;

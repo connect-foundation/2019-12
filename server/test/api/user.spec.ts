@@ -114,7 +114,7 @@ describe('DELETE /api/users/ticket', () => {
       .send({
         ticketId: data.id,
       })
-      .expect(NO_CONTENT);
+      .expect(OK);
     await TicketType.update({ leftCnt: 0 }, { where: { id: 1 } });
     client.hgetall('1', (err, reply) => {
       expect(reply.isBlock).toBe('0');

@@ -14,8 +14,6 @@ interface Props {
   children: string | React.ReactNode;
   /** 기본 아이콘 색상 */
   noneIconColor?: string;
-  /** hover 아이콘 소스 */
-  hoveredIconColor?: string;
   /** 이미지 소스 */
   circleImgSrc?: string;
   /** 아이콘 크기 */
@@ -29,23 +27,12 @@ function IconBtn({
   icon,
   children,
   noneIconColor = '',
-  hoveredIconColor = '',
   circleImgSrc,
   IconHeight = '1.5rem',
   fullid = false,
 }: Props): React.ReactElement {
-  const [iconColor, setIconColor] = useState(noneIconColor);
-
   return (
-    <S.RootWrapper
-      fullid={fullid}
-      onMouseOver={() => {
-        setIconColor(hoveredIconColor);
-      }}
-      onMouseOut={() => {
-        setIconColor(noneIconColor);
-      }}
-    >
+    <S.RootWrapper fullid={fullid}>
       <S.ContainerWrapper {...btnProps}>
         <S.ContentContainer>
           {circleImgSrc && (
@@ -61,7 +48,7 @@ function IconBtn({
             <S.IconWrapper>
               {icon({
                 size: IconHeight,
-                color: iconColor,
+                color: noneIconColor,
               })}
             </S.IconWrapper>
           )}

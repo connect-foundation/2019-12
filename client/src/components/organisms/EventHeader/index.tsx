@@ -3,7 +3,6 @@ import React from 'react';
 import * as S from './style';
 import { IconBtn, Price, EventDate } from 'components';
 import { User, TicketType } from 'types/Data';
-import { default as Theme } from 'commons/style/themes/default';
 import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
 
 interface Props {
@@ -15,6 +14,7 @@ interface Props {
   endAt: string;
   user: User;
   ticketType: TicketType;
+  doneEvent?: boolean;
 }
 
 function EventHeader({
@@ -26,6 +26,7 @@ function EventHeader({
   endAt,
   user,
   ticketType,
+  doneEvent,
 }: Props): React.ReactElement {
   const ticketInfo = ticketType;
   const { firstName, lastName } = user;
@@ -51,12 +52,11 @@ function EventHeader({
             <S.Label>주최</S.Label>
             <IconBtn
               btnProps={{
-                styletype: 'transparent-hover',
+                styletype: 'transparent',
               }}
               icon={FaExternalLinkAlt}
               children={lastName + firstName}
               noneIconColor={'black'}
-              hoveredIconColor={Theme.palette.primary}
               circleImgSrc={profileImgUrl}
             />
           </S.HostDetailContainer>
@@ -71,8 +71,9 @@ function EventHeader({
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
-          children={'등록'}
+          children={doneEvent ? '이벤트 종료' : '등록'}
           to={`/events/${eventId}/register/tickets`}
+          disabled={doneEvent}
         />
       </S.SubmitContainer>
     </S.HeaderContainer>

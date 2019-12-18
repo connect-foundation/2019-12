@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import { FaTicketAlt, FaRegCreditCard, FaCheckCircle } from 'react-icons/fa';
+import {
+  FaTicketAlt,
+  FaRegCreditCard,
+  FaCheckCircle,
+  FaRegCalendarAlt,
+} from 'react-icons/fa';
 import { IconLabel, Price } from 'components';
 import Btn, { Props as BtnProps } from 'components/atoms/Btn';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
@@ -86,7 +91,7 @@ function TicketBox({
         )}
         {showDueDate && (
           <IconLabel
-            icon={<FaTicketAlt size={'1.5rem'} />}
+            icon={<FaRegCalendarAlt size={'1.5rem'} />}
             labelContent={
               remainDays !== 0
                 ? `${remainDays}일 후에 판매마감`

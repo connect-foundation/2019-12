@@ -8,6 +8,7 @@ import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
 import delay from 'utils/delay';
 import { getImageURL, imageTypes } from 'utils/getImageURL';
+import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
 
 const defaultEventDetail: EventDetail = {
   id: 0,
@@ -72,6 +73,11 @@ function EventDetailView(): React.ReactElement {
     longitude,
   } = events;
 
+  const remainDays = calculateDiffDaysOfDateRange(
+    Date().toString(),
+    ticketType.salesEndAt,
+  );
+
   useEffect(() => {
     if (!isEventInState)
       eventFetchDispatcher({
@@ -111,10 +117,11 @@ function EventDetailView(): React.ReactElement {
             place,
             ticketType,
           }}
+          doneEvent={remainDays <= 0}
         />
       }
       eventContent={<TuiViewer content={desc} />}
-      ticket={<Ticket {...ticketType} />}
+      ticket={<Ticket {...ticketType} doneEvent={remainDays <= 0} />}
       place={
         <Place
           {...{

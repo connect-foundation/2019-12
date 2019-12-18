@@ -11,6 +11,8 @@ import { Props as EventSectionProps } from 'components/organisms/EventSection';
 import { TicketBox } from 'components';
 import { TICKETBOX_REFUND_BTN } from '../../commons/constants/string';
 import { imageTypes, getImageURL } from 'utils/getImageURL';
+import { FetchProps } from 'hooks/useApiRequest';
+import { REQUEST } from '../../hooks/useApiRequest';
 
 export function checkBoughtTicketEventRoute(url: string): number {
   const myTicketEventsRoute = /\/my\/tickets\/event\/([0-9]+)/;
@@ -72,9 +74,11 @@ export function getEventSectionProps({
 export function getTicketBoxesProps({
   boughtTicketEventId,
   boughtTicketEventMap,
+  requestRefundCallback,
 }: {
   boughtTicketEventId: number;
   boughtTicketEventMap?: Map<number, BoughtTicketEvent>;
+  requestRefundCallback: React.Dispatch<FetchProps<{ ticketId: number }>>;
 }): React.ReactNode[] {
   if (!boughtTicketEventMap) {
     return [<></>];
@@ -86,8 +90,8 @@ export function getTicketBoxesProps({
   }
 
   return getStoreData.userTickets.map(userTicket => {
-    const { name, desc, price, salesEndAt, id } = getStoreData.ticket;
-    const { createdAt, isAttendance } = userTicket;
+    const { name, desc, price, salesEndAt } = getStoreData.ticket;
+    const { createdAt, isAttendance, id } = userTicket;
     const props = {
       purchaseDate: getKoreanDateString(createdAt),
       checked: isAttendance,
@@ -101,8 +105,8 @@ export function getTicketBoxesProps({
       <TicketBox
         chkProps={{ checked: false }}
         refundBtProps={{
-          onClick: () => {
-            alert('환불하시겠습니까?');
+          onClick: (): void => {
+            requestRefundCallback({ type: REQUEST, body: [id] });
           },
           children: TICKETBOX_REFUND_BTN,
         }}
@@ -158,4 +162,33 @@ export function convertToEventCardTypeFromCreated(
       });
     });
   });
+}
+
+export function removeTicketInState(
+  boughtTicketEventMap: Map<number, BoughtTicketEvent>,
+  boughtTicketEventOrder: number[],
+  ticketID: number,
+) {
+  let willRemoveEventId = 0;
+  let willRevmoeOrderIndex = 0;
+
+  for (const boughtTicketEvent of Array.from(boughtTicketEventMap)) {
+    for (const userTicket of boughtTicketEvent[1].userTickets) {
+      if (userTicket.id === ticketID) {
+        willRemoveEventId = boughtTicketEvent[1].id;
+        break;
+      }
+    }
+  }
+  boughtTicketEventMap.delete(willRemoveEventId);
+
+  for (const index in boughtTicketEventOrder) {
+    const eventId = boughtTicketEventOrder[index];
+    if (eventId === willRemoveEventId) {
+      willRevmoeOrderIndex = +index;
+      break;
+    }
+  }
+
+  boughtTicketEventOrder.splice(willRevmoeOrderIndex, 1);
 }
