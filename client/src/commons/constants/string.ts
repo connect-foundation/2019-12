@@ -114,8 +114,10 @@ export const TICKET_FORM_REFUND_DATE_LABEL =
   '판매 종료일을 설정하면 환불 마감 날짜는 자동으로 이와 동일하게 조정되지만 호스트가 원하는 날짜로 변경할 수도 있습니다.';
 export const TICKET_FORM_REFUND_DATE_CAPTION = '환불 마감날짜를 선택해주세요.';
 
-export const DATE_PICKER_CAPTION =
-  '시작하는 날짜가 지금보다 늦게 시작하거나, 종료하는 날짜보다 앞설 수 없습니다.';
+export const DATE_PICKER_RANGE_CAPTION =
+  '시작하는 날짜가 현재 시각보다 일찍 시작하거나, 종료하는 날짜보다 앞설 수 없습니다.';
+export const DATE_PICKER_SINGLE_CAPTION =
+  '마감하는 날짜가 현재 시각보다 일찍일 수 없습니다.';
 
 export const MY_PAGE_LNB_MY_TICKETS = '내 티켓';
 export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';

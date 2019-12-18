@@ -4,7 +4,10 @@ import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { Label, TimePicker } from 'components';
-import { DATE_PICKER_CAPTION } from 'commons/constants/string';
+import {
+  DATE_PICKER_RANGE_CAPTION,
+  DATE_PICKER_SINGLE_CAPTION,
+} from 'commons/constants/string';
 import * as S from './style';
 
 interface Props {
@@ -150,7 +153,9 @@ function DateTimePicker({
           </S.PickerContainer>
         </S.SecondDateContainer>
       )}
-      <S.Caption invalid={!valid}>{DATE_PICKER_CAPTION}</S.Caption>
+      <S.Caption invalid={!valid}>
+        {range ? DATE_PICKER_RANGE_CAPTION : DATE_PICKER_SINGLE_CAPTION}
+      </S.Caption>
     </S.DateTimePickerContainer>
   );
 }
