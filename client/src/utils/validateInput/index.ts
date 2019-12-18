@@ -32,20 +32,20 @@ const validateDates = (
   eventFormStates: EventFormState,
   ticketFormStates: TicketFormState,
 ): boolean => {
-  const eventStartAt = moment(eventFormStates.date.value.startAt);
+  const now = moment();
   const eventEndAt = moment(eventFormStates.date.value.endAt);
   const salesStartAt = moment(ticketFormStates.salesDate.value.salesStartAt);
   const salesEndAt = moment(ticketFormStates.salesDate.value.salesEndAt);
   const refundEndAt = moment(ticketFormStates.refundDate.value.refundEndAt);
   if (
-    !salesStartAt.isBetween(eventStartAt, eventEndAt) ||
-    !salesEndAt.isBetween(eventStartAt, eventEndAt)
+    !salesStartAt.isBetween(now, eventEndAt, undefined, '[]') ||
+    !salesEndAt.isBetween(salesStartAt, eventEndAt, undefined, '[]')
   ) {
-    alert('티켓 판매 기간이 행사 기간내에 속해야합니다.');
+    alert('티켓 판매는 [현재 시각 ~ 행사 종료] 내에만 가능합니다.');
     return false;
   }
-  if (!refundEndAt.isBetween(salesStartAt, salesEndAt)) {
-    alert('티켓 환불 마감날짜는 티켓 판매 기간내에 속해야합니다.');
+  if (!refundEndAt.isBetween(salesStartAt, eventEndAt, undefined, '[]')) {
+    alert('티켓 환불은 [티켓 판매 시작 ~ 행사 종료] 내에만 가능합니다.');
     return false;
   }
   return true;
