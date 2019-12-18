@@ -53,7 +53,8 @@ export const EVENT_FORM_FORM_IS_PUBLIC_LABEL =
 export const EVENT_FORM_TITLE = '이벤트 제목';
 export const EVENT_FORM_TITLE_LABEL =
   '주제를 잘 나타내는 멋진 제목을 입력해주세요.';
-export const EVENT_FORM_TITLE_CAPTION = '제목을 입력하세요.';
+export const EVENT_FORM_TITLE_CAPTION =
+  '제목이 너무 짧거나, 잘못된 형식입니다.';
 export const EVENT_FORM_TITLE_PLACEHOLDER = '부스트캠프 2019 데모데이';
 export const EVENT_FORM_DATE = '이벤트 날짜 및 시간';
 export const EVENT_FORM_DATE_LABEL =
@@ -120,3 +121,28 @@ export const MY_PAGE_LNB_MY_TICKETS = '내 티켓';
 export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';
 export const MY_PAGE_LOGOUT = '로그아웃';
 export const MY_PAGE_LOGOUT_ALERT = '로그아웃 되었습니다.';
+
+export const FORM_NAME = {
+  event: {
+    isPublic: '공개 여부',
+    title: '이벤트 제목',
+    startAt: '이벤트 시작 날짜',
+    endAt: '이벤트 종료 날짜',
+    place: '이벤트 장소',
+    address: '이벤트 상세 주소',
+    placeDesc: '이벤트 설명',
+    mainImg: '이벤트 대표 이미지',
+    desc: '이벤트 내용',
+  },
+  ticket: {
+    name: '티켓 이름',
+    desc: '티켓 설명',
+    price: '티켓 가격',
+    quantity: '티켓 수량',
+    isPublicLeftCnt: '티켓 수량 숨김',
+    maxCntPerPerson: '1인당 구매 가능 개수',
+    salesStartAt: '티켓 판매 시작 날짜',
+    salesEndAt: '티켓 판매 종료 날짜',
+    refundEndAt: '티켓 환불 마감 날짜',
+  },
+};
