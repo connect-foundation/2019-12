@@ -12,26 +12,41 @@ export const RootContainer = styled.div<ContainerProps>`
     top: 'column',
     left: 'row',
   })};
-  padding: 2rem;
-  border-width: 0.1rem;
+  padding: ${switchProp('imgPosition', {
+    top: '2rem',
+    left: '0rem',
+  })};
+  border-width: ${ifProp('border', '0.25px', '0')};
   border-style: solid;
-  border-color: ${ifProp('border', palette('grayscale', 4), '')};
+  border-color: ${ifProp('border', palette('grayscale', 5), '')};
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   color: ${palette('grayscale', 1)};
+  padding: 2rem;
 `;
 
 interface ImgProp {
   src: string;
 }
 
-export const ImgWrapper = styled.div`
+interface ImgWrapperProps {
+  imgPosition: 'top' | 'left';
+}
+
+export const ImgWrapper = styled.div<ImgWrapperProps>`
   display: flex;
   flex-grow: 1;
-  padding: 2rem 0rem;
+  padding: ${switchProp('imgPosition', {
+    top: '2rem 0rem',
+    left: '0.1rem',
+  })};
+  padding-right: ${switchProp('imgPosition', {
+    top: '0rem',
+    left: '4rem',
+  })};
 `;
 
 export const Img = styled.div<ImgProp>`

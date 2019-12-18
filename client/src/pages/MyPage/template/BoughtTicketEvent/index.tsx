@@ -3,13 +3,26 @@ import React from 'react';
 import * as S from './style';
 
 export interface Props {
-  eventId: number;
+  eventHeader: React.ReactNode;
+  ticketsTitle: string;
+  ticektsTitleCaption: string;
+  ticketsList: React.ReactNode[];
 }
 
-function BoughtTicketEventTemplate({ eventId }: Props): React.ReactElement {
+function BoughtTicketEventTemplate({
+  eventHeader,
+  ticketsTitle,
+  ticektsTitleCaption,
+  ticketsList,
+}: Props): React.ReactElement {
   return (
     <>
-      <S.Title>{eventId}</S.Title>
+      <S.EventHeaderWrapper>{eventHeader}</S.EventHeaderWrapper>
+      <S.ContentContainer>
+        <S.TitleTickets>{ticketsTitle}</S.TitleTickets>
+        <S.TitleTicketsCaption>{ticektsTitleCaption}</S.TitleTicketsCaption>
+        <S.TicketsContainer>{ticketsList}</S.TicketsContainer>
+      </S.ContentContainer>
     </>
   );
 }

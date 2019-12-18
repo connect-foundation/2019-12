@@ -26,3 +26,8 @@ export const getCreatedEvents = () =>
   mainAxios.get('/users/events', {
     headers: { Accept: 'application/json' },
   });
+
+export const refundBoughtTicket = (ticketId: number) =>
+  mainAxios.delete('/users/ticket', {
+    data: ticketId,
+  });
