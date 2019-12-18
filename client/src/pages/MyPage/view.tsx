@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router-dom';
 
@@ -42,7 +42,8 @@ function MyPage(): React.ReactElement {
     method: '',
     route: window.location.pathname,
   });
-  const [currentTabIndex, setCurrentTabIndex] = useState(MY_TICKETS_TAB_INDEX);
+  // const [currentTabIndex, setCurrentTabIndex] = useState(MY_TICKETS_TAB_INDEX);
+  const currentTabIndex = useRef(MY_TICKETS_TAB_INDEX);
   const { state, dispatch: useAction } = useContext(MyPageContext);
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
@@ -55,14 +56,16 @@ function MyPage(): React.ReactElement {
           method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_TICKETS,
         });
-        setCurrentTabIndex(MY_TICKETS_TAB_INDEX);
+        currentTabIndex.current = MY_TICKETS_TAB_INDEX;
+        // setCurrentTabIndex(MY_TICKETS_TAB_INDEX);
       },
       (): void => {
         setHistoryPath({
           method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_CREATED_EVENTS,
         });
-        setCurrentTabIndex(MY_CREATED_EVENT_TAB_INDEX);
+        currentTabIndex.current = MY_CREATED_EVENT_TAB_INDEX;
+        // setCurrentTabIndex(MY_CREATED_EVENT_TAB_INDEX);
       },
       (): void => {
         removeCookie('UID');
@@ -80,7 +83,8 @@ function MyPage(): React.ReactElement {
     historyMethod: string,
     historyRoute: string,
   ): void {
-    setCurrentTabIndex(tabIndex);
+    currentTabIndex.current = tabIndex;
+    // setCurrentTabIndex(tabIndex);
     setHistoryPath({
       method: historyMethod,
       route: historyRoute,
@@ -177,7 +181,7 @@ function MyPage(): React.ReactElement {
             MY_PAGE_LOGOUT,
           ]}
           onTabClicked={routeByTabIndex}
-          tabIndex={currentTabIndex}
+          tabIndex={currentTabIndex.current}
         />
       }
       ticketsProps={{
