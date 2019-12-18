@@ -6,10 +6,12 @@ import React, {
   useReducer,
   Dispatch,
 } from 'react';
+import moment from 'moment';
 import { ActionParams } from 'types/Actions';
 import { EventFormState, TicketFormState } from 'types/States';
 import { UseStateReducer } from 'types/CustomHooks';
 import { createEvent } from 'apis';
+import { FORM_NAME } from 'commons/constants/string';
 
 export function useStateReducer<T>(state: T, action: ActionParams<T>): T {
   const { type, value } = action;
@@ -22,18 +24,42 @@ export function useStateReducer<T>(state: T, action: ActionParams<T>): T {
 
 const validateStateWithTraverse = (
   states: EventFormState | TicketFormState,
+  formType: string,
 ): boolean =>
   Object.entries(states).every(([key, value]) => {
     if (value.valid) return true;
-    alert(`${key}가 올바르지 않습니다. 확인해주세요. 👀`);
+    alert(`${FORM_NAME[formType][key]}가 올바르지 않습니다. 확인해주세요. 👀`);
     return false;
   });
+const validateDates = (
+  eventFormStates: EventFormState,
+  ticketFormStates: TicketFormState,
+): boolean => {
+  const eventStartAt = moment(eventFormStates.date.value.startAt);
+  const eventEndAt = moment(eventFormStates.date.value.endAt);
+  const salesStartAt = moment(ticketFormStates.salesDate.value.salesStartAt);
+  const salesEndAt = moment(ticketFormStates.salesDate.value.salesEndAt);
+  const refundEndAt = moment(ticketFormStates.refundDate.value.refundEndAt);
+  if (
+    !salesStartAt.isBetween(eventStartAt, eventEndAt) ||
+    !salesEndAt.isBetween(eventStartAt, eventEndAt)
+  ) {
+    alert('티켓 판매 기간이 행사 기간내에 속해야합니다.');
+    return false;
+  }
+  if (!refundEndAt.isBetween(salesStartAt, salesEndAt)) {
+    alert('티켓 환불 마감날짜는 티켓 판매 기간내에 속해야합니다.');
+    return false;
+  }
+  return true;
+};
 const validateStates = (
   eventFormStates: EventFormState,
   ticketFormStates: TicketFormState,
 ): boolean =>
-  validateStateWithTraverse(eventFormStates) &&
-  validateStateWithTraverse(ticketFormStates);
+  validateStateWithTraverse(eventFormStates, 'event') &&
+  validateStateWithTraverse(ticketFormStates, 'ticket') &&
+  validateDates(eventFormStates, ticketFormStates);
 
 const convertKeyWithObject = (key: string, object?: string): string =>
   object ? `${object}[${key}]` : key;
@@ -51,7 +77,6 @@ const appendStatesToFormData = (
         formData.append(convertKeyWithObject(key, object), value);
   }
 };
-
 const createFormData = (
   eventFormStates: EventFormState,
   ticketFormStates: TicketFormState,
@@ -179,12 +204,9 @@ function StoreProvider({
   >(useStateReducer, TicketFormDefaultState);
 
   useEffect(() => {
-    console.log('상태 변경!');
+    console.log('changed');
     console.log(eventFormStates);
     console.log(ticketFormStates);
-  }, [eventFormStates, ticketFormStates]);
-
-  useEffect(() => {
     if (!submit) return;
     const formValid = validateStates(eventFormStates, ticketFormStates);
     if (!formValid) return setSubmit(false);
