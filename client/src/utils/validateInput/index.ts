@@ -55,7 +55,7 @@ const validateQuantityAndMaxCntPerPerson = (
 ): boolean => {
   const quantity = ticketFormStates.quantity.value;
   const maxCntPerPerson = ticketFormStates.maxCntPerPerson.value;
-  if (quantity < maxCntPerPerson) {
+  if (+quantity < +maxCntPerPerson) {
     alert('티켓 수량보다 1인당 구매 가능 개수이 많을 수 없습니다.');
     return false;
   }
