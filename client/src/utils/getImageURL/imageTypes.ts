@@ -16,8 +16,8 @@ export const imageTypes: Record<keyof typeof imageTypeEnum, ImageType> = {
     type: 'f',
   },
   eventDetailImg: {
-    width: 240,
-    height: 135,
+    width: 688,
+    height: 387,
     type: 'f',
   },
 };
