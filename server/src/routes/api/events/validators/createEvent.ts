@@ -9,6 +9,18 @@ const isGreaterThan = (key: string): { options: CustomValidator } => ({
   options: (value, { req }) => resolveObject(req.body, key) <= value,
 });
 
+const isBetween = (
+  startKey: string,
+  endKey: string,
+): { options: CustomValidator } => ({
+  options: (value, { req }): boolean => {
+    const start = resolveObject(req.body, startKey);
+    const end = resolveObject(req.body, endKey);
+
+    return value >= start && value <= end;
+  },
+});
+
 export default checkSchema({
   isPublic: {
     in: 'body',
@@ -20,7 +32,7 @@ export default checkSchema({
     in: 'body',
     isString: true,
     exists: true,
-    isLength: { options: { min: 5, max: 255 } },
+    isLength: { options: { min: 1, max: 255 } },
   },
   startAt: {
     in: 'body',
@@ -40,16 +52,19 @@ export default checkSchema({
     in: 'body',
     isString: true,
     exists: true,
+    isLength: { options: { min: 1, max: 255 } },
   },
   address: {
     in: 'body',
     isString: true,
     exists: true,
+    isLength: { options: { min: 1, max: 255 } },
   },
   placeDesc: {
     in: 'body',
     isString: true,
     exists: true,
+    isLength: { options: { min: 1, max: 255 } },
   },
   latitude: {
     in: 'body',
@@ -65,16 +80,19 @@ export default checkSchema({
     in: 'body',
     isString: true,
     exists: true,
+    isLength: { options: { min: 1, max: 65535 } },
   },
   'ticket.name': {
     in: 'body',
     isString: true,
     exists: true,
+    isLength: { options: { min: 1, max: 255 } },
   },
   'ticket.desc': {
     in: 'body',
     isString: true,
     exists: true,
+    isLength: { options: { min: 1, max: 255 } },
   },
   'ticket.price': {
     in: 'body',
@@ -106,20 +124,20 @@ export default checkSchema({
     isISO8601: true,
     exists: true,
     toDate: true,
-    isAfter: { options: new Date().toString() },
+    custom: isBetween('startAt', 'endAt'),
   },
   'ticket.salesEndAt': {
     in: 'body',
     isISO8601: true,
     exists: true,
     toDate: true,
-    custom: isGreaterThan('ticket.salesStartAt'),
+    custom: isBetween('ticket.salesStartAt', 'endAt'),
   },
   'ticket.refundEndAt': {
     in: 'body',
     isISO8601: true,
     exists: true,
     toDate: true,
-    custom: isGreaterThan('ticket.salesEndAt'),
+    custom: isBetween('ticket.salesStartAt', 'endAt'),
   },
 });

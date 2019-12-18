@@ -47,7 +47,6 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   );
   const { userId, googleId, email } = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
-
   const {
     phoneNumber,
     firstName,

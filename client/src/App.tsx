@@ -24,7 +24,8 @@ import {
 } from 'pages';
 import GlobalStoreProvider from 'stores';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
-
+import { defaultAccountState } from 'stores/accountStore/reducer';
+import { useIsMount } from 'hooks';
 const { REACT_APP_TEST_UID_TOKEN } = process.env;
 
 const App: React.FC = () => {
@@ -68,17 +69,17 @@ function PrivateRoute({
   ...rest
 }: any): React.ReactElement {
   const [cookies] = useCookies(['UID']);
-  const { isLogin } = useContext(UserAccountState);
+  const accountState = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
-  const [isLoginCheck, setIsLoginCheck] = useState(isLogin);
+  const [isLoginCheck, setIsLoginCheck] = useState(false);
 
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
 
-  useEffect(() => {
-    setIsLoginCheck(isLogin);
-  }, [isLogin]);
+  useIsMount(() => {
+    if (defaultAccountState !== accountState) setIsLoginCheck(true);
+  }, accountState);
 
   if (cookies.UID === `${REACT_APP_TEST_UID_TOKEN}`) {
     return (
@@ -92,7 +93,7 @@ function PrivateRoute({
       render={(props: any) => {
         return !isLoginCheck ? (
           <Loading />
-        ) : isLogin ? (
+        ) : accountState.isLogin ? (
           <TargetPage {...props} />
         ) : (
           <Redirect to="/login" />
