@@ -76,6 +76,7 @@ const defaultEventData = {
 };
 
 function EventJoin(): React.ReactElement {
+  window.scrollTo(0, 0);
   const [isReserved, setisReserved] = useState(false);
   const [isTicketChecked, setIsTicketChecked] = useState(false);
   const [ticketCount, setTicketCount] = useState(1);
