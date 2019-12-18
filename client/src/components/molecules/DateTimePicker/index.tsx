@@ -22,8 +22,14 @@ interface Props {
   }) => void;
 }
 
-const validateDate = (startDate: Moment, endDate: Moment): boolean =>
-  startDate.isSameOrBefore(endDate) && startDate.isSameOrAfter(moment());
+const validateDate = (
+  startDate: Moment,
+  endDate: Moment,
+  range: boolean,
+): boolean =>
+  range
+    ? startDate.isSameOrBefore(endDate) && startDate.isSameOrAfter(moment())
+    : startDate.isSameOrAfter(moment());
 
 const convertToDateAt = (date: Moment, time: string): string =>
   `${date.format('YYYY-MM-DD')} ${time}`;
@@ -67,7 +73,7 @@ function DateTimePicker({
   let endAt = '';
   if (startDate) startAt = convertToDateAt(startDate, startTime);
   if (endDate) endAt = convertToDateAt(endDate, endTime);
-  const valid = !range || validateDate(moment(startAt), moment(endAt));
+  const valid = validateDate(moment(startAt), moment(endAt), range);
 
   const handleOnChangeEffectively = useCallback(
     (startAt: string, endAt: string, valid: boolean) => {
