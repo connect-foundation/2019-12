@@ -2,6 +2,7 @@ import * as redis from 'redis';
 import 'env';
 import { sequelize } from 'utils/sequelize';
 import { TicketType } from 'models';
+import winston from 'utils/winston';
 
 const { REDIS_PORT, REDIS_HOST } = process.env;
 
@@ -11,7 +12,7 @@ export const client = redis
     port: +(REDIS_PORT || 6379),
   })
   .on('ready', () => {
-    console.log(`Redis ready on ${REDIS_HOST}:${REDIS_PORT}`);
+    winston.info(`Redis ready on ${REDIS_HOST}:${REDIS_PORT}`);
   });
 
 export const redisMigrate = async () => {

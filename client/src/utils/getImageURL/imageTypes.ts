@@ -1,6 +1,7 @@
 enum imageTypeEnum {
   mainEventImg,
   eventDetailImg,
+  myPageBoughtTicketsEvent,
   eventDetailRegisterImg,
 }
 
@@ -19,6 +20,11 @@ export const imageTypes: Record<keyof typeof imageTypeEnum, ImageType> = {
   eventDetailImg: {
     width: 688,
     height: 387,
+    type: 'f',
+  },
+  myPageBoughtTicketsEvent: {
+    width: 336,
+    height: 189,
     type: 'f',
   },
   eventDetailRegisterImg: { width: 688, height: 387, type: 'f' },
