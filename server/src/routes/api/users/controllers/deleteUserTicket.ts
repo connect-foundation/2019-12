@@ -9,7 +9,7 @@ export async function deleteUserTicket(
 ) {
   try {
     const { ticketId } = req.body;
-    await deleteUserTicketById(ticketId, +req.user!.id);
+    await deleteUserTicketById(ticketId, req.user!.id);
 
     res.status(OK).send({ ticketId });
   } catch (err) {

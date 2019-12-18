@@ -24,10 +24,12 @@
     "http-server": "^0.12.0",
     "jsonwebtoken": "^8.5.1",
     "mariadb": "^2.1.2",
+    "morgan": "^1.9.1",
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.2",
-    "sequelize-typescript": "^1.0.0"
+    "sequelize-typescript": "^1.0.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.29",
@@ -37,10 +39,12 @@
     "@types/express": "^4.17.2",
     "@types/http-status": "^1.1.2",
     "@types/jsonwebtoken": "^8.3.5",
+    "@types/morgan": "^1.7.37",
     "@types/node": "^12.12.11",
     "@types/redis": "^2.8.14",
     "@types/supertest": "^2.0.8",
     "@types/validator": "^12.0.0",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "eslint": "^6.6.0",
