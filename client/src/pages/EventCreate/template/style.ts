@@ -11,10 +11,10 @@ export const EventCreateHeader = styled.section`
   }
 
   div {
-    ${theme('fontStyle.h3')}
+    ${theme('fontStyle.h4')}
     font-family: 'S-CoreDream-8Heavy';
     color: ${palette('grayscale', 1)};
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   p {
     ${theme('fontStyle.h6')}
