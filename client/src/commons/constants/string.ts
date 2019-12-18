@@ -151,7 +151,7 @@ export const FORM_NAME: any = {
     salesDate: '티켓 판매 날짜',
     salesStartAt: '티켓 판매 시작 날짜',
     salesEndAt: '티켓 판매 종료 날짜',
-    refundDate: '티켓 판매 날짜',
+    refundDate: '티켓 환불 마감 날짜',
     refundEndAt: '티켓 환불 마감 날짜',
   },
 };
