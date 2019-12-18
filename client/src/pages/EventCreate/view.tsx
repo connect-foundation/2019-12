@@ -147,7 +147,7 @@ function EventCreateView(): React.ReactElement {
         ticketFormDispatcher({
           type: 'desc',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: true,
             value,
           },
         });

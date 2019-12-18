@@ -51,7 +51,7 @@ const createFormData = (
 const EventFormDefaultState: EventFormState = {
   isPublic: {
     valid: true,
-    value: false,
+    value: true,
   },
   title: {
     valid: false,
@@ -94,7 +94,7 @@ const TicketFormDefaultState: TicketFormState = {
     value: '',
   },
   desc: {
-    valid: false,
+    valid: true,
     value: '',
   },
   price: {

@@ -92,7 +92,7 @@ function CreateEventForm({ FormInputs }: Props): React.ReactElement {
         label={EVENT_FORM_FORM_IS_PUBLIC}
         labelExplanation={EVENT_FORM_FORM_IS_PUBLIC_LABEL}
       >
-        <ChkBox checked={false} {...FormInputs.isPublic} />
+        <ChkBox checked={true} {...FormInputs.isPublic} />
       </FormItem>
       <FormItem
         label={EVENT_FORM_TITLE}
