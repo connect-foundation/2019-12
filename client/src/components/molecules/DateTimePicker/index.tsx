@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import moment, { Moment } from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
@@ -22,16 +22,34 @@ interface Props {
   }) => void;
 }
 
-const validateDate = (startDate: Moment, endDate: Moment) =>
+const validateDate = (startDate: Moment, endDate: Moment): boolean =>
   startDate.isSameOrBefore(endDate);
+const convertToDateAt = (date: Moment, time: string): string =>
+  `${date.format('YYYY-MM-DD')} ${time}`;
 
+const handleOnFocusChange = (
+  target: string,
+  focused: boolean | null,
+  setFocusStartDate?: React.Dispatch<React.SetStateAction<boolean>>,
+  setFocusEndDate?: React.Dispatch<React.SetStateAction<boolean>>,
+): void => {
+  if (focused !== null) {
+    switch (target) {
+      case 'startDate':
+        if (setFocusStartDate) setFocusStartDate(focused);
+        break;
+      case 'endDate':
+        if (setFocusEndDate) setFocusEndDate(focused);
+        break;
+    }
+  }
+};
 function DateTimePicker({
   range,
   firstLabelName,
   secondLabelName = '종료',
   handleOnChange,
 }: Props): React.ReactElement {
-  const [valid, setValid] = useState<boolean>(true);
   const [startDate, setStartDate] = useState<Moment | null>(moment());
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<string>('00:00');
@@ -39,31 +57,26 @@ function DateTimePicker({
   const [focusEndDate, setFocusEndDate] = useState<boolean>(false);
   const [endTime, setEndTime] = useState<string>('00:00');
   const isMount = useRef(true);
-  const handleOnFocusChange = (target: string, focused: boolean | null) => {
-    if (focused !== null) {
-      switch (target) {
-        case 'startDate':
-          setFocusStartDate(focused);
-          break;
-        case 'endDate':
-          setFocusEndDate(focused);
-          break;
-      }
-    }
-  };
+  let startAt = '';
+  let endAt = '';
+  if (startDate) startAt = convertToDateAt(startDate, startTime);
+  if (endDate) endAt = convertToDateAt(endDate, endTime);
+  const valid = !range || validateDate(moment(startAt), moment(endAt));
+
+  const handleOnChangeEffectively = useCallback(
+    (startAt: string, endAt: string, valid: boolean) => {
+      if (handleOnChange) handleOnChange({ startAt, endAt, valid });
+    },
+    [handleOnChange],
+  );
 
   useEffect(() => {
     if (isMount.current) {
       isMount.current = false;
       return;
     }
-    let startAt = '';
-    let endAt = '';
-    if (startDate) startAt = `${startDate.format('YYYY-MM-DD')} ${startTime}`;
-    if (endDate) endAt = `${endDate.format('YYYY-MM-DD')} ${endTime}`;
-    if (range) setValid(validateDate(moment(startAt), moment(endAt)));
-    if (handleOnChange) handleOnChange({ startAt, endAt, valid });
-  }, [startDate, startTime, endDate, endTime, valid, handleOnChange, range]);
+    handleOnChangeEffectively(startAt, endAt, valid);
+  }, [startAt, endAt, valid, handleOnChangeEffectively]);
 
   return (
     <S.DateTimePickerContainer>
@@ -77,10 +90,10 @@ function DateTimePicker({
               date={startDate}
               onDateChange={setStartDate}
               focused={focusStartDate}
-              onFocusChange={({ focused }) =>
-                handleOnFocusChange('startDate', focused)
+              onFocusChange={({ focused }): void =>
+                handleOnFocusChange('startDate', focused, setFocusStartDate)
               }
-              id="firstDatePicker"
+              id={`${firstLabelName}${secondLabelName}firstDatePicker`}
               keepFocusOnInput={false}
               keepOpenOnDateSelect={false}
               numberOfMonths={1}
@@ -102,8 +115,8 @@ function DateTimePicker({
                 date={endDate}
                 onDateChange={setEndDate}
                 focused={focusEndDate}
-                onFocusChange={({ focused }) =>
-                  handleOnFocusChange('endDate', focused)
+                onFocusChange={({ focused }): void =>
+                  handleOnFocusChange('endDate', focused, setFocusEndDate)
                 }
                 id="secondsDatePicker"
                 keepFocusOnInput={false}

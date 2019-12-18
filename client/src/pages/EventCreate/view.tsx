@@ -18,7 +18,7 @@ function EventCreateView(): React.ReactElement {
       onClick: (
         _e: React.MouseEvent<HTMLDivElement, MouseEvent>,
         isChecked?: boolean,
-      ) => {
+      ): void => {
         if (typeof isChecked === 'boolean') {
           eventFormDispatcher({
             type: 'isPublic',
@@ -31,7 +31,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     title: {
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;
         eventFormDispatcher({
           type: 'title',
@@ -51,7 +51,7 @@ function EventCreateView(): React.ReactElement {
         startAt: string;
         endAt?: string;
         valid: boolean;
-      }) => {
+      }): void => {
         eventFormDispatcher({
           type: 'date',
           value: {
@@ -65,7 +65,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     place: {
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;
         eventFormDispatcher({
           type: 'place',
@@ -77,7 +77,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     placeDesc: {
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;
         eventFormDispatcher({
           type: 'placeDesc',
@@ -89,7 +89,11 @@ function EventCreateView(): React.ReactElement {
       },
     },
     address: {
-      handleOnChange: ({ address, latitude, longitude }: SearchMapResult) => {
+      handleOnChange: ({
+        address,
+        latitude,
+        longitude,
+      }: SearchMapResult): void => {
         eventFormDispatcher({
           type: 'address',
           value: {
@@ -100,7 +104,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     mainImg: {
-      onChange: (data?: string, file?: File) => {
+      onChange: (data?: string, file?: File): void => {
         if (!file || !data) return;
         eventFormDispatcher({
           type: 'mainImg',
@@ -112,7 +116,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     desc: {
-      onChange: (value: string) => {
+      onChange: (value: string): void => {
         eventFormDispatcher({
           type: 'desc',
           value: {
@@ -126,7 +130,7 @@ function EventCreateView(): React.ReactElement {
 
   const CreateTicketInputs = {
     name: {
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;
         ticketFormDispatcher({
           type: 'name',
@@ -138,7 +142,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     desc: {
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;
         ticketFormDispatcher({
           type: 'desc',
@@ -150,7 +154,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     price: {
-      handleOnChange: (value: string) => {
+      handleOnChange: (value: string): void => {
         ticketFormDispatcher({
           type: 'price',
           value: {
@@ -161,7 +165,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     quantity: {
-      handleOnChange: (value: string) => {
+      handleOnChange: (value: string): void => {
         ticketFormDispatcher({
           type: 'quantity',
           value: {
@@ -175,7 +179,7 @@ function EventCreateView(): React.ReactElement {
       onClick: (
         _e: React.MouseEvent<HTMLDivElement, MouseEvent>,
         isChecked?: boolean,
-      ) => {
+      ): void => {
         if (isChecked === true || isChecked === false) {
           ticketFormDispatcher({
             type: 'isPublicLeftCnt',
@@ -188,7 +192,7 @@ function EventCreateView(): React.ReactElement {
       },
     },
     maxCntPerPerson: {
-      handleOnChange: (value: string) => {
+      handleOnChange: (value: string): void => {
         ticketFormDispatcher({
           type: 'maxCntPerPerson',
           value: {
@@ -208,7 +212,8 @@ function EventCreateView(): React.ReactElement {
         startAt: string;
         endAt?: string;
         valid: boolean;
-      }) => {
+      }): void => {
+        console.log('salesDate');
         if (!endAt) return;
         ticketFormDispatcher({
           type: 'salesDate',
@@ -229,7 +234,8 @@ function EventCreateView(): React.ReactElement {
       }: {
         startAt: string;
         valid: boolean;
-      }) => {
+      }): void => {
+        console.log('refundDate');
         ticketFormDispatcher({
           type: 'refundDate',
           value: {
@@ -246,7 +252,7 @@ function EventCreateView(): React.ReactElement {
     children: CREATE_EVENT,
     styletype: 'primary',
     grow: true,
-    onClick: () => setSubmit(true),
+    onClick: (): void => setSubmit(true),
   };
   return (
     <EventCreateTemplate
