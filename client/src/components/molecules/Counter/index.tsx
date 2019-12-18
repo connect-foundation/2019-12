@@ -73,7 +73,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
           callbackDecrease();
         }}
       >
-        <FaChevronLeft size={'1.3rem'} />
+        <FaChevronLeft color={'white'} size={'2rem'} />
       </S.ArrowWrapper>
       <S.Count>{count}</S.Count>
       <S.ArrowWrapper
@@ -82,7 +82,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
           callbackIncrease();
         }}
       >
-        <FaChevronRight size={'1.3rem'} />
+        <FaChevronRight color={'white'} size={'2rem'} />
       </S.ArrowWrapper>
     </S.Container>
   );
