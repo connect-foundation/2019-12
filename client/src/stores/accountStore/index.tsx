@@ -39,18 +39,18 @@ function AccountStoreProvider({ children }: { children: React.ReactElement }) {
 
   useEffect(() => {
     const { type, data, err } = getTokenResponse;
+    let dispatchValue = null;
     if (type === REQUEST) return;
-    if (type === SUCCESS)
-      accountDispatcher({
-        type: 'LOGIN',
-        value: { ...data, isLogin: true },
-      });
+    if (type === SUCCESS) dispatchValue = { ...data, isLogin: true };
     if (type === FAILURE) {
-      accountDispatcher({
-        type: 'LOGIN',
-        value: { ...err!.response!.data, isLogin: false },
-      });
+      if (err && err.response)
+        dispatchValue = { ...err.response.data, isLogin: false };
+      else dispatchValue = { isLogin: false };
     }
+    accountDispatcher({
+      type: 'LOGIN',
+      value: dispatchValue,
+    });
   }, [getTokenResponse]);
 
   return (
