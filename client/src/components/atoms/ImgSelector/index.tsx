@@ -17,7 +17,7 @@ export interface Props {
   height?: string;
 }
 
-function clearFileInput(inputRef: RefObject<HTMLInputElement>) {
+function clearFileInput(inputRef: RefObject<HTMLInputElement>): void {
   if (!inputRef.current || !inputRef.current.files) return;
   inputRef.current.value = inputRef.current.defaultValue;
 }
@@ -37,7 +37,7 @@ function readFileOfInput(
 
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    fileReader.onload = (e: ProgressEvent<FileReader>) => {
+    fileReader.onload = (e: ProgressEvent<FileReader>): void => {
       if (!e.target || !e.target.result)
         return reject(new Error(FILE_NOT_FOUND_ERROR_INFO));
       const data: string = e.target.result.toString();
