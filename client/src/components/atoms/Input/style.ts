@@ -12,6 +12,9 @@ export const Input = styled.input<Props>`
   padding: 0 1rem;
 
   color: ${palette('grayscale', 2)};
+  &::placeholder {
+    color: ${palette('grayscale', 4)};
+  }
   background-color: ${ifProp(
     'disabled',
     palette('grayscale', 6),

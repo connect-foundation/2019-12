@@ -2,24 +2,37 @@ import React, { useState } from 'react';
 import Input, { Props as InputProps } from 'components/atoms/Input';
 import numberDecorator from 'utils/numberDecorator';
 
-export const handleNumber = (value: string) => {
-  const onlyString = value.replace(/,/g, '');
-  const re = /^[0-9]{0,7}$/;
-  if (value === '' || re.test(onlyString))
-    return numberDecorator({
-      mount: +onlyString,
-      separated: true,
-    });
-};
+export function handleNumber(value: string, prefix?: '₩' | '$') {
+  const onlyNumber = +value.replace(/[^(\d)]/g, '').slice(0, 7);
+  const formattedNumber = numberDecorator({
+    mount: onlyNumber,
+    currency: prefix,
+    separated: true,
+  });
+  return {
+    formattedNumber,
+    onlyNumber: onlyNumber.toString(),
+  };
+}
 
+interface InputOnlyNumberProps extends InputProps {
+  prefix?: '₩' | '$';
+  handleOnChange?: (value: string) => void;
+}
 function InputOnlyNumber({
   inputName,
-  onChange,
+  prefix,
+  handleOnChange,
   ...props
-}: InputProps): React.ReactElement {
-  const [number, setNumber] = useState<string>('');
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedNumber = handleNumber(e.target.value);
+}: InputOnlyNumberProps): React.ReactElement {
+  const initialNumber = prefix ? `${prefix} 0` : '0';
+  const [number, setNumber] = useState<string>(initialNumber);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { formattedNumber, onlyNumber } = handleNumber(
+      e.target.value,
+      prefix,
+    );
+    if (onlyNumber && handleOnChange) handleOnChange(onlyNumber);
     if (formattedNumber) setNumber(formattedNumber);
   };
 
@@ -27,7 +40,7 @@ function InputOnlyNumber({
     <Input
       inputName={inputName}
       value={number}
-      onChange={handleOnChange}
+      onChange={onChange}
       {...props}
     />
   );
