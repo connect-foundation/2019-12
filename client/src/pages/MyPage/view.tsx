@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router-dom';
 
@@ -7,7 +7,11 @@ import { LNB, CardGrid, EventSection } from 'components';
 import { UserAccountAction } from 'stores/accountStore';
 import { MyPageContext } from './store';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
-import { getBoughtTicketEvent, getCreatedEvents } from 'apis';
+import {
+  getBoughtTicketEvent,
+  getCreatedEvents,
+  refundBoughtTicket,
+} from 'apis';
 import ROUTES from 'commons/constants/routes';
 import {
   MY_TICKETS_TITLE,
@@ -20,18 +24,24 @@ import {
   BOUGHT_TICKET_EVENT_TITLE_CAPTION,
   HISTORY_METHOD_PUSH,
   HISTORY_METHOD_REPLACE,
+  REFUND_TICKET_SUCCESS,
+  REFUND_TICKET_FAILURE,
+  NOT_FOUND_BOUGHT_TICKET,
+  NOT_FOUND_CREATED_EVENT,
 } from 'commons/constants/string';
 import {
   MY_TICKETS_TAB_INDEX,
   MY_CREATED_EVENT_TAB_INDEX,
 } from 'commons/constants/number';
 import { BoughtTicketEvent, CreatedEvent } from 'types/Data';
+import { BAD_REQUEST, OK } from 'http-status';
 import {
   getEventSectionProps,
   getTicketBoxesProps,
   checkBoughtTicketEventRoute,
   convertToEventCardFromBought,
   convertToEventCardTypeFromCreated,
+  removeTicketInState,
 } from './helper';
 
 function MyPage(): React.ReactElement {
@@ -42,7 +52,7 @@ function MyPage(): React.ReactElement {
     method: '',
     route: window.location.pathname,
   });
-  const [currentTabIndex, setCurrentTabIndex] = useState(MY_TICKETS_TAB_INDEX);
+  const currentTabIndex = useRef(MY_TICKETS_TAB_INDEX);
   const { state, dispatch: useAction } = useContext(MyPageContext);
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
@@ -55,14 +65,14 @@ function MyPage(): React.ReactElement {
           method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_TICKETS,
         });
-        setCurrentTabIndex(MY_TICKETS_TAB_INDEX);
+        currentTabIndex.current = MY_TICKETS_TAB_INDEX;
       },
       (): void => {
         setHistoryPath({
           method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_CREATED_EVENTS,
         });
-        setCurrentTabIndex(MY_CREATED_EVENT_TAB_INDEX);
+        currentTabIndex.current = MY_CREATED_EVENT_TAB_INDEX;
       },
       (): void => {
         removeCookie('UID');
@@ -80,7 +90,7 @@ function MyPage(): React.ReactElement {
     historyMethod: string,
     historyRoute: string,
   ): void {
-    setCurrentTabIndex(tabIndex);
+    currentTabIndex.current = tabIndex;
     setHistoryPath({
       method: historyMethod,
       route: historyRoute,
@@ -93,6 +103,9 @@ function MyPage(): React.ReactElement {
   const [createdEventsResponse, requestCreatedEvents] = useApiRequest<
     CreatedEvent[]
   >(getCreatedEvents);
+  const [refundResponse, requestRefund] = useApiRequest<{ ticketId: number }>(
+    refundBoughtTicket,
+  );
 
   useEffect(() => {
     requestBoughtTicket({ type: REQUEST });
@@ -166,6 +179,52 @@ function MyPage(): React.ReactElement {
     }
   }, [useAction, createdEventsResponse, state.createdEvents]);
 
+  useEffect(() => {
+    const { type, status, err, data } = refundResponse;
+    if (type === '') return;
+
+    switch (type) {
+      case SUCCESS:
+        if (status === OK) {
+          if (state.events && state.eventsOrder && data) {
+            const { ticketId } = data;
+            removeTicketInState(state.events, state.eventsOrder, ticketId);
+            useAction.updateBoughtTickets({
+              events: state.events,
+              eventsOrder: state.eventsOrder,
+            });
+          }
+          alert(REFUND_TICKET_SUCCESS);
+          navigateWithPathname(
+            MY_TICKETS_TAB_INDEX,
+            HISTORY_METHOD_PUSH,
+            ROUTES.MYPAGE_TICKETS,
+          );
+          requestRefund({ type: '' });
+        }
+        break;
+
+      case FAILURE:
+        if (!err || !err.response || !err.response.status) {
+          alert(REFUND_TICKET_FAILURE);
+          return;
+        }
+
+        const { status: errStatus } = err.response;
+        if (errStatus === BAD_REQUEST) {
+          alert(err.response.data.message);
+        }
+        requestRefund({ type: '' });
+        break;
+    }
+  }, [
+    refundResponse,
+    requestRefund,
+    state.events,
+    state.eventsOrder,
+    useAction,
+  ]);
+
   return (
     <MyPageTemplate
       routePath={historyPath.route}
@@ -177,26 +236,36 @@ function MyPage(): React.ReactElement {
             MY_PAGE_LOGOUT,
           ]}
           onTabClicked={routeByTabIndex}
-          tabIndex={currentTabIndex}
+          tabIndex={currentTabIndex.current}
         />
       }
       ticketsProps={{
         title: MY_TICKETS_TITLE,
-        cardGrid: state.events && state.eventsOrder && (
-          <CardGrid
-            events={convertToEventCardFromBought(state.events)}
-            eventsOrder={state.eventsOrder}
-          />
-        ),
+        cardGrid:
+          state.events &&
+          state.eventsOrder &&
+          (state.events.size !== 0 ? (
+            <CardGrid
+              events={convertToEventCardFromBought(state.events)}
+              eventsOrder={state.eventsOrder}
+            />
+          ) : (
+            <h2>{NOT_FOUND_BOUGHT_TICKET}</h2>
+          )),
       }}
       createdEventsProps={{
         title: MY_CREATED_EVENTS,
-        cardGrid: state.createdEvents && state.createdEventsOrder && (
-          <CardGrid
-            events={convertToEventCardTypeFromCreated(state.createdEvents)}
-            eventsOrder={state.createdEventsOrder}
-          />
-        ),
+        cardGrid:
+          state.createdEvents &&
+          state.createdEventsOrder &&
+          (state.createdEvents.size !== 0 ? (
+            <CardGrid
+              events={convertToEventCardTypeFromCreated(state.createdEvents)}
+              eventsOrder={state.createdEventsOrder}
+            />
+          ) : (
+            <h2>주{NOT_FOUND_CREATED_EVENT}</h2>
+          )),
       }}
       boughtTicketEventTemplateProps={{
         eventHeader: (
@@ -212,6 +281,7 @@ function MyPage(): React.ReactElement {
         ticketsList: getTicketBoxesProps({
           boughtTicketEventMap: state.events,
           boughtTicketEventId,
+          requestRefundCallback: requestRefund,
         }),
         ticketsTitle: BOUGHT_TICKET_EVENT_TITLE,
         ticektsTitleCaption: BOUGHT_TICKET_EVENT_TITLE_CAPTION,

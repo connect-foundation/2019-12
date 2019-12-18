@@ -29,5 +29,5 @@ export const getCreatedEvents = () =>
 
 export const refundBoughtTicket = (ticketId: number) =>
   mainAxios.delete('/users/ticket', {
-    data: ticketId,
+    data: { ticketId },
   });

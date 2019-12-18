@@ -51,12 +51,11 @@ function EventHeader({
             <S.Label>주최</S.Label>
             <IconBtn
               btnProps={{
-                styletype: 'transparent-hover',
+                styletype: 'transparent',
               }}
               icon={FaExternalLinkAlt}
               children={lastName + firstName}
               noneIconColor={'black'}
-              hoveredIconColor={Theme.palette.primary}
               circleImgSrc={profileImgUrl}
             />
           </S.HostDetailContainer>

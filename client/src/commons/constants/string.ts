@@ -131,6 +131,12 @@ export const BOUGHT_TICKET_EVENT_TITLE_CAPTION = '현재 구매한 티켓 목록
 export const HISTORY_METHOD_PUSH = 'PUSH';
 export const HISTORY_METHOD_REPLACE = 'REPLACE';
 
+
+export const REFUND_TICKET_SUCCESS = '환불이 완료되었습니다.';
+export const REFUND_TICKET_FAILURE = '환불이 실패했습니다.';
+export const NOT_FOUND_BOUGHT_TICKET = '아직 구매한 티켓이 없네요..😅';
+export const NOT_FOUND_CREATED_EVENT = '주최한 이벤트가 없네요..🤣';
+
 export const FORM_NAME: any = {
   event: {
     isPublic: '공개 여부',
@@ -158,3 +164,4 @@ export const FORM_NAME: any = {
     refundEndAt: '티켓 환불 마감 날짜',
   },
 };
+
