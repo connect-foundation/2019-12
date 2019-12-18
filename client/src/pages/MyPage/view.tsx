@@ -24,6 +24,10 @@ import {
   BOUGHT_TICKET_EVENT_TITLE_CAPTION,
   HISTORY_METHOD_PUSH,
   HISTORY_METHOD_REPLACE,
+  REFUND_TICKET_SUCCESS,
+  REFUND_TICKET_FAILURE,
+  NOT_FOUND_BOUGHT_TICKET,
+  NOT_FOUND_CREATED_EVENT,
 } from 'commons/constants/string';
 import {
   MY_TICKETS_TAB_INDEX,
@@ -190,7 +194,7 @@ function MyPage(): React.ReactElement {
               eventsOrder: state.eventsOrder,
             });
           }
-          alert('환불이 완료되었습니다.');
+          alert(REFUND_TICKET_SUCCESS);
           navigateWithPathname(
             MY_TICKETS_TAB_INDEX,
             HISTORY_METHOD_PUSH,
@@ -202,7 +206,7 @@ function MyPage(): React.ReactElement {
 
       case FAILURE:
         if (!err || !err.response || !err.response.status) {
-          alert('환불에 실패했습니다.');
+          alert(REFUND_TICKET_FAILURE);
           return;
         }
 
@@ -237,21 +241,31 @@ function MyPage(): React.ReactElement {
       }
       ticketsProps={{
         title: MY_TICKETS_TITLE,
-        cardGrid: state.events && state.eventsOrder && (
-          <CardGrid
-            events={convertToEventCardFromBought(state.events)}
-            eventsOrder={state.eventsOrder}
-          />
-        ),
+        cardGrid:
+          state.events &&
+          state.eventsOrder &&
+          (state.events.size !== 0 ? (
+            <CardGrid
+              events={convertToEventCardFromBought(state.events)}
+              eventsOrder={state.eventsOrder}
+            />
+          ) : (
+            <h2>{NOT_FOUND_BOUGHT_TICKET}</h2>
+          )),
       }}
       createdEventsProps={{
         title: MY_CREATED_EVENTS,
-        cardGrid: state.createdEvents && state.createdEventsOrder && (
-          <CardGrid
-            events={convertToEventCardTypeFromCreated(state.createdEvents)}
-            eventsOrder={state.createdEventsOrder}
-          />
-        ),
+        cardGrid:
+          state.createdEvents &&
+          state.createdEventsOrder &&
+          (state.createdEvents.size !== 0 ? (
+            <CardGrid
+              events={convertToEventCardTypeFromCreated(state.createdEvents)}
+              eventsOrder={state.createdEventsOrder}
+            />
+          ) : (
+            <h2>주{NOT_FOUND_CREATED_EVENT}</h2>
+          )),
       }}
       boughtTicketEventTemplateProps={{
         eventHeader: (
