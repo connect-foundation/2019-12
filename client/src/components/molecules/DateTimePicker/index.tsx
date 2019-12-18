@@ -93,7 +93,7 @@ function DateTimePicker({
               onFocusChange={({ focused }): void =>
                 handleOnFocusChange('startDate', focused, setFocusStartDate)
               }
-              id={`${firstLabelName}${secondLabelName}firstDatePicker`}
+              id={`${handleOnChange}firstDatePicker`}
               keepFocusOnInput={false}
               keepOpenOnDateSelect={false}
               numberOfMonths={1}
@@ -118,7 +118,7 @@ function DateTimePicker({
                 onFocusChange={({ focused }): void =>
                   handleOnFocusChange('endDate', focused, setFocusEndDate)
                 }
-                id="secondsDatePicker"
+                id={`${handleOnChange}secondsDatePicker`}
                 keepFocusOnInput={false}
                 keepOpenOnDateSelect={false}
                 numberOfMonths={1}
