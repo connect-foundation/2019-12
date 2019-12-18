@@ -19,7 +19,11 @@ export const TitleTicketsCaption = styled.div`
   margin-bottom: 3rem;
 `;
 
-export const TicketsContainer = styled.div``;
+export const TicketsContainer = styled.div`
+  & > div {
+    margin: 3rem 0rem;
+  }
+`;
 
 export const ContentContainer = styled.div`
   margin: 0rem 4rem;

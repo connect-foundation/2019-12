@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router-dom';
 
@@ -35,36 +35,36 @@ import {
 } from './helper';
 
 function MyPage(): React.ReactElement {
-  const boughtTicketEventId = useMemo(
-    () => checkBoughtTicketEventRoute(window.location.pathname),
-    [],
+  const boughtTicketEventId = checkBoughtTicketEventRoute(
+    window.location.pathname,
   );
   const [historyPath, setHistoryPath] = useState({
     method: '',
     route: window.location.pathname,
   });
-  const currentTabIndex = useRef(MY_TICKETS_TAB_INDEX);
+  const [currentTabIndex, setCurrentTabIndex] = useState(MY_TICKETS_TAB_INDEX);
   const { state, dispatch: useAction } = useContext(MyPageContext);
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
   const history = useHistory();
-  function routeByTabIndex(tabIndex: number) {
+
+  function routeByTabIndex(tabIndex: number): void {
     const routeActions = [
-      () => {
+      (): void => {
         setHistoryPath({
           method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_TICKETS,
         });
-        currentTabIndex.current = MY_TICKETS_TAB_INDEX;
+        setCurrentTabIndex(MY_TICKETS_TAB_INDEX);
       },
-      () => {
+      (): void => {
         setHistoryPath({
           method: HISTORY_METHOD_PUSH,
           route: ROUTES.MYPAGE_CREATED_EVENTS,
         });
-        currentTabIndex.current = MY_CREATED_EVENT_TAB_INDEX;
+        setCurrentTabIndex(MY_CREATED_EVENT_TAB_INDEX);
       },
-      () => {
+      (): void => {
         removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
         alert(MY_PAGE_LOGOUT_ALERT);
@@ -73,6 +73,18 @@ function MyPage(): React.ReactElement {
     ];
 
     routeActions[tabIndex - 1]();
+  }
+
+  function navigateWithPathname(
+    tabIndex: number,
+    historyMethod: string,
+    historyRoute: string,
+  ): void {
+    setCurrentTabIndex(tabIndex);
+    setHistoryPath({
+      method: historyMethod,
+      route: historyRoute,
+    });
   }
 
   const [boughtTicketResponse, requestBoughtTicket] = useApiRequest<
@@ -89,13 +101,30 @@ function MyPage(): React.ReactElement {
 
   useEffect(() => {
     const { pathname } = window.location;
-    if (pathname === historyPath.route) return;
-
-    setHistoryPath({
-      method: HISTORY_METHOD_REPLACE,
-      route: `${ROUTES.MYPAGE_TICKETS_EVENT}/${boughtTicketEventId}`,
-    });
-  }, [boughtTicketEventId, historyPath.route]);
+    if (pathname === ROUTES.MYPAGE_TICKETS) {
+      navigateWithPathname(
+        MY_TICKETS_TAB_INDEX,
+        HISTORY_METHOD_PUSH,
+        ROUTES.MYPAGE_TICKETS,
+      );
+    } else if (pathname === ROUTES.MYPAGE_CREATED_EVENTS) {
+      navigateWithPathname(
+        MY_CREATED_EVENT_TAB_INDEX,
+        HISTORY_METHOD_PUSH,
+        ROUTES.MYPAGE_CREATED_EVENTS,
+      );
+    } else if (
+      pathname.startsWith(
+        `${ROUTES.MYPAGE_TICKETS_EVENT}/${boughtTicketEventId}`,
+      )
+    ) {
+      navigateWithPathname(
+        MY_TICKETS_TAB_INDEX,
+        HISTORY_METHOD_REPLACE,
+        `${ROUTES.MYPAGE_TICKETS_EVENT}/${boughtTicketEventId}`,
+      );
+    }
+  }, [boughtTicketEventId]);
 
   useEffect(() => {
     const { route, method } = historyPath;
@@ -148,7 +177,7 @@ function MyPage(): React.ReactElement {
             MY_PAGE_LOGOUT,
           ]}
           onTabClicked={routeByTabIndex}
-          tabIndex={currentTabIndex.current}
+          tabIndex={currentTabIndex}
         />
       }
       ticketsProps={{
