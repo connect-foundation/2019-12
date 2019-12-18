@@ -9,6 +9,15 @@ const isGreaterThan = (key: string): { options: CustomValidator } => ({
   options: (value, { req }) => resolveObject(req.body, key) <= value,
 });
 
+const isBetweenTodayAnd = (endKey: string): { options: CustomValidator } => ({
+  options: (value, { req }): boolean => {
+    const start = new Date();
+    const end = resolveObject(req.body, endKey);
+
+    return value >= start && value <= end;
+  },
+});
+
 const isBetween = (
   startKey: string,
   endKey: string,
@@ -63,8 +72,7 @@ export default checkSchema({
   placeDesc: {
     in: 'body',
     isString: true,
-    exists: true,
-    isLength: { options: { min: 1, max: 255 } },
+    optional: true,
   },
   latitude: {
     in: 'body',
@@ -91,8 +99,7 @@ export default checkSchema({
   'ticket.desc': {
     in: 'body',
     isString: true,
-    exists: true,
-    isLength: { options: { min: 1, max: 255 } },
+    optional: true,
   },
   'ticket.price': {
     in: 'body',
@@ -124,7 +131,7 @@ export default checkSchema({
     isISO8601: true,
     exists: true,
     toDate: true,
-    custom: isBetween('startAt', 'endAt'),
+    custom: isBetweenTodayAnd('endAt'),
   },
   'ticket.salesEndAt': {
     in: 'body',

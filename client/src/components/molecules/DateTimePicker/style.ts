@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { palette, theme } from 'styled-tools';
+import { palette, theme, ifProp } from 'styled-tools';
 import { fadeIn, fadeOut } from 'commons/style/animations';
 
 const flexColumnStyle = css`
@@ -30,12 +30,16 @@ export const DatePickerWrapper = styled.div`
     ${theme('fontStyle.body1')}
     color: ${palette('grayscale', 2)};
   }
+  .SingleDatePickerInput__withBorder {
+    border-color: ${palette('grayscale', 4)};
+  }
 `;
 export const TimePickerWrapper = styled.div`
   width: 45%;
   select {
     ${theme('fontStyle.body1')}
     color: ${palette('grayscale', 2)};
+    border-color: ${palette('grayscale', 4)};
   }
 `;
 
@@ -55,5 +59,5 @@ export const Caption = styled.div<Props>`
   color: ${palette('primary')};
   margin-top: 0.8rem;
   visibility: hidden;
-  animation: ${props => (props.invalid ? fadeIn : fadeOut)} 0.5s forwards;
+  animation: ${ifProp('invalid', fadeIn, fadeOut)} 0.5s forwards;
 `;
