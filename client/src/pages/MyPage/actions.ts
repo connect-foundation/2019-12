@@ -6,6 +6,7 @@ import { MyPageState } from 'types/States';
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const FETCH_CREATED_EVENTS = 'FETCH_CREATED_EVENTS';
+export const DELETE_BOUGHT_TICKET = 'DELETE_BOUGHT_TICKET';
 
 export interface UseAction {
   successFetchBoughtTicket: (
@@ -20,6 +21,10 @@ export interface UseAction {
   failureFetchCreatedEvents: (
     createdEventsResponse: FetchProps<CreatedEvent[]>,
   ) => void;
+  updateBoughtTickets: ({
+    events,
+    eventsOrder,
+  }: Pick<MyPageState, 'events' | 'eventsOrder'>) => void;
 }
 
 export function internalActions(
@@ -95,6 +100,18 @@ export default function useAction(dispatch: Dispatch<MyPageAction>) {
       createdEventsResponse: FetchProps<CreatedEvent[]>,
     ) => {
       alert(`요청에 실패했습니다. ${createdEventsResponse.status}`);
+    },
+    updateBoughtTickets: ({
+      events,
+      eventsOrder,
+    }: Pick<MyPageState, 'events' | 'eventsOrder'>): void => {
+      dispatch({
+        type: FETCH_CREATED_EVENTS,
+        value: {
+          events,
+          eventsOrder,
+        },
+      });
     },
   };
 }

@@ -26,6 +26,10 @@ const defaultUseAction = {
   failureFetchCreatedEvents: (
     createdEventsResponse: FetchProps<CreatedEvent[]>,
   ) => {},
+  updateBoughtTickets: ({
+    events,
+    eventsOrder,
+  }: Pick<MyPageState, 'events' | 'eventsOrder'>) => {},
 };
 
 export const MyPageContext = createContext<{
