@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Editor from 'tui-editor';
 import 'tui-editor/dist/tui-editor.css'; // editor's ui
 import 'tui-editor/dist/tui-editor-contents.css'; // editor's content
 
 export interface TuiEditorProps {
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   placeholder?: string;
 }
 
@@ -29,10 +29,13 @@ function TuiEditor({
       });
     }
   }, [placeholder]);
-
-  useEffect(() => {
-    onChange(content);
-  }, [content, onChange]);
+  const onChangeCallback = useCallback(
+    (content: string) => {
+      if (onChange) onChange(content);
+    },
+    [onChange],
+  );
+  useEffect(() => onChangeCallback(content), [content, onChangeCallback]);
 
   return <div ref={tuiEditorRef}></div>;
 }

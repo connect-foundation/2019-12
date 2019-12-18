@@ -1,4 +1,9 @@
-import { EventDetail, BoughtTicketEvent, CreatedEvent } from './Data';
+import {
+  EventDetail,
+  BoughtTicketEvent,
+  CreatedEvent,
+  SearchMapResult,
+} from './Data';
 
 export interface SignUpFormState {
   lastName: string;
@@ -8,6 +13,40 @@ export interface SignUpFormState {
   firstNameValidate: boolean;
   lastNameValidate: boolean;
   submit: boolean;
+}
+
+interface FormState<T> {
+  valid: boolean;
+  value: T;
+}
+export interface EventFormState {
+  isPublic: FormState<boolean>;
+  title: FormState<string>;
+  date: FormState<{
+    startAt: string;
+    endAt?: string;
+  }>;
+  place: FormState<string>;
+  address: FormState<SearchMapResult>;
+  placeDesc: FormState<string>;
+  mainImg: FormState<File>;
+  desc: FormState<string>;
+}
+
+export interface TicketFormState {
+  name: FormState<string>;
+  desc: FormState<string>;
+  price: FormState<string>;
+  quantity: FormState<string>;
+  isPublicLeftCnt: FormState<boolean>;
+  maxCntPerPerson: FormState<string>;
+  salesDate: FormState<{
+    salesStartAt: string;
+    salesEndAt: string;
+  }>;
+  refundDate: FormState<{
+    refundEndAt: string;
+  }>;
 }
 
 export interface EventDetailState {

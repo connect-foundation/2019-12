@@ -9,7 +9,10 @@ export const FormItemContainer = styled.div<FormItemContainerProps>`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-direction: ${props => props.direction};
+  flex-direction: column;
+  @media screen and (min-width: 32rem) {
+    flex-direction: ${props => props.direction};
+  }
   ${props =>
     props.direction === 'column' &&
     css`
@@ -23,7 +26,12 @@ export const FormItemContainer = styled.div<FormItemContainerProps>`
 export const LabelContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
+  margin-bottom: 2rem;
+  @media screen and (min-width: 32rem) {
+    margin-bottom: 0;
+    width: 50%;
+  }
 `;
 
 export const LabelWrapper = styled.div`
@@ -39,7 +47,10 @@ export const LabelExplanation = styled.div`
 `;
 
 export const ItemContainer = styled.div`
-  width: 45%;
+  width: 100%;
+  @media screen and (min-width: 32rem) {
+    width: 45%;
+  }
 `;
 
 export const ChildrenWrapper = styled.div``;
