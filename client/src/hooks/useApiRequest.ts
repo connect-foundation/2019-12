@@ -43,7 +43,7 @@ export async function fetchData<T>(
       dispatch({ type: SUCCESS, data, status });
     }
   } catch (err) {
-    return dispatch({ type: FAILURE, err, status: err.response.status });
+    return dispatch({ type: FAILURE, err });
   }
 }
 
