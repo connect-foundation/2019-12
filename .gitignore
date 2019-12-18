@@ -6,6 +6,7 @@ build/
 .env
 .env.*
 !.env.template
+*.env.json
 secrets.tar
 !secrets.tar.enc
 cypress.env.json

@@ -24,6 +24,7 @@ function goPurchasePage(): void {
 context('이벤트 예약 페이지', () => {
   beforeEach(() => {
     cy.server();
+    cy.setCookie('UID', Cypress.env('auth_token'));
   });
 
   it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {

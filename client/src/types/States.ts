@@ -1,4 +1,4 @@
-import { EventDetail } from './Data';
+import { EventDetail, BoughtTicketEvent, CreatedEvent } from './Data';
 
 export interface SignUpFormState {
   lastName: string;
@@ -30,4 +30,11 @@ export interface EventsState {
   events?: Map<number, EventDetail>;
   order?: number[];
   status: number;
+}
+
+export interface MyPageState {
+  events?: Map<number, BoughtTicketEvent>;
+  eventsOrder?: number[];
+  createdEvents?: Map<number, CreatedEvent>;
+  createdEventsOrder?: number[];
 }

@@ -1,6 +1,10 @@
-import { ActionParams } from './Actions';
-import { AccountState, EventsState } from './States';
-import { AccountAction, EventsAction } from './Actions';
+import {
+  ActionParams,
+  MyPageAction,
+  AccountAction,
+  EventsAction,
+} from './Actions';
+import { AccountState, EventsState, MyPageState } from './States';
 
 export interface UseStateReducer<T> {
   (state: T, action: ActionParams<T>): T;
@@ -11,4 +15,8 @@ export interface AccountReducer {
 
 export interface EventsReducer {
   (state: EventsState, action: EventsAction): EventsState;
+}
+
+export interface MyPageReducer {
+  (state: MyPageState, action: MyPageAction): MyPageState;
 }

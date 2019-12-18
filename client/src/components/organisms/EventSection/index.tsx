@@ -31,7 +31,7 @@ function EventSection({
   return (
     <S.RootContainer border={border} imgPosition={imgPosition}>
       {imgSrc !== '' && (
-        <S.ImgWrapper>
+        <S.ImgWrapper imgPosition={imgPosition}>
           <S.Img src={imgSrc} />
         </S.ImgWrapper>
       )}

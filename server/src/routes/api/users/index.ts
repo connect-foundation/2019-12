@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as controllers from './controllers';
 import * as validators from './validators';
 import { badRequestHandler } from 'utils/errorHandler';
-import { requireLogin } from 'routes/middlewares';
+import { requireLogin, paramsValidator } from 'routes/middlewares';
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.delete(
   controllers.deleteUserTicket,
 );
 router.get('/tickets', requireLogin, controllers.getUserTicket);
-router.post('/:userId', controllers.getUser);
+router.post('/:userId', paramsValidator('userId'), controllers.getUser);
 router.post(
   '/',
   validators.createUser,

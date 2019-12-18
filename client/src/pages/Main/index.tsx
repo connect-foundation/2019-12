@@ -8,6 +8,7 @@ import { REQUEST_EVENT_CARD_GRID_NUM } from 'commons/constants/number';
 import { EventDetail } from 'types/Data';
 import { EventCard } from '../../types/Data';
 import { produce } from 'immer';
+import { getImageURL, imageTypes } from 'utils/getImageURL';
 
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
@@ -42,7 +43,7 @@ function Main(): React.ReactElement {
         const { id, mainImg, startAt, title, user, ticketType } = value;
         const eventCard: EventCard = {
           id,
-          mainImg,
+          mainImg: getImageURL(mainImg, imageTypes.mainEventImg),
           startAt,
           title,
           name: user.lastName + user.firstName,
