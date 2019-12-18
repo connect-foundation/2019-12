@@ -1,6 +1,5 @@
 import React from 'react';
 
-import * as S from './style';
 import { calculateStringOfDateRange } from 'utils/dateCalculator';
 import { getKoreanDateString } from '../../../utils/dateCalculator/index';
 
@@ -16,12 +15,9 @@ function EventDate({
   children,
 }: EventDateProps): React.ReactElement {
   if (startAt && endAt) {
-    return <S.Wrapper>{calculateStringOfDateRange(startAt, endAt)}</S.Wrapper>;
-  } else if (children) {
-    return <S.Wrapper>{getKoreanDateString(children)}</S.Wrapper>;
-  } else {
-    return <></>;
+    return <>{calculateStringOfDateRange(startAt, endAt)}</>;
   }
+  return <>{children ? getKoreanDateString(children) : ''}</>;
 }
 
 export default EventDate;

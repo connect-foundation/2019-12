@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { getUserEventsByUserId } from 'services';
+import { getUserEventsByUserId } from 'services/events';
 import { NO_CONTENT } from 'http-status';
 
 export async function getUserEvent(

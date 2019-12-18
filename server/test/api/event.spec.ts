@@ -6,24 +6,27 @@ import { client } from '../../src/utils/redis';
 import { generateJWT } from '../../src/utils/jwt';
 import { sequelize } from '../../src/utils/sequelize';
 import { Event } from '../../src/models';
+import { clone } from 'lodash';
+import { resolve } from 'path';
 import {
   OK,
+  CREATED,
   NO_CONTENT,
   NOT_FOUND,
   UNAUTHORIZED,
   BAD_REQUEST,
 } from 'http-status';
 
-const setHeader = (token: Secret) => {
-  return {
-    Cookie: `UID=${token}`,
-    Accept: 'application/json',
-  };
-};
+const setHeader = (token: Secret): { Cookie: string; Accept: string } => ({
+  Cookie: `UID=${token}`,
+  Accept: 'application/json',
+});
+let token: Secret;
 
 beforeAll(async () => {
   sequelize.options.logging = false;
   await sequelize.sync();
+  token = await generateJWT(true, 3, 1, '1234@gmail.com');
 });
 
 afterAll(() => {
@@ -31,45 +34,34 @@ afterAll(() => {
   client.quit();
 });
 
-describe('Router / Events', () => {
-  it('GET /api/events', async () => {
-    await Promise.all([
-      () => {
-        const cnt = 2;
-        request(app)
-          .get('/api/events')
-          .query({ cnt })
-          .expect(OK)
-          .expect('Content-type', /application\/json/)
-          .expect(res => expect(res.body).toHaveLength(cnt));
-      },
+describe('GET /api/events', () => {
+  it('정상적으로 응답', async () => {
+    const cnt = 2;
+    const { body } = await request(app)
+      .get('/api/events')
+      .query({ cnt })
+      .expect(OK)
+      .expect('Content-type', /application\/json/);
 
-      () => {
-        const startAt = new Date('2018-04-30T10:00:00.000Z');
-        request(app)
-          .get('/api/events')
-          .query({ startAt })
-          .expect(OK)
-          .expect('Content-type', /application\/json/)
-          .expect(res =>
-            res.body.forEach((e: Event) =>
-              expect(e.startAt.getTime()).toBeLessThan(startAt.getTime()),
-            ),
-          );
-      },
-
-      () => {
-        const wrongId = 'wrong';
-        request(app)
-          .get('/api/events')
-          .query({ lastId: wrongId })
-          .expect(400)
-          .expect('Content-type', /application\/json/);
-      },
-    ]);
+    expect(body).toHaveLength(cnt);
   });
 
-  it('GET /api/events/:eventId - 정상적으로 응답', async () => {
+  it('startAt 의 값을 포함하여 요청하면, 모든 값이 startAt 보다 작은 값을 응답', async () => {
+    const startAt = new Date('2018-04-30T10:00:00.000Z');
+    const { body } = await request(app)
+      .get('/api/events')
+      .query({ startAt })
+      .expect(OK)
+      .expect('Content-type', /application\/json/);
+
+    body.forEach((event: Event) => {
+      expect(new Date(event.startAt).getTime()).toBeLessThan(startAt.getTime());
+    });
+  });
+});
+
+describe('GET /api/events/:eventId', () => {
+  it('정상적으로 응답', async () => {
     const eventId = 5;
 
     const { body } = await request(app)
@@ -82,7 +74,7 @@ describe('Router / Events', () => {
     expect(body.ticketType).toHaveProperty('price', 10000);
   });
 
-  it('GET /api/events/:eventId - 없는 아이디 요청은 404 응답', async () => {
+  it('없는 아이디 요청은 404 응답', async () => {
     const eventId = 'wrong';
     await request(app)
       .get(`/api/events/${eventId}`)
@@ -112,23 +104,94 @@ describe('GET /api/events/:eventId/tickets', () => {
   });
 });
 
-describe('GET /api/events/coordinate', () => {
-  it('정상적으로 응답', async () => {
-    const { body } = await request(app)
-      .get('/api/events/coordinate')
-      .query({ place: '서울시청' })
-      .expect(OK)
-      .expect('Content-type', /application\/json/);
+describe('POST /api/events', () => {
+  const defaultImage = resolve(__dirname, './file/createEvent/normal.jpg');
+  const defaultData: Record<string, string | boolean | number> = {
+    isPublic: true,
+    title: '이벤트의 제목',
+    startAt: '2200-12-15 10:00:00',
+    endAt: '2201-05-01 13:00:00',
+    place: '패스트파이브 강남 4호점',
+    address: '서울시 강남구',
+    placeDesc: '주차 불가',
+    desc: '설명',
+    latitude: 37.5662952,
+    longitude: 126.9779451,
+    'ticket[name]': '티켓 이름',
+    'ticket[desc]': '티켓 설명',
+    'ticket[quantity]': 30,
+    'ticket[isPublicLeftCnt]': false,
+    'ticket[maxCntPerPerson]': 10,
+    'ticket[price]': 10000,
+    'ticket[salesStartAt]': '2200-12-15 10:00:00',
+    'ticket[salesEndAt]': '2200-12-17 13:00:00',
+    'ticket[refundEndAt]': '2200-12-20 13:00:00',
+  };
 
-    expect(body).toHaveProperty('latitude', 37.5662952);
-    expect(body).toHaveProperty('longitude', 126.9779451);
+  function getRequest(
+    data: Record<string, string | boolean | number> = {},
+    imagePath: string = defaultImage,
+    loggedIn = true,
+  ): request.Test {
+    const req = request(app)
+      .post('/api/events')
+      .type('form')
+      .attach('mainImg', imagePath);
+
+    if (loggedIn) req.set(setHeader(token));
+
+    const form = Object.assign(clone(defaultData), data);
+    for (const key in form) {
+      req.field(key, form[key]);
+    }
+
+    return req;
+  }
+
+  it('정상적으로 응답', async () => {
+    await getRequest().expect(CREATED);
   });
 
-  it('쿼리 결과가 없으면 No-Content 응답', async () => {
-    await request(app)
-      .get('/api/events/coordinate')
-      .query({ place: '!@#' })
-      .expect(NO_CONTENT);
+  it('로그인이 되어있지 않으면 401 응답', async () => {
+    await getRequest({}, undefined, false).expect(UNAUTHORIZED);
+  });
+
+  it('startAt 이 오늘보다 전이면 400 응답', async () => {
+    await getRequest({ startAt: '1900-03-01 13:00:00' }).expect(BAD_REQUEST);
+  });
+
+  it('startAt 이 endAt 보다 크면 400 응답', async () => {
+    await getRequest({ startAt: '2202-03-01 13:00:00' }).expect(BAD_REQUEST);
+  });
+
+  it('ticket 의 maxCntPerPerson 가 quantity 보다 크면 400 응답', async () => {
+    await getRequest({ 'ticket[maxCntPerPerson]': 200 }).expect(BAD_REQUEST);
+  });
+
+  it('ticket 의 salesStartAt 가 salesEndAt 보다 늦으면 400 응답', async () => {
+    await getRequest({ 'ticket[salesEndAt]': '2201-03-01 13:00:00' }).expect(
+      BAD_REQUEST,
+    );
+  });
+
+  it('ticket 의 refundEndAt 이 refundEndAt 보다 늦으면 400 응답', async () => {
+    await getRequest({ 'ticket[salesStartAt]': '2202-03-01 13:00:00' }).expect(
+      BAD_REQUEST,
+    );
+  });
+
+  it('mainImg 의 크기가 10MB 이상의 크기면 400 응답', async () => {
+    await getRequest(
+      {},
+      resolve(__dirname, './file/createEvent/big.jpg'),
+    ).expect(BAD_REQUEST);
+  });
+
+  it('mainImg 의 파일이 이미지 파일이 아니면 400 응답', async () => {
+    await getRequest(
+      {},
+      resolve(__dirname, './file/createEvent/text.txt'),
+    ).expect(BAD_REQUEST);
   });
 });
 
@@ -140,6 +203,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(UNAUTHORIZED);
   });
+
   it('이벤트가 없는 경우 404', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -147,6 +211,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(NOT_FOUND);
   });
+
   it('주최한 유저와 이벤트가 다를경우 (다른 유저의 이벤트를 보려고 하는 경우) 400', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -154,6 +219,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(BAD_REQUEST);
   });
+
   it('내 이벤트에 접근한 경우, 티켓이 없을 때 204', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -161,6 +227,7 @@ describe('GET /api/events/:eventId/users', () => {
       .set(setHeader(token))
       .expect(NO_CONTENT);
   });
+
   it('내 이벤트에 접근한 경우 200', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -191,6 +258,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
         expect(res.body).toStrictEqual({ id: 2, isAttendance: true });
       });
   });
+
   it('False 로 변경 요청을 보냈을 때 성공하면, 200', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -204,6 +272,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
         expect(res.body).toStrictEqual({ id: 2, isAttendance: false });
       });
   });
+
   it('로그인 실패하면 401', async () => {
     const token = await generateJWT(false, 2, 1, '1234@gmail.com');
     await request(app)
@@ -214,6 +283,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
       })
       .expect(UNAUTHORIZED);
   });
+
   it('이벤트가 로그인한 사용자의 것이 아닌경우 400', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)
@@ -224,6 +294,7 @@ describe('PATCH /api/events/:eventId/ticket/:ticketId', () => {
       })
       .expect(BAD_REQUEST);
   });
+
   it('이벤트가 로그인한 사용자의 것이지만 티켓이 없을경우 404', async () => {
     const token = await generateJWT(true, 2, 1, '1234@gmail.com');
     await request(app)

@@ -13,7 +13,7 @@ export interface Props {
   /** placeholder content */
   placeholder?: string;
   /** input value(state) */
-  value?: string;
+  value?: string | number;
   /** onChange handler(setState) */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** onFocusOut handler */
@@ -21,7 +21,7 @@ export interface Props {
 }
 
 function Input({ inputName, ...props }: Props): React.ReactElement {
-  return <S.Input name={inputName} {...props} />;
+  return <S.Input name={inputName} {...props} autoComplete="off" />;
 }
 
 export default Input;
