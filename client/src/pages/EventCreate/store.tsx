@@ -20,20 +20,28 @@ export function useStateReducer<T>(state: T, action: ActionParams<T>): T {
   };
 }
 
+const validateStateWithTraverse = (
+  states: EventFormState | TicketFormState,
+): boolean =>
+  Object.entries(states).every(([key, value]) => {
+    if (value.valid) return true;
+    alert(`${key}가 올바르지 않습니다. 확인해주세요. 👀`);
+    return false;
+  });
 const validateStates = (
   eventFormStates: EventFormState,
   ticketFormStates: TicketFormState,
-) =>
-  Object.values(eventFormStates).every(state => state.valid) &&
-  Object.values(ticketFormStates).every(state => state.valid);
+): boolean =>
+  validateStateWithTraverse(eventFormStates) &&
+  validateStateWithTraverse(ticketFormStates);
 
-const convertKeyWithObject = (key: string, object?: string) =>
+const convertKeyWithObject = (key: string, object?: string): string =>
   object ? `${object}[${key}]` : key;
 const appendStatesToFormData = (
   formData: FormData,
   states: EventFormState | TicketFormState,
   object?: string,
-) => {
+): void => {
   for (const [key, state] of Object.entries(states)) {
     const stateValue = state.value;
     if (key === 'mainImg' || typeof stateValue !== 'object')
@@ -82,7 +90,7 @@ const EventFormDefaultState: EventFormState = {
     },
   },
   placeDesc: {
-    valid: false,
+    valid: true,
     value: '',
   },
   mainImg: {
@@ -147,15 +155,21 @@ export const TicketAction = createContext<
 export const SubmitContext = createContext<Dispatch<SetStateAction<boolean>>>(
   () => {},
 );
-async function send(formData: FormData) {
+async function send(formData: FormData): Promise<void> {
   try {
-    await createEvent(formData);
+    const { data } = await createEvent(formData);
+    console.log(data);
   } catch (err) {
     console.log('fail');
+    alert('-ㅇ- 무언가 문제가 있네요. 다시한번 폼을 확인해주세요.');
     console.dir(err);
   }
 }
-function StoreProvider({ children }: { children: React.ReactElement }) {
+function StoreProvider({
+  children,
+}: {
+  children: React.ReactElement;
+}): JSX.Element {
   const [submit, setSubmit] = useState<boolean>(false);
   const [eventFormStates, eventFormDispatcher] = useReducer<
     UseStateReducer<EventFormState>
@@ -163,23 +177,20 @@ function StoreProvider({ children }: { children: React.ReactElement }) {
   const [ticketFormStates, ticketFormDispatcher] = useReducer<
     UseStateReducer<TicketFormState>
   >(useStateReducer, TicketFormDefaultState);
-  const formValid = validateStates(eventFormStates, ticketFormStates);
 
   useEffect(() => {
     console.log('상태 변경!');
-    console.log(
-      '유효성 -> ',
-      validateStates(eventFormStates, ticketFormStates),
-    );
     console.log(eventFormStates);
     console.log(ticketFormStates);
-  }, [eventFormStates, ticketFormStates, formValid]);
+  }, [eventFormStates, ticketFormStates]);
 
   useEffect(() => {
+    if (!submit) return;
+    const formValid = validateStates(eventFormStates, ticketFormStates);
     if (!formValid) return setSubmit(false);
     const formData = createFormData(eventFormStates, ticketFormStates);
     send(formData);
-  }, [eventFormStates, formValid, submit, ticketFormStates]);
+  }, [eventFormStates, submit, ticketFormStates]);
 
   return (
     <EventAction.Provider value={eventFormDispatcher}>
