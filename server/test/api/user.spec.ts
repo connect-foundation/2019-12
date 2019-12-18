@@ -122,6 +122,19 @@ describe('DELETE /api/users/ticket', () => {
     client.hset('1', 'isBlock', '1');
   });
 
+  it('로그인을 했고, 티켓을 환불 날짜가 지났을 경우, 400', async () => {
+    const data = await createDummyUserTicket(1, 4);
+    const token = await generateJWT(true, 1, 1, '1234@gmail.com');
+    await request(app)
+      .delete('/api/users/ticket')
+      .set(setHeader(token))
+      .send({
+        ticketId: data.id,
+      })
+      .expect(BAD_REQUEST);
+    await data.destroy();
+  });
+
   it('로그인을 했고, 바디를 주지 않을 경우 400', async () => {
     const token = await generateJWT(true, 1, 1, '1234@gmail.com');
     await request(app)

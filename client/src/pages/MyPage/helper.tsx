@@ -10,8 +10,9 @@ import {
 import { Props as EventSectionProps } from 'components/organisms/EventSection';
 import { TicketBox } from 'components';
 import { TICKETBOX_REFUND_BTN } from '../../commons/constants/string';
+import { imageTypes, getImageURL } from 'utils/getImageURL';
 
-export function checkBoughtTicketEventRoute(url: string) {
+export function checkBoughtTicketEventRoute(url: string): number {
   const myTicketEventsRoute = /\/my\/tickets\/event\/([0-9]+)/;
   const boughtTicketEventRegex = url.match(myTicketEventsRoute);
 
@@ -28,7 +29,7 @@ export function getEventSectionProps({
 }: {
   boughtTicketEventId: number;
   boughtTicketEventMap?: Map<number, BoughtTicketEvent>;
-}) {
+}): EventSectionProps {
   const willPassedData: EventSectionProps = {
     content: [],
     imgSrc: '',
@@ -57,7 +58,10 @@ export function getEventSectionProps({
     calculateStringOfDateRange(startAt, endAt),
     lastName + firstName,
   ];
-  willPassedData.imgSrc = mainImg;
+  willPassedData.imgSrc = getImageURL(
+    mainImg,
+    imageTypes.myPageBoughtTicketsEvent,
+  );
   willPassedData.place = address;
   willPassedData.subtitle = ['일시', '주최'];
   willPassedData.title = title;
@@ -71,7 +75,7 @@ export function getTicketBoxesProps({
 }: {
   boughtTicketEventId: number;
   boughtTicketEventMap?: Map<number, BoughtTicketEvent>;
-}) {
+}): React.ReactNode[] {
   if (!boughtTicketEventMap) {
     return [<></>];
   }
@@ -116,7 +120,7 @@ export function getTicketBoxesProps({
 
 export function convertToEventCardFromBought(
   sourceMap: Map<number, BoughtTicketEvent>,
-) {
+): Map<number, EventCard> {
   const targetMap = new Map<number, EventCard>();
   return produce(targetMap, draft => {
     sourceMap.forEach(value => {
@@ -124,7 +128,7 @@ export function convertToEventCardFromBought(
 
       draft.set(value.id, {
         id,
-        mainImg,
+        mainImg: getImageURL(mainImg, imageTypes.mainEventImg),
         startAt,
         title,
         name: '',
@@ -137,7 +141,7 @@ export function convertToEventCardFromBought(
 
 export function convertToEventCardTypeFromCreated(
   sourceMap: Map<number, CreatedEvent>,
-) {
+): Map<number, EventCard> {
   const targetMap = new Map<number, EventCard>();
   return produce(targetMap, draft => {
     sourceMap.forEach(value => {
@@ -145,12 +149,12 @@ export function convertToEventCardTypeFromCreated(
 
       draft.set(value.id, {
         id,
-        mainImg,
+        mainImg: getImageURL(mainImg, imageTypes.mainEventImg),
         startAt,
         title,
         name: '',
         price: 0,
-        to: `${ROUTES.MYPAGE_TICKETS_EVENT}/${id}`,
+        to: `${ROUTES.EVENT_DETAIL}/${id}`,
       });
     });
   });

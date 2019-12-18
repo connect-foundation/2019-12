@@ -39,11 +39,11 @@ export async function fetchData<T>(
 ) {
   try {
     const { status, data } = await apiRequest();
-    if (status === OK) {
+    if (status < 300) {
       dispatch({ type: SUCCESS, data, status });
     }
   } catch (err) {
-    return dispatch({ type: FAILURE, err, status: err.response.status });
+    return dispatch({ type: FAILURE, err });
   }
 }
 

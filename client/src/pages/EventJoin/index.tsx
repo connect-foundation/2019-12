@@ -40,6 +40,7 @@ import { NOT_OPEN, SOLD_OUT, EXCEED_LIMIT } from 'commons/constants/number';
 import ROUTES from 'commons/constants/routes';
 import { joinEvent } from 'apis';
 import { calculateStringOfDateRange } from 'utils/dateCalculator';
+import { getImageURL, imageTypes } from 'utils/getImageURL';
 
 const minTicketCount = 1;
 const steps = [JOIN_STEP_CHOICE, JOIN_STEP_PURCHASE];
@@ -178,7 +179,7 @@ function EventJoin(): React.ReactElement {
             calculateStringOfDateRange(startAt, endAt),
             user.lastName + user.firstName,
           ]}
-          imgSrc={mainImg}
+          imgSrc={getImageURL(mainImg, imageTypes.eventDetailRegisterImg)}
         />
       }
       place={<Place mapHeight={'20rem'} {...eventState} />}
