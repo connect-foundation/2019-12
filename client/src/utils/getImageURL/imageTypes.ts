@@ -1,6 +1,7 @@
 enum imageTypeEnum {
   mainEventImg,
   eventDetailImg,
+  eventDetailRegisterImg,
 }
 
 export interface ImageType {
@@ -20,4 +21,5 @@ export const imageTypes: Record<keyof typeof imageTypeEnum, ImageType> = {
     height: 387,
     type: 'f',
   },
+  eventDetailRegisterImg: { width: 688, height: 387, type: 'f' },
 };
