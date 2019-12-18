@@ -11,7 +11,8 @@ import { AccountAction } from 'types/Actions';
 import { AccountState } from 'types/States';
 import { AccountReducer } from 'types/CustomHooks';
 import accountReducer, { defaultAccountState } from './reducer';
-import { verifyToken, getUserInfo } from 'apis';
+import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
+import { verifyToken } from 'apis';
 
 export const UserAccountState = createContext<AccountState>(
   defaultAccountState,
@@ -28,28 +29,29 @@ function AccountStoreProvider({ children }: { children: React.ReactElement }) {
     defaultAccountState,
   );
   const [loginState, setLoginState] = useState(true);
+  const [getTokenResponse, requestToken] = useApiRequest<any>(verifyToken);
 
   useEffect(() => {
     if (!loginState) return;
-    (async function() {
-      let account = null;
-      try {
-        const { data } = await verifyToken();
-        if (data.exist) {
-          const accountData = await getUserInfo(data.id);
-          account = { ...accountData.data, isLogin: true };
-        }
-      } catch (err) {
-        account = { isLogin: false };
-      } finally {
-        accountDispatcher({
-          type: 'LOGIN',
-          value: account,
-        });
-      }
-    })();
+    requestToken({ type: REQUEST });
     setLoginState(false);
-  }, [loginState]);
+  }, [loginState, requestToken]);
+
+  useEffect(() => {
+    const { type, data, err } = getTokenResponse;
+    if (type === REQUEST) return;
+    if (type === SUCCESS)
+      accountDispatcher({
+        type: 'LOGIN',
+        value: { ...data, isLogin: true },
+      });
+    if (type === FAILURE) {
+      accountDispatcher({
+        type: 'LOGIN',
+        value: { ...err!.response!.data, isLogin: false },
+      });
+    }
+  }, [getTokenResponse]);
 
   return (
     <UserAccountAction.Provider value={{ accountDispatcher, setLoginState }}>

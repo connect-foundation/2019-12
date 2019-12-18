@@ -1,4 +1,4 @@
-export { verifyToken, getUserInfo } from './auth';
+export { verifyToken } from './auth';
 export {
   createUser,
   getBoughtTicketEvent,

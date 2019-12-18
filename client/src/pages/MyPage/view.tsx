@@ -68,10 +68,7 @@ function MyPage(): React.ReactElement {
         removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
         alert(MY_PAGE_LOGOUT_ALERT);
-        setHistoryPath({
-          method: HISTORY_METHOD_REPLACE,
-          route: ROUTES.HOME,
-        });
+        history.push('/');
       },
     ];
 
