@@ -63,7 +63,11 @@ export const ChkBoxDesc = styled.span`
   ${theme('fontStyle.subtitle2')};
 `;
 
-export const IconWrapper = styled.div`
-  cursor: pointer;
+interface IconWrapperProps {
+  disabledChkIcon: boolean;
+}
+
+export const IconWrapper = styled.div<IconWrapperProps>`
+  cursor: ${ifProp('disabledChkIcon', 'auto', 'pointer')};
   user-select: none;
 `;

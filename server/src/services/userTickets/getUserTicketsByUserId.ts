@@ -1,7 +1,9 @@
-import { Event, TicketType, UserTicket } from 'models';
+import { Event, User, TicketType, UserTicket } from 'models';
 import { FindAttributeOptions, WhereOptions, Includeable } from 'sequelize';
 
 interface BoughtEvent extends Partial<Event> {
+  firstName?: string;
+  lastName?: string;
   userTickets: UserBoughtTicket[];
   ticket: Partial<TicketType>;
 }
@@ -16,13 +18,21 @@ interface UserBoughtTicket {
 
 function userTicketReducer(acc: BoughtEvent[], cur: UserTicket): BoughtEvent[] {
   const {
-    ticketType: { event, ...ticketTypes },
+    ticketType: {
+      event: {
+        user: { firstName, lastName },
+        ...ticketEvent
+      },
+      ...ticketTypes
+    },
     ...userTicket
   } = cur.get({ plain: true }) as UserTicket;
   let eventIndex = acc.findIndex(event => event.id === cur.ticketType.eventId);
   if (eventIndex === -1) {
     acc.push({
-      ...event,
+      ...ticketEvent,
+      firstName,
+      lastName,
       ticket: ticketTypes,
       userTickets: [],
     });
@@ -31,7 +41,6 @@ function userTicketReducer(acc: BoughtEvent[], cur: UserTicket): BoughtEvent[] {
   acc[eventIndex].userTickets.push(userTicket);
   return acc;
 }
-
 export default async (userId: number): Promise<BoughtEvent[]> => {
   const attributes: FindAttributeOptions = {
     exclude: ['updatedAt'],
@@ -57,6 +66,12 @@ export default async (userId: number): Promise<BoughtEvent[]> => {
               'isPublic',
             ],
           },
+          include: [
+            {
+              model: User,
+              attributes: ['firstName', 'lastName'],
+            },
+          ],
         },
       ],
     },
