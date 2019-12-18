@@ -47,8 +47,77 @@ export const CREATED_EVENTS_STEP = 'events';
 export const MY_TICKETS_TITLE = '구매 완료한 티켓';
 export const MY_CREATED_EVENTS = '나의 주최한 이벤트';
 
-export const DATE_PICKER_CAPTION =
-  '종료하는 날짜보다 시작하는 날짜가 앞설 수 없습니다.';
+export const EVENT_FORM_FORM_IS_PUBLIC = '공개 여부';
+export const EVENT_FORM_FORM_IS_PUBLIC_LABEL =
+  '이벤트를 공개하지 않으면 링크로는 이벤트를 접속할 수 있지만 BookUs의 메인 페이지에는 나타나지 않습니다. 아직 공개할 준비가 안 되어 있거나, 메인에 공개하고 싶지 않으면 체크를 해제 하세요.';
+export const EVENT_FORM_TITLE = '이벤트 제목';
+export const EVENT_FORM_TITLE_LABEL =
+  '주제를 잘 나타내는 멋진 제목을 입력해주세요.';
+export const EVENT_FORM_TITLE_CAPTION =
+  '제목이 너무 짧거나, 잘못된 형식입니다.';
+export const EVENT_FORM_TITLE_PLACEHOLDER = '부스트캠프 2019 데모데이';
+export const EVENT_FORM_DATE = '이벤트 날짜 및 시간';
+export const EVENT_FORM_DATE_LABEL =
+  '이벤트가 진행되는 날짜와 시간을 입력해주세요.';
+export const EVENT_FORM_PLACE = '장소';
+export const EVENT_FORM_PLACE_LABEL = '이벤트는 어떤 장소에서 진행되나요?';
+export const EVENT_FORM_PLACE_CAPTION = '장소를 입력하세요';
+export const EVENT_FORM_PLACE_PLACEHOLDER = '패스트파이브 강남 4호점';
+export const EVENT_FORM_PLACE_DESC = '장소 설명';
+export const EVENT_FORM_PLACE_DESC_LABEL =
+  '장소에 대해 안내가 필요하다면 적어주세요.';
+export const EVENT_FORM_PLACE_DESC_PLACEHOLDER =
+  '주차는 인근 주차장에서 가능합니다.';
+export const EVENT_FORM_ADDRESS = '상세 주소';
+export const EVENT_FORM_ADDRESS_LABEL =
+  '쉽게 찾아갈 수 있도록 정확한 주소를 입력해주세요.';
+export const EVENT_FORM_ADDRESS_CAPTION = '상세 주소를 입력하세요';
+export const EVENT_FORM_MAIN_IMG = '대표 이미지';
+export const EVENT_FORM_MAIN_IMG_LABEL =
+  '이미지에 글자가 많으면 매력적이지 않습니다.';
+export const EVENT_FORM_DESC = '내용';
+export const EVENT_FORM_DESC_LABEL =
+  '행사의 상세한 내용을 알리는 글을 작성해주세요.';
+export const EVENT_FORM_DESC_CAPTION = '내용을 입력하세요';
+
+export const TICKET_FORM_NAME = '티켓 이름';
+export const TICKET_FORM_NAME_LABEL = '한 번 설정한 이름은 수정할 수 없습니다.';
+export const TICKET_FORM_NAME_CAPTION = '티켓 이름을 입력해주세요.';
+export const TICKET_FORM_NAME_PLACEHOLDER = '일반 입장권';
+export const TICKET_FORM_DESC = '티켓 설명';
+export const TICKET_FORM_DESC_LABEL =
+  '이 티켓에 대해 상세한 설명이 필요하다면 작성해주세요.';
+export const TICKET_FORM_DESC_CAPTION = '티켓 설명을 입력해주세요.';
+export const TICKET_FORM_DESC_PLACEHOLDER = '무료 음료를 제공합니다.';
+export const TICKET_FORM_PRICE = '가격';
+export const TICKET_FORM_PRICE_LABEL =
+  '구매자가 있는 경우 티켓 가격은 수정할 수 없습니다.';
+export const TICKET_FORM_PRICE_CAPTION = '가격을 입력해주세요.';
+export const TICKET_FORM_QUANTITY = '티켓 수량';
+export const TICKET_FORM_QUANTITY_LABEL =
+  '판매하고 싶은 최대 수량을 정해주세요.';
+export const TICKET_FORM_QUANTITY_CAPTION = '티켓 수량을 입력해주세요.';
+export const TICKET_FORM_IS_PUBLIC_LEFT_CNT = '티켓 수량 숨김';
+export const TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL =
+  '티켓의 전체 수량과 남은 개수를 표시하지 않습니다. 판매된 개수는 항상 표시됩니다.';
+export const TICKET_FORM_MAX_CNT_PER_PERSON = '1인당 구매 가능 개수';
+export const TICKET_FORM_MAX_CNT_PER_PERSON_LABEL =
+  '유저 1명이 구입할 수 있는 최대 개수입니다.';
+export const TICKET_FORM_MAX_CNT_PER_PERSON_CAPTION =
+  '1인당 구매 가능 개수를 입력해주세요.';
+export const TICKET_FORM_SALES_DATE = '판매 기간';
+export const TICKET_FORM_SALES_DATE_LABEL =
+  '티켓의 판매기간을 조정할 수 있습니다.';
+export const TICKET_FORM_SALES_DATE_CAPTION = '티켓의 판매기간을 선택해주세요.';
+export const TICKET_FORM_REFUND_DATE = '환불 마감 날짜';
+export const TICKET_FORM_REFUND_DATE_LABEL =
+  '판매 종료일을 설정하면 환불 마감 날짜는 자동으로 이와 동일하게 조정되지만 호스트가 원하는 날짜로 변경할 수도 있습니다.';
+export const TICKET_FORM_REFUND_DATE_CAPTION = '환불 마감날짜를 선택해주세요.';
+
+export const DATE_PICKER_RANGE_CAPTION =
+  '시작하는 날짜가 현재 시각보다 일찍 시작하거나, 종료하는 날짜보다 앞설 수 없습니다.';
+export const DATE_PICKER_SINGLE_CAPTION =
+  '마감하는 날짜가 현재 시각보다 일찍일 수 없습니다.';
 
 export const MY_PAGE_LNB_MY_TICKETS = '내 티켓';
 export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';
@@ -61,7 +130,37 @@ export const BOUGHT_TICKET_EVENT_TITLE_CAPTION = '현재 구매한 티켓 목록
 export const HISTORY_METHOD_PUSH = 'PUSH';
 export const HISTORY_METHOD_REPLACE = 'REPLACE';
 
+
 export const REFUND_TICKET_SUCCESS = '환불이 완료되었습니다.';
 export const REFUND_TICKET_FAILURE = '환불이 실패했습니다.';
 export const NOT_FOUND_BOUGHT_TICKET = '아직 구매한 티켓이 없네요..😅';
 export const NOT_FOUND_CREATED_EVENT = '주최한 이벤트가 없네요..🤣';
+
+export const FORM_NAME: any = {
+  event: {
+    isPublic: '공개 여부',
+    title: '이벤트 제목',
+    date: '이벤트 날짜',
+    startAt: '이벤트 시작 날짜',
+    endAt: '이벤트 종료 날짜',
+    place: '이벤트 장소',
+    address: '이벤트 상세 주소',
+    placeDesc: '이벤트 설명',
+    mainImg: '이벤트 대표 이미지',
+    desc: '이벤트 내용',
+  },
+  ticket: {
+    name: '티켓 이름',
+    desc: '티켓 설명',
+    price: '티켓 가격',
+    quantity: '티켓 수량',
+    isPublicLeftCnt: '티켓 수량 숨김',
+    maxCntPerPerson: '1인당 구매 가능 개수',
+    salesDate: '티켓 판매 날짜',
+    salesStartAt: '티켓 판매 시작 날짜',
+    salesEndAt: '티켓 판매 종료 날짜',
+    refundDate: '티켓 환불 마감 날짜',
+    refundEndAt: '티켓 환불 마감 날짜',
+  },
+};
+
