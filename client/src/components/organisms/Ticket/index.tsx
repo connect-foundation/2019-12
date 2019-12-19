@@ -30,12 +30,16 @@ function Ticket({
   doneEvent,
 }: Prop): React.ReactElement {
   const remainCnt = quantity - leftCnt;
-  const remainDays = calculateDiffDaysOfDateRange(
-    Date().toString(),
-    salesEndAt,
-  );
 
-  function makeLabelContent(remainDays: number, salesStartAt: string) {
+  function makeLabelContent(salesStartAt: string) {
+    const UtcDate = new Date();
+    UtcDate.setHours(-9);
+
+    const remainDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
+      salesEndAt,
+    );
+
     if (!doneEvent) {
       return `${remainDays}${TICKET_REMAIN_DAYS}`;
     }
@@ -77,7 +81,7 @@ function Ticket({
           />
           <IconLabel
             icon={<FaRegCalendarAlt size={'1.5rem'} />}
-            labelContent={makeLabelContent(remainDays, salesStartAt)}
+            labelContent={makeLabelContent(salesStartAt)}
           />
         </S.TicketContentWrapContainer>
       </S.TicketContentContainer>
