@@ -15,7 +15,7 @@ export default async (req: any, res: Response) => {
     );
     res.send(SUCCESS);
   } catch (err) {
-    if (err.state === 404) return res.sendStatus(NOT_FOUND);
-    return res.sendStatus(FORBIDDEN);
+    if (err.state === 404) return res.status(NOT_FOUND).send(err);
+    return res.status(FORBIDDEN).send(err);
   }
 };
