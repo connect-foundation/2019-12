@@ -1,11 +1,11 @@
 import { checkSchema, CustomValidator } from 'express-validator';
 import { resolveObject } from 'utils/objectResolver';
 
-const isLessThan = (key: string): { options: CustomValidator } => ({
+const isLessThanOrEqualTo = (key: string): { options: CustomValidator } => ({
   options: (value, { req }) => resolveObject(req.body, key) >= value,
 });
 
-const isGreaterThan = (key: string): { options: CustomValidator } => ({
+const isGreaterThanOrEqualTo = (key: string): { options: CustomValidator } => ({
   options: (value, { req }) => resolveObject(req.body, key) <= value,
 });
 
@@ -55,7 +55,7 @@ export default checkSchema({
     isISO8601: true,
     exists: true,
     toDate: true,
-    custom: isGreaterThan('startAt'),
+    custom: isGreaterThanOrEqualTo('startAt'),
   },
   place: {
     in: 'body',
@@ -105,7 +105,7 @@ export default checkSchema({
   },
   'ticket.price': {
     in: 'body',
-    isInt: { options: { gt: 0 } },
+    isInt: { options: { min: 0 } },
     toInt: true,
     exists: true,
   },
@@ -126,7 +126,7 @@ export default checkSchema({
     isInt: true,
     toInt: true,
     exists: true,
-    custom: isLessThan('ticket.quantity'),
+    custom: isLessThanOrEqualTo('ticket.quantity'),
   },
   'ticket.salesStartAt': {
     in: 'body',
