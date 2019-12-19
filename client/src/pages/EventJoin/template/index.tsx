@@ -13,6 +13,7 @@ interface Props {
   ticketChoiceProps: TicketChoiceProps;
   ticketPurchaseProps: TicketPurchaseProps;
   loading: boolean;
+  internalServerError: boolean;
 }
 
 const TICKET_CHOICE_STEP = 1;
