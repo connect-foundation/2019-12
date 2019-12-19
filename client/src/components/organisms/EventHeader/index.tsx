@@ -75,9 +75,7 @@ function EventHeader({
         <S.ReservedPeopleContainer>
           <FaUsers size={'2rem'} />
           <S.ReservedPeople>
-            {ticketInfo.leftCnt === -1
-              ? '비공개'
-              : `${ticketInfo.quantity - ticketInfo.leftCnt}명`}
+            {ticketInfo.leftCnt === -1 ? '비공개' : `${ticketInfo.leftCnt}명`}
           </S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
