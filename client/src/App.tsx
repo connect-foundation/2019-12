@@ -25,6 +25,7 @@ import {
 import GlobalStoreProvider from 'stores';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
 import { defaultAccountState } from 'stores/accountStore/reducer';
+import { AfterLoginAction } from 'stores/afterLoginStore';
 import { useIsMount } from 'hooks';
 const { REACT_APP_TEST_UID_TOKEN } = process.env;
 
@@ -36,11 +37,11 @@ const App: React.FC = () => {
         <GlobalStyles />
         <Router>
           <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
+            <PublicRoute exact path="/" component={Main} />
+            <PublicRoute path="/login" component={Login} />
+            <PublicRoute path="/signup" component={SignUp} />
             <PrivateRoute exact path="/event/create" component={EventCreate} />
-            <Route
+            <PublicRoute
               exact
               path="/events/:eventId([0-9]+)"
               component={EventDetail}
@@ -54,7 +55,7 @@ const App: React.FC = () => {
               component={MyPage}
             />
 
-            <Route path="*" component={NotFound} />
+            <PublicRoute path="*" component={NotFound} />
           </Switch>
         </Router>
       </ThemeProvider>
@@ -64,6 +65,16 @@ const App: React.FC = () => {
 
 export default App;
 
+function PublicRoute({ ...rest }: any): React.ReactElement {
+  const { setLoginCallback } = useContext(AfterLoginAction);
+
+  useEffect(() => {
+    setLoginCallback('/');
+  }, [setLoginCallback]);
+
+  return <Route {...rest} />;
+}
+
 function PrivateRoute({
   component: TargetPage,
   ...rest
@@ -72,10 +83,16 @@ function PrivateRoute({
   const accountState = useContext(UserAccountState);
   const { setLoginState } = useContext(UserAccountAction);
   const [isLoginCheck, setIsLoginCheck] = useState(false);
+  const { setLoginCallback } = useContext(AfterLoginAction);
+  const path = window.location.pathname;
 
   useEffect(() => {
     setLoginState(true);
   }, [setLoginState]);
+
+  useEffect(() => {
+    if (isLoginCheck && !accountState.isLogin) setLoginCallback(path);
+  }, [rest, accountState.isLogin, setLoginCallback, isLoginCheck, path]);
 
   useIsMount(() => {
     if (defaultAccountState !== accountState) setIsLoginCheck(true);

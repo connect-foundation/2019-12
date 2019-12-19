@@ -35,6 +35,7 @@ import {
   RESERVE_SOLD_OUT,
   RESERVE_PER_PERSON_OVER,
   RESERVE_WRONG_NUMBER,
+  INTERNAL_SERVER_ERROR,
 } from 'commons/constants/string';
 import { NOT_OPEN, SOLD_OUT, EXCEED_LIMIT } from 'commons/constants/number';
 import ROUTES from 'commons/constants/routes';
@@ -76,7 +77,13 @@ const defaultEventData = {
 };
 
 function EventJoin(): React.ReactElement {
-  window.scrollTo(0, 0);
+  function getEventIfEventIsInState(
+    events: Map<number, EventDetail>,
+    eventId: number,
+  ) {
+    return events.get(eventId);
+  }
+
   const [isReserved, setisReserved] = useState(false);
   const [isTicketChecked, setIsTicketChecked] = useState(false);
   const [ticketCount, setTicketCount] = useState(1);
@@ -90,8 +97,6 @@ function EventJoin(): React.ReactElement {
   if (typeof originEventId === 'undefined') {
     history.push('/404');
   }
-  const eventId = +originEventId!;
-
   const getInEventState = useCallback(
     (eventData: EventDetail) => {
       setEventState(eventData);
@@ -99,22 +104,41 @@ function EventJoin(): React.ReactElement {
     [setEventState],
   );
 
-  useEffect(() => {
-    if (eventsState && eventsState.events) {
-      const gettedEventData = eventsState.events.get(eventId);
-      if (gettedEventData) {
-        getInEventState(gettedEventData);
-      } else {
-        eventFetchDispatcher({
-          type: 'EVENT',
-          params: { eventId },
-        });
-      }
-    }
-  }, [eventFetchDispatcher, eventId, eventsState, getInEventState]);
-
+  const eventId = +originEventId!;
   const { title, mainImg, startAt, endAt, user, ticketType } = eventState;
   const { maxCntPerPerson } = ticketType;
+  const eventDataFromStore = getEventIfEventIsInState(
+    eventsState.events!,
+    eventId,
+  );
+  const isEventInState = !!eventDataFromStore;
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (isEventInState) {
+      getInEventState(eventDataFromStore!);
+      setLoading(false);
+      return;
+    }
+
+    eventFetchDispatcher({
+      type: 'EVENT',
+      params: { eventId },
+    });
+    setLoading(false);
+  }, [
+    eventDataFromStore,
+    eventFetchDispatcher,
+    eventId,
+    eventsState,
+    getInEventState,
+    isEventInState,
+  ]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const isVisibleCounter = () => {
     return maxCntPerPerson > minTicketCount && isTicketChecked;
   };
@@ -137,9 +161,14 @@ function EventJoin(): React.ReactElement {
       await joinEvent(eventId, ticketCount);
       setisReserved(true);
       alert(RESERVE_COMPLETE);
-      history.push(ROUTES.HOME);
+      history.replace(ROUTES.MYPAGE_TICKETS);
     } catch (err) {
       const { response } = err;
+      if (!response) {
+        alert(INTERNAL_SERVER_ERROR);
+        history.push(ROUTES.HOME);
+        return;
+      }
       const { status: statusCode, data } = response;
 
       if (statusCode === UNAUTHORIZED) {
@@ -171,6 +200,7 @@ function EventJoin(): React.ReactElement {
   return (
     <EventJoinTemplate
       step={templateStep}
+      loading={isLoading}
       stepList={<StepList steps={steps} pivot={templateStep} />}
       eventSection={
         <EventSection

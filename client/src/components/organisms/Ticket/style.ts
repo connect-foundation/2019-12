@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, palette } from 'styled-tools';
+import { theme, palette, ifProp } from 'styled-tools';
 
 export const TicketLabel = styled.div`
   ${theme('fontStyle.h6')};
@@ -22,7 +22,11 @@ interface TicketContentWrapContainerProps {
 export const TicketContentWrapContainer = styled.div<
   TicketContentWrapContainerProps
 >`
-  color: ${palette('grayscale', 4)}
+  color: ${ifProp(
+    'disabled',
+    palette('grayscale', 4),
+    palette('grayscale', 1),
+  )};
   padding-left: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;

@@ -40,7 +40,7 @@ describe('Hooks', () => {
       return <></>;
     }
     // when
-    const wrapper = mount(<MockComponent />);
+    mount(<MockComponent />);
 
     // then
     await new Promise(resolve => {
@@ -80,7 +80,7 @@ describe('Hooks', () => {
       return <></>;
     }
     // when
-    const wrapper = mount(<MockComponent />);
+    mount(<MockComponent />);
 
     // then
     await new Promise(resolve => {

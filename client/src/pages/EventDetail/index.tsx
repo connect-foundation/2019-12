@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 
@@ -52,6 +52,7 @@ function EventDetailView(): React.ReactElement {
   const [internalServerError, setInternalError] = useState(false);
   const history = useHistory();
   const isEventInState = checkIfEventIsInState(eventsState.events!, +eventId!);
+  const remainDays = useRef(0);
 
   const events = isEventInState
     ? eventsState.events!.get(+eventId!)!
@@ -73,19 +74,33 @@ function EventDetailView(): React.ReactElement {
     longitude,
   } = events;
 
-  const remainDays = calculateDiffDaysOfDateRange(
-    Date().toString(),
-    ticketType.salesEndAt,
-  );
+  function doneEventType() {
+    remainDays.current = calculateDiffDaysOfDateRange(
+      Date().toString(),
+      ticketType.salesEndAt,
+    );
+
+    if (remainDays.current <= 0) return 1;
+
+    const remainTickets = ticketType.quantity - ticketType.leftCnt;
+    if (remainTickets <= 0) return 2;
+
+    return 0;
+  }
 
   useEffect(() => {
-    if (!isEventInState)
+    if (!isEventInState) {
       eventFetchDispatcher({
         type: 'EVENT',
         params: {
           eventId: +eventId!,
         },
       });
+      remainDays.current = calculateDiffDaysOfDateRange(
+        Date().toString(),
+        ticketType.salesEndAt,
+      );
+    }
 
     if (eventsState.status === NOT_FOUND) {
       history.replace('/NOT_FOUND');
@@ -101,6 +116,7 @@ function EventDetailView(): React.ReactElement {
     eventsState.status,
     history,
     isEventInState,
+    ticketType.salesEndAt,
   ]);
 
   return (
@@ -117,11 +133,11 @@ function EventDetailView(): React.ReactElement {
             place,
             ticketType,
           }}
-          doneEvent={remainDays <= 0}
+          doneEventType={doneEventType()}
         />
       }
       eventContent={<TuiViewer content={desc} />}
-      ticket={<Ticket {...ticketType} doneEvent={remainDays <= 0} />}
+      ticket={<Ticket {...ticketType} doneEvent={!!doneEventType()} />}
       place={
         <Place
           {...{

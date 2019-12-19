@@ -106,7 +106,7 @@ const TicketFormDefaultState: TicketFormState = {
     value: '',
   },
   isPublicLeftCnt: {
-    valid: false,
+    valid: true,
     value: false,
   },
   maxCntPerPerson: {
