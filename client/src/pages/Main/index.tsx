@@ -25,11 +25,11 @@ function Main(): React.ReactElement {
     return events!.get(lastItemIndex)!.startAt;
   };
 
-  function getNextEvents() {
+  function getNextEvents(): void {
     const startAt = getStartAt({ events, order });
     eventFetchDispatcher({
       type: 'EVENTS',
-      params: {
+      data: {
         cnt: REQUEST_EVENT_CARD_GRID_NUM,
         startAt,
       },
