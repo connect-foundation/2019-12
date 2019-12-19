@@ -23,16 +23,19 @@ const produceMap = (
 export default function eventsReducer(
   state: EventsState,
   action: EventsAction,
-): {
-  events?: Map<number, EventDetail>;
-  order?: number[];
-  status: number;
-} {
+): EventsState {
   switch (action.type) {
     case 'EVENTS':
+      if (
+        !state.events ||
+        !action.value.events ||
+        !state.order ||
+        !action.value.order
+      )
+        return state;
       return {
-        events: produceMap(state.events!, action.value.events!),
-        order: [...state.order!, ...action.value.order!],
+        events: produceMap(state.events, action.value.events),
+        order: [...state.order, ...action.value.order],
         status: action.value.status,
       };
     case 'ERROR':
