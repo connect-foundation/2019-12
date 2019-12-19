@@ -104,13 +104,14 @@ function EventJoin(): React.ReactElement {
   useEffect(() => {
     if (!eventsState || !eventsState.events) return;
     const gettedEventData = eventsState.events.get(eventId);
-    if (!gettedEventData) return;
-
+    if (!gettedEventData) {
+      eventFetchDispatcher({
+        type: 'EVENT',
+        params: { eventId },
+      });
+      return;
+    }
     getInEventState(gettedEventData);
-    eventFetchDispatcher({
-      type: 'EVENT',
-      params: { eventId },
-    });
   }, [eventFetchDispatcher, eventId, eventsState, getInEventState]);
 
   useEffect(() => {
