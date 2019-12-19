@@ -25,5 +25,15 @@ export default async (limit = 20, startAt: Date): Promise<Event[]> => {
     { model: User, attributes: ['id', 'lastName', 'firstName'] },
   ];
 
-  return await Event.findAll({ where, attributes, limit, order, include });
+  const events = await Event.findAll({
+    where,
+    attributes,
+    limit,
+    order,
+    include,
+  });
+  return events.map(event => {
+    if (!event.ticketType.isPublicLeftCnt) event.ticketType.leftCnt = -1;
+    return event;
+  });
 };
