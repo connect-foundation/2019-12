@@ -29,6 +29,7 @@ function Ticket({
     Date().toString(),
     salesEndAt,
   );
+
   return (
     <>
       <S.TicketLabel>티켓</S.TicketLabel>
@@ -50,7 +51,7 @@ function Ticket({
           <IconLabel
             icon={<FaRegCalendarAlt size={'1.5rem'} />}
             labelContent={
-              remainDays <= 0
+              doneEvent
                 ? '판매기간이 종료되었습니다.'
                 : `${remainDays}일 후에 판매마감`
             }
