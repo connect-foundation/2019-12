@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
+  useHistory,
 } from 'react-router-dom';
 
 import { Loading } from 'components';
@@ -26,7 +27,17 @@ import GlobalStoreProvider from 'stores';
 import { UserAccountState, UserAccountAction } from 'stores/accountStore';
 import { defaultAccountState } from 'stores/accountStore/reducer';
 import { AfterLoginAction } from 'stores/afterLoginStore';
-import { useIsMount } from 'hooks';
+import { checkJoinEvent } from 'apis';
+import { useIsMount, useApiRequest } from 'hooks';
+import {
+  RESERVE_WRONG_NUMBER,
+  RESERVE_REQUIRE_LOGIN,
+  RESERVE_SOLD_OUT,
+  RESERVE_INVALID_DATE,
+} from 'commons/constants/string';
+import { NOT_OPEN, SOLD_OUT } from 'commons/constants/number';
+import { NOT_FOUND, FORBIDDEN, UNAUTHORIZED } from 'http-status';
+
 const { REACT_APP_TEST_UID_TOKEN } = process.env;
 
 const App: React.FC = () => {
@@ -46,7 +57,7 @@ const App: React.FC = () => {
               path="/events/:eventId([0-9]+)"
               component={EventDetail}
             />
-            <PrivateRoute
+            <JoinRoute
               path="/events/:eventId([0-9]+)/register/tickets"
               component={EventJoin}
             />
@@ -64,6 +75,66 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+function JoinRoute({
+  component: TargetPage,
+  ...rest
+}: any): React.ReactElement {
+  const history = useHistory();
+  const isCallRequest = useRef(false);
+  const [checkEvent, setCheckEvent] = useState(false);
+  const [checkOpenResult, fetchCheckOpen] = useApiRequest<any>(checkJoinEvent);
+  const path = window.location.pathname;
+  const ticketId = path.split('/')[2];
+
+  useEffect(() => {
+    if (isCallRequest.current) return;
+    fetchCheckOpen({ type: 'REQUEST', body: [ticketId, 1] });
+    isCallRequest.current = true;
+  }, [fetchCheckOpen, ticketId, isCallRequest]);
+
+  useEffect(() => {
+    if (
+      checkOpenResult.type === 'SUCCESS' ||
+      checkOpenResult.type === 'FAILURE'
+    ) {
+      setCheckEvent(true);
+      if (checkOpenResult.err && checkOpenResult.err.response) {
+        const { status, data } = checkOpenResult.err.response;
+        const { state } = data;
+        if (status === FORBIDDEN) {
+          switch (state) {
+            case NOT_OPEN:
+              return alert(RESERVE_INVALID_DATE);
+            case SOLD_OUT:
+              return alert(RESERVE_SOLD_OUT);
+          }
+        }
+        if (status === NOT_FOUND) {
+          return alert(RESERVE_WRONG_NUMBER);
+        }
+        if (status === UNAUTHORIZED) {
+          return alert(RESERVE_REQUIRE_LOGIN);
+        }
+      }
+    }
+  }, [checkOpenResult]);
+
+  return (
+    <Route
+      {...rest}
+      render={(props: any) => {
+        return !checkEvent ? (
+          <Loading />
+        ) : checkOpenResult.status === 200 ? (
+          <TargetPage {...props} />
+        ) : (
+          history.replace(`/events/${ticketId}`)
+        );
+      }}
+    />
+  );
+}
 
 function PublicRoute({ ...rest }: any): React.ReactElement {
   const { setLoginCallback } = useContext(AfterLoginAction);
