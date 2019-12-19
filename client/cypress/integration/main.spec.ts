@@ -28,8 +28,8 @@ context('메인 페이지', () => {
     cy.scrollTo('bottom');
     cy.wait('@getEventsMore');
 
-    cy.wait(1500);
-    cy.get('[data-testid=main-card]').within(items => {
+    cy.wait(3000);
+    cy.get('[data-testid=main-card]', { timeout: 3000 }).within(items => {
       expect(items).to.have.length(24);
     });
   });
