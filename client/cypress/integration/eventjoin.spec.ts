@@ -16,7 +16,7 @@ import {
 } from '../../src/commons/constants/number';
 
 function goPurchasePage(): void {
-  cy.visit('/events/330/register/tickets');
+  cy.visit('/events/331/register/tickets');
   cy.get('[data-testid=ticketbox-chkbox]').click();
   cy.get('[data-testid=ticketchoice-submitbtn]').click();
 }
@@ -25,12 +25,10 @@ context('이벤트 예약 페이지', () => {
   beforeEach(() => {
     cy.server();
     cy.setCookie('UID', Cypress.env('auth_token'));
-    cy.wait(2000);
+    cy.visit('/events/331/register/tickets');
   });
 
   it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
-    cy.visit('/events/330/register/tickets');
-
     const alertStub = cy.stub();
     cy.on('window:alert', alertStub);
     cy.get('[data-testid=ticketchoice-submitbtn]')
@@ -41,18 +39,17 @@ context('이벤트 예약 페이지', () => {
   });
 
   it('(여러 수량을 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터가 보여진다.', () => {
-    cy.visit('/events/330/register/tickets');
     cy.get('[data-testid=ticketbox-chkbox]').click();
     cy.get('[data-testid=counterbox-container]').within(items => {
       expect(items).has.length(1);
     });
   });
 
-  it('(하나의 티켓만 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터는 보여지지 않는다.', () => {
-    //   cy.visit('/events/330/register/tickets');
-    //   cy.get('[data-testid=ticketbox-chkbox]').click();
-    //   cy.get('[data-testid=counterbox-container]').should('not.exist');
-  });
+  // it('(하나의 티켓만 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터는 보여지지 않는다.', () => {
+  //   cy.visit('/events/330/register/tickets');
+  //   cy.get('[data-testid=ticketbox-chkbox]').click();
+  //   cy.get('[data-testid=counterbox-container]').should('not.exist');
+  // });
 
   it('상단의 목차가 예약이 진행될 때마다 스타일이 변경되며 올바르게 표시된다.', () => {
     cy.visit('/events/330/register/tickets');
