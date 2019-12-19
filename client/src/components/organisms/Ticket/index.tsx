@@ -14,7 +14,6 @@ import {
 
 interface Prop extends TicketType {
   count?: number;
-  doneEvent?: boolean;
 }
 
 function Ticket({
@@ -27,9 +26,8 @@ function Ticket({
   salesEndAt,
   leftCnt,
   quantity,
-  doneEvent,
 }: Prop): React.ReactElement {
-  function makeLabelContent(salesStartAt: string) {
+  const disableState = ((): { status: boolean; label: string } => {
     const UtcDate = new Date();
     UtcDate.setHours(UtcDate.getHours() - 9);
 
@@ -38,29 +36,27 @@ function Ticket({
       salesEndAt,
     );
 
-    if (!doneEvent) {
-      return `${remainDays}${TICKET_REMAIN_DAYS}`;
-    }
-
     if (remainDays <= 0) {
-      return TICKET_INVALID_DATE;
+      return { status: true, label: TICKET_INVALID_DATE };
     }
 
-    const convertToUTCDate = new Date();
-    convertToUTCDate.setHours(UtcDate.getHours() - 9);
-
-    const commingDays = calculateDiffDaysOfDateRange(
-      convertToUTCDate.toString(),
+    const commigDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
       salesStartAt,
     );
-    return `${commingDays}${TICKET_COMMING_SOON}`;
-  }
+
+    if (commigDays >= 0) {
+      return { status: true, label: `${commigDays}${TICKET_COMMING_SOON}` };
+    }
+
+    return { status: false, label: `${remainDays}${TICKET_REMAIN_DAYS}` };
+  })();
 
   return (
     <>
       <S.TicketLabel>티켓</S.TicketLabel>
       <S.TicketContentContainer>
-        <S.TicketContentWrapContainer disabled={!!doneEvent}>
+        <S.TicketContentWrapContainer disabled={disableState.status}>
           <S.TicketPriceWrapper>
             <Price separated>{price}</Price>
           </S.TicketPriceWrapper>
@@ -79,7 +75,7 @@ function Ticket({
           />
           <IconLabel
             icon={<FaRegCalendarAlt size={'1.5rem'} />}
-            labelContent={makeLabelContent(salesStartAt)}
+            labelContent={disableState.label}
           />
         </S.TicketContentWrapContainer>
       </S.TicketContentContainer>
