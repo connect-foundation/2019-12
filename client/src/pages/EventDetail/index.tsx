@@ -73,26 +73,29 @@ function EventDetailView(): React.ReactElement {
     longitude,
   } = events;
 
-  function doneEventType() {
+  enum doneEventTypeEnum {
+    SUCCESS,
+    NOT_REMAIN_EVENT_DAY,
+    NO_TICKET,
+    NOT_REMAIN_TICKET_DAY,
+  }
+
+  function doneEventType(): doneEventTypeEnum {
     const UtcDate = new Date();
     UtcDate.setHours(UtcDate.getHours() - 9);
-
     const remainEventDays = calculateDiffDaysOfDateRange(
       UtcDate.toString(),
       endAt,
     );
-
-    if (remainEventDays <= 0) return 1;
-
-    if (ticketType.leftCnt === 0) return 2;
-
     const remainTicketDays = calculateDiffDaysOfDateRange(
       UtcDate.toString(),
       ticketType.salesEndAt,
     );
-    if (remainTicketDays <= 0) return 3;
 
-    return 0;
+    if (remainEventDays <= 0) return doneEventTypeEnum.NOT_REMAIN_EVENT_DAY;
+    if (ticketType.leftCnt === 0) return doneEventTypeEnum.NO_TICKET;
+    if (remainTicketDays <= 0) return doneEventTypeEnum.NOT_REMAIN_TICKET_DAY;
+    return doneEventTypeEnum.SUCCESS;
   }
 
   useEffect(() => {
