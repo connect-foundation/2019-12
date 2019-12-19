@@ -2,11 +2,11 @@ import { checkSchema, CustomValidator } from 'express-validator';
 import { resolveObject } from 'utils/objectResolver';
 
 const isLessThanOrEqualTo = (key: string): { options: CustomValidator } => ({
-  options: (value, { req }) => resolveObject(req.body, key) >= value,
+  options: (value, { req }): boolean => resolveObject(req.body, key) >= value,
 });
 
 const isGreaterThanOrEqualTo = (key: string): { options: CustomValidator } => ({
-  options: (value, { req }) => resolveObject(req.body, key) <= value,
+  options: (value, { req }): boolean => resolveObject(req.body, key) <= value,
 });
 
 const isBetweenTodayAnd = (endKey: string): { options: CustomValidator } => ({
