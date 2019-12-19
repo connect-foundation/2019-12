@@ -29,11 +29,9 @@ function Ticket({
   quantity,
   doneEvent,
 }: Prop): React.ReactElement {
-  const remainCnt = quantity - leftCnt;
-
   function makeLabelContent(salesStartAt: string) {
     const UtcDate = new Date();
-    UtcDate.setHours(-9);
+    UtcDate.setHours(UtcDate.getHours() - 9);
 
     const remainDays = calculateDiffDaysOfDateRange(
       UtcDate.toString(),
@@ -49,7 +47,7 @@ function Ticket({
     }
 
     const convertToUTCDate = new Date();
-    convertToUTCDate.setHours(-9);
+    convertToUTCDate.setHours(UtcDate.getHours() - 9);
 
     const commingDays = calculateDiffDaysOfDateRange(
       convertToUTCDate.toString(),
@@ -71,7 +69,7 @@ function Ticket({
           {leftCnt !== -1 && (
             <IconLabel
               icon={<FaTicketAlt size={'1.5rem'} />}
-              labelContent={`${remainCnt}개 남음`}
+              labelContent={`${leftCnt}개 남음`}
             />
           )}
 

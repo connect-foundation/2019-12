@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 
@@ -52,7 +52,6 @@ function EventDetailView(): React.ReactElement {
   const [internalServerError, setInternalError] = useState(false);
   const history = useHistory();
   const isEventInState = checkIfEventIsInState(eventsState.events!, +eventId!);
-  const remainDays = useRef(0);
 
   const events = isEventInState
     ? eventsState.events!.get(+eventId!)!
@@ -75,15 +74,23 @@ function EventDetailView(): React.ReactElement {
   } = events;
 
   function doneEventType() {
-    remainDays.current = calculateDiffDaysOfDateRange(
-      Date().toString(),
-      ticketType.salesEndAt,
+    const UtcDate = new Date();
+    UtcDate.setHours(UtcDate.getHours() - 9);
+
+    const remainEventDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
+      endAt,
     );
 
-    if (remainDays.current <= 0) return 1;
+    if (remainEventDays <= 0) return 1;
 
-    const remainTickets = ticketType.quantity - ticketType.leftCnt;
-    if (remainTickets <= 0) return 2;
+    if (ticketType.leftCnt <= 0) return 2;
+
+    const remainTicketDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
+      ticketType.salesEndAt,
+    );
+    if (remainTicketDays <= 0) return 3;
 
     return 0;
   }
@@ -96,10 +103,6 @@ function EventDetailView(): React.ReactElement {
           eventId: +eventId!,
         },
       });
-      remainDays.current = calculateDiffDaysOfDateRange(
-        Date().toString(),
-        ticketType.salesEndAt,
-      );
     }
 
     if (eventsState.status === NOT_FOUND) {
