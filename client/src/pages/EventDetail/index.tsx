@@ -84,7 +84,7 @@ function EventDetailView(): React.ReactElement {
 
     if (remainEventDays <= 0) return 1;
 
-    if (ticketType.leftCnt <= 0) return 2;
+    if (ticketType.leftCnt === 0) return 2;
 
     const remainTicketDays = calculateDiffDaysOfDateRange(
       UtcDate.toString(),
@@ -140,7 +140,7 @@ function EventDetailView(): React.ReactElement {
         />
       }
       eventContent={<TuiViewer content={desc} />}
-      ticket={<Ticket {...ticketType} doneEvent={!!doneEventType()} />}
+      ticket={<Ticket {...ticketType} />}
       place={
         <Place
           {...{
