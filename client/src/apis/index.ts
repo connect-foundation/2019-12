@@ -5,5 +5,11 @@ export {
   getCreatedEvents,
   refundBoughtTicket,
 } from './user';
-export { getEvents, getEvent, joinEvent, createEvent } from './event';
+export {
+  getEvents,
+  getEvent,
+  joinEvent,
+  createEvent,
+  checkJoinEvent,
+} from './event';
 export { searchAddressByKeyword } from './map';
