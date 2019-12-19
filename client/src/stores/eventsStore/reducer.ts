@@ -13,7 +13,7 @@ export const defaultEventsState: EventsState = {
 const produceMap = (
   sourceMap: Map<number, EventDetail>,
   targetMap: Map<number, EventDetail>,
-) =>
+): Map<number, EventDetail> =>
   produce(sourceMap, draft => {
     targetMap.forEach(value => {
       draft.set(value.id, value);
@@ -23,19 +23,16 @@ const produceMap = (
 export default function eventsReducer(
   state: EventsState,
   action: EventsAction,
-) {
+): {
+  events?: Map<number, EventDetail>;
+  order?: number[];
+  status: number;
+} {
   switch (action.type) {
     case 'EVENTS':
       return {
-        ...state,
         events: produceMap(state.events!, action.value.events!),
         order: [...state.order!, ...action.value.order!],
-        status: action.value.status,
-      };
-    case 'EVENT':
-      return {
-        ...state,
-        events: produceMap(state.events!, action.value.events!),
         status: action.value.status,
       };
     case 'ERROR':
