@@ -19,7 +19,6 @@ export const SIGNUP_VALIDATION_LAST_NAME = '성을 입력하세요';
 export const SIGNUP_VALIDATION_PHONE_NUMBER = '올바른 휴대폰 번호가 아닙니다.';
 export const SIGNUP_PLACEHOLDER_PHONE_NUMBER = '- 없이 숫자만 입력해주세요.';
 
-export const COUNTER_LABEL = '수량';
 export const BUY_TICKET_BTN = '구매하기';
 export const COUNTER_BOX_LABEL = '수량';
 
@@ -30,6 +29,9 @@ export const RESERVE_WRONG_NUMBER = '가능한 티켓 개수가 아닙니다.';
 export const RESERVE_MIN_FAIL = '하나 이상의 티켓만 구매할 수 있습니다.';
 export const RESERVE_INVALID_DATE = '구매 가능한 일정이 아닙니다.';
 export const RESERVE_SOLD_OUT = '매진되었습니다.';
+export const RESERVE = '등록';
+export const RESERVE_DONE = '이벤트가 종료되었습니다.';
+export const RESERVE_EXPIRE = '티켓 구매기간이 지났습니다.';
 export const RESERVE_PER_PERSON_OVER = '1인당 구매 가능한 티켓을 초과했습니다.';
 
 export const JOIN_STEP_CHOICE = '티켓 선택';

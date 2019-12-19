@@ -21,11 +21,19 @@ export const RootContainer = styled.div<ContainerProps>`
   border-color: ${ifProp('border', palette('grayscale', 5), '')};
 `;
 
-export const Container = styled.div`
+interface ContainerWrapperProps {
+  imgPosition: 'top' | 'left';
+}
+
+export const Container = styled.div<ContainerWrapperProps>`
   display: flex;
   flex-direction: column;
   color: ${palette('grayscale', 1)};
-  padding: 2rem;
+  margin-bottom: 5rem;
+  padding: ${switchProp('imgPosition', {
+    top: '0rem',
+    left: '2rem 0rem',
+  })};
 `;
 
 interface ImgProp {

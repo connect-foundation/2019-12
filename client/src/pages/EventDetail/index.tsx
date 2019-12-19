@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { NOT_FOUND } from 'http-status';
 
@@ -41,7 +41,6 @@ const defaultEventDetail: EventDetail = {
 
 function EventDetailView(): React.ReactElement {
   window.scrollTo(0, 0);
-  const remainDays = useRef(0);
   const history = useHistory();
   const [internalServerError, setInternalError] = useState(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -90,26 +89,30 @@ function EventDetailView(): React.ReactElement {
     longitude,
   } = event;
 
-  function doneEventType(): 0 | 1 | 2 {
-    remainDays.current = calculateDiffDaysOfDateRange(
-      Date().toString(),
-      ticketType.salesEndAt,
-    );
-
-    if (remainDays.current <= 0) return 1;
-
-    const remainTickets = ticketType.quantity - ticketType.leftCnt;
-    if (remainTickets <= 0) return 2;
-
-    return 0;
+  enum doneEventTypeEnum {
+    SUCCESS,
+    NOT_REMAIN_EVENT_DAY,
+    NO_TICKET,
+    NOT_REMAIN_TICKET_DAY,
   }
 
-  useEffect(() => {
-    remainDays.current = calculateDiffDaysOfDateRange(
-      Date().toString(),
+  function doneEventType(): doneEventTypeEnum {
+    const UtcDate = new Date();
+    UtcDate.setHours(UtcDate.getHours() - 9);
+    const remainEventDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
+      endAt,
+    );
+    const remainTicketDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
       ticketType.salesEndAt,
     );
-  }, [ticketType.salesEndAt]);
+
+    if (remainEventDays <= 0) return doneEventTypeEnum.NOT_REMAIN_EVENT_DAY;
+    if (ticketType.leftCnt === 0) return doneEventTypeEnum.NO_TICKET;
+    if (remainTicketDays <= 0) return doneEventTypeEnum.NOT_REMAIN_TICKET_DAY;
+    return doneEventTypeEnum.SUCCESS;
+  }
 
   return (
     <EventDetailTemplate
@@ -129,7 +132,7 @@ function EventDetailView(): React.ReactElement {
         />
       }
       eventContent={<TuiViewer content={desc} />}
-      ticket={<Ticket {...ticketType} doneEvent={!!doneEventType()} />}
+      ticket={<Ticket {...ticketType} />}
       place={
         <Place
           {...{
