@@ -11,6 +11,7 @@ RUN mv ./dist /server; \
   mv ./node_modules /server/node_modules; \
   mv ./package.json /server/package.json; \
   mv ./tsconfig.json /server/tsconfig.json; \
+  mv ./.env.template /server/.env.template; \
   rm -rf /temp
 
 FROM node:12.13.0-alpine

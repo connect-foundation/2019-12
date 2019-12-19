@@ -19,7 +19,7 @@ const options = {
     maxFiles: 5,
     colorize: false,
     format: combine(
-      label({ label: 'main-log' }),
+      label({ label: 'reserve-log' }),
       timestamp(),
       myFormat, // log 출력 포맷
     ),
@@ -30,7 +30,7 @@ const options = {
     handleExceptions: true,
     json: false, // 로그형태를 json으로도 뽑을 수 있다.
     colorize: true,
-    format: combine(label({ label: 'test' }), timestamp(), myFormat),
+    format: combine(label({ label: 'debug' }), timestamp(), myFormat),
   },
 };
 

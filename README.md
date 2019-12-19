@@ -2,10 +2,10 @@
 <p>
     <img alt="travis" src="https://api.travis-ci.org/connect-foundation/2019-12.svg?branch=master" />
     <img alt="Release" src="https://img.shields.io/github/v/release/connect-foundation/2019-12" />
+    <img alt="Cypress.io tests" src="https://img.shields.io/badge/cypress.io-tests-green.svg" />
+    <img alt="Server Test Coverage" src="https://img.shields.io/badge/backend_coverage-85%25-success.svg" />
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
-
-<img alt="Cypress.io tests" src="https://img.shields.io/badge/cypress.io-tests-green.svg" />
 
 ### 📺 [HomePage](http://www.bookus.kr/)
 
