@@ -14,7 +14,7 @@ interface Props {
   endAt: string;
   user: User;
   ticketType: TicketType;
-  doneEvent?: boolean;
+  doneEventType?: number;
 }
 
 function EventHeader({
@@ -26,12 +26,13 @@ function EventHeader({
   endAt,
   user,
   ticketType,
-  doneEvent,
+  doneEventType,
 }: Props): React.ReactElement {
   const ticketInfo = ticketType;
   const { firstName, lastName } = user;
   const profileImgUrl =
     'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
+  const doneTypes = ['등록', '종료되었습니다.', '매진되었습니다.'];
 
   return (
     <S.HeaderContainer>
@@ -71,9 +72,9 @@ function EventHeader({
           <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
-          children={doneEvent ? '이벤트 종료' : '등록'}
+          children={!doneEventType ? doneTypes[0] : doneTypes[doneEventType]}
           to={`/events/${eventId}/register/tickets`}
-          disabled={doneEvent}
+          disabled={doneEventType === 1 || doneEventType === 2}
         />
       </S.SubmitContainer>
     </S.HeaderContainer>

@@ -74,10 +74,19 @@ function EventDetailView(): React.ReactElement {
     longitude,
   } = events;
 
-  remainDays.current = calculateDiffDaysOfDateRange(
-    Date().toString(),
-    ticketType.salesEndAt,
-  );
+  function doneEventType() {
+    remainDays.current = calculateDiffDaysOfDateRange(
+      Date().toString(),
+      ticketType.salesEndAt,
+    );
+
+    if (remainDays.current <= 0) return 1;
+
+    const remainTickets = ticketType.quantity - ticketType.leftCnt;
+    if (remainTickets <= 0) return 2;
+
+    return 0;
+  }
 
   useEffect(() => {
     if (!isEventInState) {
@@ -124,11 +133,11 @@ function EventDetailView(): React.ReactElement {
             place,
             ticketType,
           }}
-          doneEvent={remainDays.current <= 0}
+          doneEventType={doneEventType()}
         />
       }
       eventContent={<TuiViewer content={desc} />}
-      ticket={<Ticket {...ticketType} doneEvent={remainDays.current <= 0} />}
+      ticket={<Ticket {...ticketType} doneEvent={!!doneEventType()} />}
       place={
         <Place
           {...{
