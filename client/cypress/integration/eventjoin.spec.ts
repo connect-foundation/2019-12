@@ -186,6 +186,6 @@ context('이벤트 예약 페이지', () => {
         expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_COMPLETE);
       });
 
-    cy.location('pathname').should('eq', '/');
+    cy.location('pathname').should('eq', '/my/tickets');
   });
 });

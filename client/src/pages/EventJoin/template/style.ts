@@ -25,6 +25,12 @@ export const EventContainer = styled.div`
   margin-left: 10rem;
 `;
 
+export const EventSectionWrapper = styled.div`
+  & > div {
+    padding: 0rem;
+  }
+`;
+
 export const PlaceWrapper = styled.div`
   margin-top: 3rem;
 `;

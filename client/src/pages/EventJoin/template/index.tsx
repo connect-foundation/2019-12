@@ -12,6 +12,7 @@ interface Props {
   place: React.ReactNode;
   ticketChoiceProps: TicketChoiceProps;
   ticketPurchaseProps: TicketPurchaseProps;
+  loading: boolean;
 }
 
 const TICKET_CHOICE_STEP = 1;
@@ -24,9 +25,10 @@ function EventJoinTemplate({
   place,
   ticketChoiceProps,
   ticketPurchaseProps,
+  loading,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate hasHeaderLine>
+    <BasedTemplate hasHeaderLine loading={loading}>
       <S.StepListWrapper>{stepList}</S.StepListWrapper>
       <S.Container>
         <S.ContentContainer>
@@ -37,7 +39,7 @@ function EventJoinTemplate({
             <TicketPurchase {...ticketPurchaseProps} />
           )}
           <S.EventContainer>
-            {eventSection}
+            <S.EventSectionWrapper>{eventSection}</S.EventSectionWrapper>
             <S.PlaceWrapper>{place}</S.PlaceWrapper>
           </S.EventContainer>
         </S.ContentContainer>

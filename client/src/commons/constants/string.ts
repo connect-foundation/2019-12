@@ -5,6 +5,8 @@ export const LOGIN_SOCIAL = '소셜 계정을 사용해서 로그인';
 export const BEFORE_LOGIN = '가입 혹은 로그인';
 export const FOOTER_INFO =
   '대표 이메일 boostcamp@festa.io\n북어스(BookUs) | 대표 부캠이 | 서울특별시 서울구 서울동 서울로 123-1234 | 통신판매업 12345678 | 대표전화 123-1234-1234 (문의는 이메일 바랍니다)';
+export const INTERNAL_SERVER_ERROR =
+  '서버 요청에 실패했습니다. 잠시 후에 다시 시도해주세요';
 
 export const SIGNUP_EMAIL = '이메일';
 export const SIGNUP_LAST_NAME = '성';
@@ -131,11 +133,14 @@ export const BOUGHT_TICKET_EVENT_TITLE_CAPTION = '현재 구매한 티켓 목록
 export const HISTORY_METHOD_PUSH = 'PUSH';
 export const HISTORY_METHOD_REPLACE = 'REPLACE';
 
-
 export const REFUND_TICKET_SUCCESS = '환불이 완료되었습니다.';
 export const REFUND_TICKET_FAILURE = '환불이 실패했습니다.';
 export const NOT_FOUND_BOUGHT_TICKET = '아직 구매한 티켓이 없네요..😅';
 export const NOT_FOUND_CREATED_EVENT = '주최한 이벤트가 없네요..🤣';
+
+export const TICKET_REMAIN_DAYS = '일 후에 판매마감';
+export const TICKET_INVALID_DATE = '판매기간이 지났습니다';
+export const TICKET_COMMING_SOON = '일 후 판매시작';
 
 export const FORM_NAME: any = {
   event: {
@@ -164,4 +169,3 @@ export const FORM_NAME: any = {
     refundEndAt: '티켓 환불 마감 날짜',
   },
 };
-
