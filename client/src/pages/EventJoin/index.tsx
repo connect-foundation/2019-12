@@ -77,6 +77,13 @@ const defaultEventData = {
 };
 
 function EventJoin(): React.ReactElement {
+  function getEventIfEventIsInState(
+    events: Map<number, EventDetail>,
+    eventId: number,
+  ) {
+    return events.get(eventId);
+  }
+
   const [isReserved, setisReserved] = useState(false);
   const [isTicketChecked, setIsTicketChecked] = useState(false);
   const [ticketCount, setTicketCount] = useState(1);
@@ -100,19 +107,33 @@ function EventJoin(): React.ReactElement {
   const eventId = +originEventId!;
   const { title, mainImg, startAt, endAt, user, ticketType } = eventState;
   const { maxCntPerPerson } = ticketType;
+  const eventDataFromStore = getEventIfEventIsInState(
+    eventsState.events!,
+    eventId,
+  );
+  const isEventInState = !!eventDataFromStore;
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!eventsState || !eventsState.events) return;
-    const gettedEventData = eventsState.events.get(eventId);
-    if (!gettedEventData) {
-      eventFetchDispatcher({
-        type: 'EVENT',
-        params: { eventId },
-      });
+    if (isEventInState) {
+      getInEventState(eventDataFromStore!);
+      setLoading(false);
       return;
     }
-    getInEventState(gettedEventData);
-  }, [eventFetchDispatcher, eventId, eventsState, getInEventState]);
+
+    eventFetchDispatcher({
+      type: 'EVENT',
+      params: { eventId },
+    });
+    setLoading(false);
+  }, [
+    eventDataFromStore,
+    eventFetchDispatcher,
+    eventId,
+    eventsState,
+    getInEventState,
+    isEventInState,
+  ]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -179,6 +200,7 @@ function EventJoin(): React.ReactElement {
   return (
     <EventJoinTemplate
       step={templateStep}
+      loading={isLoading}
       stepList={<StepList steps={steps} pivot={templateStep} />}
       eventSection={
         <EventSection
