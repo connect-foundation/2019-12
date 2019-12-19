@@ -25,7 +25,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   color: ${palette('grayscale', 1)};
-  padding: 2rem;
+  margin-bottom: 5rem;
 `;
 
 interface ImgProp {
