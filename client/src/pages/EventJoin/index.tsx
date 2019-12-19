@@ -1,12 +1,9 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { UNAUTHORIZED, FORBIDDEN, NOT_FOUND } from 'http-status';
 import { useHistory } from 'react-router-dom';
 
-import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
-
 import EventJoinTemplate from './template';
 import {
   Btn,
@@ -39,20 +36,21 @@ import {
 } from 'commons/constants/string';
 import { NOT_OPEN, SOLD_OUT, EXCEED_LIMIT } from 'commons/constants/number';
 import ROUTES from 'commons/constants/routes';
-import { joinEvent } from 'apis';
+import { joinEvent, getEvent } from 'apis';
 import { calculateStringOfDateRange } from 'utils/dateCalculator';
 import { getImageURL, imageTypes } from 'utils/getImageURL';
+import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
 
 const minTicketCount = 1;
 const steps = [JOIN_STEP_CHOICE, JOIN_STEP_PURCHASE];
 
 const defaultEventData = {
   id: 1,
-  title: '이벤트 제목이랍니다.',
-  startAt: '2019-11-04T15:00:00.000Z',
-  endAt: '2019-11-05T15:00:00.000Z',
-  place: '위플레이스 강남점(서울시 강남구 강남대로 340 경원빌딩 3층)',
-  address: '서울시 강남구 강남대로 340',
+  title: '',
+  startAt: '',
+  endAt: '',
+  place: '',
+  address: '',
   placeDesc: '',
   latitude: 37.5662952,
   longitude: 126.9779451,
@@ -60,103 +58,85 @@ const defaultEventData = {
   desc: '',
 
   ticketType: {
-    id: 1,
-    eventId: 1,
-    name: '일반 입장권',
+    id: 0,
+    eventId: 0,
+    name: '',
     desc: '',
-    price: 10000,
+    price: 0,
     quantity: 0,
-    leftCnt: 20,
+    leftCnt: 0,
     isPublicLeftCnt: false,
-    maxCntPerPerson: 10,
-    salesStartAt: '2019-11-04T15:00:00.000Z',
-    salesEndAt: '2019-11-28T14:00:00.000Z',
-    refundEndAt: '2019-11-28T14:00:00.000Z',
+    maxCntPerPerson: 0,
+    salesStartAt: '',
+    salesEndAt: '',
+    refundEndAt: '',
   },
   user: { id: 0, lastName: '조', firstName: '성동', profileImgUrl: '' },
 };
 
 function EventJoin(): React.ReactElement {
-  function getEventIfEventIsInState(
-    events: Map<number, EventDetail>,
-    eventId: number,
-  ) {
-    return events.get(eventId);
-  }
-
   const [isReserved, setisReserved] = useState(false);
   const [isTicketChecked, setIsTicketChecked] = useState(false);
   const [ticketCount, setTicketCount] = useState(1);
   const [templateStep, setTemplateStep] = useState(1);
-  const [eventState, setEventState] = useState(defaultEventData);
-  const eventsState = useContext(EventsStoreState);
-  const { eventFetchDispatcher } = useContext(EventsStoreAction);
 
   const history = useHistory();
-  const { eventId: originEventId } = useParams();
-  if (typeof originEventId === 'undefined') {
-    history.push('/404');
-  }
-  const getInEventState = useCallback(
-    (eventData: EventDetail) => {
-      setEventState(eventData);
-    },
-    [setEventState],
-  );
+  const { eventId: originEventId } = useParams<{
+    eventId: string;
+  }>();
 
-  const eventId = +originEventId!;
-  const { title, mainImg, startAt, endAt, user, ticketType } = eventState;
-  const { maxCntPerPerson } = ticketType;
-  const eventDataFromStore = getEventIfEventIsInState(
-    eventsState.events!,
-    eventId,
-  );
-  const isEventInState = !!eventDataFromStore;
-  const [isLoading, setLoading] = useState(true);
+  const eventId = +originEventId;
+
+  const [internalServerError, setInternalError] = useState(false);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [event, setEvent] = useState<EventDetail>(defaultEventData);
+  const [fetchResult, fetchEvent] = useApiRequest<EventDetail>(getEvent);
 
   useEffect(() => {
-    if (isEventInState) {
-      getInEventState(eventDataFromStore!);
-      setLoading(false);
-      return;
-    }
+    fetchEvent({ type: 'REQUEST', body: [eventId] });
+  }, [fetchEvent, eventId]);
 
-    eventFetchDispatcher({
-      type: 'EVENT',
-      params: { eventId },
-    });
-    setLoading(false);
-  }, [
-    eventDataFromStore,
-    eventFetchDispatcher,
-    eventId,
-    eventsState,
-    getInEventState,
-    isEventInState,
-  ]);
+  useEffect(() => {
+    const { type, data, err } = fetchResult;
+    switch (type) {
+      case REQUEST:
+        break;
+      case SUCCESS:
+        if (data) {
+          setEvent(data);
+          setLoading(false);
+        }
+        break;
+      case FAILURE:
+        if (err && err.response && err.response.status === NOT_FOUND)
+          history.replace('/NOT_FOUND');
+        else if (err) setInternalError(true);
+    }
+  }, [fetchResult, history]);
+
+  const { title, mainImg, startAt, endAt, user, ticketType } = event;
+  const { maxCntPerPerson } = ticketType;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const isVisibleCounter = () => {
+  const isVisibleCounter = (): boolean => {
     return maxCntPerPerson > minTicketCount && isTicketChecked;
   };
 
-  const requestOrder = async () => {
+  const requestOrder = async (): Promise<void> => {
     if (!isTicketChecked || ticketCount <= 0) {
       return alert(RESERVE_REQUIRE_CHOICE);
     }
     setTemplateStep(templateStep + 1);
   };
 
-  const purchaseOrder = async () => {
-    if (isReserved) {
-      return;
-    }
-    if (ticketCount <= 0) {
-      return alert(RESERVE_MIN_FAIL);
-    }
+  const purchaseOrder = async (): Promise<void> => {
+    if (isReserved) return;
+
+    if (ticketCount <= 0) return alert(RESERVE_MIN_FAIL);
+
     try {
       await joinEvent(eventId, ticketCount);
       setisReserved(true);
@@ -201,6 +181,7 @@ function EventJoin(): React.ReactElement {
     <EventJoinTemplate
       step={templateStep}
       loading={isLoading}
+      internalServerError={internalServerError}
       stepList={<StepList steps={steps} pivot={templateStep} />}
       eventSection={
         <EventSection
@@ -213,7 +194,7 @@ function EventJoin(): React.ReactElement {
           imgSrc={getImageURL(mainImg, imageTypes.eventDetailRegisterImg)}
         />
       }
-      place={<Place mapHeight={'20rem'} {...eventState} />}
+      place={<Place mapHeight={'20rem'} {...event} />}
       ticketChoiceProps={{
         header: TICKET_CHOICE_TITLE,
         ticketBox: (
@@ -221,9 +202,7 @@ function EventJoin(): React.ReactElement {
             {...ticketType}
             chkProps={{
               checked: isTicketChecked,
-              onClick: () => {
-                setIsTicketChecked(!isTicketChecked);
-              },
+              onClick: (): void => setIsTicketChecked(!isTicketChecked),
             }}
             showDueDate
           />

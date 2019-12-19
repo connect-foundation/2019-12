@@ -264,7 +264,7 @@ function MyPage(): React.ReactElement {
               eventsOrder={state.createdEventsOrder}
             />
           ) : (
-            <h2>주{NOT_FOUND_CREATED_EVENT}</h2>
+            <h2>{NOT_FOUND_CREATED_EVENT}</h2>
           )),
       }}
       boughtTicketEventTemplateProps={{

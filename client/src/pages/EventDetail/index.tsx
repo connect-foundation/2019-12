@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
+import { NOT_FOUND } from 'http-status';
 
 import EventDetailTemplate from './template';
 import { EventHeader, Ticket, Place, TuiViewer } from 'components';
-import { EventsStoreState, EventsStoreAction } from 'stores/eventsStore';
 import { EventDetail } from 'types/Data';
-import delay from 'utils/delay';
 import { getImageURL, imageTypes } from 'utils/getImageURL';
 import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
+import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
+import { getEvent } from 'apis';
 
 const defaultEventDetail: EventDetail = {
   id: 0,
@@ -39,25 +39,40 @@ const defaultEventDetail: EventDetail = {
   user: { id: 0, lastName: '', firstName: '', profileImgUrl: '' },
 };
 
-const checkIfEventIsInState = (
-  events: Map<number, EventDetail>,
-  eventId: number,
-) => (events.get(eventId) ? true : false);
-
 function EventDetailView(): React.ReactElement {
   window.scrollTo(0, 0);
-  const eventsState = useContext(EventsStoreState);
-  const { eventFetchDispatcher } = useContext(EventsStoreAction);
-  const { eventId } = useParams();
-  const [internalServerError, setInternalError] = useState(false);
   const history = useHistory();
-  const isEventInState = checkIfEventIsInState(eventsState.events!, +eventId!);
-  const remainDays = useRef(0);
+  const [internalServerError, setInternalError] = useState(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [event, setEvent] = useState<EventDetail>(defaultEventDetail);
+  const [fetchResult, fetchEvent] = useApiRequest<EventDetail>(getEvent);
+  const { eventId: originEventId } = useParams<{
+    eventId: string;
+  }>();
+  const eventId = +originEventId;
 
-  const events = isEventInState
-    ? eventsState.events!.get(+eventId!)!
-    : defaultEventDetail;
-  const loading = isEventInState ? false : true;
+  useEffect(() => {
+    fetchEvent({ type: 'REQUEST', body: [eventId] });
+  }, [fetchEvent, eventId]);
+
+  useEffect(() => {
+    const { type, data, err } = fetchResult;
+    switch (type) {
+      case REQUEST:
+        break;
+      case SUCCESS:
+        if (data) {
+          setEvent(data);
+          setLoading(false);
+        }
+        break;
+      case FAILURE:
+        if (err && err.response && err.response.status === NOT_FOUND)
+          history.replace('/NOT_FOUND');
+        else if (err) setInternalError(true);
+    }
+  }, [fetchResult, history]);
+
   const {
     id,
     mainImg,
@@ -72,52 +87,32 @@ function EventDetailView(): React.ReactElement {
     placeDesc,
     latitude,
     longitude,
-  } = events;
+  } = event;
 
-  function doneEventType() {
-    remainDays.current = calculateDiffDaysOfDateRange(
-      Date().toString(),
+  enum doneEventTypeEnum {
+    SUCCESS,
+    NOT_REMAIN_EVENT_DAY,
+    NO_TICKET,
+    NOT_REMAIN_TICKET_DAY,
+  }
+
+  function doneEventType(): doneEventTypeEnum {
+    const UtcDate = new Date();
+    UtcDate.setHours(UtcDate.getHours() - 9);
+    const remainEventDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
+      endAt,
+    );
+    const remainTicketDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
       ticketType.salesEndAt,
     );
 
-    if (remainDays.current <= 0) return 1;
-
-    const remainTickets = ticketType.quantity - ticketType.leftCnt;
-    if (remainTickets <= 0) return 2;
-
-    return 0;
+    if (remainEventDays <= 0) return doneEventTypeEnum.NOT_REMAIN_EVENT_DAY;
+    if (ticketType.leftCnt === 0) return doneEventTypeEnum.NO_TICKET;
+    if (remainTicketDays <= 0) return doneEventTypeEnum.NOT_REMAIN_TICKET_DAY;
+    return doneEventTypeEnum.SUCCESS;
   }
-
-  useEffect(() => {
-    if (!isEventInState) {
-      eventFetchDispatcher({
-        type: 'EVENT',
-        params: {
-          eventId: +eventId!,
-        },
-      });
-      remainDays.current = calculateDiffDaysOfDateRange(
-        Date().toString(),
-        ticketType.salesEndAt,
-      );
-    }
-
-    if (eventsState.status === NOT_FOUND) {
-      history.replace('/NOT_FOUND');
-    } else if (eventsState.status === INTERNAL_SERVER_ERROR) {
-      (async () => {
-        await delay(2000);
-        setInternalError(true);
-      })();
-    }
-  }, [
-    eventFetchDispatcher,
-    eventId,
-    eventsState.status,
-    history,
-    isEventInState,
-    ticketType.salesEndAt,
-  ]);
 
   return (
     <EventDetailTemplate
@@ -137,7 +132,7 @@ function EventDetailView(): React.ReactElement {
         />
       }
       eventContent={<TuiViewer content={desc} />}
-      ticket={<Ticket {...ticketType} doneEvent={!!doneEventType()} />}
+      ticket={<Ticket {...ticketType} />}
       place={
         <Place
           {...{

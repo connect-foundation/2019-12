@@ -6,7 +6,6 @@ import { NOT_OPEN, SOLD_OUT, NOT_EXIST } from 'common/constants';
 export default async (req: any, res: Response, next: NextFunction) => {
   const time = Date.now();
   const { ticketId, orderTicketNum } = req.body;
-
   if (ticketId === undefined || orderTicketNum === undefined)
     return res.sendStatus(BAD_REQUEST);
 

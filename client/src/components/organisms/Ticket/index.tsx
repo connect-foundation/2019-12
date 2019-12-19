@@ -14,7 +14,6 @@ import {
 
 interface Prop extends TicketType {
   count?: number;
-  doneEvent?: boolean;
 }
 
 function Ticket({
@@ -27,38 +26,37 @@ function Ticket({
   salesEndAt,
   leftCnt,
   quantity,
-  doneEvent,
 }: Prop): React.ReactElement {
-  const remainCnt = quantity - leftCnt;
-  const remainDays = calculateDiffDaysOfDateRange(
-    Date().toString(),
-    salesEndAt,
-  );
+  const disableState = ((): { status: boolean; label: string } => {
+    const UtcDate = new Date();
+    UtcDate.setHours(UtcDate.getHours() - 9);
 
-  function makeLabelContent(remainDays: number, salesStartAt: string) {
-    if (!doneEvent) {
-      return `${remainDays}${TICKET_REMAIN_DAYS}`;
-    }
+    const remainDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
+      salesEndAt,
+    );
 
     if (remainDays <= 0) {
-      return TICKET_INVALID_DATE;
+      return { status: true, label: TICKET_INVALID_DATE };
     }
 
-    const convertToUTCDate = new Date();
-    convertToUTCDate.setHours(-9);
-
-    const commingDays = calculateDiffDaysOfDateRange(
-      convertToUTCDate.toString(),
+    const commigDays = calculateDiffDaysOfDateRange(
+      UtcDate.toString(),
       salesStartAt,
     );
-    return `${commingDays}${TICKET_COMMING_SOON}`;
-  }
+
+    if (commigDays >= 0) {
+      return { status: true, label: `${commigDays}${TICKET_COMMING_SOON}` };
+    }
+
+    return { status: false, label: `${remainDays}${TICKET_REMAIN_DAYS}` };
+  })();
 
   return (
     <>
       <S.TicketLabel>티켓</S.TicketLabel>
       <S.TicketContentContainer>
-        <S.TicketContentWrapContainer disabled={!!doneEvent}>
+        <S.TicketContentWrapContainer disabled={disableState.status}>
           <S.TicketPriceWrapper>
             <Price separated>{price}</Price>
           </S.TicketPriceWrapper>
@@ -67,7 +65,7 @@ function Ticket({
           {leftCnt !== -1 && (
             <IconLabel
               icon={<FaTicketAlt size={'1.5rem'} />}
-              labelContent={`${remainCnt}개 남음`}
+              labelContent={`${leftCnt}개 남음`}
             />
           )}
 
@@ -77,7 +75,7 @@ function Ticket({
           />
           <IconLabel
             icon={<FaRegCalendarAlt size={'1.5rem'} />}
-            labelContent={makeLabelContent(remainDays, salesStartAt)}
+            labelContent={disableState.label}
           />
         </S.TicketContentWrapContainer>
       </S.TicketContentContainer>

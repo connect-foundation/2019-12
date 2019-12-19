@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import { useHistory } from 'react-router-dom';
 import { IconBtn } from 'components';
@@ -16,10 +16,6 @@ const AuthURL = (returnTo = '/'): string =>
 function Login(): React.ReactElement {
   const history = useHistory();
   const loginCallbackState = useContext(AfterLoginState);
-
-  useEffect(() => {
-    console.log(loginCallbackState);
-  }, [loginCallbackState]);
 
   return (
     <LoginTemplate
