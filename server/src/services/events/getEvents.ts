@@ -32,8 +32,10 @@ export default async (limit = 20, startAt: Date): Promise<Event[]> => {
     order,
     include,
   });
+
   return events.map(event => {
-    if (!event.ticketType.isPublicLeftCnt) event.ticketType.leftCnt = -1;
+    if (event.ticketType.leftCnt > 0 && !event.ticketType.isPublicLeftCnt)
+      event.ticketType.leftCnt = -1;
     return event;
   });
 };
