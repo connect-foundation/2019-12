@@ -32,7 +32,12 @@ function EventHeader({
   const { firstName, lastName } = user;
   const profileImgUrl =
     'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
-  const doneTypes = ['등록', '종료되었습니다.', '매진되었습니다.'];
+  const doneTypes = [
+    '등록',
+    '이벤트가 종료되었습니다.',
+    '매진되었습니다.',
+    '티켓 구매 기간이 지났습니다.',
+  ];
 
   return (
     <S.HeaderContainer>
@@ -69,7 +74,9 @@ function EventHeader({
       <S.SubmitContainer>
         <S.ReservedPeopleContainer>
           <FaUsers size={'2rem'} />
-          <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
+          <S.ReservedPeople>
+            {ticketInfo.leftCnt === -1 ? '비공개' : `${ticketInfo.leftCnt}명`}
+          </S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
           children={!doneEventType ? doneTypes[0] : doneTypes[doneEventType]}
