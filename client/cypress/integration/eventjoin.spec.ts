@@ -16,7 +16,6 @@ import {
 } from '../../src/commons/constants/number';
 
 function goPurchasePage(): void {
-  cy.visit('/events/331/register/tickets');
   cy.get('[data-testid=ticketbox-chkbox]').click();
   cy.get('[data-testid=ticketchoice-submitbtn]').click();
 }
@@ -24,8 +23,12 @@ function goPurchasePage(): void {
 context('이벤트 예약 페이지', () => {
   beforeEach(() => {
     cy.server();
+    cy.route('/api/events/331', 'fixture:reserve_event.json').as(
+      'getJoinPageEvent',
+    );
     cy.setCookie('UID', Cypress.env('auth_token'));
     cy.visit('/events/331/register/tickets');
+    cy.wait('@getJoinPageEvent');
   });
 
   it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
@@ -52,8 +55,6 @@ context('이벤트 예약 페이지', () => {
   // });
 
   it('상단의 목차가 예약이 진행될 때마다 스타일이 변경되며 올바르게 표시된다.', () => {
-    cy.visit('/events/330/register/tickets');
-
     cy.get('[data-testid=steplist-step]').within(items => {
       expect(items[0]).to.have.css('color', 'rgb(65, 65, 65)');
       expect(items[1]).to.have.css('color', 'rgb(158, 158, 158)');
