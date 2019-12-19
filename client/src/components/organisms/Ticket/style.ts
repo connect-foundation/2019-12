@@ -22,7 +22,7 @@ interface TicketContentWrapContainerProps {
 export const TicketContentWrapContainer = styled.div<
   TicketContentWrapContainerProps
 >`
-  color: ${palette('grayscale', 4)}
+  color: ${palette('grayscale', 4)};
   padding-left: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
