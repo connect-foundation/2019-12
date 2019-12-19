@@ -29,6 +29,7 @@ context('이벤트 예약 페이지', () => {
     cy.setCookie('UID', Cypress.env('auth_token'));
     cy.visit('/events/331/register/tickets');
     cy.wait('@getJoinPageEvent');
+    cy.wait(5000);
   });
 
   it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
@@ -172,7 +173,7 @@ context('이벤트 예약 페이지', () => {
       });
   });
 
-  it('예약이 성공적으로 이루어지면 alert와 main으로 리다이렉션이 이루어진다', () => {
+  it('예약이 성공적으로 이루어지면 alert와 내 티켓 페이지로 리다이렉션이 이루어진다', () => {
     cy.route('POST', '/api/users/reserve', {});
 
     goPurchasePage();
