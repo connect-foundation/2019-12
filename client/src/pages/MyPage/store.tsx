@@ -32,19 +32,14 @@ const defaultUseAction = {
   }: Pick<MyPageState, 'events' | 'eventsOrder'>) => {},
 };
 
-export const MyPageContext = createContext<{
-  state: MyPageState;
-  dispatch: UseAction;
-}>({
-  state: defaultState,
-  dispatch: defaultUseAction,
-});
+export const MyPageStateContext = createContext<MyPageState>(defaultState);
+export const MyPageActionContext = createContext<UseAction>(defaultUseAction);
 
 export default function StoreProvider({
   children,
 }: {
   children: React.ReactElement;
-}) {
+}): React.ReactElement {
   const [state, reducerDispatch] = useReducer<MyPageReducer>(
     myPageReducer,
     defaultState,
@@ -53,8 +48,10 @@ export default function StoreProvider({
   const dispatch = useAction(reducerDispatch);
 
   return (
-    <MyPageContext.Provider value={{ state, dispatch }}>
-      {children}
-    </MyPageContext.Provider>
+    <MyPageActionContext.Provider value={dispatch}>
+      <MyPageStateContext.Provider value={state}>
+        {children}
+      </MyPageStateContext.Provider>
+    </MyPageActionContext.Provider>
   );
 }
