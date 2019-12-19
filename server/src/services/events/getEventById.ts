@@ -18,6 +18,9 @@ export default async (id: number): Promise<Event> => {
 
   const event = await Event.findOne({ where, attributes, include });
   if (!event) throw Error('Not Found');
-  if (!event.ticketType.isPublicLeftCnt) event.ticketType.leftCnt = -1;
+
+  if (event.ticketType.leftCnt > 0 && !event.ticketType.isPublicLeftCnt)
+    event.ticketType.leftCnt = -1;
+
   return event;
 };
