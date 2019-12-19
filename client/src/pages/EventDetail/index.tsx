@@ -41,13 +41,16 @@ const defaultEventDetail: EventDetail = {
 
 function EventDetailView(): React.ReactElement {
   window.scrollTo(0, 0);
-  const { eventId } = useParams();
   const remainDays = useRef(0);
   const history = useHistory();
   const [internalServerError, setInternalError] = useState(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [event, setEvent] = useState<EventDetail>(defaultEventDetail);
   const [fetchResult, fetchEvent] = useApiRequest<EventDetail>(getEvent);
+  const { eventId: originEventId } = useParams<{
+    eventId: string;
+  }>();
+  const eventId = +originEventId;
 
   useEffect(() => {
     fetchEvent({ type: 'REQUEST', body: [eventId] });
