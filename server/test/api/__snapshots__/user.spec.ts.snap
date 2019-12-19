@@ -1051,39 +1051,39 @@ Array [
 
 exports[`GET /api/users/tickets 유저 데이터를 불러왔고, 데이터가 있을 경우 1`] = `
 Object {
-  "address": "서울특별시 강남구 역삼동 736-40 아름다운 빌딩 6층 <복합문화공간 위플레이스>",
-  "endAt": "2018-03-09T12:30:00.000Z",
-  "firstName": "성동",
-  "id": 2,
-  "lastName": "조",
-  "mainImg": "10",
-  "place": "역삼역 위플레이스 다목적홀",
-  "placeDesc": "",
-  "startAt": "2018-03-09T10:30:00.000Z",
+  "address": "테헤란로4길 38-5",
+  "endAt": "2019-12-22T09:00:00.000Z",
+  "firstName": "용호",
+  "id": 331,
+  "lastName": "이",
+  "mainImg": "733",
+  "place": "리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)",
+  "placeDesc": "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+  "startAt": "2019-12-21T03:00:00.000Z",
   "ticket": Object {
     "desc": "",
-    "eventId": 2,
-    "id": 2,
+    "eventId": 331,
+    "id": 331,
     "isPublicLeftCnt": false,
-    "leftCnt": 10,
-    "maxCntPerPerson": 1,
-    "name": "선착순 (참가확정)",
-    "price": 0,
-    "quantity": 30,
-    "refundEndAt": "2200-03-06T10:30:00.000Z",
-    "salesEndAt": "2200-03-06T10:30:00.000Z",
-    "salesStartAt": "2018-03-02T06:00:00.000Z",
+    "leftCnt": 6,
+    "maxCntPerPerson": 5,
+    "name": "리눅스커널 v5.3 네트워크 단기특강 12월 수강권",
+    "price": 160000,
+    "quantity": 12,
+    "refundEndAt": "2019-12-16T14:30:00.000Z",
+    "salesEndAt": "2019-12-21T14:30:00.000Z",
+    "salesStartAt": "2019-11-12T15:00:00.000Z",
   },
-  "title": "LTNS, 9XD! ; 10회 모임 @ZOYI Corporation",
-  "userId": 2,
+  "title": "리눅스 커널 v5.3 분석: 네트워크 TCP/IP 주말특강(12월)",
+  "userId": 3,
 }
 `;
 
 exports[`GET /api/users/tickets 유저 데이터를 불러왔고, 데이터가 있을 경우 2`] = `
 Object {
-  "id": 1,
-  "isAttendance": true,
-  "ticketTypeId": 2,
+  "id": 24,
+  "isAttendance": false,
+  "ticketTypeId": 331,
   "userId": 2,
 }
 `;
