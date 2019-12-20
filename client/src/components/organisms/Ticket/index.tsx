@@ -3,13 +3,16 @@ import React from 'react';
 import * as S from './style';
 import { TicketType } from 'types/Data';
 import { IconLabel, Price } from 'components';
-import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
+import {
+  calculateDiffDaysOfDateRange,
+  getKoreanDateString,
+} from 'utils/dateCalculator';
 
 import { FaTicketAlt, FaCheck, FaRegCalendarAlt } from 'react-icons/fa';
 import {
   TICKET_INVALID_DATE,
-  TICKET_REMAIN_DAYS,
   TICKET_COMMING_SOON,
+  TICKET_SOLD_OUT,
 } from 'commons/constants/string';
 
 interface Prop extends TicketType {
@@ -25,31 +28,33 @@ function Ticket({
   salesStartAt,
   salesEndAt,
   leftCnt,
-  quantity,
 }: Prop): React.ReactElement {
   const disableState = ((): { status: boolean; label: string } => {
-    const UtcDate = new Date();
-    UtcDate.setHours(UtcDate.getHours() - 9);
+    if (leftCnt === 0) {
+      return { status: true, label: TICKET_SOLD_OUT };
+    }
 
-    const remainDays = calculateDiffDaysOfDateRange(
-      UtcDate.toString(),
-      salesEndAt,
-    );
+    const utcDate = new Date();
+    utcDate.setHours(utcDate.getHours() - 9);
+    const utcDateString = utcDate.toString();
 
+    const remainDays = calculateDiffDaysOfDateRange(utcDateString, salesEndAt);
     if (remainDays <= 0) {
       return { status: true, label: TICKET_INVALID_DATE };
     }
 
     const commigDays = calculateDiffDaysOfDateRange(
-      UtcDate.toString(),
+      utcDateString,
       salesStartAt,
     );
-
-    if (commigDays >= 0) {
+    if (commigDays > 0) {
       return { status: true, label: `${commigDays}${TICKET_COMMING_SOON}` };
     }
 
-    return { status: false, label: `${remainDays}${TICKET_REMAIN_DAYS}` };
+    return {
+      status: false,
+      label: `${getKoreanDateString(salesEndAt)} 마감`,
+    };
   })();
 
   return (

@@ -3,11 +3,12 @@ import { Btn, CreateEventForm, CreateTicketForm } from 'components';
 import EventCreateTemplate from './template';
 import { EventAction, TicketAction, SubmitContext } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
-import {
-  validateEmptyAndExceedMaximumLength,
-  validateIsNotEmptyString,
-} from 'utils/validateInput';
+import { validateIsNotEmptyString, validateLength } from 'utils/validateInput';
 import { SearchMapResult } from 'types/Data';
+import {
+  DB_MAX_TEXT_LENGTH,
+  DB_MAX_CHAR_LENGTH,
+} from 'commons/constants/number';
 
 function EventCreateView(): React.ReactElement {
   const eventFormDispatcher = useContext(EventAction);
@@ -36,7 +37,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'title',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: validateLength(value, DB_MAX_CHAR_LENGTH),
             value,
           },
         });
@@ -70,7 +71,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'place',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: validateLength(value, DB_MAX_CHAR_LENGTH),
             value,
           },
         });
@@ -120,7 +121,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'desc',
           value: {
-            valid: validateIsNotEmptyString(value),
+            valid: validateLength(value, DB_MAX_TEXT_LENGTH),
             value,
           },
         });
@@ -135,7 +136,7 @@ function EventCreateView(): React.ReactElement {
         ticketFormDispatcher({
           type: 'name',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: validateLength(value, DB_MAX_CHAR_LENGTH),
             value,
           },
         });
@@ -158,7 +159,7 @@ function EventCreateView(): React.ReactElement {
         ticketFormDispatcher({
           type: 'price',
           value: {
-            valid: validateIsNotEmptyString(value),
+            valid: true,
             value: value,
           },
         });
@@ -185,7 +186,7 @@ function EventCreateView(): React.ReactElement {
             type: 'isPublicLeftCnt',
             value: {
               valid: true,
-              value: isChecked,
+              value: !isChecked,
             },
           });
         }

@@ -140,34 +140,38 @@ export const REFUND_TICKET_FAILURE = '환불이 실패했습니다.';
 export const NOT_FOUND_BOUGHT_TICKET = '아직 구매한 티켓이 없네요..😅';
 export const NOT_FOUND_CREATED_EVENT = '주최한 이벤트가 없네요..🤣';
 
-export const TICKET_REMAIN_DAYS = '일 후에 판매마감';
 export const TICKET_INVALID_DATE = '판매기간이 지났습니다';
 export const TICKET_COMMING_SOON = '일 후 판매시작';
+export const TICKET_SOLD_OUT = '매진되었습니다';
 
 export const FORM_NAME: any = {
   event: {
-    isPublic: '공개 여부',
-    title: '이벤트 제목',
-    date: '이벤트 날짜',
+    title:
+      '이벤트 제목이 올바르지 않습니다. 최소 1글자, 최대 255글자까지 가능합니다.',
+    date: '이벤트 날짜가 올바르지 않습니다.',
     startAt: '이벤트 시작 날짜',
     endAt: '이벤트 종료 날짜',
-    place: '이벤트 장소',
-    address: '이벤트 상세 주소',
-    placeDesc: '이벤트 설명',
-    mainImg: '이벤트 대표 이미지',
-    desc: '이벤트 내용',
+    place:
+      '이벤트 장소가 올바르지 않습니다. 최소 1글자, 최대 255글자까지 가능합니다.',
+    address:
+      '이벤트 상세 주소가 올바르지 않습니다. 주소를 검색하여 클릭해주세요.',
+    mainImg: '이벤트 대표 이미지가 올바르지 않습니다.',
+    desc:
+      '이벤트 내용이 올바르지 않습니다. 최소 1글자, 최대 65535글자까지 가능합니다.',
   },
   ticket: {
-    name: '티켓 이름',
-    desc: '티켓 설명',
-    price: '티켓 가격',
-    quantity: '티켓 수량',
-    isPublicLeftCnt: '티켓 수량 숨김',
-    maxCntPerPerson: '1인당 구매 가능 개수',
-    salesDate: '티켓 판매 날짜',
+    name:
+      '티켓 이름이 올바르지 않습니다. 최소 1글자, 최대 255글자까지 가능합니다.',
+    quantity: '티켓 수량을 입력해주세요.',
+    maxCntPerPerson: '1인당 구매 가능 개수를 입력해주세요.',
+    salesDate: '티켓 판매 날짜가 올바르지 않습니다.',
     salesStartAt: '티켓 판매 시작 날짜',
     salesEndAt: '티켓 판매 종료 날짜',
-    refundDate: '티켓 환불 마감 날짜',
+    refundDate: '티켓 환불 마감 날짜가 올바르지 않습니다.',
     refundEndAt: '티켓 환불 마감 날짜',
   },
 };
+
+export const ACTION_CREATE_EVENT = 'CREATE_EVENT';
+export const ACTION_FETCH_EVENTS = 'FETCH_EVENTS';
+export const ACTION_ERROR = 'ERROR';

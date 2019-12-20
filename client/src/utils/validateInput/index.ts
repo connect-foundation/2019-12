@@ -10,14 +10,14 @@ export function validateName(name: string, type = false): boolean {
   if (name.length === 0) return !type;
   return /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,5}$/.test(name);
 }
-export function validateEmptyAndExceedMaximumLength(title: string): boolean {
-  return /^.{1,30}$/.test(title);
-}
 export function validateIsSameOrLower(a: number, b: number): boolean {
   return a <= b;
 }
 export function validateIsNotEmptyString(value: string): boolean {
   return value.length !== 0;
+}
+export function validateLength(value: string, length: number): boolean {
+  return value.length !== 0 && value.length <= length;
 }
 const validateStateWithTraverse = (
   states: EventFormState | TicketFormState,
@@ -25,7 +25,7 @@ const validateStateWithTraverse = (
 ): boolean =>
   Object.entries(states).every(([key, value]) => {
     if (value.valid) return true;
-    alert(`${FORM_NAME[formType][key]}가 올바르지 않습니다. 확인해주세요. 👀`);
+    alert(FORM_NAME[formType][key]);
     return false;
   });
 const validateDates = (

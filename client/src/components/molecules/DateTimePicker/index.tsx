@@ -90,7 +90,11 @@ function DateTimePicker({
       isMount.current = false;
       return;
     }
-    handleOnChangeEffectively(startAt, endAt, valid);
+    handleOnChangeEffectively(
+      new Date(startAt).toISOString(),
+      new Date(endAt).toISOString(),
+      valid,
+    );
   }, [startAt, endAt, valid, handleOnChangeEffectively]);
 
   return (

@@ -6,3 +6,6 @@ export const REQUEST_EVENT_CARD_GRID_NUM = 12;
 
 export const MY_TICKETS_TAB_INDEX = 1;
 export const MY_CREATED_EVENT_TAB_INDEX = 2;
+
+export const DB_MAX_CHAR_LENGTH = 255;
+export const DB_MAX_TEXT_LENGTH = 65535;
