@@ -169,3 +169,6 @@ export const FORM_NAME: any = {
     refundEndAt: '티켓 환불 마감 날짜',
   },
 };
+
+export const ACTION_CREATE_EVENT = 'CREATE_EVENT';
+export const ACTION_FETCH_EVENTS = 'FETCH_EVENTS';

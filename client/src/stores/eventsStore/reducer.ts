@@ -3,6 +3,10 @@ import produce from 'immer';
 import { EventDetail } from 'types/Data';
 import { EventsState } from 'types/States';
 import { EventsAction } from 'types/Actions';
+import {
+  ACTION_CREATE_EVENT,
+  ACTION_FETCH_EVENTS,
+} from 'commons/constants/string';
 
 export const defaultEventsState: EventsState = {
   events: new Map<number, EventDetail>(),
@@ -34,7 +38,7 @@ export default function eventsReducer(
   action: EventsAction,
 ): EventsState {
   switch (action.type) {
-    case 'EVENTS':
+    case ACTION_FETCH_EVENTS:
       if (
         !state.events ||
         !action.value.events ||
@@ -42,11 +46,6 @@ export default function eventsReducer(
         !action.value.order
       )
         return state;
-      console.log('EVENTS');
-      console.log(state.order);
-      console.log(
-        produceUniqueOrder(state.events, state.order, action.value.order),
-      );
       return {
         events: produceMap(state.events, action.value.events),
         order: produceUniqueOrder(
@@ -56,7 +55,7 @@ export default function eventsReducer(
         ),
         status: action.value.status,
       };
-    case 'CREATE_EVENT':
+    case ACTION_CREATE_EVENT:
       if (
         !state.events ||
         !action.value.events ||

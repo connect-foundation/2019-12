@@ -9,6 +9,7 @@ import { EventDetail } from 'types/Data';
 import { EventCard } from '../../types/Data';
 import { produce } from 'immer';
 import { getImageURL, imageTypes } from 'utils/getImageURL';
+import { ACTION_FETCH_EVENTS } from 'commons/constants/string';
 
 function Main(): React.ReactElement {
   const eventsState = useContext(EventsStoreState);
@@ -28,7 +29,7 @@ function Main(): React.ReactElement {
   function getNextEvents(): void {
     const startAt = getStartAt({ events, order });
     eventFetchDispatcher({
-      type: 'EVENTS',
+      type: ACTION_FETCH_EVENTS,
       data: {
         cnt: REQUEST_EVENT_CARD_GRID_NUM,
         startAt,

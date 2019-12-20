@@ -16,6 +16,7 @@ import { createEvent } from 'apis';
 import { validateStates } from 'utils/validateInput';
 import { EventDetail } from 'types/Data';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
+import { ACTION_CREATE_EVENT } from 'commons/constants/string';
 
 export function useStateReducer<T>(state: T, action: ActionParams<T>): T {
   const { type, value } = action;
@@ -180,7 +181,7 @@ function StoreProvider({
         if (!event) return;
         setSubmit(false);
         eventFetchDispatcher({
-          type: 'CREATE_EVENT',
+          type: ACTION_CREATE_EVENT,
           data: {
             createdEvent: event,
           },

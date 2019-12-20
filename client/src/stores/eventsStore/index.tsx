@@ -14,6 +14,10 @@ import { EventsReducer } from 'types/CustomHooks';
 import eventsReducer, { defaultEventsState } from './reducer';
 import { getEvents } from 'apis';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
+import {
+  ACTION_CREATE_EVENT,
+  ACTION_FETCH_EVENTS,
+} from 'commons/constants/string';
 
 interface EventFetch {
   type: string;
@@ -69,7 +73,7 @@ function EventsProvider({
   );
 
   const [eventFetch, eventFetchDispatcher] = useState<EventFetch>({
-    type: 'EVENTS',
+    type: ACTION_FETCH_EVENTS,
     data: {
       cnt: 6,
       startAt: '',
@@ -80,13 +84,13 @@ function EventsProvider({
 
   useEffect(() => {
     switch (eventFetch.type) {
-      case 'EVENTS':
+      case ACTION_FETCH_EVENTS:
         fetchEvent({
           type: REQUEST,
           body: [eventFetch.data.cnt, eventFetch.data.startAt],
         });
         break;
-      case 'CREATE_EVENT':
+      case ACTION_CREATE_EVENT:
         if (!eventFetch.data.createdEvent) return;
         const { events, order } = convertCreatedEvent(
           eventFetch.data.createdEvent,
@@ -104,7 +108,7 @@ function EventsProvider({
   }, [eventFetch, fetchEvent]);
 
   useEffect(() => {
-    if (eventFetch.type === 'CREATE_EVENT') return;
+    if (eventFetch.type === ACTION_CREATE_EVENT) return;
     const { type, data, err } = fetchResult;
     switch (type) {
       case REQUEST:
@@ -124,14 +128,14 @@ function EventsProvider({
       case FAILURE:
         if (err && err.response && err.response.status === NOT_FOUND)
           eventsDispather({
-            type: eventFetch.type,
+            type: 'ERROR',
             value: {
               status: NOT_FOUND,
             },
           });
         else if (err)
           eventsDispather({
-            type: eventFetch.type,
+            type: 'ERROR',
             value: {
               status: INTERNAL_SERVER_ERROR,
             },
