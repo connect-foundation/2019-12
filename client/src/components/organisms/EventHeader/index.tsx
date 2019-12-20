@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import * as S from './style';
 import { IconBtn, Price, EventDate } from 'components';
@@ -10,6 +10,7 @@ import {
   RESERVE_EXPIRE,
   RESERVE,
 } from 'commons/constants/string';
+import moment, { Moment } from 'moment';
 
 interface Props {
   id: number;
@@ -21,6 +22,75 @@ interface Props {
   user: User;
   ticketType: TicketType;
   doneEventType?: number;
+}
+
+interface SubmitBtnState {
+  children: string;
+  disabled: boolean;
+}
+
+const doneTypes = [RESERVE, RESERVE_DONE, RESERVE_SOLD_OUT, RESERVE_EXPIRE];
+
+function useEventBtn(
+  salesStartAt: string,
+  doneEventType?: number,
+): SubmitBtnState {
+  const [btn, setBtn] = useState<SubmitBtnState>({
+    children: doneTypes[doneEventType || 0],
+    disabled: doneEventType !== 0,
+  });
+  const [timerId, setTimerId] = useState<number>();
+
+  useEffect(() => {
+    if (timerId) return;
+
+    function setTime(salesStartAt: Moment): void {
+      const diffSeconds = salesStartAt.diff(moment(), 'seconds');
+      let delay = 0;
+
+      if (diffSeconds <= 0) {
+        delay = 0;
+        setBtn({
+          children: doneTypes[doneEventType || 0],
+          disabled: doneEventType !== 0,
+        });
+      } else if (diffSeconds <= 60) {
+        delay = 300;
+        setBtn({
+          children: `${diffSeconds}초 후 오픈 예정`,
+          disabled: true,
+        });
+      } else if (diffSeconds <= 3600) {
+        delay = 1000 * 10;
+        const minutes = Math.floor(diffSeconds / 60);
+        setBtn({
+          children: `${minutes}분 후 오픈 예정`,
+          disabled: true,
+        });
+      } else if (diffSeconds <= 3600 * 24) {
+        delay = 1000 * 60 * 10;
+        const hours = Math.floor(diffSeconds / (60 * 60));
+        setBtn({
+          children: `${hours}시간 후 오픈 예정`,
+          disabled: true,
+        });
+      } else {
+        delay = 1000 * 60 * 60;
+        const days = Math.floor(diffSeconds / (60 * 60 * 24));
+        setBtn({
+          children: `${days}일 후 오픈 예정`,
+          disabled: true,
+        });
+      }
+
+      delay > 0 && setTimerId(setTimeout(() => setTime(salesStartAt), delay));
+    }
+
+    setTime(moment(salesStartAt));
+    return (): void => clearTimeout(timerId);
+  }, [salesStartAt, doneEventType, timerId]);
+
+  return btn;
 }
 
 function EventHeader({
@@ -38,7 +108,7 @@ function EventHeader({
   const { firstName, lastName } = user;
   const profileImgUrl =
     'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
-  const doneTypes = [RESERVE, RESERVE_DONE, RESERVE_SOLD_OUT, RESERVE_EXPIRE];
+  const submitBtnState = useEventBtn(ticketType.salesStartAt, doneEventType);
 
   return (
     <S.HeaderContainer>
@@ -82,9 +152,8 @@ function EventHeader({
           </S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
-          children={!doneEventType ? doneTypes[0] : doneTypes[doneEventType]}
+          {...submitBtnState}
           to={`/events/${eventId}/register/tickets`}
-          disabled={doneEventType === 1 || doneEventType === 2}
         />
       </S.SubmitContainer>
     </S.HeaderContainer>
