@@ -9,7 +9,7 @@
 
 ### 📺 [HomePage](http://www.bookus.kr/)
 
-### 📕 [Storybook for Bookus](https://storybook-bookus.netlify.com/)
+### 📕 [Storybook for Bookus](https://storybook.bookus.kr/)
 
 ### 🌲 [Cypress for Bookus](https://dashboard.cypress.io/projects/wauqe2/runs)
 
