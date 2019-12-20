@@ -1,15 +1,18 @@
 import { Request, Response, NextFunction } from 'express';
-import { createEventAndTicket } from 'services/events';
+import { createEventAndTicket, getEventById } from 'services/events';
 import { putObject } from 'utils/awsS3';
 import { Event, TicketType } from 'models';
 import { v1 as uuid } from 'uuid';
 import { CREATED } from 'http-status';
-
 interface Body extends Partial<Event> {
   ticket: Partial<TicketType>;
 }
 
-export default async (req: Request, res: Response, next: NextFunction) => {
+export default async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   const {
     isPublic,
     title,
@@ -70,8 +73,9 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   try {
     event.userId = req.user?.id;
     event.mainImg = mainImageKey;
-    const { eventId, ticketId } = await createEventAndTicket(event, ticketType);
-    res.status(CREATED).json({ eventId, ticketId });
+    const { eventId } = await createEventAndTicket(event, ticketType);
+    const data = await getEventById(eventId);
+    res.status(CREATED).json(data);
   } catch (error) {
     next(error);
   }
