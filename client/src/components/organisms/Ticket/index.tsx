@@ -52,7 +52,7 @@ function Ticket({
 
     return {
       status: false,
-      label: `${getKoreanDateString(salesEndAt)} 오픈`,
+      label: `${getKoreanDateString(salesStartAt)} 오픈`,
     };
   })();
 
