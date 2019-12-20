@@ -29,7 +29,11 @@ function EventSection({
   border = false,
 }: Props): React.ReactElement {
   return (
-    <S.RootContainer border={border} imgPosition={imgPosition}>
+    <S.RootContainer
+      data-testid={'event-section'}
+      border={border}
+      imgPosition={imgPosition}
+    >
       {imgSrc !== '' && (
         <S.ImgWrapper imgPosition={imgPosition}>
           <S.Img src={imgSrc} />

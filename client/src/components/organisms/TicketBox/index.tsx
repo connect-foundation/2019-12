@@ -70,7 +70,7 @@ function TicketBox({
   }
 
   return (
-    <S.Container checked={!!isChecked}>
+    <S.Container data-testid={'ticket-box'} checked={!!isChecked}>
       <S.TicketInfoContainer>
         <S.Name>{name}</S.Name>
         <S.PriceWrapper>
@@ -123,6 +123,7 @@ function TicketBox({
         {showRefundBtn && (
           <Btn
             {...refundBtProps}
+            data-testid={'refund-btn'}
             fit
             styletype={'transparent'}
             children={refundBtProps!.children}
