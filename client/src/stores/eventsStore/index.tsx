@@ -17,6 +17,7 @@ import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
 import {
   ACTION_CREATE_EVENT,
   ACTION_FETCH_EVENTS,
+  ACTION_ERROR,
 } from 'commons/constants/string';
 
 interface EventFetch {
@@ -128,14 +129,14 @@ function EventsProvider({
       case FAILURE:
         if (err && err.response && err.response.status === NOT_FOUND)
           eventsDispather({
-            type: 'ERROR',
+            type: ACTION_ERROR,
             value: {
               status: NOT_FOUND,
             },
           });
         else if (err)
           eventsDispather({
-            type: 'ERROR',
+            type: ACTION_ERROR,
             value: {
               status: INTERNAL_SERVER_ERROR,
             },
