@@ -140,9 +140,9 @@ export const REFUND_TICKET_FAILURE = '환불이 실패했습니다.';
 export const NOT_FOUND_BOUGHT_TICKET = '아직 구매한 티켓이 없네요..😅';
 export const NOT_FOUND_CREATED_EVENT = '주최한 이벤트가 없네요..🤣';
 
-export const TICKET_REMAIN_DAYS = '일 후에 판매마감';
 export const TICKET_INVALID_DATE = '판매기간이 지났습니다';
 export const TICKET_COMMING_SOON = '일 후 판매시작';
+export const TICKET_SOLD_OUT = '매진되었습니다';
 
 export const FORM_NAME: any = {
   event: {
