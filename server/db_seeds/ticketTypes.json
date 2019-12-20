@@ -4632,5 +4632,19 @@
     "salesStartAt": "2019-11-12T15:00:00.000Z",
     "salesEndAt": "2019-12-21T14:30:00.000Z",
     "refundEndAt": "2019-12-16T14:30:00.000Z"
+  },
+  {
+    "id": 332,
+    "eventId": 332,
+    "name": "리눅스커널 v5.3 네트워크 단기특강 12월 수강권",
+    "desc": "",
+    "price": 160000,
+    "quantity": 12,
+    "leftCnt": 12,
+    "isPublicLeftCnt": false,
+    "maxCntPerPerson": 1,
+    "salesStartAt": "2019-11-12T15:00:00.000Z",
+    "salesEndAt": "2200-12-21T14:30:00.000Z",
+    "refundEndAt": "2019-12-16T14:30:00.000Z"
   }
 ]
