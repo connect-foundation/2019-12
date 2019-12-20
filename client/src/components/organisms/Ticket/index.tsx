@@ -39,7 +39,7 @@ function Ticket({
     const utcDateString = utcDate.toString();
 
     const remainDays = calculateDiffDaysOfDateRange(utcDateString, salesEndAt);
-    if (remainDays <= 0) {
+    if (remainDays < 0) {
       return { status: true, label: TICKET_INVALID_DATE };
     }
 
