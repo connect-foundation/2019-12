@@ -3,10 +3,7 @@ import { Btn, CreateEventForm, CreateTicketForm } from 'components';
 import EventCreateTemplate from './template';
 import { EventAction, TicketAction, SubmitContext } from './store';
 import { CREATE_EVENT } from 'commons/constants/string';
-import {
-  validateEmptyAndExceedMaximumLength,
-  validateIsNotEmptyString,
-} from 'utils/validateInput';
+import { validateIsNotEmptyString, validateLength } from 'utils/validateInput';
 import { SearchMapResult } from 'types/Data';
 
 function EventCreateView(): React.ReactElement {
@@ -36,7 +33,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'title',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: validateLength(value, 255),
             value,
           },
         });
@@ -70,7 +67,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'place',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: validateLength(value, 255),
             value,
           },
         });
@@ -120,7 +117,7 @@ function EventCreateView(): React.ReactElement {
         eventFormDispatcher({
           type: 'desc',
           value: {
-            valid: validateIsNotEmptyString(value),
+            valid: validateLength(value, 65535),
             value,
           },
         });
@@ -135,7 +132,7 @@ function EventCreateView(): React.ReactElement {
         ticketFormDispatcher({
           type: 'name',
           value: {
-            valid: validateEmptyAndExceedMaximumLength(value),
+            valid: validateLength(value, 255),
             value,
           },
         });

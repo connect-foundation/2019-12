@@ -104,7 +104,7 @@ const TicketFormDefaultState: TicketFormState = {
   },
   price: {
     valid: true,
-    value: '',
+    value: '0',
   },
   quantity: {
     valid: false,
