@@ -26,10 +26,12 @@ context('이벤트 예약 페이지', () => {
     cy.route('/api/events/331', 'fixture:reserve_event.json').as(
       'getJoinPageEvent',
     );
+    cy.route('POST', '/api/users/reserve/check', 'OK').as('joinCheck');
     cy.setCookie('UID', Cypress.env('auth_token'));
     cy.visit('/events/331/register/tickets');
-    cy.wait('@getJoinPageEvent');
-    cy.wait(5000);
+    // cy.wait('@joinCheck');
+    // cy.wait('@getJoinPageEvent');
+    cy.wait(3000);
   });
 
   it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
