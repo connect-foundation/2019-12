@@ -19,6 +19,15 @@ const produceMap = (
       draft.set(value.id, value);
     });
   });
+const produceUniqueOrder = (
+  sourceMap: Map<number, EventDetail>,
+  sourceOrder: number[],
+  targetOrder: number[],
+): number[] =>
+  targetOrder.reduce((order, eventId) => {
+    if (sourceMap.has(eventId)) return order;
+    return [...order, eventId];
+  }, sourceOrder);
 
 export default function eventsReducer(
   state: EventsState,
@@ -33,9 +42,31 @@ export default function eventsReducer(
         !action.value.order
       )
         return state;
+      console.log('EVENTS');
+      console.log(state.order);
+      console.log(
+        produceUniqueOrder(state.events, state.order, action.value.order),
+      );
       return {
         events: produceMap(state.events, action.value.events),
-        order: [...state.order, ...action.value.order],
+        order: produceUniqueOrder(
+          state.events,
+          state.order,
+          action.value.order,
+        ),
+        status: action.value.status,
+      };
+    case 'CREATE_EVENT':
+      if (
+        !state.events ||
+        !action.value.events ||
+        !state.order ||
+        !action.value.order
+      )
+        return state;
+      return {
+        events: produceMap(state.events, action.value.events),
+        order: [...action.value.order, ...state.order],
         status: action.value.status,
       };
     case 'ERROR':

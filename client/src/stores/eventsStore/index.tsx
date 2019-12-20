@@ -6,7 +6,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
-import { NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
+import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 import { EventDetail } from 'types/Data';
 import { EventsAction } from 'types/Actions';
 import { EventsState } from 'types/States';
@@ -17,14 +17,11 @@ import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
 
 interface EventFetch {
   type: string;
-  params: {
+  data: {
     cnt?: number;
     startAt?: string;
-    eventId?: number;
+    createdEvent?: EventDetail;
   };
-}
-interface FetchState extends EventsState {
-  type: string;
 }
 
 const convertEvents = (
@@ -40,16 +37,17 @@ const convertEvents = (
   });
   return { events, order };
 };
-
-// const fetchEvent = async (eventId: number): Promise<FetchState> => {
-//   try {
-//     const { data } = await getEvent(eventId);
-//     const events = new Map([[data.id, data]]);
-//     return { ...defaultEventsState, type: 'EVENT', events, status: OK };
-//   } catch (err) {
-//     return handleFetchError(err);
-//   }
-// };
+const convertCreatedEvent = (
+  createdEvent: EventDetail,
+): {
+  events: Map<number, EventDetail>;
+  order: number[];
+} => {
+  const events = new Map<number, EventDetail>();
+  const order = [createdEvent.id];
+  events.set(createdEvent.id, createdEvent);
+  return { events, order };
+};
 
 export const EventsStoreState = createContext<EventsState>(defaultEventsState);
 export const EventsStoreAction = createContext<{
@@ -72,8 +70,8 @@ function EventsProvider({
 
   const [eventFetch, eventFetchDispatcher] = useState<EventFetch>({
     type: 'EVENTS',
-    params: {
-      cnt: 12,
+    data: {
+      cnt: 6,
       startAt: '',
     },
   });
@@ -84,14 +82,29 @@ function EventsProvider({
     switch (eventFetch.type) {
       case 'EVENTS':
         fetchEvent({
-          type: 'REQUEST',
-          body: [eventFetch.params.cnt, eventFetch.params.startAt],
+          type: REQUEST,
+          body: [eventFetch.data.cnt, eventFetch.data.startAt],
+        });
+        break;
+      case 'CREATE_EVENT':
+        if (!eventFetch.data.createdEvent) return;
+        const { events, order } = convertCreatedEvent(
+          eventFetch.data.createdEvent,
+        );
+        eventsDispather({
+          type: eventFetch.type,
+          value: {
+            events,
+            order,
+            status: OK,
+          },
         });
         break;
     }
   }, [eventFetch, fetchEvent]);
 
   useEffect(() => {
+    if (eventFetch.type === 'CREATE_EVENT') return;
     const { type, data, err } = fetchResult;
     switch (type) {
       case REQUEST:
@@ -104,7 +117,7 @@ function EventsProvider({
           value: {
             events,
             order,
-            status: 200,
+            status: OK,
           },
         });
         break;

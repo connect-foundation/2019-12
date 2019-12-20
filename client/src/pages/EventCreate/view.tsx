@@ -158,7 +158,7 @@ function EventCreateView(): React.ReactElement {
         ticketFormDispatcher({
           type: 'price',
           value: {
-            valid: validateIsNotEmptyString(value),
+            valid: true,
             value: value,
           },
         });
@@ -185,7 +185,7 @@ function EventCreateView(): React.ReactElement {
             type: 'isPublicLeftCnt',
             value: {
               valid: true,
-              value: isChecked,
+              value: !isChecked,
             },
           });
         }
