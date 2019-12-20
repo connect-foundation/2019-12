@@ -4,9 +4,10 @@ context('메인 페이지', () => {
   beforeEach(() => {
     cy.server();
     cy.route('/api/events?cnt=12', 'fixture:events.json').as('getEvents');
-    cy.route(/(\/api\/events\?cnt=12&startAt=).+/, 'fixture:events.json').as(
-      'getEventsMore',
-    );
+    cy.route(
+      /(\/api\/events\?cnt=12&startAt=).+/,
+      'fixture:fetched_events.json',
+    ).as('getEventsMore');
     cy.setCookie('UID', Cypress.env('auth_token'));
     cy.visit('/');
   });
@@ -28,7 +29,6 @@ context('메인 페이지', () => {
     cy.scrollTo('bottom');
     cy.wait('@getEventsMore');
 
-    cy.wait(3000);
     cy.get('[data-testid=main-card]', { timeout: 3000 }).within(items => {
       expect(items).to.have.length(24);
     });
