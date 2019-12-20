@@ -3,12 +3,14 @@ import React from 'react';
 import * as S from './style';
 import { TicketType } from 'types/Data';
 import { IconLabel, Price } from 'components';
-import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
+import {
+  calculateDiffDaysOfDateRange,
+  getKoreanDateString,
+} from 'utils/dateCalculator';
 
 import { FaTicketAlt, FaCheck, FaRegCalendarAlt } from 'react-icons/fa';
 import {
   TICKET_INVALID_DATE,
-  TICKET_REMAIN_DAYS,
   TICKET_COMMING_SOON,
 } from 'commons/constants/string';
 
@@ -25,7 +27,6 @@ function Ticket({
   salesStartAt,
   salesEndAt,
   leftCnt,
-  quantity,
 }: Prop): React.ReactElement {
   const disableState = ((): { status: boolean; label: string } => {
     const UtcDate = new Date();
@@ -45,11 +46,14 @@ function Ticket({
       salesStartAt,
     );
 
-    if (commigDays >= 0) {
+    if (commigDays > 0) {
       return { status: true, label: `${commigDays}${TICKET_COMMING_SOON}` };
     }
 
-    return { status: false, label: `${remainDays}${TICKET_REMAIN_DAYS}` };
+    return {
+      status: false,
+      label: `${getKoreanDateString(salesEndAt)} 오픈`,
+    };
   })();
 
   return (
