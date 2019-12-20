@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import MyPageTemplate from './template';
 import { LNB, CardGrid, EventSection } from 'components';
 import { UserAccountAction } from 'stores/accountStore';
-import { MyPageContext } from './store';
+import { MyPageStateContext, MyPageActionContext } from './store';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
 import {
   getBoughtTicketEvent,
@@ -53,7 +53,8 @@ function MyPage(): React.ReactElement {
     route: window.location.pathname,
   });
   const currentTabIndex = useRef(MY_TICKETS_TAB_INDEX);
-  const { state, dispatch: useAction } = useContext(MyPageContext);
+  const state = useContext(MyPageStateContext);
+  const useAction = useContext(MyPageActionContext);
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
   const history = useHistory();
@@ -264,7 +265,7 @@ function MyPage(): React.ReactElement {
               eventsOrder={state.createdEventsOrder}
             />
           ) : (
-            <h2>주{NOT_FOUND_CREATED_EVENT}</h2>
+            <h2>{NOT_FOUND_CREATED_EVENT}</h2>
           )),
       }}
       boughtTicketEventTemplateProps={{

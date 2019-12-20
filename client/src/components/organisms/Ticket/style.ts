@@ -15,13 +15,11 @@ export const TicketContentContainer = styled.div`
   border-bottom: 2px dashed ${palette('grayscale', 4)};
 `;
 
-interface TicketContentWrapContainerProps {
+interface TicketContainerProps {
   disabled: boolean;
 }
 
-export const TicketContentWrapContainer = styled.div<
-  TicketContentWrapContainerProps
->`
+export const TicketContentWrapContainer = styled.div<TicketContainerProps>`
   color: ${ifProp(
     'disabled',
     palette('grayscale', 4),

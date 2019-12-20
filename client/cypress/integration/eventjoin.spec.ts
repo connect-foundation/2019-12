@@ -16,7 +16,6 @@ import {
 } from '../../src/commons/constants/number';
 
 function goPurchasePage(): void {
-  cy.visit('/events/330/register/tickets');
   cy.get('[data-testid=ticketbox-chkbox]').click();
   cy.get('[data-testid=ticketchoice-submitbtn]').click();
 }
@@ -24,12 +23,19 @@ function goPurchasePage(): void {
 context('이벤트 예약 페이지', () => {
   beforeEach(() => {
     cy.server();
+    cy.route('/api/events/331', 'fixture:reserve_event.json').as(
+      'getJoinPageEvent',
+    );
+    cy.route('POST', '/api/users/reserve/check', 'OK').as('joinCheck');
     cy.setCookie('UID', Cypress.env('auth_token'));
-    cy.wait(2000);
+    cy.visit('/events/331/register/tickets');
+
+    cy.wait('@getJoinPageEvent');
+    cy.wait('@joinCheck');
+    cy.wait(3000);
   });
 
   it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
-    cy.visit('/events/330/register/tickets');
     const alertStub = cy.stub();
     cy.on('window:alert', alertStub);
     cy.get('[data-testid=ticketchoice-submitbtn]')
@@ -40,23 +46,19 @@ context('이벤트 예약 페이지', () => {
   });
 
   it('(여러 수량을 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터가 보여진다.', () => {
-    cy.visit('/events/330/register/tickets');
     cy.get('[data-testid=ticketbox-chkbox]').click();
     cy.get('[data-testid=counterbox-container]').within(items => {
       expect(items).has.length(1);
     });
   });
 
-  // TODO: 이벤트 글로벌 스토어 적용 후에 반영 가능
-  it('(하나의 티켓만 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터는 보여지지 않는다.', () => {
-    //   cy.visit('/events/330/register/tickets');
-    //   cy.get('[data-testid=ticketbox-chkbox]').click();
-    //   cy.get('[data-testid=counterbox-container]').should('not.exist');
-  });
+  // it('(하나의 티켓만 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터는 보여지지 않는다.', () => {
+  //   cy.visit('/events/330/register/tickets');
+  //   cy.get('[data-testid=ticketbox-chkbox]').click();
+  //   cy.get('[data-testid=counterbox-container]').should('not.exist');
+  // });
 
   it('상단의 목차가 예약이 진행될 때마다 스타일이 변경되며 올바르게 표시된다.', () => {
-    cy.visit('/events/330/register/tickets');
-
     cy.get('[data-testid=steplist-step]').within(items => {
       expect(items[0]).to.have.css('color', 'rgb(65, 65, 65)');
       expect(items[1]).to.have.css('color', 'rgb(158, 158, 158)');
@@ -174,7 +176,7 @@ context('이벤트 예약 페이지', () => {
       });
   });
 
-  it('예약이 성공적으로 이루어지면 alert와 main으로 리다이렉션이 이루어진다', () => {
+  it('예약이 성공적으로 이루어지면 alert와 내 티켓 페이지로 리다이렉션이 이루어진다', () => {
     cy.route('POST', '/api/users/reserve', {});
 
     goPurchasePage();

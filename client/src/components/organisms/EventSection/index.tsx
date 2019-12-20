@@ -35,7 +35,7 @@ function EventSection({
           <S.Img src={imgSrc} />
         </S.ImgWrapper>
       )}
-      <S.Container>
+      <S.Container imgPosition={imgPosition}>
         <S.Title>{title}</S.Title>
         {place && <S.Place>{place}</S.Place>}
         <S.ContentContainer>

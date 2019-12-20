@@ -24,6 +24,13 @@ export const joinEvent = (ticketId: number, orderTicketNum: number) =>
     { headers: { Accept: 'application/json' } },
   );
 
+export const checkJoinEvent = (ticketId: number, orderTicketNum: number) =>
+  reserveAxios.post(
+    '/users/reserve/check',
+    { ticketId, orderTicketNum },
+    { headers: { Accept: 'application/json' } },
+  );
+
 export const createEvent = (formData: FormData) =>
   mainAxios.post('/events', formData, {
     headers: {

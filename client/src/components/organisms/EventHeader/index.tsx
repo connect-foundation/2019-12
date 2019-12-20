@@ -4,6 +4,12 @@ import * as S from './style';
 import { IconBtn, Price, EventDate } from 'components';
 import { User, TicketType } from 'types/Data';
 import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
+import {
+  RESERVE_DONE,
+  RESERVE_SOLD_OUT,
+  RESERVE_EXPIRE,
+  RESERVE,
+} from 'commons/constants/string';
 
 interface Props {
   id: number;
@@ -32,7 +38,7 @@ function EventHeader({
   const { firstName, lastName } = user;
   const profileImgUrl =
     'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
-  const doneTypes = ['등록', '종료되었습니다.', '매진되었습니다.'];
+  const doneTypes = [RESERVE, RESERVE_DONE, RESERVE_SOLD_OUT, RESERVE_EXPIRE];
 
   return (
     <S.HeaderContainer>
@@ -69,7 +75,11 @@ function EventHeader({
       <S.SubmitContainer>
         <S.ReservedPeopleContainer>
           <FaUsers size={'2rem'} />
-          <S.ReservedPeople>{ticketInfo.leftCnt}명</S.ReservedPeople>
+          <S.ReservedPeople>
+            {!ticketInfo.isPublicLeftCnt
+              ? '비공개'
+              : `${ticketInfo.quantity - ticketInfo.leftCnt}명`}
+          </S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
           children={!doneEventType ? doneTypes[0] : doneTypes[doneEventType]}
