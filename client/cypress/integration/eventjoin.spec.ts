@@ -29,8 +29,9 @@ context('이벤트 예약 페이지', () => {
     cy.route('POST', '/api/users/reserve/check', 'OK').as('joinCheck');
     cy.setCookie('UID', Cypress.env('auth_token'));
     cy.visit('/events/331/register/tickets');
-    // cy.wait('@joinCheck');
-    // cy.wait('@getJoinPageEvent');
+
+    cy.wait('@getJoinPageEvent');
+    cy.wait('@joinCheck');
     cy.wait(3000);
   });
 
