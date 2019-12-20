@@ -6,6 +6,7 @@ import { EventsAction } from 'types/Actions';
 import {
   ACTION_CREATE_EVENT,
   ACTION_FETCH_EVENTS,
+  ACTION_ERROR,
 } from 'commons/constants/string';
 
 export const defaultEventsState: EventsState = {
@@ -68,7 +69,7 @@ export default function eventsReducer(
         order: [...action.value.order, ...state.order],
         status: action.value.status,
       };
-    case 'ERROR':
+    case ACTION_ERROR:
       return {
         ...state,
         status: action.value.status,

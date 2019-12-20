@@ -174,3 +174,4 @@ export const FORM_NAME: any = {
 
 export const ACTION_CREATE_EVENT = 'CREATE_EVENT';
 export const ACTION_FETCH_EVENTS = 'FETCH_EVENTS';
+export const ACTION_ERROR = 'ERROR';
