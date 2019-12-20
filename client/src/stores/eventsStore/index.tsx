@@ -75,7 +75,7 @@ function EventsProvider({
   const [eventFetch, eventFetchDispatcher] = useState<EventFetch>({
     type: ACTION_FETCH_EVENTS,
     data: {
-      cnt: 6,
+      cnt: 12,
       startAt: '',
     },
   });
