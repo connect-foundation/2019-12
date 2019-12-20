@@ -35,7 +35,6 @@
     "cypress/no-assigning-return-values": "error",
     "cypress/no-unnecessary-waiting": "off",
     "cypress/assertion-before-screenshot": "warn",
-    "no-unused-expressions": 0,
-    "chai-friendly/no-unused-expressions": 2
+    "no-unused-expressions": 0
   }
 }
