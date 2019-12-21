@@ -1,3 +1,10 @@
+stages:
+  - name: "TEST"
+  - name: "PRE_DEPLOY"
+    if: type = push AND branch = develop
+  - name: "DEPLOY"
+    if: type = push AND branch = master
+
 sudo: required
 language: node_js
 node_js:
@@ -76,21 +83,18 @@ jobs:
         - yarn test:client
     - stage: PRE_DEPLOY
       name: Reserve Server
-      if: type = push AND branch = develop
       before_install:
         - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release ./reserve-server
         - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release
     - name: Server
-      if: type = push AND branch = develop
       before_install:
         - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release ./server
         - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release
     - name: Client
-      if: type = push AND branch = develop
       before_install:
         - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
@@ -99,7 +103,6 @@ jobs:
         - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release
     - stage: DEPLOY
       name: Reserve Server
-      if: type = push AND branch = master
       before_install:
         - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
@@ -108,7 +111,6 @@ jobs:
         - docker tag "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}" "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest"
         - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
     - name: Server
-      if: type = push AND branch = master
       before_install:
         - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
@@ -116,7 +118,6 @@ jobs:
         - docker tag "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" "${DOCKER_USER}/${BE_IMAGE_NAME}:latest"
         - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}"
     - name: Client
-      if: type = push AND branch = master
       before_install:
         - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
           -in secrets.tar.enc -out secrets.tar -d
