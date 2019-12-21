@@ -1,8 +1,8 @@
 stages:
-  - name: "TEST"
-  - name: "PRE_DEPLOY"
+  - name: 'TEST'
+  - name: 'PRE_DEPLOY'
     if: type = push AND branch = develop
-  - name: "DEPLOY"
+  - name: 'DEPLOY'
     if: type = push AND branch = master
 
 sudo: required
@@ -44,6 +44,13 @@ env:
     - AWS_BUCKET_NAME=bookus
     - secure: nkdkYNS5uOLWD3wv4Ll6T1HI7PjqGQyheQAg08TnkMmgyvU7ilOfC2K4hQtSzIx2SAGpb1hJgzoPlRBM2pdGq+fmiIuMJyfz7DkVMBB+CRAQApJ0uqUraxvk6aav826Lk1YayXwo66FV2Hdo/0ka/6yEx0ukaZM9eouaitTQCe0FYlpODQ3p2se4Y7hEJzVYE9KkMEz6gwS9cogqBbpmHAuCbhONFiolPaJDtROWvVU70zCF7wAaQuyRDp+Lw9OMvN0BbWe4MUvsWhqRIPYhjEImjclw+pzNGsn8I70Zwcgk4mOvD4KiwBb06uLfw9ezjyG1NpHh6FUjhs3d5O3iblUtjK+sKV+gLvx8wv48QjMDJfmxqjPksJhFLieyw9JkOBB8UJ1S4KTlTciPdtjRG4mt4DYzQpFJ1II9NlPf1dZsApTSYLXiEAEX6MRpXOECv5PhlT3cTR9NZvU8NflNM++X6zs/wijVCl9Lwj/Yb0LBoBkcrT/CO+cxOXYWnOV5BSIKhrWOTsRYRNXIdu3bdF+npsyTPCk4b+A9KYpvTVFfy4YpKt3rX37tp+r4VDCxKraTLdVxxIHWw6xuIVzBA5o8bW9TyunHA8KCVU53eRRc794yYKb5uFAEJfFfZMSK6VgewllZL/V+H6CZIu3M9tR5mGcle7KgxPxA7b1rElo=
     - secure: yMR24xz8cbGj72WTtW4nPiYQ6SsfztbnMp3ib5Z8ck2SLpZ9KXvKpUmMll1rzm2B6KberHDTYzzhzj6NrrUf51Dlv6tpXrJ2wBxK9w+lCYt9nxA5gHlHQv4ofRxMgcDsULa0NbN5mlAeUfHMvS2wZhVTyi237mL5T7dmQKUtKpO61GRqawXlZg2sQ4KPjAP66BsEFH3lEfC7mLnu9M7dGA1GxgUC4o1/n0Ow7qaL/4nRtdCtNRkh0LH8W1J6t+d/Zufy3ZT4PTYSOO5VNi1zaMpbgDFY9sG3sPku3QXEogy8l98UDDR1Y5RP6riuArfyhhDEfDpuG+3JfeLABWJPRcUHEj5yGPH7lg/tkmQjSF/0Xj5pvQzlp+8usxfNyjocgDDW5JguYfUybbXZxd1z1wzOlkaieOSvzQXBz8p5ogV4bdO5bcuMjpePz3sAR59aQFWkgGOPReC7E9wSEFyImzBHkthUj5B0GfKhceC6UnAG703EPEatGFh0WDUu9/ATBCRTBmC3Fy54HjeMxRdUVI/9sVZAUErP8j/TR0OMznecDndz9Eheyia9y2RzuBJtnnZr4yTBrPdkCnALRTw0Ua67JugzUQK4HBBAdTz+WWNRC4OnJDaQjLDl/cS+I5sHL9uiCMm5VoQw2RpbJjjHq0+OH96+7RcPP7XxaBHDKCk=
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
+    -in secrets.tar.enc -out secrets.tar -d
+  - tar xvf secrets.tar
+  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+
 jobs:
   include:
     - stage: TEST
@@ -73,56 +80,37 @@ jobs:
         - yarn test:server seed
         - yarn workspace server test:noseed
     - name: Client
-      before_install:
-        - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-          -in secrets.tar.enc -out secrets.tar -d
-        - tar xvf secrets.tar
       before_script:
         - yarn
       script:
         - yarn test:client
     - stage: PRE_DEPLOY
       name: Reserve Server
-      before_install:
-        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release ./reserve-server
         - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}":pre_release
     - name: Server
-      before_install:
-        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release ./server
         - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}":pre_release
     - name: Client
-      before_install:
-        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - yarn workspace client build
         - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release ./client
         - docker push "${DOCKER_USER}/${FE_IMAGE_NAME}":pre_release
     - stage: DEPLOY
       name: Reserve Server
-      before_install:
-        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - docker build -t "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
           ./reserve-server
         - docker tag "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}" "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest"
         - docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${RESERVE_IMAGE_NAME}:${RESERVE_IMAGE_TAG}"
     - name: Server
-      before_install:
-        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - docker build -t "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" ./server
         - docker tag "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}" "${DOCKER_USER}/${BE_IMAGE_NAME}:latest"
         - docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:latest" && docker push "${DOCKER_USER}/${BE_IMAGE_NAME}:${BE_IMAGE_TAG}"
     - name: Client
-      before_install:
-        - openssl aes-256-cbc -K $encrypted_06ff6f52811b_key -iv $encrypted_06ff6f52811b_iv
-          -in secrets.tar.enc -out secrets.tar -d
-        - tar xvf secrets.tar
-        - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
       script:
         - yarn workspace client build
         - docker build -t "${DOCKER_USER}/${FE_IMAGE_NAME}:${FE_IMAGE_TAG}" ./client
