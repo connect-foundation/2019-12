@@ -104,7 +104,7 @@ export function getTicketBoxesProps({
     return (
       <TicketBox
         chkProps={{ checked: false }}
-        refundBtProps={{
+        refundBtnProps={{
           onClick: (): void => {
             requestRefundCallback({ type: REQUEST, body: [id] });
           },
