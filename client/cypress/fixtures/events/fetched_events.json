@@ -1,0 +1,374 @@
+[
+  {
+    "id": 3310,
+    "userId": 3,
+    "title": "리눅스 커널 v5.3 분석: 네트워크 TCP/IP 주말특강(12월)",
+    "startAt": "2019-12-21T03:00:00.000Z",
+    "endAt": "2019-12-22T09:00:00.000Z",
+    "place": "리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)",
+    "address": "테헤란로4길 38-5",
+    "placeDesc": "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    "mainImg": "733",
+    "desc": "<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3>12월 21일(토)~22(일) 주말특강: 리눅스 커널 v5.3 분석과추적: 네트워크 TCP/IP 주말특강</h3>\n<p><strong>오픈기념 50% 할인: 정가 33만원 => 16만원</strong></p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href=\"http://reallinux.co.kr\" target=\"_blank\">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href=\"https://www.youtube.com/watch?v=kDQJ_0-gzXY\" target=\"_blank\">https://www.youtube.com/watch?v=kDQJ_0-gzXY</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href=\"http://kko.to/0oCDqoWjB\" target=\"_blank\">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href=\"https://pf.kakao.com/_sxevPT\" target=\"_blank\">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/c41b433f-d7d2-42af-83d0-0c3e4f971cd8.png\" /><img src=\"https://cf.festa.io/img/2019-11-14/6cffcb39-bb53-4b7f-9ada-411f74cf65b9.png\" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 '퍼시스' 책상, 의자 비치)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/5ca368c1-af2e-406e-8e8f-88252923dd41.jpg\" /><img src=\"https://cf.festa.io/img/2019-11-14/79ea0436-e92b-458d-9f7b-adade42a51f6.jpg\" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/5e6232da-14fb-4cac-9729-41eb2f174833.jpg\" /></p>\n<p>찾아오시는길 설명 PPT for 길치: <a href=\"https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing\" target=\"_blank\">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/4b4a23f2-be45-48bd-9ba7-d2ef0645d522.png\" /></p>\n<p> </p>\n<p> </p>\n<p> </p>",
+    "ticketType": {
+      "id": 331,
+      "eventId": 331,
+      "name": "리눅스커널 v5.3 네트워크 단기특강 12월 수강권",
+      "desc": "",
+      "price": 160000,
+      "quantity": 12,
+      "leftCnt": 12,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-11-12T15:00:00.000Z",
+      "salesEndAt": "2019-12-21T14:30:00.000Z",
+      "refundEndAt": "2019-12-16T14:30:00.000Z"
+    },
+    "user": {
+      "id": 3,
+      "lastName": "이",
+      "firstName": "용호"
+    }
+  },
+  {
+    "id": 3300,
+    "userId": 4,
+    "title": "리눅스 커널 v5.3 분석: 파일시스템 & 블록 I/O 주말특강(12월)",
+    "startAt": "2019-12-14T03:00:00.000Z",
+    "endAt": "2019-12-15T09:00:00.000Z",
+    "place": "리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)",
+    "address": "테헤란로4길 38-5",
+    "placeDesc": "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    "mainImg": "732",
+    "desc": "<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3>12월 14일(토)~15(일) 주말특강: 리눅스 커널 v5.3 분석과추적: 파일시스템 & 블록 I/O 주말특강</h3>\n<p><strong>오픈기념 50% 할인</strong>: 정가 33만원 => 16만원</p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href=\"http://reallinux.co.kr\" target=\"_blank\">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href=\"https://www.youtube.com/watch?v=kDQJ_0-gzXY\" target=\"_blank\">https://www.youtube.com/watch?v=kDQJ_0-gzXY</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href=\"http://kko.to/0oCDqoWjB\" target=\"_blank\">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href=\"https://pf.kakao.com/_sxevPT\" target=\"_blank\">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/d5d76b65-6d9e-49c1-9c14-7885e2ee5490.png\" /><img src=\"https://cf.festa.io/img/2019-11-14/dca4d0dd-7911-4d24-bf2d-f940fd2f7778.png\" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 '퍼시스' 책상, 의자 비치)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/e8b5e6dd-3243-4fa6-a88c-6399864e0358.jpg\" /><img src=\"https://cf.festa.io/img/2019-11-14/6601bb8d-fd7f-482e-abc1-9278a026df5f.jpg\" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/6655a59b-6d36-4b86-b691-8dc7d440abab.jpg\" /></p>\n<p>찾아오시는길 설명 PPT for 길치: <a href=\"https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing\" target=\"_blank\">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/a42c7a98-955a-4f0f-809c-d04bb1fb4c57.png\" /></p>\n<p> </p>\n<p> </p>\n<p> </p>",
+    "ticketType": {
+      "id": 330,
+      "eventId": 330,
+      "name": "리눅스커널 v5.3 파일&블록I/O 단기특강 12월 수강권",
+      "desc": "",
+      "price": 160000,
+      "quantity": 12,
+      "leftCnt": 12,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-11-12T15:00:00.000Z",
+      "salesEndAt": "2019-12-14T14:30:00.000Z",
+      "refundEndAt": "2019-12-09T14:30:00.000Z"
+    },
+    "user": {
+      "id": 4,
+      "lastName": "문",
+      "firstName": "종현"
+    }
+  },
+  {
+    "id": 3200,
+    "userId": 1,
+    "title": "제19회 공감세미나",
+    "startAt": "2019-12-14T01:00:00.000Z",
+    "endAt": "2019-12-14T08:00:00.000Z",
+    "place": "한빛미디어 리더스 홀",
+    "address": "서울 서대문구 연희로2길 62",
+    "placeDesc": "주차 불가",
+    "mainImg": "714",
+    "desc": "<p><img src=\"https://cf.festa.io/img/2019-11-15/52939e7e-d692-416d-9013-ec9163a7f00e.png\" /></p>",
+    "ticketType": {
+      "id": 320,
+      "eventId": 320,
+      "name": "일반 입장권",
+      "desc": "음료와 샌드위치 및 간단한 다과제공",
+      "price": 11000,
+      "quantity": 100,
+      "leftCnt": 62,
+      "isPublicLeftCnt": true,
+      "maxCntPerPerson": 1,
+      "salesStartAt": "2019-11-15T00:00:00.000Z",
+      "salesEndAt": "2019-12-14T01:00:00.000Z",
+      "refundEndAt": "2019-12-06T01:00:00.000Z"
+    },
+    "user": {
+      "id": 1,
+      "lastName": "육",
+      "firstName": "진혁"
+    }
+  },
+  {
+    "id": 3260,
+    "userId": 4,
+    "title": "Klaytn Developer Meetup",
+    "startAt": "2019-12-10T10:30:00.000Z",
+    "endAt": "2019-12-10T12:30:00.000Z",
+    "place": "스타트업 브랜치(코엑스 2층)",
+    "address": "서울시 강남구 영동대로 513 코엑스 2층",
+    "placeDesc": "www.kita.net/mberJobSport/startupBranch/space.do",
+    "mainImg": "728",
+    "desc": "<p><strong>Klaytn</strong>에서 국내 블록체인 개발자를 대상으로 <strong>Klaytn 플랫폼과 Blockchain Application(BApp) 개발</strong>에 대해 소개하는 정기 밋업(격월)을 진행합니다.</p>\n<p>세 번째 <strong>Klaytn Developer Meetup</strong>이 12월 10일(화)에 진행될 예정이니, Klaytn 플랫폼을 활용한 BApp 개발에 관심있는 분들의 많은 관심과 참여 바랍니다.</p>\n<p> </p>\n<p><strong>1. 참가 대상</strong><br />Klaytn 블록체인 플랫폼에 관심있고, BApp 개발을 해보고 싶은 개발자 누구나</p>\n<p><strong>2. 밋업 주제</strong><br />- Klaytn 101 #3 <strong>Fee Delegation(대납)</strong> 구조와 대납 기능을 사용하는 <strong>Android BApp</strong> 구현해보기<br />- <strong>Klaytn 스터디 그룹 지원 프로그램</strong> 참여 프로젝트 소개 (TBD)</p>\n<p><strong>3. 세부 내용</strong><br />- <strong>대납 구조 이해</strong>: Klaytn이 지원하는 Fee Delegation이 어떻게 동작하는지 설명<br />- <strong>대납을 사용하는 Android BApp</strong>: 대납 기능을 사용하는 Android BApp의 구현을 설명(mobile native 구현방법 소개(caver-java), Count BApp의 Android 구현, Fee Delegation example에서 보여준 node.js 서버 구현 등)</p>\n<p><strong>4. 밋업 일정</strong><br />- 19:00 ~ 19:30 (30') 등록 확인<br />- 19:30 ~ 20:10 (40') Klaytn 세션<br />- 20:10 ~ 20:20 (10') Q&A<br />- 20:20 ~ 21:00 (40') Klaytn 스터디 그룹 프로젝트 소개(TBD)<br />- 21:00 ~ 21:30 (30') 네트워킹<br />* 위 일정은 상황에 따라 변경될 수 있습니다.</p>\n<p><strong>5. 발표자 소개</strong><br />Eric Kim, Developer Evangelist at Ground X</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/48bfd0f6-ee4e-4ce2-beda-42733f2ae478.png\" /></p>\n<p><strong>5. 기타</strong><br />- 네트워킹 시간에 간단한 음식과 음료가 제공될 예정입니다.<br />- 주차지원이 되지 않으니 대중교통을 이용해주시기 바랍니다.<br />- 밋업 현장사진이 추후 홍보 자료로 활용될 예정이며,<br />  참석자분들의 모습이 노출될 수 있는 점 양해 부탁드립니다.<br />- 기타 궁금한 점은 아래로 문의해주시기 바랍니다. <br />* Klaytn Developer Meetup 관련 문의: <a href=\"mailto:community@klaytn.com\" target=\"_blank\">community@klaytn.com</a></p>\n<p> </p>\n<p><strong>▶️ Klaytn 소셜미디어에 가입해 최신 소식을 빠르게 받아보세요.</strong><br />- Klaytn Developers 페이스북 그룹 <a href=\"http://www.facebook.com/groups/klaytndevelopers\" target=\"_blank\">www.facebook.com/groups/klaytndevelopers</a></p>",
+    "ticketType": {
+      "id": 326,
+      "eventId": 326,
+      "name": "일반 입장권",
+      "desc": "참석자 선정 후 12월 3일(화)과 9일(월)에 안내메일 발송될 예정입니다.",
+      "price": 0,
+      "quantity": 500,
+      "leftCnt": 487,
+      "isPublicLeftCnt": true,
+      "maxCntPerPerson": 1,
+      "salesStartAt": "2019-11-17T15:00:00.000Z",
+      "salesEndAt": "2019-12-10T12:30:00.000Z",
+      "refundEndAt": "2019-12-10T12:30:00.000Z"
+    },
+    "user": {
+      "id": 4,
+      "lastName": "문",
+      "firstName": "종현"
+    }
+  },
+  {
+    "id": 3290,
+    "userId": 1,
+    "title": "리눅스 커널 v5.3 분석: 메모리 주말특강 (12월)",
+    "startAt": "2019-12-07T03:00:00.000Z",
+    "endAt": "2019-12-08T09:00:00.000Z",
+    "place": "리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)",
+    "address": "테헤란로4길 38-5",
+    "placeDesc": "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    "mainImg": "731",
+    "desc": "<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3><strong>12월 7일(토)~8(일) 주말특강: 리눅스 커널 v5.3 분석과추적: 메모리 주말특강</strong></h3>\n<p><strong>오픈기념 50% 할인: 정가 33만원 => 16만원</strong></p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href=\"http://reallinux.co.kr\" target=\"_blank\">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href=\"https://www.youtube.com/watch?v=kDQJ_0-gzXY\" target=\"_blank\">https://www.youtube.com/watch?v=kDQJ_0-gzXY</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href=\"http://kko.to/0oCDqoWjB\" target=\"_blank\">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href=\"https://pf.kakao.com/_sxevPT\" target=\"_blank\">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/4fd12855-9cb2-4591-bc11-df919d3a614d.png\" /><img src=\"https://cf.festa.io/img/2019-11-14/75740f46-43f8-4564-9df2-d1b8bbbe21c5.png\" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 '퍼시스' 책상, 의자 비치)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/366f4da3-0fd9-4e3e-b2db-8c0d91074304.jpg\" /><img src=\"https://cf.festa.io/img/2019-11-14/fd8b1ec1-0d0a-4811-8bad-90c73ba1d16b.jpg\" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/ad489499-4a78-4a97-aa1e-a432eccfb32a.jpg\" /></p>\n<p>찾아오시는길 설명 PPT for 길치: <a href=\"https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing\" target=\"_blank\">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/716a8035-271a-42d7-b44d-07e913d4a9bc.png\" /></p>\n<p> </p>\n<p> </p>",
+    "ticketType": {
+      "id": 329,
+      "eventId": 329,
+      "name": "리눅스커널 v5.3 메모리 단기특강 12월 수강권",
+      "desc": "",
+      "price": 160000,
+      "quantity": 12,
+      "leftCnt": 12,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-11-13T03:00:00.000Z",
+      "salesEndAt": "2019-12-07T14:30:00.000Z",
+      "refundEndAt": "2019-12-07T03:00:00.000Z"
+    },
+    "user": {
+      "id": 1,
+      "lastName": "육",
+      "firstName": "진혁"
+    }
+  },
+  {
+    "id": 3270,
+    "userId": 1,
+    "title": "리눅스에서 뭐 할 수 있나요 ? : 노베이스반 수강생모집 (12월)",
+    "startAt": "2019-12-05T10:30:00.000Z",
+    "endAt": "2019-12-19T14:30:00.000Z",
+    "place": "리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)",
+    "address": "테헤란로4길 38-5",
+    "placeDesc": "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    "mainImg": "729",
+    "desc": "<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3>12월 5일(목) 개강: '리눅스에서 뭐 할 수 있나요 ?' 리눅스 노베이스반 수강생 모집중입니다 !!</h3>\n<p><strong>오픈기념 30% 할인</strong>: 정가 35만원 => 24만원</p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href=\"http://reallinux.co.kr\" target=\"_blank\">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href=\"https://www.youtube.com/watch?v=q04U8Ay-1SA\" target=\"_blank\">https://www.youtube.com/watch?v=q04U8Ay-1SA</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href=\"http://kko.to/0oCDqoWjB\" target=\"_blank\">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href=\"https://pf.kakao.com/_sxevPT\" target=\"_blank\">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/683016f5-3509-4931-bd8c-9debf16c111b.png\" /><img src=\"https://cf.festa.io/img/2019-11-14/55b45852-e929-446d-a14d-17948e0c2696.png\" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 '퍼시스' 책상, 의자 비치)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/e5f2d1d7-5c90-4150-a6f4-8fcd9133d50e.jpg\" /><img src=\"https://cf.festa.io/img/2019-11-14/81458f65-889b-46f3-aa66-a5033f9c01fb.jpg\" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/e13d1b6f-9a3d-4adb-9916-e03fce5b531d.jpg\" /></p>\n<p>* 찾아오시는길 설명 PPT for 길치: <a href=\"https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing\" target=\"_blank\">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/7af9ddb8-cc84-43a7-9799-54796acc32c3.png\" /></p>",
+    "ticketType": {
+      "id": 327,
+      "eventId": 327,
+      "name": "리눅스 노베이스반 12월 수강권",
+      "desc": "",
+      "price": 240000,
+      "quantity": 12,
+      "leftCnt": 12,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-11-12T15:00:00.000Z",
+      "salesEndAt": "2019-12-05T14:30:00.000Z",
+      "refundEndAt": "2019-12-02T14:30:00.000Z"
+    },
+    "user": {
+      "id": 1,
+      "lastName": "육",
+      "firstName": "진혁"
+    }
+  },
+  {
+    "id": 3230,
+    "userId": 2,
+    "title": "Let'Swift 판교 1차 🎊",
+    "startAt": "2019-12-05T10:00:00.000Z",
+    "endAt": "2019-12-05T12:00:00.000Z",
+    "place": "네이버웹툰 6층 교육장",
+    "address": "경기 성남시 분당구 분당내곡로 117 크래프톤타워 6층",
+    "placeDesc": "주차비는 지원하지 않습니다.",
+    "mainImg": "723",
+    "desc": "<h1>Hello World, Hello 판교 🚀</h1>\n<p>1년에 한번 뿐인 레츠스위프트가 아쉬운 사람들이 모여서 판교에 분점을 냈습니다!</p>\n<p>판교에 서식하는 iOS / 스위프트 개발자들과 함께 최근의 삽질 및 덕질을 공유해보아요.</p>\n<p>누구나 와서 발표할 수 있고 자유롭게 의견을 나누며 관심사와 기술을 공유하는 자리입니다.</p>\n<p>가벼운 마음으로 참석하셔서 동네 판교러들도 만나고 새로운 아이디어도 얻어가세요.</p>\n<h2>발표자</h2>\n<p>✅ 안정민(한국카카오은행) <strong><em>'검증되지 않은 이상적이고 극단적인 iOS 프로젝트 구조 설계'</em></strong></p>\n<p>✅ 전수열(스타일쉐어) <strong><em>'이렇게 써놔도 신청하겠지?'</em></strong></p>\n<p>✅ 장수한(네이버웹툰) <em><strong>'느낌적인 느낌을 찾아서'</strong></em></p>\n<p>✅ 김형규(네이버웹툰)<strong><em> '지저분한 언래핑코드를 깔끔하게 정리해보자'</em></strong></p>\n<h2>소개</h2>\n<p>👉 각 발표는 10 ~ 30분 사이로 진행됩니다.</p>\n<p>👉 각 발표 후에는 모두가 자유롭게 의견을 나눕니다. 활발하고 건전한 토론을 해주세요.</p>\n<p>👉 입장비는 다과 준비와 발표자 분들에게 소정의 고마움을 전달하기 위해 쓰입니다.</p>\n<p>👉 레츠스위프트는 여러분의 적극적인 참여로 만들어집니다.</p>\n<p>👉 발표의 기회는 누구에게나 열려있습니다. 아래 링크를 통해 신청해주세요.</p>\n<h2>행사 안내</h2>\n<p>📌 6층에 도착하신 후 안내를 받아 [출입증]을 수령하고 교육장에 입장하시면 됩니다.</p>\n<p>📌 [업무 공간]에는 출입하지 말아주세요. 꼭!</p>\n<h2>장소 지원</h2>\n<p><img src=\"https://cf.festa.io/img/2019-11-15/410b464d-540f-462f-b330-e66b6e2a6c71.png\" /></p>\n<h2>문의</h2>\n<p>'레츠스위프트 판교' 오픈카톡방: <a href=\"https://open.kakao.com/o/gZitYTKb\" target=\"_blank\">https://open.kakao.com/o/gZitYTKb</a></p>\n<p>발표자 상시 모집: <a href=\"http://bit.ly/letswift-pg\" target=\"_blank\">http://bit.ly/letswift-pg</a></p>",
+    "ticketType": {
+      "id": 323,
+      "eventId": 323,
+      "name": "입장권",
+      "desc": "무료 음료 및 다과를 제공합니다.",
+      "price": 10000,
+      "quantity": 37,
+      "leftCnt": 0,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 3,
+      "salesStartAt": "2019-11-15T09:00:00.000Z",
+      "salesEndAt": "2019-12-04T13:00:00.000Z",
+      "refundEndAt": "2019-12-02T10:00:00.000Z"
+    },
+    "user": {
+      "id": 2,
+      "lastName": "조",
+      "firstName": "성동"
+    }
+  },
+  {
+    "id": 3280,
+    "userId": 4,
+    "title": "내손으로 직접 추적하자: 리눅스 SW 기본반_ 수강생 모집 (12월)",
+    "startAt": "2019-12-02T10:30:00.000Z",
+    "endAt": "2019-12-16T14:30:00.000Z",
+    "place": "리얼리눅스 강의장 (혜정빌딩 4층 / 강남역 3번출구)",
+    "address": "테헤란로4길 38-5",
+    "placeDesc": "강남역 3번출구에서 3분거리 (카카오맵, 네이버맵 '리얼리눅스' 검색)",
+    "mainImg": "730",
+    "desc": "<p>안녕하세요. 리얼리눅스 입니다!</p>\n<h3>12월 2일(월) 개강: '기본원리부터 제대로 쌓자' 리눅스 SW기본반 수강생 모집중입니다 !!</h3>\n<p><strong>오픈기념 30% 할인</strong>: 정가 35만원 => 24만원</p>\n<p>* 강사: 송태웅</p>\n<p>* 이력:</p>\n<p>- 리얼리눅스 대표 / 강사   <a href=\"http://reallinux.co.kr\" target=\"_blank\">http://reallinux.co.kr</a><br />- 전) KossLab 오픈소스 개발자 (Linux Kernel 등)<br />- USENIX, Vault'19 Speaker<br />- Linux Foundation, OSSEU17 Speaker<br />- 컨트리뷰톤(Contributhon) Creator<br />- 삼성전자 SOSCON 및 네이버 DEVIEW 2016,18 연사<br />- 카카오 클라우드팀, SK C&C, ETRI연구소 등 기술자문<br />- 서울대, 카이스트, 연세대, 고려대 등 10여개 대학 강연</p>\n<p>* 소개영상: <a href=\"https://www.youtube.com/watch?v=kDQJ_0-gzXY\" target=\"_blank\">https://www.youtube.com/watch?v=kDQJ_0-gzXY</a></p>\n<p>* 준비물: 개인 노트북</p>\n<p>* 장소: 리얼리눅스 강의장 <a href=\"http://kko.to/0oCDqoWjB\" target=\"_blank\">http://kko.to/0oCDqoWjB</a></p>\n<p>* 리얼리눅스 스터디공간: 수강생 스터디 그룹 우선 무료예약 제공</p>\n<p>* 카카오톡(리얼리눅스) 1:1 상담 : <a href=\"https://pf.kakao.com/_sxevPT\" target=\"_blank\">https://pf.kakao.com/_sxevPT</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/d30a6b31-92c8-485e-8907-19706bb4308e.png\" /><img src=\"https://cf.festa.io/img/2019-11-14/c1facccd-c02c-430d-a7ba-a39298a7142b.png\" /></p>\n<p>* 리얼리눅스 강의장 사진 (고가 브랜드 '퍼시스' 책상, 의자 비치)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/1e2b1fd7-b77b-41c2-a23b-7bc71d7959f6.jpg\" /><img src=\"https://cf.festa.io/img/2019-11-14/9cb5a7de-56b9-4402-9a5b-93de89211931.jpg\" /></p>\n<p>* 리얼리눅스 스터디공간 (수강생 우선제공)</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/cb05f16c-c07c-4cfa-aade-272006ec6add.jpg\" /></p>\n<p>찾아오시는길 설명 PPT for 길치: <a href=\"https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing\" target=\"_blank\">https://docs.google.com/presentation/d/1N0z20JnuZ5aQgItfiUaoj9RPXU33eq4A7M2YMfdm_y0/edit?usp=sharing</a></p>\n<p><img src=\"https://cf.festa.io/img/2019-11-14/fff76368-92fc-41b6-a172-20a408ec2902.png\" /></p>\n<p> </p>\n<p> </p>",
+    "ticketType": {
+      "id": 328,
+      "eventId": 328,
+      "name": "리눅스 SW기본반 12월 수강권",
+      "desc": "",
+      "price": 240000,
+      "quantity": 12,
+      "leftCnt": 11,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-11-12T15:00:00.000Z",
+      "salesEndAt": "2019-12-02T14:30:00.000Z",
+      "refundEndAt": "2019-11-30T14:30:00.000Z"
+    },
+    "user": {
+      "id": 4,
+      "lastName": "문",
+      "firstName": "종현"
+    }
+  },
+  {
+    "id": 3103,
+    "userId": 2,
+    "title": "[저자특강] 코어 자바스크립트 : 핵심 개념과 동작 원리로 이해하는 자바스크립트 프로그래밍",
+    "startAt": "2019-11-30T05:00:00.000Z",
+    "endAt": "2019-11-30T09:00:00.000Z",
+    "place": "위플레이스 강남점(서울시 강남구 강남대로 340 경원빌딩 3층)",
+    "address": "서울시 강남구 강남대로 340",
+    "placeDesc": "",
+    "mainImg": "690",
+    "desc": "<h2>개요</h2>\n<p>자바스크립트의 근간을 이루는 핵심 이론들을 정확하게 이해하는 것을 목표로 합니다.</p>\n<p> </p>\n<h2>강연자</h2>\n<p>정재남</p>\n<p>⋅ 코어 자바스크립트 저자<br />⋅ 자바스크립트, ReactJS 등을 주제로 다수의 오프라인 강의 진행<br />⋅ 현재 엔씨소프트의 프런트엔드 개발자로 채팅 기반 협업 툴 개발</p>\n<p> </p>\n<h2>강의 목표</h2>\n<p>⋅ 자바스크립트의 핵심 이론들에 관한 전반적인 흐름 파악<br />⋅ 난해한 개념들의 원리 이해<br />⋅ 자바스크립트 학습 방향에 대한 가이드 제시</p>\n<p> </p>\n<h2>강의 대상</h2>\n<p>⋅ 자바스크립트를 전혀 모르는 분이라면 얻어갈 수 있는 게 생각보다 많지 않을 수도 있습니다.<br />⋅ 시간 관계상 핵심 원리 위주로 살펴보기 때문에 자바스크립트의 기본기가 갖춰지지 않은 분들은 뒷부분은 전혀 이해하지 못하실 확률도 있습니다.<br />⋅ 어느 정도 공부를 해보다가 어려움을 겪고 계신 분들에게는 향후 학습 방법이나 방향을 중간 점검하는 측면에서 좋은 자리가 될 것임을 자신합니다. 그간 이해하지 못하고 넘어갔던 개념들에 대해 속시원히 설명해 드리겠습니다.</p>\n<p> </p>\n<h2>강의에서 다루는 내용</h2>\n<p>‘코어 자바스크립트’ 책에서 다루는 내용을 꼼꼼히 살펴봅니다.</p>\n<p>⋅ 데이터 타입<br />⋅ 실행 컨텍스트<br />⋅ this<br />⋅ 콜백 함수<br />⋅ 클로저<br />⋅ 프로토타입<br />⋅ 클래스</p>\n<p> </p>\n<h2>준비물</h2>\n<p>⋅ 코어 자바스크립트 책을 토대로 하기 때문에 책이 있으면 도움 됩니다. <br />   (교재가 없어도 강의를 듣는 데에는 문제 없습니다)<br />⋅ 노트북 혹은 필기도구</p>\n<p> </p>\n<h2>환불안내</h2>\n<p>신청기간 이전까지는 언제든지 환불 가능합니다. <br />신청기간 이후에는 환불이 어렵습니다.</p>\n<p> </p>\n<h2>주차안내</h2>\n<p>주차는 지원하지 않습니다. 대중교통을 이용하시기를 추천드립니다.</p>\n<p> </p>\n<h2>기타 안내 사항</h2>\n<p>⋅ 현장에서 ‘코어 자바스크립트’ 도서를 판매하지 않습니다. <br />   도서 구매는 서점을 이용해주세요(<a href=\"https://wikibook.co.kr/corejs/\" target=\"_blank\">https://wikibook.co.kr/corejs/</a>).<br /><br />⋅ 등록 및 입장은 30분 전부터 가능합니다 (오후 1시 30분 ~ 2시)<br />⋅ 멀티탭은 어느 정도 준비돼 있긴 하지만, 모두를 만족시킬 수 있는 환경은 아닐 수 있습니다.<br />⋅ 그밖에 문의 사항은 <a href=\"mailto:wikibook@wikibook.co.kr로\" target=\"_blank\">wikibook@wikibook.co.kr로</a> 보내주시기 바랍니다.</p>",
+    "ticketType": {
+      "id": 313,
+      "eventId": 313,
+      "name": "일반 입장권",
+      "desc": "코어 자바스크립트 책을 지참하시면 현장에서 오천원을 돌려드립니다.",
+      "price": 10000,
+      "quantity": 80,
+      "leftCnt": 0,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-11-04T15:00:00.000Z",
+      "salesEndAt": "2019-11-28T14:00:00.000Z",
+      "refundEndAt": "2019-11-28T14:00:00.000Z"
+    },
+    "user": {
+      "id": 2,
+      "lastName": "조",
+      "firstName": "성동"
+    }
+  },
+  {
+    "id": 2570,
+    "userId": 4,
+    "title": "GDG DEVFEST Songdo 2019",
+    "startAt": "2019-11-30T04:00:00.000Z",
+    "endAt": "2019-11-30T09:30:00.000Z",
+    "place": "인천광역시 연수구 송도동 7-50 인천대 미추홀 캠퍼스 사범대 A동 5층 창업다락",
+    "address": "인천광역시 연수구 송도동 7-50",
+    "placeDesc": "인천대 미추홀 캠퍼스 5층 창업 다락 입니다. 주차는 무료, 인천 테크노파크 (1호선) 역 5분 거리.",
+    "mainImg": "571",
+    "desc": "<p>드디어, 하반기 최대 개발자들의 축제, <strong>DEVFEST</strong>가 송도에서 열립니다!</p>\n<p>데브페스트는 다양한 개발자들의 기술에 대한 열정과 더불에 지식을 나누는 자리 입니다.</p>\n<p>요즘 핫한 머신러닝 부터 모바일 (안드로이드), 웹 부터 플러터 까지!</p>\n<p>다양한 주제를 만나 볼 수 있는 개발자들의 시간을 마련 하였습니다.</p>\n<h3>장소 :</h3>\n<p>인천대 송도 캠퍼스 창업다락 (A동 5층) <br />       * 인천지하철 1호선 “테크노파크” 역에서 5분거리</p>\n<h3>날짜 :</h3>\n<p>11/30 (토) 오후 1시 부터 ~</p>\n<h3>TimeTable:</h3>\n<p><img src=\"https://cf.festa.io/img/2019-11-7/c4078372-30ea-4d52-bcdb-b56899253d08.png\" /></p>\n<p>---</p>\n<h1>행사 안내</h1>\n<p><br />       * Google의 후원으로 다과 및 음료가 준비되어 있습니다.<br />       * 노트북 전원을 위한 전기 멀티탭이 준비되어 있습니다.<br />       * 세션장소에서 Wifi가 지원 됩니다.<br />       * 주차는 무료 이며 인천대학교 사범대, 미추홀 타워 지하1층을 이용해 주시기 바랍니다.</p>\n<p>GDG에는 건전한 커뮤니티를 위해 모든 행사에 참석하는 모든 사람이 지켜야할 Code of Conduct가 있습니다. 확인 및 지켜주시기 바랍니다</p>\n<h1>Code of Conduct</h1>\n<p><br />GDG Songdo는 비영리목적의 커뮤니티로 IT기술에 관심 있는 사람들이 모여서 만들어나가고 있는 커뮤니티입니다. 아래 내용은 GDG Songdo 커뮤니티를 건강하게 발전시키기 위한 약속입니다. 커뮤니티의 건강한 발전을 위해 모두가 읽어주시고 준수해주시길 바랍니다.<br />사람을 존중해주세요.</p>\n<p><br />- 모든 일 뒤에는 사람이 있습니다.<br />- 어떤 일에서도 사람을 우선적으로 생각해주세요.<br />- 모두가 커뮤니티에 참여할 수 있어야합니다.<br />- 다른 사람의 가치관, 문화, 일을 존중해주세요.<br />사람에게 친절하게 대해주세요.<br />- 사람을 정중하게 대해주세요.<br />- 새로운 사람에게 친절하게 대해주세요.<br />- 어떤 질문에도 친절하게 대해주세요.<br />다른 사람의 이야기를 잘 들어주세요.<br />- 모든 사람들의 의견을 잘 들어주세요.<br />- 모든 사람에게는 발언권이 있고, 모두가 말할 권리가 있습니다.</p>\n<p><br />만약 GDG Songdo 에서 어떠한 경로라도 불편함이나 불쾌함을 겪으셨다면, GDG Songdo 커뮤니티 팀에게 알려주세요. 커뮤니티 팀에서는 신속하게 이슈를 파악하고, 해결 방법을 검토한 후에 처리 결과를 신고해주신 분에게 알려드릴 예정입니다.<br /><br />문의는 Discord (https://discord.gg/GvrJxuQ) #chat 에서 / GDG Kor Slack #songdo 에서 이야기 해주세요!<br /><br />이벤트와 관련한 문의는 daniel@gdgincheon.com /카카오 플러스 친구 gdgsongdo 로 보내주시길 바랍니다.<br /><br />행사 내용및 시간은 변경 될 수 있습니다.</p>",
+    "ticketType": {
+      "id": 257,
+      "eventId": 257,
+      "name": "일반 입장권",
+      "desc": "무료 음료 및 다과를 드립니다.",
+      "price": 10000,
+      "quantity": 180,
+      "leftCnt": 0,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-09-28T15:00:00.000Z",
+      "salesEndAt": "2019-11-28T15:00:00.000Z",
+      "refundEndAt": "2019-11-14T15:00:00.000Z"
+    },
+    "user": {
+      "id": 4,
+      "lastName": "문",
+      "firstName": "종현"
+    }
+  },
+  {
+    "id": 2640,
+    "userId": 1,
+    "title": "2019 Global Microsoft 365 Developer Bootcamps Seoul",
+    "startAt": "2019-11-30T00:00:00.000Z",
+    "endAt": "2019-11-30T08:00:00.000Z",
+    "place": "한국 마이크로소프트 11층",
+    "address": "종로구 1길 50 더케이트윈타워 A동",
+    "placeDesc": "주차지원은 불가합니다. 인근건물에서 주말일일 5000 원에 주차하실 수 있습니다.",
+    "mainImg": "578",
+    "desc": "<p>글로벌 마이크로소프트 365 개발자 부트캠프를 소개합니다. 매년 전세계적으로 진행되어 올해 3년차에 이른 이 행사는 Microsoft 365 와 관련된 다양한 기술과 제품을 다룹니다. 올해는 전세계적으로 10월 1일 부터 12월 15일까지 62 도시에서 개최됩니다.</p>\n<p>부트캠프는 마이크로소프트 MVP 들과 커뮤니티 리더들이 개최하고 마이크로소프트가 지원하는 무료행사입니다. 이 행사를 통해 Microsoft 365와 와 관련된 최신의 기술과 동향에 대한 정보를 얻으실 수 있고, HOL 트레이닝에 참여하여 공부해보실 수 있습니다.</p>\n<p>Jeff Teper 와 전세계의 MVP들이 참여한 부트캠프 소개 동영상을 같이 확인하시죠~!</p>\n<p><iframe src=\"https://www.youtube.com/embed/ByVJtysh6mM\" width=\"560\" height=\"314\" allowfullscreen=\"allowfullscreen\"></iframe></p>\n<p>전세계서 개최되고 있는 부트캠프 행사 일정은 <a href=\"aka.ms/M365DevBootcamp\" target=\"_blank\">aka.ms/M365DevBootcamp</a> 에서 확인할 수 있습니다.</p>\n<p>===========================================================================</p>\n<p><img src=\"https://cf.festa.io/img/2019-11-13/b9577429-071e-4c3d-84dc-09709748883e.png\" /></p>",
+    "ticketType": {
+      "id": 264,
+      "eventId": 264,
+      "name": "부트캠프",
+      "desc": "부트캠프 입장",
+      "price": 0,
+      "quantity": 200,
+      "leftCnt": 46,
+      "isPublicLeftCnt": true,
+      "maxCntPerPerson": 1,
+      "salesStartAt": "2019-09-30T15:00:00.000Z",
+      "salesEndAt": "2019-11-29T15:00:00.000Z",
+      "refundEndAt": "2019-09-30T15:00:00.000Z"
+    },
+    "user": {
+      "id": 1,
+      "lastName": "육",
+      "firstName": "진혁"
+    }
+  },
+  {
+    "id": 3060,
+    "userId": 3,
+    "title": "치맥세미나가 전하는 디자이너를 위한 이야기 ",
+    "startAt": "2019-11-29T10:00:00.000Z",
+    "endAt": "2019-11-29T12:00:00.000Z",
+    "place": "인컴즈 1층 세미나실",
+    "address": "강원도 춘천시 퇴계로 89",
+    "placeDesc": "주차는 인근 공영주차장을 이용해 주세요",
+    "mainImg": "672",
+    "desc": "<p>치맥세미나는 매월 1회 춘천에서 열리는 IT관련 세미나로<br />11월에는 강사를 초빙하여 '치맥세미나가 전하는 디자이너를 위한 이야기'를 나누려고 합니다.<br />많은 관심 부탁 드립니다.</p>\n<p>*11월에는 치맥없는 치맥 세미나를 운영할 예정이므로 치킨과 맥주가 제공 되지 않습니다.</p>\n<h2><strong>SPEAKERS</strong></h2>\n<p><strong>[파이를 굽는 시간 - 신해나]</strong><br />- 현 ProtoPie Product Designer<br />- 전 Amoebe UI Designer<br /><br /><strong>[스케치 더 잘쓰기 - 서한교]<br /></strong>- 현 Freelance Designer<br />- 현 ‘이토록 쉬운 스케치’ 저자<br />- 전 MyMusicTaste Product Designer</p>\n<p> </p>",
+    "ticketType": {
+      "id": 306,
+      "eventId": 306,
+      "name": "세미나 입장권",
+      "desc": "샌드위치와 무료 음료가 제공됩니다.",
+      "price": 10000,
+      "quantity": 50,
+      "leftCnt": 23,
+      "isPublicLeftCnt": true,
+      "maxCntPerPerson": 50,
+      "salesStartAt": "2019-10-31T15:00:00.000Z",
+      "salesEndAt": "2019-11-27T15:00:00.000Z",
+      "refundEndAt": "2019-11-27T15:00:00.000Z"
+    },
+    "user": {
+      "id": 3,
+      "lastName": "이",
+      "firstName": "용호"
+    }
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "id": 7,
+  "userId": 3,
+  "title": "오픈스택 한국 커뮤니티 - 2018년 3월 정기 세미나",
+  "startAt": "2018-03-29T10:30:00.000Z",
+  "endAt": "2018-03-29T13:00:00.000Z",
+  "place": "토즈 강남 2호점",
+  "address": "서울특별시 서초구 강남대로 459 백암빌딩 3층",
+  "placeDesc": "네이버 지도: http://naver.me/5gz0ITjw",
+  "latitude": 37.50310303,
+  "longitude": 127.02442385,
+  "mainImg": "16",
+  "desc": "<p>안녕하세요~!!<br /><br />2018년 봄날, 오픈 스택 한국 커뮤니티 정기 세미나를 개최하고자 합니다.<br />2018년 3월 정기 세미나를 아래와 같이 안내 드립니다.</p><br /><h2>안내사항</h2><p>—— 주 제 ——</p><p>1) 김호진 (오픈소스 컨설팅), \"오픈스택, 우리 인프라에 적용하기\" [19:30-20:10]<br />2) KrDAG Study, \"오픈스택과 보안\" [20:20-21:00]<br />3) 장태희 (오픈스택 커뮤니티 스터디 매니저), \"OpenStack Tokyo OpsMeetup 후기\" (장태희) [21:10-21:30]<br />4) 네트워킹 [21:30-22:00]<br /></p><p>이번 정기세미나 장소는 네이버 D2에서 지원해 주셨습니다.</p><br /><h2>후원 및 협찬</h2><p><ul><li>Naver D2 - 장소 후원</li><li>Festa.io - 참가 등록 시스템 제공</li></ul><br /><br /></p><p>행사 관련 문의는 master@openstack.or.kr 으로 해주시기 바랍니다.</p>",
+  "ticketType": {
+    "id": 7,
+    "eventId": 7,
+    "name": "판매 기간이 지난 이벤트",
+    "desc": "",
+    "price": 0,
+    "quantity": 50,
+    "leftCnt": -1,
+    "isPublicLeftCnt": false,
+    "maxCntPerPerson": 1,
+    "salesStartAt": "2018-03-20T03:00:00.000Z",
+    "salesEndAt": "2018-03-29T03:00:00.000Z",
+    "refundEndAt": "2018-03-29T03:00:00.000Z"
+  },
+  "user": {
+    "id": 3,
+    "lastName": "이",
+    "firstName": "용호"
+  }
+}
