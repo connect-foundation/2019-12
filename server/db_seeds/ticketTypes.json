@@ -58,21 +58,21 @@
   {
     "id": 5,
     "eventId": 5,
-    "name": "일반",
+    "name": "언제든지 구매 가능/환불 가능한 이벤트",
     "desc": "",
     "price": 10000,
-    "quantity": 25,
-    "leftCnt": 15,
+    "quantity": 100000,
+    "leftCnt": 100000,
     "isPublicLeftCnt": false,
-    "maxCntPerPerson": 1,
+    "maxCntPerPerson": 100000,
     "salesStartAt": "2018-03-12T00:00:00.000Z",
-    "salesEndAt": "2018-03-23T04:00:00.000Z",
-    "refundEndAt": "2018-03-23T04:00:00.000Z"
+    "salesEndAt": "2200-03-23T04:00:00.000Z",
+    "refundEndAt": "2200-03-23T04:00:00.000Z"
   },
   {
     "id": 6,
     "eventId": 6,
-    "name": "입장권",
+    "name": "환불 기간이 지난 티켓",
     "desc": "5천원은 보증금 명목이며, 출석 확인 시 행사 종료 후 환급",
     "price": 5000,
     "quantity": 35,
@@ -80,13 +80,13 @@
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
     "salesStartAt": "2018-03-12T00:00:00.000Z",
-    "salesEndAt": "2018-03-30T14:59:00.000Z",
+    "salesEndAt": "2200-03-30T14:59:00.000Z",
     "refundEndAt": "2018-03-30T14:59:00.000Z"
   },
   {
     "id": 7,
     "eventId": 7,
-    "name": "입장권",
+    "name": "판매 기간이 지난 이벤트",
     "desc": "",
     "price": 0,
     "quantity": 50,
@@ -100,7 +100,7 @@
   {
     "id": 8,
     "eventId": 8,
-    "name": "입장권",
+    "name": "판매가 시작되고, 아직 판매기간이 남은 이벤트",
     "desc": "음료 교환권 포함",
     "price": 20000,
     "quantity": 150,
@@ -108,36 +108,36 @@
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
     "salesStartAt": "2018-04-03T04:00:00.000Z",
-    "salesEndAt": "2018-04-14T01:00:00.000Z",
-    "refundEndAt": "2018-04-14T01:00:00.000Z"
+    "salesEndAt": "2200-04-14T01:00:00.000Z",
+    "refundEndAt": "2200-04-14T01:00:00.000Z"
   },
   {
     "id": 9,
     "eventId": 9,
-    "name": "입장권",
+    "name": "매진된 이벤트",
     "desc": "",
     "price": 0,
     "quantity": 170,
-    "leftCnt": 54,
+    "leftCnt": 0,
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
     "salesStartAt": "2018-04-02T15:00:00.000Z",
-    "salesEndAt": "2018-04-27T14:59:59.000Z",
-    "refundEndAt": null
+    "salesEndAt": "2020-04-27T14:59:59.000Z",
+    "refundEndAt": "2020-04-27T14:59:59.000Z"
   },
   {
     "id": 10,
     "eventId": 10,
-    "name": "선착순 (참가확정)",
+    "name": "2번 유저의 구매 수량이 모두 찬 티켓",
     "desc": "",
     "price": 0,
     "quantity": 15,
-    "leftCnt": 0,
+    "leftCnt": 15,
     "isPublicLeftCnt": false,
     "maxCntPerPerson": 1,
     "salesStartAt": "2018-04-05T06:00:00.000Z",
-    "salesEndAt": "2018-04-08T08:00:00.000Z",
-    "refundEndAt": null
+    "salesEndAt": "2200-04-08T08:00:00.000Z",
+    "refundEndAt": "2200-04-08T08:00:00.000Z"
   },
   {
     "id": 11,
