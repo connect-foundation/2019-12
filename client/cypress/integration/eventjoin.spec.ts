@@ -15,50 +15,37 @@ import {
   EXCEED_LIMIT,
 } from '../../src/commons/constants/number';
 
-function goPurchasePage(): void {
-  cy.get('[data-testid=ticketbox-chkbox]').click();
-  cy.get('[data-testid=ticketchoice-submitbtn]').click();
-}
-
 context('이벤트 예약 페이지', () => {
   beforeEach(() => {
     cy.server();
-    cy.route('/api/events/331', 'fixture:reserve_event.json').as(
-      'getJoinPageEvent',
-    );
+    cy.route('/api/events/8', 'fixture:events/has_one_ticket_event.json');
+    cy.route('/api/events/331', 'fixture:events/has_many_tickets_event.json');
     cy.route('POST', '/api/users/reserve/check', 'OK').as('joinCheck');
-    cy.setCookie('UID', Cypress.env('auth_token'));
-    cy.visit('/events/331/register/tickets');
+    cy.authLogin();
 
-    cy.wait('@getJoinPageEvent');
+    cy.visit('/events/2/register/tickets');
     cy.wait('@joinCheck');
-    cy.wait(3000);
   });
 
-  it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketchoice-submitbtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_REQUIRE_CHOICE);
-      });
-  });
+  describe('티켓 수량 카운터', () => {
+    it('(여러 수량을 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터가 보여진다.', () => {
+      cy.visit('/events/331/register/tickets');
+      cy.wait('@joinCheck');
 
-  it('(여러 수량을 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터가 보여진다.', () => {
-    cy.get('[data-testid=ticketbox-chkbox]').click();
-    cy.get('[data-testid=counterbox-container]').within(items => {
-      expect(items).has.length(1);
+      cy.get('[data-testid=ticketbox-chkbox]').click();
+      cy.get('[data-testid=counterbox-container]').should('exist');
+    });
+
+    it('(하나의 티켓만 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터는 보여지지 않는다.', () => {
+      cy.visit('/events/8/register/tickets');
+      cy.get('[data-testid=ticketbox-chkbox]').click();
+      cy.get('[data-testid=counterbox-container]').should('not.exist');
     });
   });
 
-  it('(하나의 티켓만 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터는 보여지지 않는다.', () => {
-    cy.visit('/events/330/register/tickets');
-    cy.get('[data-testid=ticketbox-chkbox]').click();
-    cy.get('[data-testid=counterbox-container]').should('not.exist');
-  });
-
   it('상단의 목차가 예약이 진행될 때마다 스타일이 변경되며 올바르게 표시된다.', () => {
+    cy.visit('/events/2/register/tickets');
+
     cy.get('[data-testid=steplist-step]').within(items => {
       expect(items[0]).to.have.css('color', 'rgb(65, 65, 65)');
       expect(items[1]).to.have.css('color', 'rgb(158, 158, 158)');
@@ -79,115 +66,101 @@ context('이벤트 예약 페이지', () => {
     });
   });
 
-  it('로그인이 되어있지 않은 상태로 예약을 시도하면 alert와 login으로 리다이렉션이 이루어진다', () => {
-    cy.route({
-      method: 'POST',
-      url: '/api/users/reserve',
-      status: 401,
-      response: {},
+  describe('예약 시도', () => {
+    it('로그인이 되어있지 않은 상태로 예약을 시도하면 alert와 login으로 리다이렉션이 이루어진다', () => {
+      cy.route({
+        method: 'POST',
+        url: '/api/users/reserve',
+        status: 401,
+        response: {},
+      });
+
+      cy.goPurchasePage();
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketpurchase-purchasebtn]',
+        RESERVE_REQUIRE_LOGIN,
+      );
+
+      cy.checkPath('/login');
     });
 
-    goPurchasePage();
-
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketpurchase-purchasebtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_REQUIRE_LOGIN);
-      });
-
-    cy.location('pathname').should('eq', '/login');
-  });
-
-  it('예약 응답이 NOT_FOUND 이라면 alert가 표시된다', () => {
-    cy.route({
-      method: 'POST',
-      url: '/api/users/reserve',
-      status: 404,
-      response: {},
+    it('티켓을 선택하지 않고 구매를 시도한다면 alert가 표시된다.', () => {
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketchoice-submitbtn]',
+        RESERVE_REQUIRE_CHOICE,
+      );
     });
 
-    goPurchasePage();
-
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketpurchase-purchasebtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_WRONG_NUMBER);
+    it('예약 응답이 NOT_FOUND 이라면 alert가 표시된다', () => {
+      cy.route({
+        method: 'POST',
+        url: '/api/users/reserve',
+        status: 404,
+        response: {},
       });
-  });
 
-  it('예약 응답이 FORBIDDEN / 유효하지 않은 일정이라면 alert가 표시된다', () => {
-    cy.route({
-      method: 'POST',
-      url: '/api/users/reserve',
-      status: 403,
-      response: { state: NOT_OPEN },
+      cy.goPurchasePage();
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketpurchase-purchasebtn]',
+        RESERVE_WRONG_NUMBER,
+      );
     });
 
-    goPurchasePage();
-
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketpurchase-purchasebtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_INVALID_DATE);
+    it('예약 응답이 FORBIDDEN / 유효하지 않은 일정이라면 alert가 표시된다', () => {
+      cy.route({
+        method: 'POST',
+        url: '/api/users/reserve',
+        status: 403,
+        response: { state: NOT_OPEN },
       });
-  });
 
-  it('예약 응답이 FORBIDDEN / 매진이라면 alert가 표시된다', () => {
-    cy.route({
-      method: 'POST',
-      url: '/api/users/reserve',
-      status: 403,
-      response: { state: SOLD_OUT },
+      cy.goPurchasePage();
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketpurchase-purchasebtn]',
+        RESERVE_INVALID_DATE,
+      );
     });
 
-    goPurchasePage();
-
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketpurchase-purchasebtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_SOLD_OUT);
+    it('예약 응답이 FORBIDDEN / 매진이라면 alert가 표시된다', () => {
+      cy.route({
+        method: 'POST',
+        url: '/api/users/reserve',
+        status: 403,
+        response: { state: SOLD_OUT },
       });
-  });
 
-  it('예약 응답이 FORBIDDEN / 1인당 티켓 개수 초과라면 alert가 표시된다', () => {
-    cy.route({
-      method: 'POST',
-      url: '/api/users/reserve',
-      status: 403,
-      response: { state: EXCEED_LIMIT },
+      cy.goPurchasePage();
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketpurchase-purchasebtn]',
+        RESERVE_SOLD_OUT,
+      );
     });
 
-    goPurchasePage();
-
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketpurchase-purchasebtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_PER_PERSON_OVER);
-      });
-  });
-
-  it('예약이 성공적으로 이루어지면 alert와 내 티켓 페이지로 리다이렉션이 이루어진다', () => {
-    cy.route('POST', '/api/users/reserve', {});
-
-    goPurchasePage();
-    const alertStub = cy.stub();
-    cy.on('window:alert', alertStub);
-    cy.get('[data-testid=ticketpurchase-purchasebtn]')
-      .click()
-      .then(() => {
-        expect(alertStub.getCall(0)).to.be.calledWith(RESERVE_COMPLETE);
+    it('예약 응답이 FORBIDDEN / 1인당 티켓 개수 초과라면 alert가 표시된다', () => {
+      cy.route({
+        method: 'POST',
+        url: '/api/users/reserve',
+        status: 403,
+        response: { state: EXCEED_LIMIT },
       });
 
-    cy.location('pathname').should('eq', '/my/tickets');
+      cy.goPurchasePage();
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketpurchase-purchasebtn]',
+        RESERVE_PER_PERSON_OVER,
+      );
+    });
+
+    it('예약이 성공적으로 이루어지면 alert와 내 티켓 페이지로 리다이렉션이 이루어진다', () => {
+      cy.route('POST', '/api/users/reserve', {});
+
+      cy.goPurchasePage();
+      cy.checkAlertWhenClicked(
+        '[data-testid=ticketpurchase-purchasebtn]',
+        RESERVE_COMPLETE,
+      );
+
+      cy.checkPath('/my/tickets');
+    });
   });
 });
