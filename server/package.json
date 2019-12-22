@@ -17,6 +17,7 @@
     "build": "tsc --sourceMap false",
     "test": "jest --coverage --verbose",
     "test:noseed": "jest --coverage --verbose --testPathIgnorePatterns test/db/seed",
+    "test:update-seed": "jest \"seed\" --u",
     "format": "prettier --write \"**/*.{spec.ts,ts,tsx,js,jsx,json,scss,css,md}\"",
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
