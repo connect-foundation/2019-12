@@ -19,6 +19,9 @@ env:
     - FE_IMAGE_TAG=0.7.0
     - BE_IMAGE_TAG=0.7.0
     - RESERVE_IMAGE_TAG=0.7.0
+    - FE_IMAGE_NAME=bu-front
+    - BE_IMAGE_NAME=bu-back
+    - RESERVE_IMAGE_NAME=bu-reserve
     - DOCKER_USER=jdd04026
     - secure: G9ePamZpTrvw0r11Md6Ydq88XjKvQkV5wInwbTgdnIQq9v6BY53ingtwjiKFvCiIzkPpZlmmw7UGKLZG/JYav6p7ZiFg4eaf8M992Pd4xXemT8ycegdtwkZeK7cbYQs0P45HUcfob9/mO0nGLbLGevkdjQf99EsFXLCihLgV5MX6cp/0a5bmA6Ht/dSp6P+kZRAt2l8zbTQZnjLS/3NNEIXzWGvpT+5wHDoyFMenkXrVcH9mFUla9oNKiUqKjo5GzM5keDJFdm1aUj60OemwpgnLWJKIIR5LaaY6rh9zCJTj5+hk85T2AXKI9cmyE/2zFRKVDoUYaquWVgA52zGOhcO0K3ragm8brgnr5a581YkrU/PKm/gzGaz2jQsSog7yyBdJbnSpN9NAzFpH9IukAt9aEgP2dTJumydkUL8sI5p9MWA1K999O6VXSba5VQ9f0Rn5Pj7rTHpQpVX8Hra27q006QqoUY/ImBxyk7LV/4e/J/b9MEP35sUIaootmbmAYvHoeRNxbD8OiHD4lXWjvooWigXWCRSjK0uIm6h1Qsjg2yp36aX/uhcL3W6dDio61AQFs+ZtseCeiHsNUxjiZl3WIOctHmpftM9UBN/y4Sxr4JHa3ACg5mYFzUR2JxspbeA+clGxywWhltWs5B39h1lub0zobFlrG+a/7v4onLE=
     - DB_USER=user
