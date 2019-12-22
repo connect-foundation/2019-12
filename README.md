@@ -19,7 +19,7 @@
 
 - Atomic Desgin Pattern
 
-<img width="799" alt="Atomic" src="https://user-images.githubusercontent.com/10372359/69915131-0aa9cb00-148f-11ea-95d4-797cbcb6f1b9.png">
+<img width="876" alt="AtomicDesign" src="https://user-images.githubusercontent.com/10372359/71318965-3db60c00-24db-11ea-985f-ce8ea1168e9d.png">
 
 가장 작은 단위의 컴포넌트를 만들어, 큰 단위로 쌓아나가며 각각의 UI 단위를 만들어 나가는 디자인 패턴입니다. 이번 프로젝트에서는 재사용성이 뛰어난 UI를 위해 아토믹 디자인 패턴을 적용했습니다.
 
