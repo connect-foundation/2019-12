@@ -34,6 +34,15 @@ const validateDate = (
     ? startDate.isSameOrBefore(endDate) && startDate.isSameOrAfter(moment())
     : startDate.isSameOrAfter(moment());
 
+const validatDateFormat = (startAt: string, endAt: string): boolean => {
+  if (
+    moment(startAt).format('l') === 'Invalid date' ||
+    moment(endAt).format('l') === 'Invalid date'
+  )
+    return false;
+  return true;
+};
+
 const convertToDateAt = (date: Moment, time: string): string =>
   `${date.format('YYYY-MM-DD')} ${time}`;
 
@@ -76,11 +85,20 @@ function DateTimePicker({
   let endAt = '';
   if (startDate) startAt = convertToDateAt(startDate, startTime);
   if (endDate) endAt = convertToDateAt(endDate, endTime);
-  const valid = validateDate(moment(startAt), moment(endAt), range);
+  const valid =
+    validateDate(moment(startAt), moment(endAt), range) &&
+    validatDateFormat(startAt, endAt);
 
   const handleOnChangeEffectively = useCallback(
     (startAt: string, endAt: string, valid: boolean) => {
-      if (handleOnChange) handleOnChange({ startAt, endAt, valid });
+      if (!handleOnChange) return;
+      if (startAt && endAt)
+        return handleOnChange({
+          startAt: new Date(startAt).toISOString(),
+          endAt: new Date(endAt).toISOString(),
+          valid,
+        });
+      handleOnChange({ startAt: '', endAt: '', valid });
     },
     [handleOnChange],
   );
@@ -90,11 +108,7 @@ function DateTimePicker({
       isMount.current = false;
       return;
     }
-    handleOnChangeEffectively(
-      new Date(startAt).toISOString(),
-      new Date(endAt).toISOString(),
-      valid,
-    );
+    handleOnChangeEffectively(startAt, endAt, valid);
   }, [startAt, endAt, valid, handleOnChangeEffectively]);
 
   return (

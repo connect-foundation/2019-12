@@ -120,9 +120,9 @@ export const TICKET_FORM_REFUND_DATE_LABEL =
 export const TICKET_FORM_REFUND_DATE_CAPTION = '환불 마감날짜를 선택해주세요.';
 
 export const DATE_PICKER_RANGE_CAPTION =
-  '시작하는 날짜가 현재 시각보다 일찍 시작하거나, 종료하는 날짜보다 앞설 수 없습니다.';
+  '날짜 형식이 잘못되었거나, 시작하는 날짜가 현재 시각보다 일찍 시작하거나 종료하는 날짜보다 앞설 수 없습니다.';
 export const DATE_PICKER_SINGLE_CAPTION =
-  '마감하는 날짜가 현재 시각보다 일찍일 수 없습니다.';
+  '날짜 형식이 잘못되었거나, 마감하는 날짜가 현재 시각보다 일찍일 수 없습니다.';
 
 export const MY_PAGE_LNB_MY_TICKETS = '내 티켓';
 export const MY_PAGE_CREATED_EVENTS = '주최한 이벤트';
