@@ -33,6 +33,9 @@ function readFileOfInput(
       return reject(new Error(FILE_NOT_FOUND_ERROR_INFO));
 
     const file: File = inputRef.current.files[0];
+
+    if (!file) return reject(new Error('NO FILE SELECTED'));
+
     if (!file.type.startsWith('image')) {
       clearFileInput(inputRef);
       return reject(new Error(ONLY_IMG_FILE_INFO));
@@ -67,6 +70,7 @@ function ImgSelector({
       setBackground(data);
       onChange && onChange(data, file);
     } catch (error) {
+      if (error.message === 'NO FILE SELECTED') return;
       alert(error.message);
     }
   }, [inputRef, onChange, maxSize]);
