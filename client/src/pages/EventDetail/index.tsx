@@ -6,9 +6,9 @@ import EventDetailTemplate from './template';
 import { EventHeader, Ticket, Place, TuiViewer } from 'components';
 import { EventDetail } from 'types/Data';
 import { getImageURL, imageTypes } from 'utils/getImageURL';
-import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
 import { getEvent } from 'apis';
+import moment from 'moment';
 
 const defaultEventDetail: EventDetail = {
   id: 0,
@@ -97,20 +97,15 @@ function EventDetailView(): React.ReactElement {
   }
 
   function doneEventType(): doneEventTypeEnum {
-    const UtcDate = new Date();
-    UtcDate.setHours(UtcDate.getHours() - 9);
-    const remainEventDays = calculateDiffDaysOfDateRange(
-      UtcDate.toString(),
-      endAt,
-    );
-    const remainTicketDays = calculateDiffDaysOfDateRange(
-      UtcDate.toString(),
-      ticketType.salesEndAt,
+    const remainEventDays = moment(endAt).diff(moment(), 'days');
+    const remainTicketDays = moment(ticketType.salesEndAt).diff(
+      moment(),
+      'days',
     );
 
-    if (remainEventDays <= 0) return doneEventTypeEnum.NOT_REMAIN_EVENT_DAY;
+    if (remainEventDays < 0) return doneEventTypeEnum.NOT_REMAIN_EVENT_DAY;
     if (ticketType.leftCnt === 0) return doneEventTypeEnum.NO_TICKET;
-    if (remainTicketDays <= 0) return doneEventTypeEnum.NOT_REMAIN_TICKET_DAY;
+    if (remainTicketDays < 0) return doneEventTypeEnum.NOT_REMAIN_TICKET_DAY;
     return doneEventTypeEnum.SUCCESS;
   }
 

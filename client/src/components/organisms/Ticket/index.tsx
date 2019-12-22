@@ -3,10 +3,7 @@ import React from 'react';
 import * as S from './style';
 import { TicketType } from 'types/Data';
 import { IconLabel, Price } from 'components';
-import {
-  calculateDiffDaysOfDateRange,
-  getKoreanDateString,
-} from 'utils/dateCalculator';
+import { getKoreanDateString } from 'utils/dateCalculator';
 
 import { FaTicketAlt, FaCheck, FaRegCalendarAlt } from 'react-icons/fa';
 import {
@@ -14,6 +11,7 @@ import {
   TICKET_COMMING_SOON,
   TICKET_SOLD_OUT,
 } from 'commons/constants/string';
+import moment from 'moment';
 
 interface Prop extends TicketType {
   count?: number;
@@ -34,19 +32,12 @@ function Ticket({
       return { status: true, label: TICKET_SOLD_OUT };
     }
 
-    const utcDate = new Date();
-    utcDate.setHours(utcDate.getHours() - 9);
-    const utcDateString = utcDate.toString();
-
-    const remainDays = calculateDiffDaysOfDateRange(utcDateString, salesEndAt);
-    if (remainDays <= 0) {
+    const remainDays = moment(salesEndAt).diff(moment(), 'days');
+    if (remainDays < 0) {
       return { status: true, label: TICKET_INVALID_DATE };
     }
 
-    const commigDays = calculateDiffDaysOfDateRange(
-      utcDateString,
-      salesStartAt,
-    );
+    const commigDays = moment(salesStartAt).diff(moment(), 'days');
     if (commigDays > 0) {
       return { status: true, label: `${commigDays}${TICKET_COMMING_SOON}` };
     }
