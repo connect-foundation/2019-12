@@ -46,7 +46,14 @@ function TuiEditor({
         ],
       });
       editor.on('change', () => {
-        setContent(editor.getHtml());
+        let editorHtml = editor.getHtml();
+        const isImageIn = editorHtml.match(/<img.*>/);
+        if (isImageIn) {
+          alert('죄송합니다, 내용 안의 이미지 업로드는 제한하고 있습니다. 😭');
+          editorHtml = editorHtml.replace(/<img.*>/, '');
+          editor.setHtml(editorHtml);
+        }
+        setContent(editorHtml);
       });
     }
   }, [placeholder]);
