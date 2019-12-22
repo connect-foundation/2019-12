@@ -9,7 +9,7 @@ export interface Props {
 
 function IconLabel({ icon, labelContent }: Props): React.ReactElement {
   return (
-    <S.Container>
+    <S.Container data-testid={'icon-label'}>
       {icon}
       <S.Label>{labelContent}</S.Label>
     </S.Container>

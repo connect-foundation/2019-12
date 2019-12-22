@@ -21,6 +21,7 @@ function Login(): React.ReactElement {
     <LoginTemplate
       logoImg={
         <img
+          data-testid={'login-logo'}
           alt={'Logo'}
           src={LogoSvg}
           onClick={() => {
