@@ -7,19 +7,19 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
-### 📺 [HomePage](http://www.bookus.kr/)
+### 📺 [HomePage](https://www.bookus.kr/)
 
-### 📕 [Storybook for Bookus](https://storybook-bookus.netlify.com/)
+### 📕 [Storybook for Bookus](https://storybook.bookus.kr/)
 
 ### 🌲 [Cypress for Bookus](https://dashboard.cypress.io/projects/wauqe2/runs)
 
-[Bookus!](http://www.foorg.xyz/)는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로젝트입니다. 순간적으로 많은 트래픽이 몰리더라도 중단되지 않는 **안정적인** 선착순 예약 서비스를 목표로 하고 있습니다. 따라서 다음과 같은 도전과제를 갖고 있습니다.
+[Bookus!](https://www.bookus.kr/)는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로젝트입니다. 순간적으로 많은 트래픽이 몰리더라도 중단되지 않는 **안정적인** 선착순 예약 서비스를 목표로 하고 있습니다. 따라서 다음과 같은 도전과제를 갖고 있습니다.
 
 ### 재사용성이 높고 테스트로 검증된 UI Component
 
 - Atomic Desgin Pattern
 
-<img width="799" alt="Atomic" src="https://user-images.githubusercontent.com/10372359/69915131-0aa9cb00-148f-11ea-95d4-797cbcb6f1b9.png">
+<img width="876" alt="AtomicDesign" src="https://user-images.githubusercontent.com/10372359/71318965-3db60c00-24db-11ea-985f-ce8ea1168e9d.png">
 
 가장 작은 단위의 컴포넌트를 만들어, 큰 단위로 쌓아나가며 각각의 UI 단위를 만들어 나가는 디자인 패턴입니다. 이번 프로젝트에서는 재사용성이 뛰어난 UI를 위해 아토믹 디자인 패턴을 적용했습니다.
 
