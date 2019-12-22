@@ -23,6 +23,27 @@ function TuiEditor({
         height: '45rem',
         previewStyle: 'vertical',
         placeholder,
+        toolbarItems: [
+          'heading',
+          'bold',
+          'italic',
+          'strike',
+          'divider',
+          'hr',
+          'quote',
+          'divider',
+          'ul',
+          'ol',
+          'task',
+          'indent',
+          'outdent',
+          'divider',
+          'table',
+          'link',
+          'divider',
+          'code',
+          'codeblock',
+        ],
       });
       editor.on('change', () => {
         setContent(editor.getHtml());
