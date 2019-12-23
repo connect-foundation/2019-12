@@ -13,6 +13,17 @@
 
 ### 🌲 [Cypress for Bookus](https://dashboard.cypress.io/projects/wauqe2/runs)
 
+### ✍️ Writing
+
+#### [Atomic Design for React](https://medium.com/@inthewalter/atomic-design-for-react-514660f93ba?) by [@inthewalter](https://github.com/inthewalter)
+
+#### [실용적인 리액트 테스트 전략](https://velog.io/@sdong001/%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A0%84%EB%9E%B5) by [@doong-jo](https://github.com/doong-jo)
+
+#### [주니어 개발자의 CI/CD 도입기](https://velog.io/@jdd04026/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-CICD-%EB%8F%84%EC%9E%85%EA%B8%B0-n6k3mkug47) by [@FullOfOrange](https://github.com/FullOfOrange)
+
+#### [Express 기반 프로젝트에서 Typescript Typing에 대한 고민](https://medium.com/@dobest27/express-%EA%B8%B0%EB%B0%98-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90%EC%84%9C-typescript-typing-%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EB%AF%BC-cf282770595f) by [@dobest27](https://github.com/dobest27)
+
+
 [Bookus!](https://www.bookus.kr/)는 이벤트 예약 서비스 [Festa!](https://festa.io/) 클론 프로젝트입니다. 순간적으로 많은 트래픽이 몰리더라도 중단되지 않는 **안정적인** 선착순 예약 서비스를 목표로 하고 있습니다. 따라서 다음과 같은 도전과제를 갖고 있습니다.
 
 ## 재사용성이 높고 테스트로 검증된 UI Component
@@ -68,8 +79,6 @@
 ## Built With
 
 ![Dependancy](https://user-images.githubusercontent.com/10372359/70730864-14fa7d80-1d49-11ea-959f-b981d8460d90.png)
-
-## 기술 소개
 
 ## Team
 
