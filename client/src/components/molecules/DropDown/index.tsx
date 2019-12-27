@@ -3,7 +3,7 @@ import * as S from './style';
 
 export interface Item {
   title: string;
-  desc?: string;
+  desc: string;
   value: any;
 }
 interface Props {
@@ -24,7 +24,7 @@ function DropDown({
         return (
           <S.DropDownItem
             key={index}
-            onClick={() => handleOnClick({ value, title })}
+            onClick={(): void => handleOnClick({ value, title, desc })}
           >
             <S.ItemTitle>{title}</S.ItemTitle>
             <S.ItemDesc>{desc}</S.ItemDesc>
