@@ -3,12 +3,19 @@
 context('메인 페이지', () => {
   beforeEach(() => {
     cy.server();
-    cy.route('/api/events?cnt=12', 'fixture:events.json').as('getEvents');
+    cy.route('/api/events?cnt=12', 'fixture:events/events.json').as(
+      'getEvents',
+    );
+    cy.route('/api/events/331', 'fixture:events/event.json').as(
+      'getEventDetail',
+    );
     cy.route(
       /(\/api\/events\?cnt=12&startAt=).+/,
-      'fixture:fetched_events.json',
+      'fixture:events/fetched_events.json',
     ).as('getEventsMore');
-    cy.setCookie('UID', Cypress.env('auth_token'));
+
+    cy.authLogin();
+
     cy.visit('/');
   });
 
@@ -37,11 +44,11 @@ context('메인 페이지', () => {
 
   it('메인 배너의 이벤트 주최하기 버튼 클릭 시 이벤트 주최하기 페이지로 이동된다.', () => {
     cy.get('[data-testid=mainbanner-btn]').click();
-    cy.location('pathname').should('eq', '/event/create');
+    cy.checkPath('/event/create');
   });
 
-  it('카드를 클릭 시 이벤트 주최하기 페이지로 이동된다.', () => {
+  it('카드를 클릭 시 이벤트 상세보기 페이지로 이동된다.', () => {
     cy.get('[data-testid=main-card]:first').click();
-    cy.location('pathname').should('match', /^\/events\/[0-9]+$/);
+    cy.checkPath(/^\/events\/[0-9]+$/, 'match');
   });
 });

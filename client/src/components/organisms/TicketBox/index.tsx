@@ -19,7 +19,7 @@ const { palette } = Theme;
 type PickProps = Pick<TicketType, 'price' | 'name' | 'desc' | 'salesEndAt'>;
 export interface Props extends PickProps {
   chkProps: ChkBoxProps;
-  refundBtProps?: BtnProps;
+  refundBtnProps?: BtnProps;
   checked?: boolean;
   chkDesc?: string;
   purchaseDate?: string;
@@ -34,7 +34,7 @@ export interface Props extends PickProps {
 
 function TicketBox({
   chkProps,
-  refundBtProps,
+  refundBtnProps,
   checked,
   purchaseDate,
   ticketId,
@@ -56,18 +56,18 @@ function TicketBox({
 
   if (chkProps.onClick) {
     const copyParentOnClick = chkProps.onClick;
-    chkProps.onClick = event => {
+    chkProps.onClick = (event): void => {
       copyParentOnClick(event);
       setChecked(!isChecked);
     };
   } else {
-    chkProps.onClick = () => {
+    chkProps.onClick = (): void => {
       setChecked(!checked);
     };
   }
 
   return (
-    <S.Container checked={!!isChecked}>
+    <S.Container data-testid={'ticket-box'} checked={!!isChecked}>
       <S.TicketInfoContainer>
         <S.Name>{name}</S.Name>
         <S.PriceWrapper>
@@ -104,7 +104,7 @@ function TicketBox({
           {showChkIcon && (
             <S.IconWrapper disabledChkIcon={!!disabledChkIcon}>
               <FaCheckCircle
-                onClick={() => {
+                onClick={(): void => {
                   if (disabledChkIcon) {
                     return;
                   }
@@ -117,12 +117,13 @@ function TicketBox({
           )}
           {!showChkIcon && <ChkBox {...chkProps} />}
         </S.ChkBoxContainer>
-        {showRefundBtn && (
+        {showRefundBtn && refundBtnProps && (
           <Btn
-            {...refundBtProps}
+            {...refundBtnProps}
+            data-testid={'refund-btn'}
             fit
             styletype={'transparent'}
-            children={refundBtProps!.children}
+            children={refundBtnProps.children}
           />
         )}
       </S.OptionalContentWrapper>

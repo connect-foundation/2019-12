@@ -1,0 +1,74 @@
+[
+  {
+    "id": 6,
+    "userId": 1,
+    "title": "Redis - 16:20 에 티켓 오픈!",
+    "startAt": "2019-12-25T15:00:00.000Z",
+    "endAt": "2019-12-30T15:00:00.000Z",
+    "place": "드림플러스 강남",
+    "address": "서울 서초구 강남대로 311",
+    "placeDesc": "레디스는 빠릅니다. 매우매우",
+    "mainImg": "9e436eb0-24a3-11ea-97f9-f75c4c9ee7ff.png",
+    "firstName": "진혁",
+    "lastName": "육",
+    "ticket": {
+      "id": 6,
+      "eventId": 6,
+      "name": "레디!스",
+      "desc": "레디스는 만능입니다!",
+      "price": 5000,
+      "quantity": 10000,
+      "leftCnt": 9992,
+      "isPublicLeftCnt": true,
+      "maxCntPerPerson": 5,
+      "salesStartAt": "2019-12-23T07:00:00.000Z",
+      "salesEndAt": "2019-12-30T15:00:00.000Z",
+      "refundEndAt": "2019-12-28T15:00:00.000Z"
+    },
+    "userTickets": [
+      {
+        "id": 10,
+        "ticketTypeId": 6,
+        "userId": 2,
+        "isAttendance": false,
+        "createdAt": "2019-12-29T07:51:22.000Z"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "userId": 2,
+    "title": "Saturday Azure Live! 1803",
+    "startAt": "2018-03-24T04:00:00.000Z",
+    "endAt": "2200-03-24T04:00:00.000Z",
+    "place": "토즈 강남컨퍼런스센터 강남점",
+    "address": "서울특별시 서초구 서초4동 강남대로 441",
+    "placeDesc": "",
+    "mainImg": "14",
+    "firstName": "진혁",
+    "lastName": "육",
+    "ticket": {
+      "id": 5,
+      "eventId": 5,
+      "name": "언제든지 구매 가능/환불 가능한 이벤트",
+      "desc": "",
+      "price": 10000,
+      "quantity": 100000,
+      "leftCnt": -1,
+      "isPublicLeftCnt": false,
+      "maxCntPerPerson": 100000,
+      "salesStartAt": "2018-03-12T00:00:00.000Z",
+      "salesEndAt": "2200-03-23T04:00:00.000Z",
+      "refundEndAt": "2200-03-23T04:00:00.000Z"
+    },
+    "userTickets": [
+      {
+        "id": 11,
+        "ticketTypeId": 5,
+        "userId": 2,
+        "isAttendance": false,
+        "createdAt": "2019-12-29T07:51:22.000Z"
+      }
+    ]
+  }
+]

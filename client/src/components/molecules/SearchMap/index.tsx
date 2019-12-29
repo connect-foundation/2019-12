@@ -65,25 +65,27 @@ function SearchMap({ handleOnChange }: Props): React.ReactElement {
 
   const handleKeywordChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  ): Promise<void> => {
     setKeyword(e.target.value);
     setVisible(true);
   };
 
   const handleClickResult = ({
     title,
+    desc,
     value,
   }: {
     title: string;
+    desc: string;
     value: {
       latitude: number;
       longitude: number;
     };
-  }) => {
+  }): void => {
     setVisible(false);
-    setKeyword(title);
+    setKeyword(title || desc);
     setLocation(value);
-    if (handleOnChange) handleOnChange({ address: title, ...value });
+    if (handleOnChange) handleOnChange({ address: title || desc, ...value });
   };
 
   return (

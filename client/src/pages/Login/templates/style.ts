@@ -40,3 +40,7 @@ export const LogoWrapper = styled.div`
     cursor: pointer;
   }
 `;
+
+export const OAuthWrapper = styled.div`
+  width: 100%;
+`;

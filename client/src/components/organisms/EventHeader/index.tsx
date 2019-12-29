@@ -145,13 +145,14 @@ function EventHeader({
       <S.SubmitContainer>
         <S.ReservedPeopleContainer>
           <FaUsers size={'2rem'} />
-          <S.ReservedPeople>
+          <S.ReservedPeople data-testid={'left-count'}>
             {!ticketInfo.isPublicLeftCnt
               ? '비공개'
               : `${ticketInfo.quantity - ticketInfo.leftCnt}명`}
           </S.ReservedPeople>
         </S.ReservedPeopleContainer>
         <S.SubmitBtn
+          data-testid={'event-detail-submit-btn'}
           {...submitBtnState}
           to={`/events/${eventId}/register/tickets`}
         />

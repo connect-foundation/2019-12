@@ -27,12 +27,13 @@ interface ContainerWrapperProps {
 
 export const Container = styled.div<ContainerWrapperProps>`
   display: flex;
+  width: 50%;
   flex-direction: column;
   color: ${palette('grayscale', 1)};
   margin-bottom: 5rem;
   padding: ${switchProp('imgPosition', {
     top: '0rem',
-    left: '2rem 0rem',
+    left: '2rem 2rem 0rem 0rem',
   })};
 `;
 

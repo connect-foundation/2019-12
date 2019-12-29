@@ -34,6 +34,7 @@
     "jest/valid-expect": "off",
     "cypress/no-assigning-return-values": "error",
     "cypress/no-unnecessary-waiting": "off",
-    "cypress/assertion-before-screenshot": "warn"
+    "cypress/assertion-before-screenshot": "warn",
+    "no-unused-expressions": 0
   }
 }

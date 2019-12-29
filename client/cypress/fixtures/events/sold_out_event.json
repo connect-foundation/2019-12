@@ -1,0 +1,33 @@
+{
+  "id": 9,
+  "userId": 2,
+  "title": "Ubuntu 18.04 LTS Release Party",
+  "startAt": "2018-04-28T03:40:00.000Z",
+  "endAt": "2018-04-28T08:30:00.000Z",
+  "place": "D.CAMP 6층 다목적홀",
+  "address": "서울특별시 강남구 역삼동 683-34",
+  "placeDesc": "(http://naver.me/GNj5OQ24)",
+  "latitude": 37.50783261,
+  "longitude": 127.04515914,
+  "mainImg": "19",
+  "desc": "<p>우분투한국커뮤니티와 코딩이랑 무관합니다만, 에서 우분투 18.04 릴리즈 파티 행사를 준비했습니다. 행사를 통해 새로 출시된 우분투 18.04 에 대해서도 알아보는 시간을 가질 예정입니다.</p><br/> <p> <b>우분투한국커뮤니티</b> </br> <a target=\"_blank\" href=\"https://www.ubuntu-kr.org/\">ubuntu-kr.org</a> </p><p> <b>코딩이랑 무관합니다만</b> </br> <a target=\"_blank\" href=\"https://facebook.com/groups/System.out.Coding\">facebook.com/groups/System.out.Coding</a> </p><p>행사에 대해 좀 더 자세한 사항은 아래 링크를 확인 바랍니다.<br /><a target=\"_blank\" href=\"https://ubuntu-kr.github.io/events/2018/03/28/ubuntu-18-04-rel-party.html\">https://ubuntu-kr.github.io/events/2018/03/28/ubuntu-18-04-rel-party.html</a></p><br /><br /><h2> <b>미세먼지 같은 우분투 서버활용 팁</b> </h2> <ul> <li>배준현 - 코딩이랑 무관합니다만,</li><li>Tmux, SELINUX, crond, nohup 등의 미세먼지 같은 우분투 서버 활용에 있어서의 팁들을 다룹니다.</li></ul> <br/> <h2> <b>What's new in Ubuntu 18.04 LTS</b> </h2> <ul> <li>한영빈 - 우분투한국커뮤니티 대표</li><li>Gnome, Subiquity 등 Ubuntu 18.04 LTS 에서 새로 달라진 점에 대해 다뤄봅니다.</li></ul> <br/> <h2> <b>VM이랑은 무관한 컨테이너 이야기</b> </h2> <ul> <li>윤성국 - 코딩이랑 무관합니다만,</li><li>LXC - LXD - Docker비교해 보고, 소스코드화 함께 컨테이너가 어떻게 동작하는지 그리고 Docker 이미지 레이어 버전 관리 원리에 대해 알아봅니다.</li></ul> <br/> <h2> <b>1분기 C++ 스터디 결과 보고 발표</b> </h2> <ul> <li>정회형 - 우분투한국커뮤니티</li><li>작년 12월 부터 올해 1월까지 진행된 C++ 기초 스터디 진행 결과를 발표합니다.</li></ul> <br/> <h2> <b>Hanjp-IM 프로젝트 진행 현황 발표</b> </h2> <ul> <li>김광연 - 광운대학교</li><li>Hanjp-IM 프로젝트는 한글로 일본어 발음을 입력하여 일본 가나 문자를 입력하는 입력기 엔진 프로젝트 입니다. 프로젝트에 대해 간단히 소개하고, 12월 부터 최근까지의 프로젝트 진행 상황에 대해 발표합니다.</li></ul> <br/> <h2> <b>Lightning Talks</b> </h2> <ul> <li>라이트닝 토크는 사전에 발표자를 받지만, 당일 현장에서도 발표자 신청을 하실 수 있습니다.</li><li>발표자별로 최대 5분간 발표를 하실 수 있으며, 시간 초과시 마이크가 다음 발표자에게 넘겨집니다.</li><li>예정된 발표 목록</li><ul> <li>최호경 - 국민대학교 / 코딩 시험에서 당황을 해버렸다.</li><li>본인이 학교 코딩 시험에서 예상치 못한 상황에 당황했던 이야기를 다루는 라이트닝 토크입니다.</li></ul> </ul> <br/> <br/> <h2> <b>안내사항</b> </h2> <ul> <li>참가 등록은 Festa.io 를 통해 이뤄집니다.</li><li>부득이한 사정으로 참석하지 못하시는 경우, Festa.io 에서 2018.04.27 23:59:59 까지 참가등록 취소해 주시기 바랍니다. 등록 취소 없이 참석하지 않으시는 경우, 노쇼(No Show)로 간주되어, 추후 행사 참석에 불이익을 받을 수 있습니다.</li><li>주차 지원을 해 드리지 않습니다. 되도록이면 대중교통을 이용해 주시기 바랍니다.</li><li>참가 등록 시기를 놓쳐 사전에 등록을 못하셨어도, 현장에서 참가 등록을 하실 수 있습니다.</li><li>행사 관련 문의는 korea.ubuntu@gmail.com 로 해 주세요.</li></ul> <br/> <br/> <h2> <b>일정표</b> </h2> <ul> <li>12:00 ~ 12:40 | 준비 및 등록확인</li><li>12:40 ~ 12:50 | 일정 안내</li><li>12:50 ~ 1:30 | 배준현 - 미세먼지 같은 우분투 서버활용 팁</li><li>1:30 ~ 1:40 | 휴식</li><li>1:40 ~ 2:20 | 한영빈 - What’s new in Ubuntu 18.04 LTS</li><li>2:20 ~ 2:30 | 휴식</li><li>2:30 ~ 3:10 | 윤성국 - VM이랑은 무관한 컨테이너 이야기</li><li>3:10 ~ 3:20 | 휴식</li><li>3:20 ~ 3:40 | 정회형 - 1분기 C++ 스터디 결과 보고 발표</li><li>3:20 ~ 3:40 | 김광연 - Hanjp-IM 프로젝트 진행 현황 발표</li><li>4:00 ~ 4:10 | 휴식</li><li>4:10 ~ 4:50 | Q&A Session</li><li>4:50 ~ 5:30 | 라이트닝 토크</li><li>5:30 ~ 6:00 | 마무리 및 행사장 정리</li><li>6:00 ~ | 본행사(뒷풀이)</li></ul> <br/> <br/>",
+  "ticketType": {
+    "id": 9,
+    "eventId": 9,
+    "name": "매진된 이벤트",
+    "desc": "",
+    "price": 0,
+    "quantity": 170,
+    "leftCnt": 0,
+    "isPublicLeftCnt": false,
+    "maxCntPerPerson": 1,
+    "salesStartAt": "2018-04-02T15:00:00.000Z",
+    "salesEndAt": "2020-04-27T14:59:59.000Z",
+    "refundEndAt": "2020-04-27T14:59:59.000Z"
+  },
+  "user": {
+    "id": 2,
+    "lastName": "조",
+    "firstName": "성동"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": 5,
+  "userId": 2,
+  "title": "Saturday Azure Live! 1803",
+  "startAt": "2018-03-24T04:00:00.000Z",
+  "endAt": "2200-03-24T04:00:00.000Z",
+  "place": "토즈 강남컨퍼런스센터 강남점",
+  "address": "서울특별시 서초구 서초4동 강남대로 441",
+  "placeDesc": "",
+  "latitude": 37.50170812,
+  "longitude": 127.02517885,
+  "mainImg": "14",
+  "desc": "<p>Saturday Azure Live는 한국 Azure 사용자 그룹이 매월 셋째주 토요일마다(사정에 따라서 일정이 조정될 수 있습니다.) Azure Platform 관련 기술 정보를 공유하고 전달하는 정기 세미나/교육 행사입니다. 2018년 3월 행사는 참석자들과 함께 토론하며 교육을 진행하는 Hands-on-Lab 행사를 마련하였습니다.<br /><br />이번 행사는 우리 한국 Azure 사용자 그룹의 운영자로 활동하는 남정현님과 바이텍정보통신에서 근무하고 계시는 윤울암님께서 Rancher로 Kubernetes Cluster를 만드는 방법과 Kubernetes 클러스터 모니터링 방법에 대해 이야기 할 예정입니다.<br /><br />행사 개요<br />  - 제목: 내 손으로 만들어보는 Azure, Rancher, Kubernetes (ARK) 클러스터<br />  - 발표자: 남정현 (한국 Azure 사용자 그룹), 윤울암 (바이텍정보통신 차장)<br />  - 일시: 2018년 3월 24일 토요일 오후 1시 ~ 오후 6시<br />  - 장소: 토즈 강남컨퍼런스센터 강남점<br />  - 교육 대상: Azure에서 Kubernetes를 사용하고자 하는 사용자 또는 학습하려는 자<br />  - 교육 레벨: 심화 학습 과정(중급)<br /><br />시간표<br />  - 13:00 ~ 13:20 등록 및 네트워킹<br />  - 13:30 ~ 16:30 Azure, Rancher로 만드는 쿠버네티스 클러스터 (ARK)<br />  - 16:40 ~ 17:40 AKS 모니터링<br />  - 17:40 ~ 18:00 설문 작성 및 Q&A<br /><br />  미리 준비할 것<br />  - 노트북 (필수)<br />  - IntelliJ Community Edition (무료 JetBrains IDE) 사전 설치<br />  - 개인 네트워크 접속 장비 (WiBro, 휴대폰 테더링 등) 권장<br /><br />미리 공부하면 도움되는 것<br />  - Git, SSH, Docker, Kubernetes, Terraform의 기본적인 사용법<br />  - Azure Cloud Shell, Microsoft CLI 2.0 for Azure 및 Azure Resource Manager에 대한 선행 학습<br /><br />교육을 통해서 배울 것<br />  - Kubernetes 클러스터의 Azure에서의 기본 동작 원리 학습<br />  - Terraform으로 Azure VM을 만들고 배포하는 방법<br />  - ARK 클러스터를 만들고 실제 애플리케이션 구동해보기<br />  - 애플리케이션 업데이트, 클러스터 규모 조정해보기<br />  - K8S 클러스터 모니터링해보기<br /><br />참가자 유의 사항<br />  - 이번 행사에는 Azure의 주요 서비스를 실습 당일 사용할 수 있도록 한국 Azure 사용자 그룹에서 Azure 계정을 제공합니다.<br />  - 실습 당일 노트북이 반드시 필요하며, 무선 인터넷 접속량이 많아 네트워크 상태가 좋지 않을 수 있으니, 휴대폰 테더링 또는 에그 등의 개인용 네트워크 접속 장비의 지참을 권장합니다.<br />  - 유료로 진행되는 행사이며, 행사 신청 취소 이외에는 별도의 환불을 제공하지 않습니다. 접수된 금액은 행사 운영에 필요한 경비로 소중하게 사용하겠습니다.<br />  - 신청 후 결제를 하지 않았거나, 결제한 이후에 행사 당일 결석하시는 경우, 노 쇼 행위로 간주하여 추후 한국 Azure 사용자 그룹 및 멜팅콘 관련 행사 참석 등에 불이익이 있을 수 있습니다. 행사를 참석하지 못하시는 경우, 반드시 접수 기간 내에 취소 요청을 완료하여 주시기 바랍니다.<br />  - 별도의 주차 공간이 제공되지 않으며, 차량 방문 시에는 인근의 유료 주차장을 이용하셔야 합니다.<br /><br />기타 문의 사항<br />  - 김세준(kimsejun@outlook.kr) / 010-3135-4786 로 문의하여 주시면 감사하겠습니다.<br /></p>",
+  "ticketType": {
+    "id": 5,
+    "eventId": 5,
+    "name": "언제든지 구매 가능/환불 가능한 이벤트",
+    "desc": "",
+    "price": 10000,
+    "quantity": 100000,
+    "leftCnt": -1,
+    "isPublicLeftCnt": false,
+    "maxCntPerPerson": 100000,
+    "salesStartAt": "2018-03-12T00:00:00.000Z",
+    "salesEndAt": "2200-03-23T04:00:00.000Z",
+    "refundEndAt": "2200-03-23T04:00:00.000Z"
+  },
+  "user": {
+    "id": 2,
+    "lastName": "조",
+    "firstName": "성동"
+  }
+}

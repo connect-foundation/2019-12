@@ -1,0 +1,65 @@
+version: '3.7'
+services:
+  front:
+    image: jdd04026/bu-front:1.0.0-hotfix-1
+    container_name: front
+    ports:
+      - '8080:80'
+    networks:
+      - app
+  back:
+    image: jdd04026/bu-back:1.0.0
+    container_name: back
+    restart: always
+    # env 파일 같은 경우는 서버용으로 따로 설정을 해서 넣어주자.
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+    networks:
+      - app
+  reserve:
+    image: jdd04026/bu-reserve:1.0.0
+    container_name: reserve
+    restart: always
+    # env 파일 같은 경우는 서버용으로 따로 설정을 해서 넣어주자.
+    # 서버의 env파일 설정과 동일하다.
+    env_file:
+      - ./env
+    ports:
+      - '4000:3000'
+    networks:
+      - app
+  db:
+    image: jdd04026/mariadb-locale:latest
+    container_name: bu-db
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=bookus
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+    ports:
+      - '3306:3306'
+    networks:
+      - app
+  redis:
+    image: redis:5.0.7-alpine
+    container_name: bu-redis
+    volumes:
+      - redisdata:/data
+    ports:
+      - '6379:6379'
+    networks:
+      - app
+
+networks:
+  app:
+    name: app_bridge
+
+volumes:
+  dbdata:
+    driver: local
+  redisdata:
+    driver: local

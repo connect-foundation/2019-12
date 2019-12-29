@@ -18,7 +18,9 @@ function LoginTemplate({
       <S.LogoWrapper>{logoImg}</S.LogoWrapper>
       <S.OauthContainer>
         <S.SocialLoginWrapper>{socialLoginLabel}</S.SocialLoginWrapper>
-        {oauthContent}
+        <S.OAuthWrapper data-testid={'login-btn'}>
+          {oauthContent}
+        </S.OAuthWrapper>
       </S.OauthContainer>
     </S.Container>
   );
