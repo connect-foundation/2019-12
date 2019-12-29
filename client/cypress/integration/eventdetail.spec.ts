@@ -6,6 +6,11 @@ context('이벤트 상세 페이지', () => {
     cy.route('/api/events/331', 'fixture:events/event.json').as(
       'getEventDetail',
     );
+
+    cy.route('/api/events/5', 'fixture:events/always_buy_refund_event.json');
+    cy.route('/api/events/7', 'fixture:events/over_sale_event.json');
+    cy.route('/api/events/8', 'fixture:events/has_one_ticket_event.json');
+    cy.route('/api/events/9', 'fixture:events/sold_out_event.json');
   });
 
   it('페이지 접속 시 이벤트 상세정보를 가져온다.', () => {
@@ -15,13 +20,13 @@ context('이벤트 상세 페이지', () => {
 
   describe('티켓과 등록 버튼의 표시 상태', () => {
     it('비공개 이벤트에서 티켓과 등록 버튼의 표시 상태', () => {
-      cy.visit('/events/4');
+      cy.visit('/events/7');
       cy.get('[data-testid=left-count]').contains('비공개');
       cy.get('[data-testid=icon-label]').should('have.length', 2);
     });
 
     it('종료된 이벤트에서 티켓과 등록 버튼의 표시 상태', () => {
-      cy.visit('/events/4');
+      cy.visit('/events/7');
 
       cy.get('[data-testid=event-detail-submit-btn]').contains(
         '이벤트가 종료되었습니다',
