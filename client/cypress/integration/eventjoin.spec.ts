@@ -19,19 +19,15 @@ context('이벤트 예약 페이지', () => {
   beforeEach(() => {
     cy.server();
     cy.route('/api/events/8', 'fixture:events/has_one_ticket_event.json');
-    cy.route('/api/events/331', 'fixture:events/has_many_tickets_event.json');
+    cy.route('/api/events/2', 'fixture:events/always_buy_refund_event.json');
     cy.route('POST', '/api/users/reserve/check', 'OK').as('joinCheck');
     cy.authLogin();
-
     cy.visit('/events/2/register/tickets');
     cy.wait('@joinCheck');
   });
 
   describe('티켓 수량 카운터', () => {
     it('(여러 수량을 구매할 수 있는 이벤트의) 티켓 체크박스 클릭 시 수량 카운터가 보여진다.', () => {
-      cy.visit('/events/331/register/tickets');
-      cy.wait('@joinCheck');
-
       cy.get('[data-testid=ticketbox-chkbox]').click();
       cy.get('[data-testid=counterbox-container]').should('exist');
     });
@@ -44,8 +40,6 @@ context('이벤트 예약 페이지', () => {
   });
 
   it('상단의 목차가 예약이 진행될 때마다 스타일이 변경되며 올바르게 표시된다.', () => {
-    cy.visit('/events/2/register/tickets');
-
     cy.get('[data-testid=steplist-step]').within(items => {
       expect(items[0]).to.have.css('color', 'rgb(65, 65, 65)');
       expect(items[1]).to.have.css('color', 'rgb(158, 158, 158)');

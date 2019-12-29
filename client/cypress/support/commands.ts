@@ -11,27 +11,29 @@ declare namespace Cypress {
   }
 }
 
-const COMMAND_DELAY = 2000;
+// const COMMAND_DELAY = 2000;
 
-for (const command of [
-  'visit',
-  'click',
-  'trigger',
-  'type',
-  'clear',
-  'reload',
-  'contains',
-]) {
-  Cypress.Commands.overwrite(command, (originalFn, ...args) => {
-    const origVal = originalFn(...args);
+// (function delayEachCommand() {
+//   for (const command of [
+//     'visit',
+//     'click',
+//     'trigger',
+//     'type',
+//     'clear',
+//     'reload',
+//     'contains',
+//   ]) {
+//     Cypress.Commands.overwrite(command, (originalFn, ...args) => {
+//       const origVal = originalFn(...args);
 
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(origVal);
-      }, COMMAND_DELAY);
-    });
-  });
-}
+//       return new Promise(resolve => {
+//         setTimeout(() => {
+//           resolve(origVal);
+//         }, COMMAND_DELAY);
+//       });
+//     });
+//   }
+// })();
 
 Cypress.Commands.add('authLogin', () => {
   cy.setCookie('UID', Cypress.env('auth_token'));
