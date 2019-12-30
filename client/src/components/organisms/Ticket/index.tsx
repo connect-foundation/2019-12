@@ -28,19 +28,14 @@ function Ticket({
   leftCnt,
 }: Prop): React.ReactElement {
   const disableState = ((): { status: boolean; label: string } => {
-    if (leftCnt === 0) {
-      return { status: true, label: TICKET_SOLD_OUT };
-    }
+    if (leftCnt === 0) return { status: true, label: TICKET_SOLD_OUT };
 
     const remainDays = moment(salesEndAt).diff(moment(), 'days');
-    if (remainDays < 0) {
-      return { status: true, label: TICKET_INVALID_DATE };
-    }
+    if (remainDays < 0) return { status: true, label: TICKET_INVALID_DATE };
 
     const commigDays = moment(salesStartAt).diff(moment(), 'days');
-    if (commigDays > 0) {
+    if (commigDays > 0)
       return { status: true, label: `${commigDays}${TICKET_COMMING_SOON}` };
-    }
 
     return {
       status: false,
@@ -52,7 +47,10 @@ function Ticket({
     <>
       <S.TicketLabel>티켓</S.TicketLabel>
       <S.TicketContentContainer>
-        <S.TicketContentWrapContainer disabled={disableState.status}>
+        <S.TicketContentWrapContainer
+          data-testid={'ticket-container'}
+          disabled={disableState.status}
+        >
           <S.TicketPriceWrapper>
             <Price separated>{price}</Price>
           </S.TicketPriceWrapper>

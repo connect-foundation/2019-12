@@ -21,6 +21,7 @@ function LNBItem({
         onClick && onClick(event);
         !isActive && setIsActive(true);
       }}
+      data-testid={'lnb-item'}
     >
       {children}
     </S.Container>

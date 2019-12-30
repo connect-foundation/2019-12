@@ -1,0 +1,33 @@
+{
+  "id": 8,
+  "userId": 4,
+  "title": "Scala Night",
+  "startAt": "2018-04-14T04:00:00.000Z",
+  "endAt": "2200-05-14T01:00:00.000Z",
+  "place": "한빛미디어",
+  "address": "서울특별시 서대문구 연희로2길 62 한빛미디어",
+  "placeDesc": "주차공간이 협소하므로 가급적 대중교통을 이용해주시면 감사하겠습니다. (http://naver.me/GGVezQG3)",
+  "latitude": 37.55916906,
+  "longitude": 126.92787783,
+  "mainImg": "18",
+  "desc": "<p><b>Scala Night</b></p> <p>스칼라를 대하는 우리의 자세</p><p>스칼라나이트는 스칼라 언어에 관심있는 모든 프로그래머를 위한 행사입니다. 처음 시작 하는 이번 스칼라나이트 행사에서는 잘 드러나지는 않지만 활발히 사용되는 스칼라 프로그래머들의 이야기를 들어 보겠습니다. 이번 기회를 통해 스칼라의 미래를 조망하고, 스칼라를 사랑하는 많은 분들께서 만나고, 스칼라를 바라보는 다양한 시각을 접할수있는기회가 되기를 바랍니다.</p> <p><ul><li>이번 행사는 라스칼라 코딩단, 플레이 유저 그룹에서 비영리 행사로 개최됩니다. 스칼라 나이트는 티켓판매 수익에서 운영비를 제외한 남은 금액은 연사분께 전달 드립니다.</li> <li>발표장 옆의 카페에서 커피 및 음료를 무료로 제공합니다. (티켓 구입자에 한함)</li></ul></p> <p> 일시: 4월 14일 토요일, 오후 1시~6시</br> 장소: 서울특별시 서대문구 연희로2길 62 한빛미디어 (<a href=\"https://naver.me/GGVezQG3\">http://naver.me/GGVezQG3</a>)</p> <br /> <h2>Real World Cats, 엄익훈(카카오)</h2> <h3>오후 1:00 ~ 1:40</h3><br /> <p>cats 이거 언제 사용해야 해요? cats는 많이 알고 있는 map, flatMap뿐만 아니라 combine, traverse, parMapN, filterA등 다양한 함수를 제공하고 있어 복잡한 엔터프라이즈 로직을 cats가 함수로 간단하게 표현이 가능합니다.</p> <br /> <h2>Shapeless를 이용한 제네릭 프로그래밍: 컴파일러 괴롭히고 단순 작업 줄이기, 박지수(두물머리)</h2> <h3>오후 1:50 ~ 2:30</h3><br /> <p>정적 타입과 대수 자료형(Algebraic Data Type), 매개변수 다형성(Parametric Polymorphism)은 복잡한 문제를 쪼개서 다루는데 대단히 유용한 도구지만 끝없이 패턴 매칭 코드를 작성하다 보면 더욱 편한 길을 찾게될 때가 있습니다. 제네릭 프로그래밍으로 귀찮은 일은 컴파일러에게 떠넘기고 커피 한 잔의 여유를 찾으세요.</p> <br /> <h2>Akka in Practice, 황성현(레이니스트, 뱅크샐러드)</h2> <h3>오후 2:40 ~ 3:20</h3><br /> <p>Akka가 해결하고자 하는 문제가 무엇이며 프로젝트에서 Akka를 어떤 방식으로 활용할 수 있을까요? 레이니스트에서 Akka를 이용하여 프로젝트를 진행한 경험을 바탕으로 Akka에 대한 지식과 생각을 나누려합니다.</p> <br /> <h2>배포 후 장애를 대응하는 스마트한 방법. 카나리 릴리즈. 최명규, (비바리퍼블리카, Toss)</h2> <h3>오후 3:30 ~ 4:10</h3><br /> <p>모든게 완벽했다고 생각했던 새로운 버전의 서버 어플리케이션 하지만 꼭 프로덕션 레벨에 배포 후 발견되는 버그 혹은 오류가 있기 마련입니다. 이런 오류를 카나리릴리즈를 통해서 스마트하게 대처하는 경험을 공유드리고자 합니다.</p> <br /> <h2>When Spark Meets GPUs, 박창규(서울시립대학교 병렬소프트웨어 설계연구실)</h2><h3>오후 4:20 ~ 5:00</h3><br /> <p>디스크의 I/O 한계를 극복하기 위해 메모리상에서 모든 계산을 수행하는 스파크. 하지만 스파크 프레임워크 만의 병목도 존재하고 있습니다. 이를 극복하기 위한 방법으로, 스파크 프레임워크에서 GPU를 활용하여 CUDA 프로그램을 수행할 수 있는 방법을 소개하는 강의입니다.</p> <br /> <h2>스칼라로 확률 통계 쉽고 빠르게 처리하기, XXX Nell</h2><h3>오후 5:10 ~ 5:50</h3><br /> <p>스칼라를 사용해 함수형 프로그래밍의 다양한 개념을 도입함으로써, 통계 처리를 빠르고, 아주 적은 메모리만 을사용해 쉽게 코딩할 수 있는 방법을 소개합니다.</p><br /><br /><p>후원 및 협찬: NaverD2, 한빛미디어, Toss</p><br /><br /><img src=\"https://s3.ap-northeast-2.amazonaws.com/festa-temp/scala-night-images/sponsor-naverd2.png\" /><img src=\"https://s3.ap-northeast-2.amazonaws.com/festa-temp/scala-night-images/sponser-hanbit.png\" /><img src=\"https://s3.ap-northeast-2.amazonaws.com/festa-temp/scala-night-images/sponser-toss.png\" />",
+  "ticketType": {
+    "id": 8,
+    "eventId": 8,
+    "name": "판매가 시작되고, 아직 판매기간이 남은 이벤트",
+    "desc": "음료 교환권 포함",
+    "price": 20000,
+    "quantity": 150,
+    "leftCnt": -1,
+    "isPublicLeftCnt": false,
+    "maxCntPerPerson": 1,
+    "salesStartAt": "2018-04-03T04:00:00.000Z",
+    "salesEndAt": "2200-04-14T01:00:00.000Z",
+    "refundEndAt": "2200-04-14T01:00:00.000Z"
+  },
+  "user": {
+    "id": 4,
+    "lastName": "문",
+    "firstName": "종현"
+  }
+}
