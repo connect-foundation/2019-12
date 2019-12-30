@@ -3,7 +3,6 @@ import {
   getMorningAndAfternoonString,
   fillZero,
   calculateStringOfDateRange,
-  calculateDiffDaysOfDateRange,
 } from '.';
 
 describe('datecalculateulator', () => {
@@ -57,19 +56,5 @@ describe('datecalculateulator', () => {
     expect(resultString).toBe(
       '2019년 12월 21일 (토) 오후 12:00\n- 12월 22일 (일) 오후 06:00',
     );
-  });
-
-  it('날짜의 차를 계산하여 반환한다', () => {
-    // given
-    const future = '2019-03-09T10:30:00.000Z';
-    const fast = '2018-03-09T12:30:00.000Z';
-
-    // when
-    const diffDays = calculateDiffDaysOfDateRange(startAt, endAt);
-    const diffDaysOfStartAndFast = calculateDiffDaysOfDateRange(future, fast);
-
-    // then
-    expect(diffDays).toBe(1);
-    expect(diffDaysOfStartAndFast).toBe(-365);
   });
 });
