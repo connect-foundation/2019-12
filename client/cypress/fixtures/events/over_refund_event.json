@@ -1,0 +1,33 @@
+{
+  "id": 6,
+  "userId": 2,
+  "title": "데비안 패키징 워크샵",
+  "startAt": "2018-03-31T04:00:00.000Z",
+  "endAt": "2200-04-01T14:59:00.000Z",
+  "place": "NAVER D2 STARTUP FACTORY",
+  "address": "서울특별시 강남구 강남대로 382 메리츠타워 16층",
+  "placeDesc": "",
+  "latitude": 37.49745094,
+  "longitude": 127.02879164,
+  "mainImg": "15",
+  "desc": "<p>우분투 환경에서 소프트웨어를 데비안 패키지로 만들어 보고, 개인 PPA 에 직접 올려보기도 하는 실습을 합니다.</p><br /><h2>연사 정보</h2><p>심경섭 / 펜타시큐리티</p><ul><li>이번 데비안 패키징 워크샵 주 발표자 입니다.</li></ul><br /><p>김진석 / Ubuntu Korea Community - Packaging Manager</p><ul><li>이번 데비안 패키징 워크샵 보조 발표자 입니다.</li></ul><br /><h2>행사 일정</h2><ul><li>12:30PM ~ 01:20PM 사전 참가 등록자 등록 확인 및 착석</li><li>01:20PM ~ 03:00PM 데비안 패키징 개요 ~ 데비안 패키징 실습</li><li>03:00PM ~ 03:15PM 휴식</li><li>03:15PM ~ 05:50PM 생성된 패키지 검증 ~ Launchpad PPA 를 통한 배포</li><li>05:50PM ~ 06:00PM 행사 마무리 및 종료</li></ul><br /><h2>실습 내용</h2><ol><li>런치패드 가입/GPG 키 등록</li><li>패키징 개요</li><li>debian 디렉토리 생성 및 내부 파일 설명</li><li>패키징할 프로그래밍 언어에 따른 세부 튜닝 방법 (C/C++ 와 Python 기준)</li><li>실습 (예제 코드에 debian 디렉토리와 파일을 만들어 패키징 전까지 만듬)</li><li>만들어진 코드를 기반으로 패키지 생성 및 생성된 패키지 검증</li><li>만들어진 패키지의 태그 생성 및 관리</li><li>PPA 에 업로드 하기 위한 방법 및 툴 설명</li><li>PPA 에 업로드 및 테스트 환경에 설치 및 설치 확인 방법</li></ol><br /><h2>안내사항</h2><ul><li>본 행사는 실습 행사이며, 아래와 같은 준비물을 준비해 오셔야 합니다.<ul><li>우분투가 설치된 노트북(VirtualBox 등 가상머신으로도 가능.)</li><li>Launchpad 계정</li><li>권장 : 네트워크 연결을 위한 장비(휴대전화 핫스팟, 포켓 WiFi 등)</li></ul></li><li>본 행사는 노쇼(No Show) 방지를 위해, 참가 등록시 5000원의 보증금을 받습니다. 보증금은 행사 당일 출석 확인시 행사 종료 후 환급됩니다.</li><li>등록 완료 한 상태에서, Festa.io 를 통해 취소 하지 않고 참석하지 않으시면 노쇼(No-Show) 로 간주하며, 추후 행사 참석에 불이익을 받을 수 있습니다. 부득이하게 참석을 못하시는 경우, 반드시 등록기간 안에 등록 취소를 해 주시기 바랍니다.</li><li>행사 참가 등록은 Festa.io 를 통해 진행합니다.</li><li>행사 관련 문의는 korea.ubuntu@gmail.com 으로 해주시기 바랍니다.</li></ul><br /><h2>후원 및 협찬</h2><ul><li>Naver D2 - 장소 후원</li><li>Festa.io - 참가 등록 시스템 제공</li></ul>",
+  "ticketType": {
+    "id": 6,
+    "eventId": 6,
+    "name": "환불 기간이 지난 티켓",
+    "desc": "5천원은 보증금 명목이며, 출석 확인 시 행사 종료 후 환급",
+    "price": 5000,
+    "quantity": 35,
+    "leftCnt": -1,
+    "isPublicLeftCnt": false,
+    "maxCntPerPerson": 1,
+    "salesStartAt": "2018-03-12T00:00:00.000Z",
+    "salesEndAt": "2200-03-30T14:59:00.000Z",
+    "refundEndAt": "2018-03-30T14:59:00.000Z"
+  },
+  "user": {
+    "id": 2,
+    "lastName": "조",
+    "firstName": "성동"
+  }
+}

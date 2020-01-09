@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerWrapperProps>`
   margin-bottom: 5rem;
   padding: ${switchProp('imgPosition', {
     top: '0rem',
-    left: '2rem 0rem',
+    left: '2rem 2rem 0rem 0rem',
   })};
 `;
 

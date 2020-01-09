@@ -71,16 +71,3 @@ export function calculateStringOfDateRange(
 
   return `${startDateStr} ${startTimeStr}\n- ${endDateStr} ${endTimeStr}`;
 }
-
-export function calculateDiffDaysOfDateRange(
-  startAt: string,
-  endAt: string,
-): number {
-  const startAtDate = convertDate(startAt);
-  const endAtDate = convertDate(endAt);
-
-  const diffInTime = endAtDate.getTime() - startAtDate.getTime();
-  const diffDays = diffInTime / (1000 * 3600 * 24);
-
-  return Math.floor(diffDays);
-}

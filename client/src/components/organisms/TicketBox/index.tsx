@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 
 import * as S from './style';
 import {
@@ -11,7 +12,6 @@ import { IconLabel, Price } from 'components';
 import Btn, { Props as BtnProps } from 'components/atoms/Btn';
 import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
 import { TicketType } from 'types/Data';
-import { calculateDiffDaysOfDateRange } from 'utils/dateCalculator';
 import { default as Theme } from 'commons/style/themes/default';
 
 const { palette } = Theme;
@@ -52,10 +52,7 @@ function TicketBox({
 }: Props): React.ReactElement {
   const [isChecked, setChecked] = useState(checked);
 
-  const remainDays = calculateDiffDaysOfDateRange(
-    Date().toString(),
-    salesEndAt,
-  );
+  const remainDays = moment(salesEndAt).diff(moment(), 'days');
 
   if (chkProps.onClick) {
     const copyParentOnClick = chkProps.onClick;
@@ -70,7 +67,7 @@ function TicketBox({
   }
 
   return (
-    <S.Container checked={!!isChecked}>
+    <S.Container data-testid={'ticket-box'} checked={!!isChecked}>
       <S.TicketInfoContainer>
         <S.Name>{name}</S.Name>
         <S.PriceWrapper>
@@ -123,6 +120,7 @@ function TicketBox({
         {showRefundBtn && refundBtnProps && (
           <Btn
             {...refundBtnProps}
+            data-testid={'refund-btn'}
             fit
             styletype={'transparent'}
             children={refundBtnProps.children}
