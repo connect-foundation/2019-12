@@ -1,14 +1,14 @@
 version: '3.7'
 services:
   front:
-    image: jdd04026/bu-front:1.0.0-hotfix-1
+    image: jdd04026/bu-front:1.0.2
     container_name: front
     ports:
       - '8080:80'
     networks:
       - app
   back:
-    image: jdd04026/bu-back:1.0.0
+    image: jdd04026/bu-back:1.0.2
     container_name: back
     restart: always
     # env 파일 같은 경우는 서버용으로 따로 설정을 해서 넣어주자.
@@ -19,7 +19,7 @@ services:
     networks:
       - app
   reserve:
-    image: jdd04026/bu-reserve:1.0.0
+    image: jdd04026/bu-reserve:1.0.2
     container_name: reserve
     restart: always
     # env 파일 같은 경우는 서버용으로 따로 설정을 해서 넣어주자.
