@@ -35,9 +35,9 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: DB_USER
-              value: "user"
+              value: ""
             - name: DB_PW
-              value: "pass"
+              value: ""
             - name: DB_NAME
               value: "bookus"
             - name: REDIS_HOST
@@ -53,7 +53,7 @@ spec:
             - name: CLIENT_SECRET
               value: ""
             - name: JWT_SECURE
-              value: "nainwienflsiejrlghwidslfja;sja;cxv'aiwehrp32"
+              value: ""
             - name: GOOGLE_MAP_API_KEY
               value: ""
             - name: AWS_ACCESS_KEY
