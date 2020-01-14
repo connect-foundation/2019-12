@@ -1,0 +1,65 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: database
+  namespace: bookus
+spec:
+  replicas: 1
+  serviceName: database
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+        - name: database
+          image: jdd04026/mariadb-locale
+          env:
+            # Use secret in real usage
+            - name: MYSQL_ROOT_PASSWORD
+              value: "pass"
+            - name: MYSQL_DATABASE
+              value: "bookus"
+            - name: MYSQL_USER
+              value: "user"
+            - name: MYSQL_PASSWORD
+              value: "pass"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: database-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: database-persistent-storage
+          persistentVolumeClaim:
+            claimName: database-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-svc
+  namespace: bookus
+  labels:
+    app: database
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: database
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-pv-claim
+  namespace: bookus
+  labels:
+    app: database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
