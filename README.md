@@ -55,7 +55,7 @@
 ## 과중한 트래픽이 몰려도 안정적으로 예약이 가능한 시스템
 
 예약이 필요한 시점마다 늘어나는 트래픽을 감당하기 위한 Container Orchestration 툴로 Kubernetes를 선택했습니다.
-설정파일은 이 [Repository](https://github.com/FullOfOrange/Bookus-Kube) 에 존재합니다.
+[설정파일](https://github.com/connect-foundation/2019-12/tree/master/build/k8s)
 
 ![Kubernetes-infra](https://user-images.githubusercontent.com/10372359/70730811-ff855380-1d48-11ea-96c7-b7ee207cf926.png)
 
