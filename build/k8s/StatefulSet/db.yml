@@ -20,13 +20,13 @@ spec:
           env:
             # Use secret in real usage
             - name: MYSQL_ROOT_PASSWORD
-              value: "pass"
+              value: ""
             - name: MYSQL_DATABASE
               value: "bookus"
             - name: MYSQL_USER
               value: "user"
             - name: MYSQL_PASSWORD
-              value: "pass"
+              value: ""
           ports:
             - containerPort: 3306
           volumeMounts:
