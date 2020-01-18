@@ -1,0 +1,65 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: maria
+  namespace: bookus
+spec:
+  replicas: 1
+  serviceName: maria
+  selector:
+    matchLabels:
+      app: maria
+  template:
+    metadata:
+      labels:
+        app: maria
+    spec:
+      containers:
+        - name: maria
+          image: jdd04026/mariadb-locale
+          env:
+            # Use secret in real usage
+            - name: MYSQL_ROOT_PASSWORD
+              value: "pass"
+            - name: MYSQL_DATABASE
+              value: "bookus"
+            - name: MYSQL_USER
+              value: "user"
+            - name: MYSQL_PASSWORD
+              value: "pass"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: maria-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: maria-persistent-storage
+          persistentVolumeClaim:
+            claimName: maria-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maria-svc
+  namespace: bookus
+  labels:
+    app: maria
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: maria
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: maria-pv-claim
+  namespace: bookus
+  labels:
+    app: maria
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

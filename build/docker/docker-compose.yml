@@ -1,0 +1,100 @@
+version: '3.7'
+services:
+  front:
+    image: jdd04026/bu-front:1.0.1
+    container_name: front
+    ports:
+      - '8080:80'
+    networks:
+      - app
+  back:
+    image: jdd04026/bu-back:1.0.1
+    container_name: back
+    restart: always
+    environment:
+      - APP_PORT=
+      - DB_HOST=
+      - DB_PORT=
+      - DB_USER=
+      - DB_PW=
+      - DB_NAME=
+      - REDIS_HOST=
+      - REDIS_PORT=
+      - API_URL=https://www.bookus.kr
+      - CLIENT_URL=https://www.bookus.kr
+      - CLIENT_ID=
+      - CLIENT_SECRET=
+      - JWT_SECURE=
+      - GOOGLE_MAP_API_KEY=
+      - AWS_ACCESS_KEY=
+      - AWS_SECRET_KEY=
+      - AWS_REGION=
+      - AWS_S3_ENDPOINT=
+      - AWS_BUCKET_NAME=
+      - NODE_ENV=
+    ports:
+      - '3000:3000'
+    networks:
+      - app
+  reserve:
+    image: jdd04026/bu-reserve:1.0.1
+    container_name: reserve
+    restart: always
+    environment:
+      - APP_PORT=
+      - DB_HOST=
+      - DB_PORT=
+      - DB_USER=
+      - DB_PW=
+      - DB_NAME=
+      - REDIS_HOST=
+      - REDIS_PORT=
+      - API_URL=https://www.bookus.kr
+      - CLIENT_URL=https://www.bookus.kr
+      - CLIENT_ID=
+      - CLIENT_SECRET=
+      - JWT_SECURE=
+      - GOOGLE_MAP_API_KEY=
+      - AWS_ACCESS_KEY=
+      - AWS_SECRET_KEY=
+      - AWS_REGION=
+      - AWS_S3_ENDPOINT=
+      - AWS_BUCKET_NAME=
+      - NODE_ENV=
+    ports:
+      - '4000:4000'
+    networks:
+      - app
+  db:
+    image: jdd04026/mariadb-locale:latest
+    container_name: bu-db
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=
+      - MYSQL_USER=
+      - MYSQL_PASSWORD=
+    ports:
+      - '3306:3306'
+    networks:
+      - app
+  redis:
+    image: redis:5.0.7-alpine
+    container_name: bu-redis
+    volumes:
+      - redisdata:/data
+    ports:
+      - '6379:6379'
+    networks:
+      - app
+
+networks:
+  app:
+    name: app_bridge
+
+volumes:
+  dbdata:
+    driver: local
+  redisdata:
+    driver: local

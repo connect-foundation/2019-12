@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back
+  namespace: bookus
+  labels: 
+    app: back
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: back
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: back
+        env: deployment
+    spec: # pod spec
+      containers:
+        - name: back
+          image: jdd04026/bu-back:latest # image we pushed
+          ports:
+            - containerPort: 3000
+          env:
+            - name: APP_PORT
+              value: "3000"
+            - name: DB_HOST
+              value: "172.17.205.14"
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_USER
+              value: ""
+            - name: DB_PW
+              value: ""
+            - name: DB_NAME
+              value: "bookus"
+            - name: REDIS_HOST
+              value: "172.19.153.20"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: API_URL
+              value: "https://www.bookus.kr"
+            - name: CLIENT_URL
+              value: "https://www.bookus.kr"
+            - name: CLIENT_ID
+              value: ""
+            - name: CLIENT_SECRET
+              value: ""
+            - name: JWT_SECURE
+              value: ""
+            - name: GOOGLE_MAP_API_KEY
+              value: ""
+            - name: AWS_ACCESS_KEY
+              value: ""
+            - name: AWS_SECRET_KEY
+              value: ""
+            - name: AWS_REGION
+              value: "kr-standard"
+            - name: AWS_S3_ENDPOINT
+              value: "https://kr.object.ncloudstorage.com"
+            - name: AWS_BUCKET_NAME
+              value: "bookus"
+            - name: NODE_ENV
+              value: "development"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-svc
+  namespace: bookus
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app: back
