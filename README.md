@@ -8,8 +8,6 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </p>
 
-### 📺 [HomePage](https://www.bookus.kr/)
-
 ### 📕 [Storybook for Bookus](https://storybook.bookus.kr/)
 
 ### 🌲 [Cypress for Bookus](https://dashboard.cypress.io/projects/wauqe2/runs)
