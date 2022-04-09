@@ -26,7 +26,7 @@
     "google-map-react": "^1.1.5",
     "http-status": "^1.4.2",
     "immer": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.11.0",
     "react-cookie": "^4.0.1",
     "react-dates": "^21.5.1",
