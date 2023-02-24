@@ -27,7 +27,7 @@
     "morgan": "^1.9.1",
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^5.21.2",
+    "sequelize": "^6.29.0",
     "sequelize-typescript": "^1.0.0",
     "winston": "^3.2.1"
   },
